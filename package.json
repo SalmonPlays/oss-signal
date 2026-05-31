@@ -1,0 +1,46 @@
+{
+  "name": "oss-signal",
+  "version": "0.1.0",
+  "description": "A dependency-light CLI that audits open-source repository maintenance readiness.",
+  "type": "module",
+  "bin": {
+    "oss-signal": "./src/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amonv2/oss-signal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/amonv2/oss-signal/issues"
+  },
+  "homepage": "https://github.com/amonv2/oss-signal#readme",
+  "files": [
+    "src",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "lint": "node --check src/*.js test/*.test.js",
+    "audit:self": "node src/cli.js . --format markdown --output docs/self-audit.md",
+    "check": "npm run lint && npm test && npm run audit:self",
+    "prepublishOnly": "npm run check"
+  },
+  "keywords": [
+    "open-source",
+    "maintainer",
+    "audit",
+    "repository",
+    "cli"
+  ],
+  "author": "SalmonPlays",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
