@@ -92,9 +92,9 @@ See [docs/self-audit.md](docs/self-audit.md) for the full self-audit report.
 
 `oss-signal` has been run against public repositories to produce maintainer-readiness reports and respectful issue drafts:
 
-- [platformatic/massimo report](docs/outreach/platformatic-massimo-report.md)
-- [supermarkt/checkjebon report](docs/outreach/supermarkt-checkjebon-report.md)
-- [sammorrisdesign/interactive-feed report](docs/outreach/sammorrisdesign-interactive-feed-report.md)
+- [platformatic/massimo report](docs/outreach/platformatic-massimo-report.md) and [issue #159](https://github.com/platformatic/massimo/issues/159)
+- [supermarkt/checkjebon report](docs/outreach/supermarkt-checkjebon-report.md) and [issue #22](https://github.com/supermarkt/checkjebon/issues/22)
+- [sammorrisdesign/interactive-feed report](docs/outreach/sammorrisdesign-interactive-feed-report.md) and [issue #14](https://github.com/sammorrisdesign/interactive-feed/issues/14)
 
 See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts are not posted automatically; maintainers should only receive specific, useful, and respectful suggestions.
 

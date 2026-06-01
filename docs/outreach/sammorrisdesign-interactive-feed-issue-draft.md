@@ -1,5 +1,7 @@
 # Issue Draft: sammorrisdesign/interactive-feed
 
+Posted as [sammorrisdesign/interactive-feed#14](https://github.com/sammorrisdesign/interactive-feed/issues/14).
+
 Title:
 
 ```text
