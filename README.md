@@ -17,7 +17,7 @@ npm install --global oss-signal
 For local development:
 
 ```bash
-git clone https://github.com/amonv2/oss-signal.git
+git clone https://github.com/SalmonPlays/oss-signal.git
 cd oss-signal
 npm install
 npm test

@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amonv2/oss-signal.git"
+    "url": "git+https://github.com/SalmonPlays/oss-signal.git"
   },
   "bugs": {
-    "url": "https://github.com/amonv2/oss-signal/issues"
+    "url": "https://github.com/SalmonPlays/oss-signal/issues"
   },
-  "homepage": "https://github.com/amonv2/oss-signal#readme",
+  "homepage": "https://github.com/SalmonPlays/oss-signal#readme",
   "files": [
     "src",
     "docs",
