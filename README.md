@@ -1,12 +1,26 @@
 # oss-signal
 
+[![CI](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
+[![npm downloads](https://img.shields.io/npm/dm/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 `oss-signal` is a dependency-light CLI for auditing open-source repository maintenance readiness.
 
 It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown or JSON.
 
+![oss-signal example output](docs/assets/terminal-report.svg)
+
 ## Why
 
 Open-source projects often fail quietly because the maintainer workflow is undocumented. `oss-signal` gives maintainers a repeatable checklist they can run locally, in CI, or before asking contributors to help.
+
+## Use Cases
+
+- Maintainers can run it before publishing a new project.
+- Contributors can attach a report to a cleanup issue or pull request.
+- Teams can gate release readiness with `--fail-under`.
+- Foundations and working groups can compare repository hygiene across many projects.
 
 ## Install
 
@@ -43,6 +57,12 @@ Use JSON in automation:
 oss-signal . --format json --fail-under 80
 ```
 
+Generate a report that can be attached to an issue:
+
+```bash
+oss-signal . --format markdown --output docs/maintainer-readiness.md
+```
+
 ## Checks
 
 `oss-signal` currently checks:
@@ -53,7 +73,22 @@ oss-signal . --format json --fail-under 80
 
 See [docs/rules.md](docs/rules.md) for rule details and scoring weights.
 
-## Example
+## Real Output
+
+This repository audits itself at **100/100 (A)**:
+
+```text
+Score: 100/100 (A)
+
+Summary:
+- Passed: 15
+- Failed: 0
+- Total checks: 15
+```
+
+See [docs/self-audit.md](docs/self-audit.md) for the full self-audit report.
+
+## Example Recommendation Output
 
 ```text
 Score: 86/100 (B)
@@ -63,6 +98,18 @@ Recommended next steps:
 - Support policy: Add SUPPORT.md describing where to ask questions.
 ```
 
+See [docs/examples/minimal-repo-report.md](docs/examples/minimal-repo-report.md) for a small repository example with missing maintainer files.
+
+## Exit Codes
+
+By default, `oss-signal` exits with `0` after writing a report.
+
+When `--fail-under <score>` is provided, it exits with `1` if the score is below the threshold:
+
+```bash
+oss-signal . --fail-under 80
+```
+
 ## CI
 
 Add this to a GitHub Actions workflow:
@@ -70,6 +117,37 @@ Add this to a GitHub Actions workflow:
 ```yaml
 - run: npx oss-signal . --fail-under 80
 ```
+
+Full workflow example:
+
+```yaml
+name: Repository health
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  oss-signal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npx oss-signal . --format markdown --output oss-signal-report.md --fail-under 80
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oss-signal-report
+          path: oss-signal-report.md
+```
+
+## Current Limitations
+
+- It inspects local files only; GitHub URL mode is on the roadmap.
+- It checks deterministic maintenance signals, not code quality.
+- A high score does not prove a project is important. It proves the maintainer workflow is documented and automatable.
 
 ## Roadmap
 

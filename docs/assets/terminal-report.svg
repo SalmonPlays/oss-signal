@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">oss-signal terminal output</title>
+  <desc id="desc">Example terminal output showing an OSS Signal repository health score of 100 out of 100.</desc>
+  <rect width="920" height="520" rx="18" fill="#0d1117"/>
+  <rect x="0" y="0" width="920" height="48" rx="18" fill="#161b22"/>
+  <circle cx="30" cy="24" r="7" fill="#ff5f56"/>
+  <circle cx="54" cy="24" r="7" fill="#ffbd2e"/>
+  <circle cx="78" cy="24" r="7" fill="#27c93f"/>
+  <text x="110" y="31" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">oss-signal</text>
+  <text x="34" y="86" fill="#7ee787" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">$ oss-signal . --format markdown</text>
+  <text x="34" y="130" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700">OSS Signal Report</text>
+  <text x="34" y="174" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">Score: </text>
+  <text x="108" y="174" fill="#7ee787" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="700">100/100 (A)</text>
+  <text x="34" y="222" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">Summary</text>
+  <text x="34" y="252" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">PASS  README</text>
+  <text x="34" y="280" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">PASS  License</text>
+  <text x="34" y="308" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">PASS  Contributing guide</text>
+  <text x="34" y="336" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">PASS  Security policy</text>
+  <text x="34" y="364" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">PASS  Continuous integration</text>
+  <text x="34" y="392" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">PASS  Tests</text>
+  <text x="34" y="442" fill="#7ee787" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">No missing checks. Keep the report current as the repository evolves.</text>
+</svg>
