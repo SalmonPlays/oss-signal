@@ -88,6 +88,16 @@ Summary:
 
 See [docs/self-audit.md](docs/self-audit.md) for the full self-audit report.
 
+## Field Audits
+
+`oss-signal` has been run against public repositories to produce maintainer-readiness reports and respectful issue drafts:
+
+- [platformatic/massimo report](docs/outreach/platformatic-massimo-report.md)
+- [supermarkt/checkjebon report](docs/outreach/supermarkt-checkjebon-report.md)
+- [sammorrisdesign/interactive-feed report](docs/outreach/sammorrisdesign-interactive-feed-report.md)
+
+See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts are not posted automatically; maintainers should only receive specific, useful, and respectful suggestions.
+
 ## Example Recommendation Output
 
 ```text
