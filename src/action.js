@@ -28,6 +28,10 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
     "report-path": options.output ?? ""
   });
 
+  if (options.summary) {
+    await writeGitHubStepSummary(env.GITHUB_STEP_SUMMARY, report);
+  }
+
   if (typeof options.failUnder === "number" && report.score < options.failUnder) {
     stderr.write(`oss-signal: score ${report.score} is below fail-under ${options.failUnder}\n`);
     process.exitCode = 1;
@@ -48,7 +52,8 @@ export function parseActionInputs(env = process.env) {
     output: emptyToUndefined(getInput(env, "output")) ?? "oss-signal-report.md",
     failUnder: parseOptionalNumber(getInput(env, "fail-under"), "fail-under"),
     maxFiles: parseOptionalNumber(getInput(env, "max-files"), "max-files") ?? 20000,
-    ref: emptyToUndefined(getInput(env, "ref"))
+    ref: emptyToUndefined(getInput(env, "ref")),
+    summary: parseOptionalBoolean(getInput(env, "summary"), "summary") ?? true
   };
 }
 
@@ -61,6 +66,36 @@ export async function writeGitHubOutput(outputFile, values) {
     .map(([name, value]) => `${name}<<${OUTPUT_DELIMITER}\n${value}\n${OUTPUT_DELIMITER}`)
     .join("\n");
   await fs.appendFile(outputFile, `${body}\n`, "utf8");
+}
+
+export async function writeGitHubStepSummary(summaryFile, report) {
+  if (!summaryFile) {
+    return;
+  }
+
+  const failedChecks = report.checks.filter((check) => !check.passed);
+  const nextSteps = failedChecks.length > 0
+    ? failedChecks.map((check) => `- **${check.label}:** ${check.fix}`).join("\n")
+    : "- No missing maintainer-readiness checks found.";
+
+  const body = [
+    "# oss-signal",
+    "",
+    `Score: **${report.score}/100 (${report.grade})**`,
+    "",
+    "| Result | Count |",
+    "| --- | ---: |",
+    `| Passed | ${report.summary.passed} |`,
+    `| Failed | ${report.summary.failed} |`,
+    `| Total checks | ${report.summary.total} |`,
+    "",
+    "## Recommended next steps",
+    "",
+    nextSteps,
+    ""
+  ].join("\n");
+
+  await fs.appendFile(summaryFile, body, "utf8");
 }
 
 function getInput(env, name) {
@@ -80,6 +115,22 @@ function parseOptionalNumber(value, name) {
     throw new Error(`${name} must be a number`);
   }
   return parsed;
+}
+
+function parseOptionalBoolean(value, name) {
+  const normalized = emptyToUndefined(value)?.toLowerCase();
+  if (normalized === undefined) {
+    return undefined;
+  }
+
+  if (["1", "true", "yes", "on"].includes(normalized)) {
+    return true;
+  }
+  if (["0", "false", "no", "off"].includes(normalized)) {
+    return false;
+  }
+
+  throw new Error(`${name} must be a boolean`);
 }
 
 function emptyToUndefined(value) {

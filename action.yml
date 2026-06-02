@@ -17,6 +17,10 @@ inputs:
     description: Report file path.
     required: false
     default: oss-signal-report.md
+  summary:
+    description: Write a concise report to the GitHub Actions step summary.
+    required: false
+    default: "true"
   fail-under:
     description: Fail the action when the score is below this number.
     required: false

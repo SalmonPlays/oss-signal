@@ -21,7 +21,7 @@ Open-source projects often fail quietly because the maintainer workflow is undoc
 - Contributors can attach a report to a cleanup issue or pull request.
 - Teams can gate release readiness with `--fail-under`.
 - Foundations and working groups can compare repository hygiene across many projects.
-- CI maintainers can add it as a GitHub Action and publish the report as an artifact.
+- CI maintainers can add it as a GitHub Action, show the score in the workflow summary, and publish the report as an artifact.
 
 ## Install
 
@@ -137,13 +137,16 @@ oss-signal . --fail-under 80
 Add `oss-signal` directly to a GitHub Actions workflow:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.2.0
+- uses: SalmonPlays/oss-signal@v0.3.0
   id: oss-signal
   with:
     fail-under: "80"
     output: oss-signal-report.md
+    summary: "true"
 - run: echo "score ${{ steps.oss-signal.outputs.score }} (${{ steps.oss-signal.outputs.grade }})"
 ```
+
+The Action writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
 
 Full workflow example:
 
@@ -160,11 +163,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.2.0
+      - uses: SalmonPlays/oss-signal@v0.3.0
         id: oss-signal
         with:
           fail-under: "80"
           output: oss-signal-report.md
+          summary: "true"
       - uses: actions/upload-artifact@v4
         with:
           name: oss-signal-report

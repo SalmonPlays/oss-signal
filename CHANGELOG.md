@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0
+
+- Added GitHub Actions step summary output for readable workflow reports.
+- Added a `summary` Action input for turning step summary output on or off.
+
 ## 0.2.0
 
 - Added direct GitHub repository audits for public repositories.

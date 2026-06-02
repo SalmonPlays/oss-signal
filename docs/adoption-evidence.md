@@ -6,7 +6,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.2.0
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.3.0
 - GitHub Action metadata: [action.yml](../action.yml)
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
@@ -22,7 +22,7 @@ The CLI supports two practical modes:
 - Local repository audit for maintainers working in a clone.
 - Public GitHub repository audit for quick triage without cloning.
 
-It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI and upload a Markdown report as a workflow artifact.
+It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, and upload a Markdown report as a workflow artifact.
 
 ## Public Field Audits And PRs
 
@@ -50,8 +50,8 @@ The current repository self-audit score is 100/100, the GitHub community profile
 
 Public CI evidence:
 
-- GitHub Action self-test job: https://github.com/SalmonPlays/oss-signal/actions/runs/26801682014/job/79009525705
-- CodeQL run: https://github.com/SalmonPlays/oss-signal/actions/runs/26801681976
+- CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
+- CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 
 ## Boundaries
 

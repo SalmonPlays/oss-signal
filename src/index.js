@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.2.0";
+export const VERSION = "0.3.0";
 
 const COMMUNITY_FILES = [
   {
