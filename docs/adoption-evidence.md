@@ -11,6 +11,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
 - GitHub Action workflow example: [docs/examples/github-action-workflow.yml](examples/github-action-workflow.yml)
+- Codex for Open Source application brief: [docs/codex-for-oss-application.md](codex-for-oss-application.md)
 - Rule reference: [docs/rules.md](rules.md)
 
 ## Maintainer Use Case
