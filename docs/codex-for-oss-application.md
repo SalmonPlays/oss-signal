@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-02T11:36:14Z
+Snapshot: 2026-06-02T11:40:14Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -8,6 +8,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal (`0.3.0` latest)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.3.0
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.3.0
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
@@ -39,6 +40,7 @@ This project is designed around repeatable maintainer workflows where Codex is u
 The repository currently has:
 
 - A published npm package with `0.3.0` as the latest release.
+- A published GitHub Release for v0.3.0 with release notes and a copyable `npx` command.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - A v0.3.0 GitHub Action tag with step summary support.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.3.0` against the repository.
@@ -72,6 +74,5 @@ Recommended application angle:
 ## Next Evidence To Collect
 
 - One or more merged external PRs.
-- A GitHub Release for v0.3.0 with release notes.
 - A public workflow run in another repository using `SalmonPlays/oss-signal@v0.3.0`.
 - npm download data once the registry starts reporting weekly/monthly counts.
