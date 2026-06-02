@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-02T08:16:52Z
+Snapshot: 2026-06-02T11:20:40Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -10,6 +10,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - npm package: https://www.npmjs.com/package/oss-signal
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.3.0
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
+- Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
 
@@ -40,6 +41,7 @@ The repository currently has:
 - A published npm package.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - A v0.3.0 GitHub Action tag with step summary support.
+- A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.3.0` against the repository.
 - CI and CodeQL workflows passing on `main`.
 - A local self-audit score of 100/100.
 - Public reports, issues, and PRs created from real repository audits.

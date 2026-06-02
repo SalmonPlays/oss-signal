@@ -8,6 +8,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 - npm package: https://www.npmjs.com/package/oss-signal
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.3.0
 - GitHub Action metadata: [action.yml](../action.yml)
+- Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
 - GitHub Action workflow example: [docs/examples/github-action-workflow.yml](examples/github-action-workflow.yml)
@@ -23,7 +24,7 @@ The CLI supports two practical modes:
 - Local repository audit for maintainers working in a clone.
 - Public GitHub repository audit for quick triage without cloning.
 
-It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, and upload a Markdown report as a workflow artifact.
+It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, and upload a Markdown report as a workflow artifact. This repository dogfoods the public Action tag through the Repository health workflow.
 
 ## Public Field Audits And PRs
 
@@ -52,6 +53,7 @@ The current repository self-audit score is 100/100, the GitHub community profile
 Public CI evidence:
 
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
+- Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 
 ## Boundaries

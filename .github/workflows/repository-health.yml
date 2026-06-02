@@ -1,0 +1,28 @@
+name: Repository health
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  oss-signal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: SalmonPlays/oss-signal@v0.3.0
+        id: oss-signal
+        with:
+          fail-under: "90"
+          output: oss-signal-report.md
+          summary: "true"
+      - run: test "${{ steps.oss-signal.outputs.score }}" -ge 90
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oss-signal-report
+          path: oss-signal-report.md

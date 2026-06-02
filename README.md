@@ -1,6 +1,7 @@
 # oss-signal
 
 [![CI](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml)
+[![Repository health](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml)
 [![npm version](https://img.shields.io/npm/v/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
 [![npm downloads](https://img.shields.io/npm/dm/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -148,6 +149,8 @@ Add `oss-signal` directly to a GitHub Actions workflow:
 
 The Action writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
 
+![oss-signal GitHub Actions summary](docs/assets/github-step-summary.svg)
+
 Full workflow example:
 
 ```yaml
@@ -176,6 +179,8 @@ jobs:
 ```
 
 See [docs/examples/github-action-workflow.yml](docs/examples/github-action-workflow.yml) for a copyable workflow.
+
+This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.3.0` against the repository and uploads the Markdown report artifact.
 
 You can also run the CLI directly in CI:
 
