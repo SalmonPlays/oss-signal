@@ -95,7 +95,7 @@ Summary:
 - Total checks: 15
 ```
 
-See [docs/self-audit.md](docs/self-audit.md) for the full self-audit report.
+See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report and [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output.
 
 ## Field Audits
 
@@ -106,6 +106,8 @@ See [docs/self-audit.md](docs/self-audit.md) for the full self-audit report.
 - [sammorrisdesign/interactive-feed report](docs/outreach/sammorrisdesign-interactive-feed-report.md) and [issue #14](https://github.com/sammorrisdesign/interactive-feed/issues/14)
 
 See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts are not posted automatically; maintainers should only receive specific, useful, and respectful suggestions.
+
+For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md).
 
 ## Example Recommendation Output
 
