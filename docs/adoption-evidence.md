@@ -24,17 +24,17 @@ The CLI supports two practical modes:
 
 It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI and upload a Markdown report as a workflow artifact.
 
-## Public Field Audits
+## Public Field Audits And PRs
 
 The tool has been used to generate maintainer-readiness reports for public repositories and convert them into respectful cleanup issues:
 
-| Repository | Report | Posted issue |
-| --- | --- | --- |
-| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 |
-| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 |
-| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 |
+| Repository | Report | Posted issue | Follow-up PR |
+| --- | --- | --- | --- |
+| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 |
+| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 |
+| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 |
 
-These issues are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements.
+These issues and pull requests are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements. Each PR is intentionally limited to documentation or GitHub templates.
 
 ## Verification Commands
 
