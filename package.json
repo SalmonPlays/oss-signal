@@ -25,7 +25,8 @@
     "test": "node --test",
     "lint": "node --check src/*.js test/*.test.js",
     "audit:self": "node src/cli.js . --format markdown --output docs/self-audit.md",
-    "check": "npm run lint && npm test && npm run audit:self",
+    "audit:check": "node src/cli.js . --format json --fail-under 100 > /dev/null",
+    "check": "npm run lint && npm test && npm run audit:check",
     "prepublishOnly": "npm run check"
   },
   "keywords": [
