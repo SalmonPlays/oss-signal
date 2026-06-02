@@ -1,0 +1,41 @@
+name: oss-signal
+description: Audit open-source repository maintenance readiness and produce actionable maintainer next steps.
+author: SalmonPlays
+branding:
+  icon: activity
+  color: blue
+inputs:
+  path:
+    description: Local repository path, GitHub URL, or owner/repo shorthand to audit.
+    required: false
+    default: "."
+  format:
+    description: Output format, either markdown or json.
+    required: false
+    default: markdown
+  output:
+    description: Report file path.
+    required: false
+    default: oss-signal-report.md
+  fail-under:
+    description: Fail the action when the score is below this number.
+    required: false
+  max-files:
+    description: Maximum files to inspect.
+    required: false
+    default: "20000"
+  ref:
+    description: Git ref for GitHub URL audits.
+    required: false
+outputs:
+  score:
+    description: Numeric maintainer-readiness score.
+  grade:
+    description: Letter grade for the maintainer-readiness score.
+  failed:
+    description: Number of failed checks.
+  report-path:
+    description: Path to the generated report file, when output is enabled.
+runs:
+  using: node20
+  main: src/action.js

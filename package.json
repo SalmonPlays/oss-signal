@@ -17,6 +17,7 @@
   "files": [
     "src",
     "docs",
+    "action.yml",
     "README.md",
     "LICENSE",
     "CHANGELOG.md"

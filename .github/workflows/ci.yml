@@ -23,3 +23,18 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        id: oss-signal
+        with:
+          fail-under: "100"
+          output: oss-signal-action-report.md
+      - run: test "${{ steps.oss-signal.outputs.score }}" = "100"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oss-signal-action-report
+          path: oss-signal-action-report.md

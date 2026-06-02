@@ -6,8 +6,10 @@ This page collects the public evidence that `oss-signal` is built for real open-
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
+- GitHub Action metadata: [action.yml](../action.yml)
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
+- GitHub Action workflow example: [docs/examples/github-action-workflow.yml](examples/github-action-workflow.yml)
 - Rule reference: [docs/rules.md](rules.md)
 
 ## Maintainer Use Case
@@ -18,6 +20,8 @@ The CLI supports two practical modes:
 
 - Local repository audit for maintainers working in a clone.
 - Public GitHub repository audit for quick triage without cloning.
+
+It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI and upload a Markdown report as a workflow artifact.
 
 ## Public Field Audits
 
@@ -41,7 +45,7 @@ npm run audit:github
 node src/cli.js platformatic/massimo --format json
 ```
 
-The current repository self-audit score is 100/100, and the GitHub community profile health score is 100.
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper.
 
 ## Boundaries
 

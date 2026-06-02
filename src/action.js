@@ -1,0 +1,102 @@
+#!/usr/bin/env node
+import { promises as fs } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { auditTarget, renderMarkdown } from "./index.js";
+
+const OUTPUT_DELIMITER = "oss_signal_output";
+
+export async function runAction(env = process.env, stdout = process.stdout, stderr = process.stderr) {
+  const options = parseActionInputs(env);
+  const report = await auditTarget(options.path, {
+    maxFiles: options.maxFiles,
+    ref: options.ref
+  });
+  const body = options.format === "json" ? `${JSON.stringify(report, null, 2)}\n` : renderMarkdown(report);
+
+  if (options.output) {
+    await fs.mkdir(path.dirname(path.resolve(options.output)), { recursive: true });
+    await fs.writeFile(options.output, body, "utf8");
+  } else {
+    stdout.write(body);
+  }
+
+  await writeGitHubOutput(env.GITHUB_OUTPUT, {
+    score: report.score,
+    grade: report.grade,
+    failed: report.summary.failed,
+    "report-path": options.output ?? ""
+  });
+
+  if (typeof options.failUnder === "number" && report.score < options.failUnder) {
+    stderr.write(`oss-signal: score ${report.score} is below fail-under ${options.failUnder}\n`);
+    process.exitCode = 1;
+  }
+
+  return report;
+}
+
+export function parseActionInputs(env = process.env) {
+  const format = getInput(env, "format") || "markdown";
+  if (!["markdown", "json"].includes(format)) {
+    throw new Error("format must be either markdown or json");
+  }
+
+  return {
+    path: getInput(env, "path") || ".",
+    format,
+    output: emptyToUndefined(getInput(env, "output")) ?? "oss-signal-report.md",
+    failUnder: parseOptionalNumber(getInput(env, "fail-under"), "fail-under"),
+    maxFiles: parseOptionalNumber(getInput(env, "max-files"), "max-files") ?? 20000,
+    ref: emptyToUndefined(getInput(env, "ref"))
+  };
+}
+
+export async function writeGitHubOutput(outputFile, values) {
+  if (!outputFile) {
+    return;
+  }
+
+  const body = Object.entries(values)
+    .map(([name, value]) => `${name}<<${OUTPUT_DELIMITER}\n${value}\n${OUTPUT_DELIMITER}`)
+    .join("\n");
+  await fs.appendFile(outputFile, `${body}\n`, "utf8");
+}
+
+function getInput(env, name) {
+  const directKey = `INPUT_${name.toUpperCase()}`;
+  const normalizedKey = `INPUT_${name.toUpperCase().replaceAll("-", "_")}`;
+  return env[directKey]?.trim() || env[normalizedKey]?.trim() || "";
+}
+
+function parseOptionalNumber(value, name) {
+  const normalized = emptyToUndefined(value);
+  if (normalized === undefined) {
+    return undefined;
+  }
+
+  const parsed = Number(normalized);
+  if (!Number.isFinite(parsed)) {
+    throw new Error(`${name} must be a number`);
+  }
+  return parsed;
+}
+
+function emptyToUndefined(value) {
+  return value === undefined || value === "" ? undefined : value;
+}
+
+function escapeWorkflowCommand(value) {
+  return String(value).replaceAll("%", "%25").replaceAll("\r", "%0D").replaceAll("\n", "%0A");
+}
+
+function isMainModule() {
+  return process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+}
+
+if (isMainModule()) {
+  runAction().catch((error) => {
+    process.stdout.write(`::error::${escapeWorkflowCommand(error.message)}\n`);
+    process.exitCode = 1;
+  });
+}

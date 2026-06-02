@@ -21,6 +21,7 @@ Open-source projects often fail quietly because the maintainer workflow is undoc
 - Contributors can attach a report to a cleanup issue or pull request.
 - Teams can gate release readiness with `--fail-under`.
 - Foundations and working groups can compare repository hygiene across many projects.
+- CI maintainers can add it as a GitHub Action and publish the report as an artifact.
 
 ## Install
 
@@ -131,12 +132,17 @@ When `--fail-under <score>` is provided, it exits with `1` if the score is below
 oss-signal . --fail-under 80
 ```
 
-## CI
+## GitHub Action
 
-Add this to a GitHub Actions workflow:
+Add `oss-signal` directly to a GitHub Actions workflow:
 
 ```yaml
-- run: npx oss-signal . --fail-under 80
+- uses: SalmonPlays/oss-signal@v0.2.0
+  id: oss-signal
+  with:
+    fail-under: "80"
+    output: oss-signal-report.md
+- run: echo "score ${{ steps.oss-signal.outputs.score }} (${{ steps.oss-signal.outputs.grade }})"
 ```
 
 Full workflow example:
@@ -154,14 +160,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: SalmonPlays/oss-signal@v0.2.0
+        id: oss-signal
         with:
-          node-version: 22
-      - run: npx oss-signal . --format markdown --output oss-signal-report.md --fail-under 80
+          fail-under: "80"
+          output: oss-signal-report.md
       - uses: actions/upload-artifact@v4
         with:
           name: oss-signal-report
           path: oss-signal-report.md
+```
+
+See [docs/examples/github-action-workflow.yml](docs/examples/github-action-workflow.yml) for a copyable workflow.
+
+You can also run the CLI directly in CI:
+
+```yaml
+- run: npx oss-signal . --format markdown --output oss-signal-report.md --fail-under 80
 ```
 
 ## Current Limitations

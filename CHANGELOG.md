@@ -5,6 +5,7 @@
 - Added direct GitHub repository audits for public repositories.
 - Added `owner/repo` shorthand and `--ref` support.
 - Added GitHub community profile evidence for shared maintainer files.
+- Added a zero-dependency GitHub Action wrapper with score outputs.
 - Updated the CLI help output and package metadata for npm 11.
 
 ## 0.1.0
