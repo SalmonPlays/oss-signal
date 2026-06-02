@@ -5,7 +5,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 ## Project Links
 
 - Repository: https://github.com/SalmonPlays/oss-signal
-- npm package: https://www.npmjs.com/package/oss-signal
+- npm package: https://www.npmjs.com/package/oss-signal (`0.3.0` latest)
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.3.0
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
@@ -46,9 +46,10 @@ From this repository:
 npm run check
 npm run audit:github
 node src/cli.js platformatic/massimo --format json
+npx --yes oss-signal@0.3.0 SalmonPlays/oss-signal --format json
 ```
 
-The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper.
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The published npm `0.3.0` package has also been executed from a clean temporary directory against the public GitHub repository.
 
 Public CI evidence:
 

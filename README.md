@@ -30,6 +30,12 @@ Open-source projects often fail quietly because the maintainer workflow is undoc
 npm install --global oss-signal
 ```
 
+Try it without installing:
+
+```bash
+npx oss-signal SalmonPlays/oss-signal
+```
+
 For local development:
 
 ```bash
