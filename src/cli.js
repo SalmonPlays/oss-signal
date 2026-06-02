@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 import { promises as fs } from "node:fs";
-import { auditRepository, renderMarkdown } from "./index.js";
-
-const VERSION = "0.1.0";
+import { auditTarget, renderMarkdown, VERSION } from "./index.js";
 
 async function main(argv) {
   const options = parseArgs(argv);
@@ -16,7 +14,10 @@ async function main(argv) {
     return;
   }
 
-  const report = await auditRepository(options.path, { maxFiles: options.maxFiles });
+  const report = await auditTarget(options.path, {
+    maxFiles: options.maxFiles,
+    ref: options.ref
+  });
   const body = options.format === "json" ? `${JSON.stringify(report, null, 2)}\n` : renderMarkdown(report);
 
   if (options.output) {
@@ -38,6 +39,7 @@ function parseArgs(argv) {
     output: undefined,
     failUnder: undefined,
     maxFiles: 20000,
+    ref: undefined,
     help: false,
     version: false
   };
@@ -66,6 +68,10 @@ function parseArgs(argv) {
       options.maxFiles = parseNumber(requireValue(argv, ++index, "--max-files"), "--max-files");
     } else if (arg.startsWith("--max-files=")) {
       options.maxFiles = parseNumber(arg.slice("--max-files=".length), "--max-files");
+    } else if (arg === "--ref") {
+      options.ref = requireValue(argv, ++index, "--ref");
+    } else if (arg.startsWith("--ref=")) {
+      options.ref = arg.slice("--ref=".length);
     } else if (arg.startsWith("-")) {
       throw new Error(`Unknown option: ${arg}`);
     } else {
@@ -105,13 +111,19 @@ function helpText() {
   return `oss-signal audits open-source repository maintenance readiness.
 
 Usage:
-  oss-signal [path] [--format markdown|json] [--output file] [--fail-under score]
+  oss-signal [path-or-github-url] [--format markdown|json] [--output file] [--fail-under score]
+
+Examples:
+  oss-signal .
+  oss-signal https://github.com/SalmonPlays/oss-signal
+  oss-signal platformatic/massimo --format json
 
 Options:
   --format       Output format. Defaults to markdown.
   --output, -o   Write the report to a file instead of stdout.
   --fail-under   Exit with code 1 when the score is below this value.
   --max-files    Maximum files to inspect. Defaults to 20000.
+  --ref          Git ref for GitHub URL audits. Defaults to the repository default branch.
   --version, -v  Show the CLI version.
   --help, -h     Show this help message.
 `;

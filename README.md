@@ -45,6 +45,13 @@ Audit the current directory:
 oss-signal
 ```
 
+Audit a public GitHub repository without cloning it:
+
+```bash
+oss-signal https://github.com/SalmonPlays/oss-signal
+oss-signal platformatic/massimo --format json
+```
+
 Write a Markdown report:
 
 ```bash
@@ -72,6 +79,8 @@ oss-signal . --format markdown --output docs/maintainer-readiness.md
 - Package hygiene: package metadata and lockfile presence
 
 See [docs/rules.md](docs/rules.md) for rule details and scoring weights.
+
+For GitHub URL audits, `oss-signal` reads the repository file tree through the GitHub API and also uses GitHub's community profile signal when available. This lets it detect organization-level files such as a shared code of conduct.
 
 ## Real Output
 
@@ -155,13 +164,12 @@ jobs:
 
 ## Current Limitations
 
-- It inspects local files only; GitHub URL mode is on the roadmap.
-- It checks deterministic maintenance signals, not code quality.
+- It checks deterministic maintenance signals, not code quality or project importance.
+- GitHub URL mode uses unauthenticated API requests unless `GITHUB_TOKEN` is set, so very heavy usage may hit GitHub rate limits.
 - A high score does not prove a project is important. It proves the maintainer workflow is documented and automatable.
 
 ## Roadmap
 
-- GitHub API mode for public repository URLs
 - Ecosystem-specific profiles for Python, Rust, Go, and JavaScript packages
 - SARIF output for code scanning dashboards
 - Rules for release automation and provenance metadata

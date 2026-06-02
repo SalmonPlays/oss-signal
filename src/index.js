@@ -1,5 +1,8 @@
 import { promises as fs } from "node:fs";
+import https from "node:https";
 import path from "node:path";
+
+export const VERSION = "0.2.0";
 
 const COMMUNITY_FILES = [
   {
@@ -146,12 +149,61 @@ const DEFAULT_IGNORE_DIRS = new Set([
 export async function auditRepository(root, options = {}) {
   const absoluteRoot = path.resolve(root ?? ".");
   const tree = await listRepositoryFiles(absoluteRoot, options);
+  return createReportFromTree(tree, {
+    root: absoluteRoot,
+    source: {
+      type: "local",
+      location: absoluteRoot
+    }
+  });
+}
+
+export async function auditTarget(target = ".", options = {}) {
+  const normalizedTarget = target ?? ".";
+  if (!isGitHubUrl(normalizedTarget) && await pathExists(normalizedTarget)) {
+    return auditRepository(normalizedTarget, options);
+  }
+  if (isGitHubTarget(normalizedTarget)) {
+    return auditGitHubRepository(normalizedTarget, options);
+  }
+  return auditRepository(normalizedTarget, options);
+}
+
+export async function auditGitHubRepository(target, options = {}) {
+  const parsed = parseGitHubTarget(target);
+  const fetchImpl = options.fetchImpl;
+  const headers = githubHeaders(options.githubToken ?? process.env.GITHUB_TOKEN);
+  const repo = await fetchJson(fetchImpl, `https://api.github.com/repos/${parsed.owner}/${parsed.repo}`, headers);
+  const ref = options.ref ?? repo.default_branch;
+  const tree = await listGitHubRepositoryFiles(fetchImpl, parsed.owner, parsed.repo, ref, headers, options);
+  const communityProfile = await fetchCommunityProfile(fetchImpl, parsed.owner, parsed.repo, headers);
+
+  return createReportFromTree(tree, {
+    root: repo.html_url,
+    source: {
+      type: "github",
+      location: repo.html_url,
+      owner: parsed.owner,
+      repo: parsed.repo,
+      ref,
+      defaultBranch: repo.default_branch,
+      stars: repo.stargazers_count,
+      forks: repo.forks_count,
+      openIssues: repo.open_issues_count,
+      healthPercentage: communityProfile?.health_percentage
+    },
+    communityProfile
+  });
+}
+
+function createReportFromTree(tree, metadata) {
   const fileSet = new Set(tree);
-  const checks = [
+  let checks = [
     ...COMMUNITY_FILES.map((rule) => checkPathRule(rule, fileSet)),
     ...AUTOMATION_FILES.map((rule) => checkMatcherRule(rule, tree)),
     ...PACKAGE_FILES.map((rule) => checkMatcherRule(rule, tree))
   ];
+  checks = applyCommunityProfileEvidence(checks, metadata.communityProfile);
 
   const totalWeight = checks.reduce((sum, check) => sum + check.weight, 0);
   const earnedWeight = checks.filter((check) => check.passed).reduce((sum, check) => sum + check.weight, 0);
@@ -159,8 +211,9 @@ export async function auditRepository(root, options = {}) {
 
   return {
     tool: "oss-signal",
-    version: "0.1.0",
-    root: absoluteRoot,
+    version: VERSION,
+    root: metadata.root,
+    source: metadata.source,
     generatedAt: new Date().toISOString(),
     score,
     grade: gradeForScore(score),
@@ -178,6 +231,7 @@ export function renderMarkdown(report) {
     "# OSS Signal Report",
     "",
     `Repository: \`${report.root}\``,
+    `Source: ${sourceSummary(report.source)}`,
     `Generated: ${report.generatedAt}`,
     "",
     `Score: **${report.score}/100** (${report.grade})`,
@@ -186,13 +240,24 @@ export function renderMarkdown(report) {
     "",
     `- Passed: ${report.summary.passed}`,
     `- Failed: ${report.summary.failed}`,
-    `- Total checks: ${report.summary.total}`,
+    `- Total checks: ${report.summary.total}`
+  ];
+
+  if (report.source?.type === "github") {
+    lines.push(
+      `- Default branch: ${report.source.defaultBranch}`,
+      `- GitHub stars: ${report.source.stars ?? 0}`,
+      `- GitHub community health: ${report.source.healthPercentage ?? "unknown"}`
+    );
+  }
+
+  lines.push(
     "",
     "## Checks",
     "",
     "| Status | Check | Why it matters |",
     "| --- | --- | --- |"
-  ];
+  );
 
   for (const check of report.checks) {
     lines.push(`| ${check.passed ? "PASS" : "FAIL"} | ${escapeTable(check.label)} | ${escapeTable(check.why)} |`);
@@ -251,6 +316,153 @@ export async function listRepositoryFiles(root, options = {}) {
 
   await walk(root);
   return files;
+}
+
+export function parseGitHubTarget(target) {
+  if (/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(target)) {
+    const [owner, repo] = target.split("/");
+    return { owner, repo: repo.replace(/\.git$/, "") };
+  }
+
+  let url;
+  try {
+    url = new URL(target);
+  } catch {
+    throw new Error(`Invalid GitHub target: ${target}`);
+  }
+
+  if (url.hostname !== "github.com" && url.hostname !== "www.github.com") {
+    throw new Error(`Only github.com URLs are supported for remote audits: ${target}`);
+  }
+
+  const [owner, repo] = url.pathname.split("/").filter(Boolean);
+  if (!owner || !repo) {
+    throw new Error(`GitHub URL must include owner and repository: ${target}`);
+  }
+  return { owner, repo: repo.replace(/\.git$/, "") };
+}
+
+function isGitHubTarget(target) {
+  return isGitHubUrl(target) || /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(target);
+}
+
+function isGitHubUrl(target) {
+  return /^https?:\/\/(www\.)?github\.com\//.test(target);
+}
+
+async function pathExists(target) {
+  try {
+    await fs.stat(path.resolve(target));
+    return true;
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      return false;
+    }
+    throw error;
+  }
+}
+
+async function listGitHubRepositoryFiles(fetchImpl, owner, repo, ref, headers, options = {}) {
+  const maxFiles = options.maxFiles ?? 20000;
+  const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${encodeURIComponent(ref)}?recursive=1`;
+  const data = await fetchJson(fetchImpl, treeUrl, headers);
+  return (data.tree ?? [])
+    .filter((entry) => entry.type === "blob" && typeof entry.path === "string")
+    .map((entry) => entry.path)
+    .slice(0, maxFiles);
+}
+
+async function fetchCommunityProfile(fetchImpl, owner, repo, headers) {
+  const url = `https://api.github.com/repos/${owner}/${repo}/community/profile`;
+  try {
+    return await fetchJson(fetchImpl, url, headers);
+  } catch (error) {
+    if (error.status === 404) {
+      return undefined;
+    }
+    throw error;
+  }
+}
+
+async function fetchJson(fetchImpl, url, headers) {
+  if (!fetchImpl) {
+    return requestJson(url, headers);
+  }
+
+  const response = await fetchImpl(url, { headers });
+  if (!response.ok) {
+    const error = new Error(`GitHub API request failed with ${response.status}: ${url}`);
+    error.status = response.status;
+    throw error;
+  }
+  return response.json();
+}
+
+async function requestJson(url, headers) {
+  return new Promise((resolve, reject) => {
+    const request = https.get(url, { headers }, (response) => {
+      let body = "";
+      response.setEncoding("utf8");
+      response.on("data", (chunk) => {
+        body += chunk;
+      });
+      response.on("end", () => {
+        if ((response.statusCode ?? 500) < 200 || (response.statusCode ?? 500) >= 300) {
+          const error = new Error(`GitHub API request failed with ${response.statusCode}: ${url}`);
+          error.status = response.statusCode;
+          reject(error);
+          return;
+        }
+        try {
+          resolve(JSON.parse(body));
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+    request.on("error", reject);
+    request.end();
+  });
+}
+
+function githubHeaders(token) {
+  const headers = {
+    Accept: "application/vnd.github+json",
+    "User-Agent": "oss-signal"
+  };
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+  return headers;
+}
+
+function applyCommunityProfileEvidence(checks, profile) {
+  if (!profile?.files) {
+    return checks;
+  }
+
+  const profileEvidenceByCheck = {
+    readme: profile.files.readme,
+    license: profile.files.license,
+    contributing: profile.files.contributing,
+    security: profile.files.security_policy,
+    "code-of-conduct": profile.files.code_of_conduct_file ?? profile.files.code_of_conduct,
+    "issue-templates": profile.files.issue_template,
+    "pull-request-template": profile.files.pull_request_template
+  };
+
+  return checks.map((check) => {
+    const evidence = profileEvidenceByCheck[check.id];
+    if (check.passed || !evidence) {
+      return check;
+    }
+    const evidenceUrl = evidence.html_url ?? evidence.url ?? "GitHub community profile";
+    return {
+      ...check,
+      passed: true,
+      evidence: [`GitHub community profile: ${evidenceUrl}`]
+    };
+  });
 }
 
 function checkPathRule(rule, fileSet) {
@@ -323,4 +535,14 @@ function gradeForScore(score) {
 
 function escapeTable(value) {
   return String(value).replaceAll("|", "\\|");
+}
+
+function sourceSummary(source) {
+  if (!source) {
+    return "local";
+  }
+  if (source.type === "github") {
+    return `GitHub (${source.owner}/${source.repo}@${source.ref})`;
+  }
+  return "local";
 }
