@@ -6,6 +6,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.2.0
 - GitHub Action metadata: [action.yml](../action.yml)
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
@@ -46,6 +47,11 @@ node src/cli.js platformatic/massimo --format json
 ```
 
 The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper.
+
+Public CI evidence:
+
+- GitHub Action self-test job: https://github.com/SalmonPlays/oss-signal/actions/runs/26801682014/job/79009525705
+- CodeQL run: https://github.com/SalmonPlays/oss-signal/actions/runs/26801681976
 
 ## Boundaries
 
