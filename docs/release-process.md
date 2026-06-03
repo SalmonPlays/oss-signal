@@ -55,7 +55,14 @@ npm publish --access public
 
 Automation path:
 
-The tag-triggered [release workflow](../.github/workflows/release.yml) runs the same checks, verifies the package with `npm publish --dry-run`, and publishes with provenance when `NPM_TOKEN` is configured for the repository.
+The tag-triggered [release workflow](../.github/workflows/release.yml) runs the same checks and verifies the package with `npm publish --dry-run`.
+
+It publishes with provenance only when both release controls are configured:
+
+- Repository secret `NPM_TOKEN` contains an npm automation token.
+- Repository variable `NPM_PUBLISH_ENABLED` is set to `true`.
+
+If either control is missing, the workflow prints a notice and stops after dry-run verification. This keeps tag verification useful when npm publishing is handled manually.
 
 ## Post-Release Verification
 
