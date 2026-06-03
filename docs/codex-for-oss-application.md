@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-03T02:51:47Z
+Snapshot: 2026-06-03T03:06:42Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -8,7 +8,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.3.0
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.4.0
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.4.0
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
@@ -43,7 +43,7 @@ This project is designed around repeatable maintainer workflows where Codex is u
 The repository currently has:
 
 - A published npm package with `0.3.0` as the latest release.
-- A published GitHub Release for v0.3.0 with release notes and a copyable `npx` command.
+- A published GitHub Release for v0.4.0 with SARIF release notes and CI usage guidance.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - SARIF output for GitHub Code Scanning integration.
 - A v0.4.0 GitHub Action tag with step summary and SARIF support.

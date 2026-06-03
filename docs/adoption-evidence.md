@@ -6,7 +6,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal (`0.3.0` latest)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.3.0
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.4.0
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.4.0
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
