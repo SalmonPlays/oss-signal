@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-03T05:11:50Z
+Snapshot: 2026-06-03T10:25:23Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -13,7 +13,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
-- Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26862361229
+- Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
 - Form answer pack: [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md)
 - Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)
@@ -27,7 +27,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - CI, tests, issue templates, pull request templates, Dependabot, and CodeQL-style security workflow.
 - Package metadata and lockfile hygiene.
 
-The output is a deterministic score plus actionable next steps in Markdown, JSON, or SARIF. The GitHub Action also writes a workflow step summary so maintainers and reviewers can see the result without downloading an artifact.
+The output is a deterministic score plus actionable next steps in Markdown, JSON, SARIF, or an Issue-ready Markdown body. The GitHub Action also writes a workflow step summary so maintainers and reviewers can see the result without downloading an artifact.
 
 ## Why Codex Helps
 
@@ -47,20 +47,21 @@ The repository currently has:
 - A published npm package with `0.5.1` as the latest release.
 - A published GitHub Release for v0.5.1 with issue-output release notes and CI usage guidance.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
+- A clean npm smoke test of `oss-signal@0.5.1` returning version `0.5.1`, score `100`, grade `A`, and source `github`.
 - SARIF output for GitHub Code Scanning integration.
 - A v0.5.1 GitHub Action tag with step summary, SARIF support, and Issue-ready output.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.5.1` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
-- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.4.0` from another repository and uploads a report artifact.
+- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.5.1` from another repository and uploads a report artifact.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
 - A release process and tag-triggered release workflow that verify package contents and support npm provenance publishing when repository secrets are configured.
-- CI and CodeQL workflows passing on `main`.
+- CI, Repository health, CodeQL, and Release workflows passing publicly.
 - A local self-audit score of 100/100.
 - A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.5.1 -- oss-signal SalmonPlays/oss-signal --format json`, returning 100/100 (A).
 - Public reports, issues, and PRs created from real repository audits.
 
 ## Separate Workflow Demo
 
-The repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs the public `SalmonPlays/oss-signal@v0.4.0` Action tag from a separate workflow. The successful run at https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26862361229 uploaded an `oss-signal-adoption-demo-report` artifact containing Markdown and SARIF output.
+The repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs the public `SalmonPlays/oss-signal@v0.5.1` Action tag from a separate workflow. The successful run at https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426 uploaded an `oss-signal-adoption-demo-report` artifact containing Markdown and SARIF output.
 
 This is intentionally described as a separate public workflow demo rather than third-party adoption because the repository is also owned by `SalmonPlays`. It still proves that the published Action tag is consumable outside the main repository.
 
@@ -68,9 +69,9 @@ This is intentionally described as a separate public workflow demo rather than t
 
 | Repository | Report | Issue | PR | Status |
 | --- | --- | --- | --- | --- |
-| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open, mergeable |
-| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open, mergeable |
-| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open, mergeable |
+| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open, clean |
+| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open, clean |
+| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open |
 
 These PRs are intentionally small and maintainer-friendly. They add documentation or GitHub templates rather than changing product code.
 

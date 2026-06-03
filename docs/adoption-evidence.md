@@ -2,6 +2,8 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
+Last verified: 2026-06-03T10:25:23Z
+
 ## Project Links
 
 - Repository: https://github.com/SalmonPlays/oss-signal
@@ -11,7 +13,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
-- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26862361229
+- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - SARIF self-audit output: [docs/examples/self-audit.sarif](examples/self-audit.sarif)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
@@ -35,25 +37,48 @@ It also ships as a GitHub Action, so maintainers can gate repository hygiene in 
 
 The [maintainer playbook](maintainer-playbook.md) documents the end-to-end workflow from audit to issue, pull request, CI gate, and Code Scanning evidence. The [release process](release-process.md) documents pre-release verification, tag consistency, npm publish checks, and post-release smoke tests.
 
+## Published Package Verification
+
+The npm package is publicly available as `oss-signal@0.5.1` with `latest` pointing at `0.5.1`.
+
+Clean-directory execution against the public GitHub repository returned:
+
+```json
+{
+  "version": "0.5.1",
+  "score": 100,
+  "grade": "A",
+  "source": "github"
+}
+```
+
+Current public workflow status:
+
+- CI: passing
+- Repository health: passing
+- CodeQL: passing
+- Release: passing
+- Separate public workflow demo: passing
+
 ## Separate Public Workflow Evidence
 
-The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.4.0` from a separate workflow file:
+The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.5.1` from a separate workflow file:
 
 - Workflow file: https://github.com/SalmonPlays/oss-signal-adoption-demo/blob/main/.github/workflows/oss-signal.yml
-- Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26862361229
+- Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426
 - Artifact: `oss-signal-adoption-demo-report`, containing `oss-signal-report.md` and `oss-signal.sarif`
 
-This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is evidence that the public `v0.4.0` Action tag works outside the main repository and can publish maintainer-readiness reports from another public workflow.
+This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is evidence that the public `v0.5.1` Action tag works outside the main repository and can publish maintainer-readiness reports from another public workflow.
 
 ## Public Field Audits And PRs
 
 The tool has been used to generate maintainer-readiness reports for public repositories and convert them into respectful cleanup issues:
 
-| Repository | Report | Posted issue | Follow-up PR |
-| --- | --- | --- | --- |
-| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 |
-| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 |
-| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 |
+| Repository | Report | Posted issue | Follow-up PR | Status |
+| --- | --- | --- | --- | --- |
+| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open, clean |
+| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open, clean |
+| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open |
 
 These issues and pull requests are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements. Each PR is intentionally limited to documentation or GitHub templates.
 
@@ -76,7 +101,7 @@ Public CI evidence:
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
-- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26862361229
+- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426
 
 ## Boundaries
 
