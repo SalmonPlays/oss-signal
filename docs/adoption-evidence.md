@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-03T12:12:03Z
+Last verified: 2026-06-03T12:33:45Z
 
 ## Project Links
 
@@ -19,6 +19,7 @@ Last verified: 2026-06-03T12:12:03Z
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
 - GitHub Action workflow example: [docs/examples/github-action-workflow.yml](examples/github-action-workflow.yml)
 - Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
+- Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
 - Release process: [docs/release-process.md](release-process.md)
 - Codex for Open Source application brief: [docs/codex-for-oss-application.md](codex-for-oss-application.md)
 - Codex for Open Source form answers: [docs/codex-for-oss-form-answers.md](codex-for-oss-form-answers.md)
@@ -62,6 +63,8 @@ Current public workflow status:
 - Release: passing
 - Separate public workflow demo: passing
 
+The npm registry returned `0.5.1` for both the package version and `latest` dist-tag on 2026-06-03T12:33:45Z. The same check returned 356 downloads for the last-week and last-month windows.
+
 ## Separate Public Workflow Evidence
 
 The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.5.1` from a separate workflow file:
@@ -85,6 +88,8 @@ The tool has been used to generate maintainer-readiness reports for public repos
 
 These issues and pull requests are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements. Each PR is intentionally limited to documentation or GitHub templates.
 
+All four follow-up PRs were still open when checked from GitHub on 2026-06-03T12:33:45Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
+
 ## Verification Commands
 
 From this repository:
@@ -105,6 +110,7 @@ Public CI evidence:
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
+- Reviewer verification quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 
 ## Boundaries
 

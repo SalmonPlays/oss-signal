@@ -13,6 +13,17 @@ It checks the files and automation that reduce maintainer load: README, license,
 
 ![oss-signal example output](docs/assets/terminal-report.svg)
 
+## Maintainer Evidence Snapshot
+
+Public evidence for the maintainer workflow is collected in [docs/reviewer-evidence.md](docs/reviewer-evidence.md) and [docs/adoption-evidence.md](docs/adoption-evidence.md).
+
+- Published package: [`oss-signal@0.5.1`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.5.1`.
+- Published GitHub Action: [`SalmonPlays/oss-signal@v0.5.1`](https://github.com/SalmonPlays/oss-signal/tree/v0.5.1).
+- Public checks: CI, Repository health, and CodeQL are passing on `main`.
+- Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
+- Field use: four public maintainer-readiness audits have been turned into four issues and four focused follow-up PRs.
+- Separate workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038) runs the public Action tag and uploads Markdown, SARIF, and Issue-ready artifacts.
+
 ## Why
 
 Open-source projects often fail quietly because the maintainer workflow is undocumented. `oss-signal` gives maintainers a repeatable checklist they can run locally, in CI, or before asking contributors to help.
@@ -126,15 +137,16 @@ The [Repository health workflow](.github/workflows/repository-health.yml) runs `
 
 ## Field Audits
 
-`oss-signal` has been run against public repositories to produce maintainer-readiness reports and respectful issue drafts:
+`oss-signal` has been run against public repositories to produce maintainer-readiness reports, respectful issue drafts, and focused follow-up PRs:
 
-- [platformatic/massimo report](docs/outreach/platformatic-massimo-report.md) and [issue #159](https://github.com/platformatic/massimo/issues/159)
-- [supermarkt/checkjebon report](docs/outreach/supermarkt-checkjebon-report.md) and [issue #22](https://github.com/supermarkt/checkjebon/issues/22)
-- [sammorrisdesign/interactive-feed report](docs/outreach/sammorrisdesign-interactive-feed-report.md) and [issue #14](https://github.com/sammorrisdesign/interactive-feed/issues/14)
+- [platformatic/massimo report](docs/outreach/platformatic-massimo-report.md), [issue #159](https://github.com/platformatic/massimo/issues/159), and [PR #160](https://github.com/platformatic/massimo/pull/160)
+- [supermarkt/checkjebon report](docs/outreach/supermarkt-checkjebon-report.md), [issue #22](https://github.com/supermarkt/checkjebon/issues/22), and [PR #23](https://github.com/supermarkt/checkjebon/pull/23)
+- [sammorrisdesign/interactive-feed report](docs/outreach/sammorrisdesign-interactive-feed-report.md), [issue #14](https://github.com/sammorrisdesign/interactive-feed/issues/14), and [PR #15](https://github.com/sammorrisdesign/interactive-feed/pull/15)
+- [flox/install-flox-action report](docs/outreach/flox-install-flox-action-report.md), [issue #204](https://github.com/flox/install-flox-action/issues/204), and [PR #205](https://github.com/flox/install-flox-action/pull/205)
 
 See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts are not posted automatically; maintainers should only receive specific, useful, and respectful suggestions.
 
-For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md).
+For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md). For a reviewer-oriented verification path, see [docs/reviewer-evidence.md](docs/reviewer-evidence.md).
 
 Separate public workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) runs `SalmonPlays/oss-signal@v0.5.1` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038) with Markdown, SARIF, and Issue-ready report artifacts.
 

@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-03T12:12:03Z
+Snapshot: 2026-06-03T12:33:45Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -15,6 +15,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
+- Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Form answer pack: [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md)
 - Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)
 - Release process: [release-process.md](release-process.md)
