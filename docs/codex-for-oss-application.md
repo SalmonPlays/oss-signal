@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-03T03:06:42Z
+Snapshot: 2026-06-03T03:32:30Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -42,7 +42,7 @@ This project is designed around repeatable maintainer workflows where Codex is u
 
 The repository currently has:
 
-- A published npm package with `0.3.0` as the latest release.
+- A published npm package with `0.4.0` as the latest release.
 - A published GitHub Release for v0.4.0 with SARIF release notes and CI usage guidance.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - SARIF output for GitHub Code Scanning integration.
@@ -52,7 +52,7 @@ The repository currently has:
 - A release process and tag-triggered release workflow that verify package contents and support npm provenance publishing when repository secrets are configured.
 - CI and CodeQL workflows passing on `main`.
 - A local self-audit score of 100/100.
-- A clean-directory smoke test of `npx --yes oss-signal@0.3.0 SalmonPlays/oss-signal --format json`, returning 100/100 (A).
+- A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.4.0 -- oss-signal SalmonPlays/oss-signal --format json`, returning 100/100 (A).
 - Public reports, issues, and PRs created from real repository audits.
 
 ## Field Audits And Follow-Up PRs

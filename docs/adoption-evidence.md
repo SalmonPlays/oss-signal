@@ -5,7 +5,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 ## Project Links
 
 - Repository: https://github.com/SalmonPlays/oss-signal
-- npm package: https://www.npmjs.com/package/oss-signal (`0.3.0` latest)
+- npm package: https://www.npmjs.com/package/oss-signal (`0.4.0` latest)
 - GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.4.0
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.4.0
 - GitHub Action metadata: [action.yml](../action.yml)
@@ -53,10 +53,10 @@ npm run check
 npm run audit:github
 node src/cli.js . --format sarif --output docs/examples/self-audit.sarif
 node src/cli.js platformatic/massimo --format json
-npx --yes oss-signal@0.3.0 SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.4.0 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
-The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.4.0` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.3.0` package has also been executed from a clean temporary directory against the public GitHub repository.
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.4.0` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.4.0` package has also been executed from a clean temporary directory against the public GitHub repository, returning 100/100 (A).
 
 Public CI evidence:
 
