@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-03T12:12:03Z
+Snapshot: 2026-06-03T12:18:10Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -60,6 +60,12 @@ Codex Security
 API credits for my project
 ```
 
+## Codex Security Use
+
+```text
+Use Codex Security to review oss-signal's CLI, GitHub Action, SARIF output, and repository-audit workflow for vulnerabilities before maintainers rely on it in CI. The project analyzes public repository metadata and writes reports, so security coverage helps catch unsafe workflow assumptions, dependency issues, and action-handling risks before field-audit PRs are shared with other OSS maintainers.
+```
+
 ## OpenAI Organization ID
 
 ```text
@@ -90,5 +96,6 @@ The project is early, so I am not overstating adoption. Current evidence include
 ## Character Counts
 
 - Why this repository qualifies: 318/500
+- Codex Security use: 399/500
 - API credit use: 312/500
 - Anything else: 363/500
