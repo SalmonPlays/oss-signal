@@ -136,7 +136,7 @@ See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts 
 
 For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md).
 
-Separate public workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) runs `SalmonPlays/oss-signal@v0.5.1` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426) with a report artifact.
+Separate public workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) runs `SalmonPlays/oss-signal@v0.5.1` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038) with Markdown, SARIF, and Issue-ready report artifacts.
 
 ## Example Recommendation Output
 

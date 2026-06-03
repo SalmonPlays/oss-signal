@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-03T10:25:23Z
+Snapshot: 2026-06-03T11:54:12Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -75,7 +75,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.5.1 latest, a published v0.5.1 release, a reusable GitHub Action, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, public field-audit PRs, and a separate v0.5.1 workflow run with a report artifact.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.5.1 latest, 356 npm downloads reported by the registry API, a published v0.5.1 release, a reusable GitHub Action, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, field-audit PRs, and a v0.5.1 workflow demo with report artifacts.
 ```
 
 ## Evidence Links
@@ -84,11 +84,11 @@ The project is early, so I am not overstating adoption. Current evidence include
 - GitHub Release v0.5.1: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.5.1
 - Main repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Separate workflow demo repository: https://github.com/SalmonPlays/oss-signal-adoption-demo
-- Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426
+- Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 
 ## Character Counts
 
 - Why this repository qualifies: 333/500
 - API credit use: 312/500
-- Anything else: 320/500
+- Anything else: 352/500

@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-03T10:25:23Z
+Last verified: 2026-06-03T11:54:12Z
 
 ## Project Links
 
@@ -13,7 +13,7 @@ Last verified: 2026-06-03T10:25:23Z
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
-- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426
+- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - SARIF self-audit output: [docs/examples/self-audit.sarif](examples/self-audit.sarif)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
@@ -41,6 +41,8 @@ The [maintainer playbook](maintainer-playbook.md) documents the end-to-end workf
 
 The npm package is publicly available as `oss-signal@0.5.1` with `latest` pointing at `0.5.1`.
 
+The npm downloads API returned 356 downloads for both last-week and last-month windows on 2026-06-03. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
+
 Clean-directory execution against the public GitHub repository returned:
 
 ```json
@@ -65,10 +67,10 @@ Current public workflow status:
 The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.5.1` from a separate workflow file:
 
 - Workflow file: https://github.com/SalmonPlays/oss-signal-adoption-demo/blob/main/.github/workflows/oss-signal.yml
-- Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426
-- Artifact: `oss-signal-adoption-demo-report`, containing `oss-signal-report.md` and `oss-signal.sarif`
+- Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
+- Artifact: `oss-signal-adoption-demo-report`, containing `oss-signal-report.md`, `oss-signal.sarif`, and `maintainer-follow-up.md`
 
-This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is evidence that the public `v0.5.1` Action tag works outside the main repository and can publish maintainer-readiness reports from another public workflow.
+This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is evidence that the public `v0.5.1` Action tag works outside the main repository and can publish Markdown, SARIF, and Issue-ready maintainer-readiness reports from another public workflow.
 
 ## Public Field Audits And PRs
 
@@ -101,7 +103,7 @@ Public CI evidence:
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
-- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26878752426
+- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 
 ## Boundaries
 
