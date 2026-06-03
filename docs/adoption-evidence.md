@@ -19,6 +19,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 - Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
 - Release process: [docs/release-process.md](release-process.md)
 - Codex for Open Source application brief: [docs/codex-for-oss-application.md](codex-for-oss-application.md)
+- Codex for Open Source form answers: [docs/codex-for-oss-form-answers.md](codex-for-oss-form-answers.md)
 - Rule reference: [docs/rules.md](rules.md)
 
 ## Maintainer Use Case
