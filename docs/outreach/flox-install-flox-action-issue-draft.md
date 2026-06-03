@@ -2,6 +2,8 @@
 
 Posted as [flox/install-flox-action#204](https://github.com/flox/install-flox-action/issues/204).
 
+Follow-up PR: [flox/install-flox-action#205](https://github.com/flox/install-flox-action/pull/205).
+
 ```markdown
 Hi, thanks for maintaining this action.
 
