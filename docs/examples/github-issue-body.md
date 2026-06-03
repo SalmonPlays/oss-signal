@@ -3,7 +3,7 @@
 oss-signal scored this repository **64/100 (D)**.
 
 Source: GitHub (platformatic/massimo@main)
-Generated: 2026-06-03T03:56:45.087Z
+Generated: 2026-06-03T05:12:35.488Z
 
 ## Scope
 

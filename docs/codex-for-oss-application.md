@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-03T03:50:53Z
+Snapshot: 2026-06-03T05:11:50Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -8,8 +8,8 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.4.0
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.4.0
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.5.1
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.5.1
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
@@ -44,18 +44,18 @@ This project is designed around repeatable maintainer workflows where Codex is u
 
 The repository currently has:
 
-- A published npm package with `0.4.0` as the latest release.
-- A published GitHub Release for v0.4.0 with SARIF release notes and CI usage guidance.
+- A published npm package with `0.5.1` as the latest release.
+- A published GitHub Release for v0.5.1 with issue-output release notes and CI usage guidance.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - SARIF output for GitHub Code Scanning integration.
-- A v0.4.0 GitHub Action tag with step summary and SARIF support.
-- A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.4.0` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
+- A v0.5.1 GitHub Action tag with step summary, SARIF support, and Issue-ready output.
+- A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.5.1` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.4.0` from another repository and uploads a report artifact.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
 - A release process and tag-triggered release workflow that verify package contents and support npm provenance publishing when repository secrets are configured.
 - CI and CodeQL workflows passing on `main`.
 - A local self-audit score of 100/100.
-- A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.4.0 -- oss-signal SalmonPlays/oss-signal --format json`, returning 100/100 (A).
+- A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.5.1 -- oss-signal SalmonPlays/oss-signal --format json`, returning 100/100 (A).
 - Public reports, issues, and PRs created from real repository audits.
 
 ## Separate Workflow Demo
@@ -91,5 +91,5 @@ Prepared official form answers are in [codex-for-oss-form-answers.md](codex-for-
 ## Next Evidence To Collect
 
 - One or more merged external PRs.
-- A public workflow run in an independent maintainer-owned repository using `SalmonPlays/oss-signal@v0.4.0`, ideally with SARIF upload enabled.
+- A public workflow run in an independent maintainer-owned repository using `SalmonPlays/oss-signal@v0.5.1`, ideally with SARIF upload enabled.
 - npm download data once the registry starts reporting weekly/monthly counts.

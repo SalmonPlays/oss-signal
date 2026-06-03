@@ -16,14 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.5.0
+      - uses: SalmonPlays/oss-signal@v0.5.1
         id: oss-signal
         with:
           fail-under: "90"
           output: oss-signal-report.md
           summary: "true"
       - run: test "${{ steps.oss-signal.outputs.score }}" -ge 90
-      - uses: SalmonPlays/oss-signal@v0.5.0
+      - uses: SalmonPlays/oss-signal@v0.5.1
         with:
           format: sarif
           output: oss-signal.sarif

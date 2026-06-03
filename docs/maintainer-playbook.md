@@ -65,7 +65,7 @@ The field-audit examples in [docs/outreach](outreach) show this pattern for publ
 Add the GitHub Action to keep the signal visible:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.5.0
+- uses: SalmonPlays/oss-signal@v0.5.1
   id: oss-signal
   with:
     fail-under: "80"
@@ -86,7 +86,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.5.0
+  - uses: SalmonPlays/oss-signal@v0.5.1
     with:
       format: sarif
       output: oss-signal.sarif
@@ -102,7 +102,7 @@ See [docs/examples/github-code-scanning-workflow.yml](examples/github-code-scann
 
 Useful evidence for maintainers and reviewers:
 
-- A public workflow run that uses `SalmonPlays/oss-signal@v0.5.0`.
+- A public workflow run that uses `SalmonPlays/oss-signal@v0.5.1`.
 - A generated Markdown report attached as an artifact.
 - A SARIF upload in Code Scanning.
 - A small issue or PR that follows from an audit finding.

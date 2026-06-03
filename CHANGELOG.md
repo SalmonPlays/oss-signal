@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.5.1
+
+- Published the Issue-ready output release on a clean tag after release workflow hardening.
+- Guarded automatic npm publishing behind an explicit repository variable.
+
 ## 0.5.0
 
 - Added `--format issue` for generating human-reviewed GitHub Issue bodies from audit findings.

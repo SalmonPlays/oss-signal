@@ -43,7 +43,7 @@ git push origin main --tags
 
 Create a GitHub Release for the tag and use the release notes in `docs/release-notes/` when available.
 
-For example, `v0.5.0` uses [docs/release-notes/v0.5.0.md](release-notes/v0.5.0.md).
+For example, `v0.5.1` uses [docs/release-notes/v0.5.1.md](release-notes/v0.5.1.md).
 
 ## npm Publish
 
