@@ -9,7 +9,7 @@
 
 `oss-signal` is a dependency-light CLI for auditing open-source repository maintenance readiness.
 
-It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, or SARIF.
+It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, or a GitHub Issue-ready Markdown body.
 
 ![oss-signal example output](docs/assets/terminal-report.svg)
 
@@ -87,6 +87,12 @@ Generate a report that can be attached to an issue:
 oss-signal . --format markdown --output docs/maintainer-readiness.md
 ```
 
+Generate a maintainer-friendly issue body:
+
+```bash
+oss-signal platformatic/massimo --format issue --output maintainer-follow-up.md
+```
+
 ## Checks
 
 `oss-signal` currently checks:
@@ -97,7 +103,7 @@ oss-signal . --format markdown --output docs/maintainer-readiness.md
 
 See [docs/rules.md](docs/rules.md) for rule details and scoring weights.
 
-SARIF output reports failed maintainer-readiness checks as warning-level results. This lets teams upload the audit to code scanning dashboards while keeping the Markdown report available for maintainers.
+SARIF output reports failed maintainer-readiness checks as warning-level results. This lets teams upload the audit to code scanning dashboards while keeping the Markdown report available for maintainers. Issue output turns the same findings into a human-reviewed checklist that can be edited before posting.
 
 For GitHub URL audits, `oss-signal` reads the repository file tree through the GitHub API and also uses GitHub's community profile signal when available. This lets it detect organization-level files such as a shared code of conduct.
 
@@ -114,9 +120,9 @@ Summary:
 - Total checks: 15
 ```
 
-See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
+See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
 
-The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.4.0`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
+The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.5.0`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 
 ## Field Audits
 
@@ -159,7 +165,7 @@ oss-signal . --fail-under 80
 Add `oss-signal` directly to a GitHub Actions workflow:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.4.0
+- uses: SalmonPlays/oss-signal@v0.5.0
   id: oss-signal
   with:
     fail-under: "80"
@@ -171,6 +177,16 @@ Add `oss-signal` directly to a GitHub Actions workflow:
 The Action writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
 
 ![oss-signal GitHub Actions summary](docs/assets/github-step-summary.svg)
+
+Generate an editable Issue body from CI:
+
+```yaml
+- uses: SalmonPlays/oss-signal@v0.5.0
+  with:
+    format: issue
+    output: maintainer-follow-up.md
+    summary: "true"
+```
 
 Full workflow example:
 
@@ -187,7 +203,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.4.0
+      - uses: SalmonPlays/oss-signal@v0.5.0
         id: oss-signal
         with:
           fail-under: "80"
@@ -210,7 +226,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.4.0
+  - uses: SalmonPlays/oss-signal@v0.5.0
     with:
       format: sarif
       output: oss-signal.sarif
@@ -220,7 +236,7 @@ steps:
       sarif_file: oss-signal.sarif
 ```
 
-This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.4.0` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
+This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.5.0` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
 
 You can also run the CLI directly in CI:
 

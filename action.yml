@@ -10,7 +10,7 @@ inputs:
     required: false
     default: "."
   format:
-    description: Output format, either markdown, json, or sarif.
+    description: Output format, either markdown, json, sarif, or issue.
     required: false
     default: markdown
   output:

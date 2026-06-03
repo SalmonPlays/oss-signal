@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { promises as fs } from "node:fs";
-import { auditTarget, renderMarkdown, renderSarif, VERSION } from "./index.js";
+import { auditTarget, renderIssue, renderMarkdown, renderSarif, VERSION } from "./index.js";
 
 async function main(argv) {
   const options = parseArgs(argv);
@@ -85,8 +85,8 @@ function parseArgs(argv) {
   if (positionals.length === 1) {
     options.path = positionals[0];
   }
-  if (!["markdown", "json", "sarif"].includes(options.format)) {
-    throw new Error("--format must be markdown, json, or sarif");
+  if (!["markdown", "json", "sarif", "issue"].includes(options.format)) {
+    throw new Error("--format must be markdown, json, sarif, or issue");
   }
   return options;
 }
@@ -97,6 +97,9 @@ function renderReport(report, format) {
   }
   if (format === "sarif") {
     return renderSarif(report);
+  }
+  if (format === "issue") {
+    return renderIssue(report);
   }
   return renderMarkdown(report);
 }
@@ -121,12 +124,13 @@ function helpText() {
   return `oss-signal audits open-source repository maintenance readiness.
 
 Usage:
-  oss-signal [path-or-github-url] [--format markdown|json|sarif] [--output file] [--fail-under score]
+  oss-signal [path-or-github-url] [--format markdown|json|sarif|issue] [--output file] [--fail-under score]
 
 Examples:
   oss-signal .
   oss-signal https://github.com/SalmonPlays/oss-signal
   oss-signal platformatic/massimo --format json
+  oss-signal owner/repo --format issue --output maintainer-follow-up.md
 
 Options:
   --format       Output format. Defaults to markdown.

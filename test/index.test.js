@@ -3,7 +3,7 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { auditGitHubRepository, auditRepository, auditTarget, parseGitHubTarget, renderMarkdown, renderSarif } from "../src/index.js";
+import { auditGitHubRepository, auditRepository, auditTarget, parseGitHubTarget, renderIssue, renderMarkdown, renderSarif } from "../src/index.js";
 
 test("auditRepository scores common maintainer files", async () => {
   const root = await fixture({
@@ -47,6 +47,24 @@ test("renderMarkdown includes score and recommendations", async () => {
   }
 });
 
+test("renderIssue creates a maintainer-friendly issue body", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+
+  try {
+    const report = await auditRepository(root);
+    const issue = renderIssue(report);
+
+    assert.match(issue, /# Maintainer Readiness Follow-Up/);
+    assert.match(issue, /oss-signal scored this repository \*\*\d+\/100 \([A-F]\)\*\*/);
+    assert.match(issue, /- \[ \] \*\*License\*\*/);
+    assert.match(issue, /review before posting/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("renderSarif emits failed checks as SARIF results", async () => {
   const root = await fixture({
     "README.md": "# Tiny project\n"
@@ -63,6 +81,32 @@ test("renderSarif emits failed checks as SARIF results", async () => {
     assert.ok(sarif.runs[0].results.length > 0);
     assert.equal(sarif.runs[0].results[0].level, "warning");
     assert.match(sarif.runs[0].results[0].ruleId, /^oss-signal\//);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes issue output", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+  const outputFile = path.join(root, "maintainer-follow-up.md");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      root,
+      "--format",
+      "issue",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const body = await readFile(outputFile, "utf8");
+    assert.match(body, /Maintainer Readiness Follow-Up/);
+    assert.match(body, /Suggested Next Steps/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

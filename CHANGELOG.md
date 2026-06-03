@@ -2,10 +2,15 @@
 
 ## Unreleased
 
-- Added a maintainer playbook for audit-to-issue, PR, CI gate, and SARIF workflows.
-- Added a documented release process and tag-triggered release workflow with npm dry-run verification.
+## 0.5.0
+
+- Added `--format issue` for generating human-reviewed GitHub Issue bodies from audit findings.
+- Added an issue-output example and maintainer playbook guidance for audit-to-issue workflows.
 
 ## 0.4.0
+
+- Added a maintainer playbook for audit-to-issue, PR, CI gate, and SARIF workflows.
+- Added a documented release process and tag-triggered release workflow with npm dry-run verification.
 
 - Added SARIF output for GitHub Code Scanning and other security dashboards.
 - Added Action support for `format: sarif`.

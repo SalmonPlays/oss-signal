@@ -2,7 +2,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { auditTarget, renderMarkdown, renderSarif } from "./index.js";
+import { auditTarget, renderIssue, renderMarkdown, renderSarif } from "./index.js";
 
 const OUTPUT_DELIMITER = "oss_signal_output";
 
@@ -42,8 +42,8 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
 
 export function parseActionInputs(env = process.env) {
   const format = getInput(env, "format") || "markdown";
-  if (!["markdown", "json", "sarif"].includes(format)) {
-    throw new Error("format must be markdown, json, or sarif");
+  if (!["markdown", "json", "sarif", "issue"].includes(format)) {
+    throw new Error("format must be markdown, json, sarif, or issue");
   }
 
   return {
@@ -63,6 +63,9 @@ function renderReport(report, format) {
   }
   if (format === "sarif") {
     return renderSarif(report);
+  }
+  if (format === "issue") {
+    return renderIssue(report);
   }
   return renderMarkdown(report);
 }
