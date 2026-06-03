@@ -9,8 +9,11 @@ inputs:
     description: Local repository path, GitHub URL, or owner/repo shorthand to audit.
     required: false
     default: "."
+  inventory:
+    description: Newline-delimited file of local paths, GitHub URLs, or owner/repo shorthands to audit as an inventory.
+    required: false
   format:
-    description: Output format, either markdown, json, sarif, or issue.
+    description: Output format, either markdown, json, sarif, or issue. Inventory mode supports markdown or json.
     required: false
     default: markdown
   output:
@@ -22,7 +25,7 @@ inputs:
     required: false
     default: "true"
   fail-under:
-    description: Fail the action when the score is below this number.
+    description: Fail the action when the score, or any inventory target score, is below this number.
     required: false
   max-files:
     description: Maximum files to inspect.
@@ -33,11 +36,11 @@ inputs:
     required: false
 outputs:
   score:
-    description: Numeric maintainer-readiness score.
+    description: Numeric maintainer-readiness score, or average score in inventory mode.
   grade:
-    description: Letter grade for the maintainer-readiness score.
+    description: Letter grade for the maintainer-readiness score, or average grade in inventory mode.
   failed:
-    description: Number of failed checks.
+    description: Number of failed checks, or total failed checks in inventory mode.
   report-path:
     description: Path to the generated report file, when output is enabled.
 runs:

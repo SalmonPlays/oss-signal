@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.6.0
+
+- Added repository inventory mode for auditing newline-delimited lists of local paths, GitHub URLs, and `owner/repo` shorthands.
+- Added GitHub Action inventory support with step summary output and average-score Action outputs.
+- Added inventory examples, reviewer verification steps, and maintainer playbook guidance.
+
 ## 0.5.1
 
 - Published the Issue-ready output release on a clean tag after release workflow hardening.

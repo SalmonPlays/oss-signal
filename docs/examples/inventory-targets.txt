@@ -1,0 +1,5 @@
+# Newline-delimited targets for oss-signal --inventory.
+# Entries can be local paths, GitHub URLs, or owner/repo shorthands.
+SalmonPlays/oss-signal
+platformatic/massimo
+flox/install-flox-action

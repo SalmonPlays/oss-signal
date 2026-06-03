@@ -23,6 +23,12 @@ node src/cli.js . --format sarif --output docs/examples/self-audit.sarif
 node -e "const fs = require('fs'); const sarif = JSON.parse(fs.readFileSync('docs/examples/self-audit.sarif', 'utf8')); if (sarif.version !== '2.1.0') throw new Error('invalid SARIF');"
 ```
 
+Verify inventory output:
+
+```bash
+node src/cli.js --inventory docs/examples/inventory-targets.txt --format markdown --output docs/examples/inventory-report.md
+```
+
 Inspect the npm tarball before publishing:
 
 ```bash
@@ -43,7 +49,7 @@ git push origin main --tags
 
 Create a GitHub Release for the tag and use the release notes in `docs/release-notes/` when available.
 
-For example, `v0.5.1` uses [docs/release-notes/v0.5.1.md](release-notes/v0.5.1.md).
+For example, `v0.6.0` uses [docs/release-notes/v0.6.0.md](release-notes/v0.6.0.md).
 
 ## npm Publish
 

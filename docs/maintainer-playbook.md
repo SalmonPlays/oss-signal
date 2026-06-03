@@ -22,6 +22,12 @@ Use JSON when another tool needs to consume the score:
 oss-signal owner/repo --format json
 ```
 
+Audit several repositories from one inventory file:
+
+```bash
+oss-signal --inventory docs/examples/inventory-targets.txt --format markdown --output inventory-report.md
+```
+
 Use SARIF when the findings should appear in Code Scanning:
 
 ```bash
@@ -65,7 +71,7 @@ The field-audit examples in [docs/outreach](outreach) show this pattern for publ
 Add the GitHub Action to keep the signal visible:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.5.1
+- uses: SalmonPlays/oss-signal@v0.6.0
   id: oss-signal
   with:
     fail-under: "80"
@@ -74,6 +80,18 @@ Add the GitHub Action to keep the signal visible:
 ```
 
 The Action writes `score`, `grade`, `failed`, and `report-path` outputs, and writes a concise GitHub Actions step summary by default.
+
+For a repository inventory, commit a newline-delimited target list and pass it through the Action:
+
+```yaml
+- uses: SalmonPlays/oss-signal@v0.6.0
+  env:
+    GITHUB_TOKEN: ${{ github.token }}
+  with:
+    inventory: docs/examples/inventory-targets.txt
+    output: inventory-report.md
+    summary: "true"
+```
 
 ## 5. Upload SARIF To Code Scanning
 
@@ -86,7 +104,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.5.1
+  - uses: SalmonPlays/oss-signal@v0.6.0
     with:
       format: sarif
       output: oss-signal.sarif
@@ -102,7 +120,7 @@ See [docs/examples/github-code-scanning-workflow.yml](examples/github-code-scann
 
 Useful evidence for maintainers and reviewers:
 
-- A public workflow run that uses `SalmonPlays/oss-signal@v0.5.1`.
+- A public workflow run that uses `SalmonPlays/oss-signal@v0.6.0`.
 - A generated Markdown report attached as an artifact.
 - A SARIF upload in Code Scanning.
 - A small issue or PR that follows from an audit finding.

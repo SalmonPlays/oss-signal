@@ -3,11 +3,12 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { parseActionInputs, runAction, writeGitHubOutput, writeGitHubStepSummary } from "../src/action.js";
+import { parseActionInputs, runAction, writeGitHubInventoryStepSummary, writeGitHubOutput, writeGitHubStepSummary } from "../src/action.js";
 
 test("parseActionInputs reads GitHub Action inputs", () => {
   const options = parseActionInputs({
     INPUT_PATH: "owner/repo",
+    INPUT_INVENTORY: "repos.txt",
     INPUT_FORMAT: "json",
     INPUT_OUTPUT: "report.json",
     INPUT_FAIL_UNDER: "80",
@@ -18,6 +19,7 @@ test("parseActionInputs reads GitHub Action inputs", () => {
 
   assert.deepEqual(options, {
     path: "owner/repo",
+    inventory: "repos.txt",
     format: "json",
     output: "report.json",
     failUnder: 80,
@@ -125,6 +127,41 @@ test("runAction writes issue output", async () => {
   }
 });
 
+test("runAction writes inventory output", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-inventory-"));
+  const reportFile = path.join(root, "inventory.md");
+  const inventoryFile = path.join(root, "repos.txt");
+  const githubOutput = path.join(root, "github-output");
+  const githubSummary = path.join(root, "github-summary");
+
+  try {
+    await writeFixture(root, {
+      "repo-a/README.md": "# A\n",
+      "repo-a/LICENSE": "MIT\n",
+      "repo-b/README.md": "# B\n"
+    });
+    await writeFile(inventoryFile, [
+      path.join(root, "repo-a"),
+      path.join(root, "repo-b")
+    ].join("\n"), "utf8");
+
+    const inventory = await runAction({
+      INPUT_INVENTORY: inventoryFile,
+      INPUT_OUTPUT: reportFile,
+      GITHUB_OUTPUT: githubOutput,
+      GITHUB_STEP_SUMMARY: githubSummary
+    });
+
+    assert.equal(inventory.tool, "oss-signal");
+    assert.equal(inventory.count, 2);
+    assert.match(await readFile(reportFile, "utf8"), /OSS Signal Inventory/);
+    assert.match(await readFile(githubOutput, "utf8"), /score<<oss_signal_output/);
+    assert.match(await readFile(githubSummary, "utf8"), /oss-signal inventory/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("writeGitHubStepSummary writes actionable next steps", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-summary-"));
   const summaryFile = path.join(root, "summary");
@@ -145,6 +182,29 @@ test("writeGitHubStepSummary writes actionable next steps", async () => {
     assert.match(body, /Score: \*\*88\/100 \(B\)\*\*/);
     assert.match(body, /Security policy/);
     assert.doesNotMatch(body, /Add README\.md/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("writeGitHubInventoryStepSummary writes repository rows", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-inventory-summary-"));
+  const summaryFile = path.join(root, "summary");
+
+  try {
+    await writeGitHubInventoryStepSummary(summaryFile, {
+      averageScore: 72,
+      averageGrade: "C",
+      repositories: [
+        { target: "owner/a", score: 90, grade: "A", failed: 1 },
+        { target: "owner/b", score: 44, grade: "F", failed: 7 }
+      ]
+    });
+
+    const body = await readFile(summaryFile, "utf8");
+    assert.match(body, /# oss-signal inventory/);
+    assert.match(body, /owner\/a/);
+    assert.match(body, /owner\/b/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

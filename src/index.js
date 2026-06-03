@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.5.1";
+export const VERSION = "0.6.0";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -420,6 +420,87 @@ export function renderSarif(report) {
       }
     ]
   }, null, 2)}\n`;
+}
+
+export function parseInventoryTargets(text) {
+  return text
+    .split(/\r?\n/)
+    .map((line) => line.replace(/\s+#.*$/, "").trim())
+    .filter((line) => line && !line.startsWith("#"));
+}
+
+export function createInventoryReport(reports, metadata = {}) {
+  const repositories = reports.map((report, index) => ({
+    target: metadata.targets?.[index] ?? report.root,
+    root: report.root,
+    source: report.source,
+    sourceLabel: sourceSummary(report.source),
+    score: report.score,
+    grade: report.grade,
+    passed: report.summary.passed,
+    failed: report.summary.failed,
+    total: report.summary.total,
+    topRecommendations: report.recommendations.slice(0, 3).map((recommendation) => ({
+      id: recommendation.id,
+      label: recommendation.label,
+      weight: recommendation.weight,
+      fix: recommendation.fix
+    }))
+  }));
+  const scores = repositories.map((repository) => repository.score);
+  const averageScore = scores.length === 0
+    ? 0
+    : Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
+  const failedTotal = repositories.reduce((sum, repository) => sum + repository.failed, 0);
+
+  return {
+    tool: "oss-signal",
+    version: VERSION,
+    generatedAt: new Date().toISOString(),
+    inventoryPath: metadata.inventoryPath,
+    count: repositories.length,
+    averageScore,
+    averageGrade: gradeForScore(averageScore),
+    minScore: scores.length === 0 ? 0 : Math.min(...scores),
+    maxScore: scores.length === 0 ? 0 : Math.max(...scores),
+    failedTotal,
+    repositories
+  };
+}
+
+export function renderInventoryJson(inventory) {
+  return `${JSON.stringify(inventory, null, 2)}\n`;
+}
+
+export function renderInventoryMarkdown(inventory) {
+  const lines = [
+    "# OSS Signal Inventory",
+    "",
+    `Generated: ${inventory.generatedAt}`,
+    `Repositories: ${inventory.count}`,
+    `Average score: **${inventory.averageScore}/100** (${inventory.averageGrade})`,
+    `Score range: ${inventory.minScore}-${inventory.maxScore}`,
+    `Failed checks: ${inventory.failedTotal}`,
+    "",
+    "| Repository | Source | Score | Failed | Top next steps |",
+    "| --- | --- | ---: | ---: | --- |"
+  ];
+
+  for (const repository of inventory.repositories) {
+    const topNextSteps = repository.topRecommendations.length === 0
+      ? "None"
+      : repository.topRecommendations.map((recommendation) => recommendation.label).join(", ");
+    lines.push([
+      escapeTable(repository.target),
+      escapeTable(repository.sourceLabel),
+      `${repository.score}/100 (${repository.grade})`,
+      repository.failed,
+      escapeTable(topNextSteps)
+    ].join(" | ").replace(/^/, "| ").replace(/$/, " |"));
+  }
+
+  lines.push("");
+  return `${lines.join("\n")}\n`;
 }
 
 export async function listRepositoryFiles(root, options = {}) {

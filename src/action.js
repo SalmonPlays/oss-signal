@@ -2,48 +2,63 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { auditTarget, renderIssue, renderMarkdown, renderSarif } from "./index.js";
+import {
+  auditTarget,
+  createInventoryReport,
+  parseInventoryTargets,
+  renderInventoryJson,
+  renderInventoryMarkdown,
+  renderIssue,
+  renderMarkdown,
+  renderSarif
+} from "./index.js";
 
 const OUTPUT_DELIMITER = "oss_signal_output";
 
 export async function runAction(env = process.env, stdout = process.stdout, stderr = process.stderr) {
   const options = parseActionInputs(env);
-  const report = await auditTarget(options.path, {
-    maxFiles: options.maxFiles,
-    ref: options.ref
-  });
-  const body = renderReport(report, options.format);
+  const result = options.inventory
+    ? await runInventory(options)
+    : await runSingleAudit(options);
 
   if (options.output) {
     await fs.mkdir(path.dirname(path.resolve(options.output)), { recursive: true });
-    await fs.writeFile(options.output, body, "utf8");
+    await fs.writeFile(options.output, result.body, "utf8");
   } else {
-    stdout.write(body);
+    stdout.write(result.body);
   }
 
   await writeGitHubOutput(env.GITHUB_OUTPUT, {
-    score: report.score,
-    grade: report.grade,
-    failed: report.summary.failed,
+    score: result.score,
+    grade: result.grade,
+    failed: result.failed,
     "report-path": options.output ?? ""
   });
 
   if (options.summary) {
-    await writeGitHubStepSummary(env.GITHUB_STEP_SUMMARY, report);
+    if (result.inventory) {
+      await writeGitHubInventoryStepSummary(env.GITHUB_STEP_SUMMARY, result.inventory);
+    } else {
+      await writeGitHubStepSummary(env.GITHUB_STEP_SUMMARY, result.report);
+    }
   }
 
-  if (typeof options.failUnder === "number" && report.score < options.failUnder) {
-    stderr.write(`oss-signal: score ${report.score} is below fail-under ${options.failUnder}\n`);
+  if (result.failUnderMessage) {
+    stderr.write(result.failUnderMessage);
     process.exitCode = 1;
   }
 
-  return report;
+  return result.inventory ?? result.report;
 }
 
 export function parseActionInputs(env = process.env) {
   const format = getInput(env, "format") || "markdown";
   if (!["markdown", "json", "sarif", "issue"].includes(format)) {
     throw new Error("format must be markdown, json, sarif, or issue");
+  }
+  const inventory = emptyToUndefined(getInput(env, "inventory"));
+  if (inventory && !["markdown", "json"].includes(format)) {
+    throw new Error("inventory supports format markdown or json");
   }
 
   return {
@@ -53,7 +68,67 @@ export function parseActionInputs(env = process.env) {
     failUnder: parseOptionalNumber(getInput(env, "fail-under"), "fail-under"),
     maxFiles: parseOptionalNumber(getInput(env, "max-files"), "max-files") ?? 20000,
     ref: emptyToUndefined(getInput(env, "ref")),
+    inventory,
     summary: parseOptionalBoolean(getInput(env, "summary"), "summary") ?? true
+  };
+}
+
+async function runSingleAudit(options) {
+  const report = await auditTarget(options.path, {
+    maxFiles: options.maxFiles,
+    ref: options.ref
+  });
+  const body = renderReport(report, options.format);
+  const failUnderMessage = typeof options.failUnder === "number" && report.score < options.failUnder
+    ? `oss-signal: score ${report.score} is below fail-under ${options.failUnder}\n`
+    : undefined;
+
+  return {
+    report,
+    body,
+    score: report.score,
+    grade: report.grade,
+    failed: report.summary.failed,
+    failUnderMessage
+  };
+}
+
+async function runInventory(options) {
+  const inventoryText = await fs.readFile(options.inventory, "utf8");
+  const targets = parseInventoryTargets(inventoryText);
+  if (targets.length === 0) {
+    throw new Error("inventory file does not contain any repository targets");
+  }
+
+  const reports = [];
+  for (const target of targets) {
+    reports.push(await auditTarget(target, {
+      maxFiles: options.maxFiles,
+      ref: options.ref
+    }));
+  }
+
+  const inventory = createInventoryReport(reports, {
+    inventoryPath: options.inventory,
+    targets
+  });
+  const body = options.format === "json"
+    ? renderInventoryJson(inventory)
+    : renderInventoryMarkdown(inventory);
+  const belowThreshold = typeof options.failUnder === "number"
+    ? inventory.repositories.filter((repository) => repository.score < options.failUnder)
+    : [];
+  const failUnderMessage = belowThreshold.length > 0
+    ? `oss-signal: ${belowThreshold.length} inventory target(s) are below fail-under ${options.failUnder}\n`
+    : undefined;
+
+  return {
+    inventory,
+    body,
+    score: inventory.averageScore,
+    grade: inventory.averageGrade,
+    failed: inventory.failedTotal,
+    failUnderMessage
   };
 }
 
@@ -105,6 +180,28 @@ export async function writeGitHubStepSummary(summaryFile, report) {
     "## Recommended next steps",
     "",
     nextSteps,
+    ""
+  ].join("\n");
+
+  await fs.appendFile(summaryFile, body, "utf8");
+}
+
+export async function writeGitHubInventoryStepSummary(summaryFile, inventory) {
+  if (!summaryFile) {
+    return;
+  }
+
+  const rows = inventory.repositories
+    .map((repository) => `| ${repository.target} | ${repository.score}/100 (${repository.grade}) | ${repository.failed} |`)
+    .join("\n");
+  const body = [
+    "# oss-signal inventory",
+    "",
+    `Average score: **${inventory.averageScore}/100 (${inventory.averageGrade})**`,
+    "",
+    "| Repository | Score | Failed |",
+    "| --- | ---: | ---: |",
+    rows,
     ""
   ].join("\n");
 

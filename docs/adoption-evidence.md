@@ -2,22 +2,25 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-03T12:33:45Z
+Last verified: 2026-06-03T12:45:11Z
 
 ## Project Links
 
 - Repository: https://github.com/SalmonPlays/oss-signal
-- npm package: https://www.npmjs.com/package/oss-signal (`0.5.1` latest)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.5.1
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.5.1
+- npm package: https://www.npmjs.com/package/oss-signal (`0.6.0` latest)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.0
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.0
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
+- Public inventory workflow: [.github/workflows/repository-inventory.yml](../.github/workflows/repository-inventory.yml)
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
 - Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - SARIF self-audit output: [docs/examples/self-audit.sarif](examples/self-audit.sarif)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
 - GitHub Action workflow example: [docs/examples/github-action-workflow.yml](examples/github-action-workflow.yml)
+- Inventory target example: [docs/examples/inventory-targets.txt](examples/inventory-targets.txt)
+- Inventory report example: [docs/examples/inventory-report.md](examples/inventory-report.md)
 - Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
 - Release process: [docs/release-process.md](release-process.md)
@@ -33,14 +36,15 @@ The CLI supports two practical modes:
 
 - Local repository audit for maintainers working in a clone.
 - Public GitHub repository audit for quick triage without cloning.
+- Repository inventory audit for maintainers comparing several repositories at once.
 
-It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, upload a Markdown report as a workflow artifact, and upload failed maintainer-readiness checks as SARIF for GitHub Code Scanning. This repository dogfoods the public Action tag through the Repository health workflow.
+It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, upload a Markdown report as a workflow artifact, run inventory reports, and upload failed maintainer-readiness checks as SARIF for GitHub Code Scanning. This repository dogfoods the public Action tag through the Repository health and Repository inventory workflows.
 
 The [maintainer playbook](maintainer-playbook.md) documents the end-to-end workflow from audit to issue, pull request, CI gate, and Code Scanning evidence. The [release process](release-process.md) documents pre-release verification, tag consistency, npm publish checks, and post-release smoke tests.
 
 ## Published Package Verification
 
-The npm package is publicly available as `oss-signal@0.5.1` with `latest` pointing at `0.5.1`.
+The npm package is publicly available as `oss-signal@0.6.0` with `latest` pointing at `0.6.0`.
 
 The npm downloads API returned 356 downloads for both last-week and last-month windows on 2026-06-03. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
@@ -48,7 +52,7 @@ Clean-directory execution against the public GitHub repository returned:
 
 ```json
 {
-  "version": "0.5.1",
+  "version": "0.6.0",
   "score": 100,
   "grade": "A",
   "source": "github"
@@ -63,7 +67,7 @@ Current public workflow status:
 - Release: passing
 - Separate public workflow demo: passing
 
-The npm registry returned `0.5.1` for both the package version and `latest` dist-tag on 2026-06-03T12:33:45Z. The same check returned 356 downloads for the last-week and last-month windows.
+The npm registry returned `0.6.0` for both the package version and `latest` dist-tag on 2026-06-03T12:45:11Z. The same check returned 356 downloads for the last-week and last-month windows.
 
 ## Separate Public Workflow Evidence
 
@@ -98,11 +102,12 @@ From this repository:
 npm run check
 npm run audit:github
 node src/cli.js . --format sarif --output docs/examples/self-audit.sarif
+node src/cli.js --inventory docs/examples/inventory-targets.txt --format markdown --output docs/examples/inventory-report.md
 node src/cli.js platformatic/massimo --format json
-npm exec --yes --package=oss-signal@0.5.1 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.6.0 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
-The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.5.1` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.5.1` package has also been executed from a clean temporary directory against the public GitHub repository, returning 100/100 (A).
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.6.0` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.6.0` package has also been executed from a clean temporary directory against the public GitHub repository, returning 100/100 (A).
 
 Public CI evidence:
 

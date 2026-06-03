@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-03T12:33:45Z
+Last verified: 2026-06-03T12:45:11Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -12,12 +12,12 @@ This page gives reviewers a short path to verify that `oss-signal` is a real OSS
 npm view oss-signal version dist-tags --json
 ```
 
-Expected result: `version` is `0.5.1`, and `dist-tags.latest` is `0.5.1`.
+Expected result: `version` is `0.6.0`, and `dist-tags.latest` is `0.6.0`.
 
 2. Run the published package against the public repository:
 
 ```bash
-npm exec --yes --package=oss-signal@0.5.1 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.6.0 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
 Expected result: score `100`, grade `A`, source `github`.
@@ -26,16 +26,25 @@ Expected result: score `100`, grade `A`, source `github`.
 
 - CI: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
+- Repository inventory: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml
 - CodeQL: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 
-4. Inspect the public Action tag:
+4. Run an inventory report from the repository target list:
 
-- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.5.1
-- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.5.1
+```bash
+node src/cli.js --inventory docs/examples/inventory-targets.txt --format markdown
+```
+
+Expected result: a Markdown table with one row per repository, average score, score range, and top next steps.
+
+5. Inspect the public Action tag:
+
+- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.0
+- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.0
 - Action metadata: [../action.yml](../action.yml)
 
-5. Inspect field-audit evidence:
+6. Inspect field-audit evidence:
 
 | Repository | Issue | PR | Scope |
 | --- | --- | --- | --- |
@@ -47,7 +56,8 @@ Expected result: score `100`, grade `A`, source `github`.
 ## What The Evidence Shows
 
 - The CLI can audit local repositories and public GitHub repositories.
-- The GitHub Action can write a step summary, publish a Markdown artifact, and produce SARIF.
+- The CLI can audit a newline-delimited inventory of repositories for organization-level triage.
+- The GitHub Action can write a step summary, publish a Markdown artifact, produce SARIF, and run inventory reports.
 - The `--format issue` mode produces a maintainer-readable follow-up body that is reviewed before posting.
 - The field-audit examples show the intended workflow: run audit, write report, open a respectful issue, then prepare a narrow PR when useful.
 

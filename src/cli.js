@@ -1,6 +1,16 @@
 #!/usr/bin/env node
 import { promises as fs } from "node:fs";
-import { auditTarget, renderIssue, renderMarkdown, renderSarif, VERSION } from "./index.js";
+import {
+  auditTarget,
+  createInventoryReport,
+  parseInventoryTargets,
+  renderInventoryJson,
+  renderInventoryMarkdown,
+  renderIssue,
+  renderMarkdown,
+  renderSarif,
+  VERSION
+} from "./index.js";
 
 async function main(argv) {
   const options = parseArgs(argv);
@@ -14,20 +24,18 @@ async function main(argv) {
     return;
   }
 
-  const report = await auditTarget(options.path, {
-    maxFiles: options.maxFiles,
-    ref: options.ref
-  });
-  const body = renderReport(report, options.format);
+  const result = options.inventory
+    ? await runInventory(options)
+    : await runSingleAudit(options);
 
   if (options.output) {
-    await fs.writeFile(options.output, body, "utf8");
+    await fs.writeFile(options.output, result.body, "utf8");
   } else {
-    process.stdout.write(body);
+    process.stdout.write(result.body);
   }
 
-  if (typeof options.failUnder === "number" && report.score < options.failUnder) {
-    process.stderr.write(`oss-signal: score ${report.score} is below --fail-under ${options.failUnder}\n`);
+  if (result.failUnderMessage) {
+    process.stderr.write(result.failUnderMessage);
     process.exitCode = 1;
   }
 }
@@ -40,6 +48,7 @@ function parseArgs(argv) {
     failUnder: undefined,
     maxFiles: 20000,
     ref: undefined,
+    inventory: undefined,
     help: false,
     version: false
   };
@@ -72,6 +81,10 @@ function parseArgs(argv) {
       options.ref = requireValue(argv, ++index, "--ref");
     } else if (arg.startsWith("--ref=")) {
       options.ref = arg.slice("--ref=".length);
+    } else if (arg === "--inventory") {
+      options.inventory = requireValue(argv, ++index, "--inventory");
+    } else if (arg.startsWith("--inventory=")) {
+      options.inventory = arg.slice("--inventory=".length);
     } else if (arg.startsWith("-")) {
       throw new Error(`Unknown option: ${arg}`);
     } else {
@@ -85,10 +98,62 @@ function parseArgs(argv) {
   if (positionals.length === 1) {
     options.path = positionals[0];
   }
+  if (options.inventory && positionals.length > 0) {
+    throw new Error("--inventory cannot be combined with a positional repository path");
+  }
   if (!["markdown", "json", "sarif", "issue"].includes(options.format)) {
     throw new Error("--format must be markdown, json, sarif, or issue");
   }
   return options;
+}
+
+async function runSingleAudit(options) {
+  const report = await auditTarget(options.path, {
+    maxFiles: options.maxFiles,
+    ref: options.ref
+  });
+  const body = renderReport(report, options.format);
+  const failUnderMessage = typeof options.failUnder === "number" && report.score < options.failUnder
+    ? `oss-signal: score ${report.score} is below --fail-under ${options.failUnder}\n`
+    : undefined;
+
+  return { body, failUnderMessage };
+}
+
+async function runInventory(options) {
+  if (!["markdown", "json"].includes(options.format)) {
+    throw new Error("--inventory supports --format markdown or --format json");
+  }
+
+  const inventoryText = await fs.readFile(options.inventory, "utf8");
+  const targets = parseInventoryTargets(inventoryText);
+  if (targets.length === 0) {
+    throw new Error("--inventory file does not contain any repository targets");
+  }
+
+  const reports = [];
+  for (const target of targets) {
+    reports.push(await auditTarget(target, {
+      maxFiles: options.maxFiles,
+      ref: options.ref
+    }));
+  }
+
+  const inventory = createInventoryReport(reports, {
+    inventoryPath: options.inventory,
+    targets
+  });
+  const body = options.format === "json"
+    ? renderInventoryJson(inventory)
+    : renderInventoryMarkdown(inventory);
+  const belowThreshold = typeof options.failUnder === "number"
+    ? inventory.repositories.filter((repository) => repository.score < options.failUnder)
+    : [];
+  const failUnderMessage = belowThreshold.length > 0
+    ? `oss-signal: ${belowThreshold.length} inventory target(s) are below --fail-under ${options.failUnder}\n`
+    : undefined;
+
+  return { body, failUnderMessage };
 }
 
 function renderReport(report, format) {
@@ -125,19 +190,22 @@ function helpText() {
 
 Usage:
   oss-signal [path-or-github-url] [--format markdown|json|sarif|issue] [--output file] [--fail-under score]
+  oss-signal --inventory repos.txt [--format markdown|json] [--output file] [--fail-under score]
 
 Examples:
   oss-signal .
   oss-signal https://github.com/SalmonPlays/oss-signal
   oss-signal platformatic/massimo --format json
   oss-signal owner/repo --format issue --output maintainer-follow-up.md
+  oss-signal --inventory docs/examples/inventory-targets.txt --format markdown
 
 Options:
   --format       Output format. Defaults to markdown.
   --output, -o   Write the report to a file instead of stdout.
-  --fail-under   Exit with code 1 when the score is below this value.
+  --fail-under   Exit with code 1 when the score, or any inventory target score, is below this value.
   --max-files    Maximum files to inspect. Defaults to 20000.
   --ref          Git ref for GitHub URL audits. Defaults to the repository default branch.
+  --inventory    Read repository targets from a newline-delimited file.
   --version, -v  Show the CLI version.
   --help, -h     Show this help message.
 `;

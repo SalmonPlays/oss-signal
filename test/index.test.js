@@ -3,7 +3,19 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { auditGitHubRepository, auditRepository, auditTarget, parseGitHubTarget, renderIssue, renderMarkdown, renderSarif } from "../src/index.js";
+import {
+  auditGitHubRepository,
+  auditRepository,
+  auditTarget,
+  createInventoryReport,
+  parseGitHubTarget,
+  parseInventoryTargets,
+  renderInventoryJson,
+  renderInventoryMarkdown,
+  renderIssue,
+  renderMarkdown,
+  renderSarif
+} from "../src/index.js";
 
 test("auditRepository scores common maintainer files", async () => {
   const root = await fixture({
@@ -133,6 +145,134 @@ test("CLI writes SARIF output", async () => {
     const sarif = JSON.parse(await readFile(outputFile, "utf8"));
     assert.equal(sarif.version, "2.1.0");
     assert.equal(sarif.runs[0].tool.driver.name, "oss-signal");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("parseInventoryTargets ignores comments and blank lines", () => {
+  assert.deepEqual(parseInventoryTargets(`
+# Core repos
+SalmonPlays/oss-signal
+
+platformatic/massimo # field audit example
+  https://github.com/flox/install-flox-action
+`), [
+    "SalmonPlays/oss-signal",
+    "platformatic/massimo",
+    "https://github.com/flox/install-flox-action"
+  ]);
+});
+
+test("renderInventoryMarkdown summarizes multiple reports", async () => {
+  const healthy = await fixture({
+    "README.md": "# Healthy\n",
+    "LICENSE": "MIT\n",
+    "CONTRIBUTING.md": "Run npm test.\n",
+    "SECURITY.md": "Email security@example.com.\n",
+    "CODE_OF_CONDUCT.md": "# Code of conduct\n",
+    "CHANGELOG.md": "# Changelog\n",
+    "SUPPORT.md": "# Support\n",
+    "package.json": JSON.stringify({ scripts: { test: "node --test" } }),
+    "package-lock.json": "{}\n",
+    "test/example.test.js": "import test from 'node:test';\n",
+    ".github/workflows/ci.yml": "name: CI\n",
+    ".github/workflows/codeql.yml": "name: CodeQL\n",
+    ".github/ISSUE_TEMPLATE/bug_report.md": "---\nname: Bug report\n---\n",
+    ".github/PULL_REQUEST_TEMPLATE.md": "## Checklist\n",
+    ".github/dependabot.yml": "version: 2\n"
+  });
+  const sparse = await fixture({
+    "README.md": "# Sparse\n"
+  });
+
+  try {
+    const reports = [await auditRepository(healthy), await auditRepository(sparse)];
+    const inventory = createInventoryReport(reports, {
+      targets: ["healthy", "sparse"],
+      inventoryPath: "repos.txt"
+    });
+    const markdown = renderInventoryMarkdown(inventory);
+    const json = JSON.parse(renderInventoryJson(inventory));
+
+    assert.equal(inventory.count, 2);
+    assert.match(markdown, /# OSS Signal Inventory/);
+    assert.match(markdown, /healthy/);
+    assert.match(markdown, /sparse/);
+    assert.equal(json.repositories.length, 2);
+    assert.ok(json.averageScore > 0);
+  } finally {
+    await rm(healthy, { recursive: true, force: true });
+    await rm(sparse, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes inventory JSON output", async () => {
+  const root = await fixture({
+    "repo-a/README.md": "# A\n",
+    "repo-a/LICENSE": "MIT\n",
+    "repo-b/README.md": "# B\n"
+  });
+  const inventoryFile = path.join(root, "repos.txt");
+  const outputFile = path.join(root, "inventory.json");
+
+  try {
+    await writeFile(inventoryFile, [
+      path.join(root, "repo-a"),
+      path.join(root, "repo-b")
+    ].join("\n"), "utf8");
+
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      "--inventory",
+      inventoryFile,
+      "--format",
+      "json",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const inventory = JSON.parse(await readFile(outputFile, "utf8"));
+    assert.equal(inventory.tool, "oss-signal");
+    assert.equal(inventory.count, 2);
+    assert.equal(inventory.repositories.length, 2);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI inventory fail-under writes output and exits nonzero", async () => {
+  const root = await fixture({
+    "repo-a/README.md": "# A\n",
+    "repo-b/README.md": "# B\n"
+  });
+  const inventoryFile = path.join(root, "repos.txt");
+  const outputFile = path.join(root, "inventory.md");
+
+  try {
+    await writeFile(inventoryFile, [
+      path.join(root, "repo-a"),
+      path.join(root, "repo-b")
+    ].join("\n"), "utf8");
+
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      "--inventory",
+      inventoryFile,
+      "--format",
+      "markdown",
+      "--output",
+      outputFile,
+      "--fail-under",
+      "80"
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /inventory target\(s\) are below --fail-under 80/);
+    assert.match(await readFile(outputFile, "utf8"), /OSS Signal Inventory/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
