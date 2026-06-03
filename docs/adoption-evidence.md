@@ -10,6 +10,8 @@ This page collects the public evidence that `oss-signal` is built for real open-
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.4.0
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
+- Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
+- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26862361229
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - SARIF self-audit output: [docs/examples/self-audit.sarif](examples/self-audit.sarif)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
@@ -31,6 +33,16 @@ The CLI supports two practical modes:
 It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, upload a Markdown report as a workflow artifact, and upload failed maintainer-readiness checks as SARIF for GitHub Code Scanning. This repository dogfoods the public Action tag through the Repository health workflow.
 
 The [maintainer playbook](maintainer-playbook.md) documents the end-to-end workflow from audit to issue, pull request, CI gate, and Code Scanning evidence. The [release process](release-process.md) documents pre-release verification, tag consistency, npm publish checks, and post-release smoke tests.
+
+## Separate Public Workflow Evidence
+
+The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.4.0` from a separate workflow file:
+
+- Workflow file: https://github.com/SalmonPlays/oss-signal-adoption-demo/blob/main/.github/workflows/oss-signal.yml
+- Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26862361229
+- Artifact: `oss-signal-adoption-demo-report`, containing `oss-signal-report.md` and `oss-signal.sarif`
+
+This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is evidence that the public `v0.4.0` Action tag works outside the main repository and can publish maintainer-readiness reports from another public workflow.
 
 ## Public Field Audits And PRs
 
@@ -63,6 +75,7 @@ Public CI evidence:
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
+- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26862361229
 
 ## Boundaries
 
