@@ -101,7 +101,7 @@ For GitHub URL audits, `oss-signal` reads the repository file tree through the G
 
 ## Real Output
 
-This repository audits itself at **100/100 (A)**:
+This repository audits itself at **100/100 (A)** and dogfoods the public GitHub Action:
 
 ```text
 Score: 100/100 (A)
@@ -113,6 +113,8 @@ Summary:
 ```
 
 See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
+
+The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.4.0`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 
 ## Field Audits
 
@@ -193,7 +195,7 @@ jobs:
           path: oss-signal-report.md
 ```
 
-See [docs/examples/github-action-workflow.yml](docs/examples/github-action-workflow.yml) for a copyable workflow.
+See [docs/examples/github-action-workflow.yml](docs/examples/github-action-workflow.yml) for a copyable workflow and [docs/examples/github-code-scanning-workflow.yml](docs/examples/github-code-scanning-workflow.yml) for a workflow that uploads SARIF to GitHub Code Scanning.
 
 Upload SARIF to GitHub Code Scanning:
 
@@ -214,7 +216,7 @@ steps:
       sarif_file: oss-signal.sarif
 ```
 
-This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.4.0` against the repository and uploads the Markdown report artifact.
+This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.4.0` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
 
 You can also run the CLI directly in CI:
 
@@ -231,8 +233,9 @@ You can also run the CLI directly in CI:
 ## Roadmap
 
 - Ecosystem-specific profiles for Python, Rust, Go, and JavaScript packages
-- SARIF output for code scanning dashboards
-- Rules for release automation and provenance metadata
+- Release automation and provenance metadata checks
+- Maintainer score trends over time
+- Organization-level repository inventory reports
 
 ## Contributing
 

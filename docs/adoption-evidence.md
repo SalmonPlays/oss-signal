@@ -7,7 +7,7 @@ This page collects the public evidence that `oss-signal` is built for real open-
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal (`0.3.0` latest)
 - GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.3.0
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.3.0
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.4.0
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
 - Self-audit report: [docs/self-audit.md](self-audit.md)
@@ -26,7 +26,7 @@ The CLI supports two practical modes:
 - Local repository audit for maintainers working in a clone.
 - Public GitHub repository audit for quick triage without cloning.
 
-It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, and upload a Markdown report as a workflow artifact. This repository dogfoods the public Action tag through the Repository health workflow.
+It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, upload a Markdown report as a workflow artifact, and upload failed maintainer-readiness checks as SARIF for GitHub Code Scanning. This repository dogfoods the public Action tag through the Repository health workflow.
 
 ## Public Field Audits And PRs
 
@@ -47,11 +47,12 @@ From this repository:
 ```bash
 npm run check
 npm run audit:github
+node src/cli.js . --format sarif --output docs/examples/self-audit.sarif
 node src/cli.js platformatic/massimo --format json
 npx --yes oss-signal@0.3.0 SalmonPlays/oss-signal --format json
 ```
 
-The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The published npm `0.3.0` package has also been executed from a clean temporary directory against the public GitHub repository.
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.4.0` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.3.0` package has also been executed from a clean temporary directory against the public GitHub repository.
 
 Public CI evidence:
 

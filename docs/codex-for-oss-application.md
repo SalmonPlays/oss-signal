@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-03T02:22:18Z
+Snapshot: 2026-06-03T02:51:47Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -45,7 +45,7 @@ The repository currently has:
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - SARIF output for GitHub Code Scanning integration.
 - A v0.4.0 GitHub Action tag with step summary and SARIF support.
-- A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.4.0` against the repository.
+- A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.4.0` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - CI and CodeQL workflows passing on `main`.
 - A local self-audit score of 100/100.
 - A clean-directory smoke test of `npx --yes oss-signal@0.3.0 SalmonPlays/oss-signal --format json`, returning 100/100 (A).
@@ -76,5 +76,5 @@ Recommended application angle:
 ## Next Evidence To Collect
 
 - One or more merged external PRs.
-- A public workflow run in another repository using `SalmonPlays/oss-signal@v0.4.0`.
+- A public workflow run in another repository using `SalmonPlays/oss-signal@v0.4.0`, ideally with SARIF upload enabled.
 - npm download data once the registry starts reporting weekly/monthly counts.
