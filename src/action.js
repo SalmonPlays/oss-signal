@@ -2,7 +2,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { auditTarget, renderMarkdown } from "./index.js";
+import { auditTarget, renderMarkdown, renderSarif } from "./index.js";
 
 const OUTPUT_DELIMITER = "oss_signal_output";
 
@@ -12,7 +12,7 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
     maxFiles: options.maxFiles,
     ref: options.ref
   });
-  const body = options.format === "json" ? `${JSON.stringify(report, null, 2)}\n` : renderMarkdown(report);
+  const body = renderReport(report, options.format);
 
   if (options.output) {
     await fs.mkdir(path.dirname(path.resolve(options.output)), { recursive: true });
@@ -42,8 +42,8 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
 
 export function parseActionInputs(env = process.env) {
   const format = getInput(env, "format") || "markdown";
-  if (!["markdown", "json"].includes(format)) {
-    throw new Error("format must be either markdown or json");
+  if (!["markdown", "json", "sarif"].includes(format)) {
+    throw new Error("format must be markdown, json, or sarif");
   }
 
   return {
@@ -55,6 +55,16 @@ export function parseActionInputs(env = process.env) {
     ref: emptyToUndefined(getInput(env, "ref")),
     summary: parseOptionalBoolean(getInput(env, "summary"), "summary") ?? true
   };
+}
+
+function renderReport(report, format) {
+  if (format === "json") {
+    return `${JSON.stringify(report, null, 2)}\n`;
+  }
+  if (format === "sarif") {
+    return renderSarif(report);
+  }
+  return renderMarkdown(report);
 }
 
 export async function writeGitHubOutput(outputFile, values) {

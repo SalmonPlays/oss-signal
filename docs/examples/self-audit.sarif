@@ -1,0 +1,407 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "oss-signal",
+          "semanticVersion": "0.4.0",
+          "informationUri": "https://github.com/SalmonPlays/oss-signal",
+          "rules": [
+            {
+              "id": "oss-signal/readme",
+              "name": "README",
+              "shortDescription": {
+                "text": "README"
+              },
+              "fullDescription": {
+                "text": "A clear README is the front door for users and contributors."
+              },
+              "help": {
+                "text": "Add setup, usage, contribution, support, and project status sections to README.md.",
+                "markdown": "Add setup, usage, contribution, support, and project status sections to README.md."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 12
+              }
+            },
+            {
+              "id": "oss-signal/license",
+              "name": "License",
+              "shortDescription": {
+                "text": "License"
+              },
+              "fullDescription": {
+                "text": "A license tells downstream users what they may legally do with the code."
+              },
+              "help": {
+                "text": "Add an OSI-approved license file such as MIT, Apache-2.0, BSD-3-Clause, or MPL-2.0.",
+                "markdown": "Add an OSI-approved license file such as MIT, Apache-2.0, BSD-3-Clause, or MPL-2.0."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 10
+              }
+            },
+            {
+              "id": "oss-signal/contributing",
+              "name": "Contributing guide",
+              "shortDescription": {
+                "text": "Contributing guide"
+              },
+              "fullDescription": {
+                "text": "Maintainers get better issues and pull requests when expectations are documented."
+              },
+              "help": {
+                "text": "Add CONTRIBUTING.md with local setup, test commands, review expectations, and release notes guidance.",
+                "markdown": "Add CONTRIBUTING.md with local setup, test commands, review expectations, and release notes guidance."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 9
+              }
+            },
+            {
+              "id": "oss-signal/security",
+              "name": "Security policy",
+              "shortDescription": {
+                "text": "Security policy"
+              },
+              "fullDescription": {
+                "text": "Responsible disclosure needs a private, documented path."
+              },
+              "help": {
+                "text": "Add SECURITY.md with supported versions, reporting instructions, and response expectations.",
+                "markdown": "Add SECURITY.md with supported versions, reporting instructions, and response expectations."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 9
+              }
+            },
+            {
+              "id": "oss-signal/code-of-conduct",
+              "name": "Code of conduct",
+              "shortDescription": {
+                "text": "Code of conduct"
+              },
+              "fullDescription": {
+                "text": "Community norms reduce ambiguity during difficult interactions."
+              },
+              "help": {
+                "text": "Add CODE_OF_CONDUCT.md, for example the Contributor Covenant.",
+                "markdown": "Add CODE_OF_CONDUCT.md, for example the Contributor Covenant."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 6
+              }
+            },
+            {
+              "id": "oss-signal/changelog",
+              "name": "Changelog",
+              "shortDescription": {
+                "text": "Changelog"
+              },
+              "fullDescription": {
+                "text": "Users need a durable place to understand release impact."
+              },
+              "help": {
+                "text": "Keep CHANGELOG.md with dated release entries and migration notes.",
+                "markdown": "Keep CHANGELOG.md with dated release entries and migration notes."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 6
+              }
+            },
+            {
+              "id": "oss-signal/support",
+              "name": "Support policy",
+              "shortDescription": {
+                "text": "Support policy"
+              },
+              "fullDescription": {
+                "text": "Support boundaries help maintainers avoid turning every request into unpaid consulting."
+              },
+              "help": {
+                "text": "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times.",
+                "markdown": "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 4
+              }
+            },
+            {
+              "id": "oss-signal/ci",
+              "name": "Continuous integration",
+              "shortDescription": {
+                "text": "Continuous integration"
+              },
+              "fullDescription": {
+                "text": "CI catches regressions before maintainers merge changes."
+              },
+              "help": {
+                "text": "Add a GitHub Actions workflow that runs linting and tests on pushes and pull requests.",
+                "markdown": "Add a GitHub Actions workflow that runs linting and tests on pushes and pull requests."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 12
+              }
+            },
+            {
+              "id": "oss-signal/tests",
+              "name": "Tests",
+              "shortDescription": {
+                "text": "Tests"
+              },
+              "fullDescription": {
+                "text": "Tests make review safer and lower the cost of outside contributions."
+              },
+              "help": {
+                "text": "Add focused tests for public behavior and document the test command.",
+                "markdown": "Add focused tests for public behavior and document the test command."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 10
+              }
+            },
+            {
+              "id": "oss-signal/issue-templates",
+              "name": "Issue templates",
+              "shortDescription": {
+                "text": "Issue templates"
+              },
+              "fullDescription": {
+                "text": "Issue templates collect the facts maintainers need to reproduce and triage."
+              },
+              "help": {
+                "text": "Add bug report and feature request templates under .github/ISSUE_TEMPLATE/.",
+                "markdown": "Add bug report and feature request templates under .github/ISSUE_TEMPLATE/."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 5
+              }
+            },
+            {
+              "id": "oss-signal/pull-request-template",
+              "name": "Pull request template",
+              "shortDescription": {
+                "text": "Pull request template"
+              },
+              "fullDescription": {
+                "text": "PR templates nudge contributors to include tests, docs, and review context."
+              },
+              "help": {
+                "text": "Add .github/PULL_REQUEST_TEMPLATE.md with a short checklist.",
+                "markdown": "Add .github/PULL_REQUEST_TEMPLATE.md with a short checklist."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 5
+              }
+            },
+            {
+              "id": "oss-signal/dependabot",
+              "name": "Dependency update automation",
+              "shortDescription": {
+                "text": "Dependency update automation"
+              },
+              "fullDescription": {
+                "text": "Automated dependency updates reduce security and compatibility drift."
+              },
+              "help": {
+                "text": "Add .github/dependabot.yml for the package ecosystems used in the repository.",
+                "markdown": "Add .github/dependabot.yml for the package ecosystems used in the repository."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 5
+              }
+            },
+            {
+              "id": "oss-signal/codeql",
+              "name": "Static security analysis",
+              "shortDescription": {
+                "text": "Static security analysis"
+              },
+              "fullDescription": {
+                "text": "Static analysis finds common vulnerability patterns before releases."
+              },
+              "help": {
+                "text": "Add a CodeQL or equivalent security scanning workflow.",
+                "markdown": "Add a CodeQL or equivalent security scanning workflow."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 4
+              }
+            },
+            {
+              "id": "oss-signal/package-json",
+              "name": "Node package metadata",
+              "shortDescription": {
+                "text": "Node package metadata"
+              },
+              "fullDescription": {
+                "text": "Package metadata makes installation, testing, and release automation discoverable."
+              },
+              "help": {
+                "text": "Add package.json with name, description, license, scripts, repository, and engines fields.",
+                "markdown": "Add package.json with name, description, license, scripts, repository, and engines fields."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 5
+              }
+            },
+            {
+              "id": "oss-signal/lockfile",
+              "name": "Dependency lockfile",
+              "shortDescription": {
+                "text": "Dependency lockfile"
+              },
+              "fullDescription": {
+                "text": "Lockfiles make CI and contributor setup reproducible."
+              },
+              "help": {
+                "text": "Commit the lockfile for application-style projects, or document why this library intentionally omits one.",
+                "markdown": "Commit the lockfile for application-style projects, or document why this library intentionally omits one."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 4
+              }
+            }
+          ]
+        }
+      },
+      "automationDetails": {
+        "id": "oss-signal/maintainer-readiness"
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "results": [],
+      "properties": {
+        "score": 100,
+        "grade": "A",
+        "source": "local",
+        "generatedAt": "2026-06-03T02:26:40.315Z"
+      }
+    }
+  ]
+}

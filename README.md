@@ -73,6 +73,12 @@ Use JSON in automation:
 oss-signal . --format json --fail-under 80
 ```
 
+Write SARIF for GitHub Code Scanning or other dashboards:
+
+```bash
+oss-signal . --format sarif --output oss-signal.sarif
+```
+
 Generate a report that can be attached to an issue:
 
 ```bash
@@ -89,6 +95,8 @@ oss-signal . --format markdown --output docs/maintainer-readiness.md
 
 See [docs/rules.md](docs/rules.md) for rule details and scoring weights.
 
+SARIF output reports failed maintainer-readiness checks as warning-level results. This lets teams upload the audit to code scanning dashboards while keeping the Markdown report available for maintainers.
+
 For GitHub URL audits, `oss-signal` reads the repository file tree through the GitHub API and also uses GitHub's community profile signal when available. This lets it detect organization-level files such as a shared code of conduct.
 
 ## Real Output
@@ -104,7 +112,7 @@ Summary:
 - Total checks: 15
 ```
 
-See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report and [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output.
+See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
 
 ## Field Audits
 
@@ -145,7 +153,7 @@ oss-signal . --fail-under 80
 Add `oss-signal` directly to a GitHub Actions workflow:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.3.0
+- uses: SalmonPlays/oss-signal@v0.4.0
   id: oss-signal
   with:
     fail-under: "80"
@@ -173,7 +181,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.3.0
+      - uses: SalmonPlays/oss-signal@v0.4.0
         id: oss-signal
         with:
           fail-under: "80"
@@ -187,7 +195,26 @@ jobs:
 
 See [docs/examples/github-action-workflow.yml](docs/examples/github-action-workflow.yml) for a copyable workflow.
 
-This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.3.0` against the repository and uploads the Markdown report artifact.
+Upload SARIF to GitHub Code Scanning:
+
+```yaml
+permissions:
+  contents: read
+  security-events: write
+
+steps:
+  - uses: actions/checkout@v4
+  - uses: SalmonPlays/oss-signal@v0.4.0
+    with:
+      format: sarif
+      output: oss-signal.sarif
+      summary: "true"
+  - uses: github/codeql-action/upload-sarif@v3
+    with:
+      sarif_file: oss-signal.sarif
+```
+
+This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.4.0` against the repository and uploads the Markdown report artifact.
 
 You can also run the CLI directly in CI:
 

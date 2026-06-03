@@ -2,7 +2,25 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.3.0";
+export const VERSION = "0.4.0";
+
+const SARIF_RULE_LOCATIONS = {
+  readme: "README.md",
+  license: "LICENSE",
+  contributing: "CONTRIBUTING.md",
+  security: "SECURITY.md",
+  "code-of-conduct": "CODE_OF_CONDUCT.md",
+  changelog: "CHANGELOG.md",
+  support: "SUPPORT.md",
+  ci: ".github/workflows/ci.yml",
+  tests: "test/example.test.js",
+  "issue-templates": ".github/ISSUE_TEMPLATE/bug_report.md",
+  "pull-request-template": ".github/PULL_REQUEST_TEMPLATE.md",
+  dependabot: ".github/dependabot.yml",
+  codeql: ".github/workflows/codeql.yml",
+  "package-json": "package.json",
+  lockfile: "package-lock.json"
+};
 
 const COMMUNITY_FILES = [
   {
@@ -274,6 +292,91 @@ export function renderMarkdown(report) {
 
   lines.push("");
   return `${lines.join("\n")}\n`;
+}
+
+export function renderSarif(report) {
+  const rules = report.checks.map((check) => ({
+    id: `oss-signal/${check.id}`,
+    name: check.label,
+    shortDescription: {
+      text: check.label
+    },
+    fullDescription: {
+      text: check.why
+    },
+    help: {
+      text: check.fix,
+      markdown: check.fix
+    },
+    defaultConfiguration: {
+      level: "warning"
+    },
+    properties: {
+      tags: ["oss-signal", "maintainer-readiness"],
+      precision: "high",
+      weight: check.weight
+    }
+  }));
+
+  const results = report.checks
+    .filter((check) => !check.passed)
+    .map((check) => ({
+      ruleId: `oss-signal/${check.id}`,
+      level: "warning",
+      message: {
+        text: `${check.label}: ${check.fix}`
+      },
+      locations: [
+        {
+          physicalLocation: {
+            artifactLocation: {
+              uri: SARIF_RULE_LOCATIONS[check.id] ?? "."
+            },
+            region: {
+              startLine: 1,
+              startColumn: 1
+            }
+          }
+        }
+      ],
+      properties: {
+        why: check.why,
+        fix: check.fix,
+        weight: check.weight
+      }
+    }));
+
+  return `${JSON.stringify({
+    version: "2.1.0",
+    $schema: "https://json.schemastore.org/sarif-2.1.0.json",
+    runs: [
+      {
+        tool: {
+          driver: {
+            name: "oss-signal",
+            semanticVersion: report.version,
+            informationUri: "https://github.com/SalmonPlays/oss-signal",
+            rules
+          }
+        },
+        automationDetails: {
+          id: "oss-signal/maintainer-readiness"
+        },
+        invocations: [
+          {
+            executionSuccessful: true
+          }
+        ],
+        results,
+        properties: {
+          score: report.score,
+          grade: report.grade,
+          source: sourceSummary(report.source),
+          generatedAt: report.generatedAt
+        }
+      }
+    ]
+  }, null, 2)}\n`;
 }
 
 export async function listRepositoryFiles(root, options = {}) {

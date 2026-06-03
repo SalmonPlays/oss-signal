@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { promises as fs } from "node:fs";
-import { auditTarget, renderMarkdown, VERSION } from "./index.js";
+import { auditTarget, renderMarkdown, renderSarif, VERSION } from "./index.js";
 
 async function main(argv) {
   const options = parseArgs(argv);
@@ -18,7 +18,7 @@ async function main(argv) {
     maxFiles: options.maxFiles,
     ref: options.ref
   });
-  const body = options.format === "json" ? `${JSON.stringify(report, null, 2)}\n` : renderMarkdown(report);
+  const body = renderReport(report, options.format);
 
   if (options.output) {
     await fs.writeFile(options.output, body, "utf8");
@@ -85,10 +85,20 @@ function parseArgs(argv) {
   if (positionals.length === 1) {
     options.path = positionals[0];
   }
-  if (!["markdown", "json"].includes(options.format)) {
-    throw new Error("--format must be either markdown or json");
+  if (!["markdown", "json", "sarif"].includes(options.format)) {
+    throw new Error("--format must be markdown, json, or sarif");
   }
   return options;
+}
+
+function renderReport(report, format) {
+  if (format === "json") {
+    return `${JSON.stringify(report, null, 2)}\n`;
+  }
+  if (format === "sarif") {
+    return renderSarif(report);
+  }
+  return renderMarkdown(report);
 }
 
 function requireValue(argv, index, optionName) {
@@ -111,7 +121,7 @@ function helpText() {
   return `oss-signal audits open-source repository maintenance readiness.
 
 Usage:
-  oss-signal [path-or-github-url] [--format markdown|json] [--output file] [--fail-under score]
+  oss-signal [path-or-github-url] [--format markdown|json|sarif] [--output file] [--fail-under score]
 
 Examples:
   oss-signal .

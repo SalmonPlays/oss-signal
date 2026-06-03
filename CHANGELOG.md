@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0
+
+- Added SARIF output for GitHub Code Scanning and other security dashboards.
+- Added Action support for `format: sarif`.
+
 ## 0.3.0
 
 - Added GitHub Actions step summary output for readable workflow reports.

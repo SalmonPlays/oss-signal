@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
-import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { auditGitHubRepository, auditRepository, auditTarget, parseGitHubTarget, renderMarkdown } from "../src/index.js";
+import { auditGitHubRepository, auditRepository, auditTarget, parseGitHubTarget, renderMarkdown, renderSarif } from "../src/index.js";
 
 test("auditRepository scores common maintainer files", async () => {
   const root = await fixture({
@@ -42,6 +42,53 @@ test("renderMarkdown includes score and recommendations", async () => {
     assert.match(markdown, /Score: \*\*\d+\/100\*\*/);
     assert.match(markdown, /Recommended Next Steps/);
     assert.match(markdown, /License/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("renderSarif emits failed checks as SARIF results", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+
+  try {
+    const report = await auditRepository(root);
+    const sarif = JSON.parse(renderSarif(report));
+
+    assert.equal(sarif.version, "2.1.0");
+    assert.equal(sarif.runs[0].tool.driver.name, "oss-signal");
+    assert.equal(sarif.runs[0].properties.score, report.score);
+    assert.equal(sarif.runs[0].tool.driver.rules.length, report.checks.length);
+    assert.ok(sarif.runs[0].results.length > 0);
+    assert.equal(sarif.runs[0].results[0].level, "warning");
+    assert.match(sarif.runs[0].results[0].ruleId, /^oss-signal\//);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes SARIF output", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+  const outputFile = path.join(root, "oss-signal.sarif");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      root,
+      "--format",
+      "sarif",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const sarif = JSON.parse(await readFile(outputFile, "utf8"));
+    assert.equal(sarif.version, "2.1.0");
+    assert.equal(sarif.runs[0].tool.driver.name, "oss-signal");
   } finally {
     await rm(root, { recursive: true, force: true });
   }

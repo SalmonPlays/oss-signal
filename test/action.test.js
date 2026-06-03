@@ -76,6 +76,31 @@ test("runAction writes a report and action outputs", async () => {
   }
 });
 
+test("runAction writes SARIF output", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-sarif-"));
+  const reportFile = path.join(root, "oss-signal.sarif");
+
+  try {
+    await writeFixture(root, {
+      "README.md": "# Action fixture\n"
+    });
+
+    await runAction({
+      INPUT_PATH: root,
+      INPUT_FORMAT: "sarif",
+      INPUT_OUTPUT: reportFile,
+      INPUT_SUMMARY: "false"
+    });
+
+    const sarif = JSON.parse(await readFile(reportFile, "utf8"));
+    assert.equal(sarif.version, "2.1.0");
+    assert.equal(sarif.runs[0].tool.driver.name, "oss-signal");
+    assert.ok(sarif.runs[0].results.length > 0);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("writeGitHubStepSummary writes actionable next steps", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-summary-"));
   const summaryFile = path.join(root, "summary");
