@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added a maintainer playbook for audit-to-issue, PR, CI gate, and SARIF workflows.
+- Added a documented release process and tag-triggered release workflow with npm dry-run verification.
+
 ## 0.4.0
 
 - Added SARIF output for GitHub Code Scanning and other security dashboards.

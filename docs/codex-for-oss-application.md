@@ -14,6 +14,8 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
+- Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)
+- Release process: [release-process.md](release-process.md)
 
 ## What `oss-signal` Does
 
@@ -46,6 +48,8 @@ The repository currently has:
 - SARIF output for GitHub Code Scanning integration.
 - A v0.4.0 GitHub Action tag with step summary and SARIF support.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.4.0` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
+- A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
+- A release process and tag-triggered release workflow that verify package contents and support npm provenance publishing when repository secrets are configured.
 - CI and CodeQL workflows passing on `main`.
 - A local self-audit score of 100/100.
 - A clean-directory smoke test of `npx --yes oss-signal@0.3.0 SalmonPlays/oss-signal --format json`, returning 100/100 (A).

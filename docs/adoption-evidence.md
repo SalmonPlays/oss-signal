@@ -14,6 +14,8 @@ This page collects the public evidence that `oss-signal` is built for real open-
 - SARIF self-audit output: [docs/examples/self-audit.sarif](examples/self-audit.sarif)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
 - GitHub Action workflow example: [docs/examples/github-action-workflow.yml](examples/github-action-workflow.yml)
+- Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
+- Release process: [docs/release-process.md](release-process.md)
 - Codex for Open Source application brief: [docs/codex-for-oss-application.md](codex-for-oss-application.md)
 - Rule reference: [docs/rules.md](rules.md)
 
@@ -27,6 +29,8 @@ The CLI supports two practical modes:
 - Public GitHub repository audit for quick triage without cloning.
 
 It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, upload a Markdown report as a workflow artifact, and upload failed maintainer-readiness checks as SARIF for GitHub Code Scanning. This repository dogfoods the public Action tag through the Repository health workflow.
+
+The [maintainer playbook](maintainer-playbook.md) documents the end-to-end workflow from audit to issue, pull request, CI gate, and Code Scanning evidence. The [release process](release-process.md) documents pre-release verification, tag consistency, npm publish checks, and post-release smoke tests.
 
 ## Public Field Audits And PRs
 

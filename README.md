@@ -9,7 +9,7 @@
 
 `oss-signal` is a dependency-light CLI for auditing open-source repository maintenance readiness.
 
-It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown or JSON.
+It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, or SARIF.
 
 ![oss-signal example output](docs/assets/terminal-report.svg)
 
@@ -24,6 +24,8 @@ Open-source projects often fail quietly because the maintainer workflow is undoc
 - Teams can gate release readiness with `--fail-under`.
 - Foundations and working groups can compare repository hygiene across many projects.
 - CI maintainers can add it as a GitHub Action, show the score in the workflow summary, and publish the report as an artifact.
+
+See [docs/maintainer-playbook.md](docs/maintainer-playbook.md) for a concrete maintainer workflow from audit to issue, PR, CI gate, and Code Scanning evidence.
 
 ## Install
 
@@ -236,6 +238,10 @@ You can also run the CLI directly in CI:
 - Release automation and provenance metadata checks
 - Maintainer score trends over time
 - Organization-level repository inventory reports
+
+## Release Process
+
+Releases use the checklist in [docs/release-process.md](docs/release-process.md). The repository also includes a tag-triggered [release workflow](.github/workflows/release.yml) that verifies the package, runs `npm publish --dry-run`, and can publish to npm with provenance when `NPM_TOKEN` is configured.
 
 ## Contributing
 
