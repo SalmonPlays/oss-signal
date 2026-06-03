@@ -18,3 +18,4 @@ Important notes:
 | `platformatic/massimo` | 58/100 | [issue draft](platformatic-massimo-issue-draft.md) | [#159](https://github.com/platformatic/massimo/issues/159) | [#160](https://github.com/platformatic/massimo/pull/160) |
 | `supermarkt/checkjebon` | 21/100 | [issue draft](supermarkt-checkjebon-issue-draft.md) | [#22](https://github.com/supermarkt/checkjebon/issues/22) | [#23](https://github.com/supermarkt/checkjebon/pull/23) |
 | `sammorrisdesign/interactive-feed` | 31/100 | [issue draft](sammorrisdesign-interactive-feed-issue-draft.md) | [#14](https://github.com/sammorrisdesign/interactive-feed/issues/14) | [#15](https://github.com/sammorrisdesign/interactive-feed/pull/15) |
+| `flox/install-flox-action` | 55/100 | [issue draft](flox-install-flox-action-issue-draft.md) | [#204](https://github.com/flox/install-flox-action/issues/204) | - |

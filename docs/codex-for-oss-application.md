@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-03T11:54:12Z
+Snapshot: 2026-06-03T12:01:28Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -58,7 +58,7 @@ The repository currently has:
 - CI, Repository health, CodeQL, and Release workflows passing publicly.
 - A local self-audit score of 100/100.
 - A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.5.1 -- oss-signal SalmonPlays/oss-signal --format json`, returning 100/100 (A).
-- Public reports, issues, and PRs created from real repository audits.
+- Public reports, issues, and PRs created from real repository audits, including four posted field-audit issues and three follow-up PRs.
 
 ## Separate Workflow Demo
 
@@ -73,6 +73,7 @@ This is intentionally described as a separate public workflow demo rather than t
 | `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open, clean |
 | `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open, clean |
 | `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open |
+| `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | - | open |
 
 These PRs are intentionally small and maintainer-friendly. They add documentation or GitHub templates rather than changing product code.
 
@@ -80,7 +81,7 @@ These PRs are intentionally small and maintainer-friendly. They add documentatio
 
 Recommended application angle:
 
-`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, and three public field-audit PRs. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
+`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, four public field-audit issues, and three public field-audit PRs. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
 
 Prepared official form answers are in [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md). The applicant still needs to fill personal identity fields and their OpenAI Organization ID directly.
 

@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-03T11:54:12Z
+Snapshot: 2026-06-03T12:01:28Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.5.1 and GitHub Action SalmonPlays/oss-signal@v0.5.1, supports Markdown/JSON/SARIF/Issue output, passes CI/CodeQL/Release, has a 100/100 self-audit, and has public field-audit issues/PRs plus a separate workflow demo.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.5.1 and GitHub Action SalmonPlays/oss-signal@v0.5.1, supports Markdown/JSON/SARIF/Issue output, passes CI/CodeQL/Release, has a 100/100 self-audit, and has four public field-audit issues plus three PRs.
 ```
 
 ## Interest
@@ -75,7 +75,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.5.1 latest, 356 npm downloads reported by the registry API, a published v0.5.1 release, a reusable GitHub Action, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, field-audit PRs, and a v0.5.1 workflow demo with report artifacts.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.5.1 latest, 356 npm downloads reported by the registry API, a published v0.5.1 release, a reusable GitHub Action, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, four field-audit issues, three PRs, and a v0.5.1 workflow demo with artifacts.
 ```
 
 ## Evidence Links
@@ -89,6 +89,6 @@ The project is early, so I am not overstating adoption. Current evidence include
 
 ## Character Counts
 
-- Why this repository qualifies: 333/500
+- Why this repository qualifies: 319/500
 - API credit use: 312/500
-- Anything else: 352/500
+- Anything else: 364/500
