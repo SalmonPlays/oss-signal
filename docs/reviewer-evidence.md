@@ -74,6 +74,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 | `sammorrisdesign/interactive-feed` | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | Contributor workflow templates |
 | `flox/install-flox-action` | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | Pull request template |
 | `Grovanni/oss-signal` | https://github.com/Grovanni/oss-signal/issues/1 | N/A | CI, Dependabot, and CodeQL |
+| `noctemlabs/signal-oss` | N/A | https://github.com/noctemlabs/signal-oss/pull/12 | Minimal Python CI workflow |
 | `icoretech/codex-action` | N/A | https://github.com/icoretech/codex-action/pull/24 | Codex Action README safety examples |
 
 7. Inspect inbound contribution routes:

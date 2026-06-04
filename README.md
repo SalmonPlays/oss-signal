@@ -44,7 +44,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
 - Community route: [Discussion #5](https://github.com/SalmonPlays/oss-signal/discussions/5) is the public maintainer-workflow thread for usage questions and rule feedback.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
-- Field use: five public maintainer-readiness audits have been turned into five issues and four focused follow-up PRs.
+- Field use: six public maintainer-readiness audits have been turned into five issues and five focused follow-up PRs.
 - External OSS contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
@@ -192,6 +192,7 @@ The [Repository health workflow](.github/workflows/repository-health.yml) runs `
 - [sammorrisdesign/interactive-feed report](docs/outreach/sammorrisdesign-interactive-feed-report.md), [issue #14](https://github.com/sammorrisdesign/interactive-feed/issues/14), and [PR #15](https://github.com/sammorrisdesign/interactive-feed/pull/15)
 - [flox/install-flox-action report](docs/outreach/flox-install-flox-action-report.md), [issue #204](https://github.com/flox/install-flox-action/issues/204), and [PR #205](https://github.com/flox/install-flox-action/pull/205)
 - [Grovanni/oss-signal report](docs/outreach/grovanni-oss-signal-report.md) and [issue #1](https://github.com/Grovanni/oss-signal/issues/1)
+- [noctemlabs/signal-oss report](docs/outreach/noctemlabs-signal-oss-report.md) and [PR #12](https://github.com/noctemlabs/signal-oss/pull/12)
 
 See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts are not posted automatically; maintainers should only receive specific, useful, and respectful suggestions.
 

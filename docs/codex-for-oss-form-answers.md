@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.7.0 and GitHub Action SalmonPlays/oss-signal@v0.7.0, supports Markdown/JSON/SARIF/Issue/Plan/Inventory output, passes CI/CodeQL/Release, has a 100/100 self-audit, and has five public field-audit issues plus four PRs.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.7.0 and GitHub Action SalmonPlays/oss-signal@v0.7.0, supports Markdown/JSON/SARIF/Issue/Plan/Inventory output, passes CI/CodeQL/Release, has a 100/100 self-audit, and has five public field-audit issues plus five PRs.
 ```
 
 ## Interest
@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.7.0 latest, 356 npm downloads reported by the registry API before the 0.7.0 release, a published v0.7.0 release, a reusable GitHub Action with inventory mode, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, five field-audit issues, four PRs, and a workflow demo with artifacts.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.7.0 latest, 356 npm downloads reported by the registry API before the 0.7.0 release, a published v0.7.0 release, a reusable GitHub Action with inventory mode, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, five field-audit issues, five field-audit PRs, and a workflow demo with artifacts.
 ```
 
 ## Evidence Links

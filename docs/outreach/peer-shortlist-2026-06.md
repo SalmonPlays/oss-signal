@@ -24,7 +24,7 @@ Selection criteria:
 3. `noctemlabs/signal-oss`
    - Similar naming and active recently, but missing more baseline workflow signals.
    - Best next step: minimal CI workflow.
-   - Best outreach form: one narrow issue; avoid a broad cleanup list.
+   - Status: follow-up PR posted at https://github.com/noctemlabs/signal-oss/pull/12.
 
 4. `neardws/oss-application-pack-builder`
    - Adjacent to OSS maintainer evidence tooling, but less directly matched.
@@ -39,7 +39,8 @@ The strongest sequence is:
 
 1. post one focused issue to `Grovanni/oss-signal`
 2. post one focused issue to `Divyesh-5981/signal-oss` if the first outreach stays respectful and specific
-3. prepare the other two as drafts unless there is a real maintainer response path
+3. wait for maintainer response on `Grovanni/oss-signal` and `noctemlabs/signal-oss` before adding more public outreach
+4. keep the remaining candidates as drafts unless there is a real maintainer response path
 
 ## Anti-Patterns
 

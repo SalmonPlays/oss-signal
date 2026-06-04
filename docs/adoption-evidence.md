@@ -120,8 +120,9 @@ The tool has been used to generate maintainer-readiness reports for public repos
 | `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open |
 | `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open, checks pending |
 | `Grovanni/oss-signal` | [report](outreach/grovanni-oss-signal-report.md) | https://github.com/Grovanni/oss-signal/issues/1 | N/A | open |
+| `noctemlabs/signal-oss` | [report](outreach/noctemlabs-signal-oss-report.md) | N/A | https://github.com/noctemlabs/signal-oss/pull/12 | open, mergeable |
 
-These issues and pull requests are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements. Each PR is intentionally limited to documentation or GitHub templates.
+These issues and pull requests are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements. Each PR is intentionally limited to documentation, GitHub templates, or a minimal CI workflow.
 
 Prepared but not yet posted outreach candidates are tracked separately in [outreach/peer-shortlist-2026-06.md](outreach/peer-shortlist-2026-06.md) and [outreach](outreach). This prevents candidate research from being overstated as real external maintainer engagement.
 
@@ -131,7 +132,7 @@ Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 updates Codex Action README examples so generated output is routed through environment variables before shell printing.
 
-All field-audit follow-up PRs were still open when checked from GitHub on 2026-06-04T10:38:39Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
+The `noctemlabs/signal-oss` follow-up PR was open and mergeable when checked from GitHub on 2026-06-04T23:52:02Z. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 
 ## Contributor Intake
 

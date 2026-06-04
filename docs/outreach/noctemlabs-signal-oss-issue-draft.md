@@ -1,5 +1,7 @@
 # Issue Draft: noctemlabs/signal-oss
 
+Follow-up PR posted as [noctemlabs/signal-oss#12](https://github.com/noctemlabs/signal-oss/pull/12).
+
 Title:
 
 ```text

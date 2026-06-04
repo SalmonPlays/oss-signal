@@ -84,14 +84,15 @@ This is intentionally described as a separate public workflow demo rather than t
 | `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open |
 | `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open, checks pending |
 | `Grovanni/oss-signal` | [report](outreach/grovanni-oss-signal-report.md) | https://github.com/Grovanni/oss-signal/issues/1 | N/A | open |
+| `noctemlabs/signal-oss` | [report](outreach/noctemlabs-signal-oss-report.md) | N/A | https://github.com/noctemlabs/signal-oss/pull/12 | open, mergeable |
 
-These PRs are intentionally small and maintainer-friendly. They add documentation or GitHub templates rather than changing product code.
+These PRs are intentionally small and maintainer-friendly. They add documentation, GitHub templates, or minimal CI automation rather than changing product code.
 
 ## Application Positioning
 
 Recommended application angle:
 
-`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, five public field-audit issues, and four public field-audit PRs. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
+`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, five public field-audit issues, and five public field-audit PRs. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
 
 Prepared official form answers are in [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md). The applicant still needs to fill personal identity fields and their OpenAI Organization ID directly.
 
