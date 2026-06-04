@@ -44,5 +44,5 @@ Run as a GitHub Action:
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.4
+- GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
-

@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-04T09:56:45Z
+Last verified: 2026-06-04T10:12:03Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -37,6 +37,7 @@ Expected result: score `100`, grade `A`, source `github`.
 - Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - GitHub Pages source: https://github.com/SalmonPlays/oss-signal/blob/main/docs/index.md
 - GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
+- GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Marketplace checklist: https://github.com/SalmonPlays/oss-signal/blob/main/docs/marketplace.md
 
 4. Run an inventory report from the repository target list:
@@ -82,7 +83,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - GitHub Pages is deployed as the repository homepage, and the repository About URL points to the live landing page.
 - `main` is protected against force pushes and branch deletion.
 - GitHub security features are enabled for maintainer readiness: private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts, Dependabot security updates, grouped security updates, malware alerts, CodeQL, Copilot Autofix, secret scanning, and push protection.
-- The free GitHub Marketplace Action listing is prepared, but GitHub requires account-level two-factor authentication before the publish checkbox can be used.
+- The free GitHub Marketplace Action listing is published under Open Source management and Code quality.
 
 ## Boundaries
 

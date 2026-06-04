@@ -8,6 +8,7 @@
 [![Repository health](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml)
 [![OpenSSF Scorecard](https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml)
 [![GitHub release](https://img.shields.io/github/v/release/SalmonPlays/oss-signal.svg)](https://github.com/SalmonPlays/oss-signal/releases/latest)
+[![GitHub Marketplace](https://img.shields.io/badge/GitHub%20Marketplace-oss--signal-blue.svg)](https://github.com/marketplace/actions/oss-signal)
 [![npm version](https://img.shields.io/npm/v/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
 [![npm downloads](https://img.shields.io/npm/dm/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
 [![Self audit](https://img.shields.io/badge/self--audit-100%2F100-brightgreen.svg)](docs/self-audit.md)
@@ -27,6 +28,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.6.4`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.6.4`.
 - Published GitHub Action: [`SalmonPlays/oss-signal@v0.6.4`](https://github.com/SalmonPlays/oss-signal/tree/v0.6.4).
+- GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Post-submission version note: the application may reference earlier evidence; `0.6.4` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
 - Security posture: OpenSSF Scorecard is scheduled, CodeQL is active, secret scanning push protection is enabled, Dependabot alerts/security updates/malware alerts are enabled, and private vulnerability reporting is enabled.

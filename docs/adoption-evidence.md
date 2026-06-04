@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-04T09:56:45Z
+Last verified: 2026-06-04T10:12:03Z
 
 ## Project Links
 
@@ -11,6 +11,7 @@ Last verified: 2026-06-04T09:56:45Z
 - npm package: https://www.npmjs.com/package/oss-signal (`0.6.4` latest)
 - GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.4
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.4
+- GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
 - Public inventory workflow: [.github/workflows/repository-inventory.yml](../.github/workflows/repository-inventory.yml)
@@ -80,6 +81,7 @@ Current public workflow status:
 - OpenSSF Scorecard: configured on `main` pushes and a weekly schedule, with JSON artifact output and public Scorecard publishing
 - Release: passing
 - GitHub Pages deployment: passing, with the repository homepage set to https://salmonplays.github.io/oss-signal/
+- GitHub Marketplace listing: published for the `v0.6.4` Action release
 - GitHub repository hardening: `main` branch protection, private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts/security updates/grouped updates/malware alerts, secret scanning, and push protection are enabled
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
@@ -113,7 +115,7 @@ Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 updates Codex Action README examples so generated output is routed through environment variables before shell printing.
 
-All field-audit follow-up PRs were still open when checked from GitHub on 2026-06-04T09:56:45Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
+All field-audit follow-up PRs were still open when checked from GitHub on 2026-06-04T10:12:03Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
 
 ## Contributor Intake
 
