@@ -17,6 +17,7 @@ Last verified: 2026-06-04T04:22:02Z
 - Maintainers: [MAINTAINERS.md](../MAINTAINERS.md)
 - Governance: [GOVERNANCE.md](../GOVERNANCE.md)
 - CODEOWNERS: [.github/CODEOWNERS](../.github/CODEOWNERS)
+- Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
 - Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Self-audit report: [docs/self-audit.md](self-audit.md)
@@ -75,6 +76,7 @@ Current public workflow status:
 - CodeQL: passing
 - OpenSSF Scorecard: configured on `main` pushes and a weekly schedule
 - Release: passing
+- Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
 The npm registry returned `0.6.4` for both the package version and `latest` dist-tag on 2026-06-04T02:42:51Z. The same check returned 356 downloads for the last-week and last-month windows.
@@ -125,6 +127,7 @@ Public CI evidence:
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - OpenSSF Scorecard workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
+- Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
 - Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Reviewer verification quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 

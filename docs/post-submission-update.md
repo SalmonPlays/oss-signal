@@ -32,6 +32,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 - GitHub repository profile: description, npm homepage, eight maintainer-focused topics, social preview image, and profile pin are live.
 - Community workflow: Discussions are enabled and issue templates now route workflow questions and security reports to the right channels.
 - Maintainer operations: OpenSSF Scorecard, CODEOWNERS, MAINTAINERS, and GOVERNANCE are now part of the public repository evidence.
+- Public discussion: https://github.com/SalmonPlays/oss-signal/discussions/5 documents the intended maintainer workflow and feedback channel.
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 

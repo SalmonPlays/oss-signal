@@ -30,6 +30,7 @@ Public evidence for the maintainer workflow is collected in [docs/reviewer-evide
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
 - Security posture: OpenSSF Scorecard is scheduled and uploads SARIF into Code Scanning.
 - Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
+- Community route: [Discussion #5](https://github.com/SalmonPlays/oss-signal/discussions/5) is the public maintainer-workflow thread for usage questions and rule feedback.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
 - Field use: four public maintainer-readiness audits have been turned into four issues and four focused follow-up PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
