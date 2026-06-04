@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Maintainer workflow question
+    url: https://github.com/SalmonPlays/oss-signal/discussions
+    about: Ask about GitHub Action setup, inventory mode, adoption, or maintainer triage workflows.
+  - name: Security report
+    url: https://github.com/SalmonPlays/oss-signal/security/policy
+    about: Report vulnerabilities through the repository security policy instead of a public issue.

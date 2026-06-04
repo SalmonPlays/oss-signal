@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-04T03:01:28Z
+Latest verification: 2026-06-04T04:22:02Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 
@@ -29,6 +29,8 @@ The older submission evidence remains valid. The current `latest` npm version si
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.4
 - Release workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/release.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
+- GitHub repository profile: description, npm homepage, eight maintainer-focused topics, social preview image, and profile pin are live.
+- Community workflow: Discussions are enabled and issue templates now route workflow questions and security reports to the right channels.
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 
@@ -63,6 +65,6 @@ This version difference should be read as post-submission maintenance progress, 
 
 - The package now has a successful npm Trusted Publishing release from GitHub Actions.
 - The GitHub Action tag, npm package, release notes, and documentation all point to `0.6.4`.
-- The repository has public CI, Repository health, Repository inventory, CodeQL, and Release workflow evidence.
+- The repository has public CI, Repository health, Repository inventory, CodeQL, Release workflow evidence, social preview branding, profile pinning, Discussions, and issue routing.
 
 This does not replace the remaining adoption gap. The strongest next evidence would still be independent maintainer-owned workflow usage or merged external maintainer PRs.
