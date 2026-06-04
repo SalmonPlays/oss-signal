@@ -32,7 +32,9 @@ Run as a GitHub Action:
 ## Reviewer Evidence
 
 - [Reviewer evidence quickstart](reviewer-evidence.md)
+- [Trust center](trust-center.md)
 - [Adoption evidence](adoption-evidence.md)
+- [Adoption kit](adoption-kit.md)
 - [Maintainer playbook](maintainer-playbook.md)
 - [Rules and scoring weights](rules.md)
 - [Post-submission update](post-submission-update.md)

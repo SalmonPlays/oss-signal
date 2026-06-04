@@ -1,0 +1,57 @@
+name: Adoption report
+description: Share a public workflow run or maintainer use case for oss-signal.
+title: "[Adoption] "
+labels:
+  - documentation
+  - help wanted
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when you tried oss-signal in a repository, CI workflow, audit issue, or maintainer cleanup process.
+        Public workflow links are the most useful evidence.
+  - type: input
+    id: repository
+    attributes:
+      label: Repository
+      description: Link the repository where oss-signal was used.
+      placeholder: "https://github.com/owner/repo"
+    validations:
+      required: true
+  - type: input
+    id: workflow
+    attributes:
+      label: Workflow run, PR, issue, or report link
+      description: Link the public evidence if available.
+      placeholder: "https://github.com/owner/repo/actions/runs/..."
+    validations:
+      required: false
+  - type: dropdown
+    id: mode
+    attributes:
+      label: How was oss-signal used?
+      options:
+        - GitHub Action
+        - CLI local audit
+        - GitHub URL audit
+        - Repository inventory
+        - SARIF / Code Scanning
+        - Issue-ready report
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What did the tool help you decide, fix, or document?
+      placeholder: "Example: added a security policy and PR template before a release."
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Public evidence
+      options:
+        - label: This can be referenced as public adoption evidence if the linked repository or workflow is public.
+          required: false

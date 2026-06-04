@@ -1,0 +1,61 @@
+name: Maintainer audit report
+description: Attach an oss-signal report for a repository and discuss follow-up.
+title: "[Audit] "
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to discuss a generated oss-signal report before turning it into a focused issue or pull request.
+  - type: input
+    id: target
+    attributes:
+      label: Target repository
+      description: Repository that was audited.
+      placeholder: "owner/repo or https://github.com/owner/repo"
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command
+      description: Command or workflow that generated the report.
+      placeholder: "oss-signal owner/repo --format markdown"
+    validations:
+      required: true
+  - type: input
+    id: score
+    attributes:
+      label: Score and grade
+      placeholder: "86/100 (B)"
+    validations:
+      required: false
+  - type: textarea
+    id: findings
+    attributes:
+      label: Top findings
+      description: Paste the specific missing maintainer-readiness checks or attach a report link.
+      placeholder: |
+        - Add SECURITY.md
+        - Add PR template
+        - Add Dependabot
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_followup
+    attributes:
+      label: Proposed follow-up
+      description: What should happen next?
+      placeholder: "Open a narrow PR that adds .github/PULL_REQUEST_TEMPLATE.md."
+    validations:
+      required: false
+  - type: checkboxes
+    id: posting
+    attributes:
+      label: Posting boundaries
+      options:
+        - label: The report has been reviewed before posting to another maintainer's repository.
+          required: true
+        - label: The proposed follow-up is narrow, respectful, and specific to visible repository maintenance signals.
+          required: true

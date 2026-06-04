@@ -38,4 +38,6 @@ Maintainer-readiness CLI and GitHub Action for OSS repository health checks, CI 
 
 GitHub requires the repository owner to accept the GitHub Marketplace Developer Agreement and enable account-level two-factor authentication before the "Publish this Action to the GitHub Marketplace" checkbox can be used from a release.
 
-The current listing is a free Action listing. Keep it free unless a separate paid-product decision and billing review is made.
+The current listing is a free Action listing and is used for discovery, README display, categories, and copyable Action usage. Keep it free unless a separate paid-product decision and billing review is made.
+
+Running workflows is governed by GitHub Actions billing, which is separate from the Marketplace listing. Standard GitHub-hosted runners are free for public repositories; private repositories have plan-dependent included minutes and storage.

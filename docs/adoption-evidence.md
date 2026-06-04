@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-04T10:12:03Z
+Last verified: 2026-06-04T10:38:39Z
 
 ## Project Links
 
@@ -32,6 +32,8 @@ Last verified: 2026-06-04T10:12:03Z
 - GitHub Pages landing page source: [docs/index.md](index.md)
 - GitHub Marketplace publishing checklist: [docs/marketplace.md](marketplace.md)
 - Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
+- Trust center: [docs/trust-center.md](trust-center.md)
+- Adoption kit: [docs/adoption-kit.md](adoption-kit.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
 - Post-submission update: [docs/post-submission-update.md](post-submission-update.md)
 - Release process: [docs/release-process.md](release-process.md)
@@ -82,6 +84,7 @@ Current public workflow status:
 - Release: passing
 - GitHub Pages deployment: passing, with the repository homepage set to https://salmonplays.github.io/oss-signal/
 - GitHub Marketplace listing: published for the `v0.6.4` Action release
+- GitHub issue forms: adoption report and maintainer audit report forms are available for structured public evidence intake
 - GitHub repository hardening: `main` branch protection, private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts/security updates/grouped updates/malware alerts, secret scanning, and push protection are enabled
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
@@ -115,7 +118,7 @@ Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 updates Codex Action README examples so generated output is routed through environment variables before shell printing.
 
-All field-audit follow-up PRs were still open when checked from GitHub on 2026-06-04T10:12:03Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
+All field-audit follow-up PRs were still open when checked from GitHub on 2026-06-04T10:38:39Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
 
 ## Contributor Intake
 
@@ -124,7 +127,7 @@ The project now has labeled good-first-issue routes for outside contributors:
 - https://github.com/SalmonPlays/oss-signal/issues/6
 - https://github.com/SalmonPlays/oss-signal/issues/7
 
-The repository also includes a GitHub Discussions category form for structured rule feedback, Action usage questions, and maintainer workflow adoption notes.
+The repository also includes a GitHub Discussions category form for structured rule feedback, Action usage questions, and maintainer workflow adoption notes. The issue templates include adoption and maintainer-audit forms so users can share workflow-run evidence or discuss reports without inventing the format.
 
 ## Verification Commands
 
