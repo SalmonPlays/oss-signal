@@ -10,6 +10,7 @@ This checklist records the Marketplace publishing state for `oss-signal`.
 - The repository has a released Action tag: `v0.6.4`.
 - The README contains install, CLI, GitHub Action, SARIF, inventory, and maintainer workflow examples.
 - The repository has public CI, CodeQL, OpenSSF Scorecard, repository health, repository inventory, and release workflows.
+- The repository includes an MIT [LICENSE](../LICENSE) that should be used as the Action EULA for Marketplace users.
 
 ## Recommended Marketplace Categories
 
@@ -37,3 +38,4 @@ GitHub requires the repository owner to accept the GitHub Marketplace Developer 
 
 Publishing the free Action listing is not treated here as paid distribution. The agreement still applies to free and paid Marketplace developer products, so the account owner should review and accept it directly.
 
+After the agreement is accepted, publish the existing `v0.6.4` release with the categories above. Keep the listing free unless a separate paid-product decision and billing review is made.
