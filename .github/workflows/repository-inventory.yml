@@ -12,7 +12,7 @@ jobs:
   inventory:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: SalmonPlays/oss-signal@v0.7.0
         id: oss-signal
         env:
@@ -22,7 +22,7 @@ jobs:
           output: inventory-report.md
           summary: "true"
       - run: test "${{ steps.oss-signal.outputs.score }}" -ge 70
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: oss-signal-inventory-report
           path: inventory-report.md
