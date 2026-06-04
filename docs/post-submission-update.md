@@ -31,6 +31,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - GitHub repository profile: description, npm homepage, eight maintainer-focused topics, social preview image, and profile pin are live.
 - Community workflow: Discussions are enabled and issue templates now route workflow questions and security reports to the right channels.
+- Maintainer operations: OpenSSF Scorecard, CODEOWNERS, MAINTAINERS, and GOVERNANCE are now part of the public repository evidence.
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 
@@ -65,6 +66,6 @@ This version difference should be read as post-submission maintenance progress, 
 
 - The package now has a successful npm Trusted Publishing release from GitHub Actions.
 - The GitHub Action tag, npm package, release notes, and documentation all point to `0.6.4`.
-- The repository has public CI, Repository health, Repository inventory, CodeQL, Release workflow evidence, social preview branding, profile pinning, Discussions, and issue routing.
+- The repository has public CI, Repository health, Repository inventory, CodeQL, OpenSSF Scorecard, Release workflow evidence, social preview branding, profile pinning, Discussions, CODEOWNERS, and issue routing.
 
 This does not replace the remaining adoption gap. The strongest next evidence would still be independent maintainer-owned workflow usage or merged external maintainer PRs.

@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-04T03:01:28Z
+Last verified: 2026-06-04T04:22:02Z
 
 ## Project Links
 
@@ -13,6 +13,10 @@ Last verified: 2026-06-04T03:01:28Z
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
 - Public inventory workflow: [.github/workflows/repository-inventory.yml](../.github/workflows/repository-inventory.yml)
+- OpenSSF Scorecard workflow: [.github/workflows/scorecard.yml](../.github/workflows/scorecard.yml)
+- Maintainers: [MAINTAINERS.md](../MAINTAINERS.md)
+- Governance: [GOVERNANCE.md](../GOVERNANCE.md)
+- CODEOWNERS: [.github/CODEOWNERS](../.github/CODEOWNERS)
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
 - Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Self-audit report: [docs/self-audit.md](self-audit.md)
@@ -69,6 +73,7 @@ Current public workflow status:
 - Repository health: passing
 - Repository inventory: passing
 - CodeQL: passing
+- OpenSSF Scorecard: configured on `main` pushes and a weekly schedule
 - Release: passing
 - Separate public workflow demo: passing
 
@@ -119,6 +124,7 @@ Public CI evidence:
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
+- OpenSSF Scorecard workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Reviewer verification quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 

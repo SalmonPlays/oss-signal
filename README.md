@@ -6,6 +6,7 @@
 
 [![CI](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml)
 [![Repository health](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml)
+[![OpenSSF Scorecard](https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml)
 [![GitHub release](https://img.shields.io/github/v/release/SalmonPlays/oss-signal.svg)](https://github.com/SalmonPlays/oss-signal/releases/latest)
 [![npm version](https://img.shields.io/npm/v/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
 [![npm downloads](https://img.shields.io/npm/dm/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
@@ -27,6 +28,8 @@ Public evidence for the maintainer workflow is collected in [docs/reviewer-evide
 - Published GitHub Action: [`SalmonPlays/oss-signal@v0.6.4`](https://github.com/SalmonPlays/oss-signal/tree/v0.6.4).
 - Post-submission version note: the application may reference earlier evidence; `0.6.4` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
+- Security posture: OpenSSF Scorecard is scheduled and uploads SARIF into Code Scanning.
+- Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
 - Field use: four public maintainer-readiness audits have been turned into four issues and four focused follow-up PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.

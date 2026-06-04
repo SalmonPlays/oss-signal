@@ -1,0 +1,12 @@
+# Default ownership for review routing.
+* @SalmonPlays
+
+# Keep release and automation changes reviewed with the maintainer workflow in mind.
+.github/workflows/ @SalmonPlays
+action.yml @SalmonPlays
+package.json @SalmonPlays
+package-lock.json @SalmonPlays
+
+# Documentation is the public maintainer surface for this project.
+README.md @SalmonPlays
+docs/ @SalmonPlays

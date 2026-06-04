@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-04T03:01:28Z
+Last verified: 2026-06-04T04:22:02Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -32,6 +32,7 @@ Expected result: score `100`, grade `A`, source `github`.
 - Repository health: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Repository inventory: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml
 - CodeQL: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
+- OpenSSF Scorecard: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 
 4. Run an inventory report from the repository target list:
@@ -64,6 +65,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - The GitHub Action can write a step summary, publish a Markdown artifact, produce SARIF, and run inventory reports.
 - The `--format issue` mode produces a maintainer-readable follow-up body that is reviewed before posting.
 - The field-audit examples show the intended workflow: run audit, write report, open a respectful issue, then prepare a narrow PR when useful.
+- The repository has explicit maintainer ownership and review routing through [../MAINTAINERS.md](../MAINTAINERS.md), [../GOVERNANCE.md](../GOVERNANCE.md), and [../.github/CODEOWNERS](../.github/CODEOWNERS).
 
 ## Boundaries
 
@@ -76,5 +78,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
 - Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)
 - Release process: [release-process.md](release-process.md)
+- Maintainers: [../MAINTAINERS.md](../MAINTAINERS.md)
+- Governance: [../GOVERNANCE.md](../GOVERNANCE.md)
 - Rules and scoring weights: [rules.md](rules.md)
 - Self-audit report: [self-audit.md](self-audit.md)
