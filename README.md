@@ -15,10 +15,11 @@ It checks the files and automation that reduce maintainer load: README, license,
 
 ## Maintainer Evidence Snapshot
 
-Public evidence for the maintainer workflow is collected in [docs/reviewer-evidence.md](docs/reviewer-evidence.md) and [docs/adoption-evidence.md](docs/adoption-evidence.md).
+Public evidence for the maintainer workflow is collected in [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), and [docs/post-submission-update.md](docs/post-submission-update.md).
 
 - Published package: [`oss-signal@0.6.3`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.6.3`.
 - Published GitHub Action: [`SalmonPlays/oss-signal@v0.6.3`](https://github.com/SalmonPlays/oss-signal/tree/v0.6.3).
+- Post-submission version note: the application may reference earlier evidence; `0.6.3` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
 - Field use: four public maintainer-readiness audits have been turned into four issues and four focused follow-up PRs.

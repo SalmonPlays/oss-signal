@@ -1,8 +1,12 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-04T02:42:51Z
+Last verified: 2026-06-04T03:01:28Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
+
+## Application Version Note
+
+The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.6.3` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
 
 ## Five-Minute Verification
 
@@ -68,6 +72,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 ## Primary Evidence Pages
 
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
+- Post-submission update: [post-submission-update.md](post-submission-update.md)
 - Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)
 - Release process: [release-process.md](release-process.md)
 - Rules and scoring weights: [rules.md](rules.md)

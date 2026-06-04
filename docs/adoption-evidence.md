@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-04T02:42:51Z
+Last verified: 2026-06-04T03:01:28Z
 
 ## Project Links
 
@@ -23,6 +23,7 @@ Last verified: 2026-06-04T02:42:51Z
 - Inventory report example: [docs/examples/inventory-report.md](examples/inventory-report.md)
 - Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
+- Post-submission update: [docs/post-submission-update.md](post-submission-update.md)
 - Release process: [docs/release-process.md](release-process.md)
 - Codex for Open Source application brief: [docs/codex-for-oss-application.md](codex-for-oss-application.md)
 - Codex for Open Source form answers: [docs/codex-for-oss-form-answers.md](codex-for-oss-form-answers.md)
@@ -41,6 +42,8 @@ The CLI supports two practical modes:
 It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, upload a Markdown report as a workflow artifact, run inventory reports, and upload failed maintainer-readiness checks as SARIF for GitHub Code Scanning. This repository dogfoods the public Action tag through the Repository health and Repository inventory workflows.
 
 The [maintainer playbook](maintainer-playbook.md) documents the end-to-end workflow from audit to issue, pull request, CI gate, and Code Scanning evidence. The [release process](release-process.md) documents pre-release verification, tag consistency, npm publish checks, and post-release smoke tests.
+
+The [post-submission update](post-submission-update.md) records why the current npm package and Action tag may be newer than the version referenced during application submission.
 
 ## Published Package Verification
 
@@ -63,6 +66,7 @@ Current public workflow status:
 
 - CI: passing
 - Repository health: passing
+- Repository inventory: passing
 - CodeQL: passing
 - Release: passing
 - Separate public workflow demo: passing

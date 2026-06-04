@@ -17,6 +17,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
+- Post-submission update: [post-submission-update.md](post-submission-update.md)
 - Form answer pack: [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md)
 - Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)
 - Release process: [release-process.md](release-process.md)
@@ -48,6 +49,7 @@ This project is designed around repeatable maintainer workflows where Codex is u
 The repository currently has:
 
 - A published npm package with `0.6.3` as the latest release.
+- A post-submission update page explaining why the current npm package and Action tag may be newer than the originally submitted evidence.
 - npm download API evidence showing 356 last-week and last-month downloads on 2026-06-04.
 - A published GitHub Release for v0.6.3 with repository inventory release notes and CI usage guidance.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
@@ -59,7 +61,7 @@ The repository currently has:
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.6.3` against a repository target list and uploads an inventory artifact.
 - A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.5.1` from another repository and uploads Markdown, SARIF, and Issue-ready report artifacts.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
-- A release process and tag-triggered release workflow that verify package contents and support npm provenance publishing when repository secrets are configured.
+- A release process and tag-triggered release workflow that verify package contents and publish to npm through Trusted Publishing.
 - CI, Repository health, CodeQL, and Release workflows passing publicly.
 - A local self-audit score of 100/100.
 - A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.6.3 -- oss-signal SalmonPlays/oss-signal --format json`, returning 100/100 (A).
