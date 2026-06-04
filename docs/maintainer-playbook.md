@@ -71,7 +71,7 @@ The field-audit examples in [docs/outreach](outreach) show this pattern for publ
 Add the GitHub Action to keep the signal visible:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.3
+- uses: SalmonPlays/oss-signal@v0.6.4
   id: oss-signal
   with:
     fail-under: "80"
@@ -84,7 +84,7 @@ The Action writes `score`, `grade`, `failed`, and `report-path` outputs, and wri
 For a repository inventory, commit a newline-delimited target list and pass it through the Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.3
+- uses: SalmonPlays/oss-signal@v0.6.4
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -104,7 +104,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.6.3
+  - uses: SalmonPlays/oss-signal@v0.6.4
     with:
       format: sarif
       output: oss-signal.sarif
@@ -120,7 +120,7 @@ See [docs/examples/github-code-scanning-workflow.yml](examples/github-code-scann
 
 Useful evidence for maintainers and reviewers:
 
-- A public workflow run that uses `SalmonPlays/oss-signal@v0.6.3`.
+- A public workflow run that uses `SalmonPlays/oss-signal@v0.6.4`.
 - A generated Markdown report attached as an artifact.
 - A SARIF upload in Code Scanning.
 - A small issue or PR that follows from an audit finding.
