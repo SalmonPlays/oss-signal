@@ -166,6 +166,8 @@ The [Repository health workflow](.github/workflows/repository-health.yml) runs `
 
 See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts are not posted automatically; maintainers should only receive specific, useful, and respectful suggestions.
 
+Additional focused external contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) updates Codex Action README examples to route generated output through environment variables before printing it from shell steps.
+
 For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md). For a reviewer-oriented verification path, see [docs/reviewer-evidence.md](docs/reviewer-evidence.md).
 
 Separate public workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) runs `SalmonPlays/oss-signal@v0.5.1` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038) with Markdown, SARIF, and Issue-ready report artifacts.

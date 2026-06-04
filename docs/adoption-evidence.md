@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-04T04:22:02Z
+Last verified: 2026-06-04T07:36:10Z
 
 ## Project Links
 
@@ -104,7 +104,18 @@ The tool has been used to generate maintainer-readiness reports for public repos
 
 These issues and pull requests are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements. Each PR is intentionally limited to documentation or GitHub templates.
 
-All four follow-up PRs were still open when checked from GitHub on 2026-06-04T02:42:51Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
+Additional focused external contribution:
+
+- `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 updates Codex Action README examples so generated output is routed through environment variables before shell printing.
+
+All field-audit follow-up PRs were still open when checked from GitHub on 2026-06-04T07:36:10Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
+
+## Contributor Intake
+
+The project now has labeled good-first-issue routes for outside contributors:
+
+- https://github.com/SalmonPlays/oss-signal/issues/6
+- https://github.com/SalmonPlays/oss-signal/issues/7
 
 ## Verification Commands
 

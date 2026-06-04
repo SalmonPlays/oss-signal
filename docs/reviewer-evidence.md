@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-04T04:22:02Z
+Last verified: 2026-06-04T07:36:10Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -58,6 +58,12 @@ Expected result: a Markdown table with one row per repository, average score, sc
 | `supermarkt/checkjebon` | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | Contributor workflow templates |
 | `sammorrisdesign/interactive-feed` | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | Contributor workflow templates |
 | `flox/install-flox-action` | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | Pull request template |
+| `icoretech/codex-action` | N/A | https://github.com/icoretech/codex-action/pull/24 | Codex Action README safety examples |
+
+7. Inspect inbound contribution routes:
+
+- Good first issue: https://github.com/SalmonPlays/oss-signal/issues/6
+- Documentation good first issue: https://github.com/SalmonPlays/oss-signal/issues/7
 
 ## What The Evidence Shows
 
@@ -66,6 +72,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - The GitHub Action can write a step summary, publish a Markdown artifact, produce SARIF, and run inventory reports.
 - The `--format issue` mode produces a maintainer-readable follow-up body that is reviewed before posting.
 - The field-audit examples show the intended workflow: run audit, write report, open a respectful issue, then prepare a narrow PR when useful.
+- The project has labeled good-first-issue routes for external contributors who want a small, bounded PR.
 - The repository has explicit maintainer ownership and review routing through [../MAINTAINERS.md](../MAINTAINERS.md), [../GOVERNANCE.md](../GOVERNANCE.md), and [../.github/CODEOWNERS](../.github/CODEOWNERS).
 - The public maintainer-workflow Discussion gives reviewers and users a clear place to ask usage questions and propose rule feedback.
 
