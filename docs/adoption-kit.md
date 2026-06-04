@@ -71,6 +71,8 @@ steps:
       sarif_file: oss-signal.sarif
 ```
 
+Full walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
+
 ## Share Evidence
 
 Useful adoption evidence is concrete and public:

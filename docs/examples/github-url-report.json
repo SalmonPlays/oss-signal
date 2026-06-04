@@ -1,0 +1,206 @@
+{
+  "tool": "oss-signal",
+  "version": "0.6.4",
+  "root": "https://github.com/SalmonPlays/oss-signal",
+  "source": {
+    "type": "github",
+    "location": "https://github.com/SalmonPlays/oss-signal",
+    "owner": "SalmonPlays",
+    "repo": "oss-signal",
+    "ref": "main",
+    "defaultBranch": "main",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 6,
+    "healthPercentage": 100
+  },
+  "generatedAt": "2026-06-04T11:09:16.900Z",
+  "score": 100,
+  "grade": "A",
+  "summary": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "id": "readme",
+      "label": "README",
+      "weight": 12,
+      "passed": true,
+      "evidence": [
+        "README.md"
+      ],
+      "why": "A clear README is the front door for users and contributors.",
+      "fix": "Add setup, usage, contribution, support, and project status sections to README.md."
+    },
+    {
+      "id": "license",
+      "label": "License",
+      "weight": 10,
+      "passed": true,
+      "evidence": [
+        "LICENSE"
+      ],
+      "why": "A license tells downstream users what they may legally do with the code.",
+      "fix": "Add an OSI-approved license file such as MIT, Apache-2.0, BSD-3-Clause, or MPL-2.0."
+    },
+    {
+      "id": "contributing",
+      "label": "Contributing guide",
+      "weight": 9,
+      "passed": true,
+      "evidence": [
+        "CONTRIBUTING.md"
+      ],
+      "why": "Maintainers get better issues and pull requests when expectations are documented.",
+      "fix": "Add CONTRIBUTING.md with local setup, test commands, review expectations, and release notes guidance."
+    },
+    {
+      "id": "security",
+      "label": "Security policy",
+      "weight": 9,
+      "passed": true,
+      "evidence": [
+        "SECURITY.md"
+      ],
+      "why": "Responsible disclosure needs a private, documented path.",
+      "fix": "Add SECURITY.md with supported versions, reporting instructions, and response expectations."
+    },
+    {
+      "id": "code-of-conduct",
+      "label": "Code of conduct",
+      "weight": 6,
+      "passed": true,
+      "evidence": [
+        "CODE_OF_CONDUCT.md"
+      ],
+      "why": "Community norms reduce ambiguity during difficult interactions.",
+      "fix": "Add CODE_OF_CONDUCT.md, for example the Contributor Covenant."
+    },
+    {
+      "id": "changelog",
+      "label": "Changelog",
+      "weight": 6,
+      "passed": true,
+      "evidence": [
+        "CHANGELOG.md"
+      ],
+      "why": "Users need a durable place to understand release impact.",
+      "fix": "Keep CHANGELOG.md with dated release entries and migration notes."
+    },
+    {
+      "id": "support",
+      "label": "Support policy",
+      "weight": 4,
+      "passed": true,
+      "evidence": [
+        "SUPPORT.md"
+      ],
+      "why": "Support boundaries help maintainers avoid turning every request into unpaid consulting.",
+      "fix": "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times."
+    },
+    {
+      "id": "ci",
+      "label": "Continuous integration",
+      "weight": 12,
+      "passed": true,
+      "evidence": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/codeql.yml",
+        ".github/workflows/release.yml",
+        ".github/workflows/repository-health.yml",
+        ".github/workflows/repository-inventory.yml"
+      ],
+      "why": "CI catches regressions before maintainers merge changes.",
+      "fix": "Add a GitHub Actions workflow that runs linting and tests on pushes and pull requests."
+    },
+    {
+      "id": "tests",
+      "label": "Tests",
+      "weight": 10,
+      "passed": true,
+      "evidence": [
+        "test/action.test.js",
+        "test/index.test.js"
+      ],
+      "why": "Tests make review safer and lower the cost of outside contributions.",
+      "fix": "Add focused tests for public behavior and document the test command."
+    },
+    {
+      "id": "issue-templates",
+      "label": "Issue templates",
+      "weight": 5,
+      "passed": true,
+      "evidence": [
+        ".github/ISSUE_TEMPLATE/adoption_report.yml",
+        ".github/ISSUE_TEMPLATE/audit_report.yml",
+        ".github/ISSUE_TEMPLATE/bug_report.md",
+        ".github/ISSUE_TEMPLATE/config.yml",
+        ".github/ISSUE_TEMPLATE/feature_request.md"
+      ],
+      "why": "Issue templates collect the facts maintainers need to reproduce and triage.",
+      "fix": "Add bug report and feature request templates under .github/ISSUE_TEMPLATE/."
+    },
+    {
+      "id": "pull-request-template",
+      "label": "Pull request template",
+      "weight": 5,
+      "passed": true,
+      "evidence": [
+        ".github/PULL_REQUEST_TEMPLATE.md"
+      ],
+      "why": "PR templates nudge contributors to include tests, docs, and review context.",
+      "fix": "Add .github/PULL_REQUEST_TEMPLATE.md with a short checklist."
+    },
+    {
+      "id": "dependabot",
+      "label": "Dependency update automation",
+      "weight": 5,
+      "passed": true,
+      "evidence": [
+        ".github/dependabot.yml"
+      ],
+      "why": "Automated dependency updates reduce security and compatibility drift.",
+      "fix": "Add .github/dependabot.yml for the package ecosystems used in the repository."
+    },
+    {
+      "id": "codeql",
+      "label": "Static security analysis",
+      "weight": 4,
+      "passed": true,
+      "evidence": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/codeql.yml",
+        ".github/workflows/release.yml",
+        ".github/workflows/repository-health.yml",
+        ".github/workflows/repository-inventory.yml"
+      ],
+      "why": "Static analysis finds common vulnerability patterns before releases.",
+      "fix": "Add a CodeQL or equivalent security scanning workflow."
+    },
+    {
+      "id": "package-json",
+      "label": "Node package metadata",
+      "weight": 5,
+      "passed": true,
+      "evidence": [
+        "package.json"
+      ],
+      "why": "Package metadata makes installation, testing, and release automation discoverable.",
+      "fix": "Add package.json with name, description, license, scripts, repository, and engines fields."
+    },
+    {
+      "id": "lockfile",
+      "label": "Dependency lockfile",
+      "weight": 4,
+      "passed": true,
+      "evidence": [
+        "package-lock.json"
+      ],
+      "why": "Lockfiles make CI and contributor setup reproducible.",
+      "fix": "Commit the lockfile for application-style projects, or document why this library intentionally omits one."
+    }
+  ],
+  "recommendations": []
+}

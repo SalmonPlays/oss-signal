@@ -23,7 +23,7 @@ It checks the files and automation that reduce maintainer load: README, license,
 
 ## Maintainer Evidence Snapshot
 
-Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.6.4`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.6.4`.
@@ -33,6 +33,8 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Adoption kit: [docs/adoption-kit.md](docs/adoption-kit.md)
 - Architecture: [docs/architecture.md](docs/architecture.md)
 - Security model: [docs/security-model.md](docs/security-model.md)
+- JSON output contract: [docs/json-output.md](docs/json-output.md)
+- SARIF Code Scanning walkthrough: [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md)
 - Roadmap: [docs/roadmap.md](docs/roadmap.md)
 - Post-submission version note: the application may reference earlier evidence; `0.6.4` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
@@ -111,6 +113,8 @@ Use JSON in automation:
 oss-signal . --format json --fail-under 80
 ```
 
+See [docs/json-output.md](docs/json-output.md) for the JSON schema and fixture.
+
 Audit multiple repositories from one newline-delimited inventory file:
 
 ```bash
@@ -124,6 +128,8 @@ Write SARIF for GitHub Code Scanning or other dashboards:
 ```bash
 oss-signal . --format sarif --output oss-signal.sarif
 ```
+
+See [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md) for the Code Scanning upload workflow and expected output.
 
 Generate a report that can be attached to an issue:
 

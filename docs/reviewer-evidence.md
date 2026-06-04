@@ -42,6 +42,10 @@ Expected result: score `100`, grade `A`, source `github`.
 - Adoption kit: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-kit.md
 - Architecture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/architecture.md
 - Security model: https://github.com/SalmonPlays/oss-signal/blob/main/docs/security-model.md
+- JSON output contract: https://github.com/SalmonPlays/oss-signal/blob/main/docs/json-output.md
+- JSON schema: https://github.com/SalmonPlays/oss-signal/blob/main/docs/schema/json-output.schema.json
+- JSON fixture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/examples/github-url-report.json
+- SARIF Code Scanning walkthrough: https://github.com/SalmonPlays/oss-signal/blob/main/docs/sarif-code-scanning.md
 - Roadmap: https://github.com/SalmonPlays/oss-signal/blob/main/docs/roadmap.md
 - Marketplace checklist: https://github.com/SalmonPlays/oss-signal/blob/main/docs/marketplace.md
 
@@ -87,7 +91,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - The public maintainer-workflow Discussion gives reviewers and users a clear place to ask usage questions and propose rule feedback.
 - The adoption report and maintainer audit issue forms give users structured ways to share public workflow evidence or discuss a generated report.
 - `CITATION.cff` is present so GitHub can expose a citation route for the repository.
-- The architecture, security model, and roadmap pages explain how the tool works, what permissions it needs, and what adoption signal is still missing.
+- The architecture, security model, JSON output contract, SARIF Code Scanning walkthrough, and roadmap pages explain how the tool works, what permissions it needs, what automation contract it exposes, and what adoption signal is still missing.
 - GitHub Pages is deployed as the repository homepage, and the repository About URL points to the live landing page.
 - `main` is protected against force pushes and branch deletion.
 - GitHub security features are enabled for maintainer readiness: private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts, Dependabot security updates, grouped security updates, malware alerts, CodeQL, Copilot Autofix, secret scanning, and push protection.
@@ -105,6 +109,8 @@ This project does not claim broad independent adoption yet. The separate workflo
 - Adoption kit: [adoption-kit.md](adoption-kit.md)
 - Architecture: [architecture.md](architecture.md)
 - Security model: [security-model.md](security-model.md)
+- JSON output contract: [json-output.md](json-output.md)
+- SARIF Code Scanning walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
 - Roadmap: [roadmap.md](roadmap.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
 - Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)

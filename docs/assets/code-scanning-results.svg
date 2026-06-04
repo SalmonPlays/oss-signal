@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">oss-signal Code Scanning results example</title>
+  <desc id="desc">Example GitHub Code Scanning view showing warning-level maintainer-readiness findings from oss-signal SARIF output.</desc>
+  <rect width="920" height="430" rx="18" fill="#ffffff"/>
+  <rect x="1" y="1" width="918" height="428" rx="18" fill="none" stroke="#d0d7de" stroke-width="2"/>
+  <rect x="0" y="0" width="920" height="58" rx="18" fill="#f6f8fa"/>
+  <text x="32" y="37" fill="#24292f" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="700">GitHub Code Scanning</text>
+  <text x="32" y="98" fill="#24292f" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="700">oss-signal maintainer-readiness findings</text>
+  <text x="32" y="132" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16">SARIF upload from SalmonPlays/oss-signal@v0.6.4</text>
+  <rect x="32" y="162" width="856" height="72" rx="10" fill="#fffbdd" stroke="#d4a72c"/>
+  <circle cx="65" cy="198" r="10" fill="#bf8700"/>
+  <text x="88" y="194" fill="#24292f" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17" font-weight="700">oss-signal/security</text>
+  <text x="88" y="218" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">Security policy: Add SECURITY.md with supported versions and reporting instructions.</text>
+  <text x="758" y="203" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">warning</text>
+  <rect x="32" y="252" width="856" height="72" rx="10" fill="#fffbdd" stroke="#d4a72c"/>
+  <circle cx="65" cy="288" r="10" fill="#bf8700"/>
+  <text x="88" y="284" fill="#24292f" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17" font-weight="700">oss-signal/dependabot</text>
+  <text x="88" y="308" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">Dependency update automation: Add .github/dependabot.yml for the repository ecosystem.</text>
+  <text x="758" y="293" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">warning</text>
+  <rect x="32" y="342" width="856" height="46" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="54" y="371" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">Report properties include score, grade, source, and generatedAt for reviewer context.</text>
+</svg>

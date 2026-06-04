@@ -38,6 +38,8 @@ Run as a GitHub Action:
 - [Maintainer playbook](maintainer-playbook.md)
 - [Architecture](architecture.md)
 - [Security model](security-model.md)
+- [JSON output contract](json-output.md)
+- [SARIF Code Scanning walkthrough](sarif-code-scanning.md)
 - [Roadmap](roadmap.md)
 - [Rules and scoring weights](rules.md)
 - [Post-submission update](post-submission-update.md)

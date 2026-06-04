@@ -22,6 +22,8 @@ Use JSON when another tool needs to consume the score:
 oss-signal owner/repo --format json
 ```
 
+See [docs/json-output.md](json-output.md) for the JSON schema and example fixture.
+
 Audit several repositories from one inventory file:
 
 ```bash
@@ -115,6 +117,8 @@ steps:
 ```
 
 See [docs/examples/github-code-scanning-workflow.yml](examples/github-code-scanning-workflow.yml) for a complete workflow.
+
+See [docs/sarif-code-scanning.md](sarif-code-scanning.md) for the permissions, expected warnings, and output example.
 
 ## 6. Collect Adoption Evidence
 

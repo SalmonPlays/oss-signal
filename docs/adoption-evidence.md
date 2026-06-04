@@ -36,6 +36,8 @@ Last verified: 2026-06-04T10:38:39Z
 - Adoption kit: [docs/adoption-kit.md](adoption-kit.md)
 - Architecture: [docs/architecture.md](architecture.md)
 - Security model: [docs/security-model.md](security-model.md)
+- JSON output contract: [docs/json-output.md](json-output.md)
+- SARIF Code Scanning walkthrough: [docs/sarif-code-scanning.md](sarif-code-scanning.md)
 - Roadmap: [docs/roadmap.md](roadmap.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
 - Post-submission update: [docs/post-submission-update.md](post-submission-update.md)
@@ -89,6 +91,8 @@ Current public workflow status:
 - GitHub Marketplace listing: published for the `v0.6.4` Action release
 - GitHub issue forms: adoption report and maintainer audit report forms are available for structured public evidence intake
 - GitHub citation metadata: `CITATION.cff` is present for the repository citation UI
+- Automation contract: JSON schema and fixture are documented for `--format json`
+- Code Scanning walkthrough: SARIF upload permissions, expected warnings, fixture, and output example are documented
 - GitHub repository hardening: `main` branch protection, private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts/security updates/grouped updates/malware alerts, secret scanning, and push protection are enabled
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
@@ -136,8 +140,8 @@ The repository also includes a GitHub Discussions category form for structured r
 Current public roadmap issues:
 
 - https://github.com/SalmonPlays/oss-signal/issues/8 tracks the first independent public workflow run or maintainer acknowledgement.
-- https://github.com/SalmonPlays/oss-signal/issues/9 tracks JSON output schema documentation for automation users.
-- https://github.com/SalmonPlays/oss-signal/issues/10 tracks a SARIF Code Scanning walkthrough.
+- https://github.com/SalmonPlays/oss-signal/issues/9 tracks JSON output schema documentation for automation users and is implemented by [json-output.md](json-output.md).
+- https://github.com/SalmonPlays/oss-signal/issues/10 tracks a SARIF Code Scanning walkthrough and is implemented by [sarif-code-scanning.md](sarif-code-scanning.md).
 
 ## Verification Commands
 
