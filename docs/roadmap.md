@@ -13,8 +13,8 @@ This roadmap focuses on the next maintainer workflows that would make `oss-signa
 | Area | Goal | Evidence target |
 | --- | --- | --- |
 | Adoption | Help one external maintainer run `SalmonPlays/oss-signal@v0.6.4` in a public workflow. | [Issue #8](https://github.com/SalmonPlays/oss-signal/issues/8), then linked workflow run or maintainer reply in [adoption-evidence.md](adoption-evidence.md). |
-| Automation | Document a stable JSON schema for consumers that parse `--format json`. | [Issue #9](https://github.com/SalmonPlays/oss-signal/issues/9), [json-output.md](json-output.md), [schema](schema/json-output.schema.json), and [fixture](examples/github-url-report.json). |
-| Code Scanning | Add a complete screenshot-backed SARIF walkthrough. | [Issue #10](https://github.com/SalmonPlays/oss-signal/issues/10), [sarif-code-scanning.md](sarif-code-scanning.md), and [output example](assets/code-scanning-results.svg). |
+| Automation | Document a stable JSON schema for consumers that parse `--format json`. | Completed in [Issue #9](https://github.com/SalmonPlays/oss-signal/issues/9), [json-output.md](json-output.md), [schema](schema/json-output.schema.json), and [fixture](examples/github-url-report.json). |
+| Code Scanning | Add a complete screenshot-backed SARIF walkthrough. | Completed in [Issue #10](https://github.com/SalmonPlays/oss-signal/issues/10), [sarif-code-scanning.md](sarif-code-scanning.md), and [output example](assets/code-scanning-results.svg). |
 | Rules | Add optional checks for funding metadata, typed package exports, and release provenance where relevant. | Focused issues and tests. |
 | Inventory | Add richer organization-level examples with grouped top findings. | Inventory report fixture and Action example. |
 

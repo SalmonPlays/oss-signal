@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-04T10:38:39Z
+Last verified: 2026-06-04T11:14:41Z
 
 ## Project Links
 
@@ -137,11 +137,11 @@ The project now has labeled good-first-issue routes for outside contributors:
 
 The repository also includes a GitHub Discussions category form for structured rule feedback, Action usage questions, and maintainer workflow adoption notes. The issue templates include adoption and maintainer-audit forms so users can share workflow-run evidence or discuss reports without inventing the format.
 
-Current public roadmap issues:
+Current public roadmap evidence:
 
 - https://github.com/SalmonPlays/oss-signal/issues/8 tracks the first independent public workflow run or maintainer acknowledgement.
-- https://github.com/SalmonPlays/oss-signal/issues/9 tracks JSON output schema documentation for automation users and is implemented by [json-output.md](json-output.md).
-- https://github.com/SalmonPlays/oss-signal/issues/10 tracks a SARIF Code Scanning walkthrough and is implemented by [sarif-code-scanning.md](sarif-code-scanning.md).
+- https://github.com/SalmonPlays/oss-signal/issues/9 was closed as completed after adding [json-output.md](json-output.md), the JSON schema, fixture, and reviewer links.
+- https://github.com/SalmonPlays/oss-signal/issues/10 was closed as completed after adding [sarif-code-scanning.md](sarif-code-scanning.md), the Code Scanning output example, and reviewer links.
 
 ## Verification Commands
 
