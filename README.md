@@ -24,11 +24,13 @@ It checks the files and automation that reduce maintainer load: README, license,
 
 Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
+- Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.6.4`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.6.4`.
 - Published GitHub Action: [`SalmonPlays/oss-signal@v0.6.4`](https://github.com/SalmonPlays/oss-signal/tree/v0.6.4).
 - Post-submission version note: the application may reference earlier evidence; `0.6.4` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
-- Security posture: OpenSSF Scorecard is scheduled, publishes public results, and uploads a JSON artifact without adding noisy Code Scanning alerts.
+- Security posture: OpenSSF Scorecard is scheduled, CodeQL is active, secret scanning push protection is enabled, Dependabot alerts/security updates/malware alerts are enabled, and private vulnerability reporting is enabled.
+- Branch posture: `main` has branch protection to prevent force pushes and deletions while keeping direct maintainer maintenance possible.
 - Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
 - Community route: [Discussion #5](https://github.com/SalmonPlays/oss-signal/discussions/5) is the public maintainer-workflow thread for usage questions and rule feedback.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.

@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-04T07:36:10Z
+Last verified: 2026-06-04T09:56:45Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -36,6 +36,7 @@ Expected result: score `100`, grade `A`, source `github`.
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
 - Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - GitHub Pages source: https://github.com/SalmonPlays/oss-signal/blob/main/docs/index.md
+- GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - Marketplace checklist: https://github.com/SalmonPlays/oss-signal/blob/main/docs/marketplace.md
 
 4. Run an inventory report from the repository target list:
@@ -78,6 +79,10 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - The repository has a Discussion category form for structured feedback on rules, Action usage, and adoption.
 - The repository has explicit maintainer ownership and review routing through [../MAINTAINERS.md](../MAINTAINERS.md), [../GOVERNANCE.md](../GOVERNANCE.md), and [../.github/CODEOWNERS](../.github/CODEOWNERS).
 - The public maintainer-workflow Discussion gives reviewers and users a clear place to ask usage questions and propose rule feedback.
+- GitHub Pages is deployed as the repository homepage, and the repository About URL points to the live landing page.
+- `main` is protected against force pushes and branch deletion.
+- GitHub security features are enabled for maintainer readiness: private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts, Dependabot security updates, grouped security updates, malware alerts, CodeQL, Copilot Autofix, secret scanning, and push protection.
+- The free GitHub Marketplace Action listing is prepared, but GitHub requires account-level two-factor authentication before the publish checkbox can be used.
 
 ## Boundaries
 

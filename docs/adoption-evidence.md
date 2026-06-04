@@ -2,11 +2,12 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-04T07:36:10Z
+Last verified: 2026-06-04T09:56:45Z
 
 ## Project Links
 
 - Repository: https://github.com/SalmonPlays/oss-signal
+- GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - npm package: https://www.npmjs.com/package/oss-signal (`0.6.4` latest)
 - GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.4
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.4
@@ -78,6 +79,8 @@ Current public workflow status:
 - CodeQL: passing
 - OpenSSF Scorecard: configured on `main` pushes and a weekly schedule, with JSON artifact output and public Scorecard publishing
 - Release: passing
+- GitHub Pages deployment: passing, with the repository homepage set to https://salmonplays.github.io/oss-signal/
+- GitHub repository hardening: `main` branch protection, private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts/security updates/grouped updates/malware alerts, secret scanning, and push protection are enabled
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
@@ -110,7 +113,7 @@ Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 updates Codex Action README examples so generated output is routed through environment variables before shell printing.
 
-All field-audit follow-up PRs were still open when checked from GitHub on 2026-06-04T07:36:10Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
+All field-audit follow-up PRs were still open when checked from GitHub on 2026-06-04T09:56:45Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
 
 ## Contributor Intake
 
