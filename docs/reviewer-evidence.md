@@ -40,6 +40,9 @@ Expected result: score `100`, grade `A`, source `github`.
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Trust center: https://github.com/SalmonPlays/oss-signal/blob/main/docs/trust-center.md
 - Adoption kit: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-kit.md
+- Architecture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/architecture.md
+- Security model: https://github.com/SalmonPlays/oss-signal/blob/main/docs/security-model.md
+- Roadmap: https://github.com/SalmonPlays/oss-signal/blob/main/docs/roadmap.md
 - Marketplace checklist: https://github.com/SalmonPlays/oss-signal/blob/main/docs/marketplace.md
 
 4. Run an inventory report from the repository target list:
@@ -83,6 +86,8 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - The repository has explicit maintainer ownership and review routing through [../MAINTAINERS.md](../MAINTAINERS.md), [../GOVERNANCE.md](../GOVERNANCE.md), and [../.github/CODEOWNERS](../.github/CODEOWNERS).
 - The public maintainer-workflow Discussion gives reviewers and users a clear place to ask usage questions and propose rule feedback.
 - The adoption report and maintainer audit issue forms give users structured ways to share public workflow evidence or discuss a generated report.
+- `CITATION.cff` is present so GitHub can expose a citation route for the repository.
+- The architecture, security model, and roadmap pages explain how the tool works, what permissions it needs, and what adoption signal is still missing.
 - GitHub Pages is deployed as the repository homepage, and the repository About URL points to the live landing page.
 - `main` is protected against force pushes and branch deletion.
 - GitHub security features are enabled for maintainer readiness: private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts, Dependabot security updates, grouped security updates, malware alerts, CodeQL, Copilot Autofix, secret scanning, and push protection.
@@ -98,6 +103,9 @@ This project does not claim broad independent adoption yet. The separate workflo
 - Trust center: [trust-center.md](trust-center.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 - Adoption kit: [adoption-kit.md](adoption-kit.md)
+- Architecture: [architecture.md](architecture.md)
+- Security model: [security-model.md](security-model.md)
+- Roadmap: [roadmap.md](roadmap.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
 - Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)
 - Release process: [release-process.md](release-process.md)

@@ -18,6 +18,7 @@ What it does have is a complete, public maintainer workflow:
 - Public self-audit, GitHub URL audit, SARIF output, inventory report, and issue-body examples.
 - Public field-audit reports, posted issues, and narrow follow-up pull requests against external repositories.
 - Explicit governance, maintainer ownership, CODEOWNERS, security policy, support policy, contribution guide, and release process.
+- Citation metadata, architecture notes, security model, and roadmap are documented in the repository.
 
 ## Evidence Matrix
 
@@ -30,6 +31,8 @@ What it does have is a complete, public maintainer workflow:
 | Security posture | [CodeQL workflow](../.github/workflows/codeql.yml), [OpenSSF Scorecard workflow](../.github/workflows/scorecard.yml), [SECURITY.md](../SECURITY.md) | Security and supply-chain signals are visible in public workflows. |
 | Release process | [release workflow](../.github/workflows/release.yml), [release process](release-process.md), [CHANGELOG.md](../CHANGELOG.md) | Package and Action releases have repeatable checks. |
 | Maintainer governance | [MAINTAINERS.md](../MAINTAINERS.md), [GOVERNANCE.md](../GOVERNANCE.md), [CODEOWNERS](../.github/CODEOWNERS) | Ownership and review paths are explicit. |
+| Architecture | [architecture](architecture.md), [security model](security-model.md), [roadmap](roadmap.md) | Reviewers can inspect the implementation boundary, permissions, and next adoption target. |
+| Citation | [CITATION.cff](../CITATION.cff) | GitHub can expose a standard citation route for the project. |
 | External workflow evidence | [adoption evidence](adoption-evidence.md) | Field audits show the intended maintainer workflow on public repositories. |
 | Contributor intake | [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22), [adoption kit](adoption-kit.md) | Outside users have structured ways to try, report, and contribute. |
 

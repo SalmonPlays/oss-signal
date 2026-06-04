@@ -4,7 +4,20 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    labels:
+      - dependencies
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    labels:
+      - dependencies
+      - github_actions
+    groups:
+      github-actions:
+        patterns:
+          - "*"

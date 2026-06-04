@@ -1,0 +1,33 @@
+# Roadmap
+
+This roadmap focuses on the next maintainer workflows that would make `oss-signal` more useful to public OSS projects.
+
+## Current Focus
+
+- Keep the CLI, npm package, GitHub Action, Marketplace listing, and Pages documentation aligned.
+- Collect the first independent public workflow run or maintainer acknowledgement.
+- Improve examples that help maintainers move from audit output to a small issue or pull request.
+
+## Near-Term Work
+
+| Area | Goal | Evidence target |
+| --- | --- | --- |
+| Adoption | Help one external maintainer run `SalmonPlays/oss-signal@v0.6.4` in a public workflow. | [Issue #8](https://github.com/SalmonPlays/oss-signal/issues/8), then linked workflow run or maintainer reply in [adoption-evidence.md](adoption-evidence.md). |
+| Automation | Document a stable JSON schema for consumers that parse `--format json`. | [Issue #9](https://github.com/SalmonPlays/oss-signal/issues/9), schema page, and fixture examples. |
+| Code Scanning | Add a complete screenshot-backed SARIF walkthrough. | [Issue #10](https://github.com/SalmonPlays/oss-signal/issues/10), Pages documentation, and example workflow. |
+| Rules | Add optional checks for funding metadata, typed package exports, and release provenance where relevant. | Focused issues and tests. |
+| Inventory | Add richer organization-level examples with grouped top findings. | Inventory report fixture and Action example. |
+
+## What Will Not Be Optimized
+
+- Artificial stars, follows, or engagement.
+- Spam issues or pull requests.
+- Claims of third-party adoption before a maintainer uses, merges, replies to, or endorses the workflow.
+- Broad code-quality scoring. The project measures visible maintainer-readiness signals only.
+
+## Contribution Routes
+
+- Good first issues: https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22
+- Adoption report form: https://github.com/SalmonPlays/oss-signal/issues/new?template=adoption_report.yml
+- Maintainer audit report form: https://github.com/SalmonPlays/oss-signal/issues/new?template=audit_report.yml
+- Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

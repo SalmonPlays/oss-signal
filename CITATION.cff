@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If oss-signal helps your maintainer workflow, please cite the repository."
+title: "oss-signal"
+abstract: "Maintainer-readiness CLI and GitHub Action for OSS triage, CI evidence, inventory reports, SARIF, and issue-ready cleanup."
+authors:
+  - family-names: "Oda"
+    given-names: "Amon"
+repository-code: "https://github.com/SalmonPlays/oss-signal"
+url: "https://salmonplays.github.io/oss-signal/"
+license: "MIT"
+version: "0.6.4"
+date-released: "2026-06-04"
+keywords:
+  - open-source
+  - maintainer-tools
+  - github-actions
+  - repository-health
+  - sarif
+  - triage

@@ -34,6 +34,9 @@ Last verified: 2026-06-04T10:38:39Z
 - Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
 - Trust center: [docs/trust-center.md](trust-center.md)
 - Adoption kit: [docs/adoption-kit.md](adoption-kit.md)
+- Architecture: [docs/architecture.md](architecture.md)
+- Security model: [docs/security-model.md](security-model.md)
+- Roadmap: [docs/roadmap.md](roadmap.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
 - Post-submission update: [docs/post-submission-update.md](post-submission-update.md)
 - Release process: [docs/release-process.md](release-process.md)
@@ -85,6 +88,7 @@ Current public workflow status:
 - GitHub Pages deployment: passing, with the repository homepage set to https://salmonplays.github.io/oss-signal/
 - GitHub Marketplace listing: published for the `v0.6.4` Action release
 - GitHub issue forms: adoption report and maintainer audit report forms are available for structured public evidence intake
+- GitHub citation metadata: `CITATION.cff` is present for the repository citation UI
 - GitHub repository hardening: `main` branch protection, private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts/security updates/grouped updates/malware alerts, secret scanning, and push protection are enabled
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
@@ -128,6 +132,12 @@ The project now has labeled good-first-issue routes for outside contributors:
 - https://github.com/SalmonPlays/oss-signal/issues/7
 
 The repository also includes a GitHub Discussions category form for structured rule feedback, Action usage questions, and maintainer workflow adoption notes. The issue templates include adoption and maintainer-audit forms so users can share workflow-run evidence or discuss reports without inventing the format.
+
+Current public roadmap issues:
+
+- https://github.com/SalmonPlays/oss-signal/issues/8 tracks the first independent public workflow run or maintainer acknowledgement.
+- https://github.com/SalmonPlays/oss-signal/issues/9 tracks JSON output schema documentation for automation users.
+- https://github.com/SalmonPlays/oss-signal/issues/10 tracks a SARIF Code Scanning walkthrough.
 
 ## Verification Commands
 
