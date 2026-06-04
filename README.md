@@ -28,7 +28,7 @@ Public evidence for the maintainer workflow is collected in [docs/reviewer-evide
 - Published GitHub Action: [`SalmonPlays/oss-signal@v0.6.4`](https://github.com/SalmonPlays/oss-signal/tree/v0.6.4).
 - Post-submission version note: the application may reference earlier evidence; `0.6.4` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
-- Security posture: OpenSSF Scorecard is scheduled and uploads SARIF into Code Scanning.
+- Security posture: OpenSSF Scorecard is scheduled, publishes public results, and uploads a JSON artifact without adding noisy Code Scanning alerts.
 - Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
 - Community route: [Discussion #5](https://github.com/SalmonPlays/oss-signal/discussions/5) is the public maintainer-workflow thread for usage questions and rule feedback.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.

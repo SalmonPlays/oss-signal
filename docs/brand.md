@@ -13,6 +13,7 @@ The display name is intentionally more descriptive for reviewers, while `oss-sig
 - README banner: [assets/oss-signal-banner.svg](assets/oss-signal-banner.svg)
 - GitHub social preview source: [assets/github-social-preview.svg](assets/github-social-preview.svg)
 - GitHub social preview PNG: [assets/github-social-preview.png](assets/github-social-preview.png)
+- GitHub profile avatar candidate: [assets/github-profile-avatar.png](assets/github-profile-avatar.png)
 
 ## GitHub Settings Copy
 
@@ -38,6 +39,6 @@ oss
 These cannot be committed through git:
 
 - Repository social preview: upload `docs/assets/github-social-preview.png` in GitHub repository settings.
-- GitHub profile or organization avatar: upload `docs/assets/oss-signal-icon.png`.
+- GitHub profile or organization avatar: upload `docs/assets/github-profile-avatar.png` for a maintainer-profile look, or `docs/assets/oss-signal-icon.png` for a pure project-logo look.
 
 The repository name should remain `oss-signal` unless the npm package and GitHub Action distribution are intentionally migrated.

@@ -74,7 +74,7 @@ Current public workflow status:
 - Repository health: passing
 - Repository inventory: passing
 - CodeQL: passing
-- OpenSSF Scorecard: configured on `main` pushes and a weekly schedule
+- OpenSSF Scorecard: configured on `main` pushes and a weekly schedule, with JSON artifact output and public Scorecard publishing
 - Release: passing
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
