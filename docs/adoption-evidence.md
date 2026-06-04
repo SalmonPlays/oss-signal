@@ -2,14 +2,14 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-04T01:33:34Z
+Last verified: 2026-06-04T02:08:35Z
 
 ## Project Links
 
 - Repository: https://github.com/SalmonPlays/oss-signal
-- npm package: https://www.npmjs.com/package/oss-signal (`0.6.1` latest)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.1
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.1
+- npm package: https://www.npmjs.com/package/oss-signal (`0.6.2` latest)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.2
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.2
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
 - Public inventory workflow: [.github/workflows/repository-inventory.yml](../.github/workflows/repository-inventory.yml)
@@ -44,7 +44,7 @@ The [maintainer playbook](maintainer-playbook.md) documents the end-to-end workf
 
 ## Published Package Verification
 
-The npm package is publicly available as `oss-signal@0.6.1` with `latest` pointing at `0.6.1`.
+The npm package is publicly available as `oss-signal@0.6.2` with `latest` pointing at `0.6.2`.
 
 The npm downloads API returned 356 downloads for both last-week and last-month windows on 2026-06-04. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
@@ -52,7 +52,7 @@ Clean-directory execution against the public GitHub repository returned:
 
 ```json
 {
-  "version": "0.6.1",
+  "version": "0.6.2",
   "score": 100,
   "grade": "A",
   "source": "github"
@@ -67,7 +67,7 @@ Current public workflow status:
 - Release: passing
 - Separate public workflow demo: passing
 
-The npm registry returned `0.6.1` for both the package version and `latest` dist-tag on 2026-06-04T01:33:34Z. The same check returned 356 downloads for the last-week and last-month windows.
+The npm registry returned `0.6.2` for both the package version and `latest` dist-tag on 2026-06-04T02:08:35Z. The same check returned 356 downloads for the last-week and last-month windows.
 
 ## Separate Public Workflow Evidence
 
@@ -92,7 +92,7 @@ The tool has been used to generate maintainer-readiness reports for public repos
 
 These issues and pull requests are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements. Each PR is intentionally limited to documentation or GitHub templates.
 
-All four follow-up PRs were still open when checked from GitHub on 2026-06-04T01:33:34Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
+All four follow-up PRs were still open when checked from GitHub on 2026-06-04T02:08:35Z. They are not claimed as accepted adoption unless a maintainer merges or otherwise endorses them.
 
 ## Verification Commands
 
@@ -104,10 +104,10 @@ npm run audit:github
 node src/cli.js . --format sarif --output docs/examples/self-audit.sarif
 node src/cli.js --inventory docs/examples/inventory-targets.txt --format markdown --output docs/examples/inventory-report.md
 node src/cli.js platformatic/massimo --format json
-npm exec --yes --package=oss-signal@0.6.1 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.6.2 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
-The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.6.1` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.6.1` package has also been executed from a clean temporary directory against the public GitHub repository, returning 100/100 (A).
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.6.2` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.6.2` package has also been executed from a clean temporary directory against the public GitHub repository, returning 100/100 (A).
 
 Public CI evidence:
 

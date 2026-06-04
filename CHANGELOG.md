@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.6.2
+
+- Switched the release workflow from token-gated publishing to npm Trusted Publishing with provenance.
+- Removed the repository-variable gate so tag releases can publish through GitHub Actions OIDC without npm OTP.
+
 ## 0.6.1
 
 - Added GitHub Release creation to the tag-triggered release workflow.

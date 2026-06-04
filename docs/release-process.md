@@ -49,11 +49,11 @@ git push origin main --tags
 
 Create a GitHub Release for the tag and use the release notes in `docs/release-notes/` when available.
 
-For example, `v0.6.1` uses [docs/release-notes/v0.6.1.md](release-notes/v0.6.1.md).
+For example, `v0.6.2` uses [docs/release-notes/v0.6.2.md](release-notes/v0.6.2.md).
 
 ## npm Publish
 
-Manual publish path:
+Manual publish path, used only as a fallback:
 
 ```bash
 npm publish --access public
@@ -61,14 +61,14 @@ npm publish --access public
 
 Automation path:
 
-The tag-triggered [release workflow](../.github/workflows/release.yml) runs the same checks and verifies the package with `npm publish --dry-run`.
+The tag-triggered [release workflow](../.github/workflows/release.yml) runs the same checks, verifies the package with `npm publish --dry-run`, creates a GitHub Release, and publishes to npm with Trusted Publishing provenance.
 
-It publishes with provenance only when both release controls are configured:
+Trusted Publishing must be configured on npm for:
 
-- Repository secret `NPM_TOKEN` contains an npm automation token.
-- Repository variable `NPM_PUBLISH_ENABLED` is set to `true`.
-
-If either control is missing, the workflow prints a notice and stops after dry-run verification. This keeps tag verification useful when npm publishing is handled manually.
+- Package: `oss-signal`
+- Repository: `SalmonPlays/oss-signal`
+- Workflow file: `release.yml`
+- Permission: npm publish
 
 ## Post-Release Verification
 
