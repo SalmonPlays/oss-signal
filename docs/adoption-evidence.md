@@ -27,6 +27,8 @@ Last verified: 2026-06-04T07:36:10Z
 - Inventory target example: [docs/examples/inventory-targets.txt](examples/inventory-targets.txt)
 - Inventory report example: [docs/examples/inventory-report.md](examples/inventory-report.md)
 - Brand assets and GitHub settings copy: [docs/brand.md](brand.md)
+- GitHub Pages landing page source: [docs/index.md](index.md)
+- GitHub Marketplace publishing checklist: [docs/marketplace.md](marketplace.md)
 - Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
 - Post-submission update: [docs/post-submission-update.md](post-submission-update.md)
@@ -116,6 +118,8 @@ The project now has labeled good-first-issue routes for outside contributors:
 
 - https://github.com/SalmonPlays/oss-signal/issues/6
 - https://github.com/SalmonPlays/oss-signal/issues/7
+
+The repository also includes a GitHub Discussions category form for structured rule feedback, Action usage questions, and maintainer workflow adoption notes.
 
 ## Verification Commands
 

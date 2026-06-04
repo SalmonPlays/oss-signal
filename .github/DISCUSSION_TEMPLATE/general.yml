@@ -1,0 +1,42 @@
+title: "[Feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve oss-signal. Use this form for rule feedback, adoption notes, or maintainer workflow questions.
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic
+      options:
+        - Rule feedback
+        - GitHub Action usage
+        - CLI usage
+        - Repository inventory
+        - Documentation
+        - Other maintainer workflow
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Repository or workflow context
+      description: Link the repository, workflow run, or example if it is public.
+      placeholder: "owner/repo or https://github.com/owner/repo/actions/runs/..."
+    validations:
+      required: false
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What should oss-signal detect, explain, or document better?
+      placeholder: "Describe the maintainer workflow or repository signal."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected output
+      description: Optional example of the report, rule message, or Action behavior you expected.
+    validations:
+      required: false

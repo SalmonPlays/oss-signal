@@ -35,6 +35,8 @@ Expected result: score `100`, grade `A`, source `github`.
 - OpenSSF Scorecard: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
 - Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
+- GitHub Pages source: https://github.com/SalmonPlays/oss-signal/blob/main/docs/index.md
+- Marketplace checklist: https://github.com/SalmonPlays/oss-signal/blob/main/docs/marketplace.md
 
 4. Run an inventory report from the repository target list:
 
@@ -73,6 +75,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - The `--format issue` mode produces a maintainer-readable follow-up body that is reviewed before posting.
 - The field-audit examples show the intended workflow: run audit, write report, open a respectful issue, then prepare a narrow PR when useful.
 - The project has labeled good-first-issue routes for external contributors who want a small, bounded PR.
+- The repository has a Discussion category form for structured feedback on rules, Action usage, and adoption.
 - The repository has explicit maintainer ownership and review routing through [../MAINTAINERS.md](../MAINTAINERS.md), [../GOVERNANCE.md](../GOVERNANCE.md), and [../.github/CODEOWNERS](../.github/CODEOWNERS).
 - The public maintainer-workflow Discussion gives reviewers and users a clear place to ask usage questions and propose rule feedback.
 
