@@ -1,8 +1,8 @@
 name: oss-signal
-description: Audit open-source repository maintenance readiness and produce actionable maintainer next steps.
+description: Audit OSS maintainer readiness and produce CI evidence, SARIF, inventory reports, and issue-ready cleanup notes.
 author: SalmonPlays
 branding:
-  icon: activity
+  icon: shield
   color: blue
 inputs:
   path:

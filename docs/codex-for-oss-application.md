@@ -6,6 +6,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 
 ## Project
 
+- Display name: OSS Maintainer Signal
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
 - GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.3
@@ -18,13 +19,14 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
+- Brand assets and GitHub settings copy: [brand.md](brand.md)
 - Form answer pack: [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md)
 - Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)
 - Release process: [release-process.md](release-process.md)
 
 ## What `oss-signal` Does
 
-`oss-signal` is a dependency-light CLI and GitHub Action for OSS maintainers. It audits maintainer-readiness signals that lower recurring maintainer load:
+`oss-signal`, presented as OSS Maintainer Signal, is a dependency-light CLI and GitHub Action for OSS maintainers. It audits maintainer-readiness signals that lower recurring maintainer load:
 
 - README, license, contribution, support, security, code of conduct, and changelog files.
 - CI, tests, issue templates, pull request templates, Dependabot, and CodeQL-style security workflow.

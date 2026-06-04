@@ -71,6 +71,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 
 ## Primary Evidence Pages
 
+- Brand assets and GitHub settings copy: [brand.md](brand.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
 - Maintainer playbook: [maintainer-playbook.md](maintainer-playbook.md)

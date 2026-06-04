@@ -1,7 +1,7 @@
 {
   "name": "oss-signal",
   "version": "0.6.3",
-  "description": "A dependency-light CLI that audits open-source repository maintenance readiness.",
+  "description": "Maintainer-readiness CLI and GitHub Action for OSS triage, CI evidence, inventory reports, SARIF, and issue-ready cleanup.",
   "type": "module",
   "bin": {
     "oss-signal": "src/cli.js"
@@ -34,8 +34,12 @@
   "keywords": [
     "open-source",
     "maintainer",
+    "maintainer-tools",
     "audit",
     "repository",
+    "repository-health",
+    "github-action",
+    "sarif",
     "cli"
   ],
   "author": "SalmonPlays",

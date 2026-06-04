@@ -1,21 +1,27 @@
-# oss-signal
+<p align="center">
+  <img src="docs/assets/oss-signal-banner.svg" alt="OSS Maintainer Signal banner">
+</p>
+
+# OSS Maintainer Signal (`oss-signal`)
 
 [![CI](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml)
 [![Repository health](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml)
 [![GitHub release](https://img.shields.io/github/v/release/SalmonPlays/oss-signal.svg)](https://github.com/SalmonPlays/oss-signal/releases/latest)
 [![npm version](https://img.shields.io/npm/v/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
 [![npm downloads](https://img.shields.io/npm/dm/oss-signal.svg)](https://www.npmjs.com/package/oss-signal)
+[![Self audit](https://img.shields.io/badge/self--audit-100%2F100-brightgreen.svg)](docs/self-audit.md)
+[![Maintainer evidence](https://img.shields.io/badge/maintainer_evidence-public-blue.svg)](docs/reviewer-evidence.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-`oss-signal` is a dependency-light CLI for auditing open-source repository maintenance readiness.
+`oss-signal` is a dependency-light maintainer-readiness CLI and GitHub Action for OSS projects that need repeatable triage, CI evidence, SARIF, inventory reports, and issue-ready cleanup notes.
 
-It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, or a GitHub Issue-ready Markdown body.
+It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, or a GitHub Issue-ready Markdown body.
 
 ![oss-signal example output](docs/assets/terminal-report.svg)
 
 ## Maintainer Evidence Snapshot
 
-Public evidence for the maintainer workflow is collected in [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), and [docs/post-submission-update.md](docs/post-submission-update.md).
+Public evidence for the maintainer workflow is collected in [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Published package: [`oss-signal@0.6.3`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.6.3`.
 - Published GitHub Action: [`SalmonPlays/oss-signal@v0.6.3`](https://github.com/SalmonPlays/oss-signal/tree/v0.6.3).

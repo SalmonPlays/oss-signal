@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-labelledby="title desc">
+  <title id="title">OSS Maintainer Signal banner</title>
+  <desc id="desc">A banner for oss-signal describing an OSS maintainer-readiness CLI and GitHub Action.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#020617"/>
+      <stop offset="0.52" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#052e16"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="170" y1="42" x2="1080" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.55" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="420" fill="url(#bg)"/>
+  <circle cx="1052" cy="92" r="180" fill="#22c55e" opacity="0.13"/>
+  <circle cx="115" cy="365" r="220" fill="#0ea5e9" opacity="0.16"/>
+  <path d="M102 344c245-176 464-222 657-139 149 64 276 54 419-32" fill="none" stroke="#38bdf8" stroke-width="2" opacity="0.18"/>
+  <g transform="translate(88 76)" filter="url(#softShadow)">
+    <rect width="196" height="196" rx="44" fill="url(#accent)"/>
+    <path d="M98 33l62 23v51c0 39-25 68-62 82-37-14-62-43-62-82V56l62-23z" fill="#020617" opacity="0.3"/>
+    <circle cx="98" cy="108" r="39" fill="#f8fafc"/>
+    <path d="M78 108l15 15 31-36" fill="none" stroke="#16a34a" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M60 68c21-19 55-19 76 0" fill="none" stroke="#e0f2fe" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
+  </g>
+  <text x="332" y="116" fill="#93c5fd" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="24" font-weight="700" letter-spacing="3">OSS-SIGNAL</text>
+  <text x="332" y="176" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="58" font-weight="800">OSS Maintainer Signal</text>
+  <text x="334" y="222" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26">Audit maintainer readiness, then turn findings into CI gates, SARIF, issues, and PRs.</text>
+  <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="700">
+    <rect x="334" y="266" width="144" height="42" rx="21" fill="#dcfce7"/>
+    <text x="359" y="293" fill="#166534">100/100 A</text>
+    <rect x="494" y="266" width="142" height="42" rx="21" fill="#dbeafe"/>
+    <text x="521" y="293" fill="#1e40af">npm 0.6.3</text>
+    <rect x="652" y="266" width="178" height="42" rx="21" fill="#e0f2fe"/>
+    <text x="681" y="293" fill="#075985">GitHub Action</text>
+    <rect x="846" y="266" width="168" height="42" rx="21" fill="#fef9c3"/>
+    <text x="876" y="293" fill="#854d0e">Inventory mode</text>
+  </g>
+  <text x="335" y="356" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">$ npx oss-signal SalmonPlays/oss-signal</text>
+</svg>
