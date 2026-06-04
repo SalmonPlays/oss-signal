@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.6.1
+
+- Added GitHub Release creation to the tag-triggered release workflow.
+- Published the repository inventory release with a GitHub Release page and npm package verification path.
+
 ## 0.6.0
 
 - Added repository inventory mode for auditing newline-delimited lists of local paths, GitHub URLs, and `owner/repo` shorthands.

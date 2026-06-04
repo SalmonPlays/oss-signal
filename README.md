@@ -17,8 +17,8 @@ It checks the files and automation that reduce maintainer load: README, license,
 
 Public evidence for the maintainer workflow is collected in [docs/reviewer-evidence.md](docs/reviewer-evidence.md) and [docs/adoption-evidence.md](docs/adoption-evidence.md).
 
-- Published package: [`oss-signal@0.6.0`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.6.0`.
-- Published GitHub Action: [`SalmonPlays/oss-signal@v0.6.0`](https://github.com/SalmonPlays/oss-signal/tree/v0.6.0).
+- Published package: [`oss-signal@0.6.1`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.6.1`.
+- Published GitHub Action: [`SalmonPlays/oss-signal@v0.6.1`](https://github.com/SalmonPlays/oss-signal/tree/v0.6.1).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
 - Field use: four public maintainer-readiness audits have been turned into four issues and four focused follow-up PRs.
@@ -142,7 +142,7 @@ Summary:
 
 See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
 
-The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.6.0`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
+The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.6.1`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
 
 ## Field Audits
 
@@ -186,7 +186,7 @@ oss-signal . --fail-under 80
 Add `oss-signal` directly to a GitHub Actions workflow:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.0
+- uses: SalmonPlays/oss-signal@v0.6.1
   id: oss-signal
   with:
     fail-under: "80"
@@ -202,7 +202,7 @@ The Action writes a concise GitHub Actions step summary by default, so reviewers
 Run an inventory from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.0
+- uses: SalmonPlays/oss-signal@v0.6.1
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -214,7 +214,7 @@ Run an inventory from CI:
 Generate an editable Issue body from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.0
+- uses: SalmonPlays/oss-signal@v0.6.1
   with:
     format: issue
     output: maintainer-follow-up.md
@@ -236,7 +236,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.6.0
+      - uses: SalmonPlays/oss-signal@v0.6.1
         id: oss-signal
         with:
           fail-under: "80"
@@ -259,7 +259,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.6.0
+  - uses: SalmonPlays/oss-signal@v0.6.1
     with:
       format: sarif
       output: oss-signal.sarif
@@ -269,7 +269,7 @@ steps:
       sarif_file: oss-signal.sarif
 ```
 
-This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.6.0` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
+This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.6.1` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
 
 You can also run the CLI directly in CI:
 

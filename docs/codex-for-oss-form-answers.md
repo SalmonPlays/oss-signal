@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-03T12:45:11Z
+Snapshot: 2026-06-04T01:33:34Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.6.0 and GitHub Action SalmonPlays/oss-signal@v0.6.0, supports Markdown/JSON/SARIF/Issue/Inventory output, passes CI/CodeQL/Release, has a 100/100 self-audit, and has four public field-audit issues plus four PRs.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.6.1 and GitHub Action SalmonPlays/oss-signal@v0.6.1, supports Markdown/JSON/SARIF/Issue/Inventory output, passes CI/CodeQL/Release, has a 100/100 self-audit, and has four public field-audit issues plus four PRs.
 ```
 
 ## Interest
@@ -81,13 +81,13 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.6.0 latest, 356 npm downloads reported by the registry API, a published v0.6.0 release, a reusable GitHub Action with inventory mode, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, four field-audit issues, four PRs, and a workflow demo with artifacts.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.6.1 latest, 356 npm downloads reported by the registry API, a published v0.6.1 release, a reusable GitHub Action with inventory mode, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, four field-audit issues, four PRs, and a workflow demo with artifacts.
 ```
 
 ## Evidence Links
 
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Release v0.6.0: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.0
+- GitHub Release v0.6.1: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.1
 - Main repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Separate workflow demo repository: https://github.com/SalmonPlays/oss-signal-adoption-demo
 - Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
