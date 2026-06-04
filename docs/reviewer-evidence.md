@@ -71,6 +71,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 | `supermarkt/checkjebon` | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | Contributor workflow templates |
 | `sammorrisdesign/interactive-feed` | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | Contributor workflow templates |
 | `flox/install-flox-action` | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | Pull request template |
+| `Grovanni/oss-signal` | https://github.com/Grovanni/oss-signal/issues/1 | N/A | CI, Dependabot, and CodeQL |
 | `icoretech/codex-action` | N/A | https://github.com/icoretech/codex-action/pull/24 | Codex Action README safety examples |
 
 7. Inspect inbound contribution routes:
@@ -85,6 +86,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - The GitHub Action can write a step summary, publish a Markdown artifact, produce SARIF, and run inventory reports.
 - The `--format issue` mode produces a maintainer-readable follow-up body that is reviewed before posting.
 - The field-audit examples show the intended workflow: run audit, write report, open a respectful issue, then prepare a narrow PR when useful.
+- A separate shortlist tracks candidate repositories that were researched and drafted but not yet contacted, so prepared outreach is not misrepresented as posted maintainer engagement.
 - The project has labeled good-first-issue routes for external contributors who want a small, bounded PR.
 - The repository has a Discussion category form for structured feedback on rules, Action usage, and adoption.
 - The repository has explicit maintainer ownership and review routing through [../MAINTAINERS.md](../MAINTAINERS.md), [../GOVERNANCE.md](../GOVERNANCE.md), and [../.github/CODEOWNERS](../.github/CODEOWNERS).

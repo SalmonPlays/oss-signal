@@ -182,8 +182,11 @@ The [Repository health workflow](.github/workflows/repository-health.yml) runs `
 - [supermarkt/checkjebon report](docs/outreach/supermarkt-checkjebon-report.md), [issue #22](https://github.com/supermarkt/checkjebon/issues/22), and [PR #23](https://github.com/supermarkt/checkjebon/pull/23)
 - [sammorrisdesign/interactive-feed report](docs/outreach/sammorrisdesign-interactive-feed-report.md), [issue #14](https://github.com/sammorrisdesign/interactive-feed/issues/14), and [PR #15](https://github.com/sammorrisdesign/interactive-feed/pull/15)
 - [flox/install-flox-action report](docs/outreach/flox-install-flox-action-report.md), [issue #204](https://github.com/flox/install-flox-action/issues/204), and [PR #205](https://github.com/flox/install-flox-action/pull/205)
+- [Grovanni/oss-signal report](docs/outreach/grovanni-oss-signal-report.md) and [issue #1](https://github.com/Grovanni/oss-signal/issues/1)
 
 See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts are not posted automatically; maintainers should only receive specific, useful, and respectful suggestions.
+
+Additional prepared outreach candidates are tracked in [docs/outreach/peer-shortlist-2026-06.md](docs/outreach/peer-shortlist-2026-06.md). The shortlist explicitly separates respectful, defensible candidates from low-signal mass outreach.
 
 Additional focused external contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) updates Codex Action README examples to route generated output through environment variables before printing it from shell steps.
 

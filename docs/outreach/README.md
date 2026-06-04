@@ -19,3 +19,16 @@ Important notes:
 | `supermarkt/checkjebon` | 21/100 | [issue draft](supermarkt-checkjebon-issue-draft.md) | [#22](https://github.com/supermarkt/checkjebon/issues/22) | [#23](https://github.com/supermarkt/checkjebon/pull/23) |
 | `sammorrisdesign/interactive-feed` | 31/100 | [issue draft](sammorrisdesign-interactive-feed-issue-draft.md) | [#14](https://github.com/sammorrisdesign/interactive-feed/issues/14) | [#15](https://github.com/sammorrisdesign/interactive-feed/pull/15) |
 | `flox/install-flox-action` | 55/100 | [issue draft](flox-install-flox-action-issue-draft.md) | [#204](https://github.com/flox/install-flox-action/issues/204) | [#205](https://github.com/flox/install-flox-action/pull/205) |
+| `Grovanni/oss-signal` | 71/100 | [issue draft](grovanni-oss-signal-issue-draft.md) | [#1](https://github.com/Grovanni/oss-signal/issues/1) | not posted |
+
+## Prepared Candidate Audits
+
+These additional audits were prepared as likely outreach candidates, but not posted automatically. They are intentionally kept separate from the already-posted field audits above.
+
+See also: [peer-shortlist-2026-06.md](peer-shortlist-2026-06.md)
+
+| Repository | Local score | Draft | Posted issue | Follow-up PR |
+| --- | ---: | --- | --- | --- |
+| `Divyesh-5981/signal-oss` | 58/100 | [issue draft](divyesh-5981-signal-oss-issue-draft.md) | not posted | not posted |
+| `noctemlabs/signal-oss` | 51/100 | [issue draft](noctemlabs-signal-oss-issue-draft.md) | not posted | not posted |
+| `neardws/oss-application-pack-builder` | 46/100 | [issue draft](neardws-oss-application-pack-builder-issue-draft.md) | not posted | not posted |

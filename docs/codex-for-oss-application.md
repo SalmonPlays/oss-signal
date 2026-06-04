@@ -83,6 +83,7 @@ This is intentionally described as a separate public workflow demo rather than t
 | `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open, clean |
 | `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open |
 | `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open, checks pending |
+| `Grovanni/oss-signal` | [report](outreach/grovanni-oss-signal-report.md) | https://github.com/Grovanni/oss-signal/issues/1 | N/A | open |
 
 These PRs are intentionally small and maintainer-friendly. They add documentation or GitHub templates rather than changing product code.
 
