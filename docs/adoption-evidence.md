@@ -88,7 +88,7 @@ Current public workflow status:
 - OpenSSF Scorecard: configured on `main` pushes and a weekly schedule, with JSON artifact output and public Scorecard publishing
 - Release: passing
 - GitHub Pages deployment: passing, with the repository homepage set to https://salmonplays.github.io/oss-signal/
-- GitHub Marketplace listing: published for the `v0.7.0` Action release
+- GitHub Marketplace listing: published, with `v0.7.0` available as the current Action tag
 - GitHub issue forms: adoption report and maintainer audit report forms are available for structured public evidence intake
 - GitHub citation metadata: `CITATION.cff` is present for the repository citation UI
 - Automation contract: JSON schema and fixture are documented for `--format json`

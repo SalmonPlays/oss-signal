@@ -12,7 +12,8 @@ This checklist records the Marketplace publishing state for `oss-signal`.
 - The repository has public CI, CodeQL, OpenSSF Scorecard, repository health, repository inventory, and release workflows.
 - The repository includes an MIT [LICENSE](../LICENSE) that should be used as the Action EULA for Marketplace users.
 - GitHub Marketplace Developer Agreement has been reviewed by the repository owner.
-- The `v0.7.0` Action release is published to GitHub Marketplace: https://github.com/marketplace/actions/oss-signal
+- The GitHub Marketplace listing is published: https://github.com/marketplace/actions/oss-signal
+- The current Action tag is `v0.7.0`: https://github.com/SalmonPlays/oss-signal/tree/v0.7.0
 
 ## Marketplace Categories
 
