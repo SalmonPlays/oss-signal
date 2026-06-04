@@ -1,6 +1,6 @@
 {
   "name": "oss-signal",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "A dependency-light CLI that audits open-source repository maintenance readiness.",
   "type": "module",
   "bin": {

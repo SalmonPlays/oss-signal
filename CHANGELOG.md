@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.6.3
+
+- Updated the release workflow to use Node 24 and npm 11.16 for npm Trusted Publishing support.
+- Published through GitHub Actions without an npm OTP.
+
 ## 0.6.2
 
 - Switched the release workflow from token-gated publishing to npm Trusted Publishing with provenance.
