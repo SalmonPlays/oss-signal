@@ -1,6 +1,6 @@
 # OSS Maintainer Signal
 
-`oss-signal` is a maintainer-readiness CLI and GitHub Action for open-source projects that need repeatable repository health checks, CI evidence, inventory reports, SARIF output, and issue-ready cleanup notes.
+`oss-signal` is a maintainer-readiness CLI and GitHub Action for open-source projects that need repeatable repository health checks, CI evidence, inventory reports, SARIF output, issue-ready cleanup notes, and PR-sized maintainer plans.
 
 ## Quick Start
 
@@ -13,7 +13,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.4
+- uses: SalmonPlays/oss-signal@v0.7.0
   id: oss-signal
   with:
     path: "."
@@ -27,7 +27,7 @@ Run as a GitHub Action:
 - CI, tests, CodeQL, Dependabot, issue templates, and PR templates
 - GitHub repository URL audits without cloning
 - Inventory reports across multiple repositories
-- Markdown, JSON, SARIF, and issue-ready output formats
+- Markdown, JSON, SARIF, issue-ready, and maintainer-plan output formats
 
 ## Reviewer Evidence
 
@@ -39,6 +39,7 @@ Run as a GitHub Action:
 - [Architecture](architecture.md)
 - [Security model](security-model.md)
 - [JSON output contract](json-output.md)
+- [Maintainer plan output](plan-output.md)
 - [SARIF Code Scanning walkthrough](sarif-code-scanning.md)
 - [Roadmap](roadmap.md)
 - [Rules and scoring weights](rules.md)
@@ -50,6 +51,6 @@ Run as a GitHub Action:
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.4
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.7.0
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

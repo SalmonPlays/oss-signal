@@ -127,6 +127,30 @@ test("runAction writes issue output", async () => {
   }
 });
 
+test("runAction writes plan output", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-plan-"));
+  const reportFile = path.join(root, "maintainer-plan.md");
+
+  try {
+    await writeFixture(root, {
+      "README.md": "# Action fixture\n"
+    });
+
+    await runAction({
+      INPUT_PATH: root,
+      INPUT_FORMAT: "plan",
+      INPUT_OUTPUT: reportFile,
+      INPUT_SUMMARY: "false"
+    });
+
+    const body = await readFile(reportFile, "utf8");
+    assert.match(body, /OSS Signal Maintainer Plan/);
+    assert.match(body, /Recommended PR Sequence/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("runAction writes inventory output", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-inventory-"));
   const reportFile = path.join(root, "inventory.md");

@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.6.4
+      - uses: SalmonPlays/oss-signal@v0.7.0
         with:
           format: sarif
           output: oss-signal.sarif

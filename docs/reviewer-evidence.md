@@ -6,7 +6,7 @@ This page gives reviewers a short path to verify that `oss-signal` is a real OSS
 
 ## Application Version Note
 
-The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.6.4` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
+The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.7.0` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
 
 ## Five-Minute Verification
 
@@ -16,12 +16,12 @@ The Codex for Open Source application was submitted on 2026-06-03. The npm packa
 npm view oss-signal version dist-tags --json
 ```
 
-Expected result: `version` is `0.6.4`, and `dist-tags.latest` is `0.6.4`.
+Expected result: `version` is `0.7.0`, and `dist-tags.latest` is `0.7.0`.
 
 2. Run the published package against the public repository:
 
 ```bash
-npm exec --yes --package=oss-signal@0.6.4 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.7.0 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
 Expected result: score `100`, grade `A`, source `github`.
@@ -45,6 +45,8 @@ Expected result: score `100`, grade `A`, source `github`.
 - JSON output contract: https://github.com/SalmonPlays/oss-signal/blob/main/docs/json-output.md
 - JSON schema: https://github.com/SalmonPlays/oss-signal/blob/main/docs/schema/json-output.schema.json
 - JSON fixture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/examples/github-url-report.json
+- Maintainer plan output: https://github.com/SalmonPlays/oss-signal/blob/main/docs/plan-output.md
+- Maintainer plan fixture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/examples/github-plan.md
 - SARIF Code Scanning walkthrough: https://github.com/SalmonPlays/oss-signal/blob/main/docs/sarif-code-scanning.md
 - Roadmap: https://github.com/SalmonPlays/oss-signal/blob/main/docs/roadmap.md
 - Marketplace checklist: https://github.com/SalmonPlays/oss-signal/blob/main/docs/marketplace.md
@@ -59,8 +61,8 @@ Expected result: a Markdown table with one row per repository, average score, sc
 
 5. Inspect the public Action tag:
 
-- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.4
-- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.4
+- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.7.0
+- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.7.0
 - Action metadata: [../action.yml](../action.yml)
 
 6. Inspect field-audit evidence:
@@ -85,6 +87,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - The CLI can audit a newline-delimited inventory of repositories for organization-level triage.
 - The GitHub Action can write a step summary, publish a Markdown artifact, produce SARIF, and run inventory reports.
 - The `--format issue` mode produces a maintainer-readable follow-up body that is reviewed before posting.
+- The `--format plan` mode produces a PR-sized sequence with suggested files and acceptance criteria before a contributor posts externally.
 - The field-audit examples show the intended workflow: run audit, write report, open a respectful issue, then prepare a narrow PR when useful.
 - A separate shortlist tracks candidate repositories that were researched and drafted but not yet contacted, so prepared outreach is not misrepresented as posted maintainer engagement.
 - The project has labeled good-first-issue routes for external contributors who want a small, bounded PR.
@@ -112,6 +115,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 - Architecture: [architecture.md](architecture.md)
 - Security model: [security-model.md](security-model.md)
 - JSON output contract: [json-output.md](json-output.md)
+- Maintainer plan output: [plan-output.md](plan-output.md)
 - SARIF Code Scanning walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
 - Roadmap: [roadmap.md](roadmap.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)

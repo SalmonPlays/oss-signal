@@ -11,7 +11,7 @@ This page collects the strongest public signals for reviewers, maintainers, and 
 What it does have is a complete, public maintainer workflow:
 
 - Public npm package: https://www.npmjs.com/package/oss-signal
-- Public GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.4
+- Public GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.7.0
 - Public GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Public GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - Public CI, CodeQL, OpenSSF Scorecard, repository health, repository inventory, and release workflows.
@@ -24,7 +24,7 @@ What it does have is a complete, public maintainer workflow:
 
 | Signal | Public evidence | Why it matters |
 | --- | --- | --- |
-| Installable CLI | `npm exec --yes --package=oss-signal@0.6.4 -- oss-signal SalmonPlays/oss-signal --format json` | Reviewers can run the package without cloning this repository. |
+| Installable CLI | `npm exec --yes --package=oss-signal@0.7.0 -- oss-signal SalmonPlays/oss-signal --format json` | Reviewers can run the package without cloning this repository. |
 | Marketplace Action | https://github.com/marketplace/actions/oss-signal | Users can discover and copy the Action through GitHub Marketplace. |
 | Dogfood Action | [Repository health workflow](../.github/workflows/repository-health.yml) | The repository runs the public Action tag against itself. |
 | Inventory mode | [Repository inventory workflow](../.github/workflows/repository-inventory.yml) | Maintainers can audit several repositories from one target list. |
@@ -41,7 +41,7 @@ What it does have is a complete, public maintainer workflow:
 The GitHub Marketplace listing is a discovery page for the Action. It lets users find `oss-signal`, inspect the Action metadata and README, and copy a workflow snippet using:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.4
+- uses: SalmonPlays/oss-signal@v0.7.0
 ```
 
 The listing is not a paid product. It is a free Action listing. Running GitHub Actions has separate GitHub Actions billing rules, but standard GitHub-hosted runners are free for public repositories.

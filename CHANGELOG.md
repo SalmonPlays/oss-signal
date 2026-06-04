@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.7.0
+
+- Added `--format plan` for generating PR-sized maintainer plans with suggested files and acceptance criteria.
+- Added maintainer plan documentation and a GitHub repository plan example.
+
 ## 0.6.3
 
 - Updated the release workflow to use Node 24 and npm 11.16 for npm Trusted Publishing support.

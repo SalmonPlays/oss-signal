@@ -14,6 +14,7 @@ import {
   renderInventoryMarkdown,
   renderIssue,
   renderMarkdown,
+  renderPlan,
   renderSarif
 } from "../src/index.js";
 
@@ -77,6 +78,25 @@ test("renderIssue creates a maintainer-friendly issue body", async () => {
   }
 });
 
+test("renderPlan creates a maintainer PR sequence", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+
+  try {
+    const report = await auditRepository(root);
+    const plan = renderPlan(report);
+
+    assert.match(plan, /# OSS Signal Maintainer Plan/);
+    assert.match(plan, /Recommended PR Sequence/);
+    assert.match(plan, /Impact: high/);
+    assert.match(plan, /Acceptance:/);
+    assert.match(plan, /Do not ask for stars/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("renderSarif emits failed checks as SARIF results", async () => {
   const root = await fixture({
     "README.md": "# Tiny project\n"
@@ -119,6 +139,32 @@ test("CLI writes issue output", async () => {
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /Maintainer Readiness Follow-Up/);
     assert.match(body, /Suggested Next Steps/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes plan output", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+  const outputFile = path.join(root, "maintainer-plan.md");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      root,
+      "--format",
+      "plan",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const body = await readFile(outputFile, "utf8");
+    assert.match(body, /OSS Signal Maintainer Plan/);
+    assert.match(body, /Recommended PR Sequence/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

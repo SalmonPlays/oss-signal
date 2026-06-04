@@ -17,33 +17,34 @@
 
 `oss-signal` is a dependency-light maintainer-readiness CLI and GitHub Action for OSS projects that need repeatable triage, CI evidence, SARIF, inventory reports, and issue-ready cleanup notes.
 
-It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, or a GitHub Issue-ready Markdown body.
+It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, GitHub Issue-ready Markdown, or PR-sized maintainer plan formats.
 
 ![oss-signal example output](docs/assets/terminal-report.svg)
 
 ## Maintainer Evidence Snapshot
 
-Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
-- Published package: [`oss-signal@0.6.4`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.6.4`.
-- Published GitHub Action: [`SalmonPlays/oss-signal@v0.6.4`](https://github.com/SalmonPlays/oss-signal/tree/v0.6.4).
+- Published package: [`oss-signal@0.7.0`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.7.0`.
+- Published GitHub Action: [`SalmonPlays/oss-signal@v0.7.0`](https://github.com/SalmonPlays/oss-signal/tree/v0.7.0).
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Trust center: [docs/trust-center.md](docs/trust-center.md)
 - Adoption kit: [docs/adoption-kit.md](docs/adoption-kit.md)
 - Architecture: [docs/architecture.md](docs/architecture.md)
 - Security model: [docs/security-model.md](docs/security-model.md)
 - JSON output contract: [docs/json-output.md](docs/json-output.md)
+- Maintainer plan output: [docs/plan-output.md](docs/plan-output.md)
 - SARIF Code Scanning walkthrough: [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md)
 - Roadmap: [docs/roadmap.md](docs/roadmap.md)
-- Post-submission version note: the application may reference earlier evidence; `0.6.4` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
+- Post-submission version note: the application may reference earlier evidence; `0.7.0` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
 - Security posture: OpenSSF Scorecard is scheduled, CodeQL is active, secret scanning push protection is enabled, Dependabot alerts/security updates/malware alerts are enabled, and private vulnerability reporting is enabled.
 - Branch posture: `main` has branch protection to prevent force pushes and deletions while keeping direct maintainer maintenance possible.
 - Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
 - Community route: [Discussion #5](https://github.com/SalmonPlays/oss-signal/discussions/5) is the public maintainer-workflow thread for usage questions and rule feedback.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
-- Field use: four public maintainer-readiness audits have been turned into four issues and four focused follow-up PRs.
+- Field use: five public maintainer-readiness audits have been turned into five issues and four focused follow-up PRs.
 - External OSS contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
@@ -143,6 +144,14 @@ Generate a maintainer-friendly issue body:
 oss-signal platformatic/massimo --format issue --output maintainer-follow-up.md
 ```
 
+Generate a PR-sized maintainer plan:
+
+```bash
+oss-signal Grovanni/oss-signal --format plan --output maintainer-plan.md
+```
+
+See [docs/plan-output.md](docs/plan-output.md) and [docs/examples/github-plan.md](docs/examples/github-plan.md) for an example.
+
 ## Checks
 
 `oss-signal` currently checks:
@@ -153,7 +162,7 @@ oss-signal platformatic/massimo --format issue --output maintainer-follow-up.md
 
 See [docs/rules.md](docs/rules.md) for rule details and scoring weights.
 
-SARIF output reports failed maintainer-readiness checks as warning-level results. This lets teams upload the audit to code scanning dashboards while keeping the Markdown report available for maintainers. Issue output turns the same findings into a human-reviewed checklist that can be edited before posting.
+SARIF output reports failed maintainer-readiness checks as warning-level results. This lets teams upload the audit to code scanning dashboards while keeping the Markdown report available for maintainers. Issue output turns the same findings into a human-reviewed checklist that can be edited before posting. Plan output turns the findings into a PR-sized sequence with suggested files and acceptance criteria.
 
 For GitHub URL audits, `oss-signal` reads the repository file tree through the GitHub API and also uses GitHub's community profile signal when available. This lets it detect organization-level files such as a shared code of conduct.
 
@@ -170,9 +179,9 @@ Summary:
 - Total checks: 15
 ```
 
-See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
+See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, [docs/examples/github-plan.md](docs/examples/github-plan.md) for plan output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
 
-The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.6.4`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
+The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.7.0`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
 
 ## Field Audits
 
@@ -221,7 +230,7 @@ oss-signal . --fail-under 80
 Add `oss-signal` directly to a GitHub Actions workflow:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.4
+- uses: SalmonPlays/oss-signal@v0.7.0
   id: oss-signal
   with:
     fail-under: "80"
@@ -237,7 +246,7 @@ The Action writes a concise GitHub Actions step summary by default, so reviewers
 Run an inventory from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.4
+- uses: SalmonPlays/oss-signal@v0.7.0
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -249,7 +258,7 @@ Run an inventory from CI:
 Generate an editable Issue body from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.4
+- uses: SalmonPlays/oss-signal@v0.7.0
   with:
     format: issue
     output: maintainer-follow-up.md
@@ -271,7 +280,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.6.4
+      - uses: SalmonPlays/oss-signal@v0.7.0
         id: oss-signal
         with:
           fail-under: "80"
@@ -294,7 +303,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.6.4
+  - uses: SalmonPlays/oss-signal@v0.7.0
     with:
       format: sarif
       output: oss-signal.sarif
@@ -304,7 +313,7 @@ steps:
       sarif_file: oss-signal.sarif
 ```
 
-This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.6.4` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
+This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.7.0` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
 
 You can also run the CLI directly in CI:
 

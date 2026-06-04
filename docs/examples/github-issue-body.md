@@ -1,9 +1,9 @@
 # Maintainer Readiness Follow-Up
 
-oss-signal scored this repository **64/100 (D)**.
+oss-signal scored this repository **100/100 (A)**.
 
-Source: GitHub (platformatic/massimo@main)
-Generated: 2026-06-03T05:12:35.488Z
+Source: GitHub (SalmonPlays/oss-signal@main)
+Generated: 2026-06-04T23:24:47.852Z
 
 ## Scope
 
@@ -11,23 +11,7 @@ This issue is limited to maintainer-readiness signals: documentation, contributi
 
 ## Suggested Next Steps
 
-- [ ] **Security policy** (9 pts): Add SECURITY.md with supported versions, reporting instructions, and response expectations.
-- [ ] **Changelog** (6 pts): Keep CHANGELOG.md with dated release entries and migration notes.
-- [ ] **Issue templates** (5 pts): Add bug report and feature request templates under .github/ISSUE_TEMPLATE/.
-- [ ] **Pull request template** (5 pts): Add .github/PULL_REQUEST_TEMPLATE.md with a short checklist.
-- [ ] **Dependency update automation** (5 pts): Add .github/dependabot.yml for the package ecosystems used in the repository.
-- [ ] **Support policy** (4 pts): Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times.
-- [ ] **Static security analysis** (4 pts): Add a CodeQL or equivalent security scanning workflow.
-
-## Why These Checks Matter
-
-- **Security policy**: Responsible disclosure needs a private, documented path.
-- **Changelog**: Users need a durable place to understand release impact.
-- **Issue templates**: Issue templates collect the facts maintainers need to reproduce and triage.
-- **Pull request template**: PR templates nudge contributors to include tests, docs, and review context.
-- **Dependency update automation**: Automated dependency updates reduce security and compatibility drift.
-- **Support policy**: Support boundaries help maintainers avoid turning every request into unpaid consulting.
-- **Static security analysis**: Static analysis finds common vulnerability patterns before releases.
+No missing maintainer-readiness checks were found. Keep the report current as the repository evolves.
 
 ## Notes For Maintainers
 

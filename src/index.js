@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.6.4";
+export const VERSION = "0.7.0";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -337,6 +337,55 @@ export function renderIssue(report) {
   return `${lines.join("\n")}\n`;
 }
 
+export function renderPlan(report) {
+  const lines = [
+    "# OSS Signal Maintainer Plan",
+    "",
+    `Repository: \`${report.root}\``,
+    `Source: ${sourceSummary(report.source)}`,
+    `Generated: ${report.generatedAt}`,
+    "",
+    `Current score: **${report.score}/100** (${report.grade})`,
+    "",
+    "## Recommended PR Sequence",
+    ""
+  ];
+
+  if (report.recommendations.length === 0) {
+    lines.push("No missing maintainer-readiness checks were found. Keep this plan as a release-readiness record.");
+  } else {
+    report.recommendations.forEach((recommendation, index) => {
+      const suggestedFile = SARIF_RULE_LOCATIONS[recommendation.id] ?? ".";
+      lines.push(
+        `### ${index + 1}. ${recommendation.label}`,
+        "",
+        `- Impact: ${impactLabel(recommendation.weight)} (${recommendation.weight} pts)`,
+        `- Suggested file: \`${suggestedFile}\``,
+        `- Why: ${recommendation.why}`,
+        `- Change: ${recommendation.fix}`,
+        "",
+        "Acceptance:",
+        "",
+        `- The repository has a clear ${recommendation.label.toLowerCase()} signal.`,
+        "- The change is documented or intentionally marked as not applicable.",
+        "- `oss-signal` no longer reports this check as missing.",
+        ""
+      );
+    });
+  }
+
+  lines.push(
+    "## Maintainer Notes",
+    "",
+    "- Keep each item as a small documentation or automation PR unless the maintainer asks for a broader cleanup.",
+    "- Do not ask for stars, follows, or reciprocal pull requests.",
+    "- If a check is intentionally absent, document the decision instead of forcing the file.",
+    ""
+  );
+
+  return `${lines.join("\n")}\n`;
+}
+
 export function renderSarif(report) {
   const rules = report.checks.map((check) => ({
     id: `oss-signal/${check.id}`,
@@ -420,6 +469,16 @@ export function renderSarif(report) {
       }
     ]
   }, null, 2)}\n`;
+}
+
+function impactLabel(weight) {
+  if (weight >= 9) {
+    return "high";
+  }
+  if (weight >= 5) {
+    return "medium";
+  }
+  return "low";
 }
 
 export function parseInventoryTargets(text) {

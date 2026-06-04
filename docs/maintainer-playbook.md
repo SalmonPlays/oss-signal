@@ -42,6 +42,12 @@ Generate an issue body that can be reviewed and edited before posting:
 oss-signal owner/repo --format issue --output owner-repo-issue.md
 ```
 
+Generate a PR-sized plan before deciding what to post:
+
+```bash
+oss-signal owner/repo --format plan --output owner-repo-plan.md
+```
+
 ## 2. Triage Findings
 
 Prioritize missing checks that reduce maintainer load:
@@ -62,18 +68,22 @@ For an issue, include:
 - Why it matters for maintainers.
 - One concrete proposed fix.
 
+`--format plan` generates a recommended PR sequence with suggested files and acceptance criteria. Use it before opening an issue when the target repository has several missing signals and the outreach needs to stay narrow.
+
 `--format issue` generates that structure as a Markdown checklist. Review it before posting, remove anything that does not fit the repository, and keep the title specific to the missing maintainer-readiness signal.
 
 For a pull request, keep the change narrow. Good PRs add or improve files such as `CONTRIBUTING.md`, `SECURITY.md`, `.github/ISSUE_TEMPLATE/*`, `.github/PULL_REQUEST_TEMPLATE.md`, or a small CI workflow. Avoid broad product-code changes unless the maintainer asked for them.
 
 The field-audit examples in [docs/outreach](outreach) show this pattern for public repositories.
 
+See [plan-output.md](plan-output.md) and [examples/github-plan.md](examples/github-plan.md) for the plan format.
+
 ## 4. Add A CI Gate
 
 Add the GitHub Action to keep the signal visible:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.4
+- uses: SalmonPlays/oss-signal@v0.7.0
   id: oss-signal
   with:
     fail-under: "80"
@@ -86,7 +96,7 @@ The Action writes `score`, `grade`, `failed`, and `report-path` outputs, and wri
 For a repository inventory, commit a newline-delimited target list and pass it through the Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.6.4
+- uses: SalmonPlays/oss-signal@v0.7.0
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -106,7 +116,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.6.4
+  - uses: SalmonPlays/oss-signal@v0.7.0
     with:
       format: sarif
       output: oss-signal.sarif
@@ -124,7 +134,7 @@ See [docs/sarif-code-scanning.md](sarif-code-scanning.md) for the permissions, e
 
 Useful evidence for maintainers and reviewers:
 
-- A public workflow run that uses `SalmonPlays/oss-signal@v0.6.4`.
+- A public workflow run that uses `SalmonPlays/oss-signal@v0.7.0`.
 - A generated Markdown report attached as an artifact.
 - A SARIF upload in Code Scanning.
 - A small issue or PR that follows from an audit finding.

@@ -21,12 +21,13 @@ The older submission evidence remains valid. The current `latest` npm version si
 | `v0.6.2` | GitHub Release | Registered npm Trusted Publishing release flow. |
 | `v0.6.3` | npm package, GitHub Release, Action tag | Completed npm Trusted Publishing from GitHub Actions without manual OTP. |
 | `v0.6.4` | npm package, GitHub Release, Action tag | Published OSS Maintainer Signal brand assets and npm/GitHub metadata polish. |
+| `v0.7.0` | npm package, GitHub Release, Action tag | Added maintainer plan output for PR-sized outreach planning. |
 
 ## Current Evidence
 
-- npm package: https://www.npmjs.com/package/oss-signal (`0.6.4` latest)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.6.4
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.6.4
+- npm package: https://www.npmjs.com/package/oss-signal (`0.7.0` latest after release)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.7.0
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.7.0
 - Release workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/release.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - GitHub repository profile: description, npm homepage, eight maintainer-focused topics, social preview image, and profile pin are live.
@@ -35,10 +36,11 @@ The older submission evidence remains valid. The current `latest` npm version si
 - Public discussion: https://github.com/SalmonPlays/oss-signal/discussions/5 documents the intended maintainer workflow and feedback channel.
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
+- Maintainer plan output: [plan-output.md](plan-output.md)
 
 ## Clean Verification
 
-The public registry returned `0.6.4` for both package version and `latest` dist-tag after the brand refresh release on 2026-06-04.
+The public registry should return `0.7.0` for both package version and `latest` dist-tag after the maintainer plan release.
 
 ```bash
 npm view oss-signal version dist-tags --json
@@ -48,17 +50,17 @@ Expected result:
 
 ```json
 {
-  "version": "0.6.4",
+  "version": "0.7.0",
   "dist-tags": {
-    "latest": "0.6.4"
+    "latest": "0.7.0"
   }
 }
 ```
 
-A clean npm execution against the public GitHub repository returned version `0.6.4`, score `100`, grade `A`, and source `github`.
+A clean npm execution against the public GitHub repository should return version `0.7.0`, score `100`, grade `A`, and source `github`.
 
 ```bash
-npm exec --yes --package=oss-signal@0.6.4 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.7.0 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
 ## Review Impact
@@ -66,7 +68,8 @@ npm exec --yes --package=oss-signal@0.6.4 -- oss-signal SalmonPlays/oss-signal -
 This version difference should be read as post-submission maintenance progress, not as a mismatch. It strengthens the evidence in three ways:
 
 - The package now has a successful npm Trusted Publishing release from GitHub Actions.
-- The GitHub Action tag, npm package, release notes, and documentation all point to `0.6.4`.
+- The GitHub Action tag, npm package, release notes, and documentation all point to `0.7.0`.
 - The repository has public CI, Repository health, Repository inventory, CodeQL, OpenSSF Scorecard, Release workflow evidence, social preview branding, profile pinning, Discussions, CODEOWNERS, and issue routing.
+- The current release includes `--format plan`, which turns audit findings into PR-sized outreach plans before external posting.
 
 This does not replace the remaining adoption gap. The strongest next evidence would still be independent maintainer-owned workflow usage or merged external maintainer PRs.

@@ -7,7 +7,7 @@ This page gives maintainers a copy-paste path for trying `oss-signal` and leavin
 Run against a public repository without cloning:
 
 ```bash
-npm exec --yes --package=oss-signal@0.6.4 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
+npm exec --yes --package=oss-signal@0.7.0 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
 ```
 
 Run against the current checkout:
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.6.4
+      - uses: SalmonPlays/oss-signal@v0.7.0
         id: oss-signal
         with:
           fail-under: "80"
@@ -61,7 +61,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.6.4
+  - uses: SalmonPlays/oss-signal@v0.7.0
     with:
       format: sarif
       output: oss-signal.sarif
@@ -77,7 +77,7 @@ Full walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
 
 Useful adoption evidence is concrete and public:
 
-- A workflow run that uses `SalmonPlays/oss-signal@v0.6.4`.
+- A workflow run that uses `SalmonPlays/oss-signal@v0.7.0`.
 - A Markdown report attached as a workflow artifact.
 - A SARIF upload that appears in Code Scanning.
 - A focused issue or pull request created from an audit finding.
