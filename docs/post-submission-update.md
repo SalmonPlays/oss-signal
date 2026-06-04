@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-04T04:22:02Z
+Latest verification: 2026-06-04T23:28:58Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 
@@ -25,7 +25,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 
 ## Current Evidence
 
-- npm package: https://www.npmjs.com/package/oss-signal (`0.7.0` latest after release)
+- npm package: https://www.npmjs.com/package/oss-signal (`0.7.0` latest)
 - GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.7.0
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.7.0
 - Release workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/release.yml
@@ -40,7 +40,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 
 ## Clean Verification
 
-The public registry should return `0.7.0` for both package version and `latest` dist-tag after the maintainer plan release.
+The public registry returned `0.7.0` for both package version and `latest` dist-tag after the maintainer plan release.
 
 ```bash
 npm view oss-signal version dist-tags --json
@@ -57,7 +57,7 @@ Expected result:
 }
 ```
 
-A clean npm execution against the public GitHub repository should return version `0.7.0`, score `100`, grade `A`, and source `github`.
+A clean npm execution against the public GitHub repository returned version `0.7.0`, score `100`, grade `A`, and source `github`.
 
 ```bash
 npm exec --yes --package=oss-signal@0.7.0 -- oss-signal SalmonPlays/oss-signal --format json
