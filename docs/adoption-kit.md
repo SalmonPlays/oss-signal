@@ -2,6 +2,8 @@
 
 This page gives maintainers a copy-paste path for trying `oss-signal` and leaving useful public evidence.
 
+For a first trial, use the no-fail workflow in [maintainer-trial.md](maintainer-trial.md). It publishes a report without gating CI.
+
 ## Try The CLI
 
 Run against a public repository without cloning:
@@ -23,6 +25,8 @@ npx oss-signal owner/repo --format issue --output maintainer-follow-up.md
 ```
 
 ## Add The GitHub Action
+
+This example gates CI with `fail-under`. For a first trial in another maintainer's repository, start with [examples/maintainer-trial-workflow.yml](examples/maintainer-trial-workflow.yml) instead.
 
 ```yaml
 name: Repository health

@@ -36,6 +36,7 @@ Run as a GitHub Action:
 - [Trust center](trust-center.md)
 - [Adoption evidence](adoption-evidence.md)
 - [Adoption kit](adoption-kit.md)
+- [Maintainer trial](maintainer-trial.md)
 - [Social launch kit](social-launch.md)
 - [Maintainer playbook](maintainer-playbook.md)
 - [Architecture](architecture.md)

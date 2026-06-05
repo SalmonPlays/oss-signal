@@ -23,7 +23,7 @@ It checks the files and automation that reduce maintainer load: README, license,
 
 ## Maintainer Evidence Snapshot
 
-Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.7.0`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.7.0`.
@@ -32,6 +32,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Trust center: [docs/trust-center.md](docs/trust-center.md)
 - Evidence ledger: [docs/evidence-ledger.md](docs/evidence-ledger.md)
 - Adoption kit: [docs/adoption-kit.md](docs/adoption-kit.md)
+- Maintainer trial: [docs/maintainer-trial.md](docs/maintainer-trial.md)
 - Social launch kit: [docs/social-launch.md](docs/social-launch.md)
 - Architecture: [docs/architecture.md](docs/architecture.md)
 - Security model: [docs/security-model.md](docs/security-model.md)
@@ -195,6 +196,7 @@ The [Repository health workflow](.github/workflows/repository-health.yml) runs `
 - [flox/install-flox-action report](docs/outreach/flox-install-flox-action-report.md), [issue #204](https://github.com/flox/install-flox-action/issues/204), and [PR #205](https://github.com/flox/install-flox-action/pull/205)
 - [Grovanni/oss-signal report](docs/outreach/grovanni-oss-signal-report.md) and [issue #1](https://github.com/Grovanni/oss-signal/issues/1)
 - [noctemlabs/signal-oss report](docs/outreach/noctemlabs-signal-oss-report.md) and [PR #12](https://github.com/noctemlabs/signal-oss/pull/12)
+- [Divyesh-5981/signal-oss report](docs/outreach/divyesh-5981-signal-oss-report.md) and [issue #5](https://github.com/Divyesh-5981/signal-oss/issues/5)
 
 See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts are not posted automatically; maintainers should only receive specific, useful, and respectful suggestions.
 

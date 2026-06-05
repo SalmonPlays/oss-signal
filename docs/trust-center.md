@@ -1,6 +1,6 @@
 # Trust Center
 
-Last verified: 2026-06-05T04:20:21Z
+Last verified: 2026-06-05T08:36:21Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 
@@ -14,6 +14,7 @@ What it does have is a complete, public maintainer workflow:
 - Public GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.7.0
 - Public GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Public GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
+- Public no-fail maintainer trial workflow: [maintainer-trial.md](maintainer-trial.md)
 - Public CI, CodeQL, OpenSSF Scorecard, repository health, repository inventory, and release workflows.
 - Public self-audit, GitHub URL audit, SARIF output, inventory report, and issue-body examples.
 - Public field-audit reports, six posted issues, and five open, mergeable follow-up pull requests against external repositories.
@@ -27,6 +28,7 @@ What it does have is a complete, public maintainer workflow:
 | --- | --- | --- |
 | Installable CLI | `npm exec --yes --package=oss-signal@0.7.0 -- oss-signal SalmonPlays/oss-signal --format json` | Reviewers can run the package without cloning this repository. |
 | Marketplace Action | https://github.com/marketplace/actions/oss-signal | Users can discover and copy the Action through GitHub Marketplace. |
+| Maintainer trial | [maintainer-trial](maintainer-trial.md) | External maintainers can try the Action without failing CI first. |
 | Dogfood Action | [Repository health workflow](../.github/workflows/repository-health.yml) | The repository runs the public Action tag against itself. |
 | Inventory mode | [Repository inventory workflow](../.github/workflows/repository-inventory.yml) | Maintainers can audit several repositories from one target list. |
 | Security posture | [CodeQL workflow](../.github/workflows/codeql.yml), [OpenSSF Scorecard workflow](../.github/workflows/scorecard.yml), [SECURITY.md](../SECURITY.md) | Security and supply-chain signals are visible in public workflows. |

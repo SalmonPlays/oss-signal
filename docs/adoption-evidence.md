@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-05T04:20:21Z
+Last verified: 2026-06-05T08:36:21Z
 
 ## Project Links
 
@@ -33,6 +33,7 @@ Last verified: 2026-06-05T04:20:21Z
 - Brand assets and GitHub settings copy: [docs/brand.md](brand.md)
 - GitHub Pages landing page source: [docs/index.md](index.md)
 - GitHub Marketplace publishing checklist: [docs/marketplace.md](marketplace.md)
+- Maintainer trial: [docs/maintainer-trial.md](maintainer-trial.md)
 - Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
 - Trust center: [docs/trust-center.md](trust-center.md)
 - Adoption kit: [docs/adoption-kit.md](adoption-kit.md)

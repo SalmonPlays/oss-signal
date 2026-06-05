@@ -1,0 +1,24 @@
+name: oss-signal trial
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: SalmonPlays/oss-signal@v0.7.0
+        id: oss-signal
+        with:
+          output: oss-signal-report.md
+          summary: "true"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oss-signal-report
+          path: oss-signal-report.md

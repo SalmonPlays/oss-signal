@@ -1,6 +1,6 @@
 # Evidence Ledger
 
-Last verified: 2026-06-05T04:20:21Z
+Last verified: 2026-06-05T08:36:21Z
 
 This ledger keeps the strongest public `oss-signal` evidence in one reviewer-friendly place. It separates accepted evidence from supporting demos and open follow-up work.
 
@@ -12,6 +12,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | npm download API | 356 downloads for last-week and last-month windows | Checked 2026-06-05 | Supporting distribution signal only; not claimed as broad adoption. |
 | GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.7.0 | Published tag | Public Action tag used by repository workflows and demo workflow. |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
+| Maintainer trial path | [maintainer-trial.md](maintainer-trial.md) | Published | External maintainers can try the Action without failing CI, then share a workflow run or adoption report. |
 | Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.7.0` against this repository. |
 | Inventory dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml | Passing | Exercises multi-repository inventory mode. |
 | Separate public workflow demo | https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878 | Passing | Separate public repository runs `SalmonPlays/oss-signal@v0.7.0` and uploads Markdown, SARIF, and issue-ready artifacts. |
