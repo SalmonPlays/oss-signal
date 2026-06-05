@@ -7,13 +7,13 @@ This checklist records the Marketplace publishing state for `oss-signal`.
 - Repository is public.
 - Action metadata exists at the repository root: [../action.yml](../action.yml).
 - The Action metadata uses a unique name: `oss-signal`.
-- The repository has a released Action tag: `v0.8.3`.
+- The repository has a released Action tag: `v0.8.4`.
 - The README contains install, CLI, GitHub Action, SARIF, inventory, workflow-trial, and maintainer workflow examples.
 - The repository has public CI, CodeQL, OpenSSF Scorecard, repository health, repository inventory, and release workflows.
 - The repository includes an MIT [LICENSE](../LICENSE) that should be used as the Action EULA for Marketplace users.
 - GitHub Marketplace Developer Agreement has been reviewed by the repository owner.
 - The GitHub Marketplace listing is published: https://github.com/marketplace/actions/oss-signal
-- The current Action tag is `v0.8.3`: https://github.com/SalmonPlays/oss-signal/tree/v0.8.3
+- The current Action tag is `v0.8.4`: https://github.com/SalmonPlays/oss-signal/tree/v0.8.4
 
 ## Marketplace Categories
 
@@ -26,7 +26,7 @@ Secondary category: `Code quality`
 Title:
 
 ```text
-oss-signal v0.8.3
+oss-signal v0.8.4
 ```
 
 Description:

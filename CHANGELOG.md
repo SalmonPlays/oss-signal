@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.8.4
+
+- Scoped the OpenSSF Scorecard workflow Node.js 24 opt-in to the artifact upload step so Scorecard result publication can pass workflow verification.
+
 ## 0.8.3
 
 - Added workflow-level Node.js 24 opt-in for generated trial workflows, dogfood workflows, and copyable examples to avoid GitHub Actions Node.js 20 deprecation warnings.

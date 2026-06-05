@@ -9,9 +9,6 @@ on:
 permissions:
   contents: read
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   scorecard:
     runs-on: ubuntu-latest
@@ -28,6 +25,8 @@ jobs:
           results_format: json
           publish_results: true
       - uses: actions/upload-artifact@v5
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
         with:
           name: scorecard-results
           path: scorecard-results.json

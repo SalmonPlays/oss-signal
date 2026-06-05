@@ -104,7 +104,7 @@ test("renderWorkflow creates a no-fail Action trial workflow", () => {
   assert.match(workflow, /name: oss-signal trial/);
   assert.match(workflow, /workflow_dispatch:/);
   assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-  assert.match(workflow, /uses: SalmonPlays\/oss-signal@v0\.8\.3/);
+  assert.match(workflow, /uses: SalmonPlays\/oss-signal@v0\.8\.4/);
   assert.match(workflow, /summary: "true"/);
   assert.doesNotMatch(workflow, /fail-under/);
 });
@@ -203,7 +203,7 @@ test("CLI writes workflow output", async () => {
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /oss-signal trial/);
     assert.match(body, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-    assert.match(body, /SalmonPlays\/oss-signal@v0\.8\.3/);
+    assert.match(body, /SalmonPlays\/oss-signal@v0\.8\.4/);
     assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });
