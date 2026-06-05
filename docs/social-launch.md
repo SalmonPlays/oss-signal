@@ -12,7 +12,7 @@ Best audience:
 - Contributors who want to open small, useful maintainer-workflow PRs.
 - Teams that want CI evidence for README, license, contributing, security, templates, tests, CodeQL, Dependabot, and release notes.
 
-Do not claim broad adoption. The current evidence is a public npm package, GitHub Marketplace Action, self-audit, workflow demo, public field audits, and open external follow-up PRs.
+Do not claim broad adoption. The current evidence is a public npm package, GitHub Marketplace Action, self-audit, workflow demo, public field audits, five open external follow-up PRs, and one merged external documentation PR.
 
 ## Primary Links
 

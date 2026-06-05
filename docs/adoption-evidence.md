@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-05T01:42:03Z
+Last verified: 2026-06-05T01:46:17Z
 
 ## Project Links
 
@@ -99,7 +99,7 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
-The npm registry returned `0.7.0` for both the package version and `latest` dist-tag on 2026-06-04T23:28:58Z. A clean install smoke test returned version `0.7.0`, score `100`, grade `A`, and source `github`. The earlier 2026-06-04 download check returned 356 downloads for the last-week and last-month windows.
+The npm registry returned `0.7.0` for both the package version and `latest` dist-tag on 2026-06-05T01:46:17Z. A clean install smoke test returned version `0.7.0`, score `100`, grade `A`, and source `github`. The earlier 2026-06-04 download check returned 356 downloads for the last-week and last-month windows.
 
 ## Separate Public Workflow Evidence
 
@@ -117,10 +117,10 @@ The tool has been used to generate maintainer-readiness reports for public repos
 
 | Repository | Report | Posted issue | Follow-up PR | Status |
 | --- | --- | --- | --- | --- |
-| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open, clean |
-| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open, clean |
-| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open |
-| `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open, checks pending |
+| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open, mergeable |
+| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open, mergeable |
+| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open, mergeable |
+| `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open, mergeable |
 | `Grovanni/oss-signal` | [report](outreach/grovanni-oss-signal-report.md) | https://github.com/Grovanni/oss-signal/issues/1 | N/A | open |
 | `noctemlabs/signal-oss` | [report](outreach/noctemlabs-signal-oss-report.md) | N/A | https://github.com/noctemlabs/signal-oss/pull/12 | open, mergeable |
 
@@ -134,7 +134,7 @@ Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing.
 
-The `noctemlabs/signal-oss` follow-up PR was open and mergeable when checked from GitHub on 2026-06-04T23:52:02Z. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
+The five field-audit follow-up PRs were open and mergeable when checked from GitHub on 2026-06-05T01:46:17Z. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 
 ## Contributor Intake
 

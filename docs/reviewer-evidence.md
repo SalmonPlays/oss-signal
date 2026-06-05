@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-05T01:42:03Z
+Last verified: 2026-06-05T01:46:17Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -105,7 +105,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 
 ## Boundaries
 
-This project does not claim broad independent adoption yet. The separate workflow demo is public but owned by `SalmonPlays`, so it is treated as public workflow evidence rather than third-party adoption. One external PR has been merged, while the field-audit follow-up PRs remain open unless their target maintainers merge or otherwise endorse them.
+This project does not claim broad independent adoption yet. The separate workflow demo is public but owned by `SalmonPlays`, so it is treated as public workflow evidence rather than third-party adoption. One external PR has been merged, while the five field-audit follow-up PRs remain open and mergeable unless their target maintainers merge or otherwise endorse them.
 
 ## Primary Evidence Pages
 

@@ -1,6 +1,6 @@
 # Trust Center
 
-Last verified: 2026-06-05T01:42:03Z
+Last verified: 2026-06-05T01:46:17Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 
@@ -16,7 +16,7 @@ What it does have is a complete, public maintainer workflow:
 - Public GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - Public CI, CodeQL, OpenSSF Scorecard, repository health, repository inventory, and release workflows.
 - Public self-audit, GitHub URL audit, SARIF output, inventory report, and issue-body examples.
-- Public field-audit reports, posted issues, and narrow follow-up pull requests against external repositories.
+- Public field-audit reports, posted issues, and five open, mergeable follow-up pull requests against external repositories.
 - Explicit governance, maintainer ownership, CODEOWNERS, security policy, support policy, contribution guide, and release process.
 - Citation metadata, architecture notes, security model, and roadmap are documented in the repository.
 
