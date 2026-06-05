@@ -23,7 +23,7 @@ It checks the files and automation that reduce maintainer load: README, license,
 
 ## Maintainer Evidence Snapshot
 
-Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.7.0`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.7.0`.
@@ -31,6 +31,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Trust center: [docs/trust-center.md](docs/trust-center.md)
 - Adoption kit: [docs/adoption-kit.md](docs/adoption-kit.md)
+- Social launch kit: [docs/social-launch.md](docs/social-launch.md)
 - Architecture: [docs/architecture.md](docs/architecture.md)
 - Security model: [docs/security-model.md](docs/security-model.md)
 - JSON output contract: [docs/json-output.md](docs/json-output.md)
