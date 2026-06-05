@@ -52,7 +52,7 @@ The repository currently has:
 
 - A published npm package with `0.7.0` as the latest release.
 - A post-submission update page explaining why the current npm package and Action tag may be newer than the originally submitted evidence.
-- npm download API evidence showing 356 last-week and last-month downloads on 2026-06-04.
+- npm download API evidence showing 356 last-week and last-month downloads on 2026-06-05.
 - A published GitHub Release for v0.7.0 with maintainer plan output, CI usage guidance, and release notes.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - A repository inventory mode for organization-level maintainer-readiness triage, available in both CLI and GitHub Action form.

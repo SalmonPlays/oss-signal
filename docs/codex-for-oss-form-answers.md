@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.7.0 latest, 356 npm downloads reported by the registry API before the 0.7.0 release, a published v0.7.0 release, a reusable GitHub Action with inventory mode, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, five field-audit issues, five field-audit PRs, and a workflow demo with artifacts.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.7.0 latest, 356 npm downloads reported by the registry API on 2026-06-05, a published v0.7.0 release, a reusable GitHub Action with inventory mode, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, five field-audit issues, five field-audit PRs, and a v0.7.0 workflow demo with artifacts.
 ```
 
 ## Evidence Links
