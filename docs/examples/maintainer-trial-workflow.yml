@@ -7,12 +7,15 @@ on:
 permissions:
   contents: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.8.2
+      - uses: SalmonPlays/oss-signal@v0.8.3
         id: oss-signal
         with:
           output: oss-signal-report.md

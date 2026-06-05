@@ -8,9 +8,9 @@ Last verified: 2026-06-05T09:57:04Z
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
-- npm package: https://www.npmjs.com/package/oss-signal (`0.8.2` latest)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.2
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.8.2
+- npm package: https://www.npmjs.com/package/oss-signal (`0.8.3` latest)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.3
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.8.3
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
@@ -69,7 +69,7 @@ The [post-submission update](post-submission-update.md) records why the current 
 
 ## Published Package Verification
 
-The npm package is publicly available as `oss-signal@0.8.2` with `latest` pointing at `0.8.2`.
+The npm package is publicly available as `oss-signal@0.8.3` with `latest` pointing at `0.8.3`.
 
 The npm downloads API returned 356 downloads for both last-week and last-month windows on 2026-06-05. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
@@ -77,7 +77,7 @@ Clean-directory execution against the public GitHub repository returned:
 
 ```json
 {
-  "version": "0.8.2",
+  "version": "0.8.3",
   "score": 100,
   "grade": "A",
   "source": "github"
@@ -93,7 +93,7 @@ Current public workflow status:
 - OpenSSF Scorecard: configured on `main` pushes and a weekly schedule, with JSON artifact output and public Scorecard publishing
 - Release: passing
 - GitHub Pages deployment: passing, with the repository homepage set to https://salmonplays.github.io/oss-signal/
-- GitHub Marketplace listing: published, with `v0.8.2` available as the current Action tag
+- GitHub Marketplace listing: published, with `v0.8.3` available as the current Action tag
 - GitHub issue forms: adoption report, trial feedback, and maintainer audit report forms are available for structured public evidence intake
 - GitHub citation metadata: `CITATION.cff` is present for the repository citation UI
 - Automation contract: JSON schema and fixture are documented for `--format json`
@@ -102,7 +102,7 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
-The npm registry returned `0.8.2` for both the package version and `latest` dist-tag on 2026-06-05T09:57:04Z. A clean install smoke test returned version `0.8.2`, score `100`, grade `A`, and source `github`. The 2026-06-05 download check returned 356 downloads for the last-week and last-month windows.
+The npm registry returned `0.8.3` for both the package version and `latest` dist-tag on 2026-06-05T09:57:04Z. A clean install smoke test returned version `0.8.3`, score `100`, grade `A`, and source `github`. The 2026-06-05 download check returned 356 downloads for the last-week and last-month windows.
 
 ## Separate Public Workflow Evidence
 
@@ -165,10 +165,10 @@ npm run audit:github
 node src/cli.js . --format sarif --output docs/examples/self-audit.sarif
 node src/cli.js --inventory docs/examples/inventory-targets.txt --format markdown --output docs/examples/inventory-report.md
 node src/cli.js platformatic/massimo --format json
-npm exec --yes --package=oss-signal@0.8.2 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.8.3 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
-The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.8.2` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.8.2` package has also been executed from a clean temporary directory against the public GitHub repository, returning 100/100 (A).
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.8.3` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.8.3` package has also been executed from a clean temporary directory against the public GitHub repository, returning 100/100 (A).
 
 Public CI evidence:
 

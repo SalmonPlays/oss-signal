@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.8.2 and GitHub Action SalmonPlays/oss-signal@v0.8.2, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow output, passes CI/CodeQL/Release, has a 100/100 self-audit, no-fail maintainer trial and feedback paths, six public field-audit issues, five public field-audit PRs, and one merged external Codex Action documentation PR.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.8.3 and GitHub Action SalmonPlays/oss-signal@v0.8.3, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow output, passes CI/CodeQL/Release, has a 100/100 self-audit, no-fail maintainer trial and feedback paths, six public field-audit issues, five public field-audit PRs, and one merged external Codex Action documentation PR.
 ```
 
 ## Interest
@@ -81,13 +81,13 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.8.2 latest, 356 npm downloads reported by the registry API on 2026-06-05, a published v0.8.2 release, a reusable GitHub Action with inventory and workflow output, no-fail maintainer trial and feedback paths, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, six field-audit issues, five field-audit PRs, and a separate public workflow demo with artifacts.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.8.3 latest, 356 npm downloads reported by the registry API on 2026-06-05, a published v0.8.3 release, a reusable GitHub Action with inventory and workflow output, no-fail maintainer trial and feedback paths, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, six field-audit issues, five field-audit PRs, and a separate public workflow demo with artifacts.
 ```
 
 ## Evidence Links
 
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Release v0.8.2: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.2
+- GitHub Release v0.8.3: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.3
 - Main repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Separate workflow demo repository: https://github.com/SalmonPlays/oss-signal-adoption-demo
 - Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878

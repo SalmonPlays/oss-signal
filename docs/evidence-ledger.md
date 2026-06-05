@@ -8,13 +8,13 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 
 | Signal | Evidence | Status | Reviewer note |
 | --- | --- | --- | --- |
-| Installable CLI | https://www.npmjs.com/package/oss-signal | `0.8.2` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.8.2 -- oss-signal SalmonPlays/oss-signal --format json`. |
+| Installable CLI | https://www.npmjs.com/package/oss-signal | `0.8.3` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.8.3 -- oss-signal SalmonPlays/oss-signal --format json`. |
 | npm download API | 356 downloads for last-week and last-month windows | Checked 2026-06-05T09:57:04Z | Supporting distribution signal only; not claimed as broad adoption. |
-| GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.8.2 | Published tag | Public Action tag used by repository workflows; the separate demo is refreshed after release publication. |
+| GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.8.3 | Published tag | Public Action tag used by repository workflows; the separate demo is refreshed after release publication. |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
 | Maintainer trial path | [maintainer-trial.md](maintainer-trial.md) | Published | External maintainers can try the Action without failing CI, then share a workflow run or adoption report. |
 | Maintainer feedback path | [maintainer-feedback.md](maintainer-feedback.md) | Published | External maintainers can leave useful public feedback even when the tool is not adopted. |
-| Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.8.2` against this repository. |
+| Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.8.3` against this repository. |
 | Inventory dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml | Passing | Exercises multi-repository inventory mode. |
 | Separate public workflow demo | https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878 | Passing | Separate public repository runs `SalmonPlays/oss-signal@v0.7.0` and uploads Markdown, SARIF, and issue-ready artifacts. |
 | Accepted external contribution | https://github.com/icoretech/codex-action/pull/24 | Merged 2026-06-04 | External maintainer merged the focused Codex Action documentation safety fix and left a merge comment. |

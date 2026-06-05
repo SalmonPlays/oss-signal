@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.8.3
+
+- Added workflow-level Node.js 24 opt-in for generated trial workflows, dogfood workflows, and copyable examples to avoid GitHub Actions Node.js 20 deprecation warnings.
+
 ## 0.8.2
 
 - Updated generated trial workflows, dogfood workflows, and documentation examples to `actions/upload-artifact@v5`.
