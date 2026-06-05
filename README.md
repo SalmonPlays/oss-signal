@@ -117,6 +117,12 @@ Use JSON in automation:
 oss-signal . --format json --fail-under 80
 ```
 
+Print a compact shell-friendly score summary (`jq` optional):
+
+```bash
+oss-signal . --format json | jq -r '"score=\(.score) grade=\(.grade) source=\(.source)"'
+```
+
 See [docs/json-output.md](docs/json-output.md) for the JSON schema and fixture.
 
 Audit multiple repositories from one newline-delimited inventory file:
