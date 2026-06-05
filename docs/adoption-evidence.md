@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-05T03:18:27Z
+Last verified: 2026-06-05T03:41:50Z
 
 ## Project Links
 
@@ -42,6 +42,7 @@ Last verified: 2026-06-05T03:18:27Z
 - SARIF Code Scanning walkthrough: [docs/sarif-code-scanning.md](sarif-code-scanning.md)
 - Roadmap: [docs/roadmap.md](roadmap.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
+- Evidence ledger: [docs/evidence-ledger.md](evidence-ledger.md)
 - Post-submission update: [docs/post-submission-update.md](post-submission-update.md)
 - Release process: [docs/release-process.md](release-process.md)
 - Codex for Open Source application brief: [docs/codex-for-oss-application.md](codex-for-oss-application.md)
@@ -132,9 +133,9 @@ The workflow now includes [plan-output.md](plan-output.md), which converts audit
 
 Additional focused external contribution:
 
-- `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing.
+- `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing. The maintainer merge comment is public at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361.
 
-The five field-audit follow-up PRs were open and mergeable when checked from GitHub on 2026-06-05T01:46:17Z. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
+The five field-audit follow-up PRs were open and mergeable when checked from GitHub on 2026-06-05T03:41:50Z. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 
 ## Contributor Intake
 

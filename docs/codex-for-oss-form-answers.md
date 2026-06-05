@@ -92,6 +92,8 @@ The project is early, so I am not overstating adoption. Current evidence include
 - Separate workflow demo repository: https://github.com/SalmonPlays/oss-signal-adoption-demo
 - Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
+- Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
+- Merged external PR with maintainer comment: https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361
 
 ## Character Counts
 

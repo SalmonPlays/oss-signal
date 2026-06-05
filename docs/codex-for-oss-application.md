@@ -17,6 +17,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
+- Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
 - Brand assets and GitHub settings copy: [brand.md](brand.md)
@@ -68,6 +69,7 @@ The repository currently has:
 - A local self-audit score of 100/100.
 - A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.7.0 -- oss-signal SalmonPlays/oss-signal --format json`, returning 100/100 (A).
 - Public reports, issues, and PRs created from real repository audits, including five posted field-audit issues and five follow-up PRs.
+- One accepted external documentation PR, with a public maintainer merge comment, recorded in [evidence-ledger.md](evidence-ledger.md).
 
 ## Separate Workflow Demo
 
