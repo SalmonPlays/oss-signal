@@ -34,7 +34,7 @@ jobs:
           fail-under: "100"
           output: oss-signal-action-report.md
       - run: test "${{ steps.oss-signal.outputs.score }}" = "100"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: oss-signal-action-report
           path: oss-signal-action-report.md

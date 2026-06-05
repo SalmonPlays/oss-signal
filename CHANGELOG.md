@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.8.2
+
+- Updated generated trial workflows, dogfood workflows, and documentation examples to `actions/upload-artifact@v5`.
+
 ## 0.8.1
 
 - Moved the GitHub Action runtime to `node24` so new workflow runs avoid the GitHub-hosted runner Node.js 20 deprecation warning.

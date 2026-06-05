@@ -9,7 +9,7 @@ For a first trial, use the no-fail workflow in [maintainer-trial.md](maintainer-
 Run against a public repository without cloning:
 
 ```bash
-npm exec --yes --package=oss-signal@0.8.1 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
+npm exec --yes --package=oss-signal@0.8.2 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
 ```
 
 Run against the current checkout:
@@ -50,13 +50,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.8.1
+      - uses: SalmonPlays/oss-signal@v0.8.2
         id: oss-signal
         with:
           fail-under: "80"
           output: oss-signal-report.md
           summary: "true"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: oss-signal-report
           path: oss-signal-report.md
@@ -71,7 +71,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.8.1
+  - uses: SalmonPlays/oss-signal@v0.8.2
     with:
       format: sarif
       output: oss-signal.sarif
@@ -87,7 +87,7 @@ Full walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
 
 Useful adoption evidence is concrete and public:
 
-- A workflow run that uses `SalmonPlays/oss-signal@v0.8.1`.
+- A workflow run that uses `SalmonPlays/oss-signal@v0.8.2`.
 - A Markdown report attached as a workflow artifact.
 - A SARIF upload that appears in Code Scanning.
 - A focused issue or pull request created from an audit finding.

@@ -1,6 +1,6 @@
 {
   "tool": "oss-signal",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "root": "https://github.com/SalmonPlays/oss-signal",
   "source": {
     "type": "github",
