@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.8.1
+
+- Moved the GitHub Action runtime to `node24` so new workflow runs avoid the GitHub-hosted runner Node.js 20 deprecation warning.
+- Updated SARIF upload documentation examples to `github/codeql-action/upload-sarif@v4`.
+
 ## 0.8.0
 
 - Added `--format workflow` for generating a no-fail GitHub Actions trial workflow.

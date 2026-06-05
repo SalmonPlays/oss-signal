@@ -6,7 +6,7 @@ This page gives reviewers a short path to verify that `oss-signal` is a real OSS
 
 ## Application Version Note
 
-The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.8.0` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
+The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.8.1` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
 
 ## Five-Minute Verification
 
@@ -16,12 +16,12 @@ The Codex for Open Source application was submitted on 2026-06-03. The npm packa
 npm view oss-signal version dist-tags --json
 ```
 
-Expected result: `version` is `0.8.0`, and `dist-tags.latest` is `0.8.0`.
+Expected result: `version` is `0.8.1`, and `dist-tags.latest` is `0.8.1`.
 
 2. Run the published package against the public repository:
 
 ```bash
-npm exec --yes --package=oss-signal@0.8.0 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.8.1 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
 Expected result: score `100`, grade `A`, source `github`.
@@ -64,8 +64,8 @@ Expected result: a Markdown table with one row per repository, average score, sc
 
 5. Inspect the public Action tag:
 
-- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.8.0
-- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.0
+- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.8.1
+- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.1
 - Action metadata: [../action.yml](../action.yml)
 
 6. Inspect field-audit evidence:

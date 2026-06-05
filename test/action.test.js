@@ -169,7 +169,7 @@ test("runAction writes workflow output", async () => {
 
     const body = await readFile(reportFile, "utf8");
     assert.match(body, /oss-signal trial/);
-    assert.match(body, /SalmonPlays\/oss-signal@v0\.8\.0/);
+    assert.match(body, /SalmonPlays\/oss-signal@v0\.8\.1/);
     assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });

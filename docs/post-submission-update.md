@@ -23,12 +23,13 @@ The older submission evidence remains valid. The current `latest` npm version si
 | `v0.6.4` | npm package, GitHub Release, Action tag | Published OSS Maintainer Signal brand assets and npm/GitHub metadata polish. |
 | `v0.7.0` | npm package, GitHub Release, Action tag | Added maintainer plan output for PR-sized outreach planning. |
 | `v0.8.0` | npm package, GitHub Release, Action tag | Added no-fail workflow output and trial feedback intake for external maintainers. |
+| `v0.8.1` | npm package, GitHub Release, Action tag | Moved the GitHub Action runtime to Node.js 24 and refreshed SARIF upload examples. |
 
 ## Current Evidence
 
-- npm package: https://www.npmjs.com/package/oss-signal (`0.8.0` latest after release)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.0
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.8.0
+- npm package: https://www.npmjs.com/package/oss-signal (`0.8.1` latest after release)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.1
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.8.1
 - Release workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/release.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - GitHub repository profile: description, npm homepage, eight maintainer-focused topics, social preview image, and profile pin are live.
@@ -43,7 +44,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 
 ## Clean Verification
 
-The public registry should return `0.8.0` for both package version and `latest` dist-tag after the no-fail workflow release.
+The public registry should return `0.8.1` for both package version and `latest` dist-tag after the Node.js 24 runtime release.
 
 ```bash
 npm view oss-signal version dist-tags --json
@@ -53,17 +54,17 @@ Expected result:
 
 ```json
 {
-  "version": "0.8.0",
+  "version": "0.8.1",
   "dist-tags": {
-    "latest": "0.8.0"
+    "latest": "0.8.1"
   }
 }
 ```
 
-A clean npm execution against the public GitHub repository should return version `0.8.0`, score `100`, grade `A`, and source `github`.
+A clean npm execution against the public GitHub repository should return version `0.8.1`, score `100`, grade `A`, and source `github`.
 
 ```bash
-npm exec --yes --package=oss-signal@0.8.0 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.8.1 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
 ## Review Impact
@@ -71,7 +72,7 @@ npm exec --yes --package=oss-signal@0.8.0 -- oss-signal SalmonPlays/oss-signal -
 This version difference should be read as post-submission maintenance progress, not as a mismatch. It strengthens the evidence in three ways:
 
 - The package now has a successful npm Trusted Publishing release from GitHub Actions.
-- The GitHub Action tag, npm package, release notes, and documentation all point to `0.8.0`.
+- The GitHub Action tag, npm package, release notes, and documentation all point to `0.8.1`.
 - The repository has public CI, Repository health, Repository inventory, CodeQL, OpenSSF Scorecard, Release workflow evidence, social preview branding, profile pinning, Discussions, CODEOWNERS, and issue routing.
 - The current release includes `--format plan`, which turns audit findings into PR-sized outreach plans before external posting.
 - The current release includes `--format workflow`, which renders a no-fail GitHub Actions trial workflow for external maintainers.

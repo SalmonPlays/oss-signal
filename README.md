@@ -26,8 +26,8 @@ It checks the files and automation that reduce maintainer load: README, license,
 Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
-- Published package: [`oss-signal@0.8.0`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.8.0`.
-- Published GitHub Action: [`SalmonPlays/oss-signal@v0.8.0`](https://github.com/SalmonPlays/oss-signal/tree/v0.8.0).
+- Published package: [`oss-signal@0.8.1`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.8.1`.
+- Published GitHub Action: [`SalmonPlays/oss-signal@v0.8.1`](https://github.com/SalmonPlays/oss-signal/tree/v0.8.1).
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Trust center: [docs/trust-center.md](docs/trust-center.md)
 - Evidence ledger: [docs/evidence-ledger.md](docs/evidence-ledger.md)
@@ -41,7 +41,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Maintainer plan output: [docs/plan-output.md](docs/plan-output.md)
 - SARIF Code Scanning walkthrough: [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md)
 - Roadmap: [docs/roadmap.md](docs/roadmap.md)
-- Post-submission version note: the application may reference earlier evidence; `0.8.0` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
+- Post-submission version note: the application may reference earlier evidence; `0.8.1` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
 - Security posture: OpenSSF Scorecard is scheduled, CodeQL is active, secret scanning push protection is enabled, Dependabot alerts/security updates/malware alerts are enabled, and private vulnerability reporting is enabled.
 - Branch posture: `main` has branch protection to prevent force pushes and deletions while keeping direct maintainer maintenance possible.
@@ -193,7 +193,7 @@ Summary:
 
 See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, [docs/examples/github-plan.md](docs/examples/github-plan.md) for plan output, [docs/examples/maintainer-trial-workflow.yml](docs/examples/maintainer-trial-workflow.yml) for workflow output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
 
-The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.8.0`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
+The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.8.1`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
 
 ## Field Audits
 
@@ -244,7 +244,7 @@ oss-signal . --fail-under 80
 Add `oss-signal` directly to a GitHub Actions workflow:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.8.0
+- uses: SalmonPlays/oss-signal@v0.8.1
   id: oss-signal
   with:
     fail-under: "80"
@@ -260,7 +260,7 @@ The Action writes a concise GitHub Actions step summary by default, so reviewers
 Run an inventory from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.8.0
+- uses: SalmonPlays/oss-signal@v0.8.1
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -272,7 +272,7 @@ Run an inventory from CI:
 Generate an editable Issue body from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.8.0
+- uses: SalmonPlays/oss-signal@v0.8.1
   with:
     format: issue
     output: maintainer-follow-up.md
@@ -294,7 +294,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.8.0
+      - uses: SalmonPlays/oss-signal@v0.8.1
         id: oss-signal
         with:
           fail-under: "80"
@@ -317,7 +317,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v5
-  - uses: SalmonPlays/oss-signal@v0.8.0
+  - uses: SalmonPlays/oss-signal@v0.8.1
     with:
       format: sarif
       output: oss-signal.sarif
@@ -327,7 +327,7 @@ steps:
       sarif_file: oss-signal.sarif
 ```
 
-This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.8.0` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
+This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.8.1` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
 
 You can also run the CLI directly in CI:
 

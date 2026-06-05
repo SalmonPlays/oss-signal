@@ -23,12 +23,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: SalmonPlays/oss-signal@v0.8.0
+      - uses: SalmonPlays/oss-signal@v0.8.1
         with:
           format: sarif
           output: oss-signal.sarif
           summary: "false"
-      - uses: github/codeql-action/upload-sarif@v3
+      - uses: github/codeql-action/upload-sarif@v4
         if: github.event_name != 'pull_request'
         with:
           sarif_file: oss-signal.sarif

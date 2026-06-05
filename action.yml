@@ -44,5 +44,5 @@ outputs:
   report-path:
     description: Path to the generated report file, when output is enabled.
 runs:
-  using: node20
+  using: node24
   main: src/action.js
