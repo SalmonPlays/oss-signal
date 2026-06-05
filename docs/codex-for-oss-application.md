@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-05T09:57:04Z
+Snapshot: 2026-06-05T16:02:53Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -15,7 +15,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Repository inventory workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
-- Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
+- Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
@@ -59,26 +59,26 @@ The repository currently has:
 - A published GitHub Release for v0.8.4 with maintainer plan output, CI usage guidance, and release notes.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - A repository inventory mode for organization-level maintainer-readiness triage, available in both CLI and GitHub Action form.
-- A clean npm smoke test of `oss-signal@0.8.4` returning version `0.8.4`, score `100`, grade `A`, and source `github`.
+- A clean npm smoke test of `oss-signal@0.8.4` returning version `0.8.4`.
 - SARIF output for GitHub Code Scanning integration.
 - A v0.8.4 GitHub Action tag with step summary, SARIF support, inventory support, Issue-ready output, and maintainer plan output.
 - A workflow output mode that renders a no-fail GitHub Actions trial workflow for external maintainers.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.8.4` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.8.4` against a repository target list and uploads an inventory artifact.
-- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.7.0` from another repository and uploads Markdown, SARIF, and Issue-ready report artifacts.
+- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.8.4` from another repository and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
 - A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
 - A release process and tag-triggered release workflow that verify package contents and publish to npm through Trusted Publishing.
 - CI, Repository health, CodeQL, and Release workflows passing publicly.
 - A local self-audit score of 100/100.
-- A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.8.4 -- oss-signal SalmonPlays/oss-signal --format json`, returning 100/100 (A).
+- A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.8.4 -- oss-signal --version`, returning `0.8.4`.
 - Public reports, issues, and PRs created from real repository audits, including six posted field-audit issues and five follow-up PRs.
 - One accepted external documentation PR, with a public maintainer merge comment, recorded in [evidence-ledger.md](evidence-ledger.md).
 
 ## Separate Workflow Demo
 
-The repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs the public `SalmonPlays/oss-signal@v0.7.0` Action tag from a separate workflow. The successful run at https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878 uploaded an `oss-signal-adoption-demo-report` artifact containing Markdown, SARIF, and Issue-ready output.
+The repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs the public `SalmonPlays/oss-signal@v0.8.4` Action tag from a separate workflow. The successful run at https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373 uploaded an `oss-signal-adoption-demo-report` artifact containing Markdown, SARIF, Issue-ready, and no-fail workflow output.
 
 This is intentionally described as a separate public workflow demo rather than third-party adoption because the repository is also owned by `SalmonPlays`. It still proves that the published Action tag is consumable outside the main repository.
 

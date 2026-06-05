@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-05T09:57:04Z
+Last verified: 2026-06-05T16:02:53Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -18,13 +18,21 @@ npm view oss-signal version dist-tags --json
 
 Expected result: `version` is `0.8.4`, and `dist-tags.latest` is `0.8.4`.
 
-2. Run the published package against the public repository:
+2. Run the published package from a clean install:
 
 ```bash
-npm exec --yes --package=oss-signal@0.8.4 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.8.4 -- oss-signal --version
 ```
 
-Expected result: score `100`, grade `A`, source `github`.
+Expected result: `0.8.4`.
+
+To audit the public GitHub repository from a local shell, set `GITHUB_TOKEN` if unauthenticated API rate limits are exhausted:
+
+```bash
+GITHUB_TOKEN=<token> npm exec --yes --package=oss-signal@0.8.4 -- oss-signal SalmonPlays/oss-signal --format json
+```
+
+Expected result with API access: score `100`, grade `A`, source `github`.
 
 3. Inspect public workflow evidence:
 
@@ -34,7 +42,7 @@ Expected result: score `100`, grade `A`, source `github`.
 - CodeQL: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - OpenSSF Scorecard: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
-- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
+- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - GitHub Pages source: https://github.com/SalmonPlays/oss-signal/blob/main/docs/index.md
 - GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal

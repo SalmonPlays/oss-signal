@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-05T09:57:04Z
+Snapshot: 2026-06-05T16:02:53Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.8.4 latest, 356 npm downloads reported by the registry API on 2026-06-05, a published v0.8.4 release, a reusable GitHub Action with inventory and workflow output, no-fail maintainer trial and feedback paths, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, six field-audit issues, five field-audit PRs, and a separate public workflow demo with artifacts.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.8.4 latest, 356 npm downloads reported by the registry API on 2026-06-05, a published v0.8.4 release, a reusable GitHub Action with inventory and workflow output, no-fail maintainer trial and feedback paths, a clean npm version smoke test, public CI/Repository health/CodeQL/Release, six field-audit issues, five field-audit PRs, and a separate public workflow demo with artifacts.
 ```
 
 ## Evidence Links
@@ -90,7 +90,7 @@ The project is early, so I am not overstating adoption. Current evidence include
 - GitHub Release v0.8.4: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.4
 - Main repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Separate workflow demo repository: https://github.com/SalmonPlays/oss-signal-adoption-demo
-- Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
+- Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md

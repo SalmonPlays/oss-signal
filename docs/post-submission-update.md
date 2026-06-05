@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-05T09:57:04Z
+Latest verification: 2026-06-05T16:02:53Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 
@@ -25,7 +25,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 | `v0.8.0` | npm package, GitHub Release, Action tag | Added no-fail workflow output and trial feedback intake for external maintainers. |
 | `v0.8.1` | npm package, GitHub Release, Action tag | Moved the GitHub Action runtime to Node.js 24 and refreshed SARIF upload examples. |
 | `v0.8.2` | npm package, GitHub Release, Action tag | Updated generated workflows and dogfood workflows to `actions/upload-artifact@v5`. |
-| `v0.8.3` | npm package, GitHub Release, Action tag | Added workflow-level Node.js 24 opt-in to avoid GitHub Actions Node.js 20 deprecation warnings. |
+| `v0.8.3` | npm package, GitHub Release, Action tag | Added workflow-level Node.js 24 opt-in ahead of GitHub Actions' Node.js 20 removal. |
 | `v0.8.4` | npm package, GitHub Release, Action tag | Scoped the Scorecard workflow opt-in so Scorecard result publication passes workflow verification. |
 
 ## Current Evidence
@@ -64,10 +64,10 @@ Expected result:
 }
 ```
 
-A clean npm execution against the public GitHub repository should return version `0.8.4`, score `100`, grade `A`, and source `github`.
+A clean npm execution should return version `0.8.4`.
 
 ```bash
-npm exec --yes --package=oss-signal@0.8.4 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.8.4 -- oss-signal --version
 ```
 
 ## Review Impact

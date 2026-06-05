@@ -8,7 +8,7 @@
 
 ## 0.8.3
 
-- Added workflow-level Node.js 24 opt-in for generated trial workflows, dogfood workflows, and copyable examples to avoid GitHub Actions Node.js 20 deprecation warnings.
+- Added workflow-level Node.js 24 opt-in for generated trial workflows, dogfood workflows, and copyable examples ahead of GitHub Actions' Node.js 20 removal.
 
 ## 0.8.2
 

@@ -1,6 +1,6 @@
 # Trust Center
 
-Last verified: 2026-06-05T09:57:04Z
+Last verified: 2026-06-05T16:02:53Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 
@@ -27,7 +27,7 @@ What it does have is a complete, public maintainer workflow:
 
 | Signal | Public evidence | Why it matters |
 | --- | --- | --- |
-| Installable CLI | `npm exec --yes --package=oss-signal@0.8.4 -- oss-signal SalmonPlays/oss-signal --format json` | Reviewers can run the package without cloning this repository. |
+| Installable CLI | `npm exec --yes --package=oss-signal@0.8.4 -- oss-signal --version` | Reviewers can run the package without cloning this repository. |
 | Marketplace Action | https://github.com/marketplace/actions/oss-signal | Users can discover and copy the Action through GitHub Marketplace. |
 | Maintainer trial | [maintainer-trial](maintainer-trial.md) | External maintainers can try the Action without failing CI first. |
 | Maintainer feedback | [maintainer-feedback](maintainer-feedback.md) | Neutral or negative maintainer responses can still improve rules and count as real third-party feedback. |

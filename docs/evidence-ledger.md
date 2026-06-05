@@ -1,6 +1,6 @@
 # Evidence Ledger
 
-Last verified: 2026-06-05T09:57:04Z
+Last verified: 2026-06-05T16:02:53Z
 
 This ledger keeps the strongest public `oss-signal` evidence in one reviewer-friendly place. It separates accepted evidence from supporting demos and open follow-up work.
 
@@ -8,7 +8,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 
 | Signal | Evidence | Status | Reviewer note |
 | --- | --- | --- | --- |
-| Installable CLI | https://www.npmjs.com/package/oss-signal | `0.8.4` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.8.4 -- oss-signal SalmonPlays/oss-signal --format json`. |
+| Installable CLI | https://www.npmjs.com/package/oss-signal | `0.8.4` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.8.4 -- oss-signal --version`. |
 | npm download API | 356 downloads for last-week and last-month windows | Checked 2026-06-05T09:57:04Z | Supporting distribution signal only; not claimed as broad adoption. |
 | GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.8.4 | Published tag | Public Action tag used by repository workflows; the separate demo is refreshed after release publication. |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
@@ -16,7 +16,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Maintainer feedback path | [maintainer-feedback.md](maintainer-feedback.md) | Published | External maintainers can leave useful public feedback even when the tool is not adopted. |
 | Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.8.4` against this repository. |
 | Inventory dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml | Passing | Exercises multi-repository inventory mode. |
-| Separate public workflow demo | https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878 | Passing | Separate public repository runs `SalmonPlays/oss-signal@v0.7.0` and uploads Markdown, SARIF, and issue-ready artifacts. |
+| Separate public workflow demo | https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373 | Passing | Separate public repository runs `SalmonPlays/oss-signal@v0.8.4` and uploads Markdown, SARIF, issue-ready, and no-fail workflow artifacts. |
 | Accepted external contribution | https://github.com/icoretech/codex-action/pull/24 | Merged 2026-06-04 | External maintainer merged the focused Codex Action documentation safety fix and left a merge comment. |
 | Maintainer merge comment | https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 | Public maintainer response | Stronger than an open PR because the external maintainer accepted the change. |
 | Field-audit issues | [adoption evidence](adoption-evidence.md#public-field-audits-and-prs) | Six posted issues | These show the audit-to-maintainer-follow-up workflow, but are not counted as adoption unless maintainers reply, act, or endorse them. |

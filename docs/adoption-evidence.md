@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-05T09:57:04Z
+Last verified: 2026-06-05T16:02:53Z
 
 ## Project Links
 
@@ -23,7 +23,7 @@ Last verified: 2026-06-05T09:57:04Z
 - Launch announcement Discussion: https://github.com/SalmonPlays/oss-signal/discussions/13
 - Launch X post: https://x.com/paopaopaolin/status/2062710560857489698
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
-- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
+- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - SARIF self-audit output: [docs/examples/self-audit.sarif](examples/self-audit.sarif)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
@@ -73,16 +73,15 @@ The npm package is publicly available as `oss-signal@0.8.4` with `latest` pointi
 
 The npm downloads API returned 356 downloads for both last-week and last-month windows on 2026-06-05. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
-Clean-directory execution against the public GitHub repository returned:
+Clean-directory package execution returned:
 
 ```json
 {
-  "version": "0.8.4",
-  "score": 100,
-  "grade": "A",
-  "source": "github"
+  "version": "0.8.4"
 }
 ```
+
+Local self-audit returned score `100`, grade `A`. A clean unauthenticated public GitHub API smoke test was blocked by GitHub API 403 rate limiting during this verification pass, so the public GitHub-mode evidence is the successful GitHub Actions runs that use the public `v0.8.4` Action tag with `GITHUB_TOKEN`.
 
 Current public workflow status:
 
@@ -102,15 +101,15 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
-The npm registry returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T09:57:04Z. A clean install smoke test returned version `0.8.4`, score `100`, grade `A`, and source `github`. The 2026-06-05 download check returned 356 downloads for the last-week and last-month windows.
+The npm registry returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. A clean install smoke test returned version `0.8.4`. The 2026-06-05 download check returned 356 downloads for the last-week and last-month windows.
 
 ## Separate Public Workflow Evidence
 
-The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.7.0` from a separate workflow file:
+The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.8.4` from a separate workflow file:
 
 - Workflow file: https://github.com/SalmonPlays/oss-signal-adoption-demo/blob/main/.github/workflows/oss-signal.yml
-- Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
-- Artifact: `oss-signal-adoption-demo-report`, containing `oss-signal-report.md`, `oss-signal.sarif`, and `maintainer-follow-up.md`
+- Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
+- Artifact: `oss-signal-adoption-demo-report`, containing `oss-signal-report.md`, `oss-signal.sarif`, `maintainer-follow-up.md`, and `oss-signal-trial.yml`
 
 This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is evidence that a public Action tag works outside the main repository and can publish Markdown, SARIF, and Issue-ready maintainer-readiness reports from another public workflow. The demo workflow is refreshed after each release when the new tag is available.
 
@@ -165,10 +164,10 @@ npm run audit:github
 node src/cli.js . --format sarif --output docs/examples/self-audit.sarif
 node src/cli.js --inventory docs/examples/inventory-targets.txt --format markdown --output docs/examples/inventory-report.md
 node src/cli.js platformatic/massimo --format json
-npm exec --yes --package=oss-signal@0.8.4 -- oss-signal SalmonPlays/oss-signal --format json
+npm exec --yes --package=oss-signal@0.8.4 -- oss-signal --version
 ```
 
-The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.8.4` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.8.4` package has also been executed from a clean temporary directory against the public GitHub repository, returning 100/100 (A).
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.8.4` Action tag is used by the repository health workflow for Markdown and SARIF output. The published npm `0.8.4` package has also been executed from a clean temporary directory, returning version `0.8.4`.
 
 Public CI evidence:
 
@@ -177,7 +176,7 @@ Public CI evidence:
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - OpenSSF Scorecard workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
-- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
+- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Reviewer verification quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 
 ## Boundaries
