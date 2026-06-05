@@ -10,6 +10,7 @@ body:
       value: |
         Use this form when you tried oss-signal in a repository, CI workflow, audit issue, or maintainer cleanup process.
         Public workflow links are the most useful evidence.
+        First-time maintainers can use the no-fail trial workflow: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
   - type: input
     id: repository
     attributes:
@@ -31,12 +32,14 @@ body:
     attributes:
       label: How was oss-signal used?
       options:
+        - No-fail GitHub Action trial
         - GitHub Action
         - CLI local audit
         - GitHub URL audit
         - Repository inventory
         - SARIF / Code Scanning
         - Issue-ready report
+        - Maintainer acknowledgement
         - Other
     validations:
       required: true

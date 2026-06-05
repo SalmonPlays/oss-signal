@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-05T08:36:21Z
+Last verified: 2026-06-05T09:44:40Z
 
 ## Project Links
 
@@ -101,7 +101,7 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
-The npm registry returned `0.7.0` for both the package version and `latest` dist-tag on 2026-06-05T03:18:27Z. A clean install smoke test returned version `0.7.0`, score `100`, grade `A`, and source `github`. The 2026-06-05 download check returned 356 downloads for the last-week and last-month windows.
+The npm registry returned `0.7.0` for both the package version and `latest` dist-tag on 2026-06-05T09:44:40Z. A clean install smoke test returned version `0.7.0`, score `100`, grade `A`, and source `github`. The 2026-06-05 download check returned 356 downloads for the last-week and last-month windows.
 
 ## Separate Public Workflow Evidence
 
@@ -137,7 +137,7 @@ Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing. The maintainer merge comment is public at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361.
 
-The five field-audit follow-up PRs were open and mergeable when checked from GitHub on 2026-06-05T04:20:21Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
+The five field-audit follow-up PRs were still open when checked from GitHub on 2026-06-05T09:44:40Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 
 ## Contributor Intake
 

@@ -12,7 +12,7 @@ Best audience:
 - Contributors who want to open small, useful maintainer-workflow PRs.
 - Teams that want CI evidence for README, license, contributing, security, templates, tests, CodeQL, Dependabot, and release notes.
 
-Do not claim broad adoption. The current evidence is a public npm package, GitHub Marketplace Action, self-audit, workflow demo, public field audits, five open external follow-up PRs, and one merged external documentation PR.
+Do not claim broad adoption. The current evidence is a public npm package, GitHub Marketplace Action, self-audit, workflow demo, no-fail maintainer trial workflow, six public field-audit issues, five open external follow-up PRs, and one merged external documentation PR.
 
 ## Primary Links
 
@@ -21,6 +21,7 @@ Do not claim broad adoption. The current evidence is a public npm package, GitHu
 - GitHub Marketplace: https://github.com/marketplace/actions/oss-signal
 - Reviewer evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/reviewer-evidence.md
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
+- Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
 - Maintainer discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
 
 ## Posted Launch Links
@@ -46,6 +47,26 @@ Action:
 https://github.com/marketplace/actions/oss-signal
 
 Looking for maintainer feedback.
+```
+
+## Maintainer Feedback Request
+
+```text
+OSS maintainers: I am looking for one independent maintainer to try oss-signal in report-only mode.
+
+It is a no-fail GitHub Action trial:
+- reads repo files only
+- publishes a step summary
+- uploads oss-signal-report.md
+- does not gate CI unless you later add fail-under
+
+Trial:
+https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
+
+Repo:
+https://github.com/SalmonPlays/oss-signal
+
+No stars or endorsements needed. A public workflow run, issue reply, or "not useful because..." note is enough feedback.
 ```
 
 ## X Short Post

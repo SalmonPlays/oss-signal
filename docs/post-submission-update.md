@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-04T23:28:58Z
+Latest verification: 2026-06-05T09:44:40Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 
@@ -34,6 +34,8 @@ The older submission evidence remains valid. The current `latest` npm version si
 - Community workflow: Discussions are enabled and issue templates now route workflow questions and security reports to the right channels.
 - Maintainer operations: OpenSSF Scorecard, CODEOWNERS, MAINTAINERS, and GOVERNANCE are now part of the public repository evidence. Scorecard publishes JSON evidence instead of adding noisy Code Scanning alerts.
 - Public discussion: https://github.com/SalmonPlays/oss-signal/discussions/5 documents the intended maintainer workflow and feedback channel.
+- No-fail maintainer trial: [maintainer-trial.md](maintainer-trial.md) gives external maintainers a copyable workflow that publishes a report without gating CI.
+- Public field-audit evidence: six posted field-audit issues, five follow-up PRs, and one merged external documentation PR are tracked in [evidence-ledger.md](evidence-ledger.md).
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 - Maintainer plan output: [plan-output.md](plan-output.md)
@@ -71,5 +73,6 @@ This version difference should be read as post-submission maintenance progress, 
 - The GitHub Action tag, npm package, release notes, and documentation all point to `0.7.0`.
 - The repository has public CI, Repository health, Repository inventory, CodeQL, OpenSSF Scorecard, Release workflow evidence, social preview branding, profile pinning, Discussions, CODEOWNERS, and issue routing.
 - The current release includes `--format plan`, which turns audit findings into PR-sized outreach plans before external posting.
+- The no-fail maintainer trial workflow lowers the cost for an independent maintainer to try the Action before adopting a CI gate.
 
 This does not replace the remaining adoption gap. The strongest next evidence would still be independent maintainer-owned workflow usage or more merged external maintainer PRs.
