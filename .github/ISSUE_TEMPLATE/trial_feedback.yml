@@ -1,0 +1,59 @@
+name: Trial feedback
+description: Share maintainer feedback after reviewing or trying oss-signal.
+title: "[Trial feedback] "
+labels:
+  - documentation
+  - help wanted
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for lightweight maintainer feedback, including "not useful" or "out of scope" responses.
+        A public maintainer reply is useful even when the tool is not adopted.
+        No-fail trial workflow: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
+  - type: input
+    id: repository
+    attributes:
+      label: Repository
+      description: Link the repository or workflow context.
+      placeholder: "https://github.com/owner/repo"
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: Public evidence link
+      description: Link a workflow run, issue, PR, discussion, or report if available.
+      placeholder: "https://github.com/owner/repo/actions/runs/..."
+    validations:
+      required: false
+  - type: dropdown
+    id: status
+    attributes:
+      label: Trial status
+      options:
+        - Reviewed the report only
+        - Ran the no-fail Action trial
+        - Ran the CLI
+        - Opened a follow-up issue
+        - Opened or merged a follow-up PR
+        - Not useful for this repository
+        - Intentionally out of scope
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Maintainer feedback
+      description: What was useful, wrong, noisy, missing, or intentionally out of scope?
+      placeholder: "Example: The security-policy finding was useful, but Dependabot is handled elsewhere."
+    validations:
+      required: true
+  - type: checkboxes
+    id: public_reference
+    attributes:
+      label: Public reference
+      options:
+        - label: This feedback can be referenced publicly if the linked repository or workflow is public.
+          required: false

@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-05T09:44:40Z
+Last verified: 2026-06-05T09:57:04Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -41,6 +41,7 @@ Expected result: score `100`, grade `A`, source `github`.
 - Trust center: https://github.com/SalmonPlays/oss-signal/blob/main/docs/trust-center.md
 - Adoption kit: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-kit.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
+- Maintainer feedback: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-feedback.md
 - Architecture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/architecture.md
 - Security model: https://github.com/SalmonPlays/oss-signal/blob/main/docs/security-model.md
 - JSON output contract: https://github.com/SalmonPlays/oss-signal/blob/main/docs/json-output.md
@@ -100,6 +101,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 - The public maintainer-workflow Discussion gives reviewers and users a clear place to ask usage questions and propose rule feedback.
 - The adoption report and maintainer audit issue forms give users structured ways to share public workflow evidence or discuss a generated report.
 - The maintainer trial page gives external maintainers a no-fail workflow that can be copied into another public repository before any CI gate is enabled.
+- The maintainer feedback form accepts neutral or negative public feedback, so third-party maintainer responses are not limited to successful adoption claims.
 - `CITATION.cff` is present so GitHub can expose a citation route for the repository.
 - The architecture, security model, JSON output contract, SARIF Code Scanning walkthrough, and roadmap pages explain how the tool works, what permissions it needs, what automation contract it exposes, and what adoption signal is still missing.
 - GitHub Pages is deployed as the repository homepage, and the repository About URL points to the live landing page.
@@ -119,6 +121,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 - Adoption kit: [adoption-kit.md](adoption-kit.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)
+- Maintainer feedback: [maintainer-feedback.md](maintainer-feedback.md)
 - Architecture: [architecture.md](architecture.md)
 - Security model: [security-model.md](security-model.md)
 - JSON output contract: [json-output.md](json-output.md)

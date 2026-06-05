@@ -3,6 +3,9 @@ contact_links:
   - name: Maintainer workflow question
     url: https://github.com/SalmonPlays/oss-signal/discussions
     about: Ask about GitHub Action setup, inventory mode, adoption, or maintainer triage workflows.
+  - name: Maintainer trial guide
+    url: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
+    about: Copy the no-fail trial workflow before enabling CI gates.
   - name: Security report
     url: https://github.com/SalmonPlays/oss-signal/security/policy
     about: Report vulnerabilities through the repository security policy instead of a public issue.

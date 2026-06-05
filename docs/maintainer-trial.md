@@ -78,6 +78,8 @@ Useful public evidence is concrete:
 
 Open an [adoption report](https://github.com/SalmonPlays/oss-signal/issues/new?template=adoption_report.yml) when a public repository tries the CLI or Action.
 
+Open [trial feedback](https://github.com/SalmonPlays/oss-signal/issues/new?template=trial_feedback.yml) when you reviewed a report but did not adopt the tool, or when a finding was noisy, intentionally out of scope, or handled elsewhere.
+
 Suggested note:
 
 ```text

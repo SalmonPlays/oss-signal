@@ -87,7 +87,7 @@ Useful adoption evidence is concrete and public:
 - A focused issue or pull request created from an audit finding.
 - A short note about what maintainer task the audit improved.
 
-Open an [adoption report](https://github.com/SalmonPlays/oss-signal/issues/new?template=adoption_report.yml) when a public repository uses the CLI or Action. Open a [maintainer audit report](https://github.com/SalmonPlays/oss-signal/issues/new?template=audit_report.yml) when you want to discuss a generated report before posting follow-up to another repository.
+Open an [adoption report](https://github.com/SalmonPlays/oss-signal/issues/new?template=adoption_report.yml) when a public repository uses the CLI or Action. Open [trial feedback](https://github.com/SalmonPlays/oss-signal/issues/new?template=trial_feedback.yml) when you reviewed a report but did not adopt the tool. Open a [maintainer audit report](https://github.com/SalmonPlays/oss-signal/issues/new?template=audit_report.yml) when you want to discuss a generated report before posting follow-up to another repository.
 
 ## Boundaries
 

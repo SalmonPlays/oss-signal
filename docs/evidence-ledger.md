@@ -1,6 +1,6 @@
 # Evidence Ledger
 
-Last verified: 2026-06-05T09:44:40Z
+Last verified: 2026-06-05T09:57:04Z
 
 This ledger keeps the strongest public `oss-signal` evidence in one reviewer-friendly place. It separates accepted evidence from supporting demos and open follow-up work.
 
@@ -9,10 +9,11 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Signal | Evidence | Status | Reviewer note |
 | --- | --- | --- | --- |
 | Installable CLI | https://www.npmjs.com/package/oss-signal | `0.7.0` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.7.0 -- oss-signal SalmonPlays/oss-signal --format json`. |
-| npm download API | 356 downloads for last-week and last-month windows | Checked 2026-06-05T09:44:40Z | Supporting distribution signal only; not claimed as broad adoption. |
+| npm download API | 356 downloads for last-week and last-month windows | Checked 2026-06-05T09:57:04Z | Supporting distribution signal only; not claimed as broad adoption. |
 | GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.7.0 | Published tag | Public Action tag used by repository workflows and demo workflow. |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
 | Maintainer trial path | [maintainer-trial.md](maintainer-trial.md) | Published | External maintainers can try the Action without failing CI, then share a workflow run or adoption report. |
+| Maintainer feedback path | [maintainer-feedback.md](maintainer-feedback.md) | Published | External maintainers can leave useful public feedback even when the tool is not adopted. |
 | Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.7.0` against this repository. |
 | Inventory dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml | Passing | Exercises multi-repository inventory mode. |
 | Separate public workflow demo | https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878 | Passing | Separate public repository runs `SalmonPlays/oss-signal@v0.7.0` and uploads Markdown, SARIF, and issue-ready artifacts. |
@@ -25,7 +26,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 
 ## External Issue And PR Status
 
-Checked from GitHub on 2026-06-05T09:44:40Z.
+Checked from GitHub on 2026-06-05T09:57:04Z.
 
 | Repository | Link | Status | Scope |
 | --- | --- | --- | --- |

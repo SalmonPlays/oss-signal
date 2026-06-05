@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-05T09:44:40Z
+Last verified: 2026-06-05T09:57:04Z
 
 ## Project Links
 
@@ -34,6 +34,7 @@ Last verified: 2026-06-05T09:44:40Z
 - GitHub Pages landing page source: [docs/index.md](index.md)
 - GitHub Marketplace publishing checklist: [docs/marketplace.md](marketplace.md)
 - Maintainer trial: [docs/maintainer-trial.md](maintainer-trial.md)
+- Maintainer feedback: [docs/maintainer-feedback.md](maintainer-feedback.md)
 - Maintainer playbook: [docs/maintainer-playbook.md](maintainer-playbook.md)
 - Trust center: [docs/trust-center.md](trust-center.md)
 - Adoption kit: [docs/adoption-kit.md](adoption-kit.md)
@@ -93,7 +94,7 @@ Current public workflow status:
 - Release: passing
 - GitHub Pages deployment: passing, with the repository homepage set to https://salmonplays.github.io/oss-signal/
 - GitHub Marketplace listing: published, with `v0.7.0` available as the current Action tag
-- GitHub issue forms: adoption report and maintainer audit report forms are available for structured public evidence intake
+- GitHub issue forms: adoption report, trial feedback, and maintainer audit report forms are available for structured public evidence intake
 - GitHub citation metadata: `CITATION.cff` is present for the repository citation UI
 - Automation contract: JSON schema and fixture are documented for `--format json`
 - Code Scanning walkthrough: SARIF upload permissions, expected warnings, fixture, and output example are documented
@@ -101,7 +102,7 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
-The npm registry returned `0.7.0` for both the package version and `latest` dist-tag on 2026-06-05T09:44:40Z. A clean install smoke test returned version `0.7.0`, score `100`, grade `A`, and source `github`. The 2026-06-05 download check returned 356 downloads for the last-week and last-month windows.
+The npm registry returned `0.7.0` for both the package version and `latest` dist-tag on 2026-06-05T09:57:04Z. A clean install smoke test returned version `0.7.0`, score `100`, grade `A`, and source `github`. The 2026-06-05 download check returned 356 downloads for the last-week and last-month windows.
 
 ## Separate Public Workflow Evidence
 
@@ -137,7 +138,7 @@ Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing. The maintainer merge comment is public at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361.
 
-The five field-audit follow-up PRs were still open when checked from GitHub on 2026-06-05T09:44:40Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
+The five field-audit follow-up PRs were still open when checked from GitHub on 2026-06-05T09:57:04Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 
 ## Contributor Intake
 
@@ -146,7 +147,7 @@ The project now has labeled good-first-issue routes for outside contributors:
 - https://github.com/SalmonPlays/oss-signal/issues/6
 - https://github.com/SalmonPlays/oss-signal/issues/7
 
-The repository also includes a GitHub Discussions category form for structured rule feedback, Action usage questions, and maintainer workflow adoption notes. The issue templates include adoption and maintainer-audit forms so users can share workflow-run evidence or discuss reports without inventing the format.
+The repository also includes a GitHub Discussions category form for structured rule feedback, Action usage questions, and maintainer workflow adoption notes. The issue templates include adoption, trial-feedback, and maintainer-audit forms so users can share workflow-run evidence, neutral maintainer feedback, or report discussion without inventing the format.
 
 Current public roadmap evidence:
 

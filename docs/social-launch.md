@@ -22,6 +22,7 @@ Do not claim broad adoption. The current evidence is a public npm package, GitHu
 - Reviewer evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/reviewer-evidence.md
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
+- Maintainer feedback: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-feedback.md
 - Maintainer discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
 
 ## Posted Launch Links

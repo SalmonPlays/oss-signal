@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-05T09:44:40Z
+Snapshot: 2026-06-05T09:57:04Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -20,6 +20,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)
+- Maintainer feedback: [maintainer-feedback.md](maintainer-feedback.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
 - Brand assets and GitHub settings copy: [brand.md](brand.md)
 - Form answer pack: [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md)
@@ -65,6 +66,7 @@ The repository currently has:
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.7.0` against a repository target list and uploads an inventory artifact.
 - A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.7.0` from another repository and uploads Markdown, SARIF, and Issue-ready report artifacts.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
+- A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
 - A release process and tag-triggered release workflow that verify package contents and publish to npm through Trusted Publishing.
 - CI, Repository health, CodeQL, and Release workflows passing publicly.
