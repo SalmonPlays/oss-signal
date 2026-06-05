@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.7.0";
+export const VERSION = "0.8.0";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -384,6 +384,34 @@ export function renderPlan(report) {
   );
 
   return `${lines.join("\n")}\n`;
+}
+
+export function renderWorkflow() {
+  return `name: oss-signal trial
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: SalmonPlays/oss-signal@v0.8.0
+        id: oss-signal
+        with:
+          output: oss-signal-report.md
+          summary: "true"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oss-signal-report
+          path: oss-signal-report.md
+`;
 }
 
 export function renderSarif(report) {

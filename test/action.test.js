@@ -151,6 +151,31 @@ test("runAction writes plan output", async () => {
   }
 });
 
+test("runAction writes workflow output", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-workflow-"));
+  const reportFile = path.join(root, "oss-signal-trial.yml");
+
+  try {
+    await writeFixture(root, {
+      "README.md": "# Action fixture\n"
+    });
+
+    await runAction({
+      INPUT_PATH: root,
+      INPUT_FORMAT: "workflow",
+      INPUT_OUTPUT: reportFile,
+      INPUT_SUMMARY: "false"
+    });
+
+    const body = await readFile(reportFile, "utf8");
+    assert.match(body, /oss-signal trial/);
+    assert.match(body, /SalmonPlays\/oss-signal@v0\.8\.0/);
+    assert.doesNotMatch(body, /fail-under/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("runAction writes inventory output", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-inventory-"));
   const reportFile = path.join(root, "inventory.md");

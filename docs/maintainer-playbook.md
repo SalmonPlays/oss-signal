@@ -83,7 +83,7 @@ See [plan-output.md](plan-output.md) and [examples/github-plan.md](examples/gith
 Add the GitHub Action to keep the signal visible:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.7.0
+- uses: SalmonPlays/oss-signal@v0.8.0
   id: oss-signal
   with:
     fail-under: "80"
@@ -96,7 +96,7 @@ The Action writes `score`, `grade`, `failed`, and `report-path` outputs, and wri
 For a repository inventory, commit a newline-delimited target list and pass it through the Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.7.0
+- uses: SalmonPlays/oss-signal@v0.8.0
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -116,7 +116,7 @@ permissions:
 
 steps:
   - uses: actions/checkout@v4
-  - uses: SalmonPlays/oss-signal@v0.7.0
+  - uses: SalmonPlays/oss-signal@v0.8.0
     with:
       format: sarif
       output: oss-signal.sarif
@@ -134,7 +134,7 @@ See [docs/sarif-code-scanning.md](sarif-code-scanning.md) for the permissions, e
 
 Useful evidence for maintainers and reviewers:
 
-- A public workflow run that uses `SalmonPlays/oss-signal@v0.7.0`.
+- A public workflow run that uses `SalmonPlays/oss-signal@v0.8.0`.
 - A generated Markdown report attached as an artifact.
 - A SARIF upload in Code Scanning.
 - A small issue or PR that follows from an audit finding.

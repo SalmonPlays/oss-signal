@@ -11,7 +11,8 @@ import {
   renderIssue,
   renderMarkdown,
   renderPlan,
-  renderSarif
+  renderSarif,
+  renderWorkflow
 } from "./index.js";
 
 const OUTPUT_DELIMITER = "oss_signal_output";
@@ -54,8 +55,8 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
 
 export function parseActionInputs(env = process.env) {
   const format = getInput(env, "format") || "markdown";
-  if (!["markdown", "json", "sarif", "issue", "plan"].includes(format)) {
-    throw new Error("format must be markdown, json, sarif, issue, or plan");
+  if (!["markdown", "json", "sarif", "issue", "plan", "workflow"].includes(format)) {
+    throw new Error("format must be markdown, json, sarif, issue, plan, or workflow");
   }
   const inventory = emptyToUndefined(getInput(env, "inventory"));
   if (inventory && !["markdown", "json"].includes(format)) {
@@ -145,6 +146,9 @@ function renderReport(report, format) {
   }
   if (format === "plan") {
     return renderPlan(report);
+  }
+  if (format === "workflow") {
+    return renderWorkflow(report);
   }
   return renderMarkdown(report);
 }

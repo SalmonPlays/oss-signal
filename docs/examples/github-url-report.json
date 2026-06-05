@@ -1,6 +1,6 @@
 {
   "tool": "oss-signal",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "root": "https://github.com/SalmonPlays/oss-signal",
   "source": {
     "type": "github",
@@ -10,11 +10,11 @@
     "ref": "main",
     "defaultBranch": "main",
     "stars": 0,
-    "forks": 0,
-    "openIssues": 4,
+    "forks": 1,
+    "openIssues": 5,
     "healthPercentage": 100
   },
-  "generatedAt": "2026-06-04T23:24:42.627Z",
+  "generatedAt": "2026-06-05T15:23:38.632Z",
   "score": 100,
   "grade": "A",
   "summary": {

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.8.0
+
+- Added `--format workflow` for generating a no-fail GitHub Actions trial workflow.
+- Added maintainer feedback intake so neutral or negative third-party responses can improve the rules without being overstated as adoption.
+
 ## 0.7.0
 
 - Added `--format plan` for generating PR-sized maintainer plans with suggested files and acceptance criteria.

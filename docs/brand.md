@@ -19,7 +19,7 @@ The display name is intentionally more descriptive for reviewers, while `oss-sig
 
 Recommended repository description:
 
-> Maintainer-readiness CLI and GitHub Action for OSS triage, CI evidence, inventory reports, SARIF, and issue-ready cleanup.
+> Maintainer-readiness CLI and GitHub Action for OSS triage, CI evidence, inventory reports, SARIF, issue-ready cleanup, and workflow trials.
 
 Recommended repository topics:
 

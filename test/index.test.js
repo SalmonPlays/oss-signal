@@ -15,7 +15,8 @@ import {
   renderIssue,
   renderMarkdown,
   renderPlan,
-  renderSarif
+  renderSarif,
+  renderWorkflow
 } from "../src/index.js";
 
 test("auditRepository scores common maintainer files", async () => {
@@ -97,6 +98,16 @@ test("renderPlan creates a maintainer PR sequence", async () => {
   }
 });
 
+test("renderWorkflow creates a no-fail Action trial workflow", () => {
+  const workflow = renderWorkflow();
+
+  assert.match(workflow, /name: oss-signal trial/);
+  assert.match(workflow, /workflow_dispatch:/);
+  assert.match(workflow, /uses: SalmonPlays\/oss-signal@v0\.8\.0/);
+  assert.match(workflow, /summary: "true"/);
+  assert.doesNotMatch(workflow, /fail-under/);
+});
+
 test("renderSarif emits failed checks as SARIF results", async () => {
   const root = await fixture({
     "README.md": "# Tiny project\n"
@@ -165,6 +176,33 @@ test("CLI writes plan output", async () => {
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /OSS Signal Maintainer Plan/);
     assert.match(body, /Recommended PR Sequence/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes workflow output", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+  const outputFile = path.join(root, "oss-signal-trial.yml");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      root,
+      "--format",
+      "workflow",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const body = await readFile(outputFile, "utf8");
+    assert.match(body, /oss-signal trial/);
+    assert.match(body, /SalmonPlays\/oss-signal@v0\.8\.0/);
+    assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
