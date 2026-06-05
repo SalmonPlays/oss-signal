@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-05T03:41:50Z
+Last verified: 2026-06-05T04:20:21Z
 
 ## Project Links
 
@@ -124,6 +124,7 @@ The tool has been used to generate maintainer-readiness reports for public repos
 | `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open, mergeable |
 | `Grovanni/oss-signal` | [report](outreach/grovanni-oss-signal-report.md) | https://github.com/Grovanni/oss-signal/issues/1 | N/A | open |
 | `noctemlabs/signal-oss` | [report](outreach/noctemlabs-signal-oss-report.md) | N/A | https://github.com/noctemlabs/signal-oss/pull/12 | open, mergeable |
+| `Divyesh-5981/signal-oss` | [report](outreach/divyesh-5981-signal-oss-report.md) | https://github.com/Divyesh-5981/signal-oss/issues/5 | N/A | open |
 
 These issues and pull requests are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements. Each PR is intentionally limited to documentation, GitHub templates, or a minimal CI workflow.
 
@@ -135,7 +136,7 @@ Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing. The maintainer merge comment is public at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361.
 
-The five field-audit follow-up PRs were open and mergeable when checked from GitHub on 2026-06-05T03:41:50Z. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
+The five field-audit follow-up PRs were open and mergeable when checked from GitHub on 2026-06-05T04:20:21Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 
 ## Contributor Intake
 

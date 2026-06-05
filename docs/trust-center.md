@@ -1,6 +1,6 @@
 # Trust Center
 
-Last verified: 2026-06-05T03:41:50Z
+Last verified: 2026-06-05T04:20:21Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 
@@ -16,7 +16,7 @@ What it does have is a complete, public maintainer workflow:
 - Public GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - Public CI, CodeQL, OpenSSF Scorecard, repository health, repository inventory, and release workflows.
 - Public self-audit, GitHub URL audit, SARIF output, inventory report, and issue-body examples.
-- Public field-audit reports, posted issues, and five open, mergeable follow-up pull requests against external repositories.
+- Public field-audit reports, six posted issues, and five open, mergeable follow-up pull requests against external repositories.
 - One accepted external documentation contribution merged by an outside maintainer: https://github.com/icoretech/codex-action/pull/24
 - Explicit governance, maintainer ownership, CODEOWNERS, security policy, support policy, contribution guide, and release process.
 - Citation metadata, architecture notes, security model, and roadmap are documented in the repository.
@@ -53,7 +53,7 @@ The listing is not a paid product. It is a free Action listing. Running GitHub A
 
 - No claim of broad third-party adoption yet.
 - No claim that stars, forks, or watchers prove popularity.
-- No claim that open external PRs count as accepted adoption until maintainers merge, reply, or otherwise endorse them. The merged `icoretech/codex-action` PR is counted separately as an accepted external contribution.
+- No claim that open external issues or PRs count as accepted adoption until maintainers merge, reply, or otherwise endorse them. The merged `icoretech/codex-action` PR is counted separately as an accepted external contribution.
 - No claim that the score measures code quality. It measures visible maintainer-readiness signals.
 
 ## Reviewer Path

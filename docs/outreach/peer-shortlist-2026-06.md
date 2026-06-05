@@ -19,7 +19,7 @@ Selection criteria:
 2. `Divyesh-5981/signal-oss`
    - Similar maintainer-tooling direction with CI and tests already present.
    - Best next step: `SECURITY.md` plus issue and PR templates.
-   - Best outreach form: one documentation-only issue.
+   - Status: focused issue posted at https://github.com/Divyesh-5981/signal-oss/issues/5.
 
 3. `noctemlabs/signal-oss`
    - Similar naming and active recently, but missing more baseline workflow signals.
@@ -38,8 +38,8 @@ Do not blast all four repositories at once. That reads like reciprocity farming 
 The strongest sequence is:
 
 1. post one focused issue to `Grovanni/oss-signal`
-2. post one focused issue to `Divyesh-5981/signal-oss` if the first outreach stays respectful and specific
-3. wait for maintainer response on `Grovanni/oss-signal` and `noctemlabs/signal-oss` before adding more public outreach
+2. post one focused issue to `Divyesh-5981/signal-oss`
+3. wait for maintainer response on `Grovanni/oss-signal`, `Divyesh-5981/signal-oss`, and `noctemlabs/signal-oss` before adding more public outreach
 4. keep the remaining candidates as drafts unless there is a real maintainer response path
 
 ## Anti-Patterns

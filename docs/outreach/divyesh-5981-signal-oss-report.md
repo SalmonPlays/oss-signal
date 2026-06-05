@@ -2,7 +2,7 @@
 
 Repository: `https://github.com/Divyesh-5981/signal-oss`
 Source: GitHub (Divyesh-5981/signal-oss@main)
-Generated: 2026-06-04T21:51:12.401Z
+Generated: 2026-06-05T04:17:45.688Z
 
 Score: **58/100** (F)
 
@@ -45,4 +45,3 @@ Score: **58/100** (F)
 - **Dependency update automation** (5 pts): Add .github/dependabot.yml for the package ecosystems used in the repository.
 - **Support policy** (4 pts): Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times.
 - **Static security analysis** (4 pts): Add a CodeQL or equivalent security scanning workflow.
-

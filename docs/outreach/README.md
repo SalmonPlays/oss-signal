@@ -21,6 +21,7 @@ Important notes:
 | `flox/install-flox-action` | 55/100 | [issue draft](flox-install-flox-action-issue-draft.md) | [#204](https://github.com/flox/install-flox-action/issues/204) | [#205](https://github.com/flox/install-flox-action/pull/205) |
 | `Grovanni/oss-signal` | 71/100 | [issue draft](grovanni-oss-signal-issue-draft.md) | [#1](https://github.com/Grovanni/oss-signal/issues/1) | not posted |
 | `noctemlabs/signal-oss` | 51/100 | [issue draft](noctemlabs-signal-oss-issue-draft.md) | not posted | [#12](https://github.com/noctemlabs/signal-oss/pull/12) |
+| `Divyesh-5981/signal-oss` | 58/100 | [issue draft](divyesh-5981-signal-oss-issue-draft.md) | [#5](https://github.com/Divyesh-5981/signal-oss/issues/5) | not posted |
 
 ## Prepared Candidate Audits
 
@@ -30,5 +31,4 @@ See also: [peer-shortlist-2026-06.md](peer-shortlist-2026-06.md)
 
 | Repository | Local score | Draft | Posted issue | Follow-up PR |
 | --- | ---: | --- | --- | --- |
-| `Divyesh-5981/signal-oss` | 58/100 | [issue draft](divyesh-5981-signal-oss-issue-draft.md) | not posted | not posted |
 | `neardws/oss-application-pack-builder` | 46/100 | [issue draft](neardws-oss-application-pack-builder-issue-draft.md) | not posted | not posted |

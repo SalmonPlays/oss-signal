@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.7.0 and GitHub Action SalmonPlays/oss-signal@v0.7.0, supports Markdown/JSON/SARIF/Issue/Plan/Inventory output, passes CI/CodeQL/Release, has a 100/100 self-audit, five public field-audit issues, five public field-audit PRs, and one merged external Codex Action documentation PR.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.7.0 and GitHub Action SalmonPlays/oss-signal@v0.7.0, supports Markdown/JSON/SARIF/Issue/Plan/Inventory output, passes CI/CodeQL/Release, has a 100/100 self-audit, six public field-audit issues, five public field-audit PRs, and one merged external Codex Action documentation PR.
 ```
 
 ## Interest
@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.7.0 latest, 356 npm downloads reported by the registry API on 2026-06-05, a published v0.7.0 release, a reusable GitHub Action with inventory mode, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, five field-audit issues, five field-audit PRs, and a v0.7.0 workflow demo with artifacts.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.7.0 latest, 356 npm downloads reported by the registry API on 2026-06-05, a published v0.7.0 release, a reusable GitHub Action with inventory mode, a clean npm smoke test returning 100/A, public CI/Repository health/CodeQL/Release, six field-audit issues, five field-audit PRs, and a v0.7.0 workflow demo with artifacts.
 ```
 
 ## Evidence Links
@@ -94,10 +94,11 @@ The project is early, so I am not overstating adoption. Current evidence include
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
 - Merged external PR with maintainer comment: https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361
+- Divyesh field-audit issue: https://github.com/Divyesh-5981/signal-oss/issues/5
 
 ## Character Counts
 
-- Why this repository qualifies: 328/500
+- Why this repository qualifies: 394/500
 - Codex Security use: 399/500
 - API credit use: 312/500
-- Anything else: 376/500
+- Anything else: 408/500
