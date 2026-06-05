@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-05T01:46:17Z
+Last verified: 2026-06-05T03:15:42Z
 
 ## Project Links
 
@@ -23,7 +23,7 @@ Last verified: 2026-06-05T01:46:17Z
 - Launch announcement Discussion: https://github.com/SalmonPlays/oss-signal/discussions/13
 - Launch X post: https://x.com/paopaopaolin/status/2062710560857489698
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
-- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
+- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - SARIF self-audit output: [docs/examples/self-audit.sarif](examples/self-audit.sarif)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
@@ -103,13 +103,13 @@ The npm registry returned `0.7.0` for both the package version and `latest` dist
 
 ## Separate Public Workflow Evidence
 
-The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.5.1` from a separate workflow file:
+The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.7.0` from a separate workflow file:
 
 - Workflow file: https://github.com/SalmonPlays/oss-signal-adoption-demo/blob/main/.github/workflows/oss-signal.yml
-- Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
+- Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
 - Artifact: `oss-signal-adoption-demo-report`, containing `oss-signal-report.md`, `oss-signal.sarif`, and `maintainer-follow-up.md`
 
-This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is evidence that the public `v0.5.1` Action tag works outside the main repository and can publish Markdown, SARIF, and Issue-ready maintainer-readiness reports from another public workflow.
+This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is evidence that the public `v0.7.0` Action tag works outside the main repository and can publish Markdown, SARIF, and Issue-ready maintainer-readiness reports from another public workflow.
 
 ## Public Field Audits And PRs
 
@@ -173,7 +173,7 @@ Public CI evidence:
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - OpenSSF Scorecard workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
-- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
+- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
 - Reviewer verification quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 
 ## Boundaries

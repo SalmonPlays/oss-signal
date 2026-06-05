@@ -90,7 +90,7 @@ The project is early, so I am not overstating adoption. Current evidence include
 - GitHub Release v0.7.0: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.7.0
 - Main repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Separate workflow demo repository: https://github.com/SalmonPlays/oss-signal-adoption-demo
-- Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
+- Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 
 ## Character Counts

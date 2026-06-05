@@ -15,7 +15,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Repository inventory workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
-- Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
+- Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
@@ -61,7 +61,7 @@ The repository currently has:
 - A v0.7.0 GitHub Action tag with step summary, SARIF support, inventory support, Issue-ready output, and maintainer plan output.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.7.0` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.7.0` against a repository target list and uploads an inventory artifact.
-- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.5.1` from another repository and uploads Markdown, SARIF, and Issue-ready report artifacts.
+- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.7.0` from another repository and uploads Markdown, SARIF, and Issue-ready report artifacts.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
 - A release process and tag-triggered release workflow that verify package contents and publish to npm through Trusted Publishing.
 - CI, Repository health, CodeQL, and Release workflows passing publicly.
@@ -71,7 +71,7 @@ The repository currently has:
 
 ## Separate Workflow Demo
 
-The repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs the public `SalmonPlays/oss-signal@v0.5.1` Action tag from a separate workflow. The successful run at https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038 uploaded an `oss-signal-adoption-demo-report` artifact containing Markdown, SARIF, and Issue-ready output.
+The repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs the public `SalmonPlays/oss-signal@v0.7.0` Action tag from a separate workflow. The successful run at https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878 uploaded an `oss-signal-adoption-demo-report` artifact containing Markdown, SARIF, and Issue-ready output.
 
 This is intentionally described as a separate public workflow demo rather than third-party adoption because the repository is also owned by `SalmonPlays`. It still proves that the published Action tag is consumable outside the main repository.
 

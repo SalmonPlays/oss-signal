@@ -49,7 +49,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Merged external OSS contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
-- Separate workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038) runs the public Action tag and uploads Markdown, SARIF, and Issue-ready artifacts.
+- Separate workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878) runs the public `v0.7.0` Action tag and uploads Markdown, SARIF, and Issue-ready artifacts.
 
 ## Why
 
@@ -203,7 +203,7 @@ Additional focused external contribution: [icoretech/codex-action PR #24](https:
 
 For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md). For a reviewer-oriented verification path, see [docs/reviewer-evidence.md](docs/reviewer-evidence.md).
 
-Separate public workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) runs `SalmonPlays/oss-signal@v0.5.1` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038) with Markdown, SARIF, and Issue-ready report artifacts.
+Separate public workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) runs `SalmonPlays/oss-signal@v0.7.0` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26993130878) with Markdown, SARIF, and Issue-ready report artifacts.
 
 ## Example Recommendation Output
 
