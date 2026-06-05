@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-04T23:28:58Z
+Last verified: 2026-06-05T01:42:03Z
 
 ## Project Links
 
@@ -20,6 +20,8 @@ Last verified: 2026-06-04T23:28:58Z
 - Governance: [GOVERNANCE.md](../GOVERNANCE.md)
 - CODEOWNERS: [.github/CODEOWNERS](../.github/CODEOWNERS)
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
+- Launch announcement Discussion: https://github.com/SalmonPlays/oss-signal/discussions/13
+- Launch X post: https://x.com/paopaopaolin/status/2062710560857489698
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
 - Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038
 - Self-audit report: [docs/self-audit.md](self-audit.md)
@@ -130,7 +132,7 @@ The workflow now includes [plan-output.md](plan-output.md), which converts audit
 
 Additional focused external contribution:
 
-- `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 updates Codex Action README examples so generated output is routed through environment variables before shell printing.
+- `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing.
 
 The `noctemlabs/signal-oss` follow-up PR was open and mergeable when checked from GitHub on 2026-06-04T23:52:02Z. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 

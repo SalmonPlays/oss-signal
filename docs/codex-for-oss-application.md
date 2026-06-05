@@ -92,18 +92,18 @@ These PRs are intentionally small and maintainer-friendly. They add documentatio
 
 Recommended application angle:
 
-`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, five public field-audit issues, and five public field-audit PRs. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
+`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, five public field-audit issues, five public field-audit PRs, and one merged external Codex Action documentation PR. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
 
 Prepared official form answers are in [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md). The applicant still needs to fill personal identity fields and their OpenAI Organization ID directly.
 
 ## Current Gaps
 
-- External PRs are open but not yet merged.
+- Field-audit PRs are open but not yet merged.
 - npm download metrics are still early because the package is newly published.
 - The project needs independent maintainer-owned repositories using the Action in their own workflows.
 
 ## Next Evidence To Collect
 
-- One or more merged external PRs.
+- More merged external PRs or maintainer replies on field-audit PRs.
 - A public workflow run in an independent maintainer-owned repository using `SalmonPlays/oss-signal@v0.7.0`, ideally with SARIF or inventory upload enabled.
 - npm download data once the registry starts reporting weekly/monthly counts.

@@ -23,6 +23,11 @@ Do not claim broad adoption. The current evidence is a public npm package, GitHu
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 - Maintainer discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
 
+## Posted Launch Links
+
+- GitHub Discussion announcement: https://github.com/SalmonPlays/oss-signal/discussions/13
+- X post: https://x.com/paopaopaolin/status/2062710560857489698
+
 ## X Post
 
 ```text

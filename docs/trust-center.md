@@ -1,6 +1,6 @@
 # Trust Center
 
-Last verified: 2026-06-04T23:52:02Z
+Last verified: 2026-06-05T01:42:03Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 
@@ -50,7 +50,7 @@ The listing is not a paid product. It is a free Action listing. Running GitHub A
 
 - No claim of broad third-party adoption yet.
 - No claim that stars, forks, or watchers prove popularity.
-- No claim that open external PRs count as accepted adoption until maintainers merge, reply, or otherwise endorse them.
+- No claim that open external PRs count as accepted adoption until maintainers merge, reply, or otherwise endorse them. The merged `icoretech/codex-action` PR is counted separately as an accepted external contribution.
 - No claim that the score measures code quality. It measures visible maintainer-readiness signals.
 
 ## Reviewer Path

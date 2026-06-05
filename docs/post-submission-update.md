@@ -72,4 +72,4 @@ This version difference should be read as post-submission maintenance progress, 
 - The repository has public CI, Repository health, Repository inventory, CodeQL, OpenSSF Scorecard, Release workflow evidence, social preview branding, profile pinning, Discussions, CODEOWNERS, and issue routing.
 - The current release includes `--format plan`, which turns audit findings into PR-sized outreach plans before external posting.
 
-This does not replace the remaining adoption gap. The strongest next evidence would still be independent maintainer-owned workflow usage or merged external maintainer PRs.
+This does not replace the remaining adoption gap. The strongest next evidence would still be independent maintainer-owned workflow usage or more merged external maintainer PRs.

@@ -46,7 +46,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Community route: [Discussion #5](https://github.com/SalmonPlays/oss-signal/discussions/5) is the public maintainer-workflow thread for usage questions and rule feedback.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
 - Field use: six public maintainer-readiness audits have been turned into five issues and five focused follow-up PRs.
-- External OSS contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix.
+- Merged external OSS contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
 - Separate workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/26883001038) runs the public Action tag and uploads Markdown, SARIF, and Issue-ready artifacts.
@@ -199,7 +199,7 @@ See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts 
 
 Additional prepared outreach candidates are tracked in [docs/outreach/peer-shortlist-2026-06.md](docs/outreach/peer-shortlist-2026-06.md). The shortlist explicitly separates respectful, defensible candidates from low-signal mass outreach.
 
-Additional focused external contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) updates Codex Action README examples to route generated output through environment variables before printing it from shell steps.
+Additional focused external contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) was merged and updates Codex Action README examples to route generated output through environment variables before printing it from shell steps.
 
 For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md). For a reviewer-oriented verification path, see [docs/reviewer-evidence.md](docs/reviewer-evidence.md).
 
