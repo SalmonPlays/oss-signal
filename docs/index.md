@@ -31,6 +31,7 @@ Run as a GitHub Action:
 
 ## Reviewer Evidence
 
+- [Quickstart](quickstart.md)
 - [Reviewer evidence quickstart](reviewer-evidence.md)
 - [Evidence ledger](evidence-ledger.md)
 - [Trust center](trust-center.md)

@@ -54,6 +54,9 @@ test("renderMarkdown includes score and recommendations", async () => {
     const report = await auditRepository(root);
     const markdown = renderMarkdown(report);
     assert.match(markdown, /Score: \*\*\d+\/100\*\*/);
+    assert.match(markdown, /Evidence \/ next step/);
+    assert.match(markdown, /`README\.md`/);
+    assert.match(markdown, /Missing: Add an OSI-approved license file/);
     assert.match(markdown, /Recommended Next Steps/);
     assert.match(markdown, /License/);
   } finally {

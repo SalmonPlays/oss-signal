@@ -2,7 +2,7 @@
 
 This page gives maintainers a copy-paste path for trying `oss-signal` and leaving useful public evidence.
 
-For a first trial, use the no-fail workflow in [maintainer-trial.md](maintainer-trial.md). It publishes a report without gating CI.
+For a first CLI run, start with [quickstart.md](quickstart.md). For a first CI trial, use the no-fail workflow in [maintainer-trial.md](maintainer-trial.md). It publishes a report without gating CI.
 
 ## Try The CLI
 

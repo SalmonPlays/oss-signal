@@ -273,12 +273,12 @@ export function renderMarkdown(report) {
     "",
     "## Checks",
     "",
-    "| Status | Check | Why it matters |",
-    "| --- | --- | --- |"
+    "| Status | Check | Evidence / next step | Why it matters |",
+    "| --- | --- | --- | --- |"
   );
 
   for (const check of report.checks) {
-    lines.push(`| ${check.passed ? "PASS" : "FAIL"} | ${escapeTable(check.label)} | ${escapeTable(check.why)} |`);
+    lines.push(`| ${check.passed ? "PASS" : "FAIL"} | ${escapeTable(check.label)} | ${escapeTable(markdownEvidence(check))} | ${escapeTable(check.why)} |`);
   }
 
   lines.push("", "## Recommended Next Steps", "");
@@ -852,6 +852,24 @@ function gradeForScore(score) {
 
 function escapeTable(value) {
   return String(value).replaceAll("|", "\\|");
+}
+
+function markdownEvidence(check) {
+  if (!check.passed) {
+    return `Missing: ${check.fix}`;
+  }
+  if (!check.evidence?.length) {
+    return "Detected";
+  }
+  return check.evidence.map(markdownEvidenceItem).join(", ");
+}
+
+function markdownEvidenceItem(value) {
+  const text = String(value);
+  if (/^https?:\/\//.test(text) || text.startsWith("GitHub community profile:")) {
+    return text;
+  }
+  return `\`${text}\``;
 }
 
 function sourceSummary(source) {
