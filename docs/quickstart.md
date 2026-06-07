@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.8.5
+      - uses: SalmonPlays/oss-signal@v0.8.6
         with:
           output: oss-signal-report.md
           summary: "true"

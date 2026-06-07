@@ -18,13 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.8.5
+      - uses: SalmonPlays/oss-signal@v0.8.6
         id: oss-signal
         with:
           fail-under: "80"
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@v0.8.5
+      - uses: SalmonPlays/oss-signal@v0.8.6
         with:
           format: sarif
           output: oss-signal.sarif

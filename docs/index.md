@@ -13,7 +13,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.8.5
+- uses: SalmonPlays/oss-signal@v0.8.6
   id: oss-signal
   with:
     path: "."
@@ -56,6 +56,6 @@ Run as a GitHub Action:
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.8.5
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.8.6
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

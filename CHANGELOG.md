@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.8.6
+
+- Corrected reviewer evidence text so the separate demo remains accurately documented as `v0.8.4` while the main package advances.
+
 ## 0.8.5
 
 - Added evidence and next-step details to Markdown reports so first-time maintainers can see what `oss-signal` detected without reading JSON.
