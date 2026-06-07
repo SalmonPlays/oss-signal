@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.8.5
+
+- Added evidence and next-step details to Markdown reports so first-time maintainers can see what `oss-signal` detected without reading JSON.
+- Added a quickstart guide and moved README first-run guidance above reviewer evidence links.
+
 ## 0.8.4
 
 - Scoped the OpenSSF Scorecard workflow Node.js 24 opt-in to the artifact upload step so Scorecard result publication can pass workflow verification.

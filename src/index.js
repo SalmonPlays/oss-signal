@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.8.4";
+export const VERSION = "0.8.5";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -404,7 +404,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.8.4
+      - uses: SalmonPlays/oss-signal@v0.8.5
         id: oss-signal
         with:
           output: oss-signal-report.md
