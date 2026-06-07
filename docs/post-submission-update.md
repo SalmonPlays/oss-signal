@@ -29,12 +29,13 @@ The older submission evidence remains valid. The current `latest` npm version si
 | `v0.8.4` | npm package, GitHub Release, Action tag | Scoped the Scorecard workflow opt-in so Scorecard result publication passes workflow verification. |
 | `v0.8.5` | npm package, GitHub Release, Action tag | Added evidence and next-step details to Markdown reports plus a maintainer quickstart. |
 | `v0.8.6` | npm package, GitHub Release, Action tag | Corrected reviewer evidence text for the separate public demo. |
+| `v0.9.0` | npm package, GitHub Release, Action tag | Added config-backed not-applicable rules for documented maintainer exceptions. |
 
 ## Current Evidence
 
-- npm package: https://www.npmjs.com/package/oss-signal (`0.8.6` latest after release)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.8.6
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.8.6
+- npm package: https://www.npmjs.com/package/oss-signal (`0.9.0` latest after release)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.0
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.0
 - Release workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/release.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - GitHub repository profile: description, npm homepage, eight maintainer-focused topics, social preview image, and profile pin are live.
@@ -49,7 +50,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 
 ## Clean Verification
 
-The public registry should return `0.8.6` for both package version and `latest` dist-tag after the reviewer-evidence correction release.
+The public registry should return `0.9.0` for both package version and `latest` dist-tag after the configuration release.
 
 ```bash
 npm view oss-signal version dist-tags --json
@@ -59,17 +60,17 @@ Expected result:
 
 ```json
 {
-  "version": "0.8.6",
+  "version": "0.9.0",
   "dist-tags": {
-    "latest": "0.8.6"
+    "latest": "0.9.0"
   }
 }
 ```
 
-A clean npm execution should return version `0.8.6`.
+A clean npm execution should return version `0.9.0`.
 
 ```bash
-npm exec --yes --package=oss-signal@0.8.6 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version
 ```
 
 ## Review Impact
@@ -77,11 +78,12 @@ npm exec --yes --package=oss-signal@0.8.6 -- oss-signal --version
 This version difference should be read as post-submission maintenance progress, not as a mismatch. It strengthens the evidence in three ways:
 
 - The package now has a successful npm Trusted Publishing release from GitHub Actions.
-- The GitHub Action tag, npm package, release notes, and documentation all point to `0.8.6`.
+- The GitHub Action tag, npm package, release notes, and documentation all point to `0.9.0`.
 - The repository has public CI, Repository health, Repository inventory, CodeQL, OpenSSF Scorecard, Release workflow evidence, social preview branding, profile pinning, Discussions, CODEOWNERS, and issue routing.
 - The current release includes `--format plan`, which turns audit findings into PR-sized outreach plans before external posting.
 - The current release includes `--format workflow`, which renders a no-fail GitHub Actions trial workflow for external maintainers.
 - The current release shows detected evidence and missing next steps directly in Markdown reports, which makes first-run review easier.
+- The current release includes config-backed not-applicable rules, so maintainers can document intentional exceptions without creating noisy failed recommendations.
 - The no-fail maintainer trial workflow lowers the cost for an independent maintainer to try the Action before adopting a CI gate.
 
 This does not replace the remaining adoption gap. The strongest next evidence would still be independent maintainer-owned workflow usage or more merged external maintainer PRs.

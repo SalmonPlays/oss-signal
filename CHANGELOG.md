@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.9.0
+
+- Added local config support with `.oss-signal.json`, `.oss-signalrc.json`, `oss-signal.config.json`, and explicit `--config`.
+- Added not-applicable rule handling so maintainers can document exceptions without inflating failed recommendations.
+- Added GitHub Action `config` input, configuration docs, and a config example fixture.
+
 ## 0.8.6
 
 - Corrected reviewer evidence text so the separate demo remains accurately documented as `v0.8.4` while the main package advances.

@@ -64,6 +64,35 @@ test("renderMarkdown includes score and recommendations", async () => {
   }
 });
 
+test("auditRepository honors local not-applicable config", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n",
+    ".oss-signal.json": JSON.stringify({
+      notApplicable: {
+        license: "Private proof-of-concept; no downstream distribution.",
+        ci: "Documentation-only repository with no executable test surface."
+      }
+    })
+  });
+
+  try {
+    const report = await auditRepository(root);
+    const license = report.checks.find((check) => check.id === "license");
+    const ci = report.checks.find((check) => check.id === "ci");
+
+    assert.equal(report.config.path, ".oss-signal.json");
+    assert.equal(report.summary.notApplicable, 2);
+    assert.equal(report.summary.failed, 12);
+    assert.equal(license.notApplicable, true);
+    assert.equal(ci.notApplicable, true);
+    assert.equal(report.recommendations.some((item) => item.id === "license"), false);
+    assert.match(renderMarkdown(report), /N\/A/);
+    assert.match(renderMarkdown(report), /Private proof-of-concept/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("renderIssue creates a maintainer-friendly issue body", async () => {
   const root = await fixture({
     "README.md": "# Tiny project\n"
@@ -107,7 +136,7 @@ test("renderWorkflow creates a no-fail Action trial workflow", () => {
   assert.match(workflow, /name: oss-signal trial/);
   assert.match(workflow, /workflow_dispatch:/);
   assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-  assert.match(workflow, /uses: SalmonPlays\/oss-signal@v0\.8\.6/);
+  assert.match(workflow, /uses: SalmonPlays\/oss-signal@v0\.9\.0/);
   assert.match(workflow, /summary: "true"/);
   assert.doesNotMatch(workflow, /fail-under/);
 });
@@ -206,7 +235,7 @@ test("CLI writes workflow output", async () => {
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /oss-signal trial/);
     assert.match(body, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-    assert.match(body, /SalmonPlays\/oss-signal@v0\.8\.6/);
+    assert.match(body, /SalmonPlays\/oss-signal@v0\.9\.0/);
     assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -234,6 +263,44 @@ test("CLI writes SARIF output", async () => {
     const sarif = JSON.parse(await readFile(outputFile, "utf8"));
     assert.equal(sarif.version, "2.1.0");
     assert.equal(sarif.runs[0].tool.driver.name, "oss-signal");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI supports explicit config path", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+  const configFile = path.join(root, "custom-config.json");
+  const outputFile = path.join(root, "oss-signal-report.json");
+
+  try {
+    await writeFile(configFile, JSON.stringify({
+      rules: {
+        lockfile: {
+          status: "not-applicable",
+          reason: "Library intentionally does not commit a lockfile."
+        }
+      }
+    }), "utf8");
+
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      root,
+      "--format",
+      "json",
+      "--config",
+      configFile,
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const report = JSON.parse(await readFile(outputFile, "utf8"));
+    assert.equal(report.checks.find((check) => check.id === "lockfile").notApplicable, true);
+    assert.equal(report.config.notApplicable[0].id, "lockfile");
   } finally {
     await rm(root, { recursive: true, force: true });
   }

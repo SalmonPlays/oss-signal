@@ -34,7 +34,9 @@
 
 ## Scoring
 
-The score is the percentage of available weighted points that pass. Grades are:
+The score is the percentage of available weighted points that pass. Rules marked not applicable through config are removed from the denominator and shown as `N/A` in Markdown reports. See [configuration.md](configuration.md).
+
+Grades are:
 
 - A: 90-100
 - B: 80-89

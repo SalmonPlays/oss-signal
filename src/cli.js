@@ -50,6 +50,7 @@ function parseArgs(argv) {
     failUnder: undefined,
     maxFiles: 20000,
     ref: undefined,
+    configPath: undefined,
     inventory: undefined,
     help: false,
     version: false
@@ -83,6 +84,10 @@ function parseArgs(argv) {
       options.ref = requireValue(argv, ++index, "--ref");
     } else if (arg.startsWith("--ref=")) {
       options.ref = arg.slice("--ref=".length);
+    } else if (arg === "--config") {
+      options.configPath = requireValue(argv, ++index, "--config");
+    } else if (arg.startsWith("--config=")) {
+      options.configPath = arg.slice("--config=".length);
     } else if (arg === "--inventory") {
       options.inventory = requireValue(argv, ++index, "--inventory");
     } else if (arg.startsWith("--inventory=")) {
@@ -112,7 +117,8 @@ function parseArgs(argv) {
 async function runSingleAudit(options) {
   const report = await auditTarget(options.path, {
     maxFiles: options.maxFiles,
-    ref: options.ref
+    ref: options.ref,
+    configPath: options.configPath
   });
   const body = renderReport(report, options.format);
   const failUnderMessage = typeof options.failUnder === "number" && report.score < options.failUnder
@@ -137,7 +143,8 @@ async function runInventory(options) {
   for (const target of targets) {
     reports.push(await auditTarget(target, {
       maxFiles: options.maxFiles,
-      ref: options.ref
+      ref: options.ref,
+      configPath: options.configPath
     }));
   }
 
@@ -215,6 +222,7 @@ Options:
   --fail-under   Exit with code 1 when the score, or any inventory target score, is below this value.
   --max-files    Maximum files to inspect. Defaults to 20000.
   --ref          Git ref for GitHub URL audits. Defaults to the repository default branch.
+  --config       Path to an oss-signal JSON config. Local audits auto-detect .oss-signal.json.
   --inventory    Read repository targets from a newline-delimited file.
   --version, -v  Show the CLI version.
   --help, -h     Show this help message.

@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.8.6";
+export const VERSION = "0.9.0";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -151,6 +151,18 @@ const PACKAGE_FILES = [
   }
 ];
 
+const AUTO_CONFIG_PATHS = [
+  ".oss-signal.json",
+  ".oss-signalrc.json",
+  "oss-signal.config.json"
+];
+
+const RULE_IDS = new Set([
+  ...COMMUNITY_FILES.map((rule) => rule.id),
+  ...AUTOMATION_FILES.map((rule) => rule.id),
+  ...PACKAGE_FILES.map((rule) => rule.id)
+]);
+
 const DEFAULT_IGNORE_DIRS = new Set([
   ".git",
   "node_modules",
@@ -167,24 +179,36 @@ const DEFAULT_IGNORE_DIRS = new Set([
 export async function auditRepository(root, options = {}) {
   const absoluteRoot = path.resolve(root ?? ".");
   const tree = await listRepositoryFiles(absoluteRoot, options);
+  const config = options.config ?? await loadLocalConfig(absoluteRoot, options.configPath);
   return createReportFromTree(tree, {
     root: absoluteRoot,
     source: {
       type: "local",
       location: absoluteRoot
-    }
+    },
+    config
   });
 }
 
 export async function auditTarget(target = ".", options = {}) {
   const normalizedTarget = target ?? ".";
+  const config = options.config ?? (options.configPath
+    ? await readConfigFile(path.resolve(options.configPath), {
+      explicit: true,
+      displayPath: options.configPath
+    })
+    : undefined);
+  const auditOptions = {
+    ...options,
+    config
+  };
   if (!isGitHubUrl(normalizedTarget) && await pathExists(normalizedTarget)) {
-    return auditRepository(normalizedTarget, options);
+    return auditRepository(normalizedTarget, auditOptions);
   }
   if (isGitHubTarget(normalizedTarget)) {
-    return auditGitHubRepository(normalizedTarget, options);
+    return auditGitHubRepository(normalizedTarget, auditOptions);
   }
-  return auditRepository(normalizedTarget, options);
+  return auditRepository(normalizedTarget, auditOptions);
 }
 
 export async function auditGitHubRepository(target, options = {}) {
@@ -210,22 +234,27 @@ export async function auditGitHubRepository(target, options = {}) {
       openIssues: repo.open_issues_count,
       healthPercentage: communityProfile?.health_percentage
     },
-    communityProfile
+    communityProfile,
+    config: options.config
   });
 }
 
 function createReportFromTree(tree, metadata) {
   const fileSet = new Set(tree);
+  const config = normalizeConfig(metadata.config);
   let checks = [
     ...COMMUNITY_FILES.map((rule) => checkPathRule(rule, fileSet)),
     ...AUTOMATION_FILES.map((rule) => checkMatcherRule(rule, tree)),
     ...PACKAGE_FILES.map((rule) => checkMatcherRule(rule, tree))
   ];
   checks = applyCommunityProfileEvidence(checks, metadata.communityProfile);
+  checks = applyConfigEvidence(checks, config);
 
-  const totalWeight = checks.reduce((sum, check) => sum + check.weight, 0);
-  const earnedWeight = checks.filter((check) => check.passed).reduce((sum, check) => sum + check.weight, 0);
+  const scoredChecks = checks.filter((check) => !check.notApplicable);
+  const totalWeight = scoredChecks.reduce((sum, check) => sum + check.weight, 0);
+  const earnedWeight = scoredChecks.filter((check) => check.passed).reduce((sum, check) => sum + check.weight, 0);
   const score = totalWeight === 0 ? 0 : Math.round((earnedWeight / totalWeight) * 100);
+  const configReport = renderConfigSummary(config);
 
   return {
     tool: "oss-signal",
@@ -236,9 +265,10 @@ function createReportFromTree(tree, metadata) {
     score,
     grade: gradeForScore(score),
     summary: summarizeChecks(checks),
+    ...(configReport ? { config: configReport } : {}),
     checks,
     recommendations: checks
-      .filter((check) => !check.passed)
+      .filter((check) => !check.passed && !check.notApplicable)
       .sort((a, b) => b.weight - a.weight)
       .map(({ id, label, weight, why, fix }) => ({ id, label, weight, why, fix }))
   };
@@ -260,6 +290,12 @@ export function renderMarkdown(report) {
     `- Failed: ${report.summary.failed}`,
     `- Total checks: ${report.summary.total}`
   ];
+  if (report.summary.notApplicable) {
+    lines.push(`- Not applicable: ${report.summary.notApplicable}`);
+  }
+  if (report.config?.path) {
+    lines.push(`- Config: ${report.config.path}`);
+  }
 
   if (report.source?.type === "github") {
     lines.push(
@@ -278,7 +314,14 @@ export function renderMarkdown(report) {
   );
 
   for (const check of report.checks) {
-    lines.push(`| ${check.passed ? "PASS" : "FAIL"} | ${escapeTable(check.label)} | ${escapeTable(markdownEvidence(check))} | ${escapeTable(check.why)} |`);
+    lines.push(`| ${checkStatus(check)} | ${escapeTable(check.label)} | ${escapeTable(markdownEvidence(check))} | ${escapeTable(check.why)} |`);
+  }
+
+  if (report.config?.warnings?.length) {
+    lines.push("", "## Config Warnings", "");
+    for (const warning of report.config.warnings) {
+      lines.push(`- ${warning}`);
+    }
   }
 
   lines.push("", "## Recommended Next Steps", "");
@@ -404,7 +447,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.8.6
+      - uses: SalmonPlays/oss-signal@v0.9.0
         id: oss-signal
         with:
           output: oss-signal-report.md
@@ -495,7 +538,8 @@ export function renderSarif(report) {
           score: report.score,
           grade: report.grade,
           source: sourceSummary(report.source),
-          generatedAt: report.generatedAt
+          generatedAt: report.generatedAt,
+          config: report.config
         }
       }
     ]
@@ -535,7 +579,8 @@ export function createInventoryReport(reports, metadata = {}) {
       label: recommendation.label,
       weight: recommendation.weight,
       fix: recommendation.fix
-    }))
+    })),
+    notApplicable: report.summary.notApplicable ?? 0
   }));
   const scores = repositories.map((repository) => repository.score);
   const averageScore = scores.length === 0
@@ -591,6 +636,48 @@ export function renderInventoryMarkdown(inventory) {
 
   lines.push("");
   return `${lines.join("\n")}\n`;
+}
+
+async function loadLocalConfig(root, configPath) {
+  if (configPath) {
+    return readConfigFile(path.resolve(configPath), {
+      explicit: true,
+      displayPath: configPath
+    });
+  }
+
+  for (const candidate of AUTO_CONFIG_PATHS) {
+    const fullPath = path.join(root, candidate);
+    if (await pathExists(fullPath)) {
+      return readConfigFile(fullPath, {
+        explicit: false,
+        displayPath: candidate
+      });
+    }
+  }
+
+  return undefined;
+}
+
+async function readConfigFile(filePath, metadata) {
+  let body;
+  try {
+    body = await fs.readFile(filePath, "utf8");
+  } catch (error) {
+    if (!metadata.explicit && error.code === "ENOENT") {
+      return undefined;
+    }
+    throw error;
+  }
+
+  try {
+    return {
+      ...JSON.parse(body),
+      __path: metadata.displayPath
+    };
+  } catch (error) {
+    throw new Error(`Invalid oss-signal config JSON at ${metadata.displayPath}: ${error.message}`);
+  }
 }
 
 export async function listRepositoryFiles(root, options = {}) {
@@ -782,6 +869,99 @@ function applyCommunityProfileEvidence(checks, profile) {
   });
 }
 
+function applyConfigEvidence(checks, config) {
+  if (config.notApplicable.size === 0) {
+    return checks;
+  }
+
+  return checks.map((check) => {
+    const entry = config.notApplicable.get(check.id);
+    if (!entry) {
+      return check;
+    }
+
+    const reason = entry.reason || "documented as not applicable";
+    return {
+      ...check,
+      passed: true,
+      notApplicable: true,
+      configReason: reason,
+      evidence: [`Configured not applicable: ${reason}`]
+    };
+  });
+}
+
+function normalizeConfig(rawConfig) {
+  const warnings = [];
+  const notApplicable = new Map();
+  if (!rawConfig) {
+    return { path: undefined, notApplicable, warnings };
+  }
+
+  const addNotApplicable = (id, reason) => {
+    if (!RULE_IDS.has(id)) {
+      warnings.push(`Unknown rule id in config: ${id}`);
+      return;
+    }
+    notApplicable.set(id, {
+      reason: typeof reason === "string" && reason.trim() ? reason.trim() : undefined
+    });
+  };
+
+  if (Array.isArray(rawConfig.notApplicable)) {
+    for (const id of rawConfig.notApplicable) {
+      addNotApplicable(String(id), undefined);
+    }
+  } else if (rawConfig.notApplicable && typeof rawConfig.notApplicable === "object") {
+    for (const [id, value] of Object.entries(rawConfig.notApplicable)) {
+      const reason = typeof value === "string" ? value : value?.reason;
+      addNotApplicable(id, reason);
+    }
+  }
+
+  if (rawConfig.rules && typeof rawConfig.rules === "object") {
+    for (const [id, value] of Object.entries(rawConfig.rules)) {
+      const ruleConfig = normalizeRuleConfig(value);
+      if (ruleConfig.notApplicable) {
+        addNotApplicable(id, ruleConfig.reason);
+      }
+    }
+  }
+
+  return {
+    path: rawConfig.__path,
+    notApplicable,
+    warnings
+  };
+}
+
+function normalizeRuleConfig(value) {
+  if (typeof value === "string") {
+    return { notApplicable: value === "not-applicable" };
+  }
+  if (!value || typeof value !== "object") {
+    return { notApplicable: false };
+  }
+  return {
+    notApplicable: value.notApplicable === true || value.not_applicable === true || value.status === "not-applicable",
+    reason: value.reason
+  };
+}
+
+function renderConfigSummary(config) {
+  if (!config.path && config.notApplicable.size === 0 && config.warnings.length === 0) {
+    return undefined;
+  }
+  return {
+    path: config.path,
+    notApplicable: [...config.notApplicable.entries()].map(([id, entry]) => ({
+      id,
+      ...(entry.reason ? { reason: entry.reason } : {})
+    })),
+    warnings: config.warnings
+  };
+}
+
 function checkPathRule(rule, fileSet) {
   const matchedPath = rule.paths.find((candidate) => fileSet.has(candidate));
   return {
@@ -834,11 +1014,14 @@ function findEvidence(id, tree) {
 }
 
 function summarizeChecks(checks) {
-  const passed = checks.filter((check) => check.passed).length;
+  const notApplicable = checks.filter((check) => check.notApplicable).length;
+  const passed = checks.filter((check) => check.passed && !check.notApplicable).length;
+  const failed = checks.filter((check) => !check.passed && !check.notApplicable).length;
   return {
     total: checks.length,
     passed,
-    failed: checks.length - passed
+    failed,
+    notApplicable
   };
 }
 
@@ -854,7 +1037,17 @@ function escapeTable(value) {
   return String(value).replaceAll("|", "\\|");
 }
 
+function checkStatus(check) {
+  if (check.notApplicable) {
+    return "N/A";
+  }
+  return check.passed ? "PASS" : "FAIL";
+}
+
 function markdownEvidence(check) {
+  if (check.notApplicable) {
+    return `Not applicable: ${check.configReason}`;
+  }
   if (!check.passed) {
     return `Missing: ${check.fix}`;
   }

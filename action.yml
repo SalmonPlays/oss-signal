@@ -34,6 +34,9 @@ inputs:
   ref:
     description: Git ref for GitHub URL audits.
     required: false
+  config:
+    description: Path to an oss-signal JSON config file. Local audits auto-detect .oss-signal.json.
+    required: false
 outputs:
   score:
     description: Numeric maintainer-readiness score, or average score in inventory mode.

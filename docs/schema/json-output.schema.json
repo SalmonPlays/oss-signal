@@ -122,6 +122,45 @@
         "failed": {
           "type": "integer",
           "minimum": 0
+        },
+        "notApplicable": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["notApplicable", "warnings"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notApplicable": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -170,6 +209,13 @@
           "minLength": 1
         },
         "fix": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notApplicable": {
+          "type": "boolean"
+        },
+        "configReason": {
           "type": "string",
           "minLength": 1
         }

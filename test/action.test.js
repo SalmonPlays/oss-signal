@@ -14,6 +14,7 @@ test("parseActionInputs reads GitHub Action inputs", () => {
     INPUT_FAIL_UNDER: "80",
     INPUT_MAX_FILES: "500",
     INPUT_REF: "main",
+    INPUT_CONFIG: ".oss-signal.json",
     INPUT_SUMMARY: "false"
   });
 
@@ -25,6 +26,7 @@ test("parseActionInputs reads GitHub Action inputs", () => {
     failUnder: 80,
     maxFiles: 500,
     ref: "main",
+    configPath: ".oss-signal.json",
     summary: false
   });
 });
@@ -170,7 +172,7 @@ test("runAction writes workflow output", async () => {
     const body = await readFile(reportFile, "utf8");
     assert.match(body, /oss-signal trial/);
     assert.match(body, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-    assert.match(body, /SalmonPlays\/oss-signal@v0\.8\.6/);
+    assert.match(body, /SalmonPlays\/oss-signal@v0\.9\.0/);
     assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });

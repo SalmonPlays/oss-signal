@@ -30,6 +30,7 @@ Important fields:
 | `score` | integer | Maintainer-readiness score from 0 to 100. |
 | `grade` | string | `A`, `B`, `C`, `D`, or `F`. |
 | `summary` | object | Total, passed, and failed check counts. |
+| `config` | object | Present when a config file marks rules not applicable or emits config warnings. |
 | `checks` | array | Full rule results with evidence, rationale, and fix text. |
 | `recommendations` | array | Failed checks sorted by weight. Empty when score is 100. |
 
@@ -53,10 +54,12 @@ Inventory JSON intentionally summarizes each repository instead of embedding eve
 
 The JSON output is designed for automation, but `oss-signal` is still pre-1.0. Treat the current schema as the public contract for `0.6.x`. If a future release removes or renames fields, it should document the change in [CHANGELOG.md](../CHANGELOG.md) and the release notes.
 
-Stable for `0.6.x`:
+Stable for `0.9.x`:
 
 - Top-level `tool`, `version`, `root`, `source`, `generatedAt`, `score`, `grade`, `summary`, `checks`, and `recommendations`.
-- Check fields `id`, `label`, `weight`, `passed`, `evidence`, `why`, and `fix`.
+- Optional top-level `config` when a repository uses an `oss-signal` config file.
+- Summary fields `total`, `passed`, `failed`, and `notApplicable`.
+- Check fields `id`, `label`, `weight`, `passed`, `evidence`, `why`, `fix`, and optional `notApplicable` / `configReason`.
 - Recommendation fields `id`, `label`, `weight`, `why`, and `fix`.
 
 Not stable:

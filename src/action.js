@@ -70,6 +70,7 @@ export function parseActionInputs(env = process.env) {
     failUnder: parseOptionalNumber(getInput(env, "fail-under"), "fail-under"),
     maxFiles: parseOptionalNumber(getInput(env, "max-files"), "max-files") ?? 20000,
     ref: emptyToUndefined(getInput(env, "ref")),
+    configPath: emptyToUndefined(getInput(env, "config")),
     inventory,
     summary: parseOptionalBoolean(getInput(env, "summary"), "summary") ?? true
   };
@@ -78,7 +79,8 @@ export function parseActionInputs(env = process.env) {
 async function runSingleAudit(options) {
   const report = await auditTarget(options.path, {
     maxFiles: options.maxFiles,
-    ref: options.ref
+    ref: options.ref,
+    configPath: options.configPath
   });
   const body = renderReport(report, options.format);
   const failUnderMessage = typeof options.failUnder === "number" && report.score < options.failUnder
@@ -106,7 +108,8 @@ async function runInventory(options) {
   for (const target of targets) {
     reports.push(await auditTarget(target, {
       maxFiles: options.maxFiles,
-      ref: options.ref
+      ref: options.ref,
+      configPath: options.configPath
     }));
   }
 

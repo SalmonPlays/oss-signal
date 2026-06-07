@@ -1,0 +1,6 @@
+{
+  "notApplicable": {
+    "lockfile": "Library package intentionally does not commit a lockfile.",
+    "codeql": "Security scanning is handled by a separate organization-level workflow."
+  }
+}
