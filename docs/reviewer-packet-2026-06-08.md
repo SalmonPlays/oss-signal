@@ -1,15 +1,17 @@
 # Reviewer Packet: 2026-06-08
 
-Last verified: 2026-06-08T10:42:24Z
+Last verified: 2026-06-08T11:00:54Z
 
 This packet gives reviewers one page of current, verifiable evidence for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless a maintainer merges, replies, or endorses them.
+
+The workflow evidence below points at the latest verified run set when this packet was prepared. The documentation commit that contains this page may be newer than the verified run commit.
 
 ## Current Project State
 
 | Signal | Current value |
 | --- | --- |
 | Repository | https://github.com/SalmonPlays/oss-signal |
-| Current commit | `57b2f1d` |
+| Verified workflow commit | `43a06ed` |
 | npm package | https://www.npmjs.com/package/oss-signal |
 | npm latest | `0.9.0` |
 | GitHub Action tag | https://github.com/SalmonPlays/oss-signal/tree/v0.9.0 |
@@ -23,13 +25,13 @@ This packet gives reviewers one page of current, verifiable evidence for `oss-si
 
 | Workflow | Status | Run |
 | --- | --- | --- |
-| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27124047967 |
-| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27124047958 |
-| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27124047976 |
-| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27124047990 |
-| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27127522526 |
-| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27125175091 |
-| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27124047296 |
+| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27132312897 |
+| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27132312865 |
+| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27132312919 |
+| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27132312850 |
+| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27132312894 |
+| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27132313016 |
+| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27132311941 |
 
 The Evidence verification run uploads an `oss-signal-evidence-verification` artifact. The local verification output for the same checks returned PASS 14, SKIP 0, FAIL 0.
 
