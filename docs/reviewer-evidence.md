@@ -136,6 +136,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 ## Primary Evidence Pages
 
 - Brand assets and GitHub settings copy: [brand.md](brand.md)
+- Reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md)
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Trust center: [trust-center.md](trust-center.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)

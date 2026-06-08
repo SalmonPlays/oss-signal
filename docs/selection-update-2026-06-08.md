@@ -4,6 +4,8 @@ Last verified: 2026-06-08T05:27:31Z
 
 This page is a compact post-submission update for reviewers. It separates current public evidence from supporting demos and from links that no longer verify publicly.
 
+For the shortest current evidence bundle, see [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md).
+
 ## Current Public Evidence
 
 | Signal | Current status | Verification path |

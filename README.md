@@ -60,6 +60,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Trust center: [docs/trust-center.md](docs/trust-center.md)
 - Quickstart: [docs/quickstart.md](docs/quickstart.md)
+- Reviewer packet: [docs/reviewer-packet-2026-06-08.md](docs/reviewer-packet-2026-06-08.md)
 - Evidence ledger: [docs/evidence-ledger.md](docs/evidence-ledger.md)
 - Adoption kit: [docs/adoption-kit.md](docs/adoption-kit.md)
 - Maintainer trial: [docs/maintainer-trial.md](docs/maintainer-trial.md)
