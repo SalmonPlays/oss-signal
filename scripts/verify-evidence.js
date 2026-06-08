@@ -1,6 +1,21 @@
 #!/usr/bin/env node
 
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
+
+const args = process.argv.slice(2);
+let outputPath = "";
+
+for (let index = 0; index < args.length; index += 1) {
+  const arg = args[index];
+  if (arg === "--output") {
+    outputPath = args[index + 1] ?? "";
+    index += 1;
+  } else if (arg.startsWith("--output=")) {
+    outputPath = arg.slice("--output=".length);
+  } else {
+    throw new Error(`Unknown argument: ${arg}`);
+  }
+}
 
 const packageJson = JSON.parse(
   await readFile(new URL("../package.json", import.meta.url), "utf8"),
@@ -146,7 +161,49 @@ for (const result of results) {
   console.log(`${marker} ${result.name}: ${result.detail}`);
 }
 
+if (outputPath) {
+  await writeFile(outputPath, renderMarkdown(results));
+}
+
 const failures = results.filter((result) => !result.ok);
 if (failures.length > 0) {
   process.exitCode = 1;
+}
+
+function renderMarkdown(reportResults) {
+  const generated = new Date().toISOString();
+  const passCount = reportResults.filter(
+    (result) => result.ok && !result.skipped,
+  ).length;
+  const skipCount = reportResults.filter((result) => result.skipped).length;
+  const failCount = reportResults.filter((result) => !result.ok).length;
+  const rows = reportResults
+    .map((result) => {
+      const status = result.skipped ? "SKIP" : result.ok ? "PASS" : "FAIL";
+      return `| ${status} | ${escapeMarkdown(result.name)} | ${escapeMarkdown(
+        result.detail,
+      )} |`;
+    })
+    .join("\n");
+
+  return `# OSS Signal Evidence Verification
+
+Generated: ${generated}
+
+This report verifies public reviewer evidence used by \`oss-signal\`. It is intentionally factual: open issues and pull requests are not counted as adoption unless maintainers merge, reply, or otherwise endorse them.
+
+Summary:
+
+- PASS: ${passCount}
+- SKIP: ${skipCount}
+- FAIL: ${failCount}
+
+| Status | Check | Detail |
+| --- | --- | --- |
+${rows}
+`;
+}
+
+function escapeMarkdown(value) {
+  return String(value).replaceAll("|", "\\|").replaceAll("\n", " ");
 }

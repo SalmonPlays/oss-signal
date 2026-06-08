@@ -23,6 +23,11 @@ jobs:
           node-version: 22.x
           cache: npm
       - run: npm ci
-      - run: npm run evidence:verify
+      - run: npm run evidence:verify -- --output evidence-verification.md
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      - run: cat evidence-verification.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v5
+        with:
+          name: oss-signal-evidence-verification
+          path: evidence-verification.md

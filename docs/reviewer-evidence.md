@@ -80,6 +80,8 @@ npm run evidence:verify
 
 Expected result: PASS lines for npm latest, npm downloads, GitHub release evidence, repository metadata, visible field-audit links, and the merged external PR. If run locally without `GITHUB_TOKEN` after the anonymous GitHub API limit is exhausted, GitHub API checks are reported as SKIP instead of being counted as verified.
 
+The GitHub workflow writes the same evidence to the run step summary and uploads an `oss-signal-evidence-verification` artifact.
+
 5. Inspect the public Action tag:
 
 - Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.0
