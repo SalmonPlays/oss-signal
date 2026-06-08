@@ -16,6 +16,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Maintainer feedback path | [maintainer-feedback.md](maintainer-feedback.md) | Published | External maintainers can leave useful public feedback even when the tool is not adopted. |
 | Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.9.0` against this repository. |
 | Inventory dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml | Passing | Exercises multi-repository inventory mode. |
+| Evidence verification workflow | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml | Published | Verifies npm latest, npm downloads, release evidence, repository metadata, and current external issue/PR links. |
 | Separate public workflow demo | https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373 | Passing | Separate public repository runs `SalmonPlays/oss-signal@v0.8.4` and uploads Markdown, SARIF, issue-ready, and no-fail workflow artifacts. |
 | Accepted external contribution | https://github.com/icoretech/codex-action/pull/24 | Merged 2026-06-04 | External maintainer merged the focused Codex Action documentation safety fix and left a merge comment. |
 | Maintainer merge comment | https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 | Public maintainer response | Stronger than an open PR because the external maintainer accepted the change. |

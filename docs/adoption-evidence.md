@@ -15,6 +15,7 @@ Last verified: 2026-06-08T05:27:31Z
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
 - Public inventory workflow: [.github/workflows/repository-inventory.yml](../.github/workflows/repository-inventory.yml)
+- Public evidence verification workflow: [.github/workflows/evidence-verify.yml](../.github/workflows/evidence-verify.yml)
 - OpenSSF Scorecard workflow: [.github/workflows/scorecard.yml](../.github/workflows/scorecard.yml)
 - Maintainers: [MAINTAINERS.md](../MAINTAINERS.md)
 - Governance: [GOVERNANCE.md](../GOVERNANCE.md)
@@ -90,6 +91,7 @@ Current public workflow status:
 - CI: passing
 - Repository health: passing
 - Repository inventory: passing
+- Evidence verification: configured on `main` pushes, workflow dispatch, and daily schedule
 - CodeQL: passing
 - OpenSSF Scorecard: configured on `main` pushes and a weekly schedule, with JSON artifact output and public Scorecard publishing
 - Release: passing

@@ -13,10 +13,11 @@ This page is a compact post-submission update for reviewers. It separates curren
 | GitHub Action | `SalmonPlays/oss-signal@v0.9.0` is published. | https://github.com/SalmonPlays/oss-signal/tree/v0.9.0 |
 | GitHub Release | `v0.9.0` is published with release workflow evidence. | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.0 |
 | Marketplace listing | Free GitHub Action listing is published. | https://github.com/marketplace/actions/oss-signal |
-| Main workflow evidence | CI, Repository health, Repository inventory, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
+| Main workflow evidence | CI, Repository health, Repository inventory, Evidence verification, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
 | npm downloads | npm API returned 356 downloads for the last-month window from 2026-05-04 to 2026-06-02. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
 | Repository interest | GitHub API returned 0 stars, 1 fork, 0 subscribers, and 5 open issues at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
 | Accepted external contribution | One external maintainer merged a focused Codex Action documentation safety PR. | https://github.com/icoretech/codex-action/pull/24 |
+| Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, and current external issue/PR links. The workflow passes `GITHUB_TOKEN` so GitHub API checks are verified instead of skipped. | `.github/workflows/evidence-verify.yml` |
 
 ## Current Field-Audit Status
 

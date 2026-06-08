@@ -38,6 +38,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.0
 - Release workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/release.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
+- Evidence verification workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
 - GitHub repository profile: description, npm homepage, eight maintainer-focused topics, social preview image, and profile pin are live.
 - Community workflow: Discussions are enabled and issue templates now route workflow questions and security reports to the right channels.
 - Maintainer operations: OpenSSF Scorecard, CODEOWNERS, MAINTAINERS, and GOVERNANCE are now part of the public repository evidence. Scorecard publishes JSON evidence instead of adding noisy Code Scanning alerts.

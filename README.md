@@ -73,7 +73,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - SARIF Code Scanning walkthrough: [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md)
 - Roadmap: [docs/roadmap.md](docs/roadmap.md)
 - Post-submission version note: the application may reference earlier evidence; `0.9.0` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md) and [docs/selection-update-2026-06-08.md](docs/selection-update-2026-06-08.md).
-- Public checks: CI, Repository health, and CodeQL are passing on `main`.
+- Public checks: CI, Repository health, Repository inventory, Evidence verification, and CodeQL are passing on `main`.
 - Security posture: OpenSSF Scorecard is scheduled, CodeQL is active, secret scanning push protection is enabled, Dependabot alerts/security updates/malware alerts are enabled, and private vulnerability reporting is enabled.
 - Branch posture: `main` has branch protection to prevent force pushes and deletions while keeping direct maintainer maintenance possible.
 - Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
@@ -83,6 +83,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Merged external OSS contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
+- Evidence verification: `npm run evidence:verify` checks npm latest, npm download API, GitHub release evidence, repository metadata, and current external issue/PR links.
 - Separate workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) runs the public `v0.8.4` Action tag and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It remains valid demo evidence while the main repository has advanced to `v0.9.0`.
 
 ## Why

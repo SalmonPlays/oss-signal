@@ -14,6 +14,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Repository inventory workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml
+- Evidence verification workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
@@ -66,6 +67,7 @@ The repository currently has:
 - A workflow output mode that renders a no-fail GitHub Actions trial workflow for external maintainers.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.9.0` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.9.0` against a repository target list and uploads an inventory artifact.
+- A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, visible field-audit links, and the merged external PR.
 - A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.8.4` from another repository and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It remains valid demo evidence while the main repository has advanced to `v0.9.0`.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
 - A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.

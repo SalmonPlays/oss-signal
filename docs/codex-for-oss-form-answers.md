@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.0 and GitHub Action SalmonPlays/oss-signal@v0.9.0, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow output, passes CI/CodeQL/Release, has a 100/100 self-audit, no-fail maintainer trial and feedback paths, five currently visible public field-audit issues, four currently visible public field-audit PRs, and one merged external Codex Action documentation PR.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.0 and GitHub Action SalmonPlays/oss-signal@v0.9.0, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow output, passes CI/CodeQL/Release, has evidence verification, a 100/100 self-audit, no-fail maintainer trial and feedback paths, five currently visible public field-audit issues, four currently visible public field-audit PRs, and one merged external Codex Action documentation PR.
 ```
 
 ## Interest
@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.0 latest, 356 npm last-month downloads reported by the registry API on 2026-06-08, a published v0.9.0 release, a reusable GitHub Action with inventory and workflow output, no-fail maintainer trial and feedback paths, a clean npm version smoke test, public CI/Repository health/CodeQL/Release, five currently visible field-audit issues, four currently visible field-audit PRs, and a separate public workflow demo with artifacts.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.0 latest, 356 npm last-month downloads reported by the registry API on 2026-06-08, a published v0.9.0 release, a reusable GitHub Action with inventory and workflow output, no-fail maintainer trial and feedback paths, a clean npm version smoke test, public CI/Repository health/Evidence verification/CodeQL/Release, five currently visible field-audit issues, four currently visible field-audit PRs, and a separate public workflow demo with artifacts.
 ```
 
 ## Evidence Links

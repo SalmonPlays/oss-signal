@@ -39,6 +39,7 @@ Expected result with API access: score `100`, grade `A`, source `github`.
 - CI: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Repository inventory: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml
+- Evidence verification: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
 - CodeQL: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - OpenSSF Scorecard: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
@@ -70,6 +71,14 @@ node src/cli.js --inventory docs/examples/inventory-targets.txt --format markdow
 ```
 
 Expected result: a Markdown table with one row per repository, average score, score range, and top next steps.
+
+To verify public evidence links from the repository:
+
+```bash
+npm run evidence:verify
+```
+
+Expected result: PASS lines for npm latest, npm downloads, GitHub release evidence, repository metadata, visible field-audit links, and the merged external PR. If run locally without `GITHUB_TOKEN` after the anonymous GitHub API limit is exhausted, GitHub API checks are reported as SKIP instead of being counted as verified.
 
 5. Inspect the public Action tag:
 
