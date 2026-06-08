@@ -34,6 +34,7 @@ Run as a GitHub Action:
 - [Quickstart](quickstart.md)
 - [Reviewer evidence quickstart](reviewer-evidence.md)
 - [Reviewer packet, 2026-06-08](reviewer-packet-2026-06-08.md)
+- [Evidence verification snapshot](evidence-verification.md)
 - [Evidence ledger](evidence-ledger.md)
 - [Trust center](trust-center.md)
 - [Adoption evidence](adoption-evidence.md)

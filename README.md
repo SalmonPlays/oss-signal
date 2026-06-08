@@ -62,6 +62,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Quickstart: [docs/quickstart.md](docs/quickstart.md)
 - Reviewer packet: [docs/reviewer-packet-2026-06-08.md](docs/reviewer-packet-2026-06-08.md)
 - Evidence ledger: [docs/evidence-ledger.md](docs/evidence-ledger.md)
+- Evidence verification snapshot: [docs/evidence-verification.md](docs/evidence-verification.md)
 - Adoption kit: [docs/adoption-kit.md](docs/adoption-kit.md)
 - Maintainer trial: [docs/maintainer-trial.md](docs/maintainer-trial.md)
 - Maintainer feedback: [docs/maintainer-feedback.md](docs/maintainer-feedback.md)
@@ -84,7 +85,7 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Merged external OSS contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
-- Evidence verification: `npm run evidence:verify` checks npm latest, npm download API, GitHub release evidence, repository metadata, and current external issue/PR links; the workflow uploads a Markdown verification artifact.
+- Evidence verification: `npm run evidence:verify` checks npm latest, npm download API, GitHub release evidence, repository metadata, and current external issue/PR links; the workflow uploads a Markdown verification artifact and the current snapshot is in [docs/evidence-verification.md](docs/evidence-verification.md).
 - Separate workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) runs the public `v0.8.4` Action tag and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It remains valid demo evidence while the main repository has advanced to `v0.9.0`.
 
 ## Why

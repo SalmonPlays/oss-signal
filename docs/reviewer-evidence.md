@@ -82,6 +82,8 @@ Expected result: PASS lines for npm latest, npm downloads, GitHub release eviden
 
 The GitHub workflow writes the same evidence to the run step summary and uploads an `oss-signal-evidence-verification` artifact.
 
+The latest committed snapshot is [evidence-verification.md](evidence-verification.md).
+
 5. Inspect the public Action tag:
 
 - Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.0
@@ -137,6 +139,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 
 - Brand assets and GitHub settings copy: [brand.md](brand.md)
 - Reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md)
+- Evidence verification snapshot: [evidence-verification.md](evidence-verification.md)
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Trust center: [trust-center.md](trust-center.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)

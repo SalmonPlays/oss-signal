@@ -19,7 +19,7 @@ For the shortest current evidence bundle, see [reviewer-packet-2026-06-08.md](re
 | npm downloads | npm API returned 356 downloads for the last-month window from 2026-05-04 to 2026-06-02. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
 | Repository interest | GitHub API returned 0 stars, 1 fork, 0 subscribers, and 5 open issues at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
 | Accepted external contribution | One external maintainer merged a focused Codex Action documentation safety PR. | https://github.com/icoretech/codex-action/pull/24 |
-| Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, and current external issue/PR links. The workflow passes `GITHUB_TOKEN`, writes a step summary, and uploads an `oss-signal-evidence-verification` artifact. | `.github/workflows/evidence-verify.yml` |
+| Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, and current external issue/PR links. The workflow passes `GITHUB_TOKEN`, writes a step summary, uploads an `oss-signal-evidence-verification` artifact, and the committed snapshot is [evidence-verification.md](evidence-verification.md). | `.github/workflows/evidence-verify.yml` |
 
 ## Current Field-Audit Status
 

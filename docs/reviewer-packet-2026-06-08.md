@@ -33,7 +33,7 @@ The workflow evidence below points at the latest verified run set when this pack
 | CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27132313016 |
 | Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27132311941 |
 
-The Evidence verification run uploads an `oss-signal-evidence-verification` artifact. The local verification output for the same checks returned PASS 14, SKIP 0, FAIL 0.
+The Evidence verification run uploads an `oss-signal-evidence-verification` artifact. The committed [evidence verification snapshot](evidence-verification.md) for the same checks returned PASS 14, SKIP 0, FAIL 0.
 
 ## External Maintainer Evidence
 
