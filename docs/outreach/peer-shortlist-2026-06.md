@@ -14,7 +14,7 @@ Selection criteria:
 1. `Grovanni/oss-signal`
    - Closest match in topic and repository shape.
    - Best next step: CI, Dependabot, and CodeQL.
-   - Best outreach form: one focused issue, then a narrow PR only if the maintainer responds.
+   - Status update: the repository now redirects to `Grovanni/pr-signal`, and the previously linked issue was deleted. Treat this as a historical audit only unless a fresh, non-duplicative maintainer path appears.
 
 2. `Divyesh-5981/signal-oss`
    - Similar maintainer-tooling direction with CI and tests already present.
@@ -24,7 +24,7 @@ Selection criteria:
 3. `noctemlabs/signal-oss`
    - Similar naming and active recently, but missing more baseline workflow signals.
    - Best next step: minimal CI workflow.
-   - Status: follow-up PR posted at https://github.com/noctemlabs/signal-oss/pull/12.
+   - Status update: the repository and previously linked PR were not publicly reachable on 2026-06-08. Treat this as a historical audit only.
 
 4. `neardws/oss-application-pack-builder`
    - Adjacent to OSS maintainer evidence tooling, but less directly matched.
@@ -37,10 +37,9 @@ Do not blast all four repositories at once. That reads like reciprocity farming 
 
 The strongest sequence is:
 
-1. post one focused issue to `Grovanni/oss-signal`
-2. post one focused issue to `Divyesh-5981/signal-oss`
-3. wait for maintainer response on `Grovanni/oss-signal`, `Divyesh-5981/signal-oss`, and `noctemlabs/signal-oss` before adding more public outreach
-4. keep the remaining candidates as drafts unless there is a real maintainer response path
+1. do not repost to `Grovanni/oss-signal` or `noctemlabs/signal-oss` unless there is a fresh maintainer-facing reason
+2. wait for maintainer response on `Divyesh-5981/signal-oss` and the visible open PRs before adding more public outreach
+3. keep the remaining candidates as drafts unless there is a real maintainer response path
 
 ## Anti-Patterns
 

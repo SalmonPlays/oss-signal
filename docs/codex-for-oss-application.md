@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-05T16:02:53Z
+Snapshot: 2026-06-08T05:27:31Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -19,6 +19,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
+- Selection update: [selection-update-2026-06-08.md](selection-update-2026-06-08.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)
 - Maintainer feedback: [maintainer-feedback.md](maintainer-feedback.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
@@ -55,7 +56,7 @@ The repository currently has:
 
 - A published npm package with `0.9.0` as the latest release.
 - A post-submission update page explaining why the current npm package and Action tag may be newer than the originally submitted evidence.
-- npm download API evidence showing 356 last-week and last-month downloads on 2026-06-05.
+- npm download API evidence showing 356 last-month downloads for 2026-05-04 to 2026-06-02 when checked on 2026-06-08.
 - A published GitHub Release for v0.9.0 with maintainer plan output, CI usage guidance, and release notes.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - A repository inventory mode for organization-level maintainer-readiness triage, available in both CLI and GitHub Action form.
@@ -65,7 +66,7 @@ The repository currently has:
 - A workflow output mode that renders a no-fail GitHub Actions trial workflow for external maintainers.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.9.0` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.9.0` against a repository target list and uploads an inventory artifact.
-- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.9.0` from another repository and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts.
+- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.8.4` from another repository and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It remains valid demo evidence while the main repository has advanced to `v0.9.0`.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
 - A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
@@ -73,7 +74,7 @@ The repository currently has:
 - CI, Repository health, CodeQL, and Release workflows passing publicly.
 - A local self-audit score of 100/100.
 - A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version`, returning `0.9.0`.
-- Public reports, issues, and PRs created from real repository audits, including six posted field-audit issues and five follow-up PRs.
+- Public reports, issues, and PRs created from real repository audits, including five currently visible posted field-audit issues and four currently visible follow-up PRs.
 - One accepted external documentation PR, with a public maintainer merge comment, recorded in [evidence-ledger.md](evidence-ledger.md).
 
 ## Separate Workflow Demo
@@ -86,21 +87,21 @@ This is intentionally described as a separate public workflow demo rather than t
 
 | Repository | Report | Issue | PR | Status |
 | --- | --- | --- | --- | --- |
-| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open, mergeable |
-| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open, mergeable |
-| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open, mergeable |
-| `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open, mergeable |
-| `Grovanni/oss-signal` | [report](outreach/grovanni-oss-signal-report.md) | https://github.com/Grovanni/oss-signal/issues/1 | N/A | open |
-| `noctemlabs/signal-oss` | [report](outreach/noctemlabs-signal-oss-report.md) | N/A | https://github.com/noctemlabs/signal-oss/pull/12 | open, mergeable |
+| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open |
+| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open |
+| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open |
+| `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open |
 | `Divyesh-5981/signal-oss` | [report](outreach/divyesh-5981-signal-oss-report.md) | https://github.com/Divyesh-5981/signal-oss/issues/5 | N/A | open |
 
 These PRs are intentionally small and maintainer-friendly. They add documentation, GitHub templates, or minimal CI automation rather than changing product code.
+
+Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` remain in [outreach](outreach), but their public issue or PR links were not verifiable on 2026-06-08 and are not counted as current public evidence.
 
 ## Application Positioning
 
 Recommended application angle:
 
-`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, six public field-audit issues, five public field-audit PRs, and one merged external Codex Action documentation PR. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
+`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, five currently visible public field-audit issues, four currently visible public field-audit PRs, and one merged external Codex Action documentation PR. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
 
 Prepared official form answers are in [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md). The applicant still needs to fill personal identity fields and their OpenAI Organization ID directly.
 

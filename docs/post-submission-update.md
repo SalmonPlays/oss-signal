@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-07T03:51:47Z
+Latest verification: 2026-06-08T05:27:31Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 
@@ -43,8 +43,9 @@ The older submission evidence remains valid. The current `latest` npm version si
 - Maintainer operations: OpenSSF Scorecard, CODEOWNERS, MAINTAINERS, and GOVERNANCE are now part of the public repository evidence. Scorecard publishes JSON evidence instead of adding noisy Code Scanning alerts.
 - Public discussion: https://github.com/SalmonPlays/oss-signal/discussions/5 documents the intended maintainer workflow and feedback channel.
 - No-fail maintainer trial: [maintainer-trial.md](maintainer-trial.md) gives external maintainers a copyable workflow that publishes a report without gating CI.
-- Public field-audit evidence: six posted field-audit issues, five follow-up PRs, and one merged external documentation PR are tracked in [evidence-ledger.md](evidence-ledger.md).
+- Public field-audit evidence: five currently visible posted field-audit issues, four currently visible follow-up PRs, and one merged external documentation PR are tracked in [evidence-ledger.md](evidence-ledger.md). Historical audit links that disappeared are kept as local examples but are not counted as public adoption evidence.
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
+- Selection update: [selection-update-2026-06-08.md](selection-update-2026-06-08.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 - Maintainer plan output: [plan-output.md](plan-output.md)
 
@@ -67,7 +68,7 @@ Expected result:
 }
 ```
 
-A clean npm execution should return version `0.9.0`.
+A clean npm execution from a temporary directory or another directory outside this repository should return version `0.9.0`.
 
 ```bash
 npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version

@@ -1,6 +1,6 @@
 # Issue Draft: noctemlabs/signal-oss
 
-Follow-up PR posted as [noctemlabs/signal-oss#12](https://github.com/noctemlabs/signal-oss/pull/12).
+Historical note: a follow-up PR was previously linked as `noctemlabs/signal-oss#12`, but the repository and PR were not publicly reachable on 2026-06-08. This draft is retained as a local audit example only.
 
 Title:
 

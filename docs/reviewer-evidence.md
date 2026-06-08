@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-05T16:02:53Z
+Last verified: 2026-06-08T05:27:31Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -18,7 +18,7 @@ npm view oss-signal version dist-tags --json
 
 Expected result: `version` is `0.9.0`, and `dist-tags.latest` is `0.9.0`.
 
-2. Run the published package from a clean install:
+2. Run the published package from a clean temporary directory or another directory outside this repository:
 
 ```bash
 npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version
@@ -60,6 +60,7 @@ Expected result with API access: score `100`, grade `A`, source `github`.
 - SARIF Code Scanning walkthrough: https://github.com/SalmonPlays/oss-signal/blob/main/docs/sarif-code-scanning.md
 - Roadmap: https://github.com/SalmonPlays/oss-signal/blob/main/docs/roadmap.md
 - Marketplace checklist: https://github.com/SalmonPlays/oss-signal/blob/main/docs/marketplace.md
+- Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-08.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
 
 4. Run an inventory report from the repository target list:
@@ -84,10 +85,10 @@ Expected result: a Markdown table with one row per repository, average score, sc
 | `supermarkt/checkjebon` | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | Contributor workflow templates |
 | `sammorrisdesign/interactive-feed` | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | Contributor workflow templates |
 | `flox/install-flox-action` | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | Pull request template |
-| `Grovanni/oss-signal` | https://github.com/Grovanni/oss-signal/issues/1 | N/A | CI, Dependabot, and CodeQL |
-| `noctemlabs/signal-oss` | N/A | https://github.com/noctemlabs/signal-oss/pull/12 | Minimal Python CI workflow |
 | `Divyesh-5981/signal-oss` | https://github.com/Divyesh-5981/signal-oss/issues/5 | N/A | SECURITY.md and contributor templates |
 | `icoretech/codex-action` | N/A | https://github.com/icoretech/codex-action/pull/24 | Merged Codex Action README safety examples; maintainer merge comment at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 |
+
+Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` remain in [outreach](outreach), but their public issue or PR links were not verifiable on 2026-06-08 and are not counted as current public evidence.
 
 7. Inspect inbound contribution routes:
 
@@ -119,7 +120,7 @@ Expected result: a Markdown table with one row per repository, average score, sc
 
 ## Boundaries
 
-This project does not claim broad independent adoption yet. The separate workflow demo is public but owned by `SalmonPlays`, so it is treated as public workflow evidence rather than third-party adoption. One external PR has been merged, while the six field-audit issues and five field-audit follow-up PRs remain open unless their target maintainers merge, reply, or otherwise endorse them.
+This project does not claim broad independent adoption yet. The separate workflow demo is public but owned by `SalmonPlays`, so it is treated as public workflow evidence rather than third-party adoption. One external PR has been merged, while the five currently visible field-audit issues and four currently visible field-audit follow-up PRs remain open unless their target maintainers merge, reply, or otherwise endorse them.
 
 ## Primary Evidence Pages
 
@@ -127,6 +128,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Trust center: [trust-center.md](trust-center.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
+- Selection update: [selection-update-2026-06-08.md](selection-update-2026-06-08.md)
 - Adoption kit: [adoption-kit.md](adoption-kit.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)
 - Maintainer feedback: [maintainer-feedback.md](maintainer-feedback.md)

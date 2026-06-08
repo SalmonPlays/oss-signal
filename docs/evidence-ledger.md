@@ -1,6 +1,6 @@
 # Evidence Ledger
 
-Last verified: 2026-06-05T16:02:53Z
+Last verified: 2026-06-08T05:27:31Z
 
 This ledger keeps the strongest public `oss-signal` evidence in one reviewer-friendly place. It separates accepted evidence from supporting demos and open follow-up work.
 
@@ -8,9 +8,9 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 
 | Signal | Evidence | Status | Reviewer note |
 | --- | --- | --- | --- |
-| Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.0` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version`. |
-| npm download API | 356 downloads for last-week and last-month windows | Checked 2026-06-05T09:57:04Z | Supporting distribution signal only; not claimed as broad adoption. |
-| GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.9.0 | Published tag | Public Action tag used by repository workflows; the separate demo is refreshed after release publication. |
+| Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.0` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version` from a clean temporary directory. |
+| npm download API | 356 downloads for the last-month window, 2026-05-04 to 2026-06-02 | Checked 2026-06-08T05:27:31Z | Supporting distribution signal only; not claimed as broad adoption. |
+| GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.9.0 | Published tag | Public Action tag used by repository workflows; the separate public demo remains v0.8.4 evidence until refreshed. |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
 | Maintainer trial path | [maintainer-trial.md](maintainer-trial.md) | Published | External maintainers can try the Action without failing CI, then share a workflow run or adoption report. |
 | Maintainer feedback path | [maintainer-feedback.md](maintainer-feedback.md) | Published | External maintainers can leave useful public feedback even when the tool is not adopted. |
@@ -19,28 +19,31 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Separate public workflow demo | https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373 | Passing | Separate public repository runs `SalmonPlays/oss-signal@v0.8.4` and uploads Markdown, SARIF, issue-ready, and no-fail workflow artifacts. |
 | Accepted external contribution | https://github.com/icoretech/codex-action/pull/24 | Merged 2026-06-04 | External maintainer merged the focused Codex Action documentation safety fix and left a merge comment. |
 | Maintainer merge comment | https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 | Public maintainer response | Stronger than an open PR because the external maintainer accepted the change. |
-| Field-audit issues | [adoption evidence](adoption-evidence.md#public-field-audits-and-prs) | Six posted issues | These show the audit-to-maintainer-follow-up workflow, but are not counted as adoption unless maintainers reply, act, or endorse them. |
-| Field-audit PRs | [adoption evidence](adoption-evidence.md#public-field-audits-and-prs) | Five open, mergeable PRs | These are not counted as accepted adoption unless maintainers merge, reply, or endorse them. |
+| Selection update | [selection-update-2026-06-08.md](selection-update-2026-06-08.md) | Published | Compact post-submission status page for reviewers. |
+| Field-audit issues | [adoption evidence](adoption-evidence.md#public-field-audits-and-prs) | Five currently visible posted issues | These show the audit-to-maintainer-follow-up workflow, but are not counted as adoption unless maintainers reply, act, or endorse them. |
+| Field-audit PRs | [adoption evidence](adoption-evidence.md#public-field-audits-and-prs) | Four currently visible open PRs | These are not counted as accepted adoption unless maintainers merge, reply, or endorse them. |
 | Launch announcement | https://github.com/SalmonPlays/oss-signal/discussions/13 | Posted | Public maintainer-facing announcement with links to npm, Marketplace, and reviewer evidence. |
 | X launch post | https://x.com/paopaopaolin/status/2062710560857489698 | Posted | Public social launch link; not used as adoption proof. |
 
 ## External Issue And PR Status
 
-Checked from GitHub on 2026-06-05T09:57:04Z.
+Checked from GitHub on 2026-06-08T05:27:31Z.
 
 | Repository | Link | Status | Scope |
 | --- | --- | --- | --- |
 | `icoretech/codex-action` | https://github.com/icoretech/codex-action/pull/24 | merged | Codex Action README shell-safety documentation |
-| `platformatic/massimo` | https://github.com/platformatic/massimo/pull/160 | open, mergeable | Contributor triage templates |
-| `supermarkt/checkjebon` | https://github.com/supermarkt/checkjebon/pull/23 | open, mergeable | Contributor workflow templates |
-| `sammorrisdesign/interactive-feed` | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open, mergeable | Contributor workflow templates |
-| `flox/install-flox-action` | https://github.com/flox/install-flox-action/pull/205 | open, mergeable | Pull request template |
-| `noctemlabs/signal-oss` | https://github.com/noctemlabs/signal-oss/pull/12 | open, mergeable | Minimal Python CI workflow |
+| `platformatic/massimo` | https://github.com/platformatic/massimo/pull/160 | open | Contributor triage templates |
+| `supermarkt/checkjebon` | https://github.com/supermarkt/checkjebon/pull/23 | open | Contributor workflow templates |
+| `sammorrisdesign/interactive-feed` | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open | Contributor workflow templates |
+| `flox/install-flox-action` | https://github.com/flox/install-flox-action/pull/205 | open | Pull request template |
 | `Divyesh-5981/signal-oss` | https://github.com/Divyesh-5981/signal-oss/issues/5 | open issue | SECURITY.md and contributor templates |
+| `Grovanni/oss-signal` | https://github.com/Grovanni/oss-signal/issues/1 | deleted/unavailable | Historical local report retained, not counted as current public evidence. |
+| `noctemlabs/signal-oss` | https://github.com/noctemlabs/signal-oss/pull/12 | unavailable | Historical local report retained, not counted as current public evidence. |
 
 ## Boundaries
 
 - The separate workflow demo is public but owned by `SalmonPlays`, so it is evidence that the Action works outside the main repository, not independent third-party adoption.
 - Open external issues and PRs are not counted as accepted adoption.
+- Deleted, moved, or unavailable external links are not counted as current public evidence.
 - Stars, forks, watchers, and social posts are not used as proof of quality or adoption.
 - The strongest remaining evidence would be one independent maintainer-owned workflow run, maintainer reply, or additional merged external PR.

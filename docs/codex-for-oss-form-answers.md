@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-05T16:02:53Z
+Snapshot: 2026-06-08T05:27:31Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.0 and GitHub Action SalmonPlays/oss-signal@v0.9.0, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow output, passes CI/CodeQL/Release, has a 100/100 self-audit, no-fail maintainer trial and feedback paths, six public field-audit issues, five public field-audit PRs, and one merged external Codex Action documentation PR.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.0 and GitHub Action SalmonPlays/oss-signal@v0.9.0, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow output, passes CI/CodeQL/Release, has a 100/100 self-audit, no-fail maintainer trial and feedback paths, five currently visible public field-audit issues, four currently visible public field-audit PRs, and one merged external Codex Action documentation PR.
 ```
 
 ## Interest
@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.0 latest, 356 npm downloads reported by the registry API on 2026-06-05, a published v0.9.0 release, a reusable GitHub Action with inventory and workflow output, no-fail maintainer trial and feedback paths, a clean npm version smoke test, public CI/Repository health/CodeQL/Release, six field-audit issues, five field-audit PRs, and a separate public workflow demo with artifacts.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.0 latest, 356 npm last-month downloads reported by the registry API on 2026-06-08, a published v0.9.0 release, a reusable GitHub Action with inventory and workflow output, no-fail maintainer trial and feedback paths, a clean npm version smoke test, public CI/Repository health/CodeQL/Release, five currently visible field-audit issues, four currently visible field-audit PRs, and a separate public workflow demo with artifacts.
 ```
 
 ## Evidence Links
@@ -93,6 +93,7 @@ The project is early, so I am not overstating adoption. Current evidence include
 - Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
+- Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-08.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
 - Maintainer feedback: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-feedback.md
 - Merged external PR with maintainer comment: https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361

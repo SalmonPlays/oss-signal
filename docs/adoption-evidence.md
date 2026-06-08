@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-07T03:51:47Z
+Last verified: 2026-06-08T05:27:31Z
 
 ## Project Links
 
@@ -46,6 +46,7 @@ Last verified: 2026-06-07T03:51:47Z
 - Roadmap: [docs/roadmap.md](roadmap.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
 - Evidence ledger: [docs/evidence-ledger.md](evidence-ledger.md)
+- Selection update: [docs/selection-update-2026-06-08.md](selection-update-2026-06-08.md)
 - Post-submission update: [docs/post-submission-update.md](post-submission-update.md)
 - Release process: [docs/release-process.md](release-process.md)
 - Codex for Open Source application brief: [docs/codex-for-oss-application.md](codex-for-oss-application.md)
@@ -72,7 +73,7 @@ The [post-submission update](post-submission-update.md) records why the current 
 
 The npm package is publicly available as `oss-signal@0.9.0` with `latest` pointing at `0.9.0` after the release workflow completes.
 
-The npm downloads API returned 356 downloads for both last-week and last-month windows on 2026-06-05. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
+The npm downloads API returned 356 downloads for the last-month window from 2026-05-04 to 2026-06-02 when checked on 2026-06-08. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
 Clean-directory package execution returned:
 
@@ -102,7 +103,7 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
-The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-07 release updates the expected latest version to `0.9.0`. The 2026-06-05 download check returned 356 downloads for the last-week and last-month windows.
+The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-07 release updates the expected latest version to `0.9.0`. The 2026-06-08 download check returned 356 downloads for the last-month window.
 
 ## Separate Public Workflow Evidence
 
@@ -120,25 +121,25 @@ The tool has been used to generate maintainer-readiness reports for public repos
 
 | Repository | Report | Posted issue | Follow-up PR | Status |
 | --- | --- | --- | --- | --- |
-| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open, mergeable |
-| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open, mergeable |
-| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open, mergeable |
-| `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open, mergeable |
-| `Grovanni/oss-signal` | [report](outreach/grovanni-oss-signal-report.md) | https://github.com/Grovanni/oss-signal/issues/1 | N/A | open |
-| `noctemlabs/signal-oss` | [report](outreach/noctemlabs-signal-oss-report.md) | N/A | https://github.com/noctemlabs/signal-oss/pull/12 | open, mergeable |
+| `platformatic/massimo` | [report](outreach/platformatic-massimo-report.md) | https://github.com/platformatic/massimo/issues/159 | https://github.com/platformatic/massimo/pull/160 | open |
+| `supermarkt/checkjebon` | [report](outreach/supermarkt-checkjebon-report.md) | https://github.com/supermarkt/checkjebon/issues/22 | https://github.com/supermarkt/checkjebon/pull/23 | open |
+| `sammorrisdesign/interactive-feed` | [report](outreach/sammorrisdesign-interactive-feed-report.md) | https://github.com/sammorrisdesign/interactive-feed/issues/14 | https://github.com/sammorrisdesign/interactive-feed/pull/15 | open |
+| `flox/install-flox-action` | [report](outreach/flox-install-flox-action-report.md) | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | open |
 | `Divyesh-5981/signal-oss` | [report](outreach/divyesh-5981-signal-oss-report.md) | https://github.com/Divyesh-5981/signal-oss/issues/5 | N/A | open |
 
 These issues and pull requests are evidence of the intended maintainer workflow: run a deterministic audit, explain the missing signals, and give maintainers a small set of actionable improvements. Each PR is intentionally limited to documentation, GitHub templates, or a minimal CI workflow.
 
 Prepared but not yet posted outreach candidates are tracked separately in [outreach/peer-shortlist-2026-06.md](outreach/peer-shortlist-2026-06.md) and [outreach](outreach). This prevents candidate research from being overstated as real external maintainer engagement.
 
-The workflow now includes [plan-output.md](plan-output.md), which converts audit findings into a PR-sized sequence before a contributor posts externally. The example [examples/github-plan.md](examples/github-plan.md) uses the `Grovanni/oss-signal` field audit and shows suggested files plus acceptance criteria.
+Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` remain in [outreach](outreach), but their public issue or PR links were not verifiable on 2026-06-08 and are not counted as current public evidence.
+
+The workflow now includes [plan-output.md](plan-output.md), which converts audit findings into a PR-sized sequence before a contributor posts externally. The example [examples/github-plan.md](examples/github-plan.md) uses a currently visible field-audit target and shows suggested files plus acceptance criteria.
 
 Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing. The maintainer merge comment is public at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361.
 
-The five field-audit follow-up PRs were still open when checked from GitHub on 2026-06-05T09:57:04Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
+The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-08T05:27:31Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 
 ## Contributor Intake
 

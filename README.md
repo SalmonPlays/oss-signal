@@ -52,7 +52,7 @@ For the full first-run path, see [docs/quickstart.md](docs/quickstart.md).
 
 ## Maintainer Evidence Snapshot
 
-Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+Public evidence for the maintainer workflow is collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/selection-update-2026-06-08.md](docs/selection-update-2026-06-08.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.9.0`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.9.0`.
@@ -72,14 +72,14 @@ Public evidence for the maintainer workflow is collected in [docs/index.md](docs
 - Maintainer plan output: [docs/plan-output.md](docs/plan-output.md)
 - SARIF Code Scanning walkthrough: [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md)
 - Roadmap: [docs/roadmap.md](docs/roadmap.md)
-- Post-submission version note: the application may reference earlier evidence; `0.9.0` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md).
+- Post-submission version note: the application may reference earlier evidence; `0.9.0` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md) and [docs/selection-update-2026-06-08.md](docs/selection-update-2026-06-08.md).
 - Public checks: CI, Repository health, and CodeQL are passing on `main`.
 - Security posture: OpenSSF Scorecard is scheduled, CodeQL is active, secret scanning push protection is enabled, Dependabot alerts/security updates/malware alerts are enabled, and private vulnerability reporting is enabled.
 - Branch posture: `main` has branch protection to prevent force pushes and deletions while keeping direct maintainer maintenance possible.
 - Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
 - Community route: [Discussion #5](https://github.com/SalmonPlays/oss-signal/discussions/5) is the public maintainer-workflow thread for usage questions and rule feedback.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
-- Field use: seven public maintainer-readiness audits have been turned into six issues and five focused follow-up PRs.
+- Field use: five currently visible field-audit issues and four currently visible follow-up PRs remain public, plus one merged external documentation PR. Historical reports whose public links disappeared are kept as local audit examples but are not counted as public adoption evidence.
 - Merged external OSS contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
@@ -190,7 +190,7 @@ oss-signal platformatic/massimo --format issue --output maintainer-follow-up.md
 Generate a PR-sized maintainer plan:
 
 ```bash
-oss-signal Grovanni/oss-signal --format plan --output maintainer-plan.md
+oss-signal platformatic/massimo --format plan --output maintainer-plan.md
 ```
 
 See [docs/plan-output.md](docs/plan-output.md) and [docs/examples/github-plan.md](docs/examples/github-plan.md) for an example.
@@ -242,11 +242,11 @@ The [Repository health workflow](.github/workflows/repository-health.yml) runs `
 - [supermarkt/checkjebon report](docs/outreach/supermarkt-checkjebon-report.md), [issue #22](https://github.com/supermarkt/checkjebon/issues/22), and [PR #23](https://github.com/supermarkt/checkjebon/pull/23)
 - [sammorrisdesign/interactive-feed report](docs/outreach/sammorrisdesign-interactive-feed-report.md), [issue #14](https://github.com/sammorrisdesign/interactive-feed/issues/14), and [PR #15](https://github.com/sammorrisdesign/interactive-feed/pull/15)
 - [flox/install-flox-action report](docs/outreach/flox-install-flox-action-report.md), [issue #204](https://github.com/flox/install-flox-action/issues/204), and [PR #205](https://github.com/flox/install-flox-action/pull/205)
-- [Grovanni/oss-signal report](docs/outreach/grovanni-oss-signal-report.md) and [issue #1](https://github.com/Grovanni/oss-signal/issues/1)
-- [noctemlabs/signal-oss report](docs/outreach/noctemlabs-signal-oss-report.md) and [PR #12](https://github.com/noctemlabs/signal-oss/pull/12)
 - [Divyesh-5981/signal-oss report](docs/outreach/divyesh-5981-signal-oss-report.md) and [issue #5](https://github.com/Divyesh-5981/signal-oss/issues/5)
 
 See [docs/outreach](docs/outreach) for the reports and draft issue text. Drafts are not posted automatically; maintainers should only receive specific, useful, and respectful suggestions.
+
+Historical audit reports for [Grovanni/oss-signal](docs/outreach/grovanni-oss-signal-report.md) and [noctemlabs/signal-oss](docs/outreach/noctemlabs-signal-oss-report.md) remain in the repository as examples, but their public issue or PR links were not verifiable on 2026-06-08 and are not counted as current public evidence.
 
 Additional prepared outreach candidates are tracked in [docs/outreach/peer-shortlist-2026-06.md](docs/outreach/peer-shortlist-2026-06.md). The shortlist explicitly separates respectful, defensible candidates from low-signal mass outreach.
 

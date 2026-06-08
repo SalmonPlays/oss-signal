@@ -1,6 +1,6 @@
 # Issue Draft: Grovanni/oss-signal
 
-Posted as [Grovanni/oss-signal#1](https://github.com/Grovanni/oss-signal/issues/1).
+Historical note: this issue was previously posted as `Grovanni/oss-signal#1`, but the repository now redirects to `Grovanni/pr-signal` and the linked issue was deleted. This draft is retained as a local audit example only.
 
 Title:
 

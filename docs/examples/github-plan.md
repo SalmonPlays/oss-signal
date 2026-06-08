@@ -1,40 +1,66 @@
 # OSS Signal Maintainer Plan
 
-Repository: `https://github.com/Grovanni/oss-signal`
-Source: GitHub (Grovanni/oss-signal@main)
-Generated: 2026-06-04T23:21:19.923Z
+Repository: `https://github.com/platformatic/massimo`
+Source: GitHub (platformatic/massimo@main)
+Generated: 2026-06-08T05:31:00.360Z
 
-Current score: **71/100** (C)
+Current score: **64/100** (D)
 
 ## Recommended PR Sequence
 
-### 1. Continuous integration
+### 1. Security policy
 
-- Impact: high (12 pts)
-- Suggested file: `.github/workflows/ci.yml`
-- Why: CI catches regressions before maintainers merge changes.
-- Change: Add a GitHub Actions workflow that runs linting and tests on pushes and pull requests.
+- Impact: high (9 pts)
+- Suggested file: `SECURITY.md`
+- Why: Responsible disclosure needs a private, documented path.
+- Change: Add SECURITY.md with supported versions, reporting instructions, and response expectations.
 
 Acceptance:
 
-- The repository has a clear continuous integration signal.
+- The repository has a clear security policy signal.
 - The change is documented or intentionally marked as not applicable.
 - `oss-signal` no longer reports this check as missing.
 
-### 2. Code of conduct
+### 2. Changelog
 
 - Impact: medium (6 pts)
-- Suggested file: `CODE_OF_CONDUCT.md`
-- Why: Community norms reduce ambiguity during difficult interactions.
-- Change: Add CODE_OF_CONDUCT.md, for example the Contributor Covenant.
+- Suggested file: `CHANGELOG.md`
+- Why: Users need a durable place to understand release impact.
+- Change: Keep CHANGELOG.md with dated release entries and migration notes.
 
 Acceptance:
 
-- The repository has a clear code of conduct signal.
+- The repository has a clear changelog signal.
 - The change is documented or intentionally marked as not applicable.
 - `oss-signal` no longer reports this check as missing.
 
-### 3. Dependency update automation
+### 3. Issue templates
+
+- Impact: medium (5 pts)
+- Suggested file: `.github/ISSUE_TEMPLATE/bug_report.md`
+- Why: Issue templates collect the facts maintainers need to reproduce and triage.
+- Change: Add bug report and feature request templates under .github/ISSUE_TEMPLATE/.
+
+Acceptance:
+
+- The repository has a clear issue templates signal.
+- The change is documented or intentionally marked as not applicable.
+- `oss-signal` no longer reports this check as missing.
+
+### 4. Pull request template
+
+- Impact: medium (5 pts)
+- Suggested file: `.github/PULL_REQUEST_TEMPLATE.md`
+- Why: PR templates nudge contributors to include tests, docs, and review context.
+- Change: Add .github/PULL_REQUEST_TEMPLATE.md with a short checklist.
+
+Acceptance:
+
+- The repository has a clear pull request template signal.
+- The change is documented or intentionally marked as not applicable.
+- `oss-signal` no longer reports this check as missing.
+
+### 5. Dependency update automation
 
 - Impact: medium (5 pts)
 - Suggested file: `.github/dependabot.yml`
@@ -47,7 +73,7 @@ Acceptance:
 - The change is documented or intentionally marked as not applicable.
 - `oss-signal` no longer reports this check as missing.
 
-### 4. Support policy
+### 6. Support policy
 
 - Impact: low (4 pts)
 - Suggested file: `SUPPORT.md`
@@ -60,7 +86,7 @@ Acceptance:
 - The change is documented or intentionally marked as not applicable.
 - `oss-signal` no longer reports this check as missing.
 
-### 5. Static security analysis
+### 7. Static security analysis
 
 - Impact: low (4 pts)
 - Suggested file: `.github/workflows/codeql.yml`
