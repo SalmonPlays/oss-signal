@@ -6,6 +6,7 @@
 
 [![CI](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml)
 [![Repository health](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml)
+[![Evidence verification](https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml)
 [![OpenSSF Scorecard](https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml/badge.svg)](https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml)
 [![GitHub release](https://img.shields.io/github/v/release/SalmonPlays/oss-signal.svg)](https://github.com/SalmonPlays/oss-signal/releases/latest)
 [![GitHub Marketplace](https://img.shields.io/badge/GitHub%20Marketplace-oss--signal-blue.svg)](https://github.com/marketplace/actions/oss-signal)

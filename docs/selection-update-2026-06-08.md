@@ -1,6 +1,6 @@
 # Selection Update: 2026-06-08
 
-Last verified: 2026-06-08T05:27:31Z
+Last verified: 2026-06-09T01:47:01Z
 
 This page is a compact post-submission update for reviewers. It separates current public evidence from supporting demos and from links that no longer verify publicly.
 
