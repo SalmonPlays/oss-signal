@@ -135,6 +135,12 @@ Audit the current directory:
 oss-signal
 ```
 
+Show a one-screen maintainer triage summary from a source checkout:
+
+```bash
+node src/cli.js SalmonPlays/oss-signal --format summary
+```
+
 Audit a public GitHub repository without cloning it:
 
 ```bash
@@ -235,7 +241,7 @@ Summary:
 - Total checks: 15
 ```
 
-See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, [docs/examples/github-plan.md](docs/examples/github-plan.md) for plan output, [docs/examples/maintainer-trial-workflow.yml](docs/examples/maintainer-trial-workflow.yml) for workflow output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
+See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-summary.txt](docs/examples/github-summary.txt) for compact summary output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, [docs/examples/github-plan.md](docs/examples/github-plan.md) for plan output, [docs/examples/maintainer-trial-workflow.yml](docs/examples/maintainer-trial-workflow.yml) for workflow output, and [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output.
 
 The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.9.0`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
 

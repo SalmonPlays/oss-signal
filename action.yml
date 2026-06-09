@@ -13,7 +13,7 @@ inputs:
     description: Newline-delimited file of local paths, GitHub URLs, or owner/repo shorthands to audit as an inventory.
     required: false
   format:
-    description: Output format, either markdown, json, sarif, issue, plan, or workflow. Inventory mode supports markdown or json.
+    description: Output format, either markdown, summary, json, sarif, issue, plan, or workflow. Inventory mode supports markdown or json.
     required: false
     default: markdown
   output:

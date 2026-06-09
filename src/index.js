@@ -337,6 +337,34 @@ export function renderMarkdown(report) {
   return `${lines.join("\n")}\n`;
 }
 
+export function renderSummary(report) {
+  const lines = [
+    "OSS Signal Summary",
+    `Repository: ${report.root}`,
+    `Source: ${sourceSummary(report.source)}`,
+    `Score: ${report.score}/100 (${report.grade})`,
+    `Checks: ${report.summary.passed} passed, ${report.summary.failed} failed, ${report.summary.total} total`
+  ];
+  if (report.summary.notApplicable) {
+    lines.push(`Not applicable: ${report.summary.notApplicable}`);
+  }
+  if (report.config?.path) {
+    lines.push(`Config: ${report.config.path}`);
+  }
+
+  lines.push("", "Top next steps:");
+  if (report.recommendations.length === 0) {
+    lines.push("- No missing maintainer-readiness checks found.");
+  } else {
+    for (const recommendation of report.recommendations.slice(0, 5)) {
+      lines.push(`- ${recommendation.label} (${recommendation.weight} pts): ${recommendation.fix}`);
+    }
+  }
+
+  lines.push("");
+  return `${lines.join("\n")}\n`;
+}
+
 export function renderIssue(report) {
   const lines = [
     "# Maintainer Readiness Follow-Up",

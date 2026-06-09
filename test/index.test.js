@@ -16,6 +16,7 @@ import {
   renderMarkdown,
   renderPlan,
   renderSarif,
+  renderSummary,
   renderWorkflow
 } from "../src/index.js";
 
@@ -59,6 +60,25 @@ test("renderMarkdown includes score and recommendations", async () => {
     assert.match(markdown, /Missing: Add an OSI-approved license file/);
     assert.match(markdown, /Recommended Next Steps/);
     assert.match(markdown, /License/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("renderSummary creates a compact maintainer readout", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+
+  try {
+    const report = await auditRepository(root);
+    const summary = renderSummary(report);
+
+    assert.match(summary, /OSS Signal Summary/);
+    assert.match(summary, /Score: \d+\/100 \([A-F]\)/);
+    assert.match(summary, /Checks: \d+ passed, \d+ failed, \d+ total/);
+    assert.match(summary, /Top next steps:/);
+    assert.match(summary, /License/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -183,6 +203,32 @@ test("CLI writes issue output", async () => {
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /Maintainer Readiness Follow-Up/);
     assert.match(body, /Suggested Next Steps/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes summary output", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+  const outputFile = path.join(root, "summary.txt");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      root,
+      "--format",
+      "summary",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const body = await readFile(outputFile, "utf8");
+    assert.match(body, /OSS Signal Summary/);
+    assert.match(body, /Top next steps:/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

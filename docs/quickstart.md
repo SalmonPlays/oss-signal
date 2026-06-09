@@ -18,6 +18,12 @@ npx oss-signal . --format markdown --output oss-signal-report.md
 
 The Markdown report shows the score, passed and failed checks, evidence for detected files, and concrete next steps for missing maintainer-readiness signals.
 
+From a source checkout, use the compact summary format when you need a one-screen triage readout:
+
+```bash
+node src/cli.js owner/repo --format summary
+```
+
 ## 2. Decide The Follow-Up
 
 Use the generated report to choose one narrow maintainer task:

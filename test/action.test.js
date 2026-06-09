@@ -105,6 +105,30 @@ test("runAction writes SARIF output", async () => {
   }
 });
 
+test("runAction writes summary output", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-summary-"));
+  const reportFile = path.join(root, "summary.txt");
+
+  try {
+    await writeFixture(root, {
+      "README.md": "# Action fixture\n"
+    });
+
+    await runAction({
+      INPUT_PATH: root,
+      INPUT_FORMAT: "summary",
+      INPUT_OUTPUT: reportFile,
+      INPUT_SUMMARY: "false"
+    });
+
+    const body = await readFile(reportFile, "utf8");
+    assert.match(body, /OSS Signal Summary/);
+    assert.match(body, /Top next steps:/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("runAction writes issue output", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-issue-"));
   const reportFile = path.join(root, "maintainer-follow-up.md");

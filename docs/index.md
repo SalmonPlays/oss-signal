@@ -27,7 +27,7 @@ Run as a GitHub Action:
 - CI, tests, CodeQL, Dependabot, issue templates, and PR templates
 - GitHub repository URL audits without cloning
 - Inventory reports across multiple repositories
-- Markdown, JSON, SARIF, issue-ready, maintainer-plan, and workflow output formats
+- Markdown, summary, JSON, SARIF, issue-ready, maintainer-plan, and workflow output formats
 
 ## Reviewer Evidence
 
@@ -49,6 +49,7 @@ Run as a GitHub Action:
 - [Maintainer feedback](maintainer-feedback.md)
 - [Social launch kit](social-launch.md)
 - [Configuration](configuration.md)
+- [Summary output](summary-output.md)
 - [Maintainer playbook](maintainer-playbook.md)
 - [Architecture](architecture.md)
 - [Security model](security-model.md)

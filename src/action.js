@@ -12,6 +12,7 @@ import {
   renderMarkdown,
   renderPlan,
   renderSarif,
+  renderSummary,
   renderWorkflow
 } from "./index.js";
 
@@ -55,8 +56,8 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
 
 export function parseActionInputs(env = process.env) {
   const format = getInput(env, "format") || "markdown";
-  if (!["markdown", "json", "sarif", "issue", "plan", "workflow"].includes(format)) {
-    throw new Error("format must be markdown, json, sarif, issue, plan, or workflow");
+  if (!["markdown", "summary", "json", "sarif", "issue", "plan", "workflow"].includes(format)) {
+    throw new Error("format must be markdown, summary, json, sarif, issue, plan, or workflow");
   }
   const inventory = emptyToUndefined(getInput(env, "inventory"));
   if (inventory && !["markdown", "json"].includes(format)) {
@@ -143,6 +144,9 @@ function renderReport(report, format) {
   }
   if (format === "sarif") {
     return renderSarif(report);
+  }
+  if (format === "summary") {
+    return renderSummary(report);
   }
   if (format === "issue") {
     return renderIssue(report);

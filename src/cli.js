@@ -10,6 +10,7 @@ import {
   renderMarkdown,
   renderPlan,
   renderSarif,
+  renderSummary,
   renderWorkflow,
   VERSION
 } from "./index.js";
@@ -108,8 +109,8 @@ function parseArgs(argv) {
   if (options.inventory && positionals.length > 0) {
     throw new Error("--inventory cannot be combined with a positional repository path");
   }
-  if (!["markdown", "json", "sarif", "issue", "plan", "workflow"].includes(options.format)) {
-    throw new Error("--format must be markdown, json, sarif, issue, plan, or workflow");
+  if (!["markdown", "summary", "json", "sarif", "issue", "plan", "workflow"].includes(options.format)) {
+    throw new Error("--format must be markdown, summary, json, sarif, issue, plan, or workflow");
   }
   return options;
 }
@@ -172,6 +173,9 @@ function renderReport(report, format) {
   if (format === "sarif") {
     return renderSarif(report);
   }
+  if (format === "summary") {
+    return renderSummary(report);
+  }
   if (format === "issue") {
     return renderIssue(report);
   }
@@ -204,11 +208,12 @@ function helpText() {
   return `oss-signal audits open-source repository maintenance readiness.
 
 Usage:
-  oss-signal [path-or-github-url] [--format markdown|json|sarif|issue|plan|workflow] [--output file] [--fail-under score]
+  oss-signal [path-or-github-url] [--format markdown|summary|json|sarif|issue|plan|workflow] [--output file] [--fail-under score]
   oss-signal --inventory repos.txt [--format markdown|json] [--output file] [--fail-under score]
 
 Examples:
   oss-signal .
+  oss-signal . --format summary
   oss-signal https://github.com/SalmonPlays/oss-signal
   oss-signal platformatic/massimo --format json
   oss-signal owner/repo --format issue --output maintainer-follow-up.md
