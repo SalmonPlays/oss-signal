@@ -1,6 +1,6 @@
 # Evidence Ledger
 
-Last verified: 2026-06-09T01:47:01Z
+Last verified: 2026-06-09T02:36:41Z
 
 This ledger keeps the strongest public `oss-signal` evidence in one reviewer-friendly place. It separates accepted evidence from supporting demos and open follow-up work.
 
@@ -8,7 +8,8 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 
 | Signal | Evidence | Status | Reviewer note |
 | --- | --- | --- | --- |
-| Reviewer packet | [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md) | Published | One-page packet with current workflow runs, artifact evidence, package status, and external maintainer evidence. |
+| Root reviewer packet | [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md) | Published | Shortest public verification path from the repository root. |
+| Detailed reviewer packet | [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md) | Published | One-page packet with current workflow runs, artifact evidence, package status, and external maintainer evidence. |
 | Evidence verification snapshot | [evidence-verification.md](evidence-verification.md) | PASS 14, SKIP 0, FAIL 0 | Committed Markdown snapshot of npm, GitHub release, repository metadata, and external issue/PR checks. |
 | Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.0` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version` from a clean temporary directory. |
 | npm download API | 356 downloads for the last-month window, 2026-05-04 to 2026-06-02 | Checked 2026-06-09T01:47:01Z | Supporting distribution signal only; not claimed as broad adoption. |

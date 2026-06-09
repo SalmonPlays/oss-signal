@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-09T01:47:01Z
+Last verified: 2026-06-09T02:36:41Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -137,6 +137,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 
 ## Primary Evidence Pages
 
+- Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
 - Brand assets and GitHub settings copy: [brand.md](brand.md)
 - Reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md)
 - Evidence verification snapshot: [evidence-verification.md](evidence-verification.md)

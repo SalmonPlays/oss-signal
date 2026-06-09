@@ -1,10 +1,10 @@
 # Selection Update: 2026-06-08
 
-Last verified: 2026-06-09T01:47:01Z
+Last verified: 2026-06-09T02:36:41Z
 
 This page is a compact post-submission update for reviewers. It separates current public evidence from supporting demos and from links that no longer verify publicly.
 
-For the shortest current evidence bundle, see [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md).
+For the shortest current evidence bundle, see the root [REVIEWER_PACKET.md](../REVIEWER_PACKET.md). For the detailed docs packet, see [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md).
 
 ## Current Public Evidence
 
