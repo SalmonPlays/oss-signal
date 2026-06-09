@@ -1,6 +1,6 @@
 {
   "tool": "oss-signal",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "root": "https://github.com/SalmonPlays/oss-signal",
   "source": {
     "type": "github",
@@ -14,7 +14,7 @@
     "openIssues": 5,
     "healthPercentage": 100
   },
-  "generatedAt": "2026-06-07T04:17:30.910Z",
+  "generatedAt": "2026-06-09T05:04:30.663Z",
   "score": 100,
   "grade": "A",
   "summary": {
@@ -109,9 +109,9 @@
       "evidence": [
         ".github/workflows/ci.yml",
         ".github/workflows/codeql.yml",
+        ".github/workflows/evidence-verify.yml",
         ".github/workflows/release.yml",
-        ".github/workflows/repository-health.yml",
-        ".github/workflows/repository-inventory.yml"
+        ".github/workflows/repository-health.yml"
       ],
       "why": "CI catches regressions before maintainers merge changes.",
       "fix": "Add a GitHub Actions workflow that runs linting and tests on pushes and pull requests."
@@ -173,9 +173,9 @@
       "evidence": [
         ".github/workflows/ci.yml",
         ".github/workflows/codeql.yml",
+        ".github/workflows/evidence-verify.yml",
         ".github/workflows/release.yml",
-        ".github/workflows/repository-health.yml",
-        ".github/workflows/repository-inventory.yml"
+        ".github/workflows/repository-health.yml"
       ],
       "why": "Static analysis finds common vulnerability patterns before releases.",
       "fix": "Add a CodeQL or equivalent security scanning workflow."

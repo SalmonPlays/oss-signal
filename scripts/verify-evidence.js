@@ -125,12 +125,14 @@ await check("GitHub repository", async () => {
   return `${repository.full_name}, stars=${repository.stargazers_count}, forks=${repository.forks_count}`;
 });
 
-await check("GitHub release v0.9.0", async () => {
+const releaseTag = `v${packageJson.version}`;
+
+await check(`GitHub release ${releaseTag}`, async () => {
   const release = await fetchJson(
-    "https://api.github.com/repos/SalmonPlays/oss-signal/releases/tags/v0.9.0",
+    `https://api.github.com/repos/SalmonPlays/oss-signal/releases/tags/${releaseTag}`,
     { headers: githubHeaders },
   );
-  assert(release.tag_name === "v0.9.0", "release tag mismatch");
+  assert(release.tag_name === releaseTag, "release tag mismatch");
   return `${release.html_url} published_at=${release.published_at}`;
 });
 

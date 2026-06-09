@@ -5,7 +5,7 @@
 Use it when you do not need the full Markdown table, SARIF, JSON, or issue body yet:
 
 ```bash
-node src/cli.js owner/repo --format summary
+npx oss-signal owner/repo --format summary
 ```
 
 Example:

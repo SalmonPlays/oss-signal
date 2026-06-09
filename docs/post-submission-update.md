@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-08T05:27:31Z
+Latest verification: 2026-06-09T04:18:45Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 
@@ -30,12 +30,13 @@ The older submission evidence remains valid. The current `latest` npm version si
 | `v0.8.5` | npm package, GitHub Release, Action tag | Added evidence and next-step details to Markdown reports plus a maintainer quickstart. |
 | `v0.8.6` | npm package, GitHub Release, Action tag | Corrected reviewer evidence text for the separate public demo. |
 | `v0.9.0` | npm package, GitHub Release, Action tag | Added config-backed not-applicable rules for documented maintainer exceptions. |
+| `v0.9.1` | npm package, GitHub Release, Action tag | Added compact summary output and included the root reviewer packet in the npm tarball. |
 
 ## Current Evidence
 
-- npm package: https://www.npmjs.com/package/oss-signal (`0.9.0` latest after release)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.0
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.0
+- npm package: https://www.npmjs.com/package/oss-signal (`0.9.1` latest after release)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.1
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.1
 - Release workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/release.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Evidence verification workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
@@ -52,7 +53,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 
 ## Clean Verification
 
-The public registry should return `0.9.0` for both package version and `latest` dist-tag after the configuration release.
+The public registry should return `0.9.1` for both package version and `latest` dist-tag after the summary-output release.
 
 ```bash
 npm view oss-signal version dist-tags --json
@@ -62,17 +63,17 @@ Expected result:
 
 ```json
 {
-  "version": "0.9.0",
+  "version": "0.9.1",
   "dist-tags": {
-    "latest": "0.9.0"
+    "latest": "0.9.1"
   }
 }
 ```
 
-A clean npm execution from a temporary directory or another directory outside this repository should return version `0.9.0`.
+A clean npm execution from a temporary directory or another directory outside this repository should return version `0.9.1`.
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.9.1 -- oss-signal --version
 ```
 
 ## Review Impact
@@ -80,12 +81,13 @@ npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version
 This version difference should be read as post-submission maintenance progress, not as a mismatch. It strengthens the evidence in three ways:
 
 - The package now has a successful npm Trusted Publishing release from GitHub Actions.
-- The GitHub Action tag, npm package, release notes, and documentation all point to `0.9.0`.
+- The GitHub Action tag, npm package, release notes, and documentation all point to `0.9.1`.
 - The repository has public CI, Repository health, Repository inventory, CodeQL, OpenSSF Scorecard, Release workflow evidence, social preview branding, profile pinning, Discussions, CODEOWNERS, and issue routing.
 - The current release includes `--format plan`, which turns audit findings into PR-sized outreach plans before external posting.
 - The current release includes `--format workflow`, which renders a no-fail GitHub Actions trial workflow for external maintainers.
 - The current release shows detected evidence and missing next steps directly in Markdown reports, which makes first-run review easier.
 - The current release includes config-backed not-applicable rules, so maintainers can document intentional exceptions without creating noisy failed recommendations.
+- The current release includes `--format summary`, so maintainers can get a one-screen triage readout before generating a full report or issue body.
 - The no-fail maintainer trial workflow lowers the cost for an independent maintainer to try the Action before adopting a CI gate.
 
 This does not replace the remaining adoption gap. The strongest next evidence would still be independent maintainer-owned workflow usage or more merged external maintainer PRs.

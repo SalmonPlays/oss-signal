@@ -46,7 +46,7 @@ SARIF output reports maintainer-readiness findings at warning level. These findi
 ## Supply Chain
 
 - The npm package is published publicly as `oss-signal`.
-- The GitHub Action is pinned by release tag, for example `SalmonPlays/oss-signal@v0.9.0`.
+- The GitHub Action is pinned by release tag, for example `SalmonPlays/oss-signal@v0.9.1`.
 - The release workflow checks the package version against the release tag before publishing.
 - The repository runs CI, CodeQL, OpenSSF Scorecard, repository health, and repository inventory workflows on `main`.
 

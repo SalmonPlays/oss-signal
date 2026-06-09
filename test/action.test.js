@@ -196,7 +196,7 @@ test("runAction writes workflow output", async () => {
     const body = await readFile(reportFile, "utf8");
     assert.match(body, /oss-signal trial/);
     assert.match(body, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-    assert.match(body, /SalmonPlays\/oss-signal@v0\.9\.0/);
+    assert.match(body, /SalmonPlays\/oss-signal@v0\.9\.1/);
     assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });

@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.9.1
+
+- Added `--format summary` for compact one-screen maintainer triage in the CLI and GitHub Action.
+- Added summary output documentation and a public GitHub repository summary example.
+- Included the root reviewer packet in the npm package tarball.
+
 ## 0.9.0
 
 - Added local config support with `.oss-signal.json`, `.oss-signalrc.json`, `oss-signal.config.json`, and explicit `--config`.

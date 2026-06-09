@@ -8,9 +8,9 @@ This is the shortest public verification path for `oss-signal`. It is intentiona
 
 | Signal | Current value | Verification |
 | --- | --- | --- |
-| npm package | `oss-signal@0.9.0` is `latest` | https://www.npmjs.com/package/oss-signal |
-| GitHub Action | `SalmonPlays/oss-signal@v0.9.0` | https://github.com/SalmonPlays/oss-signal/tree/v0.9.0 |
-| GitHub Release | `v0.9.0` published | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.0 |
+| npm package | `oss-signal@0.9.1` is `latest` | https://www.npmjs.com/package/oss-signal |
+| GitHub Action | `SalmonPlays/oss-signal@v0.9.1` | https://github.com/SalmonPlays/oss-signal/tree/v0.9.1 |
+| GitHub Release | `v0.9.1` published | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.1 |
 | GitHub Marketplace | Free Action listing is published | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | Public docs landing page | https://salmonplays.github.io/oss-signal/ |
 | Evidence verification | PASS 14, SKIP 0, FAIL 0 | [docs/evidence-verification.md](docs/evidence-verification.md) |
@@ -38,7 +38,7 @@ The Evidence verification run uploaded `oss-signal-evidence-verification` with d
 
 ```bash
 npm view oss-signal version dist-tags --json
-npm exec --yes --package=oss-signal@0.9.0 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.9.1 -- oss-signal --version
 git clone https://github.com/SalmonPlays/oss-signal.git
 cd oss-signal
 npm ci
@@ -48,8 +48,8 @@ npm run evidence:verify
 
 Expected results:
 
-- npm latest is `0.9.0`.
-- clean package execution prints `0.9.0`.
+- npm latest is `0.9.1`.
+- clean package execution prints `0.9.1`.
 - `npm run check` passes lint, tests, and self-audit.
 - `npm run evidence:verify` reports PASS lines for npm, release, repository metadata, visible field-audit links, and the merged external PR.
 

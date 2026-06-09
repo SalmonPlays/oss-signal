@@ -12,7 +12,7 @@ This roadmap focuses on the next maintainer workflows that would make `oss-signa
 
 | Area | Goal | Evidence target |
 | --- | --- | --- |
-| Adoption | Help one external maintainer run `SalmonPlays/oss-signal@v0.9.0` in a public workflow or leave concrete trial feedback. | [Issue #8](https://github.com/SalmonPlays/oss-signal/issues/8), [maintainer-trial.md](maintainer-trial.md), [maintainer-feedback.md](maintainer-feedback.md), then linked workflow run or maintainer reply in [adoption-evidence.md](adoption-evidence.md). |
+| Adoption | Help one external maintainer run `SalmonPlays/oss-signal@v0.9.1` in a public workflow or leave concrete trial feedback. | [Issue #8](https://github.com/SalmonPlays/oss-signal/issues/8), [maintainer-trial.md](maintainer-trial.md), [maintainer-feedback.md](maintainer-feedback.md), then linked workflow run or maintainer reply in [adoption-evidence.md](adoption-evidence.md). |
 | Automation | Document a stable JSON schema for consumers that parse `--format json`. | Completed in [Issue #9](https://github.com/SalmonPlays/oss-signal/issues/9), [json-output.md](json-output.md), [schema](schema/json-output.schema.json), and [fixture](examples/github-url-report.json). |
 | Code Scanning | Add a complete screenshot-backed SARIF walkthrough. | Completed in [Issue #10](https://github.com/SalmonPlays/oss-signal/issues/10), [sarif-code-scanning.md](sarif-code-scanning.md), and [output example](assets/code-scanning-results.svg). |
 | Outreach | Convert audit findings into PR-sized maintainer plans before posting externally. | Implemented in `--format plan`, [plan-output.md](plan-output.md), and [examples/github-plan.md](examples/github-plan.md). |
