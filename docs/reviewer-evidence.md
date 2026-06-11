@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-11T11:01:11Z
+Last verified: 2026-06-11T12:05:24Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
