@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-09T04:18:45Z
+Latest verification: 2026-06-11T05:38:08Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 

@@ -1,6 +1,6 @@
 # OSS Signal Reviewer Packet
 
-Last verified: 2026-06-09T05:14:10Z
+Last verified: 2026-06-11T05:38:08Z
 
 This is the shortest public verification path for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless maintainers merge, reply, or endorse them.
 
@@ -14,26 +14,26 @@ This is the shortest public verification path for `oss-signal`. It is intentiona
 | GitHub Marketplace | Free Action listing is published | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | Public docs landing page | https://salmonplays.github.io/oss-signal/ |
 | Evidence verification | PASS 14, SKIP 0, FAIL 0 | [docs/evidence-verification.md](docs/evidence-verification.md) |
-| Evidence workflow | Successful public workflow with Markdown artifact | https://github.com/SalmonPlays/oss-signal/actions/runs/27185166433 |
+| Evidence workflow | Successful public workflow with Markdown artifact | https://github.com/SalmonPlays/oss-signal/actions/runs/27326229096 |
 | Accepted external contribution | One external maintainer merged a focused documentation safety PR | https://github.com/icoretech/codex-action/pull/24 |
 | Field-audit evidence | Five visible issues and four visible PRs remain open | [docs/adoption-evidence.md](docs/adoption-evidence.md) |
 
 ## Latest Verified Workflow Runs
 
-These runs verified commit `779ef1c`.
+The release run verified `v0.9.2` at commit `f5f3522`. The branch checks below verified code commit `1ea0609`; this documentation commit may be newer because it records the checked links.
 
 | Workflow | Status | Run |
 | --- | --- | --- |
-| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27185117875 |
-| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27185166416 |
-| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27185166400 |
-| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27185166418 |
-| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27185166433 |
-| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27185166440 |
-| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27185166431 |
-| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27185165804 |
+| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27324944943 |
+| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27326229091 |
+| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27326229106 |
+| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27326229092 |
+| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27326229096 |
+| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27326229119 |
+| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27326229115 |
+| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27326228245 |
 
-The Evidence verification run uploaded `oss-signal-evidence-verification` with digest `sha256:fcd07aed6d7a1ae2cd381bf040a1f7c1124bd1a55af68cc6f86324bc6183662f`.
+The Evidence verification run uploaded `oss-signal-evidence-verification` with digest `sha256:30bc26bbcee392346dbad3e05688fd853354b5e518bfeb42185c6847fd3306cf`.
 
 ## Five-Minute Reproduction
 
