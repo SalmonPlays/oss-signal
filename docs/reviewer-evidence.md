@@ -6,7 +6,7 @@ This page gives reviewers a short path to verify that `oss-signal` is a real OSS
 
 ## Application Version Note
 
-The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.9.3` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
+The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.9.4` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
 
 ## Five-Minute Verification
 
@@ -16,20 +16,20 @@ The Codex for Open Source application was submitted on 2026-06-03. The npm packa
 npm view oss-signal version dist-tags --json
 ```
 
-Expected result: `version` is `0.9.3`, and `dist-tags.latest` is `0.9.3`.
+Expected result: `version` is `0.9.4`, and `dist-tags.latest` is `0.9.4`.
 
 2. Run the published package from a clean temporary directory or another directory outside this repository:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.3 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.9.4 -- oss-signal --version
 ```
 
-Expected result: `0.9.3`.
+Expected result: `0.9.4`.
 
 To audit the public GitHub repository from a local shell, set `GITHUB_TOKEN` if unauthenticated API rate limits are exhausted:
 
 ```bash
-GITHUB_TOKEN=<token> npm exec --yes --package=oss-signal@0.9.3 -- oss-signal SalmonPlays/oss-signal --format json
+GITHUB_TOKEN=<token> npm exec --yes --package=oss-signal@0.9.4 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
 Expected result with API access: score `100`, grade `A`, source `github`.
@@ -54,7 +54,9 @@ Expected result with API access: score `100`, grade `A`, source `github`.
 - Architecture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/architecture.md
 - Security model: https://github.com/SalmonPlays/oss-signal/blob/main/docs/security-model.md
 - JSON output contract: https://github.com/SalmonPlays/oss-signal/blob/main/docs/json-output.md
-- JSON schema: https://github.com/SalmonPlays/oss-signal/blob/main/docs/schema/json-output.schema.json
+- Single-repository JSON schema: https://github.com/SalmonPlays/oss-signal/blob/main/docs/schema/json-output.schema.json
+- Inventory JSON schema: https://github.com/SalmonPlays/oss-signal/blob/main/docs/schema/inventory-output.schema.json
+- Rule catalog JSON schema: https://github.com/SalmonPlays/oss-signal/blob/main/docs/schema/rules-catalog.schema.json
 - JSON fixture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/examples/github-url-report.json
 - Maintainer plan output: https://github.com/SalmonPlays/oss-signal/blob/main/docs/plan-output.md
 - Maintainer plan fixture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/examples/github-plan.md
@@ -86,8 +88,8 @@ The latest committed snapshot is [evidence-verification.md](evidence-verificatio
 
 5. Inspect the public Action tag:
 
-- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.3
-- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.3
+- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.4
+- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.4
 - Action metadata: [../action.yml](../action.yml)
 
 6. Inspect field-audit evidence:

@@ -48,6 +48,11 @@ Inventory JSON includes:
 - `repositories[]` with one summary per target.
 - `repositories[].topRecommendations[]` with the highest-impact missing checks for each target.
 
+Inventory schema and fixture:
+
+- [schema/inventory-output.schema.json](schema/inventory-output.schema.json)
+- [examples/inventory-report.json](examples/inventory-report.json)
+
 Inventory JSON intentionally summarizes each repository instead of embedding every full check result. Use single-repository JSON when a consumer needs rule-level detail.
 
 ## Rule Catalog JSON
@@ -61,6 +66,10 @@ oss-signal --list-rules --format json --output rules-catalog.json
 Current example fixture:
 
 - [examples/rules-catalog.json](examples/rules-catalog.json)
+
+Schema:
+
+- [schema/rules-catalog.schema.json](schema/rules-catalog.schema.json)
 
 The catalog includes:
 
@@ -80,6 +89,7 @@ Stable for `0.9.x`:
 - Check fields `id`, `label`, `weight`, `passed`, `evidence`, `why`, `fix`, and optional `notApplicable` / `configReason`.
 - Recommendation fields `id`, `label`, `weight`, `why`, and `fix`.
 - Rule catalog fields `totalRules`, `totalWeight`, `scoring`, `categories`, and `categories[].rules[]`.
+- Inventory fields `count`, `averageScore`, `averageGrade`, `minScore`, `maxScore`, `failedTotal`, and `repositories[]`.
 
 Not stable:
 

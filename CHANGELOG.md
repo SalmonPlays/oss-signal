@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.9.4
+
+- Added JSON schemas for inventory reports and rule catalogs.
+- Added a committed inventory JSON fixture for automation consumers.
+- Added tests that keep published JSON schemas and fixtures parseable.
+
 ## 0.9.3
 
 - Added a `maintainer-ownership` rule for MAINTAINERS, CODEOWNERS, or GOVERNANCE evidence.

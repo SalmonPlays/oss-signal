@@ -186,6 +186,34 @@ test("listRules exposes rule weights and signals", () => {
   assert.match(markdown, /Use `oss-signal --list-rules --format json`/);
 });
 
+test("published JSON schemas and fixtures are parseable", async () => {
+  const schemaPaths = [
+    "docs/schema/json-output.schema.json",
+    "docs/schema/inventory-output.schema.json",
+    "docs/schema/rules-catalog.schema.json"
+  ];
+  const fixturePaths = [
+    "docs/examples/github-url-report.json",
+    "docs/examples/inventory-report.json",
+    "docs/examples/rules-catalog.json"
+  ];
+
+  for (const schemaPath of schemaPaths) {
+    const schema = JSON.parse(await readFile(path.resolve(schemaPath), "utf8"));
+    assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
+    assert.match(schema.$id, /^https:\/\/salmonplays\.github\.io\/oss-signal\/schema\//);
+  }
+
+  const [report, inventory, catalog] = await Promise.all(
+    fixturePaths.map(async (fixturePath) => JSON.parse(await readFile(path.resolve(fixturePath), "utf8")))
+  );
+  assert.equal(report.tool, "oss-signal");
+  assert.equal(inventory.tool, "oss-signal");
+  assert.equal(catalog.tool, "oss-signal");
+  assert.equal(inventory.repositories.length, inventory.count);
+  assert.equal(catalog.totalRules, 16);
+});
+
 test("renderSarif emits failed checks as SARIF results", async () => {
   const root = await fixture({
     "README.md": "# Tiny project\n"

@@ -1,0 +1,124 @@
+{
+  "tool": "oss-signal",
+  "version": "0.9.4",
+  "generatedAt": "2026-06-11T11:54:55.654Z",
+  "inventoryPath": "docs/examples/inventory-targets.txt",
+  "count": 3,
+  "averageScore": 72,
+  "averageGrade": "C",
+  "minScore": 53,
+  "maxScore": 100,
+  "failedTotal": 17,
+  "repositories": [
+    {
+      "target": "SalmonPlays/oss-signal",
+      "root": "https://github.com/SalmonPlays/oss-signal",
+      "source": {
+        "type": "github",
+        "location": "https://github.com/SalmonPlays/oss-signal",
+        "owner": "SalmonPlays",
+        "repo": "oss-signal",
+        "ref": "main",
+        "defaultBranch": "main",
+        "stars": 0,
+        "forks": 1,
+        "openIssues": 5,
+        "healthPercentage": 100
+      },
+      "sourceLabel": "GitHub (SalmonPlays/oss-signal@main)",
+      "score": 100,
+      "grade": "A",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "topRecommendations": [],
+      "notApplicable": 0
+    },
+    {
+      "target": "platformatic/massimo",
+      "root": "https://github.com/platformatic/massimo",
+      "source": {
+        "type": "github",
+        "location": "https://github.com/platformatic/massimo",
+        "owner": "platformatic",
+        "repo": "massimo",
+        "ref": "main",
+        "defaultBranch": "main",
+        "stars": 201,
+        "forks": 11,
+        "openIssues": 16,
+        "healthPercentage": 62
+      },
+      "sourceLabel": "GitHub (platformatic/massimo@main)",
+      "score": 62,
+      "grade": "D",
+      "passed": 8,
+      "failed": 8,
+      "total": 16,
+      "topRecommendations": [
+        {
+          "id": "security",
+          "label": "Security policy",
+          "weight": 9,
+          "fix": "Add SECURITY.md with supported versions, reporting instructions, and response expectations."
+        },
+        {
+          "id": "changelog",
+          "label": "Changelog",
+          "weight": 6,
+          "fix": "Keep CHANGELOG.md with dated release entries and migration notes."
+        },
+        {
+          "id": "issue-templates",
+          "label": "Issue templates",
+          "weight": 5,
+          "fix": "Add bug report and feature request templates under .github/ISSUE_TEMPLATE/."
+        }
+      ],
+      "notApplicable": 0
+    },
+    {
+      "target": "flox/install-flox-action",
+      "root": "https://github.com/flox/install-flox-action",
+      "source": {
+        "type": "github",
+        "location": "https://github.com/flox/install-flox-action",
+        "owner": "flox",
+        "repo": "install-flox-action",
+        "ref": "main",
+        "defaultBranch": "main",
+        "stars": 12,
+        "forks": 5,
+        "openIssues": 6,
+        "healthPercentage": 37
+      },
+      "sourceLabel": "GitHub (flox/install-flox-action@main)",
+      "score": 53,
+      "grade": "F",
+      "passed": 7,
+      "failed": 9,
+      "total": 16,
+      "topRecommendations": [
+        {
+          "id": "contributing",
+          "label": "Contributing guide",
+          "weight": 9,
+          "fix": "Add CONTRIBUTING.md with local setup, test commands, review expectations, and release notes guidance."
+        },
+        {
+          "id": "security",
+          "label": "Security policy",
+          "weight": 9,
+          "fix": "Add SECURITY.md with supported versions, reporting instructions, and response expectations."
+        },
+        {
+          "id": "code-of-conduct",
+          "label": "Code of conduct",
+          "weight": 6,
+          "fix": "Add CODE_OF_CONDUCT.md, for example the Contributor Covenant."
+        }
+      ],
+      "notApplicable": 0
+    }
+  ]
+}

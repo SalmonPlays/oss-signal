@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://salmonplays.github.io/oss-signal/schema/inventory-output.schema.json",
+  "title": "oss-signal inventory JSON report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tool",
+    "version",
+    "generatedAt",
+    "count",
+    "averageScore",
+    "averageGrade",
+    "minScore",
+    "maxScore",
+    "failedTotal",
+    "repositories"
+  ],
+  "properties": {
+    "tool": {
+      "const": "oss-signal"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "inventoryPath": {
+      "type": "string",
+      "minLength": 1
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "averageScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "averageGrade": {
+      "$ref": "#/$defs/grade"
+    },
+    "minScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "maxScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "failedTotal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/repository"
+      }
+    }
+  },
+  "$defs": {
+    "grade": {
+      "type": "string",
+      "enum": ["A", "B", "C", "D", "F"]
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "root",
+        "source",
+        "sourceLabel",
+        "score",
+        "grade",
+        "passed",
+        "failed",
+        "total",
+        "topRecommendations",
+        "notApplicable"
+      ],
+      "properties": {
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "json-output.schema.json#/properties/source"
+        },
+        "sourceLabel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "grade": {
+          "$ref": "#/$defs/grade"
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "topRecommendations": {
+          "type": "array",
+          "items": {
+            "$ref": "json-output.schema.json#/$defs/recommendation"
+          }
+        },
+        "notApplicable": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

@@ -11,13 +11,13 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Root reviewer packet | [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md) | Published | Shortest public verification path from the repository root. |
 | Detailed reviewer packet | [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md) | Published | One-page packet with current workflow runs, artifact evidence, package status, and external maintainer evidence. |
 | Evidence verification snapshot | [evidence-verification.md](evidence-verification.md) | PASS 14, SKIP 0, FAIL 0 | Committed Markdown snapshot of npm, GitHub release, repository metadata, and external issue/PR checks. |
-| Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.3` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.3 -- oss-signal --version` from a clean temporary directory. |
+| Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.4` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.4 -- oss-signal --version` from a clean temporary directory. |
 | npm download API | 356 downloads for the last-month window, 2026-05-04 to 2026-06-02 | Checked 2026-06-11T11:01:30Z | Supporting distribution signal only; not claimed as broad adoption. |
-| GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.9.3 | Published tag | Public Action tag used by repository workflows; the separate public demo remains v0.8.4 evidence until refreshed. |
+| GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.9.4 | Published tag | Public Action tag used by repository workflows; the separate public demo remains v0.8.4 evidence until refreshed. |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
 | Maintainer trial path | [maintainer-trial.md](maintainer-trial.md) | Published | External maintainers can try the Action without failing CI, then share a workflow run or adoption report. |
 | Maintainer feedback path | [maintainer-feedback.md](maintainer-feedback.md) | Published | External maintainers can leave useful public feedback even when the tool is not adopted. |
-| Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.9.3` against this repository. |
+| Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.9.4` against this repository. |
 | Inventory dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml | Passing | Exercises multi-repository inventory mode. |
 | Evidence verification workflow | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml | Published | Verifies npm latest, npm downloads, release evidence, repository metadata, and current external issue/PR links. |
 | Separate public workflow demo | https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373 | Passing | Separate public repository runs `SalmonPlays/oss-signal@v0.8.4` and uploads Markdown, SARIF, issue-ready, and no-fail workflow artifacts. |

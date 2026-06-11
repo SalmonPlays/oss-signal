@@ -13,7 +13,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.3
+- uses: SalmonPlays/oss-signal@v0.9.4
   id: oss-signal
   with:
     path: "."
@@ -55,6 +55,9 @@ Run as a GitHub Action:
 - [Architecture](architecture.md)
 - [Security model](security-model.md)
 - [JSON output contract](json-output.md)
+- [Single-repository JSON schema](schema/json-output.schema.json)
+- [Inventory JSON schema](schema/inventory-output.schema.json)
+- [Rule catalog JSON schema](schema/rules-catalog.schema.json)
 - [Rule catalog JSON fixture](examples/rules-catalog.json)
 - [Maintainer plan output](plan-output.md)
 - [SARIF Code Scanning walkthrough](sarif-code-scanning.md)
@@ -68,6 +71,6 @@ Run as a GitHub Action:
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.3
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.4
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

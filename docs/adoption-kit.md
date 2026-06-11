@@ -9,7 +9,7 @@ For a first CLI run, start with [quickstart.md](quickstart.md). For a first CI t
 Run against a public repository without cloning:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.3 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
+npm exec --yes --package=oss-signal@0.9.4 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
 ```
 
 Run against the current checkout:
@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.3
+      - uses: SalmonPlays/oss-signal@v0.9.4
         id: oss-signal
         with:
           fail-under: "80"
@@ -77,7 +77,7 @@ env:
 
 steps:
   - uses: actions/checkout@v5
-  - uses: SalmonPlays/oss-signal@v0.9.3
+  - uses: SalmonPlays/oss-signal@v0.9.4
     with:
       format: sarif
       output: oss-signal.sarif
@@ -93,7 +93,7 @@ Full walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
 
 Useful adoption evidence is concrete and public:
 
-- A workflow run that uses `SalmonPlays/oss-signal@v0.9.3`.
+- A workflow run that uses `SalmonPlays/oss-signal@v0.9.4`.
 - A Markdown report attached as a workflow artifact.
 - A SARIF upload that appears in Code Scanning.
 - A focused issue or pull request created from an audit finding.
