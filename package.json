@@ -1,7 +1,7 @@
 {
   "name": "oss-signal",
-  "version": "0.9.2",
-  "description": "Maintainer-readiness CLI and GitHub Action for OSS triage, CI evidence, inventory reports, SARIF, issue-ready cleanup, and workflow trials.",
+  "version": "0.9.3",
+  "description": "Maintainer-readiness CLI and GitHub Action for OSS triage, CI evidence, inventory reports, SARIF, issue-ready cleanup, workflow trials, and transparent rule catalogs.",
   "type": "module",
   "bin": {
     "oss-signal": "src/cli.js"

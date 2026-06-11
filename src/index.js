@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.9.2";
+export const VERSION = "0.9.3";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -12,6 +12,7 @@ const SARIF_RULE_LOCATIONS = {
   "code-of-conduct": "CODE_OF_CONDUCT.md",
   changelog: "CHANGELOG.md",
   support: "SUPPORT.md",
+  "maintainer-ownership": "MAINTAINERS.md",
   ci: ".github/workflows/ci.yml",
   tests: "test/example.test.js",
   "issue-templates": ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -78,6 +79,14 @@ const COMMUNITY_FILES = [
     paths: ["SUPPORT.md", ".github/SUPPORT.md"],
     why: "Support boundaries help maintainers avoid turning every request into unpaid consulting.",
     fix: "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times."
+  },
+  {
+    id: "maintainer-ownership",
+    label: "Maintainer ownership",
+    weight: 4,
+    paths: ["MAINTAINERS.md", ".github/CODEOWNERS", "CODEOWNERS", "GOVERNANCE.md"],
+    why: "Clear ownership and review routing make outside contributions easier to triage.",
+    fix: "Add MAINTAINERS.md, CODEOWNERS, or GOVERNANCE.md so contributors know who reviews changes and how decisions are made."
   }
 ];
 

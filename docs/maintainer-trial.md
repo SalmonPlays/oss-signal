@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.2
+      - uses: SalmonPlays/oss-signal@v0.9.3
         id: oss-signal
         with:
           output: oss-signal-report.md
@@ -54,32 +54,32 @@ The same workflow is available as [examples/maintainer-trial-workflow.yml](examp
 Run against a public repository without cloning:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.2 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
+npm exec --yes --package=oss-signal@0.9.3 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
 ```
 
 Generate an issue-ready draft for human review:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.2 -- oss-signal owner/repo --format issue --output maintainer-follow-up.md
+npm exec --yes --package=oss-signal@0.9.3 -- oss-signal owner/repo --format issue --output maintainer-follow-up.md
 ```
 
 Generate a PR-sized plan before opening a pull request:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.2 -- oss-signal owner/repo --format plan --output maintainer-plan.md
+npm exec --yes --package=oss-signal@0.9.3 -- oss-signal owner/repo --format plan --output maintainer-plan.md
 ```
 
 Generate the no-fail trial workflow:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.2 -- oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
+npm exec --yes --package=oss-signal@0.9.3 -- oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
 ```
 
 ## Evidence To Share
 
 Useful public evidence is concrete:
 
-- a workflow run that uses `SalmonPlays/oss-signal@v0.9.2`
+- a workflow run that uses `SalmonPlays/oss-signal@v0.9.3`
 - a linked `oss-signal-report.md` artifact
 - a maintainer reply saying the report was useful, not useful, or intentionally out of scope
 - a merged issue-template, security-policy, CI, or documentation PR informed by the report

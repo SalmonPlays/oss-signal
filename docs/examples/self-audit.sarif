@@ -6,7 +6,7 @@
       "tool": {
         "driver": {
           "name": "oss-signal",
-          "semanticVersion": "0.9.2",
+          "semanticVersion": "0.9.3",
           "informationUri": "https://github.com/SalmonPlays/oss-signal",
           "rules": [
             {
@@ -171,6 +171,31 @@
               "help": {
                 "text": "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times.",
                 "markdown": "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 4
+              }
+            },
+            {
+              "id": "oss-signal/maintainer-ownership",
+              "name": "Maintainer ownership",
+              "shortDescription": {
+                "text": "Maintainer ownership"
+              },
+              "fullDescription": {
+                "text": "Clear ownership and review routing make outside contributions easier to triage."
+              },
+              "help": {
+                "text": "Add MAINTAINERS.md, CODEOWNERS, or GOVERNANCE.md so contributors know who reviews changes and how decisions are made.",
+                "markdown": "Add MAINTAINERS.md, CODEOWNERS, or GOVERNANCE.md so contributors know who reviews changes and how decisions are made."
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -400,7 +425,7 @@
         "score": 100,
         "grade": "A",
         "source": "local",
-        "generatedAt": "2026-06-11T04:58:21.816Z"
+        "generatedAt": "2026-06-11T10:56:48.256Z"
       }
     }
   ]

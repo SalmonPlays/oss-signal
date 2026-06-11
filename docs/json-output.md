@@ -70,7 +70,7 @@ The catalog includes:
 
 ## Compatibility Notes
 
-The JSON output is designed for automation, but `oss-signal` is still pre-1.0. Treat the current schema as the public contract for `0.6.x`. If a future release removes or renames fields, it should document the change in [CHANGELOG.md](../CHANGELOG.md) and the release notes.
+The JSON output is designed for automation, but `oss-signal` is still pre-1.0. Treat the current schema as the public contract for `0.9.x`. If a future release removes or renames fields, it should document the change in [CHANGELOG.md](../CHANGELOG.md) and the release notes.
 
 Stable for `0.9.x`:
 

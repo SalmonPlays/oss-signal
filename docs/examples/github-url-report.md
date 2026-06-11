@@ -2,15 +2,15 @@
 
 Repository: `https://github.com/SalmonPlays/oss-signal`
 Source: GitHub (SalmonPlays/oss-signal@main)
-Generated: 2026-06-11T04:58:23.907Z
+Generated: 2026-06-11T10:57:09.354Z
 
 Score: **100/100** (A)
 
 ## Summary
 
-- Passed: 15
+- Passed: 16
 - Failed: 0
-- Total checks: 15
+- Total checks: 16
 - Default branch: main
 - GitHub stars: 0
 - GitHub community health: 100
@@ -26,6 +26,7 @@ Score: **100/100** (A)
 | PASS | Code of conduct | `CODE_OF_CONDUCT.md` | Community norms reduce ambiguity during difficult interactions. |
 | PASS | Changelog | `CHANGELOG.md` | Users need a durable place to understand release impact. |
 | PASS | Support policy | `SUPPORT.md` | Support boundaries help maintainers avoid turning every request into unpaid consulting. |
+| PASS | Maintainer ownership | `MAINTAINERS.md` | Clear ownership and review routing make outside contributions easier to triage. |
 | PASS | Continuous integration | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/workflows/evidence-verify.yml`, `.github/workflows/release.yml`, `.github/workflows/repository-health.yml` | CI catches regressions before maintainers merge changes. |
 | PASS | Tests | `test/action.test.js`, `test/index.test.js` | Tests make review safer and lower the cost of outside contributions. |
 | PASS | Issue templates | `.github/ISSUE_TEMPLATE/adoption_report.yml`, `.github/ISSUE_TEMPLATE/audit_report.yml`, `.github/ISSUE_TEMPLATE/bug_report.md`, `.github/ISSUE_TEMPLATE/config.yml`, `.github/ISSUE_TEMPLATE/feature_request.md` | Issue templates collect the facts maintainers need to reproduce and triage. |

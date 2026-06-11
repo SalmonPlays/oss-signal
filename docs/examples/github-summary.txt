@@ -2,7 +2,7 @@ OSS Signal Summary
 Repository: https://github.com/SalmonPlays/oss-signal
 Source: GitHub (SalmonPlays/oss-signal@main)
 Score: 100/100 (A)
-Checks: 15 passed, 0 failed, 15 total
+Checks: 16 passed, 0 failed, 16 total
 
 Top next steps:
 - No missing maintainer-readiness checks found.

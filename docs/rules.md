@@ -1,8 +1,8 @@
 # OSS Signal Rules
 
-Version: 0.9.2
-Rules: 15
-Total weighted points: 106
+Version: 0.9.3
+Rules: 16
+Total weighted points: 110
 
 The score is the percentage of available weighted points that pass. Rules marked not applicable through config are removed from the denominator.
 
@@ -27,6 +27,7 @@ The score is the percentage of available weighted points that pass. Rules marked
 | code-of-conduct | Code of conduct | 6 | CODE_OF_CONDUCT.md, .github/CODE_OF_CONDUCT.md | Community norms reduce ambiguity during difficult interactions. |
 | changelog | Changelog | 6 | CHANGELOG.md, HISTORY.md, RELEASES.md | Users need a durable place to understand release impact. |
 | support | Support policy | 4 | SUPPORT.md, .github/SUPPORT.md | Support boundaries help maintainers avoid turning every request into unpaid consulting. |
+| maintainer-ownership | Maintainer ownership | 4 | MAINTAINERS.md, .github/CODEOWNERS, CODEOWNERS, GOVERNANCE.md | Clear ownership and review routing make outside contributions easier to triage. |
 
 ## Automation
 

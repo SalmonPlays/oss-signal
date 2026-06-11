@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.9.3
+
+- Added a `maintainer-ownership` rule for MAINTAINERS, CODEOWNERS, or GOVERNANCE evidence.
+- Updated the transparent rule catalog to 16 rules and 110 weighted points.
+- Refreshed citation metadata for the current maintainer workflow release.
+
 ## 0.9.2
 
 - Added `--list-rules` for transparent rule catalog output without auditing a repository.

@@ -31,6 +31,7 @@ test("auditRepository scores common maintainer files", async () => {
     "CONTRIBUTING.md": "Run npm test.\n",
     "SECURITY.md": "Email security@example.com.\n",
     "CHANGELOG.md": "# Changelog\n",
+    "MAINTAINERS.md": "# Maintainers\n",
     "package.json": JSON.stringify({ scripts: { test: "node --test" } }),
     "test/example.test.js": "import test from 'node:test';\n",
     ".github/workflows/ci.yml": "name: CI\n",
@@ -40,7 +41,7 @@ test("auditRepository scores common maintainer files", async () => {
 
   try {
     const report = await auditRepository(root);
-    assert.equal(report.summary.total, 15);
+    assert.equal(report.summary.total, 16);
     assert.ok(report.score >= 70, `expected useful score, got ${report.score}`);
     assert.equal(report.checks.find((check) => check.id === "readme").passed, true);
     assert.equal(report.checks.find((check) => check.id === "ci").passed, true);
@@ -106,7 +107,7 @@ test("auditRepository honors local not-applicable config", async () => {
 
     assert.equal(report.config.path, ".oss-signal.json");
     assert.equal(report.summary.notApplicable, 2);
-    assert.equal(report.summary.failed, 12);
+    assert.equal(report.summary.failed, 13);
     assert.equal(license.notApplicable, true);
     assert.equal(ci.notApplicable, true);
     assert.equal(report.recommendations.some((item) => item.id === "license"), false);
@@ -171,8 +172,8 @@ test("listRules exposes rule weights and signals", () => {
   const markdown = renderRulesMarkdown(catalog);
 
   assert.equal(json.tool, "oss-signal");
-  assert.equal(json.totalRules, 15);
-  assert.equal(json.totalWeight, 106);
+  assert.equal(json.totalRules, 16);
+  assert.equal(json.totalWeight, 110);
   assert.equal(json.categories.length, 3);
   assert.equal(json.categories[0].rules.find((rule) => rule.id === "readme").weight, 12);
   assert.deepEqual(
@@ -180,7 +181,8 @@ test("listRules exposes rule weights and signals", () => {
     ["Any YAML workflow under .github/workflows/"]
   );
   assert.match(markdown, /OSS Signal Rules/);
-  assert.match(markdown, /Total weighted points: 106/);
+  assert.match(markdown, /Total weighted points: 110/);
+  assert.match(markdown, /Maintainer ownership/);
   assert.match(markdown, /Use `oss-signal --list-rules --format json`/);
 });
 
@@ -244,7 +246,7 @@ test("CLI writes rule catalog JSON", async () => {
 
     assert.equal(result.status, 0, result.stderr);
     const catalog = JSON.parse(await readFile(outputFile, "utf8"));
-    assert.equal(catalog.totalRules, 15);
+    assert.equal(catalog.totalRules, 16);
     assert.equal(catalog.categories[0].rules[0].id, "readme");
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -444,6 +446,7 @@ test("renderInventoryMarkdown summarizes multiple reports", async () => {
     "CODE_OF_CONDUCT.md": "# Code of conduct\n",
     "CHANGELOG.md": "# Changelog\n",
     "SUPPORT.md": "# Support\n",
+    "MAINTAINERS.md": "# Maintainers\n",
     "package.json": JSON.stringify({ scripts: { test: "node --test" } }),
     "package-lock.json": "{}\n",
     "test/example.test.js": "import test from 'node:test';\n",

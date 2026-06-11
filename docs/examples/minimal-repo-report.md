@@ -7,8 +7,8 @@ Score: 11/100 (F)
 
 Summary:
 - Passed: 1
-- Failed: 14
-- Total checks: 15
+- Failed: 15
+- Total checks: 16
 ```
 
 The Markdown report includes evidence for passed checks and a concrete next step for missing checks:
