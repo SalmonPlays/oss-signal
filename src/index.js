@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.9.1";
+export const VERSION = "0.9.2";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -163,6 +163,33 @@ const RULE_IDS = new Set([
   ...PACKAGE_FILES.map((rule) => rule.id)
 ]);
 
+const MATCHER_SIGNALS = {
+  ci: ["Any YAML workflow under .github/workflows/"],
+  tests: ["Common test directories", "*.test.* files", "*.spec.* files"],
+  "issue-templates": [".github/ISSUE_TEMPLATE/", ".github/ISSUE_TEMPLATE.md"],
+  "pull-request-template": [".github/PULL_REQUEST_TEMPLATE.md", "PULL_REQUEST_TEMPLATE.md"],
+  dependabot: [".github/dependabot.yml", ".github/dependabot.yaml"],
+  codeql: ["Workflow filename containing codeql or security"],
+  "package-json": ["package.json"],
+  lockfile: [
+    "package-lock.json",
+    "npm-shrinkwrap.json",
+    "pnpm-lock.yaml",
+    "yarn.lock",
+    "uv.lock",
+    "poetry.lock",
+    "Pipfile.lock",
+    "Cargo.lock",
+    "go.sum"
+  ]
+};
+
+const RULE_CATEGORIES = [
+  { id: "community", label: "Community files", rules: COMMUNITY_FILES },
+  { id: "automation", label: "Automation", rules: AUTOMATION_FILES },
+  { id: "package", label: "Package hygiene", rules: PACKAGE_FILES }
+];
+
 const DEFAULT_IGNORE_DIRS = new Set([
   ".git",
   "node_modules",
@@ -209,6 +236,44 @@ export async function auditTarget(target = ".", options = {}) {
     return auditGitHubRepository(normalizedTarget, auditOptions);
   }
   return auditRepository(normalizedTarget, auditOptions);
+}
+
+export function listRules() {
+  const categories = RULE_CATEGORIES.map((category) => ({
+    id: category.id,
+    label: category.label,
+    rules: category.rules.map((rule) => ({
+      id: rule.id,
+      label: rule.label,
+      weight: rule.weight,
+      signals: rule.paths ?? MATCHER_SIGNALS[rule.id] ?? [],
+      why: rule.why,
+      fix: rule.fix
+    }))
+  }));
+  const totalRules = categories.reduce((sum, category) => sum + category.rules.length, 0);
+  const totalWeight = categories.reduce(
+    (sum, category) => sum + category.rules.reduce((categorySum, rule) => categorySum + rule.weight, 0),
+    0
+  );
+
+  return {
+    tool: "oss-signal",
+    version: VERSION,
+    totalRules,
+    totalWeight,
+    scoring: {
+      description: "Score is the percentage of available weighted points that pass. Rules marked not applicable through config are removed from the denominator.",
+      grades: [
+        { grade: "A", range: "90-100" },
+        { grade: "B", range: "80-89" },
+        { grade: "C", range: "70-79" },
+        { grade: "D", range: "60-69" },
+        { grade: "F", range: "below 60" }
+      ]
+    },
+    categories
+  };
 }
 
 export async function auditGitHubRepository(target, options = {}) {
@@ -475,7 +540,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.1
+      - uses: SalmonPlays/oss-signal@v${VERSION}
         id: oss-signal
         with:
           output: oss-signal-report.md
@@ -663,6 +728,50 @@ export function renderInventoryMarkdown(inventory) {
   }
 
   lines.push("");
+  return `${lines.join("\n")}\n`;
+}
+
+export function renderRulesJson(catalog = listRules()) {
+  return `${JSON.stringify(catalog, null, 2)}\n`;
+}
+
+export function renderRulesMarkdown(catalog = listRules()) {
+  const lines = [
+    "# OSS Signal Rules",
+    "",
+    `Version: ${catalog.version}`,
+    `Rules: ${catalog.totalRules}`,
+    `Total weighted points: ${catalog.totalWeight}`,
+    "",
+    "The score is the percentage of available weighted points that pass. Rules marked not applicable through config are removed from the denominator.",
+    "",
+    "## Scoring",
+    "",
+    "| Grade | Range |",
+    "| --- | --- |"
+  ];
+
+  for (const grade of catalog.scoring.grades) {
+    lines.push(`| ${grade.grade} | ${grade.range} |`);
+  }
+
+  for (const category of catalog.categories) {
+    lines.push(
+      "",
+      `## ${category.label}`,
+      "",
+      "| Rule ID | Rule | Weight | Signals | Why it matters |",
+      "| --- | --- | ---: | --- | --- |"
+    );
+    for (const rule of category.rules) {
+      lines.push(`| ${rule.id} | ${escapeTable(rule.label)} | ${rule.weight} | ${escapeTable(rule.signals.join(", "))} | ${escapeTable(rule.why)} |`);
+    }
+  }
+
+  lines.push(
+    "",
+    "Use `oss-signal --list-rules --format json` for automation and dashboards."
+  );
   return `${lines.join("\n")}\n`;
 }
 

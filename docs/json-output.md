@@ -50,6 +50,24 @@ Inventory JSON includes:
 
 Inventory JSON intentionally summarizes each repository instead of embedding every full check result. Use single-repository JSON when a consumer needs rule-level detail.
 
+## Rule Catalog JSON
+
+The rule catalog can be generated without auditing a repository:
+
+```bash
+oss-signal --list-rules --format json --output rules-catalog.json
+```
+
+Current example fixture:
+
+- [examples/rules-catalog.json](examples/rules-catalog.json)
+
+The catalog includes:
+
+- `totalRules` and `totalWeight`.
+- `scoring.grades[]` for score-to-grade ranges.
+- `categories[].rules[]` with `id`, `label`, `weight`, `signals`, `why`, and `fix`.
+
 ## Compatibility Notes
 
 The JSON output is designed for automation, but `oss-signal` is still pre-1.0. Treat the current schema as the public contract for `0.6.x`. If a future release removes or renames fields, it should document the change in [CHANGELOG.md](../CHANGELOG.md) and the release notes.
@@ -61,6 +79,7 @@ Stable for `0.9.x`:
 - Summary fields `total`, `passed`, `failed`, and `notApplicable`.
 - Check fields `id`, `label`, `weight`, `passed`, `evidence`, `why`, `fix`, and optional `notApplicable` / `configReason`.
 - Recommendation fields `id`, `label`, `weight`, `why`, and `fix`.
+- Rule catalog fields `totalRules`, `totalWeight`, `scoring`, `categories`, and `categories[].rules[]`.
 
 Not stable:
 

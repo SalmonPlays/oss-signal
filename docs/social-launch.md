@@ -85,7 +85,7 @@ https://github.com/SalmonPlays/oss-signal
 ## GitHub Discussion Announcement
 
 ```markdown
-`oss-signal` v0.9.1 is live on npm and GitHub Marketplace.
+`oss-signal` v0.9.2 is live on npm and GitHub Marketplace.
 
 The tool is built for OSS maintainers and contributors who want a small, repeatable way to check maintainer-readiness signals before opening cleanup issues or PRs.
 

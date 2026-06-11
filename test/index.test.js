@@ -8,6 +8,7 @@ import {
   auditRepository,
   auditTarget,
   createInventoryReport,
+  listRules,
   parseGitHubTarget,
   parseInventoryTargets,
   renderInventoryJson,
@@ -15,9 +16,12 @@ import {
   renderIssue,
   renderMarkdown,
   renderPlan,
+  renderRulesJson,
+  renderRulesMarkdown,
   renderSarif,
   renderSummary,
-  renderWorkflow
+  renderWorkflow,
+  VERSION
 } from "../src/index.js";
 
 test("auditRepository scores common maintainer files", async () => {
@@ -156,9 +160,28 @@ test("renderWorkflow creates a no-fail Action trial workflow", () => {
   assert.match(workflow, /name: oss-signal trial/);
   assert.match(workflow, /workflow_dispatch:/);
   assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-  assert.match(workflow, /uses: SalmonPlays\/oss-signal@v0\.9\.1/);
+  assert.match(workflow, new RegExp(`uses: SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
   assert.match(workflow, /summary: "true"/);
   assert.doesNotMatch(workflow, /fail-under/);
+});
+
+test("listRules exposes rule weights and signals", () => {
+  const catalog = listRules();
+  const json = JSON.parse(renderRulesJson(catalog));
+  const markdown = renderRulesMarkdown(catalog);
+
+  assert.equal(json.tool, "oss-signal");
+  assert.equal(json.totalRules, 15);
+  assert.equal(json.totalWeight, 106);
+  assert.equal(json.categories.length, 3);
+  assert.equal(json.categories[0].rules.find((rule) => rule.id === "readme").weight, 12);
+  assert.deepEqual(
+    json.categories.find((category) => category.id === "automation").rules.find((rule) => rule.id === "ci").signals,
+    ["Any YAML workflow under .github/workflows/"]
+  );
+  assert.match(markdown, /OSS Signal Rules/);
+  assert.match(markdown, /Total weighted points: 106/);
+  assert.match(markdown, /Use `oss-signal --list-rules --format json`/);
 });
 
 test("renderSarif emits failed checks as SARIF results", async () => {
@@ -177,6 +200,52 @@ test("renderSarif emits failed checks as SARIF results", async () => {
     assert.ok(sarif.runs[0].results.length > 0);
     assert.equal(sarif.runs[0].results[0].level, "warning");
     assert.match(sarif.runs[0].results[0].ruleId, /^oss-signal\//);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes rule catalog markdown", async () => {
+  const root = await fixture({});
+  const outputFile = path.join(root, "rules.md");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      "--list-rules",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const body = await readFile(outputFile, "utf8");
+    assert.match(body, /# OSS Signal Rules/);
+    assert.match(body, /readme/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes rule catalog JSON", async () => {
+  const root = await fixture({});
+  const outputFile = path.join(root, "rules.json");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      "--list-rules",
+      "--format",
+      "json",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const catalog = JSON.parse(await readFile(outputFile, "utf8"));
+    assert.equal(catalog.totalRules, 15);
+    assert.equal(catalog.categories[0].rules[0].id, "readme");
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -281,7 +350,7 @@ test("CLI writes workflow output", async () => {
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /oss-signal trial/);
     assert.match(body, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-    assert.match(body, /SalmonPlays\/oss-signal@v0\.9\.1/);
+    assert.match(body, new RegExp(`SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
     assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });

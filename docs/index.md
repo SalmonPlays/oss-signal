@@ -1,6 +1,6 @@
 # OSS Maintainer Signal
 
-`oss-signal` is a maintainer-readiness CLI and GitHub Action for open-source projects that need repeatable repository health checks, CI evidence, inventory reports, SARIF output, issue-ready cleanup notes, PR-sized maintainer plans, and no-fail workflow trials.
+`oss-signal` is a maintainer-readiness CLI and GitHub Action for open-source projects that need repeatable repository health checks, CI evidence, inventory reports, SARIF output, issue-ready cleanup notes, PR-sized maintainer plans, a transparent rule catalog, and no-fail workflow trials.
 
 ## Quick Start
 
@@ -13,7 +13,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.1
+- uses: SalmonPlays/oss-signal@v0.9.2
   id: oss-signal
   with:
     path: "."
@@ -28,11 +28,12 @@ Run as a GitHub Action:
 - GitHub repository URL audits without cloning
 - Inventory reports across multiple repositories
 - Markdown, summary, JSON, SARIF, issue-ready, maintainer-plan, and workflow output formats
+- Rule catalog output with scoring weights for pre-review transparency
 
 ## Reviewer Evidence
 
 - Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
-- Latest committed evidence verification: [PASS 14, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-09T01:47:01Z.
+- Latest committed evidence verification: [PASS 14, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-09T05:14:10Z.
 - Latest reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md), with public workflow run links and evidence artifact digest.
 - Evidence workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
 
@@ -54,6 +55,7 @@ Run as a GitHub Action:
 - [Architecture](architecture.md)
 - [Security model](security-model.md)
 - [JSON output contract](json-output.md)
+- [Rule catalog JSON fixture](examples/rules-catalog.json)
 - [Maintainer plan output](plan-output.md)
 - [SARIF Code Scanning walkthrough](sarif-code-scanning.md)
 - [Roadmap](roadmap.md)
@@ -66,6 +68,6 @@ Run as a GitHub Action:
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.1
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.2
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

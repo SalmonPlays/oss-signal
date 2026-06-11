@@ -10,10 +10,10 @@ For the shortest current evidence bundle, see the root [REVIEWER_PACKET.md](../R
 
 | Signal | Current status | Verification path |
 | --- | --- | --- |
-| npm package | `oss-signal@0.9.1` is the current `latest` package. | `npm view oss-signal version dist-tags --json` |
-| Clean package run | A clean npm execution from a temporary directory should print `0.9.1`. | `npm exec --yes --package=oss-signal@0.9.1 -- oss-signal --version` |
-| GitHub Action | `SalmonPlays/oss-signal@v0.9.1` is published. | https://github.com/SalmonPlays/oss-signal/tree/v0.9.1 |
-| GitHub Release | `v0.9.1` is published with release workflow evidence. | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.1 |
+| npm package | `oss-signal@0.9.2` is the current `latest` package. | `npm view oss-signal version dist-tags --json` |
+| Clean package run | A clean npm execution from a temporary directory should print `0.9.2`. | `npm exec --yes --package=oss-signal@0.9.2 -- oss-signal --version` |
+| GitHub Action | `SalmonPlays/oss-signal@v0.9.2` is published. | https://github.com/SalmonPlays/oss-signal/tree/v0.9.2 |
+| GitHub Release | `v0.9.2` is published with release workflow evidence. | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.2 |
 | Marketplace listing | Free GitHub Action listing is published. | https://github.com/marketplace/actions/oss-signal |
 | Main workflow evidence | CI, Repository health, Repository inventory, Evidence verification, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
 | npm downloads | npm API returned 356 downloads for the last-month window from 2026-05-04 to 2026-06-02. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |

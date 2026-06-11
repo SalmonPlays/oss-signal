@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { parseActionInputs, runAction, writeGitHubInventoryStepSummary, writeGitHubOutput, writeGitHubStepSummary } from "../src/action.js";
+import { VERSION } from "../src/index.js";
 
 test("parseActionInputs reads GitHub Action inputs", () => {
   const options = parseActionInputs({
@@ -196,7 +197,7 @@ test("runAction writes workflow output", async () => {
     const body = await readFile(reportFile, "utf8");
     assert.match(body, /oss-signal trial/);
     assert.match(body, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-    assert.match(body, /SalmonPlays\/oss-signal@v0\.9\.1/);
+    assert.match(body, new RegExp(`SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
     assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });

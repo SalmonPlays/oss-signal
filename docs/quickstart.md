@@ -24,6 +24,12 @@ Use the compact summary format when you need a one-screen triage readout:
 npx oss-signal owner/repo --format summary
 ```
 
+Inspect the rule weights before opening an issue or PR:
+
+```bash
+npx oss-signal --list-rules
+```
+
 ## 2. Decide The Follow-Up
 
 Use the generated report to choose one narrow maintainer task:
@@ -77,7 +83,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.1
+      - uses: SalmonPlays/oss-signal@v0.9.2
         with:
           output: oss-signal-report.md
           summary: "true"

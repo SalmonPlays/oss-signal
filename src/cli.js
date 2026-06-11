@@ -3,12 +3,15 @@ import { promises as fs } from "node:fs";
 import {
   auditTarget,
   createInventoryReport,
+  listRules,
   parseInventoryTargets,
   renderInventoryJson,
   renderInventoryMarkdown,
   renderIssue,
   renderMarkdown,
   renderPlan,
+  renderRulesJson,
+  renderRulesMarkdown,
   renderSarif,
   renderSummary,
   renderWorkflow,
@@ -27,9 +30,11 @@ async function main(argv) {
     return;
   }
 
-  const result = options.inventory
-    ? await runInventory(options)
-    : await runSingleAudit(options);
+  const result = options.listRules
+    ? runListRules(options)
+    : options.inventory
+      ? await runInventory(options)
+      : await runSingleAudit(options);
 
   if (options.output) {
     await fs.writeFile(options.output, result.body, "utf8");
@@ -53,6 +58,7 @@ function parseArgs(argv) {
     ref: undefined,
     configPath: undefined,
     inventory: undefined,
+    listRules: false,
     help: false,
     version: false
   };
@@ -93,6 +99,8 @@ function parseArgs(argv) {
       options.inventory = requireValue(argv, ++index, "--inventory");
     } else if (arg.startsWith("--inventory=")) {
       options.inventory = arg.slice("--inventory=".length);
+    } else if (arg === "--list-rules") {
+      options.listRules = true;
     } else if (arg.startsWith("-")) {
       throw new Error(`Unknown option: ${arg}`);
     } else {
@@ -105,6 +113,17 @@ function parseArgs(argv) {
   }
   if (positionals.length === 1) {
     options.path = positionals[0];
+  }
+  if (options.listRules) {
+    if (positionals.length > 0) {
+      throw new Error("--list-rules cannot be combined with a repository path");
+    }
+    if (options.inventory) {
+      throw new Error("--list-rules cannot be combined with --inventory");
+    }
+    if (!["markdown", "json"].includes(options.format)) {
+      throw new Error("--list-rules supports --format markdown or --format json");
+    }
   }
   if (options.inventory && positionals.length > 0) {
     throw new Error("--inventory cannot be combined with a positional repository path");
@@ -166,6 +185,14 @@ async function runInventory(options) {
   return { body, failUnderMessage };
 }
 
+function runListRules(options) {
+  const catalog = listRules();
+  const body = options.format === "json"
+    ? renderRulesJson(catalog)
+    : renderRulesMarkdown(catalog);
+  return { body };
+}
+
 function renderReport(report, format) {
   if (format === "json") {
     return `${JSON.stringify(report, null, 2)}\n`;
@@ -210,10 +237,12 @@ function helpText() {
 Usage:
   oss-signal [path-or-github-url] [--format markdown|summary|json|sarif|issue|plan|workflow] [--output file] [--fail-under score]
   oss-signal --inventory repos.txt [--format markdown|json] [--output file] [--fail-under score]
+  oss-signal --list-rules [--format markdown|json] [--output file]
 
 Examples:
   oss-signal .
   oss-signal . --format summary
+  oss-signal --list-rules --format json
   oss-signal https://github.com/SalmonPlays/oss-signal
   oss-signal platformatic/massimo --format json
   oss-signal owner/repo --format issue --output maintainer-follow-up.md
@@ -229,6 +258,7 @@ Options:
   --ref          Git ref for GitHub URL audits. Defaults to the repository default branch.
   --config       Path to an oss-signal JSON config. Local audits auto-detect .oss-signal.json.
   --inventory    Read repository targets from a newline-delimited file.
+  --list-rules   Print the rule catalog and scoring weights without auditing a repository.
   --version, -v  Show the CLI version.
   --help, -h     Show this help message.
 `;

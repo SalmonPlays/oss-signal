@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.9.2
+
+- Added `--list-rules` for transparent rule catalog output without auditing a repository.
+- Added Markdown and JSON rule catalog renderers with rule IDs, weights, signals, rationale, and fix text.
+- Added a rule catalog JSON fixture and linked it from the README and JSON output contract.
+- Made generated no-fail trial workflows use the current package version when rendering the Action tag.
+
 ## 0.9.1
 
 - Added `--format summary` for compact one-screen maintainer triage in the CLI and GitHub Action.
