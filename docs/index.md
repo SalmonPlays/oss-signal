@@ -33,7 +33,7 @@ Run as a GitHub Action:
 ## Reviewer Evidence
 
 - Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
-- Latest committed evidence verification: [PASS 14, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-11T12:05:24Z.
+- Latest committed evidence verification: [PASS 14, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-11T22:22:55Z.
 - Latest reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md), with public workflow run links and evidence artifact digest.
 - Evidence workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
 
