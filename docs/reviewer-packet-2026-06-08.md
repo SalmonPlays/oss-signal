@@ -13,9 +13,9 @@ The workflow evidence below points at the latest verified run set. The release r
 | Repository | https://github.com/SalmonPlays/oss-signal |
 | Verified workflow commit | `8614cc1` |
 | npm package | https://www.npmjs.com/package/oss-signal |
-| npm latest | `0.9.4` |
-| GitHub Action tag | https://github.com/SalmonPlays/oss-signal/tree/v0.9.4 |
-| GitHub Release | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.4 |
+| npm latest | `0.9.5` |
+| GitHub Action tag | https://github.com/SalmonPlays/oss-signal/tree/v0.9.5 |
+| GitHub Release | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.5 |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | https://salmonplays.github.io/oss-signal/ |
 | Repository interest | 0 stars, 1 fork, 0 subscribers, 5 open issues |

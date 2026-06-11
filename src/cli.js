@@ -7,6 +7,7 @@ import {
   parseInventoryTargets,
   renderInventoryJson,
   renderInventoryMarkdown,
+  renderAdoption,
   renderIssue,
   renderMarkdown,
   renderPlan,
@@ -128,8 +129,8 @@ function parseArgs(argv) {
   if (options.inventory && positionals.length > 0) {
     throw new Error("--inventory cannot be combined with a positional repository path");
   }
-  if (!["markdown", "summary", "json", "sarif", "issue", "plan", "workflow"].includes(options.format)) {
-    throw new Error("--format must be markdown, summary, json, sarif, issue, plan, or workflow");
+  if (!["markdown", "summary", "json", "sarif", "issue", "plan", "workflow", "adoption"].includes(options.format)) {
+    throw new Error("--format must be markdown, summary, json, sarif, issue, plan, workflow, or adoption");
   }
   return options;
 }
@@ -212,6 +213,9 @@ function renderReport(report, format) {
   if (format === "workflow") {
     return renderWorkflow(report);
   }
+  if (format === "adoption") {
+    return renderAdoption(report);
+  }
   return renderMarkdown(report);
 }
 
@@ -235,7 +239,7 @@ function helpText() {
   return `oss-signal audits open-source repository maintenance readiness.
 
 Usage:
-  oss-signal [path-or-github-url] [--format markdown|summary|json|sarif|issue|plan|workflow] [--output file] [--fail-under score]
+  oss-signal [path-or-github-url] [--format markdown|summary|json|sarif|issue|plan|workflow|adoption] [--output file] [--fail-under score]
   oss-signal --inventory repos.txt [--format markdown|json] [--output file] [--fail-under score]
   oss-signal --list-rules [--format markdown|json] [--output file]
 
@@ -248,6 +252,7 @@ Examples:
   oss-signal owner/repo --format issue --output maintainer-follow-up.md
   oss-signal owner/repo --format plan --output maintainer-plan.md
   oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
+  oss-signal owner/repo --format adoption --output adoption-pack.md
   oss-signal --inventory docs/examples/inventory-targets.txt --format markdown
 
 Options:

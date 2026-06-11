@@ -61,6 +61,12 @@ Create a no-fail trial workflow:
 npx oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
 ```
 
+Create a one-file adoption pack before asking a maintainer to try the workflow:
+
+```bash
+npx oss-signal owner/repo --format adoption --output adoption-pack.md
+```
+
 ## 4. Add A Report-Only Action
 
 For a first CI trial, avoid blocking merges:
@@ -83,7 +89,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.4
+      - uses: SalmonPlays/oss-signal@v0.9.5
         with:
           output: oss-signal-report.md
           summary: "true"

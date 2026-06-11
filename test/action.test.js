@@ -178,6 +178,31 @@ test("runAction writes plan output", async () => {
   }
 });
 
+test("runAction writes adoption output", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-adoption-"));
+  const reportFile = path.join(root, "adoption-pack.md");
+
+  try {
+    await writeFixture(root, {
+      "README.md": "# Action fixture\n"
+    });
+
+    await runAction({
+      INPUT_PATH: root,
+      INPUT_FORMAT: "adoption",
+      INPUT_OUTPUT: reportFile,
+      INPUT_SUMMARY: "false"
+    });
+
+    const body = await readFile(reportFile, "utf8");
+    assert.match(body, /OSS Signal Adoption Pack/);
+    assert.match(body, /No-Fail GitHub Actions Trial/);
+    assert.match(body, new RegExp(`SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("runAction writes workflow output", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-workflow-"));
   const reportFile = path.join(root, "oss-signal-trial.yml");

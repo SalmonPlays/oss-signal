@@ -1,5 +1,5 @@
 name: oss-signal
-description: Audit OSS maintainer readiness and produce CI evidence, SARIF, inventory reports, issue-ready cleanup notes, and workflow trials.
+description: Audit OSS maintainer readiness and produce CI evidence, SARIF, inventory reports, issue-ready cleanup notes, workflow trials, and adoption packs.
 author: SalmonPlays
 branding:
   icon: shield
@@ -13,7 +13,7 @@ inputs:
     description: Newline-delimited file of local paths, GitHub URLs, or owner/repo shorthands to audit as an inventory.
     required: false
   format:
-    description: Output format, either markdown, summary, json, sarif, issue, plan, or workflow. Inventory mode supports markdown or json.
+    description: Output format, either markdown, summary, json, sarif, issue, plan, workflow, or adoption. Inventory mode supports markdown or json.
     required: false
     default: markdown
   output:

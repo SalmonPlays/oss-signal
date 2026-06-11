@@ -4,7 +4,7 @@ Use these posts to share `oss-signal` without overstating adoption or asking for
 
 ## Positioning
 
-`oss-signal` is an OSS maintainer-readiness CLI and GitHub Action. It turns visible repository signals into Markdown, JSON, SARIF, issue-ready reports, inventory reports, PR-sized maintainer plans, and no-fail workflow trials.
+`oss-signal` is an OSS maintainer-readiness CLI and GitHub Action. It turns visible repository signals into Markdown, JSON, SARIF, issue-ready reports, inventory reports, PR-sized maintainer plans, adoption packs, and no-fail workflow trials.
 
 Best audience:
 
@@ -85,7 +85,7 @@ https://github.com/SalmonPlays/oss-signal
 ## GitHub Discussion Announcement
 
 ```markdown
-`oss-signal` v0.9.4 is live on npm and GitHub Marketplace.
+`oss-signal` v0.9.5 is live on npm and GitHub Marketplace.
 
 The tool is built for OSS maintainers and contributors who want a small, repeatable way to check maintainer-readiness signals before opening cleanup issues or PRs.
 
@@ -118,7 +118,7 @@ Feedback wanted:
 ```text
 I published oss-signal, a small OSS maintainer-readiness CLI and GitHub Action.
 
-It checks repository signals like README, license, contributing guide, security policy, CI, tests, templates, Dependabot, CodeQL, and release notes, then produces Markdown, JSON, SARIF, issue-ready output, inventory reports, PR-sized maintainer plans, and no-fail workflow trials.
+It checks repository signals like README, license, contributing guide, security policy, CI, tests, templates, Dependabot, CodeQL, and release notes, then produces Markdown, JSON, SARIF, issue-ready output, inventory reports, PR-sized maintainer plans, adoption packs, and no-fail workflow trials.
 
 The goal is not to replace maintainer judgment. The goal is to reduce review cost and help contributors open smaller, more useful cleanup PRs.
 
@@ -138,7 +138,7 @@ I built oss-signal to help maintainers and contributors turn repository hygiene 
 
 It checks visible maintainer signals such as README, license, contributing guide, security policy, CI, tests, issue/PR templates, Dependabot, CodeQL, and release notes.
 
-It can output Markdown, JSON, SARIF, issue-ready Markdown, inventory reports, PR-sized maintainer plans, and no-fail workflow trials.
+It can output Markdown, JSON, SARIF, issue-ready Markdown, inventory reports, PR-sized maintainer plans, adoption packs, and no-fail workflow trials.
 
 Repo: https://github.com/SalmonPlays/oss-signal
 ```

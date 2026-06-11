@@ -1,0 +1,84 @@
+# OSS Signal Adoption Pack
+
+Repository: `https://github.com/platformatic/massimo`
+Source: GitHub (platformatic/massimo@main)
+Generated: 2026-06-11T22:19:56.832Z
+
+Current score: **62/100** (D)
+
+This pack is meant for a maintainer or contributor who wants a low-risk trial before adding any required CI gate.
+
+## Quick Local Trial
+
+Run the public npm package without installing it permanently:
+
+```bash
+npm exec --yes --package=oss-signal@0.9.5 -- oss-signal platformatic/massimo --format summary
+```
+
+## No-Fail GitHub Actions Trial
+
+Copy this workflow into `.github/workflows/oss-signal-trial.yml`. It writes a step summary and uploads a Markdown artifact, but it does not fail pull requests.
+
+```yaml
+name: oss-signal trial
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: SalmonPlays/oss-signal@v0.9.5
+        id: oss-signal
+        with:
+          output: oss-signal-report.md
+          summary: "true"
+      - uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: oss-signal-report
+          path: oss-signal-report.md
+```
+
+## Suggested Maintainer Message
+
+```markdown
+Hi maintainers. I ran `oss-signal` as a maintainer-readiness check and prepared a no-fail trial workflow.
+
+This is not a quality verdict and it does not ask for stars or reciprocal work. The goal is to make contribution, security, and CI signals easier to verify.
+
+Current audit result: 62/100 (D).
+
+If this is useful, the smallest next step is to run the no-fail workflow once and review the generated report artifact.
+```
+
+## Current Findings
+
+- **Security policy** (9 pts): Add SECURITY.md with supported versions, reporting instructions, and response expectations.
+- **Changelog** (6 pts): Keep CHANGELOG.md with dated release entries and migration notes.
+- **Issue templates** (5 pts): Add bug report and feature request templates under .github/ISSUE_TEMPLATE/.
+- **Pull request template** (5 pts): Add .github/PULL_REQUEST_TEMPLATE.md with a short checklist.
+- **Dependency update automation** (5 pts): Add .github/dependabot.yml for the package ecosystems used in the repository.
+
+## Verification Links
+
+- npm package: https://www.npmjs.com/package/oss-signal/v/0.9.5
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.5
+- Rule catalog: `oss-signal --list-rules --format json`
+
+## Boundaries
+
+- Do not present this pack as adoption until a maintainer runs, merges, replies, or otherwise endorses it.
+- Do not ask for stars, follows, reciprocal issues, or reciprocal pull requests.
+- Keep any follow-up PR small and tied to one specific missing maintainer-readiness signal.
+

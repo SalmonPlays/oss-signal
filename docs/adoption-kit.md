@@ -9,7 +9,7 @@ For a first CLI run, start with [quickstart.md](quickstart.md). For a first CI t
 Run against a public repository without cloning:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.4 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
+npm exec --yes --package=oss-signal@0.9.5 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
 ```
 
 Run against the current checkout:
@@ -29,6 +29,14 @@ Generate a no-fail trial workflow:
 ```bash
 npx oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
 ```
+
+Generate a single-file adoption pack for a maintainer to review before trying the Action:
+
+```bash
+npx oss-signal owner/repo --format adoption --output adoption-pack.md
+```
+
+The adoption pack includes the local trial command, no-fail workflow YAML, suggested maintainer message, top findings, verification links, and explicit boundaries against overstating adoption.
 
 ## Add The GitHub Action
 
@@ -53,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.4
+      - uses: SalmonPlays/oss-signal@v0.9.5
         id: oss-signal
         with:
           fail-under: "80"
@@ -77,7 +85,7 @@ env:
 
 steps:
   - uses: actions/checkout@v5
-  - uses: SalmonPlays/oss-signal@v0.9.4
+  - uses: SalmonPlays/oss-signal@v0.9.5
     with:
       format: sarif
       output: oss-signal.sarif
@@ -93,7 +101,7 @@ Full walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
 
 Useful adoption evidence is concrete and public:
 
-- A workflow run that uses `SalmonPlays/oss-signal@v0.9.4`.
+- A workflow run that uses `SalmonPlays/oss-signal@v0.9.5`.
 - A Markdown report attached as a workflow artifact.
 - A SARIF upload that appears in Code Scanning.
 - A focused issue or pull request created from an audit finding.

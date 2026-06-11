@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.9.4";
+export const VERSION = "0.9.5";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -531,6 +531,79 @@ export function renderPlan(report) {
   return `${lines.join("\n")}\n`;
 }
 
+export function renderAdoption(report) {
+  const auditTarget = commandTarget(report);
+  const topRecommendations = report.recommendations.slice(0, 5);
+  const lines = [
+    "# OSS Signal Adoption Pack",
+    "",
+    `Repository: \`${report.root}\``,
+    `Source: ${sourceSummary(report.source)}`,
+    `Generated: ${report.generatedAt}`,
+    "",
+    `Current score: **${report.score}/100** (${report.grade})`,
+    "",
+    "This pack is meant for a maintainer or contributor who wants a low-risk trial before adding any required CI gate.",
+    "",
+    "## Quick Local Trial",
+    "",
+    "Run the public npm package without installing it permanently:",
+    "",
+    "```bash",
+    `npm exec --yes --package=oss-signal@${VERSION} -- oss-signal ${auditTarget} --format summary`,
+    "```",
+    "",
+    "## No-Fail GitHub Actions Trial",
+    "",
+    "Copy this workflow into `.github/workflows/oss-signal-trial.yml`. It writes a step summary and uploads a Markdown artifact, but it does not fail pull requests.",
+    "",
+    "```yaml",
+    renderWorkflow().trimEnd(),
+    "```",
+    "",
+    "## Suggested Maintainer Message",
+    "",
+    "```markdown",
+    "Hi maintainers. I ran `oss-signal` as a maintainer-readiness check and prepared a no-fail trial workflow.",
+    "",
+    "This is not a quality verdict and it does not ask for stars or reciprocal work. The goal is to make contribution, security, and CI signals easier to verify.",
+    "",
+    `Current audit result: ${report.score}/100 (${report.grade}).`,
+    "",
+    "If this is useful, the smallest next step is to run the no-fail workflow once and review the generated report artifact.",
+    "```",
+    "",
+    "## Current Findings"
+  ];
+
+  if (topRecommendations.length === 0) {
+    lines.push("", "No missing maintainer-readiness checks were found. Use the workflow as recurring evidence instead of opening a cleanup request.");
+  } else {
+    lines.push("");
+    for (const recommendation of topRecommendations) {
+      lines.push(`- **${recommendation.label}** (${recommendation.weight} pts): ${recommendation.fix}`);
+    }
+  }
+
+  lines.push(
+    "",
+    "## Verification Links",
+    "",
+    `- npm package: https://www.npmjs.com/package/oss-signal/v/${VERSION}`,
+    `- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v${VERSION}`,
+    "- Rule catalog: `oss-signal --list-rules --format json`",
+    "",
+    "## Boundaries",
+    "",
+    "- Do not present this pack as adoption until a maintainer runs, merges, replies, or otherwise endorses it.",
+    "- Do not ask for stars, follows, reciprocal issues, or reciprocal pull requests.",
+    "- Keep any follow-up PR small and tied to one specific missing maintainer-readiness signal.",
+    ""
+  );
+
+  return `${lines.join("\n")}\n`;
+}
+
 export function renderWorkflow() {
   return `name: oss-signal trial
 
@@ -656,6 +729,13 @@ function impactLabel(weight) {
     return "medium";
   }
   return "low";
+}
+
+function commandTarget(report) {
+  if (report.source?.type === "github" && report.source.owner && report.source.repo) {
+    return `${report.source.owner}/${report.source.repo}`;
+  }
+  return ".";
 }
 
 export function parseInventoryTargets(text) {

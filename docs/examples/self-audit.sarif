@@ -6,7 +6,7 @@
       "tool": {
         "driver": {
           "name": "oss-signal",
-          "semanticVersion": "0.9.4",
+          "semanticVersion": "0.9.5",
           "informationUri": "https://github.com/SalmonPlays/oss-signal",
           "rules": [
             {
@@ -425,7 +425,7 @@
         "score": 100,
         "grade": "A",
         "source": "local",
-        "generatedAt": "2026-06-11T11:57:56.751Z"
+        "generatedAt": "2026-06-11T22:19:51.296Z"
       }
     }
   ]

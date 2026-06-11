@@ -1,6 +1,6 @@
 # OSS Maintainer Signal
 
-`oss-signal` is a maintainer-readiness CLI and GitHub Action for open-source projects that need repeatable repository health checks, CI evidence, inventory reports, SARIF output, issue-ready cleanup notes, PR-sized maintainer plans, a transparent rule catalog, and no-fail workflow trials.
+`oss-signal` is a maintainer-readiness CLI and GitHub Action for open-source projects that need repeatable repository health checks, CI evidence, inventory reports, SARIF output, issue-ready cleanup notes, PR-sized maintainer plans, adoption packs, a transparent rule catalog, and no-fail workflow trials.
 
 ## Quick Start
 
@@ -13,7 +13,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.4
+- uses: SalmonPlays/oss-signal@v0.9.5
   id: oss-signal
   with:
     path: "."
@@ -59,6 +59,7 @@ Run as a GitHub Action:
 - [Inventory JSON schema](schema/inventory-output.schema.json)
 - [Rule catalog JSON schema](schema/rules-catalog.schema.json)
 - [Rule catalog JSON fixture](examples/rules-catalog.json)
+- [Adoption pack example](examples/adoption-pack.md)
 - [Maintainer plan output](plan-output.md)
 - [SARIF Code Scanning walkthrough](sarif-code-scanning.md)
 - [Roadmap](roadmap.md)
@@ -71,6 +72,6 @@ Run as a GitHub Action:
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.4
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.5
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

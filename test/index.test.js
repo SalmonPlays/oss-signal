@@ -11,6 +11,7 @@ import {
   listRules,
   parseGitHubTarget,
   parseInventoryTargets,
+  renderAdoption,
   renderInventoryJson,
   renderInventoryMarkdown,
   renderIssue,
@@ -150,6 +151,27 @@ test("renderPlan creates a maintainer PR sequence", async () => {
     assert.match(plan, /Impact: high/);
     assert.match(plan, /Acceptance:/);
     assert.match(plan, /Do not ask for stars/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("renderAdoption creates a no-fail maintainer trial pack", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+
+  try {
+    const report = await auditRepository(root);
+    const adoption = renderAdoption(report);
+
+    assert.match(adoption, /# OSS Signal Adoption Pack/);
+    assert.match(adoption, /Quick Local Trial/);
+    assert.match(adoption, /No-Fail GitHub Actions Trial/);
+    assert.match(adoption, new RegExp(`oss-signal@${VERSION.replaceAll(".", "\\.")}`));
+    assert.match(adoption, new RegExp(`SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
+    assert.match(adoption, /Do not ask for stars/);
+    assert.match(adoption, /Do not present this pack as adoption/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -354,6 +376,32 @@ test("CLI writes plan output", async () => {
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /OSS Signal Maintainer Plan/);
     assert.match(body, /Recommended PR Sequence/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes adoption output", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+  const outputFile = path.join(root, "adoption-pack.md");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      root,
+      "--format",
+      "adoption",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const body = await readFile(outputFile, "utf8");
+    assert.match(body, /OSS Signal Adoption Pack/);
+    assert.match(body, /No-Fail GitHub Actions Trial/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

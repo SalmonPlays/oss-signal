@@ -41,12 +41,14 @@ Local path audits do not require network access. GitHub URL audits and inventory
 
 `--format issue` produces a local Markdown issue body. It does not post to GitHub. Maintainers should review and edit the generated text before opening an issue or pull request in another project.
 
+`--format adoption` produces a local Markdown trial pack. It includes copyable commands and workflow YAML, but it does not create issues, pull requests, workflow files, stars, follows, or external comments.
+
 SARIF output reports maintainer-readiness findings at warning level. These findings are workflow hygiene signals, not confirmed vulnerabilities.
 
 ## Supply Chain
 
 - The npm package is published publicly as `oss-signal`.
-- The GitHub Action is pinned by release tag, for example `SalmonPlays/oss-signal@v0.9.4`.
+- The GitHub Action is pinned by release tag, for example `SalmonPlays/oss-signal@v0.9.5`.
 - The release workflow checks the package version against the release tag before publishing.
 - The repository runs CI, CodeQL, OpenSSF Scorecard, repository health, and repository inventory workflows on `main`.
 

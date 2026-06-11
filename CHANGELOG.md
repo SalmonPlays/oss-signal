@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.9.5
+
+- Added `--format adoption` for a copyable maintainer trial pack with local command, no-fail workflow, suggested message, findings, and boundaries.
+- Added CLI and GitHub Action support for adoption-pack output.
+- Added tests that prevent adoption output from overstating third-party use or asking for stars.
+
 ## 0.9.4
 
 - Added JSON schemas for inventory reports and rule catalogs.

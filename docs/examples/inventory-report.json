@@ -1,7 +1,7 @@
 {
   "tool": "oss-signal",
-  "version": "0.9.4",
-  "generatedAt": "2026-06-11T11:54:55.654Z",
+  "version": "0.9.5",
+  "generatedAt": "2026-06-11T22:19:58.820Z",
   "inventoryPath": "docs/examples/inventory-targets.txt",
   "count": 3,
   "averageScore": 72,
@@ -87,7 +87,7 @@
         "repo": "install-flox-action",
         "ref": "main",
         "defaultBranch": "main",
-        "stars": 12,
+        "stars": 13,
         "forks": 5,
         "openIssues": 6,
         "healthPercentage": 37
