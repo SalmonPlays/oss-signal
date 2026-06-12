@@ -44,6 +44,7 @@ Run as a GitHub Action:
 - [Evidence ledger](evidence-ledger.md)
 - [Trust center](trust-center.md)
 - [Adoption evidence](adoption-evidence.md)
+- [Codex for OSS fit/gap review](codex-for-oss-fit-gap.md)
 - [Selection update, 2026-06-08](selection-update-2026-06-08.md)
 - [Adoption kit](adoption-kit.md)
 - [Maintainer trial](maintainer-trial.md)

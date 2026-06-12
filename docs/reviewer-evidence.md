@@ -47,6 +47,7 @@ Expected result with API access: score `100`, grade `A`, source `github`.
 - GitHub Pages source: https://github.com/SalmonPlays/oss-signal/blob/main/docs/index.md
 - GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
+- Codex for OSS fit/gap review: https://github.com/SalmonPlays/oss-signal/blob/main/docs/codex-for-oss-fit-gap.md
 - Trust center: https://github.com/SalmonPlays/oss-signal/blob/main/docs/trust-center.md
 - Adoption kit: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-kit.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
@@ -146,6 +147,7 @@ This project does not claim broad independent adoption yet. The separate workflo
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Trust center: [trust-center.md](trust-center.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
+- Codex for OSS fit/gap review: [codex-for-oss-fit-gap.md](codex-for-oss-fit-gap.md)
 - Selection update: [selection-update-2026-06-08.md](selection-update-2026-06-08.md)
 - Adoption kit: [adoption-kit.md](adoption-kit.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)

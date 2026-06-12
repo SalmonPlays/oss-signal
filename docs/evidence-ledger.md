@@ -10,6 +10,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | --- | --- | --- | --- |
 | Root reviewer packet | [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md) | Published | Shortest public verification path from the repository root. |
 | Detailed reviewer packet | [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md) | Published | One-page packet with current workflow runs, artifact evidence, package status, and external maintainer evidence. |
+| Codex for OSS fit/gap review | [codex-for-oss-fit-gap.md](codex-for-oss-fit-gap.md) | Published | Conservative mapping from public program criteria to current evidence and remaining adoption gaps. |
 | Evidence verification snapshot | [evidence-verification.md](evidence-verification.md) | PASS 14, SKIP 0, FAIL 0 | Committed Markdown snapshot of npm, GitHub release, repository metadata, and external issue/PR checks. |
 | Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.6` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.6 -- oss-signal --version` from a clean temporary directory. |
 | npm download API | 356 downloads for the last-month window, 2026-05-04 to 2026-06-02 | Checked 2026-06-12T03:24:09.146Z | Supporting distribution signal only; not claimed as broad adoption. |

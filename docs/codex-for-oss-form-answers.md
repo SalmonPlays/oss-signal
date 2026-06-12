@@ -93,6 +93,7 @@ The project is early, so I am not overstating adoption. Current evidence include
 - Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
+- Codex for OSS fit/gap review: https://github.com/SalmonPlays/oss-signal/blob/main/docs/codex-for-oss-fit-gap.md
 - Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-08.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
 - Maintainer feedback: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-feedback.md
