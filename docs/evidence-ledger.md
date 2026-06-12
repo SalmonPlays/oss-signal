@@ -1,6 +1,6 @@
 # Evidence Ledger
 
-Last verified: 2026-06-12T02:24:54.270Z
+Last verified: 2026-06-12T03:24:09.146Z
 
 This ledger keeps the strongest public `oss-signal` evidence in one reviewer-friendly place. It separates accepted evidence from supporting demos and open follow-up work.
 
@@ -12,7 +12,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Detailed reviewer packet | [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md) | Published | One-page packet with current workflow runs, artifact evidence, package status, and external maintainer evidence. |
 | Evidence verification snapshot | [evidence-verification.md](evidence-verification.md) | PASS 14, SKIP 0, FAIL 0 | Committed Markdown snapshot of npm, GitHub release, repository metadata, and external issue/PR checks. |
 | Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.6` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.6 -- oss-signal --version` from a clean temporary directory. |
-| npm download API | 356 downloads for the last-month window, 2026-05-04 to 2026-06-02 | Checked 2026-06-12T02:24:54.270Z | Supporting distribution signal only; not claimed as broad adoption. |
+| npm download API | 356 downloads for the last-month window, 2026-05-04 to 2026-06-02 | Checked 2026-06-12T03:24:09.146Z | Supporting distribution signal only; not claimed as broad adoption. |
 | GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.9.6 | Published tag | Public Action tag used by repository workflows; the separate public demo remains v0.8.4 evidence until refreshed. |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
 | Maintainer trial path | [maintainer-trial.md](maintainer-trial.md) | Published | External maintainers can try the Action without failing CI, then share a workflow run or adoption report. |
@@ -31,7 +31,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 
 ## External Issue And PR Status
 
-Checked from GitHub on 2026-06-12T02:24:54.270Z.
+Checked from GitHub on 2026-06-12T03:24:09.146Z.
 
 | Repository | Link | Status | Scope |
 | --- | --- | --- | --- |

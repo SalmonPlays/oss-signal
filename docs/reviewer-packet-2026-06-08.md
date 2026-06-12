@@ -1,10 +1,10 @@
 # Reviewer Packet: 2026-06-08
 
-Last verified: 2026-06-12T02:24:54.270Z
+Last verified: 2026-06-12T03:24:09.146Z
 
 This packet gives reviewers one page of current, verifiable evidence for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless a maintainer merges, replies, or endorses them.
 
-The workflow evidence below points at the latest verified run set. The release run verified `v0.9.6` at release commit `e92a4c4`; the branch checks verified dogfood artifact commit `096ad46` after npm publication completed.
+The workflow evidence below points at the latest verified run set. The release run verified `v0.9.6` at release commit `e92a4c4`; the branch checks verified dogfood artifact commit `089d580` after npm publication completed.
 
 ## Current Project State
 
@@ -12,7 +12,7 @@ The workflow evidence below points at the latest verified run set. The release r
 | --- | --- |
 | Repository | https://github.com/SalmonPlays/oss-signal |
 | Release commit | `e92a4c4` |
-| Dogfood artifact commit | `096ad46` |
+| Dogfood artifact commit | `089d580` |
 | npm package | https://www.npmjs.com/package/oss-signal |
 | npm latest | `0.9.6` |
 | GitHub Action tag | https://github.com/SalmonPlays/oss-signal/tree/v0.9.6 |
@@ -27,15 +27,17 @@ The workflow evidence below points at the latest verified run set. The release r
 | Workflow | Status | Run |
 | --- | --- | --- |
 | Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27387787858 |
-| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27390368601 |
-| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27390368608 |
-| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27390368622 |
-| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27390368665 |
-| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27390368625 |
-| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27390368618 |
-| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27390368097 |
+| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27392342778 |
+| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27392342898 |
+| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27392342916 |
+| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27392342900 |
+| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27392342810 |
+| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27392342815 |
+| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27392342314 |
 
-The Evidence verification run uploads an `oss-signal-evidence-verification` artifact with digest `sha256:72cf2e0d3d21d271835d8cd704c9b529706ce7231028892dfc1391212fd09e75`. The committed [evidence verification snapshot](evidence-verification.md) for the same checks returned PASS 14, SKIP 0, FAIL 0.
+The Evidence verification run uploads an `oss-signal-evidence-verification` artifact with digest `sha256:bd222026cf74adbb11897323b312d3cf3ad1e138f688bf68d0130cfd286d2977`. The committed [evidence verification snapshot](evidence-verification.md) for the same checks returned PASS 14, SKIP 0, FAIL 0.
+
+The Repository health run uploads an `oss-signal-report` artifact with digest `sha256:2f16a34ad54cce64b916551d6e70432ca75ff6057cf590f64840bb5eaff322e9`. That artifact includes the Markdown report, adoption pack, SARIF file, and `oss-signal-artifact-sha256.txt` checksum manifest.
 
 ## External Maintainer Evidence
 
