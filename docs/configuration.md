@@ -21,7 +21,7 @@ oss-signal . --config .oss-signal.json
 The GitHub Action supports the same path:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.6
+- uses: SalmonPlays/oss-signal@v0.9.7
   with:
     config: .oss-signal.json
     output: oss-signal-report.md

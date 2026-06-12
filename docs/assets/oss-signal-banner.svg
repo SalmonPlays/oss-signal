@@ -34,7 +34,7 @@
     <rect x="334" y="266" width="144" height="42" rx="21" fill="#dcfce7"/>
     <text x="359" y="293" fill="#166534">100/100 A</text>
     <rect x="494" y="266" width="142" height="42" rx="21" fill="#dbeafe"/>
-    <text x="521" y="293" fill="#1e40af">npm 0.9.6</text>
+    <text x="521" y="293" fill="#1e40af">npm 0.9.7</text>
     <rect x="652" y="266" width="178" height="42" rx="21" fill="#e0f2fe"/>
     <text x="681" y="293" fill="#075985">GitHub Action</text>
     <rect x="846" y="266" width="168" height="42" rx="21" fill="#fef9c3"/>

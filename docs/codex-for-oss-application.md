@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-08T05:27:31Z
+Snapshot: 2026-06-12T10:48:37.430Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -9,8 +9,8 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Display name: OSS Maintainer Signal
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.6
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.6
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.7
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.7
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Repository inventory workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml
@@ -56,27 +56,27 @@ This project is designed around repeatable maintainer workflows where Codex is u
 
 The repository currently has:
 
-- A published npm package with `0.9.6` as the latest release.
+- A published npm package with `0.9.7` as the latest release.
 - A post-submission update page explaining why the current npm package and Action tag may be newer than the originally submitted evidence.
-- npm download API evidence showing 356 last-month downloads for 2026-05-04 to 2026-06-02 when checked on 2026-06-08.
-- A published GitHub Release for v0.9.6 with adoption-pack output, maintainer plan output, CI usage guidance, and release notes.
+- npm download API evidence showing 3086 last-month downloads for 2026-05-13 to 2026-06-11 when checked on 2026-06-12.
+- A published GitHub Release for v0.9.7 with adoption-pack output, maintainer plan output, CI usage guidance, and release notes.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - A repository inventory mode for organization-level maintainer-readiness triage, available in both CLI and GitHub Action form.
-- A clean npm smoke test of `oss-signal@0.9.6` returning version `0.9.6`.
+- A clean npm smoke test of `oss-signal@0.9.7` returning version `0.9.7`.
 - SARIF output for GitHub Code Scanning integration.
-- A v0.9.6 GitHub Action tag with step summary, SARIF support, inventory support, Issue-ready output, maintainer plan output, and adoption-pack output.
+- A v0.9.7 GitHub Action tag with step summary, SARIF support, inventory support, Issue-ready output, maintainer plan output, and adoption-pack output.
 - A workflow output mode that renders a no-fail GitHub Actions trial workflow for external maintainers.
-- A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.9.6` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
-- A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.9.6` against a repository target list and uploads an inventory artifact.
+- A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.9.7` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
+- A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.9.7` against a repository target list and uploads an inventory artifact.
 - A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, visible field-audit links, and the merged external PR.
-- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.8.4` from another repository and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It remains valid demo evidence while the main repository has advanced to `v0.9.6`.
+- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.8.4` from another repository and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It remains valid demo evidence while the main repository has advanced to `v0.9.7`.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
 - A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
 - A release process and tag-triggered release workflow that verify package contents and publish to npm through Trusted Publishing.
 - CI, Repository health, CodeQL, and Release workflows passing publicly.
 - A local self-audit score of 100/100.
-- A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.9.6 -- oss-signal --version`, returning `0.9.6`.
+- A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.9.7 -- oss-signal --version`, returning `0.9.7`.
 - Public reports, issues, and PRs created from real repository audits, including five currently visible posted field-audit issues and four currently visible follow-up PRs.
 - One accepted external documentation PR, with a public maintainer merge comment, recorded in [evidence-ledger.md](evidence-ledger.md).
 
@@ -117,5 +117,5 @@ Prepared official form answers are in [codex-for-oss-form-answers.md](codex-for-
 ## Next Evidence To Collect
 
 - More merged external PRs or maintainer replies on field-audit PRs.
-- A public workflow run in an independent maintainer-owned repository using `SalmonPlays/oss-signal@v0.9.6`, ideally with SARIF or inventory upload enabled.
+- A public workflow run in an independent maintainer-owned repository using `SalmonPlays/oss-signal@v0.9.7`, ideally with SARIF or inventory upload enabled.
 - npm download data once the registry starts reporting weekly/monthly counts.

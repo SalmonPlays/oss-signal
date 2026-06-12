@@ -19,19 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.6
+      - uses: SalmonPlays/oss-signal@v0.9.7
         id: oss-signal
         with:
           fail-under: "90"
           output: oss-signal-report.md
           summary: "true"
       - run: test "${{ steps.oss-signal.outputs.score }}" -ge 90
-      - uses: SalmonPlays/oss-signal@v0.9.6
+      - uses: SalmonPlays/oss-signal@v0.9.7
         with:
           format: sarif
           output: oss-signal.sarif
           summary: "false"
-      - uses: SalmonPlays/oss-signal@v0.9.6
+      - uses: SalmonPlays/oss-signal@v0.9.7
         with:
           format: adoption
           output: oss-signal-adoption-pack.md

@@ -13,7 +13,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.6
+- uses: SalmonPlays/oss-signal@v0.9.7
   id: oss-signal
   with:
     path: "."
@@ -33,8 +33,8 @@ Run as a GitHub Action:
 ## Reviewer Evidence
 
 - Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
-- Latest committed evidence verification: [PASS 14, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-12T03:24:09.146Z.
-- Latest reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md), with public workflow run links and evidence artifact digest.
+- Latest committed evidence verification: [PASS 9, SKIP 5, FAIL 0](evidence-verification.md), generated 2026-06-12T10:48:37.430Z. The Evidence verification workflow runs with `GITHUB_TOKEN` and passed on `main`.
+- Latest reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md), with public workflow run links and current package evidence.
 - Evidence workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
 
 - [Quickstart](quickstart.md)
@@ -73,6 +73,6 @@ Run as a GitHub Action:
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.6
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.7
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

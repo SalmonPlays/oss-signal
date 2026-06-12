@@ -2,15 +2,15 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-08T05:27:31Z
+Last verified: 2026-06-12T10:48:37.430Z
 
 ## Project Links
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
-- npm package: https://www.npmjs.com/package/oss-signal (`0.9.6` latest after release)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.6
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.6
+- npm package: https://www.npmjs.com/package/oss-signal (`0.9.7` latest after release)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.7
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.7
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - GitHub Action metadata: [action.yml](../action.yml)
 - Public dogfood workflow: [.github/workflows/repository-health.yml](../.github/workflows/repository-health.yml)
@@ -72,19 +72,19 @@ The [post-submission update](post-submission-update.md) records why the current 
 
 ## Published Package Verification
 
-The npm package is publicly available as `oss-signal@0.9.6` with `latest` pointing at `0.9.6` after the release workflow completes.
+The npm package is publicly available as `oss-signal@0.9.7` with `latest` pointing at `0.9.7` after the release workflow completes.
 
-The npm downloads API returned 356 downloads for the last-month window from 2026-05-04 to 2026-06-02 when checked on 2026-06-08. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
+The npm downloads API returned 3086 downloads for the last-month window from 2026-05-13 to 2026-06-11 when checked on 2026-06-12. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
 Clean-directory package execution returned:
 
 ```json
 {
-  "version": "0.9.6"
+  "version": "0.9.7"
 }
 ```
 
-Local self-audit returned score `100`, grade `A`. Public GitHub URL report generation completed during this verification pass, and repository workflows use the public `v0.9.6` Action tag with `GITHUB_TOKEN`.
+Local self-audit returned score `100`, grade `A`. Public GitHub URL report generation completed during this verification pass, and repository workflows use the public `v0.9.7` Action tag with `GITHUB_TOKEN`.
 
 Current public workflow status:
 
@@ -96,7 +96,7 @@ Current public workflow status:
 - OpenSSF Scorecard: configured on `main` pushes and a weekly schedule, with JSON artifact output and public Scorecard publishing
 - Release: passing
 - GitHub Pages deployment: passing, with the repository homepage set to https://salmonplays.github.io/oss-signal/
-- GitHub Marketplace listing: published, with `v0.9.6` available as the current Action tag after release
+- GitHub Marketplace listing: published, with `v0.9.7` available as the current Action tag after release
 - GitHub issue forms: adoption report, trial feedback, and maintainer audit report forms are available for structured public evidence intake
 - GitHub citation metadata: `CITATION.cff` is present for the repository citation UI
 - Automation contract: JSON schema and fixture are documented for `--format json`
@@ -105,7 +105,7 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
-The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-07 release updates the expected latest version to `0.9.6`. The 2026-06-08 download check returned 356 downloads for the last-month window.
+The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-12 release updates the expected latest version to `0.9.7`. The 2026-06-12 download check returned 3086 downloads for the last-month window.
 
 ## Separate Public Workflow Evidence
 
@@ -168,10 +168,10 @@ npm run audit:github
 node src/cli.js . --format sarif --output docs/examples/self-audit.sarif
 node src/cli.js --inventory docs/examples/inventory-targets.txt --format markdown --output docs/examples/inventory-report.md
 node src/cli.js platformatic/massimo --format json
-npm exec --yes --package=oss-signal@0.9.6 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.9.7 -- oss-signal --version
 ```
 
-The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.9.6` Action tag is used by the repository health workflow for Markdown, adoption-pack, checksum-manifest, and SARIF output after release. The published npm `0.9.6` package should return version `0.9.6` from a clean temporary directory.
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.9.7` Action tag is used by the repository health workflow for Markdown, adoption-pack, checksum-manifest, and SARIF output after release. The published npm `0.9.7` package should return version `0.9.7` from a clean temporary directory.
 
 Public CI evidence:
 
