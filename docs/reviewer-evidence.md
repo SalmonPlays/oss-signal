@@ -114,7 +114,7 @@ Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` r
 
 - The CLI can audit local repositories and public GitHub repositories.
 - The CLI can audit a newline-delimited inventory of repositories for organization-level triage.
-- The GitHub Action can write a step summary, publish Markdown and adoption-pack artifacts, produce SARIF, and run inventory reports.
+- The GitHub Action can write a step summary, publish Markdown and adoption-pack artifacts with a checksum manifest, produce SARIF, and run inventory reports.
 - The `--format issue` mode produces a maintainer-readable follow-up body that is reviewed before posting.
 - The `--format plan` mode produces a PR-sized sequence with suggested files and acceptance criteria before a contributor posts externally.
 - The field-audit examples show the intended workflow: run audit, write report, open a respectful issue, then prepare a narrow PR when useful.

@@ -64,7 +64,7 @@ The CLI supports two practical modes:
 - Public GitHub repository audit for quick triage without cloning.
 - Repository inventory audit for maintainers comparing several repositories at once.
 
-It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, upload Markdown and adoption-pack artifacts, run inventory reports, and upload failed maintainer-readiness checks as SARIF for GitHub Code Scanning. This repository dogfoods the public Action tag through the Repository health and Repository inventory workflows.
+It also ships as a GitHub Action, so maintainers can gate repository hygiene in CI, show the result in the GitHub Actions step summary, upload Markdown and adoption-pack artifacts with a checksum manifest, run inventory reports, and upload failed maintainer-readiness checks as SARIF for GitHub Code Scanning. This repository dogfoods the public Action tag through the Repository health and Repository inventory workflows.
 
 The [maintainer playbook](maintainer-playbook.md) documents the end-to-end workflow from audit to issue, pull request, CI gate, and Code Scanning evidence. The [release process](release-process.md) documents pre-release verification, tag consistency, npm publish checks, and post-release smoke tests.
 
@@ -171,7 +171,7 @@ node src/cli.js platformatic/massimo --format json
 npm exec --yes --package=oss-signal@0.9.6 -- oss-signal --version
 ```
 
-The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.9.6` Action tag is used by the repository health workflow for Markdown, adoption-pack, and SARIF output after release. The published npm `0.9.6` package should return version `0.9.6` from a clean temporary directory.
+The current repository self-audit score is 100/100, the GitHub community profile health score is 100, and CI verifies the local GitHub Action wrapper. The public `v0.9.6` Action tag is used by the repository health workflow for Markdown, adoption-pack, checksum-manifest, and SARIF output after release. The published npm `0.9.6` package should return version `0.9.6` from a clean temporary directory.
 
 Public CI evidence:
 

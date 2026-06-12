@@ -40,6 +40,12 @@ jobs:
         if: github.event_name != 'pull_request'
         with:
           sarif_file: oss-signal.sarif
+      - name: Write artifact checksum manifest
+        run: |
+          sha256sum \
+            oss-signal-report.md \
+            oss-signal-adoption-pack.md \
+            oss-signal.sarif > oss-signal-artifact-sha256.txt
       - uses: actions/upload-artifact@v5
         with:
           name: oss-signal-report
@@ -47,3 +53,4 @@ jobs:
             oss-signal-report.md
             oss-signal-adoption-pack.md
             oss-signal.sarif
+            oss-signal-artifact-sha256.txt

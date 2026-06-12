@@ -17,7 +17,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
 | Maintainer trial path | [maintainer-trial.md](maintainer-trial.md) | Published | External maintainers can try the Action without failing CI, then share a workflow run or adoption report. |
 | Maintainer feedback path | [maintainer-feedback.md](maintainer-feedback.md) | Published | External maintainers can leave useful public feedback even when the tool is not adopted. |
-| Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.9.6` and publishes Markdown, SARIF, and adoption-pack artifacts for this repository. |
+| Main repository dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml | Passing | Runs `SalmonPlays/oss-signal@v0.9.6` and publishes Markdown, SARIF, adoption-pack, and SHA256 manifest artifacts for this repository. |
 | Inventory dogfood | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml | Passing | Exercises multi-repository inventory mode. |
 | Evidence verification workflow | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml | Published | Verifies npm latest, npm downloads, release evidence, repository metadata, and current external issue/PR links. |
 | Separate public workflow demo | https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373 | Passing | Separate public repository runs `SalmonPlays/oss-signal@v0.8.4` and uploads Markdown, SARIF, issue-ready, and no-fail workflow artifacts. |
