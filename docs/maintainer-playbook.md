@@ -144,6 +144,7 @@ Useful evidence for maintainers and reviewers:
 
 - A public workflow run that uses `SalmonPlays/oss-signal@v0.9.6`.
 - A generated Markdown report attached as an artifact.
+- A generated adoption pack attached as an artifact before asking maintainers to try the Action.
 - A SARIF upload in Code Scanning.
 - A small issue or PR that follows from an audit finding.
 - A release note or changelog entry showing the maintainer workflow improved.

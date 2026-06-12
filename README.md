@@ -271,7 +271,7 @@ Summary:
 
 See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-summary.txt](docs/examples/github-summary.txt) for compact summary output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, [docs/examples/github-plan.md](docs/examples/github-plan.md) for plan output, [docs/examples/maintainer-trial-workflow.yml](docs/examples/maintainer-trial-workflow.yml) for workflow output, [docs/examples/adoption-pack.md](docs/examples/adoption-pack.md) for adoption-pack output, [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output, and [docs/examples/rules-catalog.json](docs/examples/rules-catalog.json) for the machine-readable rule catalog.
 
-The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.9.6`, uploads the Markdown report as an artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
+The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.9.6`, uploads the Markdown report and adoption pack as artifacts, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
 
 ## Field Audits
 
@@ -408,7 +408,7 @@ steps:
       sarif_file: oss-signal.sarif
 ```
 
-This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.9.6` against the repository, uploads the Markdown report artifact, and publishes SARIF to Code Scanning on non-PR runs.
+This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.9.6` against the repository, uploads Markdown and adoption-pack artifacts, and publishes SARIF to Code Scanning on non-PR runs.
 
 You can also run the CLI directly in CI:
 
