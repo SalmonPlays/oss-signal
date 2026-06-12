@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.9.7
+
+- Added a public evidence sharing section to adoption packs with adoption-report and trial-feedback links.
+- Added a copyable evidence note so maintainers can share workflow runs, issues, PRs, discussions, or report links without inventing a format.
+- Added tests that keep adoption packs focused on concrete maintainer decisions and public evidence rather than stars or reciprocal engagement.
+
 ## 0.9.6
 
 - Added a maintainer decision checklist to adoption packs so trial users can choose a no-fail workflow run, focused PR, documented exception, or out-of-scope decline.

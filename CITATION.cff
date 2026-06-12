@@ -8,8 +8,8 @@ authors:
 repository-code: "https://github.com/SalmonPlays/oss-signal"
 url: "https://salmonplays.github.io/oss-signal/"
 license: "MIT"
-version: "0.9.6"
-date-released: "2026-06-11"
+version: "0.9.7"
+date-released: "2026-06-12"
 keywords:
   - open-source
   - maintainer-tools

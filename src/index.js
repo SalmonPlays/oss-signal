@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.9.6";
+export const VERSION = "0.9.7";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -582,7 +582,21 @@ export function renderAdoption(report) {
     "- Share a public workflow run, issue, PR, discussion, or trial feedback link only if that is useful for the project.",
     "- If the finding is wrong or noisy, file trial feedback instead of treating the score as a verdict.",
     "",
-    "Useful feedback link: https://github.com/SalmonPlays/oss-signal/issues/new?template=trial_feedback.yml",
+    "## Share Public Evidence",
+    "",
+    "Use one of these links after a real maintainer run, review, reply, or merge:",
+    "",
+    "- Adoption report: https://github.com/SalmonPlays/oss-signal/issues/new?template=adoption_report.yml",
+    "- Trial feedback, including neutral or negative feedback: https://github.com/SalmonPlays/oss-signal/issues/new?template=trial_feedback.yml",
+    "",
+    "Copyable evidence note:",
+    "",
+    "```text",
+    "Repository: <owner/repo>",
+    "Evidence link: <workflow-run, issue, PR, discussion, or report>",
+    "Maintainer decision: <adopted trial | useful finding | noisy finding | out of scope | merged follow-up>",
+    "One concrete outcome: <what changed or what was decided>",
+    "```",
     "",
     "## Current Findings"
   ];

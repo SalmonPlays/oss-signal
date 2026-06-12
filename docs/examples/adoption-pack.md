@@ -2,7 +2,7 @@
 
 Repository: `https://github.com/platformatic/massimo`
 Source: GitHub (platformatic/massimo@main)
-Generated: 2026-06-11T22:19:56.832Z
+Generated: 2026-06-12T10:40:26.321Z
 
 Current score: **62/100** (D)
 
@@ -13,7 +13,7 @@ This pack is meant for a maintainer or contributor who wants a low-risk trial be
 Run the public npm package without installing it permanently:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.6 -- oss-signal platformatic/massimo --format summary
+npm exec --yes --package=oss-signal@0.9.7 -- oss-signal platformatic/massimo --format summary
 ```
 
 ## No-Fail GitHub Actions Trial
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.6
+      - uses: SalmonPlays/oss-signal@v0.9.7
         id: oss-signal
         with:
           output: oss-signal-report.md
@@ -71,7 +71,21 @@ Use this checklist to turn the audit into a clear maintainer decision instead of
 - Share a public workflow run, issue, PR, discussion, or trial feedback link only if that is useful for the project.
 - If the finding is wrong or noisy, file trial feedback instead of treating the score as a verdict.
 
-Useful feedback link: https://github.com/SalmonPlays/oss-signal/issues/new?template=trial_feedback.yml
+## Share Public Evidence
+
+Use one of these links after a real maintainer run, review, reply, or merge:
+
+- Adoption report: https://github.com/SalmonPlays/oss-signal/issues/new?template=adoption_report.yml
+- Trial feedback, including neutral or negative feedback: https://github.com/SalmonPlays/oss-signal/issues/new?template=trial_feedback.yml
+
+Copyable evidence note:
+
+```text
+Repository: <owner/repo>
+Evidence link: <workflow-run, issue, PR, discussion, or report>
+Maintainer decision: <adopted trial | useful finding | noisy finding | out of scope | merged follow-up>
+One concrete outcome: <what changed or what was decided>
+```
 
 ## Current Findings
 
@@ -83,8 +97,8 @@ Useful feedback link: https://github.com/SalmonPlays/oss-signal/issues/new?templ
 
 ## Verification Links
 
-- npm package: https://www.npmjs.com/package/oss-signal/v/0.9.6
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.6
+- npm package: https://www.npmjs.com/package/oss-signal/v/0.9.7
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.7
 - Rule catalog: `oss-signal --list-rules --format json`
 
 ## Boundaries

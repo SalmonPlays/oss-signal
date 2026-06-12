@@ -170,7 +170,11 @@ test("renderAdoption creates a no-fail maintainer trial pack", async () => {
     assert.match(adoption, /No-Fail GitHub Actions Trial/);
     assert.match(adoption, /Maintainer Decision Checklist/);
     assert.match(adoption, /decline as out of scope/);
+    assert.match(adoption, /Share Public Evidence/);
+    assert.match(adoption, /adoption_report\.yml/);
     assert.match(adoption, /trial_feedback\.yml/);
+    assert.match(adoption, /Copyable evidence note/);
+    assert.match(adoption, /Maintainer decision/);
     assert.match(adoption, new RegExp(`oss-signal@${VERSION.replaceAll(".", "\\.")}`));
     assert.match(adoption, new RegExp(`SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
     assert.match(adoption, /Do not ask for stars/);

@@ -1,7 +1,7 @@
 {
   "tool": "oss-signal",
-  "version": "0.9.6",
-  "generatedAt": "2026-06-11T22:19:58.820Z",
+  "version": "0.9.7",
+  "generatedAt": "2026-06-12T10:40:35.829Z",
   "inventoryPath": "docs/examples/inventory-targets.txt",
   "count": 3,
   "averageScore": 72,
