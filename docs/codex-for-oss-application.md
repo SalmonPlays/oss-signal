@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-12T10:48:37.430Z
+Snapshot: 2026-06-12T22:17:33.399Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -68,7 +68,7 @@ The repository currently has:
 - A workflow output mode that renders a no-fail GitHub Actions trial workflow for external maintainers.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.9.7` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.9.7` against a repository target list and uploads an inventory artifact.
-- A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, visible field-audit links, and the merged external PR.
+- A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, visible field-audit links, and both merged external PRs.
 - A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.8.4` from another repository and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It remains valid demo evidence while the main repository has advanced to `v0.9.7`.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
 - A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.
@@ -78,7 +78,7 @@ The repository currently has:
 - A local self-audit score of 100/100.
 - A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.9.7 -- oss-signal --version`, returning `0.9.7`.
 - Public reports, issues, and PRs created from real repository audits, including five currently visible posted field-audit issues and four currently visible follow-up PRs.
-- One accepted external documentation PR, with a public maintainer merge comment, recorded in [evidence-ledger.md](evidence-ledger.md).
+- Two merged external documentation PRs recorded in [evidence-ledger.md](evidence-ledger.md): one accepted by an outside maintainer with a public merge comment, and one inbound from an outside contributor.
 
 ## Separate Workflow Demo
 
@@ -104,7 +104,7 @@ Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` r
 
 Recommended application angle:
 
-`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, five currently visible public field-audit issues, four currently visible public field-audit PRs, and one merged external Codex Action documentation PR. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
+`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, five currently visible public field-audit issues, four currently visible public field-audit PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
 
 Prepared official form answers are in [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md). The applicant still needs to fill personal identity fields and their OpenAI Organization ID directly.
 

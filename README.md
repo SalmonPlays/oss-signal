@@ -97,8 +97,8 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
 - Community route: [Discussion #5](https://github.com/SalmonPlays/oss-signal/discussions/5) is the public maintainer-workflow thread for usage questions and rule feedback.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
-- Field use: five currently visible field-audit issues and four currently visible follow-up PRs remain public, plus one merged external documentation PR. Historical reports whose public links disappeared are kept as local audit examples but are not counted as public adoption evidence.
-- Merged external OSS contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix.
+- Field use: five currently visible field-audit issues and four currently visible follow-up PRs remain public, plus two merged external documentation PRs. Historical reports whose public links disappeared are kept as local audit examples but are not counted as public adoption evidence.
+- Merged external OSS contribution evidence: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix accepted by an outside maintainer, and [oss-signal PR #14](https://github.com/SalmonPlays/oss-signal/pull/14) is an inbound external contributor PR adding a compact JSON score example.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
 - Evidence verification: `npm run evidence:verify` checks npm latest, npm download API, GitHub release evidence, repository metadata, and current external issue/PR links; the workflow uploads a Markdown verification artifact and the current snapshot is in [docs/evidence-verification.md](docs/evidence-verification.md).
@@ -296,7 +296,7 @@ Historical audit reports for [Grovanni/oss-signal](docs/outreach/grovanni-oss-si
 
 Additional prepared outreach candidates are tracked in [docs/outreach/peer-shortlist-2026-06.md](docs/outreach/peer-shortlist-2026-06.md). The shortlist explicitly separates respectful, defensible candidates from low-signal mass outreach.
 
-Additional focused external contribution: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) was merged and updates Codex Action README examples to route generated output through environment variables before printing it from shell steps.
+Additional focused external contribution evidence: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) was merged by an outside maintainer and updates Codex Action README examples to route generated output through environment variables before printing it from shell steps. [oss-signal PR #14](https://github.com/SalmonPlays/oss-signal/pull/14) was opened by an outside contributor and merged into this repository with a compact JSON score example.
 
 For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md). For a reviewer-oriented verification path, see [docs/reviewer-evidence.md](docs/reviewer-evidence.md).
 

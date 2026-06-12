@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-12T10:48:37.430Z
+Last verified: 2026-06-12T22:17:33.399Z
 
 ## Project Links
 
@@ -140,8 +140,9 @@ The workflow now includes [plan-output.md](plan-output.md), which converts audit
 Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing. The maintainer merge comment is public at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361.
+- `SalmonPlays/oss-signal`: https://github.com/SalmonPlays/oss-signal/pull/14 was opened by external contributor `ded-furby` and merged on 2026-06-12. It adds a compact JSON score example and closes issue #7. This is inbound contributor evidence, not independent maintainer adoption.
 
-The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-08T05:27:31Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
+The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-12T22:17:33.399Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 
 ## Contributor Intake
 

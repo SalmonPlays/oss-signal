@@ -1,6 +1,6 @@
 # Trust Center
 
-Last verified: 2026-06-12T10:48:37.430Z
+Last verified: 2026-06-12T22:17:33.399Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 
@@ -19,7 +19,8 @@ What it does have is a complete, public maintainer workflow:
 - Public CI, CodeQL, OpenSSF Scorecard, repository health, repository inventory, and release workflows.
 - Public self-audit, GitHub URL audit, SARIF output, inventory report, and issue-body examples.
 - Public field-audit reports, five currently visible posted issues, and four currently visible open follow-up pull requests against external repositories.
-- One accepted external documentation contribution merged by an outside maintainer: https://github.com/icoretech/codex-action/pull/24
+- Outside-maintainer-accepted documentation PR: https://github.com/icoretech/codex-action/pull/24
+- One inbound external contributor PR merged into this repository: https://github.com/SalmonPlays/oss-signal/pull/14
 - Explicit governance, maintainer ownership, CODEOWNERS, security policy, support policy, contribution guide, and release process.
 - Citation metadata, architecture notes, security model, and roadmap are documented in the repository.
 
@@ -38,7 +39,8 @@ What it does have is a complete, public maintainer workflow:
 | Maintainer governance | [MAINTAINERS.md](../MAINTAINERS.md), [GOVERNANCE.md](../GOVERNANCE.md), [CODEOWNERS](../.github/CODEOWNERS) | Ownership and review paths are explicit. |
 | Architecture | [architecture](architecture.md), [security model](security-model.md), [JSON output contract](json-output.md), [SARIF walkthrough](sarif-code-scanning.md), [roadmap](roadmap.md) | Reviewers can inspect the implementation boundary, permissions, automation contract, Code Scanning path, and next adoption target. |
 | Citation | [CITATION.cff](../CITATION.cff) | GitHub can expose a standard citation route for the project. |
-| Accepted external contribution | https://github.com/icoretech/codex-action/pull/24 | An outside maintainer merged a focused documentation safety fix and left a public merge comment. |
+| Outside-maintainer-accepted external PR | https://github.com/icoretech/codex-action/pull/24 | An outside maintainer merged a focused documentation safety fix and left a public merge comment. |
+| Inbound external contributor PR | https://github.com/SalmonPlays/oss-signal/pull/14 | An outside contributor added a compact JSON score example that was merged into this repository. |
 | Selection update | [selection-update-2026-06-08](selection-update-2026-06-08.md) | Reviewers get a current post-submission status page with discounted historical links called out. |
 | Evidence ledger | [evidence-ledger](evidence-ledger.md) | Reviewers get one compact page separating accepted evidence, supporting demos, open PRs, and boundaries. |
 | External workflow evidence | [adoption evidence](adoption-evidence.md) | Field audits show the intended maintainer workflow on public repositories. |
@@ -58,7 +60,7 @@ The listing is not a paid product. It is a free Action listing. Running GitHub A
 
 - No claim of broad third-party adoption yet.
 - No claim that stars, forks, or watchers prove popularity.
-- No claim that open external issues or PRs count as accepted adoption until maintainers merge, reply, or otherwise endorse them. The merged `icoretech/codex-action` PR is counted separately as an accepted external contribution.
+- No claim that open external issues or PRs count as accepted adoption until maintainers merge, reply, or otherwise endorse them. The merged `icoretech/codex-action` PR is counted as outside-maintainer acceptance; the merged `SalmonPlays/oss-signal` PR is counted as inbound contributor evidence.
 - No claim that the score measures code quality. It measures visible maintainer-readiness signals.
 
 ## Reviewer Path

@@ -1,6 +1,6 @@
 # Codex for OSS Fit Gap Review
 
-Snapshot: 2026-06-12T08:00:39Z
+Snapshot: 2026-06-12T22:17:33.399Z
 
 This page is an intentionally conservative review of how `oss-signal` maps to the public Codex for Open Source criteria. It explains why a selection email may not have arrived yet, what evidence is already public, and which next evidence would actually improve the application.
 
@@ -10,7 +10,7 @@ This page is an intentionally conservative review of how `oss-signal` maps to th
 - The public terms say submission does not guarantee selection, funding, or access.
 - The program looks for repository usage, ecosystem importance, and active maintenance. `oss-signal` is strong on active maintenance and maintainer workflow evidence, but still early on broad independent adoption.
 - Stars are not the official criterion by themselves, but zero stars does make public popularity weaker than projects with obvious existing usage.
-- The strongest current gap is independent maintainer use: a maintainer-owned workflow run, maintainer reply, or additional merged external PR would be stronger than more self-authored docs.
+- The strongest current gap is independent maintainer use: a maintainer-owned workflow run, maintainer reply, or additional outside-maintainer-accepted PR would be stronger than more self-authored docs.
 
 ## Official Criteria Sources
 
@@ -25,11 +25,11 @@ This page is an intentionally conservative review of how `oss-signal` maps to th
 | Criterion | Current evidence | Current gap | Best next evidence |
 | --- | --- | --- | --- |
 | Active OSS maintainer | Public repository, `MAINTAINERS.md`, `GOVERNANCE.md`, CODEOWNERS, issue forms, Discussions, releases, npm package, GitHub Action, and public workflows. | The maintainer role is clear for this repository, but the project is new. | Keep releases and issues disciplined; avoid noisy changes that look like artificial activity. |
-| Meaningful usage | npm package is published, npm registry API reported 356 last-month downloads on 2026-06-08, GitHub Marketplace listing is live, and public Action runs produce artifacts. | Downloads are early and do not yet prove broad adoption. Stars are still zero. | One independent maintainer-owned workflow run using `SalmonPlays/oss-signal@v0.9.7`. |
+| Meaningful usage | npm package is published, npm registry API reported 3086 last-month downloads for 2026-05-13 to 2026-06-11, GitHub Marketplace listing is live, and public Action runs produce artifacts. | Downloads are early and do not yet prove broad adoption. Stars are still zero. | One independent maintainer-owned workflow run using `SalmonPlays/oss-signal@v0.9.7`. |
 | Broad adoption | Separate public demo repository runs the Action, and the main repository dogfoods the Action with Markdown, SARIF, inventory, and adoption-pack artifacts. | The separate demo is owned by `SalmonPlays`, so it is workflow evidence, not independent third-party adoption. | A real outside repository using the Action in CI, even as a no-fail trial. |
 | Ecosystem importance | The tool targets repeatable OSS maintainer work: triage, CI evidence, SARIF, issue-ready reports, inventory, adoption packs, and release evidence. | Importance is plausible but not proven by popularity or dependent projects. | Maintainer feedback that the report saved review or triage time. |
 | Active maintenance | `v0.9.7` release, passing CI, CodeQL, OpenSSF Scorecard, evidence verification, repository health, inventory workflow, release workflow, and Pages. | This part is comparatively strong. | Keep latest release evidence verified and avoid version drift in reviewer docs. |
-| PR review and issue triage | Five currently visible field-audit issues, four visible follow-up PRs, one merged external Codex Action documentation PR, and a documented maintainer playbook. | Most field-audit PRs remain open and are not adoption unless maintainers reply, merge, or endorse. | A second merged external PR or maintainer reply on an existing field-audit issue or PR. |
+| PR review and issue triage | Five currently visible field-audit issues, four visible follow-up PRs, one outside-maintainer-accepted documentation PR, one inbound external contributor PR, and a documented maintainer playbook. | Most field-audit PRs remain open and are not adoption unless maintainers reply, merge, or endorse. The inbound PR is contributor evidence, not third-party maintainer adoption. | A maintainer-owned workflow run, maintainer reply on an existing field-audit issue or PR, or another outside-maintainer-accepted PR. |
 | Release management | Trusted Publishing, release workflow, changelog, release notes, package smoke tests, and post-submission version notes. | Strong, but it supports the maintenance claim more than the broad-adoption claim. | Keep each release tied to a clear maintainer benefit. |
 | Codex use case fit | Codex/API credits would support public audits, PR drafting, maintainer automation, release workflows, and security review. | The benefit story is credible, but approval depends on OpenAI capacity and review judgment. | Public examples showing Codex-assisted audits turning into accepted maintainer changes. |
 

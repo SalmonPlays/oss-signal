@@ -147,6 +147,7 @@ const currentExternalEvidence = [
   ["pull", "flox/install-flox-action", 205, "open"],
   ["issue", "Divyesh-5981/signal-oss", 5, "open"],
   ["pull", "icoretech/codex-action", 24, "closed", { merged: true }],
+  ["pull", "SalmonPlays/oss-signal", 14, "closed", { merged: true }],
 ];
 
 for (const [type, repo, number, state, options] of currentExternalEvidence) {

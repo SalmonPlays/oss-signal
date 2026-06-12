@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-12T10:48:37.430Z
+Last verified: 2026-06-12T22:17:33.399Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -81,7 +81,7 @@ To verify public evidence links from the repository:
 npm run evidence:verify
 ```
 
-Expected result: PASS lines for npm latest, npm downloads, GitHub release evidence, repository metadata, visible field-audit links, and the merged external PR. If run locally without `GITHUB_TOKEN` after the anonymous GitHub API limit is exhausted, GitHub API checks are reported as SKIP instead of being counted as verified.
+Expected result: PASS lines for npm latest, npm downloads, GitHub release evidence, repository metadata, visible field-audit links, and both merged external PRs. If run locally without `GITHUB_TOKEN` after the anonymous GitHub API limit is exhausted, GitHub API checks are reported as SKIP instead of being counted as verified.
 
 The GitHub workflow writes the same evidence to the run step summary and uploads an `oss-signal-evidence-verification` artifact.
 
@@ -103,13 +103,14 @@ The latest committed snapshot is [evidence-verification.md](evidence-verificatio
 | `flox/install-flox-action` | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | Pull request template |
 | `Divyesh-5981/signal-oss` | https://github.com/Divyesh-5981/signal-oss/issues/5 | N/A | SECURITY.md and contributor templates |
 | `icoretech/codex-action` | N/A | https://github.com/icoretech/codex-action/pull/24 | Merged Codex Action README safety examples; maintainer merge comment at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 |
+| `SalmonPlays/oss-signal` | N/A | https://github.com/SalmonPlays/oss-signal/pull/14 | Merged inbound external contributor PR adding a compact JSON score example. |
 
 Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` remain in [outreach](outreach), but their public issue or PR links were not verifiable on 2026-06-08 and are not counted as current public evidence.
 
 7. Inspect inbound contribution routes:
 
 - Good first issue: https://github.com/SalmonPlays/oss-signal/issues/6
-- Documentation good first issue: https://github.com/SalmonPlays/oss-signal/issues/7
+- Documentation good first issue: https://github.com/SalmonPlays/oss-signal/issues/7, closed by inbound external contributor PR https://github.com/SalmonPlays/oss-signal/pull/14
 
 ## What The Evidence Shows
 

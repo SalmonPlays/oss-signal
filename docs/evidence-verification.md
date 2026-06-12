@@ -1,13 +1,13 @@
 # OSS Signal Evidence Verification
 
-Generated: 2026-06-12T10:48:37.430Z
+Generated: 2026-06-12T22:17:33.399Z
 
 This report verifies public reviewer evidence used by `oss-signal`. It is intentionally factual: open issues and pull requests are not counted as adoption unless maintainers merge, reply, or otherwise endorse them.
 
 Summary:
 
-- PASS: 9
-- SKIP: 5
+- PASS: 12
+- SKIP: 3
 - FAIL: 0
 
 | Status | Check | Detail |
@@ -21,8 +21,9 @@ Summary:
 | PASS | supermarkt/checkjebon#22 | https://github.com/supermarkt/checkjebon/issues/22 is open |
 | PASS | supermarkt/checkjebon#23 | https://github.com/supermarkt/checkjebon/pull/23 is open |
 | PASS | sammorrisdesign/interactive-feed#14 | https://github.com/sammorrisdesign/interactive-feed/issues/14 is open |
-| SKIP | sammorrisdesign/interactive-feed#15 | https://api.github.com/repos/sammorrisdesign/interactive-feed/pulls/15 returned 403; set GITHUB_TOKEN to verify GitHub evidence locally |
-| SKIP | flox/install-flox-action#204 | https://api.github.com/repos/flox/install-flox-action/issues/204 returned 403; set GITHUB_TOKEN to verify GitHub evidence locally |
-| SKIP | flox/install-flox-action#205 | https://api.github.com/repos/flox/install-flox-action/pulls/205 returned 403; set GITHUB_TOKEN to verify GitHub evidence locally |
+| PASS | sammorrisdesign/interactive-feed#15 | https://github.com/sammorrisdesign/interactive-feed/pull/15 is open |
+| PASS | flox/install-flox-action#204 | https://github.com/flox/install-flox-action/issues/204 is open |
+| PASS | flox/install-flox-action#205 | https://github.com/flox/install-flox-action/pull/205 is open |
 | SKIP | Divyesh-5981/signal-oss#5 | https://api.github.com/repos/Divyesh-5981/signal-oss/issues/5 returned 403; set GITHUB_TOKEN to verify GitHub evidence locally |
 | SKIP | icoretech/codex-action#24 | https://api.github.com/repos/icoretech/codex-action/pulls/24 returned 403; set GITHUB_TOKEN to verify GitHub evidence locally |
+| SKIP | SalmonPlays/oss-signal#14 | https://api.github.com/repos/SalmonPlays/oss-signal/pulls/14 returned 403; set GITHUB_TOKEN to verify GitHub evidence locally |

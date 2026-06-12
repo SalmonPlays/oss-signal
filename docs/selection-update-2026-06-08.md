@@ -1,6 +1,6 @@
 # Selection Update: 2026-06-08
 
-Last verified: 2026-06-12T10:48:37.430Z
+Last verified: 2026-06-12T22:17:33.399Z
 
 This page is a compact post-submission update for reviewers. It separates current public evidence from supporting demos and from links that no longer verify publicly.
 
@@ -17,9 +17,9 @@ For the shortest current evidence bundle, see the root [REVIEWER_PACKET.md](../R
 | Marketplace listing | Free GitHub Action listing is published. | https://github.com/marketplace/actions/oss-signal |
 | Main workflow evidence | CI, Repository health, Repository inventory, Evidence verification, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
 | npm downloads | npm API returned 3086 downloads for the last-month window from 2026-05-13 to 2026-06-11. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
-| Repository interest | GitHub API returned 0 stars, 1 fork, 0 subscribers, and 5 open issues at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
-| Accepted external contribution | One external maintainer merged a focused Codex Action documentation safety PR. | https://github.com/icoretech/codex-action/pull/24 |
-| Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, and current external issue/PR links. The workflow passes `GITHUB_TOKEN`, writes a step summary, uploads an `oss-signal-evidence-verification` artifact, and the committed snapshot is [evidence-verification.md](evidence-verification.md). | `.github/workflows/evidence-verify.yml` |
+| Repository interest | GitHub API returned 0 stars and 1 fork at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
+| Merged external contribution evidence | Two merged documentation PRs: one accepted by an outside maintainer and one inbound from an outside contributor. | https://github.com/icoretech/codex-action/pull/24 and https://github.com/SalmonPlays/oss-signal/pull/14 |
+| Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, current external issue/PR links, and both merged external PRs. The committed local snapshot reports PASS 12, SKIP 3, FAIL 0 after anonymous GitHub API limits were exhausted; the workflow runs with `GITHUB_TOKEN`. | `.github/workflows/evidence-verify.yml` |
 
 ## Current Field-Audit Status
 
@@ -44,6 +44,6 @@ The field-audit links above show the intended contributor workflow: run a determ
 
 ## Reviewer Bottom Line
 
-`oss-signal` is still early and should not be described as widely adopted. The strongest evidence today is that it is a real, installable maintainer tool with a published npm package, GitHub Action, Marketplace listing, release automation, CI/security workflows, a no-fail external trial path, public field-audit follow-up, and one accepted external maintainer contribution.
+`oss-signal` is still early and should not be described as widely adopted. The strongest evidence today is that it is a real, installable maintainer tool with a published npm package, GitHub Action, Marketplace listing, release automation, CI/security workflows, a no-fail external trial path, public field-audit follow-up, one outside-maintainer-accepted PR, and one inbound external contributor PR.
 
-The strongest remaining gap is independent maintainer use: a third-party maintainer-owned workflow run, maintainer reply, or another merged external PR would be materially stronger than more posts, stars, or broad outreach.
+The strongest remaining gap is independent maintainer use: a third-party maintainer-owned workflow run, maintainer reply, or another outside-maintainer-accepted PR would be materially stronger than more posts, stars, or broad outreach.
