@@ -13,7 +13,7 @@ This pack is meant for a maintainer or contributor who wants a low-risk trial be
 Run the public npm package without installing it permanently:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.5 -- oss-signal platformatic/massimo --format summary
+npm exec --yes --package=oss-signal@0.9.6 -- oss-signal platformatic/massimo --format summary
 ```
 
 ## No-Fail GitHub Actions Trial
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.5
+      - uses: SalmonPlays/oss-signal@v0.9.6
         id: oss-signal
         with:
           output: oss-signal-report.md
@@ -62,6 +62,17 @@ Current audit result: 62/100 (D).
 If this is useful, the smallest next step is to run the no-fail workflow once and review the generated report artifact.
 ```
 
+## Maintainer Decision Checklist
+
+Use this checklist to turn the audit into a clear maintainer decision instead of a vague request:
+
+- Run the no-fail workflow once and inspect the uploaded `oss-signal-report` artifact.
+- Choose one small next step: adopt the no-fail trial, open a focused PR, document a not-applicable reason, or decline as out of scope.
+- Share a public workflow run, issue, PR, discussion, or trial feedback link only if that is useful for the project.
+- If the finding is wrong or noisy, file trial feedback instead of treating the score as a verdict.
+
+Useful feedback link: https://github.com/SalmonPlays/oss-signal/issues/new?template=trial_feedback.yml
+
 ## Current Findings
 
 - **Security policy** (9 pts): Add SECURITY.md with supported versions, reporting instructions, and response expectations.
@@ -72,8 +83,8 @@ If this is useful, the smallest next step is to run the no-fail workflow once an
 
 ## Verification Links
 
-- npm package: https://www.npmjs.com/package/oss-signal/v/0.9.5
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.5
+- npm package: https://www.npmjs.com/package/oss-signal/v/0.9.6
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.6
 - Rule catalog: `oss-signal --list-rules --format json`
 
 ## Boundaries
@@ -81,4 +92,3 @@ If this is useful, the smallest next step is to run the no-fail workflow once an
 - Do not present this pack as adoption until a maintainer runs, merges, replies, or otherwise endorses it.
 - Do not ask for stars, follows, reciprocal issues, or reciprocal pull requests.
 - Keep any follow-up PR small and tied to one specific missing maintainer-readiness signal.
-

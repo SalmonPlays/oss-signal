@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.9.5";
+export const VERSION = "0.9.6";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -572,6 +572,17 @@ export function renderAdoption(report) {
     "",
     "If this is useful, the smallest next step is to run the no-fail workflow once and review the generated report artifact.",
     "```",
+    "",
+    "## Maintainer Decision Checklist",
+    "",
+    "Use this checklist to turn the audit into a clear maintainer decision instead of a vague request:",
+    "",
+    "- Run the no-fail workflow once and inspect the uploaded `oss-signal-report` artifact.",
+    "- Choose one small next step: adopt the no-fail trial, open a focused PR, document a not-applicable reason, or decline as out of scope.",
+    "- Share a public workflow run, issue, PR, discussion, or trial feedback link only if that is useful for the project.",
+    "- If the finding is wrong or noisy, file trial feedback instead of treating the score as a verdict.",
+    "",
+    "Useful feedback link: https://github.com/SalmonPlays/oss-signal/issues/new?template=trial_feedback.yml",
     "",
     "## Current Findings"
   ];

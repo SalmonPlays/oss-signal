@@ -1,6 +1,6 @@
 # OSS Signal Rules
 
-Version: 0.9.5
+Version: 0.9.6
 Rules: 16
 Total weighted points: 110
 

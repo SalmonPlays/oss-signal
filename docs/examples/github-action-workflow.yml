@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.5
+      - uses: SalmonPlays/oss-signal@v0.9.6
         id: oss-signal
         with:
           fail-under: "80"

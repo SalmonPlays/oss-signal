@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.9.6
+
+- Added a maintainer decision checklist to adoption packs so trial users can choose a no-fail workflow run, focused PR, documented exception, or out-of-scope decline.
+- Added a trial feedback link to adoption packs so neutral and negative maintainer responses can be captured without overstating adoption.
+- Added tests that keep adoption packs focused on maintainer decisions instead of stars, reciprocal work, or vague promotion.
+
 ## 0.9.5
 
 - Added `--format adoption` for a copyable maintainer trial pack with local command, no-fail workflow, suggested message, findings, and boundaries.
