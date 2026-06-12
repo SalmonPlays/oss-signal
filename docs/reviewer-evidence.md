@@ -1,12 +1,12 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-11T22:22:55Z
+Last verified: 2026-06-12T01:09:33.238Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
 ## Application Version Note
 
-The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.9.5` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
+The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.9.6` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
 
 ## Five-Minute Verification
 
@@ -16,20 +16,20 @@ The Codex for Open Source application was submitted on 2026-06-03. The npm packa
 npm view oss-signal version dist-tags --json
 ```
 
-Expected result: `version` is `0.9.5`, and `dist-tags.latest` is `0.9.5`.
+Expected result: `version` is `0.9.6`, and `dist-tags.latest` is `0.9.6`.
 
 2. Run the published package from a clean temporary directory or another directory outside this repository:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.5 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.9.6 -- oss-signal --version
 ```
 
-Expected result: `0.9.5`.
+Expected result: `0.9.6`.
 
 To audit the public GitHub repository from a local shell, set `GITHUB_TOKEN` if unauthenticated API rate limits are exhausted:
 
 ```bash
-GITHUB_TOKEN=<token> npm exec --yes --package=oss-signal@0.9.5 -- oss-signal SalmonPlays/oss-signal --format json
+GITHUB_TOKEN=<token> npm exec --yes --package=oss-signal@0.9.6 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
 Expected result with API access: score `100`, grade `A`, source `github`.
@@ -88,8 +88,8 @@ The latest committed snapshot is [evidence-verification.md](evidence-verificatio
 
 5. Inspect the public Action tag:
 
-- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.5
-- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.5
+- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.6
+- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.6
 - Action metadata: [../action.yml](../action.yml)
 
 6. Inspect field-audit evidence:

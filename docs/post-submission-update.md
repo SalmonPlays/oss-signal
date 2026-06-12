@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-11T22:22:55Z
+Latest verification: 2026-06-12T01:09:33.238Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 
@@ -35,12 +35,13 @@ The older submission evidence remains valid. The current `latest` npm version si
 | `v0.9.3` | npm package, GitHub Release, Action tag | Added maintainer ownership to the scoring model and rule catalog. |
 | `v0.9.4` | npm package, GitHub Release, Action tag | Added JSON schemas for inventory output and rule catalog output. |
 | `v0.9.5` | npm package, GitHub Release, Action tag | Added adoption-pack output for low-risk maintainer trials. |
+| `v0.9.6` | npm package, GitHub Release, Action tag | Added a maintainer decision checklist and trial feedback link to adoption packs. |
 
 ## Current Evidence
 
-- npm package: https://www.npmjs.com/package/oss-signal (`0.9.5` latest after release)
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.5
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.5
+- npm package: https://www.npmjs.com/package/oss-signal (`0.9.6` latest after release)
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.6
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.6
 - Release workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/release.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Evidence verification workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
@@ -57,7 +58,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 
 ## Clean Verification
 
-The public registry should return `0.9.5` for both package version and `latest` dist-tag after the adoption-pack release.
+The public registry should return `0.9.6` for both package version and `latest` dist-tag after the maintainer-decision checklist release.
 
 ```bash
 npm view oss-signal version dist-tags --json
@@ -67,17 +68,17 @@ Expected result:
 
 ```json
 {
-  "version": "0.9.5",
+  "version": "0.9.6",
   "dist-tags": {
-    "latest": "0.9.5"
+    "latest": "0.9.6"
   }
 }
 ```
 
-A clean npm execution from a temporary directory or another directory outside this repository should return version `0.9.5`.
+A clean npm execution from a temporary directory or another directory outside this repository should return version `0.9.6`.
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.5 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.9.6 -- oss-signal --version
 ```
 
 ## Review Impact
@@ -85,11 +86,11 @@ npm exec --yes --package=oss-signal@0.9.5 -- oss-signal --version
 This version difference should be read as post-submission maintenance progress, not as a mismatch. It strengthens the evidence in three ways:
 
 - The package now has a successful npm Trusted Publishing release from GitHub Actions.
-- The GitHub Action tag, npm package, release notes, and documentation all point to `0.9.5`.
+- The GitHub Action tag, npm package, release notes, and documentation all point to `0.9.6`.
 - The repository has public CI, Repository health, Repository inventory, CodeQL, OpenSSF Scorecard, Release workflow evidence, social preview branding, profile pinning, Discussions, CODEOWNERS, and issue routing.
 - The current release includes `--format plan`, which turns audit findings into PR-sized outreach plans before external posting.
 - The current release includes `--format workflow`, which renders a no-fail GitHub Actions trial workflow for external maintainers.
-- The current release includes `--format adoption`, which packages a local trial command, no-fail workflow, suggested maintainer message, current findings, and explicit anti-spam boundaries.
+- The current release includes `--format adoption`, which packages a local trial command, no-fail workflow, suggested maintainer message, maintainer decision checklist, current findings, trial feedback link, and explicit anti-spam boundaries.
 - The current release shows detected evidence and missing next steps directly in Markdown reports, which makes first-run review easier.
 - The current release includes config-backed not-applicable rules, so maintainers can document intentional exceptions without creating noisy failed recommendations.
 - The current release includes `--format summary`, so maintainers can get a one-screen triage readout before generating a full report or issue body.

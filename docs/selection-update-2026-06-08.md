@@ -1,6 +1,6 @@
 # Selection Update: 2026-06-08
 
-Last verified: 2026-06-11T22:22:55Z
+Last verified: 2026-06-12T01:09:33.238Z
 
 This page is a compact post-submission update for reviewers. It separates current public evidence from supporting demos and from links that no longer verify publicly.
 
@@ -10,10 +10,10 @@ For the shortest current evidence bundle, see the root [REVIEWER_PACKET.md](../R
 
 | Signal | Current status | Verification path |
 | --- | --- | --- |
-| npm package | `oss-signal@0.9.5` is the current `latest` package. | `npm view oss-signal version dist-tags --json` |
-| Clean package run | A clean npm execution from a temporary directory should print `0.9.5`. | `npm exec --yes --package=oss-signal@0.9.5 -- oss-signal --version` |
-| GitHub Action | `SalmonPlays/oss-signal@v0.9.5` is published. | https://github.com/SalmonPlays/oss-signal/tree/v0.9.5 |
-| GitHub Release | `v0.9.5` is published with release workflow evidence. | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.5 |
+| npm package | `oss-signal@0.9.6` is the current `latest` package. | `npm view oss-signal version dist-tags --json` |
+| Clean package run | A clean npm execution from a temporary directory should print `0.9.6`. | `npm exec --yes --package=oss-signal@0.9.6 -- oss-signal --version` |
+| GitHub Action | `SalmonPlays/oss-signal@v0.9.6` is published. | https://github.com/SalmonPlays/oss-signal/tree/v0.9.6 |
+| GitHub Release | `v0.9.6` is published with release workflow evidence. | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.6 |
 | Marketplace listing | Free GitHub Action listing is published. | https://github.com/marketplace/actions/oss-signal |
 | Main workflow evidence | CI, Repository health, Repository inventory, Evidence verification, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
 | npm downloads | npm API returned 356 downloads for the last-month window from 2026-05-04 to 2026-06-02. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
