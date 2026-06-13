@@ -69,7 +69,7 @@ The repository currently has:
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.9.8` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.9.8` against a repository target list and uploads an inventory artifact.
 - A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, visible field-audit links, and both merged external PRs.
-- A separate public workflow demo that runs `SalmonPlays/oss-signal@v0.8.4` from another repository and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It remains valid demo evidence while the main repository has advanced to `v0.9.8`.
+- A historical self-owned public workflow demo that ran `SalmonPlays/oss-signal@v0.8.4` from another repository and uploaded Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It is retained as supporting workflow evidence, while current `v0.9.8` workflow evidence comes from the main repository health workflow.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
 - A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
@@ -82,7 +82,7 @@ The repository currently has:
 
 ## Separate Workflow Demo
 
-The repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs the public `SalmonPlays/oss-signal@v0.8.4` Action tag from a separate workflow. The successful run at https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373 uploaded an `oss-signal-adoption-demo-report` artifact containing Markdown, SARIF, Issue-ready, and no-fail workflow output.
+The repository https://github.com/SalmonPlays/oss-signal-adoption-demo ran the public `SalmonPlays/oss-signal@v0.8.4` Action tag from a separate workflow. The successful run at https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373 uploaded an `oss-signal-adoption-demo-report` artifact containing Markdown, SARIF, Issue-ready, and no-fail workflow output.
 
 This is intentionally described as a separate public workflow demo rather than third-party adoption because the repository is also owned by `SalmonPlays`. It still proves that the published Action tag is consumable outside the main repository.
 

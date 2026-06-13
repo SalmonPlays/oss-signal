@@ -117,7 +117,7 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
 - Evidence verification: `npm run evidence:verify` checks npm latest, npm download API, GitHub release evidence, repository metadata, and current external issue/PR links; the workflow uploads a Markdown verification artifact and the current snapshot is in [docs/evidence-verification.md](docs/evidence-verification.md).
-- Separate workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) runs the public `v0.8.4` Action tag and uploads Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It remains valid demo evidence while the main repository has advanced to `v0.9.8`.
+- Historical self-owned workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) ran the public `v0.8.4` Action tag and uploaded Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. Current `v0.9.8` workflow evidence comes from this repository's Repository health workflow; the next stronger external signal is still one maintainer-owned public run through [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md).
 
 ## Why
 
@@ -315,7 +315,7 @@ Additional focused external contribution evidence: [icoretech/codex-action PR #2
 
 For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md). For a reviewer-oriented verification path, see [docs/reviewer-evidence.md](docs/reviewer-evidence.md).
 
-Separate public workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) runs `SalmonPlays/oss-signal@v0.8.4` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) with Markdown, SARIF, Issue-ready, and no-fail workflow artifacts.
+Historical self-owned workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) ran `SalmonPlays/oss-signal@v0.8.4` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) with Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It is retained as historical public workflow evidence, not as current `v0.9.8` adoption evidence.
 
 ## Example Recommendation Output
 

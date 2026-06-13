@@ -109,13 +109,13 @@ The npm registry previously returned `0.8.4` for both the package version and `l
 
 ## Separate Public Workflow Evidence
 
-The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo runs `SalmonPlays/oss-signal@v0.8.4` from a separate workflow file:
+The public repository https://github.com/SalmonPlays/oss-signal-adoption-demo ran `SalmonPlays/oss-signal@v0.8.4` from a separate workflow file:
 
 - Workflow file: https://github.com/SalmonPlays/oss-signal-adoption-demo/blob/main/.github/workflows/oss-signal.yml
 - Successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Artifact: `oss-signal-adoption-demo-report`, containing `oss-signal-report.md`, `oss-signal.sarif`, `maintainer-follow-up.md`, and `oss-signal-trial.yml`
 
-This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is evidence that a public Action tag works outside the main repository and can publish Markdown, SARIF, and Issue-ready maintainer-readiness reports from another public workflow. The demo workflow is refreshed after each release when the new tag is available.
+This is not claimed as independent third-party adoption because the repository is owned by `SalmonPlays`. It is historical evidence that a public Action tag works outside the main repository and can publish Markdown, SARIF, and Issue-ready maintainer-readiness reports from another public workflow. Current `v0.9.8` workflow evidence comes from the main repository health workflow; the strongest remaining gap is still one maintainer-owned public run.
 
 ## Public Field Audits And PRs
 
@@ -155,7 +155,7 @@ The repository also includes a GitHub Discussions category form for structured r
 
 Current public roadmap evidence:
 
-- https://github.com/SalmonPlays/oss-signal/issues/8 tracks the first independent public workflow run or maintainer acknowledgement.
+- [independent-workflow-run-request.md](independent-workflow-run-request.md) is the current copyable request for the first independent public workflow run or maintainer acknowledgement.
 - https://github.com/SalmonPlays/oss-signal/issues/9 was closed as completed after adding [json-output.md](json-output.md), the JSON schema, fixture, and reviewer links.
 - https://github.com/SalmonPlays/oss-signal/issues/10 was closed as completed after adding [sarif-code-scanning.md](sarif-code-scanning.md), the Code Scanning output example, and reviewer links.
 
