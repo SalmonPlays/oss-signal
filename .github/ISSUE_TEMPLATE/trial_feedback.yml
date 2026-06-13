@@ -10,7 +10,7 @@ body:
       value: |
         Use this form for lightweight maintainer feedback, including "not useful" or "out of scope" responses.
         A public maintainer reply is useful even when the tool is not adopted.
-        No-fail trial workflow: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
+        No-fail trial workflow: https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
   - type: input
     id: repository
     attributes:
@@ -23,7 +23,7 @@ body:
     id: evidence
     attributes:
       label: Public evidence link
-      description: Link a workflow run, issue, PR, discussion, or report if available.
+      description: Link a workflow run, issue, PR, discussion, or report if available. Neutral or negative feedback is useful when it is specific.
       placeholder: "https://github.com/owner/repo/actions/runs/..."
     validations:
       required: false
@@ -50,6 +50,17 @@ body:
       placeholder: "Example: The security-policy finding was useful, but Dependabot is handled elsewhere."
     validations:
       required: true
+  - type: checkboxes
+    id: evidence_boundary
+    attributes:
+      label: Evidence boundary
+      options:
+        - label: I am a maintainer or contributor for the linked repository, or I have permission to share this public feedback.
+          required: true
+        - label: The linked repository is not owned by SalmonPlays if this should count as independent maintainer feedback.
+          required: false
+        - label: This feedback is not asking for stars, follows, reciprocal work, or promotion.
+          required: true
   - type: checkboxes
     id: public_reference
     attributes:

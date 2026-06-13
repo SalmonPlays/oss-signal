@@ -34,7 +34,7 @@ Run as a GitHub Action:
 
 - Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
 - Latest committed evidence verification: [PASS 15, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-13T10:21:37.663Z. The Evidence verification workflow runs with `GITHUB_TOKEN` and passed on `main`.
-- Latest manual evidence refresh: [evidence-refresh-2026-06-14.md](evidence-refresh-2026-06-14.md), with all public workflows successful for commit `d6f75ae`.
+- Latest manual evidence refresh: [evidence-refresh-2026-06-14.md](evidence-refresh-2026-06-14.md), with all public workflows successful for the checked 2026-06-14 baseline.
 - Current post-submission update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md), with current package, workflow, field-audit, and external PR evidence.
 - Adoption gap closure plan: [adoption-gap-closure.md](adoption-gap-closure.md), with the current weak signals and the exact evidence that would close them.
 - Independent run request: [independent-workflow-run-request.md](independent-workflow-run-request.md), with a copyable no-fail workflow for maintainer-owned public repositories.

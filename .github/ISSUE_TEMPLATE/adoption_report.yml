@@ -10,7 +10,7 @@ body:
       value: |
         Use this form when you tried oss-signal in a repository, CI workflow, audit issue, or maintainer cleanup process.
         Public workflow links are the most useful evidence.
-        First-time maintainers can use the no-fail trial workflow: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
+        First-time maintainers can use the no-fail trial workflow: https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
   - type: input
     id: repository
     attributes:
@@ -23,7 +23,7 @@ body:
     id: workflow
     attributes:
       label: Workflow run, PR, issue, or report link
-      description: Link the public evidence if available.
+      description: Link the public evidence. A workflow run in a maintainer-owned repository is the strongest signal.
       placeholder: "https://github.com/owner/repo/actions/runs/..."
     validations:
       required: false
@@ -51,6 +51,17 @@ body:
       placeholder: "Example: added a security policy and PR template before a release."
     validations:
       required: true
+  - type: checkboxes
+    id: evidence_boundary
+    attributes:
+      label: Evidence boundary
+      options:
+        - label: I am a maintainer or contributor for the linked repository, or I have permission to share this public run.
+          required: true
+        - label: The linked repository is not owned by SalmonPlays if this should count as independent maintainer evidence.
+          required: false
+        - label: This report is not asking for stars, follows, reciprocal work, or promotion.
+          required: true
   - type: checkboxes
     id: consent
     attributes:

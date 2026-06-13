@@ -1,9 +1,9 @@
 # Evidence Refresh: 2026-06-14
 
-Checked: 2026-06-13T22:45:23Z / 2026-06-14 07:45:23 JST
+Checked: 2026-06-13T22:53:31Z / 2026-06-14 07:53:31 JST
 
 This is a manual refresh of the reviewer-visible evidence after the
-`d6f75ae` documentation hardening commit. It does not replace the generated
+`928a157` evidence refresh commit. It does not replace the generated
 [evidence-verification.md](evidence-verification.md) snapshot; it records the
 latest public CI and external-link status checked after the 2026-06-13
 post-submission updates.
@@ -12,25 +12,25 @@ post-submission updates.
 
 | Signal | Status |
 | --- | --- |
-| Checked commit | `d6f75aea27a15aa863dd72700ebabf2d15dcf8c2` |
-| Commit message | `Clarify demo evidence boundaries` |
-| Remote branch at check time | `origin/main` pointed at `d6f75aea27a15aa863dd72700ebabf2d15dcf8c2` |
+| Checked commit | `928a1577ca3ed99d30d3c6d38fe9139b76274424` |
+| Commit message | `Clarify evidence refresh commit scope` |
+| Remote branch at check time | `origin/main` pointed at `928a1577ca3ed99d30d3c6d38fe9139b76274424` |
 | Local validation | `npm run check` passed on 2026-06-14 JST |
 
 ## Public Workflow Status
 
-All public workflows for commit `d6f75aea27a15aa863dd72700ebabf2d15dcf8c2`
+All public workflows for commit `928a1577ca3ed99d30d3c6d38fe9139b76274424`
 completed successfully:
 
 | Workflow | Conclusion | Run |
 | --- | --- | --- |
-| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27464891185 |
-| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27464891008 |
-| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27464891021 |
-| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27464891007 |
-| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27464891003 |
-| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27464891029 |
-| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27464890576 |
+| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441806 |
+| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441819 |
+| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441807 |
+| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441793 |
+| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441828 |
+| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441796 |
+| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441468 |
 
 ## Registry And Repository Metadata
 
