@@ -6,6 +6,9 @@ contact_links:
   - name: Maintainer trial guide
     url: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
     about: Copy the no-fail trial workflow before enabling CI gates.
+  - name: Independent workflow run request
+    url: https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
+    about: Share a maintainer-owned public workflow run without gating CI.
   - name: Security report
     url: https://github.com/SalmonPlays/oss-signal/security/policy
     about: Report vulnerabilities through the repository security policy instead of a public issue.

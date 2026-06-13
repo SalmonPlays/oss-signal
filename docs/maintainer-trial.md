@@ -4,6 +4,10 @@ This page gives external maintainers a low-risk way to try `oss-signal` in a pub
 
 The first trial should not fail CI. It should only publish a step summary and a Markdown artifact so the maintainer can decide whether the findings are useful.
 
+For a shorter evidence-focused request that maintainers can copy into a
+maintainer-owned public repository, see
+[independent-workflow-run-request.md](independent-workflow-run-request.md).
+
 ## One-Minute Action Trial
 
 Create `.github/workflows/oss-signal-trial.yml`:

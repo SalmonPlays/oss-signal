@@ -4,6 +4,9 @@ This page gives maintainers a copy-paste path for trying `oss-signal` and leavin
 
 For a first CLI run, start with [quickstart.md](quickstart.md). For a first CI trial, use the no-fail workflow in [maintainer-trial.md](maintainer-trial.md). It publishes a report without gating CI.
 
+For a maintainer-owned public workflow run that can be shared as concrete
+evidence, use [independent-workflow-run-request.md](independent-workflow-run-request.md).
+
 ## Try The CLI
 
 Run against a public repository without cloning:

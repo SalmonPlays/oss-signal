@@ -6,6 +6,8 @@ This is the shortest public verification path for `oss-signal`. It is intentiona
 
 Current dated post-submission update: [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md).
 
+Next independent-usage path: [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md).
+
 ## Current Public Evidence
 
 | Signal | Current value | Verification |
@@ -18,6 +20,7 @@ Current dated post-submission update: [docs/selection-update-2026-06-13.md](docs
 | Evidence verification | PASS 15, SKIP 0, FAIL 0 in the committed local snapshot; the GitHub workflow runs with `GITHUB_TOKEN` | [docs/evidence-verification.md](docs/evidence-verification.md) |
 | Evidence workflow | Public workflow with Markdown artifact | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml |
 | Post-submission update | Current 2026-06-13 reviewer update | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
+| Independent run request | Copyable no-fail workflow for maintainer-owned public repositories | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
 | Merged external contribution evidence | Two merged documentation PRs: one accepted by an outside maintainer and one inbound from an outside contributor | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
 | Field-audit evidence | Five visible issues and four visible PRs remain open | [docs/adoption-evidence.md](docs/adoption-evidence.md) |
 
