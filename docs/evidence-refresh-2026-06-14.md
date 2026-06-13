@@ -8,13 +8,13 @@ This is a manual refresh of the reviewer-visible evidence after the
 latest public CI and external-link status checked after the 2026-06-13
 post-submission updates.
 
-## Current Commit
+## Checked Commit
 
 | Signal | Status |
 | --- | --- |
-| Current `main` commit | `d6f75aea27a15aa863dd72700ebabf2d15dcf8c2` |
+| Checked commit | `d6f75aea27a15aa863dd72700ebabf2d15dcf8c2` |
 | Commit message | `Clarify demo evidence boundaries` |
-| Remote branch | `origin/main` points at `d6f75aea27a15aa863dd72700ebabf2d15dcf8c2` |
+| Remote branch at check time | `origin/main` pointed at `d6f75aea27a15aa863dd72700ebabf2d15dcf8c2` |
 | Local validation | `npm run check` passed on 2026-06-14 JST |
 
 ## Public Workflow Status
