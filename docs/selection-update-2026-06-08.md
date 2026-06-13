@@ -1,6 +1,6 @@
 # Selection Update: 2026-06-08
 
-Last verified: 2026-06-12T22:17:33.399Z
+Last verified: 2026-06-13T03:06:08.758Z
 
 This page is a compact post-submission update for reviewers. It separates current public evidence from supporting demos and from links that no longer verify publicly.
 
@@ -19,7 +19,7 @@ For the shortest current evidence bundle, see the root [REVIEWER_PACKET.md](../R
 | npm downloads | npm API returned 3086 downloads for the last-month window from 2026-05-13 to 2026-06-11. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
 | Repository interest | GitHub API returned 0 stars and 1 fork at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
 | Merged external contribution evidence | Two merged documentation PRs: one accepted by an outside maintainer and one inbound from an outside contributor. | https://github.com/icoretech/codex-action/pull/24 and https://github.com/SalmonPlays/oss-signal/pull/14 |
-| Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, current external issue/PR links, and both merged external PRs. The committed local snapshot reports PASS 12, SKIP 3, FAIL 0 after anonymous GitHub API limits were exhausted; the workflow runs with `GITHUB_TOKEN`. | `.github/workflows/evidence-verify.yml` |
+| Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, current external issue/PR links, and both merged external PRs. The committed local snapshot reports PASS 15, SKIP 0, FAIL 0; the workflow runs with `GITHUB_TOKEN`. | `.github/workflows/evidence-verify.yml` |
 
 ## Current Field-Audit Status
 

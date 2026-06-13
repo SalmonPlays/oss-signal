@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-12T22:17:33.399Z
+Snapshot: 2026-06-13T03:06:08.758Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 

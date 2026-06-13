@@ -1,18 +1,18 @@
 # Reviewer Packet: 2026-06-08
 
-Last verified: 2026-06-12T22:17:33.399Z
+Last verified: 2026-06-13T03:06:08.758Z
 
 This packet gives reviewers one page of current, verifiable evidence for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless a maintainer merges, replies, or endorses them.
 
-The workflow evidence below points at the latest verified run set. The release run verified `v0.9.8` at release commit `d0a7c85`; the branch checks verified merge commit `ad5d806`, which closed the inbound external contributor PR.
+The workflow evidence below points at the release run plus public workflow pages for `main`.
 
 ## Current Project State
 
 | Signal | Current value |
 | --- | --- |
 | Repository | https://github.com/SalmonPlays/oss-signal |
-| Release commit | `d0a7c85` |
-| Dogfood artifact commit | `ad5d806` |
+| Release commit | `4525a3a` |
+| Dogfood artifact commit | See Repository health workflow |
 | npm package | https://www.npmjs.com/package/oss-signal |
 | npm latest | `0.9.8` |
 | GitHub Action tag | https://github.com/SalmonPlays/oss-signal/tree/v0.9.8 |
@@ -26,16 +26,15 @@ The workflow evidence below points at the latest verified run set. The release r
 
 | Workflow | Status | Run |
 | --- | --- | --- |
-| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27410678463 |
-| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679495 |
-| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679460 |
-| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679444 |
-| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679511 |
-| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679447 |
-| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679448 |
-| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445678784 |
+| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27454690478 |
+| CI | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml |
+| Repository health | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml |
+| Repository inventory | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml |
+| Evidence verification | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml |
+| OpenSSF Scorecard | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml |
+| CodeQL | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml |
 
-The Evidence verification workflow succeeded with `GITHUB_TOKEN`. The committed [evidence verification snapshot](evidence-verification.md) returned PASS 12, SKIP 3, FAIL 0 after anonymous GitHub API limits were exhausted locally.
+The Evidence verification workflow runs with `GITHUB_TOKEN`. The committed [evidence verification snapshot](evidence-verification.md) returned PASS 15, SKIP 0, FAIL 0.
 
 The Repository health run uploads an `oss-signal-report` artifact. That artifact includes the Markdown report, adoption pack, SARIF file, and `oss-signal-artifact-sha256.txt` checksum manifest.
 

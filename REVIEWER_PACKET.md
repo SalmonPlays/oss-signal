@@ -1,6 +1,6 @@
 # OSS Signal Reviewer Packet
 
-Last verified: 2026-06-12T22:17:33.399Z
+Last verified: 2026-06-13T03:06:08.758Z
 
 This is the shortest public verification path for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless maintainers merge, reply, or endorse them.
 
@@ -13,27 +13,26 @@ This is the shortest public verification path for `oss-signal`. It is intentiona
 | GitHub Release | `v0.9.8` published | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8 |
 | GitHub Marketplace | Free Action listing is published | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | Public docs landing page | https://salmonplays.github.io/oss-signal/ |
-| Evidence verification | PASS 12, SKIP 3, FAIL 0 in the committed local snapshot after anonymous GitHub API limits were exhausted; the GitHub workflow runs with `GITHUB_TOKEN` | [docs/evidence-verification.md](docs/evidence-verification.md) |
-| Evidence workflow | Successful public workflow with Markdown artifact | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679511 |
+| Evidence verification | PASS 15, SKIP 0, FAIL 0 in the committed local snapshot; the GitHub workflow runs with `GITHUB_TOKEN` | [docs/evidence-verification.md](docs/evidence-verification.md) |
+| Evidence workflow | Public workflow with Markdown artifact | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml |
 | Merged external contribution evidence | Two merged documentation PRs: one accepted by an outside maintainer and one inbound from an outside contributor | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
 | Field-audit evidence | Five visible issues and four visible PRs remain open | [docs/adoption-evidence.md](docs/adoption-evidence.md) |
 
 ## Latest Verified Workflow Runs
 
-The release run verified `v0.9.8` at release commit `d0a7c85`. The branch checks below verified merge commit `ad5d806`, which closed the inbound external contributor PR.
+The release run verified `v0.9.8` at release commit `4525a3a`. Branch workflow links below point to the public checks for `main`.
 
 | Workflow | Status | Run |
 | --- | --- | --- |
-| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27410678463 |
-| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679495 |
-| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679460 |
-| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679444 |
-| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679511 |
-| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679447 |
-| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445679448 |
-| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27445678784 |
+| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27454690478 |
+| CI | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml |
+| Repository health | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml |
+| Repository inventory | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml |
+| Evidence verification | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml |
+| OpenSSF Scorecard | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml |
+| CodeQL | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml |
 
-The Evidence verification workflow succeeded with `GITHUB_TOKEN`. Local unauthenticated runs can report GitHub API checks as `SKIP` after anonymous rate limits are exhausted.
+The Evidence verification workflow runs with `GITHUB_TOKEN`. Local unauthenticated runs can report GitHub API checks as `SKIP` after anonymous rate limits are exhausted.
 
 The Repository health run uploads `oss-signal-report`. That artifact includes the Markdown report, adoption pack, SARIF file, and `oss-signal-artifact-sha256.txt` checksum manifest.
 

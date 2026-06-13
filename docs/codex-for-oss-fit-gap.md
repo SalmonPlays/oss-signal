@@ -1,6 +1,6 @@
 # Codex for OSS Fit Gap Review
 
-Snapshot: 2026-06-12T22:17:33.399Z
+Snapshot: 2026-06-13T03:06:08.758Z
 
 This page is an intentionally conservative review of how `oss-signal` maps to the public Codex for Open Source criteria. It explains why a selection email may not have arrived yet, what evidence is already public, and which next evidence would actually improve the application.
 
