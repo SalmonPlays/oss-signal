@@ -1,8 +1,10 @@
 # OSS Signal Reviewer Packet
 
-Last reviewed: 2026-06-13T10:20:49Z
+Last reviewed: 2026-06-13T22:45:23Z
 
 Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-13T10:21:37.663Z.
+
+Latest manual evidence refresh: [docs/evidence-refresh-2026-06-14.md](docs/evidence-refresh-2026-06-14.md).
 
 This is the shortest public verification path for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless maintainers merge, reply, or endorse them.
 
@@ -22,6 +24,7 @@ Next independent-usage path: [docs/independent-workflow-run-request.md](docs/ind
 | GitHub Marketplace | Free Action listing is published | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | Public docs landing page | https://salmonplays.github.io/oss-signal/ |
 | Evidence verification | PASS 15, SKIP 0, FAIL 0 in the committed local snapshot; the GitHub workflow runs with `GITHUB_TOKEN` | [docs/evidence-verification.md](docs/evidence-verification.md) |
+| Manual evidence refresh | `d6f75ae` public workflows all completed successfully on main | [docs/evidence-refresh-2026-06-14.md](docs/evidence-refresh-2026-06-14.md) |
 | Evidence workflow | Public workflow with Markdown artifact | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml |
 | Post-submission update | Current 2026-06-13 reviewer update | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
 | Adoption gap closure | Current weak signals and exact evidence needed to close them | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |

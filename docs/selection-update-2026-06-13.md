@@ -12,6 +12,8 @@ replies, or endorses them.
 
 For the shortest root-level verification path, see [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md).
 For the detailed evidence ledger, see [evidence-ledger.md](evidence-ledger.md).
+For the latest manual evidence refresh, see
+[evidence-refresh-2026-06-14.md](evidence-refresh-2026-06-14.md).
 For the current weak signals and closure plan, see
 [adoption-gap-closure.md](adoption-gap-closure.md).
 For the next independent maintainer signal, see
