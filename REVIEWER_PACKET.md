@@ -67,7 +67,7 @@ Expected results:
 - npm latest is `0.9.8`.
 - clean package execution prints `0.9.8`.
 - `npm run check` passes lint, tests, and self-audit.
-- `npm run evidence:verify` reports PASS lines for npm, release, repository metadata, visible field-audit links, and both merged external PRs.
+- `npm run evidence:verify` reports PASS lines for npm, release, repository metadata, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
 
 ## Boundary
 

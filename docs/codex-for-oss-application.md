@@ -68,7 +68,7 @@ The repository currently has:
 - A workflow output mode that renders a no-fail GitHub Actions trial workflow for external maintainers.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.9.8` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.9.8` against a repository target list and uploads an inventory artifact.
-- A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, visible field-audit links, and both merged external PRs.
+- A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
 - A historical self-owned public workflow demo that ran `SalmonPlays/oss-signal@v0.8.4` from another repository and uploaded Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It is retained as supporting workflow evidence, while current `v0.9.8` workflow evidence comes from the main repository health workflow.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
 - A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.

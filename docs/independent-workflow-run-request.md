@@ -9,6 +9,58 @@ Use this when a maintainer wants to evaluate the tool without adopting it yet,
 or when a reviewer wants to see what evidence would close the current
 independent-usage gap.
 
+## Copy-Paste Request
+
+Use this only when the repository already has visible maintainer-readiness work
+where a report could help. Do not mass-post it.
+
+```text
+Would you be open to a no-fail oss-signal trial run in this repository?
+
+It reads repository files only, uses SalmonPlays/oss-signal@v0.9.8, does not
+gate CI, and uploads two artifacts: oss-signal-report.md and
+oss-signal-adoption-pack.md.
+
+The useful outcome can be positive, neutral, or negative. A public workflow run
+or a short "not useful because..." reply is enough. No stars, endorsements, or
+reciprocal work requested.
+
+Copyable workflow:
+https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
+```
+
+## Public Tracking Issue Draft
+
+Use this in `SalmonPlays/oss-signal` if a public issue is needed to collect
+independent trial links:
+
+````markdown
+`oss-signal` is looking for one independent maintainer-owned public workflow run
+to validate the no-fail trial path.
+
+This is not a request for stars, follows, endorsements, reciprocal PRs, or
+promotion. Neutral or negative feedback is useful if it is specific.
+
+Copyable no-fail workflow and request:
+https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
+
+Minimum useful evidence:
+
+```text
+Repository: <owner/repo>
+Run: <public workflow run URL>
+Action or package version: SalmonPlays/oss-signal@v0.9.8 or oss-signal@0.9.8
+Maintainer read: useful / not useful / out of scope / needs rule changes
+```
+
+The trial workflow reads repository files only, does not set `fail-under`, does
+not gate CI, and uploads `oss-signal-report.md` plus
+`oss-signal-adoption-pack.md` as artifacts.
+
+Open PRs, stars, self-owned demo runs, and social posts are not counted as
+independent adoption evidence.
+````
+
 ## Three-Minute Maintainer-Owned Run
 
 Add this workflow to a public repository as
@@ -77,6 +129,20 @@ when the run is public and can be referenced.
 Open [trial feedback](https://github.com/SalmonPlays/oss-signal/issues/new?template=trial_feedback.yml)
 when the report was reviewed but not adopted, or when a finding was noisy or
 intentionally out of scope.
+
+## Minimum Useful Evidence
+
+The smallest evidence that materially improves the reviewer case is:
+
+```text
+Repository: <owner/repo>
+Run: <public workflow run URL>
+Action or package version: SalmonPlays/oss-signal@v0.9.8 or oss-signal@0.9.8
+Maintainer read: useful / not useful / out of scope / needs rule changes
+```
+
+The repository does not need to keep the workflow after the trial. A maintainer
+can delete it after the run if they do not want ongoing automation.
 
 ## How This Is Counted
 

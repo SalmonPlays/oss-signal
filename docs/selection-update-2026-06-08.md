@@ -39,7 +39,7 @@ The field-audit links above show the intended contributor workflow: run a determ
 
 - `Grovanni/oss-signal` now redirects to `Grovanni/pr-signal`, and the previously linked issue was deleted. The local report is kept as an audit example but is not counted as current public evidence.
 - `noctemlabs/signal-oss` and the previously linked PR were not publicly reachable from the GitHub API or URL check. The local report is kept as an audit example but is not counted as current public evidence.
-- The separate public demo repository is owned by `SalmonPlays`, so it is public workflow evidence, not independent third-party adoption.
+- The historical self-owned public demo repository is owned by `SalmonPlays`, so it is supporting workflow evidence, not independent third-party adoption.
 - Stars, forks, watchers, and social posts are not used as proof of quality or adoption.
 
 ## Reviewer Bottom Line

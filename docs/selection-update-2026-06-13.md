@@ -61,7 +61,8 @@ post-submission maintenance progress:
 - Reviewer docs separate accepted external evidence from open outreach and
   historical links that are no longer publicly verifiable.
 - Evidence verification checks npm latest, npm downloads, release metadata,
-  repository metadata, current field-audit links, and both merged external PRs.
+  repository metadata, current field-audit links, the outside-maintainer-accepted
+  PR, and the inbound external contributor PR.
 
 ## Field-Audit Status
 

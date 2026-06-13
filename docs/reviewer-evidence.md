@@ -82,7 +82,7 @@ To verify public evidence links from the repository:
 npm run evidence:verify
 ```
 
-Expected result: PASS lines for npm latest, npm downloads, GitHub release evidence, repository metadata, visible field-audit links, and both merged external PRs. If run locally without `GITHUB_TOKEN` after the anonymous GitHub API limit is exhausted, GitHub API checks are reported as SKIP instead of being counted as verified.
+Expected result: PASS lines for npm latest, npm downloads, GitHub release evidence, repository metadata, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR. If run locally without `GITHUB_TOKEN` after the anonymous GitHub API limit is exhausted, GitHub API checks are reported as SKIP instead of being counted as verified.
 
 The GitHub workflow writes the same evidence to the run step summary and uploads an `oss-signal-evidence-verification` artifact.
 

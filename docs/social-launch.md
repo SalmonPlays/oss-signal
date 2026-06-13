@@ -63,8 +63,8 @@ It is a no-fail GitHub Action trial:
 - uploads oss-signal-report.md
 - does not gate CI unless you later add fail-under
 
-Trial:
-https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
+Copyable no-fail workflow and request:
+https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
 
 Repo:
 https://github.com/SalmonPlays/oss-signal
