@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.8 and GitHub Action SalmonPlays/oss-signal@v0.9.8, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow/Adoption output, passes CI/CodeQL/Release, has evidence verification, a 100/100 self-audit, no-fail maintainer trial and feedback paths, five visible field-audit issues, four visible field-audit PRs, and two merged external documentation PRs.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.8 and GitHub Action SalmonPlays/oss-signal@v0.9.8, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow/Adoption output, passes CI/CodeQL/Release, has evidence verification, a 100/100 self-audit, no-fail maintainer trial and feedback paths, five visible field-audit issues, four visible field-audit PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR.
 ```
 
 ## Interest
@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.8 latest, 3389 npm last-month downloads reported by the registry API on 2026-06-13, a published v0.9.8 release, a reusable GitHub Action with inventory, workflow, and adoption-pack output, no-fail maintainer trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible field-audit PRs, and two merged external documentation PRs.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.8 latest, 3389 npm last-month downloads reported by the registry API on 2026-06-13, a published v0.9.8 release, a reusable GitHub Action with inventory, workflow, and adoption-pack output, no-fail maintainer trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible field-audit PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR.
 ```
 
 ## Evidence Links
@@ -89,12 +89,14 @@ The project is early, so I am not overstating adoption. Current evidence include
 - npm package: https://www.npmjs.com/package/oss-signal
 - GitHub Release v0.9.8: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8
 - Main repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
-- Separate workflow demo repository: https://github.com/SalmonPlays/oss-signal-adoption-demo
-- Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
+- Historical self-owned workflow demo repository: https://github.com/SalmonPlays/oss-signal-adoption-demo
+- Historical self-owned workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
+- Evidence refresh, 2026-06-14: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-refresh-2026-06-14.md
 - Codex for OSS fit/gap review: https://github.com/SalmonPlays/oss-signal/blob/main/docs/codex-for-oss-fit-gap.md
 - Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-13.md
+- Independent workflow run request: https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
 - Maintainer feedback: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-feedback.md
 - Outside-maintainer-accepted external PR: https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361

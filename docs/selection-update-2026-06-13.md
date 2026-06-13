@@ -46,7 +46,7 @@ and a concrete workflow for reducing OSS maintainer triage and review load.
 | Evidence verification | The committed evidence snapshot reports PASS 15, SKIP 0, FAIL 0. The workflow runs with `GITHUB_TOKEN`. | [evidence-verification.md](evidence-verification.md) |
 | npm downloads | npm API returned 3389 downloads for the last-month window from 2026-05-14 to 2026-06-12. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
 | Repository interest | GitHub API returned 0 stars and 1 fork at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
-| External PR evidence | Two merged documentation PRs are recorded: one accepted by an outside maintainer and one inbound from an outside contributor. | https://github.com/icoretech/codex-action/pull/24 and https://github.com/SalmonPlays/oss-signal/pull/14 |
+| External PR evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR are recorded. | https://github.com/icoretech/codex-action/pull/24 and https://github.com/SalmonPlays/oss-signal/pull/14 |
 
 ## Post-Submission Delta
 
@@ -82,8 +82,8 @@ enough for maintainers to review.
 ## Boundaries
 
 - The project is early and should not claim broad independent adoption.
-- The separate public demo repository is owned by `SalmonPlays`, so it is public
-  workflow evidence, not independent third-party adoption.
+- The historical self-owned public demo repository is owned by `SalmonPlays`, so
+  it is supporting workflow evidence, not independent third-party adoption.
 - Open field-audit issues and PRs are not counted as accepted adoption.
 - The inbound `SalmonPlays/oss-signal` PR is external contributor evidence, not
   independent maintainer adoption.

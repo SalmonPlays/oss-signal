@@ -23,8 +23,8 @@ Last verified: 2026-06-13T10:21:37.663Z
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
 - Launch announcement Discussion: https://github.com/SalmonPlays/oss-signal/discussions/13
 - Launch X post: https://x.com/paopaopaolin/status/2062710560857489698
-- Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
-- Separate public workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
+- Historical self-owned workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo
+- Historical self-owned workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Self-audit report: [docs/self-audit.md](self-audit.md)
 - SARIF self-audit output: [docs/examples/self-audit.sarif](examples/self-audit.sarif)
 - GitHub URL audit report: [docs/examples/github-url-report.md](examples/github-url-report.md)
@@ -103,7 +103,7 @@ Current public workflow status:
 - Code Scanning walkthrough: SARIF upload permissions, expected warnings, fixture, and output example are documented
 - GitHub repository hardening: `main` branch protection, private vulnerability reporting, dependency graph, automatic dependency submission, Dependabot alerts/security updates/grouped updates/malware alerts, secret scanning, and push protection are enabled
 - Maintainer workflow Discussion: published
-- Separate public workflow demo: passing
+- Historical self-owned workflow demo: passing
 
 The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-12 release updates the expected latest version to `0.9.8`. The 2026-06-13 download check returned 3389 downloads for the last-month window.
 
@@ -181,7 +181,7 @@ Public CI evidence:
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - OpenSSF Scorecard workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
-- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
+- Historical self-owned workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Reviewer verification quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 
 ## Boundaries

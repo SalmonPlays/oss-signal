@@ -43,7 +43,8 @@ Expected result with API access: score `100`, grade `A`, source `github`.
 - CodeQL: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
 - OpenSSF Scorecard: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
-- Separate workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
+- Historical self-owned workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
+- Evidence refresh, 2026-06-14: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-refresh-2026-06-14.md
 - GitHub Pages source: https://github.com/SalmonPlays/oss-signal/blob/main/docs/index.md
 - GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
@@ -137,7 +138,7 @@ Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` r
 
 ## Boundaries
 
-This project does not claim broad independent adoption yet. The separate workflow demo is public but owned by `SalmonPlays`, so it is treated as public workflow evidence rather than third-party adoption. One external PR has been merged, while the five currently visible field-audit issues and four currently visible field-audit follow-up PRs remain open unless their target maintainers merge, reply, or otherwise endorse them.
+This project does not claim broad independent adoption yet. The historical self-owned workflow demo is public but owned by `SalmonPlays`, so it is treated as supporting workflow evidence rather than third-party adoption. The strongest accepted external evidence is one outside-maintainer-accepted documentation PR plus one inbound external contributor PR. The five currently visible field-audit issues and four currently visible field-audit follow-up PRs remain open unless their target maintainers merge, reply, or otherwise endorse them.
 
 ## Primary Evidence Pages
 

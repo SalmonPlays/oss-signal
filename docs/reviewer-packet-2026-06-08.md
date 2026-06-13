@@ -60,7 +60,7 @@ The Repository health run uploads an `oss-signal-report` artifact. That artifact
 - The package, GitHub Action, Marketplace listing, release, and Pages documentation are public.
 - The repository dogfoods the public Action tag and publishes workflow artifacts.
 - Public evidence is now checked by an Evidence verification workflow and uploaded as a Markdown artifact.
-- The strongest accepted external evidence is two merged documentation PRs: one accepted by an outside maintainer and one inbound from an outside contributor.
+- The strongest accepted external evidence is one outside-maintainer-accepted documentation PR plus one inbound external contributor PR.
 - The remaining external field-audit issues and PRs are useful workflow evidence, but they are not counted as adoption.
 
 ## Current Gap

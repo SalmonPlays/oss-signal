@@ -12,7 +12,7 @@ Best audience:
 - Contributors who want to open small, useful maintainer-workflow PRs.
 - Teams that want CI evidence for README, license, contributing, security, templates, tests, CodeQL, Dependabot, and release notes.
 
-Do not claim broad adoption. The current evidence is a public npm package, GitHub Marketplace Action, self-audit, workflow demo, no-fail maintainer trial workflow, five currently visible public field-audit issues, four currently visible open external follow-up PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR.
+Do not claim broad adoption. The current evidence is a public npm package, GitHub Marketplace Action, self-audit, current `v0.9.8` dogfood workflows, a historical self-owned workflow demo, no-fail maintainer trial workflow, five currently visible public field-audit issues, four currently visible open external follow-up PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR.
 
 ## Primary Links
 
@@ -21,6 +21,7 @@ Do not claim broad adoption. The current evidence is a public npm package, GitHu
 - GitHub Marketplace: https://github.com/marketplace/actions/oss-signal
 - Reviewer evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/reviewer-evidence.md
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
+- Independent workflow run request: https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
 - Maintainer feedback: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-feedback.md
 - Maintainer discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

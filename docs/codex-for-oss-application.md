@@ -16,7 +16,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Repository inventory workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml
 - Evidence verification workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
 - CodeQL workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/codeql.yml
-- Separate public workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
+- Historical self-owned workflow demo: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Maintainer evidence: [adoption-evidence.md](adoption-evidence.md)
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
@@ -78,13 +78,13 @@ The repository currently has:
 - A local self-audit score of 100/100.
 - A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.9.8 -- oss-signal --version`, returning `0.9.8`.
 - Public reports, issues, and PRs created from real repository audits, including five currently visible posted field-audit issues and four currently visible follow-up PRs.
-- Two merged external documentation PRs recorded in [evidence-ledger.md](evidence-ledger.md): one accepted by an outside maintainer with a public merge comment, and one inbound from an outside contributor.
+- External contribution evidence recorded in [evidence-ledger.md](evidence-ledger.md): one documentation PR accepted by an outside maintainer with a public merge comment, plus one inbound PR from an outside contributor.
 
-## Separate Workflow Demo
+## Historical Self-Owned Workflow Demo
 
 The repository https://github.com/SalmonPlays/oss-signal-adoption-demo ran the public `SalmonPlays/oss-signal@v0.8.4` Action tag from a separate workflow. The successful run at https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373 uploaded an `oss-signal-adoption-demo-report` artifact containing Markdown, SARIF, Issue-ready, and no-fail workflow output.
 
-This is intentionally described as a separate public workflow demo rather than third-party adoption because the repository is also owned by `SalmonPlays`. It still proves that the published Action tag is consumable outside the main repository.
+This is intentionally described as a historical self-owned workflow demo rather than third-party adoption because the repository is also owned by `SalmonPlays`. It still proves that the published Action tag was consumable outside the main repository at the time of that run.
 
 ## Field Audits And Follow-Up PRs
 

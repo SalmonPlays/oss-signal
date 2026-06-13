@@ -53,7 +53,7 @@ Checked from GitHub on 2026-06-13T10:21:37.663Z. The committed Evidence verifica
 
 ## Boundaries
 
-- The separate workflow demo is public but owned by `SalmonPlays`, so it is evidence that the Action works outside the main repository, not independent third-party adoption.
+- The historical self-owned workflow demo is public but owned by `SalmonPlays`, so it is evidence that an older Action tag worked outside the main repository, not current `v0.9.8` independent third-party adoption.
 - Open external issues and PRs are not counted as accepted adoption.
 - The inbound `SalmonPlays/oss-signal` PR is counted as external contributor evidence, not as independent maintainer adoption.
 - Deleted, moved, or unavailable external links are not counted as current public evidence.

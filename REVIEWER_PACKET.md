@@ -29,7 +29,7 @@ Next independent-usage path: [docs/independent-workflow-run-request.md](docs/ind
 | Post-submission update | Current 2026-06-13 reviewer update | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
 | Adoption gap closure | Current weak signals and exact evidence needed to close them | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
 | Independent run request | Copyable no-fail workflow for maintainer-owned public repositories | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
-| Merged external contribution evidence | Two merged documentation PRs: one accepted by an outside maintainer and one inbound from an outside contributor | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
+| External contribution evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
 | Field-audit evidence | Five visible issues and four visible PRs remain open | [docs/adoption-evidence.md](docs/adoption-evidence.md) |
 
 ## Latest Verified Workflow Runs
@@ -71,4 +71,4 @@ Expected results:
 
 ## Boundary
 
-`oss-signal` is still early. It does not claim broad independent adoption, popularity, stars, or a large user base. The strongest accepted external evidence today is two merged documentation PRs: one accepted by an outside maintainer and one inbound from an outside contributor. The remaining field-audit issues and PRs are public workflow evidence until target maintainers respond, merge, or endorse them.
+`oss-signal` is still early. It does not claim broad independent adoption, popularity, stars, or a large user base. The strongest accepted external evidence today is one outside-maintainer-accepted documentation PR plus one inbound external contributor PR. The remaining field-audit issues and PRs are public workflow evidence until target maintainers respond, merge, or endorse them.

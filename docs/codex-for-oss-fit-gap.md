@@ -27,7 +27,7 @@ This page is an intentionally conservative review of how `oss-signal` maps to th
 | --- | --- | --- | --- |
 | Active OSS maintainer | Public repository, `MAINTAINERS.md`, `GOVERNANCE.md`, CODEOWNERS, issue forms, Discussions, releases, npm package, GitHub Action, and public workflows. | The maintainer role is clear for this repository, but the project is new. | Keep releases and issues disciplined; avoid noisy changes that look like artificial activity. |
 | Meaningful usage | npm package is published, npm registry API reported 3389 last-month downloads for 2026-05-14 to 2026-06-12, GitHub Marketplace listing is live, and public Action runs produce artifacts. | Downloads are early and do not yet prove broad adoption. Stars are still zero. | One independent maintainer-owned workflow run using `SalmonPlays/oss-signal@v0.9.8`. |
-| Broad adoption | Separate public demo repository runs the Action, and the main repository dogfoods the Action with Markdown, SARIF, inventory, and adoption-pack artifacts. | The separate demo is owned by `SalmonPlays`, so it is workflow evidence, not independent third-party adoption. | A real outside repository using the Action in CI, even as a no-fail trial. |
+| Broad adoption | The main repository dogfoods the `v0.9.8` Action with Markdown, SARIF, inventory, and adoption-pack artifacts. A historical self-owned demo ran an older Action tag from another public repository. | The demo is owned by `SalmonPlays`, so it is supporting workflow evidence, not independent third-party adoption. | A real outside repository using the Action in CI, even as a no-fail trial. |
 | Ecosystem importance | The tool targets repeatable OSS maintainer work: triage, CI evidence, SARIF, issue-ready reports, inventory, adoption packs, and release evidence. | Importance is plausible but not proven by popularity or dependent projects. | Maintainer feedback that the report saved review or triage time. |
 | Active maintenance | `v0.9.8` release, passing CI, CodeQL, OpenSSF Scorecard, evidence verification, repository health, inventory workflow, release workflow, and Pages. | This part is comparatively strong. | Keep latest release evidence verified and avoid version drift in reviewer docs. |
 | PR review and issue triage | Five currently visible field-audit issues, four visible follow-up PRs, one outside-maintainer-accepted documentation PR, one inbound external contributor PR, and a documented maintainer playbook. | Most field-audit PRs remain open and are not adoption unless maintainers reply, merge, or endorse. The inbound PR is contributor evidence, not third-party maintainer adoption. | A maintainer-owned workflow run, maintainer reply on an existing field-audit issue or PR, or another outside-maintainer-accepted PR. |
@@ -36,7 +36,7 @@ This page is an intentionally conservative review of how `oss-signal` maps to th
 
 ## Highest-Signal Next Moves
 
-1. Help one independent maintainer run the no-fail workflow from [maintainer-trial.md](maintainer-trial.md) and link the public run.
+1. Help one independent maintainer run the no-fail workflow from [independent-workflow-run-request.md](independent-workflow-run-request.md) and link the public run.
 2. Continue existing field-audit PRs only with useful maintainer replies or real review changes; do not pester.
 3. Land one more external PR where the target maintainer clearly benefits from the change.
 4. Refresh npm download evidence when the registry window updates, but treat it as supporting evidence rather than proof of adoption.

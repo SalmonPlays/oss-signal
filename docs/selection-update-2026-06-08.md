@@ -18,8 +18,8 @@ For the shortest current evidence bundle, see the root [REVIEWER_PACKET.md](../R
 | Main workflow evidence | CI, Repository health, Repository inventory, Evidence verification, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
 | npm downloads | npm API returned 3389 downloads for the last-month window from 2026-05-14 to 2026-06-12. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
 | Repository interest | GitHub API returned 0 stars and 1 fork at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
-| Merged external contribution evidence | Two merged documentation PRs: one accepted by an outside maintainer and one inbound from an outside contributor. | https://github.com/icoretech/codex-action/pull/24 and https://github.com/SalmonPlays/oss-signal/pull/14 |
-| Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, current external issue/PR links, and both merged external PRs. The committed local snapshot reports PASS 15, SKIP 0, FAIL 0; the workflow runs with `GITHUB_TOKEN`. | `.github/workflows/evidence-verify.yml` |
+| External contribution evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR. | https://github.com/icoretech/codex-action/pull/24 and https://github.com/SalmonPlays/oss-signal/pull/14 |
+| Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, current external issue/PR links, the outside-maintainer-accepted PR, and the inbound external contributor PR. The committed local snapshot reports PASS 15, SKIP 0, FAIL 0; the workflow runs with `GITHUB_TOKEN`. | `.github/workflows/evidence-verify.yml` |
 
 ## Current Field-Audit Status
 
