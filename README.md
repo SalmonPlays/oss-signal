@@ -29,6 +29,7 @@ If you are evaluating this project for maintainer support, start here:
 | Shortest verification path | [REVIEWER_PACKET.md](REVIEWER_PACKET.md) |
 | Current post-submission status | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
 | Evidence ledger and boundaries | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
+| Adoption gap closure plan | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
 | Independent maintainer trial request | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
 
 Current public evidence includes `oss-signal@0.9.8` on npm, `SalmonPlays/oss-signal@v0.9.8` as a GitHub Action, a Marketplace listing, public CI/CodeQL/OpenSSF Scorecard/evidence workflows, PASS 15 / SKIP 0 / FAIL 0 evidence verification, one outside-maintainer-accepted PR, and one inbound external contributor PR. The project does not claim broad independent adoption yet.
@@ -78,7 +79,7 @@ For the full first-run path, see [docs/quickstart.md](docs/quickstart.md).
 
 ## Maintainer Evidence Snapshot
 
-The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md), [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.9.8`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.9.8`.
@@ -91,6 +92,7 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Evidence ledger: [docs/evidence-ledger.md](docs/evidence-ledger.md)
 - Evidence verification snapshot: [docs/evidence-verification.md](docs/evidence-verification.md)
 - Codex for OSS fit/gap review: [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md)
+- Adoption gap closure plan: [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md)
 - Adoption kit: [docs/adoption-kit.md](docs/adoption-kit.md)
 - Maintainer trial: [docs/maintainer-trial.md](docs/maintainer-trial.md)
 - Maintainer feedback: [docs/maintainer-feedback.md](docs/maintainer-feedback.md)

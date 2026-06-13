@@ -11,6 +11,7 @@ This page is an intentionally conservative review of how `oss-signal` maps to th
 - The program looks for repository usage, ecosystem importance, and active maintenance. `oss-signal` is strong on active maintenance and maintainer workflow evidence, but still early on broad independent adoption.
 - Stars are not the official criterion by themselves, but zero stars does make public popularity weaker than projects with obvious existing usage.
 - The strongest current gap is independent maintainer use: a maintainer-owned workflow run, maintainer reply, or additional outside-maintainer-accepted PR would be stronger than more self-authored docs.
+- The weak-signal closure plan is tracked separately in [adoption-gap-closure.md](adoption-gap-closure.md).
 
 ## Official Criteria Sources
 
@@ -40,6 +41,7 @@ This page is an intentionally conservative review of how `oss-signal` maps to th
 3. Land one more external PR where the target maintainer clearly benefits from the change.
 4. Refresh npm download evidence when the registry window updates, but treat it as supporting evidence rather than proof of adoption.
 5. Keep the reviewer path short: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md), [reviewer-evidence.md](reviewer-evidence.md), [evidence-ledger.md](evidence-ledger.md), and this fit/gap page.
+6. Track zero stars, open field-audit PRs, and independent-run criteria in [adoption-gap-closure.md](adoption-gap-closure.md).
 
 ## Do Not Do
 

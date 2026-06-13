@@ -35,6 +35,7 @@ Run as a GitHub Action:
 - Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
 - Latest committed evidence verification: [PASS 15, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-13T10:21:37.663Z. The Evidence verification workflow runs with `GITHUB_TOKEN` and passed on `main`.
 - Current post-submission update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md), with current package, workflow, field-audit, and external PR evidence.
+- Adoption gap closure plan: [adoption-gap-closure.md](adoption-gap-closure.md), with the current weak signals and the exact evidence that would close them.
 - Independent run request: [independent-workflow-run-request.md](independent-workflow-run-request.md), with a copyable no-fail workflow for maintainer-owned public repositories.
 - Latest reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md), with public workflow run links and current package evidence.
 - Evidence workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml
@@ -47,6 +48,7 @@ Run as a GitHub Action:
 - [Trust center](trust-center.md)
 - [Adoption evidence](adoption-evidence.md)
 - [Codex for OSS fit/gap review](codex-for-oss-fit-gap.md)
+- [Adoption gap closure plan](adoption-gap-closure.md)
 - [Selection update, 2026-06-13](selection-update-2026-06-13.md)
 - [Independent workflow run request](independent-workflow-run-request.md)
 - [Selection update, 2026-06-08](selection-update-2026-06-08.md)

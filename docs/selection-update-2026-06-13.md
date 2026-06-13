@@ -12,6 +12,8 @@ replies, or endorses them.
 
 For the shortest root-level verification path, see [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md).
 For the detailed evidence ledger, see [evidence-ledger.md](evidence-ledger.md).
+For the current weak signals and closure plan, see
+[adoption-gap-closure.md](adoption-gap-closure.md).
 For the next independent maintainer signal, see
 [independent-workflow-run-request.md](independent-workflow-run-request.md).
 
@@ -92,3 +94,5 @@ workflow run using `SalmonPlays/oss-signal@v0.9.8`, a maintainer reply on an
 existing field-audit issue or PR, or another outside-maintainer-accepted PR.
 The copyable no-fail workflow and reporting path are in
 [independent-workflow-run-request.md](independent-workflow-run-request.md).
+The weak-signal closure criteria are tracked in
+[adoption-gap-closure.md](adoption-gap-closure.md).
