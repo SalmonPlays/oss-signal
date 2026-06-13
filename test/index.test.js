@@ -168,6 +168,7 @@ test("renderAdoption creates a no-fail maintainer trial pack", async () => {
     assert.match(adoption, /# OSS Signal Adoption Pack/);
     assert.match(adoption, /Quick Local Trial/);
     assert.match(adoption, /No-Fail GitHub Actions Trial/);
+    assert.match(adoption, /oss-signal-adoption-pack\.md/);
     assert.match(adoption, /Maintainer Decision Checklist/);
     assert.match(adoption, /decline as out of scope/);
     assert.match(adoption, /Share Public Evidence/);
@@ -192,6 +193,10 @@ test("renderWorkflow creates a no-fail Action trial workflow", () => {
   assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
   assert.match(workflow, new RegExp(`uses: SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
   assert.match(workflow, /summary: "true"/);
+  assert.match(workflow, /format: adoption/);
+  assert.match(workflow, /summary: "false"/);
+  assert.match(workflow, /oss-signal-adoption-pack\.md/);
+  assert.match(workflow, /path: \|/);
   assert.doesNotMatch(workflow, /fail-under/);
 });
 

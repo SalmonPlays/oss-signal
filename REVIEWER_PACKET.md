@@ -8,9 +8,9 @@ This is the shortest public verification path for `oss-signal`. It is intentiona
 
 | Signal | Current value | Verification |
 | --- | --- | --- |
-| npm package | `oss-signal@0.9.7` is `latest` | https://www.npmjs.com/package/oss-signal |
-| GitHub Action | `SalmonPlays/oss-signal@v0.9.7` | https://github.com/SalmonPlays/oss-signal/tree/v0.9.7 |
-| GitHub Release | `v0.9.7` published | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.7 |
+| npm package | `oss-signal@0.9.8` is `latest` | https://www.npmjs.com/package/oss-signal |
+| GitHub Action | `SalmonPlays/oss-signal@v0.9.8` | https://github.com/SalmonPlays/oss-signal/tree/v0.9.8 |
+| GitHub Release | `v0.9.8` published | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8 |
 | GitHub Marketplace | Free Action listing is published | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | Public docs landing page | https://salmonplays.github.io/oss-signal/ |
 | Evidence verification | PASS 12, SKIP 3, FAIL 0 in the committed local snapshot after anonymous GitHub API limits were exhausted; the GitHub workflow runs with `GITHUB_TOKEN` | [docs/evidence-verification.md](docs/evidence-verification.md) |
@@ -20,7 +20,7 @@ This is the shortest public verification path for `oss-signal`. It is intentiona
 
 ## Latest Verified Workflow Runs
 
-The release run verified `v0.9.7` at release commit `d0a7c85`. The branch checks below verified merge commit `ad5d806`, which closed the inbound external contributor PR.
+The release run verified `v0.9.8` at release commit `d0a7c85`. The branch checks below verified merge commit `ad5d806`, which closed the inbound external contributor PR.
 
 | Workflow | Status | Run |
 | --- | --- | --- |
@@ -41,7 +41,7 @@ The Repository health run uploads `oss-signal-report`. That artifact includes th
 
 ```bash
 npm view oss-signal version dist-tags --json
-npm exec --yes --package=oss-signal@0.9.7 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.9.8 -- oss-signal --version
 git clone https://github.com/SalmonPlays/oss-signal.git
 cd oss-signal
 npm ci
@@ -51,8 +51,8 @@ npm run evidence:verify
 
 Expected results:
 
-- npm latest is `0.9.7`.
-- clean package execution prints `0.9.7`.
+- npm latest is `0.9.8`.
+- clean package execution prints `0.9.8`.
 - `npm run check` passes lint, tests, and self-audit.
 - `npm run evidence:verify` reports PASS lines for npm, release, repository metadata, visible field-audit links, and both merged external PRs.
 

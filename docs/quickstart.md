@@ -89,15 +89,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: SalmonPlays/oss-signal@v0.9.7
+      - uses: SalmonPlays/oss-signal@v0.9.8
         with:
           output: oss-signal-report.md
           summary: "true"
+      - uses: SalmonPlays/oss-signal@v0.9.8
+        if: always()
+        with:
+          format: adoption
+          output: oss-signal-adoption-pack.md
+          summary: "false"
       - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: oss-signal-report
-          path: oss-signal-report.md
+          path: |
+            oss-signal-report.md
+            oss-signal-adoption-pack.md
 ```
 
 Add `fail-under` only after the maintainer agrees the signal should gate CI.

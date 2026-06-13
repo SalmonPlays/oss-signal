@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.9.7";
+export const VERSION = "0.9.8";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -555,7 +555,7 @@ export function renderAdoption(report) {
     "",
     "## No-Fail GitHub Actions Trial",
     "",
-    "Copy this workflow into `.github/workflows/oss-signal-trial.yml`. It writes a step summary and uploads a Markdown artifact, but it does not fail pull requests.",
+    "Copy this workflow into `.github/workflows/oss-signal-trial.yml`. It writes a step summary and uploads Markdown report plus adoption-pack artifacts, but it does not fail pull requests.",
     "",
     "```yaml",
     renderWorkflow().trimEnd(),
@@ -652,11 +652,20 @@ jobs:
         with:
           output: oss-signal-report.md
           summary: "true"
+      - uses: SalmonPlays/oss-signal@v${VERSION}
+        if: always()
+        id: oss-signal-adoption
+        with:
+          format: adoption
+          output: oss-signal-adoption-pack.md
+          summary: "false"
       - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: oss-signal-report
-          path: oss-signal-report.md
+          path: |
+            oss-signal-report.md
+            oss-signal-adoption-pack.md
 `;
 }
 

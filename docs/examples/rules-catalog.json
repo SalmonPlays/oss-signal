@@ -1,6 +1,6 @@
 {
   "tool": "oss-signal",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "totalRules": 16,
   "totalWeight": 110,
   "scoring": {

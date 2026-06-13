@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.7 and GitHub Action SalmonPlays/oss-signal@v0.9.7, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow/Adoption output, passes CI/CodeQL/Release, has evidence verification, a 100/100 self-audit, no-fail maintainer trial and feedback paths, five visible field-audit issues, four visible field-audit PRs, and two merged external documentation PRs.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.8 and GitHub Action SalmonPlays/oss-signal@v0.9.8, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow/Adoption output, passes CI/CodeQL/Release, has evidence verification, a 100/100 self-audit, no-fail maintainer trial and feedback paths, five visible field-audit issues, four visible field-audit PRs, and two merged external documentation PRs.
 ```
 
 ## Interest
@@ -81,13 +81,13 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.7 latest, 3086 npm last-month downloads reported by the registry API on 2026-06-12, a published v0.9.7 release, a reusable GitHub Action with inventory, workflow, and adoption-pack output, no-fail maintainer trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible field-audit PRs, and two merged external documentation PRs.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.8 latest, 3086 npm last-month downloads reported by the registry API on 2026-06-12, a published v0.9.8 release, a reusable GitHub Action with inventory, workflow, and adoption-pack output, no-fail maintainer trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible field-audit PRs, and two merged external documentation PRs.
 ```
 
 ## Evidence Links
 
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Release v0.9.7: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.7
+- GitHub Release v0.9.8: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8
 - Main repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Separate workflow demo repository: https://github.com/SalmonPlays/oss-signal-adoption-demo
 - Separate successful workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373

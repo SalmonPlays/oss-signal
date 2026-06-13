@@ -4,7 +4,7 @@ Last verified: 2026-06-12T22:17:33.399Z
 
 This packet gives reviewers one page of current, verifiable evidence for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless a maintainer merges, replies, or endorses them.
 
-The workflow evidence below points at the latest verified run set. The release run verified `v0.9.7` at release commit `d0a7c85`; the branch checks verified merge commit `ad5d806`, which closed the inbound external contributor PR.
+The workflow evidence below points at the latest verified run set. The release run verified `v0.9.8` at release commit `d0a7c85`; the branch checks verified merge commit `ad5d806`, which closed the inbound external contributor PR.
 
 ## Current Project State
 
@@ -14,9 +14,9 @@ The workflow evidence below points at the latest verified run set. The release r
 | Release commit | `d0a7c85` |
 | Dogfood artifact commit | `ad5d806` |
 | npm package | https://www.npmjs.com/package/oss-signal |
-| npm latest | `0.9.7` |
-| GitHub Action tag | https://github.com/SalmonPlays/oss-signal/tree/v0.9.7 |
-| GitHub Release | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.7 |
+| npm latest | `0.9.8` |
+| GitHub Action tag | https://github.com/SalmonPlays/oss-signal/tree/v0.9.8 |
+| GitHub Release | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8 |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | https://salmonplays.github.io/oss-signal/ |
 | Repository interest | 0 stars, 1 fork |

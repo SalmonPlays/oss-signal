@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.9.8
+
+- Updated generated no-fail trial workflows to upload both the Markdown report and adoption pack artifacts.
+- Added tests that keep generated trial workflows evidence-ready without failing pull requests.
+- Documented the trial workflow as a one-run path for public maintainer evidence.
+
 ## 0.9.7
 
 - Added a public evidence sharing section to adoption packs with adoption-report and trial-feedback links.
