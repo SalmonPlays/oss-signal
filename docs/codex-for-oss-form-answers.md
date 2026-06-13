@@ -94,7 +94,7 @@ The project is early, so I am not overstating adoption. Current evidence include
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
 - Codex for OSS fit/gap review: https://github.com/SalmonPlays/oss-signal/blob/main/docs/codex-for-oss-fit-gap.md
-- Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-08.md
+- Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-13.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
 - Maintainer feedback: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-feedback.md
 - Outside-maintainer-accepted external PR: https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361

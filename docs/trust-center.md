@@ -41,7 +41,7 @@ What it does have is a complete, public maintainer workflow:
 | Citation | [CITATION.cff](../CITATION.cff) | GitHub can expose a standard citation route for the project. |
 | Outside-maintainer-accepted external PR | https://github.com/icoretech/codex-action/pull/24 | An outside maintainer merged a focused documentation safety fix and left a public merge comment. |
 | Inbound external contributor PR | https://github.com/SalmonPlays/oss-signal/pull/14 | An outside contributor added a compact JSON score example that was merged into this repository. |
-| Selection update | [selection-update-2026-06-08](selection-update-2026-06-08.md) | Reviewers get a current post-submission status page with discounted historical links called out. |
+| Selection update | [selection-update-2026-06-13](selection-update-2026-06-13.md) | Reviewers get the current post-submission status page with current package, workflow, field-audit, and external PR evidence. |
 | Evidence ledger | [evidence-ledger](evidence-ledger.md) | Reviewers get one compact page separating accepted evidence, supporting demos, open PRs, and boundaries. |
 | External workflow evidence | [adoption evidence](adoption-evidence.md) | Field audits show the intended maintainer workflow on public repositories. |
 | Contributor intake | [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22), [adoption kit](adoption-kit.md) | Outside users have structured ways to try, report, and contribute. |

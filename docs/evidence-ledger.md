@@ -25,7 +25,8 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Outside-maintainer-accepted external PR | https://github.com/icoretech/codex-action/pull/24 | Merged 2026-06-04 | External maintainer merged the focused Codex Action documentation safety fix and left a merge comment. |
 | Inbound external contributor PR | https://github.com/SalmonPlays/oss-signal/pull/14 | Merged 2026-06-12 | External contributor `ded-furby` added a compact JSON score example and closed issue #7. |
 | Maintainer merge comment | https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 | Public maintainer response | Stronger than an open PR because the external maintainer accepted the change. |
-| Selection update | [selection-update-2026-06-08.md](selection-update-2026-06-08.md) | Published | Compact post-submission status page for reviewers. |
+| Current selection update | [selection-update-2026-06-13.md](selection-update-2026-06-13.md) | Published | Current compact post-submission status page for reviewers. |
+| Prior selection update | [selection-update-2026-06-08.md](selection-update-2026-06-08.md) | Historical | Earlier post-submission status page retained as history. |
 | Field-audit issues | [adoption evidence](adoption-evidence.md#public-field-audits-and-prs) | Five currently visible posted issues | These show the audit-to-maintainer-follow-up workflow, but are not counted as adoption unless maintainers reply, act, or endorse them. |
 | Field-audit PRs | [adoption evidence](adoption-evidence.md#public-field-audits-and-prs) | Four currently visible open PRs | These are not counted as accepted adoption unless maintainers merge, reply, or endorse them. |
 | Launch announcement | https://github.com/SalmonPlays/oss-signal/discussions/13 | Posted | Public maintainer-facing announcement with links to npm, Marketplace, and reviewer evidence. |

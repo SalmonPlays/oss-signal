@@ -47,7 +47,7 @@ Last verified: 2026-06-13T03:06:08.758Z
 - Roadmap: [docs/roadmap.md](roadmap.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
 - Evidence ledger: [docs/evidence-ledger.md](evidence-ledger.md)
-- Selection update: [docs/selection-update-2026-06-08.md](selection-update-2026-06-08.md)
+- Selection update: [docs/selection-update-2026-06-13.md](selection-update-2026-06-13.md)
 - Post-submission update: [docs/post-submission-update.md](post-submission-update.md)
 - Release process: [docs/release-process.md](release-process.md)
 - Codex for Open Source application brief: [docs/codex-for-oss-application.md](codex-for-oss-application.md)

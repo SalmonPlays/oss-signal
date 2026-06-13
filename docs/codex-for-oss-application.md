@@ -21,7 +21,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Codex for OSS fit/gap review: [codex-for-oss-fit-gap.md](codex-for-oss-fit-gap.md)
-- Selection update: [selection-update-2026-06-08.md](selection-update-2026-06-08.md)
+- Selection update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)
 - Maintainer feedback: [maintainer-feedback.md](maintainer-feedback.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)

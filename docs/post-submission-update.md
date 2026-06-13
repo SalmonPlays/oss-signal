@@ -54,7 +54,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 - No-fail maintainer trial: [maintainer-trial.md](maintainer-trial.md) gives external maintainers a copyable workflow that publishes a report without gating CI.
 - Public field-audit evidence: five currently visible posted field-audit issues, four currently visible follow-up PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR are tracked in [evidence-ledger.md](evidence-ledger.md). Historical audit links that disappeared are kept as local examples but are not counted as public adoption evidence.
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
-- Selection update: [selection-update-2026-06-08.md](selection-update-2026-06-08.md)
+- Current selection update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 - Maintainer plan output: [plan-output.md](plan-output.md)
 
