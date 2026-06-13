@@ -1,6 +1,6 @@
 # Trust Center
 
-Last verified: 2026-06-13T03:06:08.758Z
+Last verified: 2026-06-13T10:21:37.663Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 

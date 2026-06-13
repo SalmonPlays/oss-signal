@@ -33,7 +33,7 @@ Run as a GitHub Action:
 ## Reviewer Evidence
 
 - Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
-- Latest committed evidence verification: [PASS 15, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-13T03:06:08.758Z. The Evidence verification workflow runs with `GITHUB_TOKEN` and passed on `main`.
+- Latest committed evidence verification: [PASS 15, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-13T10:21:37.663Z. The Evidence verification workflow runs with `GITHUB_TOKEN` and passed on `main`.
 - Current post-submission update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md), with current package, workflow, field-audit, and external PR evidence.
 - Independent run request: [independent-workflow-run-request.md](independent-workflow-run-request.md), with a copyable no-fail workflow for maintainer-owned public repositories.
 - Latest reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md), with public workflow run links and current package evidence.

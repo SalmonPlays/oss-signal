@@ -1,6 +1,8 @@
 # OSS Signal Reviewer Packet
 
-Last verified: 2026-06-13T03:06:08.758Z
+Last reviewed: 2026-06-13T10:20:49Z
+
+Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-13T10:21:37.663Z.
 
 This is the shortest public verification path for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless maintainers merge, reply, or endorse them.
 

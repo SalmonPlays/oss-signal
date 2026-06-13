@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-13T03:06:08.758Z
+Last verified: 2026-06-13T10:21:37.663Z
 
 ## Project Links
 
@@ -74,7 +74,7 @@ The [post-submission update](post-submission-update.md) records why the current 
 
 The npm package is publicly available as `oss-signal@0.9.8` with `latest` pointing at `0.9.8` after the release workflow completes.
 
-The npm downloads API returned 3086 downloads for the last-month window from 2026-05-13 to 2026-06-11 when checked on 2026-06-12. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
+The npm downloads API returned 3389 downloads for the last-month window from 2026-05-14 to 2026-06-12 when checked on 2026-06-13. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
 Clean-directory package execution returned:
 
@@ -105,7 +105,7 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Separate public workflow demo: passing
 
-The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-12 release updates the expected latest version to `0.9.8`. The 2026-06-12 download check returned 3086 downloads for the last-month window.
+The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-12 release updates the expected latest version to `0.9.8`. The 2026-06-13 download check returned 3389 downloads for the last-month window.
 
 ## Separate Public Workflow Evidence
 
@@ -142,7 +142,7 @@ Additional focused external contribution:
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing. The maintainer merge comment is public at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361.
 - `SalmonPlays/oss-signal`: https://github.com/SalmonPlays/oss-signal/pull/14 was opened by external contributor `ded-furby` and merged on 2026-06-12. It adds a compact JSON score example and closes issue #7. This is inbound contributor evidence, not independent maintainer adoption.
 
-The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-13T03:06:08.758Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
+The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-13T10:21:37.663Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and is not claimed as adoption unless the maintainer replies or acts. Open PRs are not claimed as accepted adoption unless a maintainer merges, replies, or otherwise endorses them.
 
 ## Contributor Intake
 

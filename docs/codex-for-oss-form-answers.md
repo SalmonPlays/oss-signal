@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-13T03:06:08.758Z
+Snapshot: 2026-06-13T10:21:37.663Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.8 latest, 3086 npm last-month downloads reported by the registry API on 2026-06-12, a published v0.9.8 release, a reusable GitHub Action with inventory, workflow, and adoption-pack output, no-fail maintainer trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible field-audit PRs, and two merged external documentation PRs.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.8 latest, 3389 npm last-month downloads reported by the registry API on 2026-06-13, a published v0.9.8 release, a reusable GitHub Action with inventory, workflow, and adoption-pack output, no-fail maintainer trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible field-audit PRs, and two merged external documentation PRs.
 ```
 
 ## Evidence Links

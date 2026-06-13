@@ -20,6 +20,19 @@
 
 It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
 
+## Reviewer Fast Path
+
+If you are evaluating this project for maintainer support, start here:
+
+| Need | Link |
+| --- | --- |
+| Shortest verification path | [REVIEWER_PACKET.md](REVIEWER_PACKET.md) |
+| Current post-submission status | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
+| Evidence ledger and boundaries | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
+| Independent maintainer trial request | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
+
+Current public evidence includes `oss-signal@0.9.8` on npm, `SalmonPlays/oss-signal@v0.9.8` as a GitHub Action, a Marketplace listing, public CI/CodeQL/OpenSSF Scorecard/evidence workflows, PASS 15 / SKIP 0 / FAIL 0 evidence verification, one outside-maintainer-accepted PR, and one inbound external contributor PR. The project does not claim broad independent adoption yet.
+
 ![oss-signal example output](docs/assets/terminal-report.svg)
 
 ## 30-Second Quick Start

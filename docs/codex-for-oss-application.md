@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-13T03:06:08.758Z
+Snapshot: 2026-06-13T10:21:37.663Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -58,7 +58,7 @@ The repository currently has:
 
 - A published npm package with `0.9.8` as the latest release.
 - A post-submission update page explaining why the current npm package and Action tag may be newer than the originally submitted evidence.
-- npm download API evidence showing 3086 last-month downloads for 2026-05-13 to 2026-06-11 when checked on 2026-06-12.
+- npm download API evidence showing 3389 last-month downloads for 2026-05-14 to 2026-06-12 when checked on 2026-06-13.
 - A published GitHub Release for v0.9.8 with adoption-pack output, maintainer plan output, CI usage guidance, and release notes.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - A repository inventory mode for organization-level maintainer-readiness triage, available in both CLI and GitHub Action form.

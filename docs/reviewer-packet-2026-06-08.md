@@ -1,6 +1,6 @@
 # Reviewer Packet: 2026-06-08
 
-Last verified: 2026-06-13T03:06:08.758Z
+Last verified: 2026-06-13T10:21:37.663Z
 
 This packet gives reviewers one page of current, verifiable evidence for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless a maintainer merges, replies, or endorses them.
 
@@ -20,7 +20,7 @@ The workflow evidence below points at the release run plus public workflow pages
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | https://salmonplays.github.io/oss-signal/ |
 | Repository interest | 0 stars, 1 fork |
-| npm downloads | 3086 last-month downloads from 2026-05-13 to 2026-06-11 |
+| npm downloads | 3389 last-month downloads from 2026-05-14 to 2026-06-12 |
 
 ## Latest Public Workflow Evidence
 

@@ -1,6 +1,6 @@
 # OSS Signal Evidence Verification
 
-Generated: 2026-06-13T03:06:08.758Z
+Generated: 2026-06-13T10:21:37.663Z
 
 This report verifies public reviewer evidence used by `oss-signal`. It is intentionally factual: open issues and pull requests are not counted as adoption unless maintainers merge, reply, or otherwise endorse them.
 
@@ -13,7 +13,7 @@ Summary:
 | Status | Check | Detail |
 | --- | --- | --- |
 | PASS | npm package latest | latest=0.9.8 |
-| PASS | npm download API | 3086 downloads from 2026-05-13 to 2026-06-11 |
+| PASS | npm download API | 3389 downloads from 2026-05-14 to 2026-06-12 |
 | PASS | GitHub repository | SalmonPlays/oss-signal, stars=0, forks=1 |
 | PASS | GitHub release v0.9.8 | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8 published_at=2026-06-13T03:05:04Z |
 | PASS | platformatic/massimo#159 | https://github.com/platformatic/massimo/issues/159 is open |
