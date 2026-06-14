@@ -1,8 +1,8 @@
 # OSS Signal Reviewer Packet
 
-Last reviewed: 2026-06-14T05:35:21.724Z
+Last reviewed: 2026-06-14T11:17:10.434Z
 
-Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-14T05:24:03.072Z.
+Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-14T11:17:10.434Z.
 
 Latest manual evidence refresh: [docs/evidence-refresh-2026-06-14.md](docs/evidence-refresh-2026-06-14.md).
 

@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-14T05:24:03.072Z
+Latest verification: 2026-06-14T11:17:10.434Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 
@@ -52,7 +52,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 - Maintainer operations: OpenSSF Scorecard, CODEOWNERS, MAINTAINERS, and GOVERNANCE are now part of the public repository evidence. Scorecard publishes JSON evidence instead of adding noisy Code Scanning alerts.
 - Public discussion: https://github.com/SalmonPlays/oss-signal/discussions/5 documents the intended maintainer workflow and feedback channel.
 - No-fail maintainer trial: [maintainer-trial.md](maintainer-trial.md) gives external maintainers a copyable workflow that publishes a report without gating CI.
-- Public field-audit evidence: five currently visible posted field-audit issues, four currently visible follow-up PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR are tracked in [evidence-ledger.md](evidence-ledger.md). Historical audit links that disappeared are kept as local examples but are not counted as public adoption evidence.
+- Public field-audit evidence: five currently visible posted field-audit issues, four currently visible follow-up PRs, one outside-maintainer-accepted documentation PR, one inbound external contributor PR, and one pending one-time independent-run request are tracked in [evidence-ledger.md](evidence-ledger.md). Historical audit links that disappeared are kept as local examples but are not counted as public adoption evidence.
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Current selection update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)

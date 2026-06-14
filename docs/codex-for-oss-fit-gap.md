@@ -1,6 +1,6 @@
 # Codex for OSS Fit Gap Review
 
-Snapshot: 2026-06-14T05:24:03.072Z
+Snapshot: 2026-06-14T11:17:10.434Z
 
 This page is an intentionally conservative review of how `oss-signal` maps to the public Codex for Open Source criteria. It explains why a selection email may not have arrived yet, what evidence is already public, and which next evidence would actually improve the application.
 
@@ -9,7 +9,7 @@ This page is an intentionally conservative review of how `oss-signal` maps to th
 - Applications are reviewed on a rolling basis, so no email yet can mean the application is still pending.
 - The public terms say submission does not guarantee selection, funding, or access.
 - The program looks for repository usage, ecosystem importance, and active maintenance. `oss-signal` is strong on active maintenance and maintainer workflow evidence, but still early on broad independent adoption.
-- Stars are not the official criterion by themselves, but zero stars does make public popularity weaker than projects with obvious existing usage.
+- Stars are not the official criterion by themselves, and one star still leaves public popularity much weaker than projects with obvious existing usage.
 - The strongest current gap is independent maintainer use: a maintainer-owned workflow run, maintainer reply, or additional outside-maintainer-accepted PR would be stronger than more self-authored docs.
 - The weak-signal closure plan is tracked separately in [adoption-gap-closure.md](adoption-gap-closure.md).
 
@@ -26,7 +26,7 @@ This page is an intentionally conservative review of how `oss-signal` maps to th
 | Criterion | Current evidence | Current gap | Best next evidence |
 | --- | --- | --- | --- |
 | Active OSS maintainer | Public repository, `MAINTAINERS.md`, `GOVERNANCE.md`, CODEOWNERS, issue forms, Discussions, releases, npm package, GitHub Action, and public workflows. | The maintainer role is clear for this repository, but the project is new. | Keep releases and issues disciplined; avoid noisy changes that look like artificial activity. |
-| Meaningful usage | npm package is published, npm registry API reported 3589 last-month downloads for 2026-05-15 to 2026-06-13, GitHub Marketplace listing is live, and public Action runs produce artifacts. | Downloads are early and do not yet prove broad adoption. Stars are still zero. | One independent maintainer-owned workflow run using `SalmonPlays/oss-signal@v0.9.8`. |
+| Meaningful usage | npm package is published, npm registry API reported 3589 last-month downloads for 2026-05-15 to 2026-06-13, GitHub Marketplace listing is live, and public Action runs produce artifacts. | Downloads are early and do not yet prove broad adoption. One star is not meaningful popularity proof. | One independent maintainer-owned workflow run using `SalmonPlays/oss-signal@v0.9.8`. |
 | Broad adoption | The main repository dogfoods the `v0.9.8` Action with Markdown, SARIF, inventory, and adoption-pack artifacts. A historical self-owned demo ran an older Action tag from another public repository. | The demo is owned by `SalmonPlays`, so it is supporting workflow evidence, not independent third-party adoption. | A real outside repository using the Action in CI, even as a no-fail trial. |
 | Ecosystem importance | The tool targets repeatable OSS maintainer work: triage, CI evidence, SARIF, issue-ready reports, inventory, adoption packs, and release evidence. | Importance is plausible but not proven by popularity or dependent projects. | Maintainer feedback that the report saved review or triage time. |
 | Active maintenance | `v0.9.8` release, passing CI, CodeQL, OpenSSF Scorecard, evidence verification, repository health, inventory workflow, release workflow, and Pages. | This part is comparatively strong. | Keep latest release evidence verified and avoid version drift in reviewer docs. |
@@ -41,7 +41,7 @@ This page is an intentionally conservative review of how `oss-signal` maps to th
 3. Land one more external PR where the target maintainer clearly benefits from the change.
 4. Refresh npm download evidence when the registry window updates, but treat it as supporting evidence rather than proof of adoption.
 5. Keep the reviewer path short: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md), [reviewer-evidence.md](reviewer-evidence.md), [evidence-ledger.md](evidence-ledger.md), and this fit/gap page.
-6. Track zero stars, open field-audit PRs, and independent-run criteria in [adoption-gap-closure.md](adoption-gap-closure.md).
+6. Track low stars, open field-audit PRs, and independent-run criteria in [adoption-gap-closure.md](adoption-gap-closure.md).
 
 ## Do Not Do
 

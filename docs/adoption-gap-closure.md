@@ -1,10 +1,11 @@
 # Adoption Gap Closure Plan
 
-Snapshot: 2026-06-13
+Snapshot: 2026-06-14
 
 This page addresses the current weak points in the `oss-signal` adoption case.
-It is intentionally conservative: zero stars, open field-audit pull requests,
-and the lack of a maintainer-owned third-party workflow run are real gaps. The
+It is intentionally conservative: one GitHub star, open field-audit pull
+requests, and the lack of a maintainer-owned third-party workflow run are real
+gaps. The
 project should improve them with verifiable maintainer evidence, not artificial
 activity.
 
@@ -18,9 +19,9 @@ copyable outside-maintainer trial workflow, see
 
 | Reviewer concern | Current status | What is not claimed | Stronger next move | Evidence that would close the gap |
 | --- | --- | --- | --- | --- |
-| GitHub stars are zero | GitHub API returned 0 stars and 1 fork at the latest committed evidence check. | No popularity, social proof, or broad adoption claim. | Do not ask for stars. Keep the package, Action, Marketplace listing, evidence workflow, and reviewer docs verifiable, then prioritize one maintainer-owned run. | A third-party maintainer run, maintainer reply, accepted PR, or trial-feedback issue is stronger than vanity stars. |
-| No independent maintainer-owned workflow run yet | The historical public demo workflow is useful but owned by `SalmonPlays` and remains on an older Action tag. The main repository dogfoods `v0.9.8`. | The demo is not described as current `v0.9.8` third-party adoption. | Ask for a no-fail trial only where the workflow is relevant, using the copyable request in [independent-workflow-run-request.md](independent-workflow-run-request.md). | A public workflow run in a repository not owned by `SalmonPlays`, using `SalmonPlays/oss-signal@v0.9.8` or `oss-signal@0.9.8`, plus a linked run URL or adoption report. |
-| Field-audit PRs are mostly open | Four currently visible follow-up PRs and five field-audit issues remained open when checked on 2026-06-13. | Open PRs are not counted as accepted adoption. | Wait for maintainer review, respond only to concrete feedback, and avoid repeated nudges. | A maintainer merges, replies, requests changes, closes with a reason, or endorses/declines the workflow publicly. |
+| GitHub stars are low | GitHub API returned 1 star and 1 fork at the latest committed evidence check. | No popularity, social proof, or broad adoption claim. | Do not ask for stars. Keep the package, Action, Marketplace listing, evidence workflow, and reviewer docs verifiable, then prioritize one maintainer-owned run. | A third-party maintainer run, maintainer reply, accepted PR, or trial-feedback issue is stronger than vanity stars. |
+| No independent maintainer-owned workflow run yet | The historical public demo workflow is useful but owned by `SalmonPlays` and remains on an older Action tag. The main repository dogfoods `v0.9.8`. A one-time follow-up request is pending at https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548. | The demo and pending request are not described as current `v0.9.8` third-party adoption. | Wait for a maintainer response or public run. Do not bump the request without a maintainer reply or requested change. | A public workflow run in a repository not owned by `SalmonPlays`, using `SalmonPlays/oss-signal@v0.9.8` or `oss-signal@0.9.8`, plus a linked run URL or adoption report. |
+| Field-audit PRs are mostly open | Four currently visible follow-up PRs and five field-audit issues remained open when checked on 2026-06-14. | Open PRs are not counted as accepted adoption. | Wait for maintainer review, respond only to concrete feedback, and avoid repeated nudges. | A maintainer merges, replies, requests changes, closes with a reason, or endorses/declines the workflow publicly. |
 | Downloads do not prove broad usage | npm reported 3589 downloads for the 2026-05-15 to 2026-06-13 last-month window. | Downloads are supporting distribution evidence, not proof of adoption. | Keep npm evidence current and pair it with maintainer-run evidence. | A public user or maintainer action that can be independently inspected. |
 
 ## Current Strongest Evidence
@@ -35,6 +36,16 @@ copyable outside-maintainer trial workflow, see
 | Outside-maintainer-accepted PR | `icoretech/codex-action` PR #24 was merged by an outside maintainer. | This is accepted external maintainer evidence. |
 | Inbound external contributor PR | `SalmonPlays/oss-signal` PR #14 was opened by an outside contributor and merged. | This shows contributor intake, but not third-party maintainer adoption. |
 | Field-audit issues and PRs | Five visible issues and four visible PRs are tracked in [adoption-evidence.md](adoption-evidence.md). | They show the audit-to-maintainer workflow, but are not counted as accepted adoption until maintainers act. |
+
+## Pending External Request
+
+On 2026-06-14, a one-time no-fail workflow request was posted to the outside
+maintainer who merged `icoretech/codex-action` PR #24:
+https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548.
+
+This is outreach and trial-path evidence only. It should not be counted as
+independent adoption unless the maintainer runs the workflow, replies with
+specific feedback, files trial feedback, or otherwise acts publicly.
 
 ## Acceptance Criteria For The Next Independent Run
 
@@ -56,6 +67,8 @@ The most useful next evidence is one public run with these properties:
 - Do not ask for stars, follows, reciprocal PRs, endorsements, or promotion.
 - Do not send repeated comments on open field-audit PRs without a maintainer
   reply or requested change.
+- Treat the 2026-06-14 `icoretech/codex-action` follow-up as a one-time
+  request. Do not bump it unless the maintainer replies or asks for a change.
 - Do not open broad cleanup PRs just to create activity.
 - Do not describe open PRs, downloads, or a self-owned demo as independent
   adoption.

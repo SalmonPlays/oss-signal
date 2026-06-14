@@ -1,12 +1,12 @@
 # Trust Center
 
-Last verified: 2026-06-14T05:24:03.072Z
+Last verified: 2026-06-14T11:17:10.434Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 
 ## Current Candid Assessment
 
-`oss-signal` is early. It does not yet claim broad independent adoption, GitHub stars, forks, or a large user base.
+`oss-signal` is early. Its current 1 star and 1 fork are low public interest signals, not broad independent adoption, popularity, or a large user base.
 
 What it does have is a complete, public maintainer workflow:
 
@@ -45,7 +45,7 @@ What it does have is a complete, public maintainer workflow:
 | Inbound external contributor PR | https://github.com/SalmonPlays/oss-signal/pull/14 | An outside contributor added a compact JSON score example that was merged into this repository. |
 | Selection update | [selection-update-2026-06-13](selection-update-2026-06-13.md) | Reviewers get the current post-submission status page with current package, workflow, field-audit, and external PR evidence. |
 | Evidence ledger | [evidence-ledger](evidence-ledger.md) | Reviewers get one compact page separating accepted evidence, supporting demos, open PRs, and boundaries. |
-| Adoption gap closure | [adoption-gap-closure](adoption-gap-closure.md) | Reviewers can see how zero stars, no independent maintainer-owned run, and open field-audit PRs are handled honestly. |
+| Adoption gap closure | [adoption-gap-closure](adoption-gap-closure.md) | Reviewers can see how low stars, no independent maintainer-owned run, and open field-audit PRs are handled honestly. |
 | External workflow evidence | [adoption evidence](adoption-evidence.md) | Field audits show the intended maintainer workflow on public repositories. |
 | Contributor intake | [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22), [adoption kit](adoption-kit.md) | Outside users have structured ways to try, report, and contribute. |
 

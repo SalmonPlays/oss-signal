@@ -37,21 +37,26 @@ completed successfully:
 | Signal | Latest checked value |
 | --- | --- |
 | npm downloads | 3589 downloads for 2026-05-15 to 2026-06-13 |
-| GitHub stars | 0 |
+| GitHub stars | 1 |
 | GitHub forks | 1 |
 | GitHub watchers | 0 |
 | Latest release | `v0.9.8`, published 2026-06-13T03:05:04Z |
 
 The npm download window advanced when checked on 2026-06-14 JST, and the
 committed evidence snapshot now records the 3589-download last-month window.
+The GitHub repository metadata check later on 2026-06-14 returned 1 star and
+1 fork.
 
-## External PR And Issue Status
+## External PR, Issue, And Request Status
 
-Checked from GitHub on 2026-06-14T05:35:21.724Z:
+Core issue and PR statuses were checked from GitHub on
+2026-06-14T05:35:21.724Z. The targeted independent-run request comment was
+confirmed through the GitHub API on 2026-06-14T11:15:45Z:
 
 | Repository | Link | Status | Reviewer note |
 | --- | --- | --- | --- |
 | `icoretech/codex-action` | https://github.com/icoretech/codex-action/pull/24 | merged | Outside-maintainer-accepted documentation PR. |
+| `icoretech/codex-action` | https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548 | pending request | One-time no-fail workflow request; not counted as adoption unless the maintainer runs, replies, or files feedback. |
 | `SalmonPlays/oss-signal` | https://github.com/SalmonPlays/oss-signal/pull/14 | merged | Inbound external contributor PR; not independent maintainer adoption. |
 | `platformatic/massimo` | https://github.com/platformatic/massimo/pull/160 | open | Field-audit PR remains open; not counted as adoption. |
 | `supermarkt/checkjebon` | https://github.com/supermarkt/checkjebon/pull/23 | open | Field-audit PR remains open; not counted as adoption. |
@@ -66,3 +71,7 @@ health, release discipline, and reviewer transparency. The broad-adoption gap
 is still real: the project still needs one independent maintainer-owned public
 workflow run, maintainer reply, trial-feedback issue, or accepted maintainer
 change before claiming independent adoption.
+
+The 2026-06-14 `icoretech/codex-action` follow-up request is only a pending
+trial path. It should not be treated as independent adoption unless an outside
+maintainer responds or runs the workflow publicly.

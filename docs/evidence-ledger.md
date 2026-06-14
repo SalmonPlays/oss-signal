@@ -1,6 +1,6 @@
 # Evidence Ledger
 
-Last verified: 2026-06-14T05:24:03.072Z
+Last verified: 2026-06-14T11:17:10.434Z
 
 This ledger keeps the strongest public `oss-signal` evidence in one reviewer-friendly place. It separates accepted evidence from supporting demos and open follow-up work.
 
@@ -11,7 +11,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Root reviewer packet | [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md) | Published | Shortest public verification path from the repository root. |
 | Detailed reviewer packet | [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md) | Published | One-page packet with current workflow runs, artifact evidence, package status, and external maintainer evidence. |
 | Codex for OSS fit/gap review | [codex-for-oss-fit-gap.md](codex-for-oss-fit-gap.md) | Published | Conservative mapping from public program criteria to current evidence and remaining adoption gaps. |
-| Adoption gap closure plan | [adoption-gap-closure.md](adoption-gap-closure.md) | Published | Directly addresses zero stars, no independent maintainer-owned run, and open field-audit PR boundaries. |
+| Adoption gap closure plan | [adoption-gap-closure.md](adoption-gap-closure.md) | Published | Directly addresses low stars, no independent maintainer-owned run, and open field-audit PR boundaries. |
 | Evidence refresh, 2026-06-14 | [evidence-refresh-2026-06-14.md](evidence-refresh-2026-06-14.md) | Published | Manual refresh showing public workflows all completed successfully for the checked `d8aff08` baseline and external PR status remained unchanged. |
 | Evidence verification snapshot | [evidence-verification.md](evidence-verification.md) | PASS 15, SKIP 0, FAIL 0 locally; workflow uses `GITHUB_TOKEN` | Committed Markdown snapshot of npm, GitHub release, repository metadata, external issue/PR checks, the outside-maintainer-accepted PR, and the inbound external contributor PR. |
 | Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.8` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.8 -- oss-signal --version` from a clean temporary directory. |
@@ -27,6 +27,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Outside-maintainer-accepted external PR | https://github.com/icoretech/codex-action/pull/24 | Merged 2026-06-04 | External maintainer merged the focused Codex Action documentation safety fix and left a merge comment. |
 | Inbound external contributor PR | https://github.com/SalmonPlays/oss-signal/pull/14 | Merged 2026-06-12 | External contributor `ded-furby` added a compact JSON score example and closed issue #7. |
 | Maintainer merge comment | https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 | Public maintainer response | Stronger than an open PR because the external maintainer accepted the change. |
+| Targeted independent-run request | https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548 | Posted 2026-06-14; pending | One-time no-fail workflow request to the outside maintainer who merged PR #24. This is not adoption unless the maintainer runs, replies, or files feedback. |
 | Current selection update | [selection-update-2026-06-13.md](selection-update-2026-06-13.md) | Published | Current compact post-submission status page for reviewers. |
 | Independent workflow run request | [independent-workflow-run-request.md](independent-workflow-run-request.md) | Published | Copyable no-fail workflow and reporting path for maintainer-owned public repositories. |
 | Prior selection update | [selection-update-2026-06-08.md](selection-update-2026-06-08.md) | Historical | Earlier post-submission status page retained as history. |
@@ -37,11 +38,15 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 
 ## External Issue And PR Status
 
-Checked from GitHub on 2026-06-14T05:24:03.072Z. The committed Evidence verification snapshot returned PASS 15, SKIP 0, FAIL 0.
+Core issue and PR statuses were checked from GitHub on
+2026-06-14T05:24:03.072Z. The targeted independent-run request comment was
+confirmed through the GitHub API on 2026-06-14T11:15:45Z. The committed
+Evidence verification snapshot returned PASS 15, SKIP 0, FAIL 0.
 
 | Repository | Link | Status | Scope |
 | --- | --- | --- | --- |
 | `icoretech/codex-action` | https://github.com/icoretech/codex-action/pull/24 | merged | Codex Action README shell-safety documentation |
+| `icoretech/codex-action` | https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548 | pending request | One-time no-fail workflow request; not counted as adoption unless the maintainer runs, replies, or files feedback. |
 | `SalmonPlays/oss-signal` | https://github.com/SalmonPlays/oss-signal/pull/14 | merged | Inbound compact JSON score example from external contributor `ded-furby` |
 | `platformatic/massimo` | https://github.com/platformatic/massimo/pull/160 | open | Contributor triage templates |
 | `supermarkt/checkjebon` | https://github.com/supermarkt/checkjebon/pull/23 | open | Contributor workflow templates |
@@ -55,6 +60,8 @@ Checked from GitHub on 2026-06-14T05:24:03.072Z. The committed Evidence verifica
 
 - The historical self-owned workflow demo is public but owned by `SalmonPlays`, so it is evidence that an older Action tag worked outside the main repository, not current `v0.9.8` independent third-party adoption.
 - Open external issues and PRs are not counted as accepted adoption.
+- The targeted `icoretech/codex-action` follow-up request is not counted as
+  adoption unless the maintainer runs the workflow, replies, or files feedback.
 - The inbound `SalmonPlays/oss-signal` PR is counted as external contributor evidence, not as independent maintainer adoption.
 - Deleted, moved, or unavailable external links are not counted as current public evidence.
 - Stars, forks, watchers, and social posts are not used as proof of quality or adoption.

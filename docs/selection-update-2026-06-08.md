@@ -1,6 +1,6 @@
 # Selection Update: 2026-06-08
 
-Last verified: 2026-06-14T05:24:03.072Z
+Last verified: 2026-06-14T11:17:10.434Z
 
 This page is a compact post-submission update for reviewers. It separates current public evidence from supporting demos and from links that no longer verify publicly.
 
@@ -17,7 +17,7 @@ For the shortest current evidence bundle, see the root [REVIEWER_PACKET.md](../R
 | Marketplace listing | Free GitHub Action listing is published. | https://github.com/marketplace/actions/oss-signal |
 | Main workflow evidence | CI, Repository health, Repository inventory, Evidence verification, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
 | npm downloads | npm API returned 3589 downloads for the last-month window from 2026-05-15 to 2026-06-13. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
-| Repository interest | GitHub API returned 0 stars and 1 fork at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
+| Repository interest | GitHub API returned 1 star and 1 fork at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
 | External contribution evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR. | https://github.com/icoretech/codex-action/pull/24 and https://github.com/SalmonPlays/oss-signal/pull/14 |
 | Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, current external issue/PR links, the outside-maintainer-accepted PR, and the inbound external contributor PR. The committed local snapshot reports PASS 15, SKIP 0, FAIL 0; the workflow runs with `GITHUB_TOKEN`. | `.github/workflows/evidence-verify.yml` |
 
