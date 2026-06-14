@@ -1,9 +1,9 @@
 # Evidence Refresh: 2026-06-14
 
-Checked: 2026-06-14T05:24:03.072Z / 2026-06-14 14:24:03 JST
+Checked: 2026-06-14T05:35:21.724Z / 2026-06-14 14:35:21 JST
 
 This manual refresh records the reviewer-visible evidence checked immediately
-after the `ed4456f` independent-run request commit. It does not replace the
+after the `d8aff08` reviewer evidence snapshot commit. It does not replace the
 generated [evidence-verification.md](evidence-verification.md) snapshot; it
 records the latest public CI and external-link status checked after the
 2026-06-13 post-submission updates.
@@ -12,25 +12,25 @@ records the latest public CI and external-link status checked after the
 
 | Signal | Status |
 | --- | --- |
-| Checked commit | `ed4456f98d106e4db398fe36e77e498fac1f45bf` |
-| Commit message | `Sharpen independent run request` |
-| Remote branch before this document update | `origin/main` pointed at `ed4456f98d106e4db398fe36e77e498fac1f45bf` |
+| Checked commit | `d8aff082db0a89668277e3fa3c3c7a42f72a2516` |
+| Commit message | `Refresh reviewer evidence snapshot` |
+| Remote branch before this document update | `origin/main` pointed at `d8aff082db0a89668277e3fa3c3c7a42f72a2516` |
 | Local validation | `npm run check` passed on 2026-06-14 JST |
 
 ## Public Workflow Status
 
-All public workflows for commit `ed4456f98d106e4db398fe36e77e498fac1f45bf`
+All public workflows for commit `d8aff082db0a89668277e3fa3c3c7a42f72a2516`
 completed successfully:
 
 | Workflow | Conclusion | Run |
 | --- | --- | --- |
-| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954482 |
-| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954511 |
-| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954491 |
-| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954492 |
-| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954500 |
-| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954497 |
-| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954081 |
+| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27489425038 |
+| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27489425029 |
+| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27489425036 |
+| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27489425033 |
+| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27489425043 |
+| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27489425037 |
+| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27489424588 |
 
 ## Registry And Repository Metadata
 
@@ -47,7 +47,7 @@ committed evidence snapshot now records the 3589-download last-month window.
 
 ## External PR And Issue Status
 
-Checked from GitHub on 2026-06-14T05:24:03.072Z:
+Checked from GitHub on 2026-06-14T05:35:21.724Z:
 
 | Repository | Link | Status | Reviewer note |
 | --- | --- | --- | --- |
