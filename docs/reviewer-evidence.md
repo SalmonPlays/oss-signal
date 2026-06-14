@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-13T10:21:37.663Z
+Last verified: 2026-06-14T05:24:03.072Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -52,6 +52,7 @@ Expected result with API access: score `100`, grade `A`, source `github`.
 - Trust center: https://github.com/SalmonPlays/oss-signal/blob/main/docs/trust-center.md
 - Adoption kit: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-kit.md
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
+- Independent workflow run request: https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
 - Maintainer feedback: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-feedback.md
 - Architecture: https://github.com/SalmonPlays/oss-signal/blob/main/docs/architecture.md
 - Security model: https://github.com/SalmonPlays/oss-signal/blob/main/docs/security-model.md

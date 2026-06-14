@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-13T10:21:37.663Z
+Snapshot: 2026-06-14T05:24:03.072Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -50,7 +50,7 @@ Primary maintainer
 ## Why This Repository Qualifies
 
 ```text
-oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.8 and GitHub Action SalmonPlays/oss-signal@v0.9.8, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow/Adoption output, passes CI/CodeQL/Release, has evidence verification, a 100/100 self-audit, no-fail maintainer trial and feedback paths, five visible field-audit issues, four visible field-audit PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR.
+oss-signal is a public OSS maintainer tool for reducing triage and review load. It ships as npm package oss-signal@0.9.8 and GitHub Action SalmonPlays/oss-signal@v0.9.8, supports Markdown/JSON/SARIF/Issue/Plan/Inventory/Workflow/Adoption output, passes CI/CodeQL/Release, has evidence verification, a 100/100 self-audit, no-fail trial and feedback paths, five visible field-audit issues, four visible PRs, one outside-maintainer-accepted PR, and one inbound external contributor PR.
 ```
 
 ## Interest
@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.8 latest, 3389 npm last-month downloads reported by the registry API on 2026-06-13, a published v0.9.8 release, a reusable GitHub Action with inventory, workflow, and adoption-pack output, no-fail maintainer trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible field-audit PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.8 latest, 3589 npm last-month downloads reported on 2026-06-14, a published v0.9.8 release, reusable GitHub Action with inventory/workflow/adoption-pack output, no-fail trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible PRs, one outside-maintainer-accepted PR, and one inbound external contributor PR.
 ```
 
 ## Evidence Links
@@ -105,7 +105,7 @@ The project is early, so I am not overstating adoption. Current evidence include
 
 ## Character Counts
 
-- Why this repository qualifies: 471/500
+- Why this repository qualifies: 482/500
 - Codex Security use: 399/500
 - API credit use: 312/500
-- Anything else: 495/500
+- Anything else: 478/500

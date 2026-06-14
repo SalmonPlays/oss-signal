@@ -1,53 +1,53 @@
 # Evidence Refresh: 2026-06-14
 
-Checked: 2026-06-13T22:53:31Z / 2026-06-14 07:53:31 JST
+Checked: 2026-06-14T05:24:03.072Z / 2026-06-14 14:24:03 JST
 
-This is a manual refresh of the reviewer-visible evidence after the
-`928a157` evidence refresh commit. It does not replace the generated
-[evidence-verification.md](evidence-verification.md) snapshot; it records the
-latest public CI and external-link status checked after the 2026-06-13
-post-submission updates.
+This manual refresh records the reviewer-visible evidence checked immediately
+after the `ed4456f` independent-run request commit. It does not replace the
+generated [evidence-verification.md](evidence-verification.md) snapshot; it
+records the latest public CI and external-link status checked after the
+2026-06-13 post-submission updates.
 
 ## Checked Commit
 
 | Signal | Status |
 | --- | --- |
-| Checked commit | `928a1577ca3ed99d30d3c6d38fe9139b76274424` |
-| Commit message | `Clarify evidence refresh commit scope` |
-| Remote branch at check time | `origin/main` pointed at `928a1577ca3ed99d30d3c6d38fe9139b76274424` |
+| Checked commit | `ed4456f98d106e4db398fe36e77e498fac1f45bf` |
+| Commit message | `Sharpen independent run request` |
+| Remote branch before this document update | `origin/main` pointed at `ed4456f98d106e4db398fe36e77e498fac1f45bf` |
 | Local validation | `npm run check` passed on 2026-06-14 JST |
 
 ## Public Workflow Status
 
-All public workflows for commit `928a1577ca3ed99d30d3c6d38fe9139b76274424`
+All public workflows for commit `ed4456f98d106e4db398fe36e77e498fac1f45bf`
 completed successfully:
 
 | Workflow | Conclusion | Run |
 | --- | --- | --- |
-| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441806 |
-| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441819 |
-| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441807 |
-| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441793 |
-| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441828 |
-| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441796 |
-| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481441468 |
+| CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954482 |
+| Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954511 |
+| Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954491 |
+| OpenSSF Scorecard | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954492 |
+| Repository health | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954500 |
+| CodeQL | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954497 |
+| Pages build and deployment | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27481954081 |
 
 ## Registry And Repository Metadata
 
 | Signal | Latest checked value |
 | --- | --- |
-| npm downloads | 3389 downloads for 2026-05-14 to 2026-06-12 |
+| npm downloads | 3589 downloads for 2026-05-15 to 2026-06-13 |
 | GitHub stars | 0 |
 | GitHub forks | 1 |
 | GitHub watchers | 0 |
 | Latest release | `v0.9.8`, published 2026-06-13T03:05:04Z |
 
-The npm download window had not advanced when checked on 2026-06-14 JST, so
-the committed 2026-06-13 generated snapshot remains current for that API value.
+The npm download window advanced when checked on 2026-06-14 JST, and the
+committed evidence snapshot now records the 3589-download last-month window.
 
 ## External PR And Issue Status
 
-Checked from GitHub on 2026-06-14 JST:
+Checked from GitHub on 2026-06-14T05:24:03.072Z:
 
 | Repository | Link | Status | Reviewer note |
 | --- | --- | --- | --- |

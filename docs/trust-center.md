@@ -1,6 +1,6 @@
 # Trust Center
 
-Last verified: 2026-06-13T10:21:37.663Z
+Last verified: 2026-06-14T05:24:03.072Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 
@@ -15,6 +15,7 @@ What it does have is a complete, public maintainer workflow:
 - Public GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Public GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - Public no-fail maintainer trial workflow: [maintainer-trial.md](maintainer-trial.md)
+- Copyable independent workflow run request: [independent-workflow-run-request.md](independent-workflow-run-request.md)
 - Public maintainer feedback path for neutral or negative trial responses: [maintainer-feedback.md](maintainer-feedback.md)
 - Public CI, CodeQL, OpenSSF Scorecard, repository health, repository inventory, and release workflows.
 - Public self-audit, GitHub URL audit, SARIF output, inventory report, and issue-body examples.
@@ -31,6 +32,7 @@ What it does have is a complete, public maintainer workflow:
 | Installable CLI | `npm exec --yes --package=oss-signal@0.9.8 -- oss-signal --version` | Reviewers can run the package without cloning this repository. |
 | Marketplace Action | https://github.com/marketplace/actions/oss-signal | Users can discover and copy the Action through GitHub Marketplace. |
 | Maintainer trial | [maintainer-trial](maintainer-trial.md) | External maintainers can try the Action without failing CI first. |
+| Independent run request | [independent-workflow-run-request](independent-workflow-run-request.md) | Maintainers get a copyable no-fail workflow and a minimal evidence format for public trial runs. |
 | Maintainer feedback | [maintainer-feedback](maintainer-feedback.md) | Neutral or negative maintainer responses can still improve rules and count as real third-party feedback. |
 | Dogfood Action | [Repository health workflow](../.github/workflows/repository-health.yml) | The repository runs the public Action tag against itself. |
 | Inventory mode | [Repository inventory workflow](../.github/workflows/repository-inventory.yml) | Maintainers can audit several repositories from one target list. |

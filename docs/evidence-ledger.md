@@ -1,6 +1,6 @@
 # Evidence Ledger
 
-Last verified: 2026-06-13T10:21:37.663Z
+Last verified: 2026-06-14T05:24:03.072Z
 
 This ledger keeps the strongest public `oss-signal` evidence in one reviewer-friendly place. It separates accepted evidence from supporting demos and open follow-up work.
 
@@ -12,10 +12,10 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Detailed reviewer packet | [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md) | Published | One-page packet with current workflow runs, artifact evidence, package status, and external maintainer evidence. |
 | Codex for OSS fit/gap review | [codex-for-oss-fit-gap.md](codex-for-oss-fit-gap.md) | Published | Conservative mapping from public program criteria to current evidence and remaining adoption gaps. |
 | Adoption gap closure plan | [adoption-gap-closure.md](adoption-gap-closure.md) | Published | Directly addresses zero stars, no independent maintainer-owned run, and open field-audit PR boundaries. |
-| Evidence refresh, 2026-06-14 | [evidence-refresh-2026-06-14.md](evidence-refresh-2026-06-14.md) | Published | Manual refresh showing public workflows all completed successfully for the checked 2026-06-14 baseline and external PR status remained unchanged. |
+| Evidence refresh, 2026-06-14 | [evidence-refresh-2026-06-14.md](evidence-refresh-2026-06-14.md) | Published | Manual refresh showing public workflows all completed successfully for the checked `ed4456f` baseline and external PR status remained unchanged. |
 | Evidence verification snapshot | [evidence-verification.md](evidence-verification.md) | PASS 15, SKIP 0, FAIL 0 locally; workflow uses `GITHUB_TOKEN` | Committed Markdown snapshot of npm, GitHub release, repository metadata, external issue/PR checks, the outside-maintainer-accepted PR, and the inbound external contributor PR. |
 | Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.8` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.8 -- oss-signal --version` from a clean temporary directory. |
-| npm download API | 3389 downloads for the last-month window, 2026-05-14 to 2026-06-12 | Checked 2026-06-13T10:21:37.663Z | Supporting distribution signal only; not claimed as broad adoption. |
+| npm download API | 3589 downloads for the last-month window, 2026-05-15 to 2026-06-13 | Checked 2026-06-14T05:24:03.072Z | Supporting distribution signal only; not claimed as broad adoption. |
 | GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.9.8 | Published tag | Public Action tag used by repository workflows; current `v0.9.8` workflow evidence comes from Repository health. |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
 | Maintainer trial path | [maintainer-trial.md](maintainer-trial.md) | Published | External maintainers can try the Action without failing CI, then share a workflow run or adoption report. |
@@ -37,7 +37,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 
 ## External Issue And PR Status
 
-Checked from GitHub on 2026-06-13T10:21:37.663Z. The committed Evidence verification snapshot returned PASS 15, SKIP 0, FAIL 0.
+Checked from GitHub on 2026-06-14T05:24:03.072Z. The committed Evidence verification snapshot returned PASS 15, SKIP 0, FAIL 0.
 
 | Repository | Link | Status | Scope |
 | --- | --- | --- | --- |
