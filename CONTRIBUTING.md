@@ -20,6 +20,16 @@ Before opening a pull request:
 - Keep rule messages actionable for maintainers.
 - Update `README.md` when command behavior changes.
 
+## Recognition
+
+Merged contributor PRs, concrete maintainer feedback, public trial runs, and
+accepted external fixes are recognized in public evidence docs when relevant.
+See [docs/community-engagement.md](docs/community-engagement.md).
+
+The project does not do star-for-star, follow-for-follow, reciprocal PRs, or
+repeated comment bumps. Stars are appreciated, but they are not counted as
+adoption evidence.
+
 ## Rule Design
 
 Rules should measure repository maintenance readiness, not personal preference. A good rule has:

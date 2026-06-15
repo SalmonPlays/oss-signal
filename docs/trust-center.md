@@ -22,6 +22,8 @@ What it does have is a complete, public maintainer workflow:
 - Public field-audit reports, five currently visible posted issues, and four currently visible open follow-up pull requests against external repositories.
 - Outside-maintainer-accepted documentation PR: https://github.com/icoretech/codex-action/pull/24
 - One inbound external contributor PR from a public fork merged into this repository: https://github.com/SalmonPlays/oss-signal/pull/14
+- Community engagement and reciprocity boundaries: [community-engagement.md](community-engagement.md)
+- Public acknowledgements for concrete interactions: [ACKNOWLEDGEMENTS.md](../ACKNOWLEDGEMENTS.md)
 - Explicit governance, maintainer ownership, CODEOWNERS, security policy, support policy, contribution guide, and release process.
 - Citation metadata, architecture notes, security model, and roadmap are documented in the repository.
 
@@ -44,6 +46,8 @@ What it does have is a complete, public maintainer workflow:
 | Outside-maintainer-accepted external PR | https://github.com/icoretech/codex-action/pull/24 | An outside maintainer merged a focused documentation safety fix and left a public merge comment. |
 | Public external fork | https://github.com/ded-furby/oss-signal | The inbound contributor used a public fork before PR #14 was merged. |
 | Inbound external contributor PR | https://github.com/SalmonPlays/oss-signal/pull/14 | An outside contributor added a compact JSON score example from the public fork that was merged into this repository. |
+| Community engagement | [community-engagement](community-engagement.md) | The project recognizes real public contributions while rejecting star-for-star, reciprocal PRs, and repeated bumps as evidence. |
+| Acknowledgements | [ACKNOWLEDGEMENTS](../ACKNOWLEDGEMENTS.md) | Public thanks for contributors and maintainers with concrete public interactions. |
 | Selection update | [selection-update-2026-06-13](selection-update-2026-06-13.md) | Reviewers get the current post-submission status page with current package, workflow, field-audit, and external PR evidence. |
 | Evidence ledger | [evidence-ledger](evidence-ledger.md) | Reviewers get one compact page separating accepted evidence, supporting demos, open PRs, and boundaries. |
 | Adoption gap closure | [adoption-gap-closure](adoption-gap-closure.md) | Reviewers can see how low stars, no independent maintainer-owned run, and open field-audit PRs are handled honestly. |

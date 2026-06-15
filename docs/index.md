@@ -47,6 +47,8 @@ Run as a GitHub Action:
 - [Evidence verification snapshot](evidence-verification.md)
 - [Evidence refresh, 2026-06-15](evidence-refresh-2026-06-15.md)
 - [Evidence ledger](evidence-ledger.md)
+- [Community engagement](community-engagement.md)
+- [Acknowledgements](../ACKNOWLEDGEMENTS.md)
 - [Trust center](trust-center.md)
 - [Adoption evidence](adoption-evidence.md)
 - [Codex for OSS fit/gap review](codex-for-oss-fit-gap.md)
