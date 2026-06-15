@@ -83,6 +83,37 @@ Repo:
 https://github.com/SalmonPlays/oss-signal
 ```
 
+## Relevant X Reply
+
+Use this only when a thread explicitly asks for OSS maintainer tools, Codex for
+OSS applicant projects, public evidence examples, or low-risk GitHub Action
+trials. Do not reply to unrelated selection-result posts just to get noticed.
+
+```text
+I applied with oss-signal, a small OSS maintainer-readiness CLI/GitHub Action.
+
+It is early, so I am not claiming broad adoption. Current public evidence:
+- npm + Marketplace Action
+- PASS 16 evidence verification
+- one outside-maintainer-accepted PR
+- one inbound external contributor PR
+- no-fail workflow trial path
+
+Reviewer packet:
+https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md
+```
+
+Shorter reply:
+
+```text
+I applied with oss-signal: an OSS maintainer-readiness CLI/GitHub Action.
+
+Evidence is public and intentionally conservative:
+https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md
+
+No broad adoption claim yet; looking for one independent maintainer workflow run or concrete feedback.
+```
+
 ## GitHub Discussion Announcement
 
 ```markdown
@@ -147,6 +178,8 @@ Repo: https://github.com/SalmonPlays/oss-signal
 ## Anti-Spam Rules
 
 - Do not ask for reciprocal stars, follows, or PRs.
+- Do not reply to unrelated posts only to increase visibility.
+- Do not tag OpenAI staff or reviewers unless they explicitly ask for project links.
 - Do not mass-post the same text to many repositories.
 - Do not claim independent adoption until a maintainer uses, merges, replies to, or endorses the workflow.
 - Do not post field-audit issues unless the finding is narrow and actionable.

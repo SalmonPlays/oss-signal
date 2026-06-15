@@ -31,6 +31,8 @@ the tool:
 Recognition means linking the public contribution in the evidence ledger,
 reviewer docs, [ACKNOWLEDGEMENTS.md](../ACKNOWLEDGEMENTS.md), release notes
 when relevant, or future thank-you comments when write access is available.
+For social replies, use the bounded templates in [social-launch.md](social-launch.md)
+only when the thread is directly relevant.
 
 ## Reciprocity Boundary
 
