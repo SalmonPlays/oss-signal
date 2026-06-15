@@ -1,6 +1,6 @@
 # OSS Signal Evidence Verification
 
-Generated: 2026-06-15T00:02:48.202Z
+Generated: 2026-06-15T05:26:38.101Z
 
 This report verifies public reviewer evidence used by `oss-signal`. It is intentionally factual: open issues and pull requests are not counted as adoption unless maintainers merge, reply, or otherwise endorse them.
 
@@ -13,7 +13,7 @@ Summary:
 | Status | Check | Detail |
 | --- | --- | --- |
 | PASS | npm package latest | latest=0.9.8 |
-| PASS | npm download API | 3589 downloads from 2026-05-15 to 2026-06-13 |
+| PASS | npm download API | 3605 downloads from 2026-05-16 to 2026-06-14 |
 | PASS | GitHub repository | SalmonPlays/oss-signal, stars=2, forks=1 |
 | PASS | GitHub fork evidence | https://github.com/ded-furby/oss-signal created_at=2026-06-05T09:09:23Z |
 | PASS | GitHub release v0.9.8 | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8 published_at=2026-06-13T03:05:04Z |

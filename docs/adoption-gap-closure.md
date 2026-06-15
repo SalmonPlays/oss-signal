@@ -1,6 +1,6 @@
 # Adoption Gap Closure Plan
 
-Snapshot: 2026-06-14
+Snapshot: 2026-06-15
 
 This page addresses the current weak points in the `oss-signal` adoption case.
 It is intentionally conservative: two GitHub stars, open field-audit pull
@@ -20,8 +20,8 @@ copyable outside-maintainer trial workflow, see
 | --- | --- | --- | --- | --- |
 | GitHub stars are low | GitHub API returned 2 stars and 1 fork at the latest committed evidence check. The fork is `ded-furby/oss-signal`, tied to the merged inbound contributor PR. | No popularity, social proof, or broad adoption claim. | Do not ask for stars. Keep the package, Action, Marketplace listing, evidence workflow, and reviewer docs verifiable, then prioritize one maintainer-owned run. | A third-party maintainer run, maintainer reply, accepted PR, or trial-feedback issue is stronger than vanity stars. |
 | No independent maintainer-owned workflow run yet | The historical public demo workflow is useful but owned by `SalmonPlays` and remains on an older Action tag. The main repository dogfoods `v0.9.8`. A one-time follow-up request is pending at https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548. | The demo and pending request are not described as current `v0.9.8` third-party adoption. | Wait for a maintainer response or public run. Do not bump the request without a maintainer reply or requested change. | A public workflow run in a repository not owned by `SalmonPlays`, using `SalmonPlays/oss-signal@v0.9.8` or `oss-signal@0.9.8`, plus a linked run URL or adoption report. |
-| Field-audit PRs are mostly open | Four currently visible follow-up PRs and five field-audit issues remained open when checked on 2026-06-14. | Open PRs are not counted as accepted adoption. | Wait for maintainer review, respond only to concrete feedback, and avoid repeated nudges. | A maintainer merges, replies, requests changes, closes with a reason, or endorses/declines the workflow publicly. |
-| Downloads do not prove broad usage | npm reported 3589 downloads for the 2026-05-15 to 2026-06-13 last-month window. | Downloads are supporting distribution evidence, not proof of adoption. | Keep npm evidence current and pair it with maintainer-run evidence. | A public user or maintainer action that can be independently inspected. |
+| Field-audit PRs are mostly open | Four currently visible follow-up PRs and five field-audit issues remained open when checked on 2026-06-15. | Open PRs are not counted as accepted adoption. | Wait for maintainer review, respond only to concrete feedback, and avoid repeated nudges. | A maintainer merges, replies, requests changes, closes with a reason, or endorses/declines the workflow publicly. |
+| Downloads do not prove broad usage | npm reported 3605 downloads for the 2026-05-16 to 2026-06-14 last-month window. | Downloads are supporting distribution evidence, not proof of adoption. | Keep npm evidence current and pair it with maintainer-run evidence. | A public user or maintainer action that can be independently inspected. |
 
 ## Current Strongest Evidence
 
