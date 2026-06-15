@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-14T11:17:10.434Z
+Snapshot: 2026-06-15T00:02:48.202Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -68,7 +68,7 @@ The repository currently has:
 - A workflow output mode that renders a no-fail GitHub Actions trial workflow for external maintainers.
 - A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.9.8` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
 - A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.9.8` against a repository target list and uploads an inventory artifact.
-- A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
+- A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, public fork evidence, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
 - A historical self-owned public workflow demo that ran `SalmonPlays/oss-signal@v0.8.4` from another repository and uploaded Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It is retained as supporting workflow evidence, while current `v0.9.8` workflow evidence comes from the main repository health workflow.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
 - A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.
@@ -104,7 +104,7 @@ Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` r
 
 Recommended application angle:
 
-`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, five currently visible public field-audit issues, four currently visible public field-audit PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
+`oss-signal` is not yet a widely adopted project, but it is a public OSS maintainer tool built specifically for repeatable Codex-assisted maintenance. The project already has a working CLI, npm distribution, GitHub Action, passing CI/CodeQL, self-audit evidence, five currently visible public field-audit issues, four currently visible public field-audit PRs, one outside-maintainer-accepted documentation PR, one public external contributor fork, and one inbound external contributor PR. Codex support would be used to continue auditing repositories, prepare focused maintainer PRs, improve Action automation, and document repeatable OSS maintenance workflows.
 
 Prepared official form answers are in [codex-for-oss-form-answers.md](codex-for-oss-form-answers.md). The applicant still needs to fill personal identity fields and their OpenAI Organization ID directly.
 

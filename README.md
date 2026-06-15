@@ -33,7 +33,7 @@ If you are evaluating this project for maintainer support, start here:
 | Adoption gap closure plan | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
 | Independent maintainer trial request | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
 
-Current public evidence includes `oss-signal@0.9.8` on npm, `SalmonPlays/oss-signal@v0.9.8` as a GitHub Action, a Marketplace listing, public CI/CodeQL/OpenSSF Scorecard/evidence workflows, PASS 15 / SKIP 0 / FAIL 0 evidence verification, one outside-maintainer-accepted PR, and one inbound external contributor PR. The project does not claim broad independent adoption yet.
+Current public evidence includes `oss-signal@0.9.8` on npm, `SalmonPlays/oss-signal@v0.9.8` as a GitHub Action, a Marketplace listing, public CI/CodeQL/OpenSSF Scorecard/evidence workflows, PASS 16 / SKIP 0 / FAIL 0 evidence verification, one outside-maintainer-accepted PR, and one inbound external contributor PR from a public external fork. The project does not claim broad independent adoption yet.
 
 ![oss-signal example output](docs/assets/terminal-report.svg)
 
@@ -114,8 +114,8 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Governance posture: [MAINTAINERS.md](MAINTAINERS.md), [GOVERNANCE.md](GOVERNANCE.md), and [.github/CODEOWNERS](.github/CODEOWNERS) define ownership, review routing, and supported change scope.
 - Community route: [Discussion #5](https://github.com/SalmonPlays/oss-signal/discussions/5) is the public maintainer-workflow thread for usage questions and rule feedback.
 - Self-audit: this repository scores **100/100 (A)** locally and through GitHub URL mode.
-- Field use: five currently visible field-audit issues and four currently visible follow-up PRs remain public, plus one outside-maintainer-accepted PR and one inbound external contributor PR. Historical reports whose public links disappeared are kept as local audit examples but are not counted as public adoption evidence.
-- Merged external OSS contribution evidence: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix accepted by an outside maintainer, and [oss-signal PR #14](https://github.com/SalmonPlays/oss-signal/pull/14) is an inbound external contributor PR adding a compact JSON score example.
+- Field use: five currently visible field-audit issues and four currently visible follow-up PRs remain public, plus one outside-maintainer-accepted PR and one inbound external contributor PR from a public external fork. Historical reports whose public links disappeared are kept as local audit examples but are not counted as public adoption evidence.
+- Merged external OSS contribution evidence: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix accepted by an outside maintainer, and [oss-signal PR #14](https://github.com/SalmonPlays/oss-signal/pull/14) is an inbound external contributor PR from the public [ded-furby/oss-signal](https://github.com/ded-furby/oss-signal) fork adding a compact JSON score example.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
 - Evidence verification: `npm run evidence:verify` checks npm latest, npm download API, GitHub release evidence, repository metadata, and current external issue/PR links; the workflow uploads a Markdown verification artifact and the current snapshot is in [docs/evidence-verification.md](docs/evidence-verification.md).

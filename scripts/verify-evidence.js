@@ -125,6 +125,24 @@ await check("GitHub repository", async () => {
   return `${repository.full_name}, stars=${repository.stargazers_count}, forks=${repository.forks_count}`;
 });
 
+await check("GitHub fork evidence", async () => {
+  const forks = await fetchJson(
+    "https://api.github.com/repos/SalmonPlays/oss-signal/forks?sort=newest&per_page=100",
+    { headers: githubHeaders },
+  );
+  assert(Array.isArray(forks), "forks response is not an array");
+  const externalFork = forks.find(
+    (fork) => fork.full_name === "ded-furby/oss-signal",
+  );
+  assert(externalFork, "ded-furby/oss-signal fork is not listed");
+  assert(
+    externalFork.fork === true,
+    "ded-furby/oss-signal is not marked as a fork",
+  );
+  assert(externalFork.private === false, "ded-furby/oss-signal fork is private");
+  return `${externalFork.html_url} created_at=${externalFork.created_at}`;
+});
+
 const releaseTag = `v${packageJson.version}`;
 
 await check(`GitHub release ${releaseTag}`, async () => {

@@ -12,7 +12,7 @@ Best audience:
 - Contributors who want to open small, useful maintainer-workflow PRs.
 - Teams that want CI evidence for README, license, contributing, security, templates, tests, CodeQL, Dependabot, and release notes.
 
-Do not claim broad adoption. The current evidence is a public npm package, GitHub Marketplace Action, self-audit, current `v0.9.8` dogfood workflows, a historical self-owned workflow demo, no-fail maintainer trial workflow, five currently visible public field-audit issues, four currently visible open external follow-up PRs, one outside-maintainer-accepted documentation PR, and one inbound external contributor PR.
+Do not claim broad adoption. The current evidence is a public npm package, GitHub Marketplace Action, self-audit, current `v0.9.8` dogfood workflows, a historical self-owned workflow demo, no-fail maintainer trial workflow, five currently visible public field-audit issues, four currently visible open external follow-up PRs, one outside-maintainer-accepted documentation PR, one public external contributor fork, and one inbound external contributor PR.
 
 ## Primary Links
 

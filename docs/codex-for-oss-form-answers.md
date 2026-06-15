@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-14T11:17:10.434Z
+Snapshot: 2026-06-15T00:02:48.202Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -100,6 +100,7 @@ The project is early, so I am not overstating adoption. Current evidence include
 - Maintainer trial: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md
 - Maintainer feedback: https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-feedback.md
 - Outside-maintainer-accepted external PR: https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361
+- Public external contributor fork: https://github.com/ded-furby/oss-signal
 - Inbound external contributor PR: https://github.com/SalmonPlays/oss-signal/pull/14
 - Divyesh field-audit issue: https://github.com/Divyesh-5981/signal-oss/issues/5
 

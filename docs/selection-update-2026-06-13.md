@@ -1,6 +1,6 @@
 # Selection Update: 2026-06-13
 
-Last verified: 2026-06-14T11:17:10.434Z
+Last verified: 2026-06-15T00:02:48.202Z
 
 Application submitted: 2026-06-03
 
@@ -26,7 +26,8 @@ application was submitted, the project has continued normal public maintenance
 and now has a verified `0.9.8` release, npm distribution, GitHub Action tag,
 Marketplace listing, public release workflow, evidence verification, CodeQL,
 OpenSSF Scorecard, maintainer trial workflow, field-audit follow-up, one
-outside-maintainer-accepted PR, and one inbound external contributor PR.
+outside-maintainer-accepted PR, and one inbound external contributor PR from a
+public external fork.
 
 The project should still not be described as broadly adopted. Its strongest
 honest case is active maintenance, release discipline, transparent verification,
@@ -43,10 +44,10 @@ and a concrete workflow for reducing OSS maintainer triage and review load.
 | Release workflow | The `v0.9.8` release run completed successfully. | https://github.com/SalmonPlays/oss-signal/actions/runs/27454690478 |
 | Marketplace listing | Free GitHub Action listing is published. | https://github.com/marketplace/actions/oss-signal |
 | Main workflow evidence | CI, Repository health, Repository inventory, Evidence verification, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
-| Evidence verification | The committed evidence snapshot reports PASS 15, SKIP 0, FAIL 0. The workflow runs with `GITHUB_TOKEN`. | [evidence-verification.md](evidence-verification.md) |
+| Evidence verification | The committed evidence snapshot reports PASS 16, SKIP 0, FAIL 0. The workflow runs with `GITHUB_TOKEN`. | [evidence-verification.md](evidence-verification.md) |
 | npm downloads | npm API returned 3589 downloads for the last-month window from 2026-05-15 to 2026-06-13. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
-| Repository interest | GitHub API returned 1 star and 1 fork at verification time. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
-| External PR evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR are recorded. | https://github.com/icoretech/codex-action/pull/24 and https://github.com/SalmonPlays/oss-signal/pull/14 |
+| Repository interest | GitHub API returned 2 stars and 1 fork at verification time. The fork is `ded-furby/oss-signal`. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
+| External PR evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR from a public external fork are recorded. | https://github.com/icoretech/codex-action/pull/24, https://github.com/ded-furby/oss-signal, and https://github.com/SalmonPlays/oss-signal/pull/14 |
 
 ## Post-Submission Delta
 
@@ -61,8 +62,8 @@ post-submission maintenance progress:
 - Reviewer docs separate accepted external evidence from open outreach and
   historical links that are no longer publicly verifiable.
 - Evidence verification checks npm latest, npm downloads, release metadata,
-  repository metadata, current field-audit links, the outside-maintainer-accepted
-  PR, and the inbound external contributor PR.
+  repository metadata, public fork evidence, current field-audit links, the
+  outside-maintainer-accepted PR, and the inbound external contributor PR.
 
 ## Field-Audit Status
 

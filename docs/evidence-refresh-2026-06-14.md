@@ -37,15 +37,16 @@ completed successfully:
 | Signal | Latest checked value |
 | --- | --- |
 | npm downloads | 3589 downloads for 2026-05-15 to 2026-06-13 |
-| GitHub stars | 1 |
+| GitHub stars | 2 |
 | GitHub forks | 1 |
-| GitHub watchers | 0 |
+| GitHub watchers | 2 |
 | Latest release | `v0.9.8`, published 2026-06-13T03:05:04Z |
 
 The npm download window advanced when checked on 2026-06-14 JST, and the
 committed evidence snapshot now records the 3589-download last-month window.
-The GitHub repository metadata check later on 2026-06-14 returned 1 star and
-1 fork.
+The GitHub repository metadata check later on 2026-06-15T00:02:48.202Z
+returned 2 stars, 1 fork, and 2 watchers. The public fork is
+https://github.com/ded-furby/oss-signal.
 
 ## External PR, Issue, And Request Status
 
@@ -57,6 +58,7 @@ confirmed through the GitHub API on 2026-06-14T11:15:45Z:
 | --- | --- | --- | --- |
 | `icoretech/codex-action` | https://github.com/icoretech/codex-action/pull/24 | merged | Outside-maintainer-accepted documentation PR. |
 | `icoretech/codex-action` | https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548 | pending request | One-time no-fail workflow request; not counted as adoption unless the maintainer runs, replies, or files feedback. |
+| `ded-furby/oss-signal` | https://github.com/ded-furby/oss-signal | public fork | Fork used for the inbound external contributor PR; contributor workflow evidence only. |
 | `SalmonPlays/oss-signal` | https://github.com/SalmonPlays/oss-signal/pull/14 | merged | Inbound external contributor PR; not independent maintainer adoption. |
 | `platformatic/massimo` | https://github.com/platformatic/massimo/pull/160 | open | Field-audit PR remains open; not counted as adoption. |
 | `supermarkt/checkjebon` | https://github.com/supermarkt/checkjebon/pull/23 | open | Field-audit PR remains open; not counted as adoption. |

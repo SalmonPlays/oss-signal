@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-14T11:17:10.434Z
+Last verified: 2026-06-15T00:02:48.202Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -83,7 +83,7 @@ To verify public evidence links from the repository:
 npm run evidence:verify
 ```
 
-Expected result: PASS lines for npm latest, npm downloads, GitHub release evidence, repository metadata, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR. If run locally without `GITHUB_TOKEN` after the anonymous GitHub API limit is exhausted, GitHub API checks are reported as SKIP instead of being counted as verified.
+Expected result: PASS lines for npm latest, npm downloads, GitHub release evidence, repository metadata, public fork evidence, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR. If run locally without `GITHUB_TOKEN` after the anonymous GitHub API limit is exhausted, GitHub API checks are reported as SKIP instead of being counted as verified.
 
 The GitHub workflow writes the same evidence to the run step summary and uploads an `oss-signal-evidence-verification` artifact.
 
@@ -105,6 +105,7 @@ The latest committed snapshot is [evidence-verification.md](evidence-verificatio
 | `flox/install-flox-action` | https://github.com/flox/install-flox-action/issues/204 | https://github.com/flox/install-flox-action/pull/205 | Pull request template |
 | `Divyesh-5981/signal-oss` | https://github.com/Divyesh-5981/signal-oss/issues/5 | N/A | SECURITY.md and contributor templates |
 | `icoretech/codex-action` | N/A | https://github.com/icoretech/codex-action/pull/24 | Merged Codex Action README safety examples; maintainer merge comment at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 |
+| `ded-furby/oss-signal` | N/A | https://github.com/ded-furby/oss-signal | Public external contributor fork; not independent adoption. |
 | `SalmonPlays/oss-signal` | N/A | https://github.com/SalmonPlays/oss-signal/pull/14 | Merged inbound external contributor PR adding a compact JSON score example. |
 
 Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` remain in [outreach](outreach), but their public issue or PR links were not verifiable on 2026-06-08 and are not counted as current public evidence.
@@ -139,7 +140,7 @@ Historical audit reports for `Grovanni/oss-signal` and `noctemlabs/signal-oss` r
 
 ## Boundaries
 
-This project does not claim broad independent adoption yet. The historical self-owned workflow demo is public but owned by `SalmonPlays`, so it is treated as supporting workflow evidence rather than third-party adoption. The strongest accepted external evidence is one outside-maintainer-accepted documentation PR plus one inbound external contributor PR. The five currently visible field-audit issues and four currently visible field-audit follow-up PRs remain open unless their target maintainers merge, reply, or otherwise endorse them.
+This project does not claim broad independent adoption yet. The historical self-owned workflow demo is public but owned by `SalmonPlays`, so it is treated as supporting workflow evidence rather than third-party adoption. The strongest accepted external evidence is one outside-maintainer-accepted documentation PR plus one inbound external contributor PR from a public external fork. The five currently visible field-audit issues and four currently visible field-audit follow-up PRs remain open unless their target maintainers merge, reply, or otherwise endorse them.
 
 ## Primary Evidence Pages
 

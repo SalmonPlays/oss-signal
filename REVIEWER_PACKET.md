@@ -1,8 +1,8 @@
 # OSS Signal Reviewer Packet
 
-Last reviewed: 2026-06-14T11:17:10.434Z
+Last reviewed: 2026-06-15T00:02:48.202Z
 
-Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-14T11:17:10.434Z.
+Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-15T00:02:48.202Z.
 
 Latest manual evidence refresh: [docs/evidence-refresh-2026-06-14.md](docs/evidence-refresh-2026-06-14.md).
 
@@ -23,13 +23,13 @@ Next independent-usage path: [docs/independent-workflow-run-request.md](docs/ind
 | GitHub Release | `v0.9.8` published | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8 |
 | GitHub Marketplace | Free Action listing is published | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | Public docs landing page | https://salmonplays.github.io/oss-signal/ |
-| Evidence verification | PASS 15, SKIP 0, FAIL 0 in the committed local snapshot; the GitHub workflow runs with `GITHUB_TOKEN` | [docs/evidence-verification.md](docs/evidence-verification.md) |
+| Evidence verification | PASS 16, SKIP 0, FAIL 0 in the committed local snapshot; the GitHub workflow runs with `GITHUB_TOKEN` | [docs/evidence-verification.md](docs/evidence-verification.md) |
 | Manual evidence refresh | Public workflows all completed successfully for the checked `d8aff08` baseline on 2026-06-14 | [docs/evidence-refresh-2026-06-14.md](docs/evidence-refresh-2026-06-14.md) |
 | Evidence workflow | Public workflow with Markdown artifact | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml |
 | Post-submission update | Current 2026-06-13 reviewer update | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
 | Adoption gap closure | Current weak signals and exact evidence needed to close them | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
 | Independent run request | Copyable no-fail workflow for maintainer-owned public repositories | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
-| External contribution evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
+| External contribution evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR from a public external fork | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
 | Field-audit evidence | Five visible issues and four visible PRs remain open | [docs/adoption-evidence.md](docs/adoption-evidence.md) |
 
 ## Latest Verified Workflow Runs
@@ -67,8 +67,8 @@ Expected results:
 - npm latest is `0.9.8`.
 - clean package execution prints `0.9.8`.
 - `npm run check` passes lint, tests, and self-audit.
-- `npm run evidence:verify` reports PASS lines for npm, release, repository metadata, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
+- `npm run evidence:verify` reports PASS lines for npm, release, repository metadata, the public `ded-furby/oss-signal` fork, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
 
 ## Boundary
 
-`oss-signal` is still early. It does not claim broad independent adoption, popularity, stars, or a large user base. The strongest accepted external evidence today is one outside-maintainer-accepted documentation PR plus one inbound external contributor PR. The remaining field-audit issues and PRs are public workflow evidence until target maintainers respond, merge, or endorse them.
+`oss-signal` is still early. It does not claim broad independent adoption, popularity, stars, or a large user base. The strongest accepted external evidence today is one outside-maintainer-accepted documentation PR plus one inbound external contributor PR from a public external fork. The remaining field-audit issues and PRs are public workflow evidence until target maintainers respond, merge, or endorse them.

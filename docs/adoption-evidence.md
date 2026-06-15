@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-14T11:17:10.434Z
+Last verified: 2026-06-15T00:02:48.202Z
 
 ## Project Links
 
@@ -142,9 +142,10 @@ Additional focused external contribution:
 
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24 was merged on 2026-06-04 and updates Codex Action README examples so generated output is routed through environment variables before shell printing. The maintainer merge comment is public at https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361.
 - `icoretech/codex-action`: https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548 is a one-time no-fail workflow request posted on 2026-06-14. It is pending trial-path evidence only and is not counted as adoption unless the maintainer runs the workflow, replies, or files feedback.
+- `ded-furby/oss-signal`: https://github.com/ded-furby/oss-signal is a public fork created on 2026-06-05 and used for the inbound external contributor path. This is contributor workflow evidence, not independent maintainer adoption.
 - `SalmonPlays/oss-signal`: https://github.com/SalmonPlays/oss-signal/pull/14 was opened by external contributor `ded-furby` and merged on 2026-06-12. It adds a compact JSON score example and closes issue #7. This is inbound contributor evidence, not independent maintainer adoption.
 
-The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-14T05:24:03.072Z. The targeted `icoretech/codex-action` follow-up request was confirmed through the GitHub API on 2026-06-14T11:15:45Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and remained open at the issue/PR check. Open PRs, issues, and pending requests are not claimed as accepted adoption unless a maintainer merges, replies, runs the workflow, files feedback, or otherwise endorses them.
+The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-14T05:24:03.072Z. The targeted `icoretech/codex-action` follow-up request was confirmed through the GitHub API on 2026-06-14T11:15:45Z. The `ded-furby/oss-signal` public fork was confirmed on 2026-06-15T00:02:48.202Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and remained open at the issue/PR check. Open PRs, issues, pending requests, and forks are not claimed as accepted adoption unless a maintainer merges, replies, runs the workflow, files feedback, or otherwise endorses them.
 
 ## Contributor Intake
 
