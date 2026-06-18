@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>oss-signal | GitHub launch hub</title>
+    <title>oss-signal | OSS maintainer readiness</title>
     <meta
       name="description"
-      content="oss-signalのGitHub launch hub。Repository、Marketplace Action、Evidence、Issuesへすぐ移動できる軽量公開ページです。"
+      content="oss-signalはREADME、SECURITY、CI、Issue、PR、SARIFを点検し、OSS repoの次の一手を作る軽量CLIとGitHub Actionです。"
     />
-    <link rel="stylesheet" href="./styles.css?v=nano-final-3" />
-    <script src="./script.js?v=nano-final-3" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=public-oss-1" />
+    <script src="./script.js?v=public-oss-1" defer></script>
   </head>
   <body>
     <div class="burst" aria-hidden="true">
@@ -23,83 +23,121 @@
         <img src="./assets/oss-signal-icon.svg" alt="" width="40" height="40" />
         <span>
           <strong>oss-signal</strong>
-          <small>GitHub launch hub</small>
+          <small>Maintainer readiness</small>
         </span>
       </a>
-      <button class="sound" type="button" data-sound aria-label="効果音をオンにする">sound</button>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">Repo</a>
-        <a href="https://github.com/marketplace/actions/oss-signal" target="_blank" rel="noopener noreferrer">Action</a>
-        <a href="https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md" target="_blank" rel="noopener noreferrer">Evidence</a>
-        <a class="nav-cta" href="https://github.com/SalmonPlays/oss-signal/issues/new" target="_blank" rel="noopener noreferrer">Issue</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#try">Try</a>
+        <a href="#trust">Trust</a>
+        <a class="nav-cta" href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-copy">
-          <p class="eyebrow">GitHub-first public OSS launch</p>
-          <h1>oss-signal</h1>
+          <p class="eyebrow">For maintainers, contributors, and repo reviewers</p>
+          <h1 id="hero-title">OSS repoの次の一手を、1本のレポートに。</h1>
           <p class="lede">
-            GitHubで見つけて、Marketplace Actionで試し、Evidenceを読み、IssueやPRで返すための入口。
+            README、SECURITY、CI、Issue template、PR template、CodeQL、SARIFを点検し、
+            メンテナーが直せる粒度のMarkdown、JSON、SARIF、次のPR候補を出します。
           </p>
           <div class="actions" aria-label="Main links">
-            <a class="button primary" data-burst href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">Open repository</a>
-            <a class="button" data-burst href="https://github.com/marketplace/actions/oss-signal" target="_blank" rel="noopener noreferrer">Run Action</a>
-            <a class="button" data-burst href="https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md" target="_blank" rel="noopener noreferrer">Review evidence</a>
+            <a class="button primary" data-burst href="https://github.com/marketplace/actions/oss-signal" target="_blank" rel="noopener noreferrer">Run GitHub Action</a>
+            <a class="button" data-burst href="https://www.npmjs.com/package/oss-signal" target="_blank" rel="noopener noreferrer">Use CLI</a>
+            <a class="button" data-burst href="https://github.com/SalmonPlays/oss-signal/issues/new" target="_blank" rel="noopener noreferrer">Send feedback</a>
           </div>
         </div>
-        <aside class="signal-card" aria-label="oss-signal status">
-          <div class="card-head">
-            <img src="./assets/oss-signal-icon.svg" alt="" width="72" height="72" />
-            <div>
-              <span>OSS-SIGNAL</span>
-              <strong>OSS Maintainer Signal</strong>
-              <small>npx oss-signal SalmonPlays/oss-signal</small>
-            </div>
-          </div>
-          <dl>
-            <div>
-              <dt>Repository</dt>
-              <dd>SalmonPlays/oss-signal</dd>
-            </div>
-            <div>
-              <dt>Marketplace</dt>
-              <dd>Action v0.9.8</dd>
-            </div>
-            <div>
-              <dt>Public page</dt>
-              <dd>salmonplays.github.io/oss-signal</dd>
-            </div>
-          </dl>
-        </aside>
       </section>
 
-      <section class="link-grid" aria-label="GitHub destinations">
-        <a data-burst href="https://github.com/SalmonPlays/oss-signal/actions" target="_blank" rel="noopener noreferrer">
-          <span>Actions</span>
-          <strong>CI runs and summaries</strong>
+      <section id="use-cases" class="audience-band" aria-labelledby="use-cases-title">
+        <div class="section-head">
+          <p class="eyebrow">Use cases</p>
+          <h2 id="use-cases-title">審査用だけではなく、普段のOSS運用に使える形へ。</h2>
+        </div>
+        <div class="audience-grid">
+          <article>
+            <span>Maintain</span>
+            <h3>抜けを短時間で見る</h3>
+            <p>README、SECURITY、workflow、template、CodeQLの状態をまとめ、直す順番を決めやすくします。</p>
+          </article>
+          <article>
+            <span>Contribute</span>
+            <h3>PR前に文脈をそろえる</h3>
+            <p>外部コントリビューターが、repoの期待値と安全な改善ポイントを先に把握できます。</p>
+          </article>
+          <article>
+            <span>Evaluate</span>
+            <h3>証拠を同じ場所に置く</h3>
+            <p>CI、SARIF、公開run、受け入れられたPRなど、確認できる事実を分けて見せます。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="try" class="try-band" aria-labelledby="try-title">
+        <div class="try-copy">
+          <p class="eyebrow">Try it</p>
+          <h2 id="try-title">自分のrepoで no-fail report を1本出す。</h2>
+          <p>
+            まずは失敗させない監査として走らせ、Markdown summaryを読んでください。
+            役に立ったらIssue、PR、または公開workflow runで返してもらえると改善に直結します。
+          </p>
+          <a class="text-link" data-burst href="https://github.com/SalmonPlays/oss-signal/blob/main/docs/maintainer-trial.md" target="_blank" rel="noopener noreferrer">Maintainer trial guide</a>
+        </div>
+        <div class="command-panel" aria-label="Quick start commands">
+          <div>
+            <span>CLI</span>
+            <code>npx oss-signal .</code>
+          </div>
+          <div>
+            <span>GitHub Action</span>
+            <pre><code>uses: SalmonPlays/oss-signal@v0.9.8
+with:
+  output: oss-signal-report.md
+  summary: "true"</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="link-grid" aria-label="Project destinations">
+        <a data-burst href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">
+          <span>Repository</span>
+          <strong>Source, issues, releases</strong>
         </a>
-        <a data-burst href="https://github.com/SalmonPlays/oss-signal/blob/main/README.md" target="_blank" rel="noopener noreferrer">
-          <span>README</span>
-          <strong>Install and usage</strong>
+        <a data-burst href="https://github.com/marketplace/actions/oss-signal" target="_blank" rel="noopener noreferrer">
+          <span>Marketplace</span>
+          <strong>Run as a GitHub Action</strong>
         </a>
-        <a data-burst href="https://github.com/SalmonPlays/oss-signal/security" target="_blank" rel="noopener noreferrer">
-          <span>Security</span>
-          <strong>Policy and reporting</strong>
+        <a data-burst href="https://www.npmjs.com/package/oss-signal" target="_blank" rel="noopener noreferrer">
+          <span>npm</span>
+          <strong>Install the CLI</strong>
         </a>
-        <a data-burst href="https://github.com/SalmonPlays/oss-signal/pulls" target="_blank" rel="noopener noreferrer">
-          <span>Pull requests</span>
-          <strong>Changes and review</strong>
+        <a data-burst href="https://github.com/SalmonPlays/oss-signal/blob/main/docs/sarif-code-scanning.md" target="_blank" rel="noopener noreferrer">
+          <span>SARIF</span>
+          <strong>Code scanning walkthrough</strong>
         </a>
         <a data-burst href="https://github.com/SalmonPlays/oss-signal/issues" target="_blank" rel="noopener noreferrer">
-          <span>Issues</span>
-          <strong>Feedback queue</strong>
+          <span>Feedback</span>
+          <strong>Questions and trial notes</strong>
         </a>
-        <a data-burst href="https://github.com/SalmonPlays/oss-signal/blob/main/docs/reviewer-evidence.md" target="_blank" rel="noopener noreferrer">
-          <span>Reviewer evidence</span>
-          <strong>Proof packet</strong>
+        <a data-burst href="https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md" target="_blank" rel="noopener noreferrer">
+          <span>Evidence</span>
+          <strong>Public proof ledger</strong>
         </a>
+      </section>
+
+      <section id="trust" class="trust-band" aria-labelledby="trust-title">
+        <div>
+          <p class="eyebrow">Trust model</p>
+          <h2 id="trust-title">盛らずに、見えるものだけを数える。</h2>
+        </div>
+        <ul>
+          <li>自己所有demo、stars、forks、SNS反応は採用証拠として扱いません。</li>
+          <li>独立メンテナー所有repoの公開workflow run、受け入れられたPR、具体的なtrial feedbackを強い証拠として分けます。</li>
+          <li>審査員向けのpacketも、一般ユーザーが検証できるpublic ledgerとして残します。</li>
+        </ul>
       </section>
 
     </main>
