@@ -6,453 +6,107 @@
     <title>oss-signal | GitHub launch hub</title>
     <meta
       name="description"
-      content="oss-signalのGitHub launch hub。Marketplace Action、Issues、PR、Actions、reviewer evidenceへ直接つなぐ公開ページです。"
+      content="oss-signalのGitHub launch hub。Repository、Marketplace Action、Evidence、Issuesへすぐ移動できる軽量公開ページです。"
     />
-    <link rel="stylesheet" href="./styles.css?v=ultra-lite-final" />
-    <script src="./script.js?v=ultra-lite-final" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=nano-final-3" />
+    <script src="./script.js?v=nano-final-3" defer></script>
   </head>
-  <body class="is-ultra-lite">
-    <canvas class="cosmos-canvas" data-cosmos-canvas aria-hidden="true"></canvas>
-    <canvas class="star-canvas" data-star-canvas aria-hidden="true"></canvas>
-    <div class="rift-layer" aria-hidden="true">
+  <body>
+    <div class="burst" aria-hidden="true">
       <span></span>
       <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="cursor-light" data-cursor-light aria-hidden="true"></div>
-    <div class="beast-layer" aria-hidden="true">
-      <span class="beast-rift rift-a"></span>
-      <span class="beast-rift rift-b"></span>
-      <span class="beast-rift rift-c"></span>
-      <span class="beast-wake wake-a"></span>
-      <span class="beast-wake wake-b"></span>
-      <span class="beast-wake wake-c"></span>
-      <span class="sonic-rib rib-a"></span>
-      <span class="sonic-rib rib-b"></span>
-      <span class="sonic-rib rib-c"></span>
-      <span class="sky-split split-a"></span>
-      <span class="sky-split split-b"></span>
-      <span class="sky-split split-c"></span>
-      <span class="thunder-strike strike-a"></span>
-      <span class="thunder-strike strike-b"></span>
-      <span class="thunder-strike strike-c"></span>
-      <span class="sound-glyph glyph-a">VUUUN</span>
-      <span class="sound-glyph glyph-b">ブイーン</span>
-      <span class="heaven-breach breach-a"></span>
-      <span class="heaven-breach breach-b"></span>
-      <span class="heaven-breach breach-c"></span>
-      <img class="beast-echo echo-a" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-fx-src="./assets/celestial-dinosaur-lite.png" alt="" />
-      <img class="beast-echo echo-b" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-fx-src="./assets/celestial-dinosaur-lite.png" alt="" />
-      <img class="celestial-beast" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-fx-src="./assets/celestial-dinosaur-lite.png" alt="" />
-      <img class="soul-beast" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-fx-src="./assets/celestial-dinosaur-lite.png" alt="" />
-      <span class="impact-ring ring-one"></span>
-      <span class="impact-ring ring-two"></span>
-      <span class="impact-ring ring-three"></span>
-      <span class="ticket-nova nova-one"></span>
-      <span class="ticket-nova nova-two"></span>
-      <span class="ticket-nova nova-three"></span>
-      <span class="soul-shard shard-a"></span>
-      <span class="soul-shard shard-b"></span>
-      <span class="soul-shard shard-c"></span>
-      <span class="soul-shard shard-d"></span>
-      <span class="soul-shard shard-e"></span>
-      <span class="soul-word word-a">SIGNAL BURST</span>
-      <span class="soul-word word-b">OSS震</span>
-    </div>
-    <div class="alien-layer" aria-hidden="true">
-      <span class="alien-signal signal-a"></span>
-      <span class="alien-signal signal-b"></span>
-      <span class="alien-orbit orbit-a"></span>
-      <span class="alien-orbit orbit-b"></span>
-      <span class="alien-beam beam-a"></span>
-      <span class="alien-beam beam-b"></span>
-      <img class="celestial-alien alien-a" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-fx-src="./assets/celestial-alien-lite.png" alt="" />
-      <img class="celestial-alien alien-b" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-fx-src="./assets/celestial-alien-lite.png" alt="" />
-      <img class="celestial-alien alien-c" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-fx-src="./assets/celestial-alien-lite.png" alt="" />
-      <span class="contact-glyph contact-a">CONTACT</span>
-      <span class="contact-glyph contact-b">OSS SIGNAL</span>
+      <b>OSS SIGNAL</b>
     </div>
 
-    <header class="site-header" data-header>
+    <header class="topbar">
       <a class="brand" href="#top" aria-label="oss-signal home">
-        <span class="brand-mark">S</span>
+        <img src="./assets/oss-signal-icon.svg" alt="" width="40" height="40" />
         <span>
           <strong>oss-signal</strong>
           <small>GitHub launch hub</small>
         </span>
       </a>
-      <button class="icon-button nav-toggle" type="button" data-nav-toggle aria-label="メニューを開く">
-        <i data-lucide="menu"></i>
-      </button>
-      <button class="icon-button sound-toggle" type="button" data-sound-toggle aria-label="効果音をオンにする" title="Sound">
-        <i data-lucide="volume-x"></i>
-      </button>
-      <nav class="site-nav" data-site-nav aria-label="Primary navigation">
-        <a href="#overview">Repo</a>
-        <a href="#modes">Actions</a>
-        <a href="#evidence">Evidence</a>
-        <a href="#try">Launch</a>
-        <a class="nav-cta" href="https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md" target="_blank" rel="noopener noreferrer">Evidence</a>
+      <button class="sound" type="button" data-sound aria-label="効果音をオンにする">sound</button>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">Repo</a>
+        <a href="https://github.com/marketplace/actions/oss-signal" target="_blank" rel="noopener noreferrer">Action</a>
+        <a href="https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md" target="_blank" rel="noopener noreferrer">Evidence</a>
+        <a class="nav-cta" href="https://github.com/SalmonPlays/oss-signal/issues/new" target="_blank" rel="noopener noreferrer">Issue</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true"></div>
-        <div class="hero-veil" aria-hidden="true"></div>
-        <div class="portal-field" aria-hidden="true">
-          <span class="portal-ring ring-a"></span>
-          <span class="portal-ring ring-b"></span>
-          <span class="portal-ring ring-c"></span>
-          <span class="portal-core"></span>
-        </div>
-        <div class="hero-runes" aria-hidden="true">
-          <span>Audit</span>
-          <span>Evidence</span>
-          <span>Action</span>
-        </div>
-        <div class="hero-content">
-          <p class="eyebrow">GitHub-first launch hub for public OSS</p>
-          <h1 id="hero-title">oss-signal</h1>
-          <p class="hero-lede">
-            GitHubで見つけて、Marketplace Actionで試し、IssuesやPRで返すための公開ハブ。README、CI、SECURITY、CodeQL、SARIF、adoption packまで点検する <strong>oss-signal</strong> の入口をGitHubに集中させます。
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">GitHub-first public OSS launch</p>
+          <h1>oss-signal</h1>
+          <p class="lede">
+            GitHubで見つけて、Marketplace Actionで試し、Evidenceを読み、IssueやPRで返すための入口。
           </p>
-          <div class="hero-actions" aria-label="Main actions">
-            <a class="button primary" href="https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md" target="_blank" rel="noopener noreferrer" data-beast-trigger>
-              <i data-lucide="badge-check"></i>
-              <span>Review evidence</span>
-            </a>
-            <a class="button ghost" href="https://github.com/marketplace/actions/oss-signal" target="_blank" rel="noopener noreferrer">
-              <i data-lucide="shield-check"></i>
-              <span>Run GitHub Action</span>
-            </a>
-            <a class="button ghost" href="https://github.com/SalmonPlays/oss-signal/issues/new" target="_blank" rel="noopener noreferrer" data-beast-trigger>
-              <i data-lucide="circle-dot"></i>
-              <span>Open issue</span>
-            </a>
+          <div class="actions" aria-label="Main links">
+            <a class="button primary" data-burst href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">Open repository</a>
+            <a class="button" data-burst href="https://github.com/marketplace/actions/oss-signal" target="_blank" rel="noopener noreferrer">Run Action</a>
+            <a class="button" data-burst href="https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md" target="_blank" rel="noopener noreferrer">Review evidence</a>
           </div>
         </div>
-        <div class="night-panel" aria-label="oss-signal status">
-          <div>
-            <span>Repository</span>
-            <strong>SalmonPlays/oss-signal</strong>
-          </div>
-          <div>
-            <span>GitHub Pages</span>
-            <strong>salmonplays.github.io/oss-signal</strong>
-          </div>
-          <div>
-            <span>Marketplace</span>
-            <strong data-entry-status>Action v0.9.8</strong>
-          </div>
-        </div>
-      </section>
-
-      <section class="intro-band" aria-label="oss-signal positioning">
-        <div class="intro-copy">
-          <p class="eyebrow dark">GitHub signal tower</p>
-          <h2>GitHub上でAction、Issue、PR、Evidenceへ流すための専用発信ページ。</h2>
-        </div>
-        <div class="intro-stats">
-          <div>
-            <strong>Repo</strong>
-            <span>public source</span>
-          </div>
-          <div>
-            <strong>Action</strong>
-            <span>marketplace live</span>
-          </div>
-          <div>
-            <strong>Pages</strong>
-            <span>public landing</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="signal-section" id="overview" aria-labelledby="signal-title">
-        <div class="signal-copy">
-          <p class="eyebrow">GitHub repo</p>
-          <h2 id="signal-title">GitHubのrepoページから、試用と証拠へ一気に流す。</h2>
-          <p>
-            <strong>oss-signal</strong> はGitHub repoを中心に広げます。Marketplace Actionで試用、Issuesでフィードバック、PRで改善、Actionsとreviewer evidenceで検証。GitHub内の動線を迷わせないページにします。
-          </p>
-          <div class="signal-actions" aria-label="oss-signal primary links">
-            <a class="button primary" href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">
-              <i data-lucide="git-fork"></i>
-              <span>Open repository</span>
-            </a>
-            <a class="button ghost" href="https://github.com/SalmonPlays/oss-signal/actions" target="_blank" rel="noopener noreferrer">
-              <i data-lucide="play-circle"></i>
-              <span>Actions</span>
-            </a>
-          </div>
-        </div>
-        <div class="signal-visual" aria-label="oss-signal spread links">
-          <img class="signal-product" src="./assets/github-social-preview.png" alt="oss-signal GitHub social preview" />
-          <img class="signal-icon" src="./assets/oss-signal-icon.png" alt="" />
-          <img class="signal-alien" src="./assets/celestial-alien-lite.png" alt="" />
-          <div class="signal-beacon" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="signal-link-grid">
-            <a class="signal-link" href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">
-              <i data-lucide="git-fork"></i>
-              <span>Source</span>
-              <strong>Repository</strong>
-            </a>
-            <a class="signal-link" href="https://github.com/marketplace/actions/oss-signal" target="_blank" rel="noopener noreferrer">
-              <i data-lucide="shield-check"></i>
-              <span>Run in CI</span>
-              <strong>GitHub Action</strong>
-            </a>
-            <a class="signal-link" href="https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md" target="_blank" rel="noopener noreferrer">
-              <i data-lucide="badge-check"></i>
-              <span>Reviewer</span>
-              <strong>Evidence packet</strong>
-            </a>
-            <a class="signal-link" href="https://github.com/SalmonPlays/oss-signal/issues" target="_blank" rel="noopener noreferrer">
-              <i data-lucide="circle-dot"></i>
-              <span>Feedback</span>
-              <strong>Issues</strong>
-            </a>
-            <a class="signal-link" href="https://github.com/SalmonPlays/oss-signal/pulls" target="_blank" rel="noopener noreferrer">
-              <i data-lucide="git-pull-request"></i>
-              <span>Contribute</span>
-              <strong>Pull requests</strong>
-            </a>
-            <a class="signal-link" href="https://github.com/SalmonPlays/oss-signal/blob/main/docs/reviewer-evidence.md" target="_blank" rel="noopener noreferrer">
-              <i data-lucide="badge-check"></i>
-              <span>Reviewer packet</span>
-              <strong>Evidence doc</strong>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section realms-section" id="modes" aria-labelledby="realms-title">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow dark">GitHub flow</p>
-            <h2 id="realms-title">導線は3つ。Repo、Action、Evidence。</h2>
-          </div>
-          <div class="realm-controls" role="tablist" aria-label="oss-signal modes">
-            <button class="realm-tab is-active" type="button" role="tab" aria-selected="true" data-realm="moon">Repo Page</button>
-            <button class="realm-tab" type="button" role="tab" aria-selected="false" data-realm="mist">Action Run</button>
-            <button class="realm-tab" type="button" role="tab" aria-selected="false" data-realm="ember">Evidence Review</button>
-          </div>
-        </div>
-
-        <div class="realm-stage" data-realm-stage>
-          <div class="realm-image" data-realm-image role="img" aria-label="oss-signal terminal report"></div>
-          <div class="realm-copy">
-            <p class="realm-kicker" data-realm-kicker>Public GitHub source</p>
-            <h3 data-realm-title>Repo Page</h3>
-            <p data-realm-description>
-              まずGitHub repoを開き、README、release、issues、pull requests、security docs、workflow examplesへ流します。Evidenceとtrialの導線をここで強く出します。
-            </p>
-            <ul class="realm-list" data-realm-list>
-              <li>Repository source</li>
-              <li>Issues and pull requests</li>
-              <li>Evidence / trial / feedback</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="gallery-band" aria-label="oss-signal output previews">
-        <figure>
-          <img src="./assets/terminal-report.svg" alt="oss-signal terminal report preview" />
-          <figcaption>Terminal report</figcaption>
-        </figure>
-        <figure>
-          <img src="./assets/github-step-summary.svg" alt="oss-signal GitHub Actions step summary preview" />
-          <figcaption>GitHub step summary</figcaption>
-        </figure>
-        <figure>
-          <img src="./assets/code-scanning-results.svg" alt="oss-signal code scanning SARIF preview" />
-          <figcaption>SARIF / code scanning</figcaption>
-        </figure>
-      </section>
-
-      <section class="section program-section" id="evidence" aria-labelledby="program-title">
-        <div class="section-heading">
-          <p class="eyebrow dark">GitHub evidence</p>
-          <h2 id="program-title">GitHub内で検証して、反応まで返せる。</h2>
-        </div>
-        <div class="timeline">
-          <article class="timeline-item">
-            <span>Step 01</span>
-            <h3>repoを開く</h3>
-            <p><code>github.com/SalmonPlays/oss-signal</code> でREADME、release、Actions、docsを確認します。</p>
-          </article>
-          <article class="timeline-item">
-            <span>Step 02</span>
-            <h3>証拠を見る</h3>
-            <p>Reviewer packet、Actions、release、evidence verificationから公開証拠を確認します。</p>
-          </article>
-          <article class="timeline-item">
-            <span>Step 03</span>
-            <h3>Actionで試す</h3>
-            <p>Marketplaceのno-fail workflowを貼ると、repoを壊さずにreportとadoption packをartifact化できます。</p>
-          </article>
-          <article class="timeline-item">
-            <span>Step 04</span>
-            <h3>Issue / PRで返す</h3>
-            <p>フィードバックはIssuesへ、改善はPull requestsへ。外部反応をGitHub上に残します。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="planner-band" id="try" aria-labelledby="try-title">
-        <div class="planner-media" aria-hidden="true">
-          <div class="apex-lattice">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <i></i>
-          </div>
-          <div class="sky-ascender">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="celestial-crown">
-            <span></span>
-            <span></span>
-            <span></span>
-            <i></i>
-          </div>
-          <div class="gate-card">
-            <span class="gate-label">GitHub Launch</span>
-            <span class="gate-state">Evidence / Action / Issue / PR</span>
-            <span class="gate-apex" data-apex-gate>GITHUB SIGNAL 1090</span>
-            <span class="sky-seal" data-sky-seal>ACTIONS READY 16</span>
-            <strong data-gate-ticket>Action Run</strong>
-            <div class="gate-orbit">
-              <span></span>
-              <span></span>
-              <span></span>
-              <i></i>
-            </div>
-            <dl>
-              <div>
-                <dt>Route</dt>
-                <dd data-gate-phase>Actions</dd>
-              </div>
-              <div>
-                <dt>Pulse</dt>
-                <dd data-gate-glow>Level 5</dd>
-              </div>
-              <div>
-                <dt>Target</dt>
-                <dd>GitHub</dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-        <div class="planner-content">
-          <div class="section-heading">
-            <p class="eyebrow dark">Launch</p>
-            <h2 id="try-title">GitHub上で広げるための発射台。</h2>
-          </div>
-
-          <div class="ascension-status" data-ascension-status>
-            <span>GitHub launch ready</span>
-            <strong data-ascension-title>Action Run / Marketplace</strong>
-            <small data-ascension-copy>Evidence、Action、Issue、PRへ直接流すGitHub集中ルートです。</small>
-          </div>
-
-          <div class="apex-console" aria-label="oss-signal status">
+        <aside class="signal-card" aria-label="oss-signal status">
+          <div class="card-head">
+            <img src="./assets/oss-signal-icon.svg" alt="" width="72" height="72" />
             <div>
-              <span>Repo</span>
-              <strong data-apex-altitude>Public</strong>
+              <span>OSS-SIGNAL</span>
+              <strong>OSS Maintainer Signal</strong>
+              <small>npx oss-signal SalmonPlays/oss-signal</small>
+            </div>
+          </div>
+          <dl>
+            <div>
+              <dt>Repository</dt>
+              <dd>SalmonPlays/oss-signal</dd>
             </div>
             <div>
-              <span>Action</span>
-              <strong data-apex-resonance>v0.9.8</strong>
+              <dt>Marketplace</dt>
+              <dd>Action v0.9.8</dd>
             </div>
             <div>
-              <span>Channel</span>
-              <strong data-apex-vector>GitHub</strong>
+              <dt>Public page</dt>
+              <dd>salmonplays.github.io/oss-signal</dd>
             </div>
-          </div>
-
-          <div class="skyline-meter" aria-label="oss-signal flow">
-            <span>Evidence</span>
-            <span>Action</span>
-            <span data-skyline-current>Issue / PR</span>
-          </div>
-
-          <div class="ticket-grid">
-            <button class="ticket" type="button" data-ticket="wanderer" data-beast-trigger>
-              <i data-lucide="badge-check"></i>
-              <span>Evidence</span>
-              <strong>review</strong>
-            </button>
-            <button class="ticket is-active" type="button" data-ticket="oracle" data-beast-trigger>
-              <i data-lucide="workflow"></i>
-              <span>Action Run</span>
-              <strong>workflow</strong>
-            </button>
-            <button class="ticket" type="button" data-ticket="solstice" data-beast-trigger>
-              <i data-lucide="git-pull-request"></i>
-              <span>Issue / PR</span>
-              <strong>feedback</strong>
-            </button>
-          </div>
-
-          <form class="planner-form" data-planner-form>
-            <label>
-              <span>対象repo数</span>
-              <input type="number" name="guests" min="1" max="12" value="1" required />
-            </label>
-            <label>
-              <span>GitHubルート</span>
-              <select name="time" required>
-                <option value="Review evidence">Review evidence</option>
-                <option value="Marketplace Action">Marketplace Action</option>
-                <option value="Open issue">Open issue</option>
-                <option value="Open pull request">Open pull request</option>
-              </select>
-            </label>
-            <label class="range-label">
-              <span>GitHub信号強度</span>
-              <input type="range" name="glow" min="1" max="5" value="5" data-glow-range />
-            </label>
-            <label class="switch-row">
-              <input type="checkbox" name="guide" checked />
-              <span>reviewer evidenceへの導線を含める</span>
-            </label>
-            <button class="button primary form-submit" type="submit" data-beast-trigger>
-              <i data-lucide="send"></i>
-              <span>GitHub launchを作る</span>
-            </button>
-          </form>
-
-          <aside class="summary-panel" data-summary-panel aria-live="polite">
-            <p class="eyebrow dark">Plan</p>
-            <h3>Action Run / 1 repo</h3>
-            <p>Review evidenceで開始。reviewer evidence導線つき。GitHub signal level 5。Evidence、Action、Issue、PRへ流すlaunch planです。</p>
-          </aside>
-        </div>
+          </dl>
+        </aside>
       </section>
+
+      <section class="link-grid" aria-label="GitHub destinations">
+        <a data-burst href="https://github.com/SalmonPlays/oss-signal/actions" target="_blank" rel="noopener noreferrer">
+          <span>Actions</span>
+          <strong>CI runs and summaries</strong>
+        </a>
+        <a data-burst href="https://github.com/SalmonPlays/oss-signal/blob/main/README.md" target="_blank" rel="noopener noreferrer">
+          <span>README</span>
+          <strong>Install and usage</strong>
+        </a>
+        <a data-burst href="https://github.com/SalmonPlays/oss-signal/security" target="_blank" rel="noopener noreferrer">
+          <span>Security</span>
+          <strong>Policy and reporting</strong>
+        </a>
+        <a data-burst href="https://github.com/SalmonPlays/oss-signal/pulls" target="_blank" rel="noopener noreferrer">
+          <span>Pull requests</span>
+          <strong>Changes and review</strong>
+        </a>
+        <a data-burst href="https://github.com/SalmonPlays/oss-signal/issues" target="_blank" rel="noopener noreferrer">
+          <span>Issues</span>
+          <strong>Feedback queue</strong>
+        </a>
+        <a data-burst href="https://github.com/SalmonPlays/oss-signal/blob/main/docs/reviewer-evidence.md" target="_blank" rel="noopener noreferrer">
+          <span>Reviewer evidence</span>
+          <strong>Proof packet</strong>
+        </a>
+      </section>
+
     </main>
 
-    <footer class="site-footer">
+    <footer class="footer">
       <span>oss-signal</span>
-      <span>
-        <a href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">GitHub</a>
-        /
-        <a href="https://github.com/SalmonPlays/oss-signal/blob/main/REVIEWER_PACKET.md" target="_blank" rel="noopener noreferrer">Evidence</a>
-        /
-        <a href="https://github.com/marketplace/actions/oss-signal" target="_blank" rel="noopener noreferrer">Marketplace</a>
-      </span>
+      <a href="https://github.com/SalmonPlays/oss-signal" target="_blank" rel="noopener noreferrer">github.com/SalmonPlays/oss-signal</a>
     </footer>
   </body>
 </html>
