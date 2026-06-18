@@ -1,6 +1,6 @@
 # Selection Update: 2026-06-13
 
-Last verified: 2026-06-15T05:26:38.101Z
+Last verified: 2026-06-18T02:43:54.773Z
 
 Application submitted: 2026-06-03
 
@@ -13,7 +13,7 @@ replies, or endorses them.
 For the shortest root-level verification path, see [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md).
 For the detailed evidence ledger, see [evidence-ledger.md](evidence-ledger.md).
 For the latest manual evidence refresh, see
-[evidence-refresh-2026-06-15.md](evidence-refresh-2026-06-15.md).
+[evidence-refresh-2026-06-18.md](evidence-refresh-2026-06-18.md).
 For the current weak signals and closure plan, see
 [adoption-gap-closure.md](adoption-gap-closure.md).
 For the next independent maintainer signal, see
@@ -45,7 +45,7 @@ and a concrete workflow for reducing OSS maintainer triage and review load.
 | Marketplace listing | Free GitHub Action listing is published. | https://github.com/marketplace/actions/oss-signal |
 | Main workflow evidence | CI, Repository health, Repository inventory, Evidence verification, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
 | Evidence verification | The committed evidence snapshot reports PASS 16, SKIP 0, FAIL 0. The workflow runs with `GITHUB_TOKEN`. | [evidence-verification.md](evidence-verification.md) |
-| npm downloads | npm API returned 3605 downloads for the last-month window from 2026-05-16 to 2026-06-14. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
+| npm downloads | npm API returned 3676 downloads for the last-month window from 2026-05-18 to 2026-06-16. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
 | Repository interest | GitHub API returned 2 stars and 1 fork at verification time. The fork is `ded-furby/oss-signal`. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
 | External PR evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR from a public external fork are recorded. | https://github.com/icoretech/codex-action/pull/24, https://github.com/ded-furby/oss-signal, and https://github.com/SalmonPlays/oss-signal/pull/14 |
 

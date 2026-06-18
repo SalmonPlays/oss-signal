@@ -1,6 +1,6 @@
 # Community Engagement
 
-Last verified: 2026-06-15T05:26:38.101Z
+Last verified: 2026-06-18T02:43:54.773Z
 
 This page records real public interactions around `oss-signal` and the
 boundaries for recognizing them. It is intentionally conservative: stars,

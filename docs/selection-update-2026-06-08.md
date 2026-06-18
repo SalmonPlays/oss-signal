@@ -1,6 +1,6 @@
 # Selection Update: 2026-06-08
 
-Last verified: 2026-06-15T05:26:38.101Z
+Last verified: 2026-06-18T02:43:54.773Z
 
 This page is a compact post-submission update for reviewers. It separates current public evidence from supporting demos and from links that no longer verify publicly.
 
@@ -16,7 +16,7 @@ For the shortest current evidence bundle, see the root [REVIEWER_PACKET.md](../R
 | GitHub Release | `v0.9.8` is published with release workflow evidence. | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8 |
 | Marketplace listing | Free GitHub Action listing is published. | https://github.com/marketplace/actions/oss-signal |
 | Main workflow evidence | CI, Repository health, Repository inventory, Evidence verification, CodeQL, OpenSSF Scorecard, Release, and Pages workflows are public. | https://github.com/SalmonPlays/oss-signal/actions |
-| npm downloads | npm API returned 3605 downloads for the last-month window from 2026-05-16 to 2026-06-14. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
+| npm downloads | npm API returned 3676 downloads for the last-month window from 2026-05-18 to 2026-06-16. | `https://api.npmjs.org/downloads/point/last-month/oss-signal` |
 | Repository interest | GitHub API returned 2 stars and 1 fork at verification time. The fork is `ded-furby/oss-signal`. | `https://api.github.com/repos/SalmonPlays/oss-signal` |
 | External contribution evidence | One outside-maintainer-accepted documentation PR plus one inbound external contributor PR from a public external fork. | https://github.com/icoretech/codex-action/pull/24, https://github.com/ded-furby/oss-signal, and https://github.com/SalmonPlays/oss-signal/pull/14 |
 | Evidence verification | `npm run evidence:verify` checks the package, download API, release, repository metadata, public fork evidence, current external issue/PR links, the outside-maintainer-accepted PR, and the inbound external contributor PR. The committed local snapshot reports PASS 16, SKIP 0, FAIL 0; the workflow runs with `GITHUB_TOKEN`. | `.github/workflows/evidence-verify.yml` |

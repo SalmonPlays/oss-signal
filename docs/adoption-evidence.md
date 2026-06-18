@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-15T05:26:38.101Z
+Last verified: 2026-06-18T02:43:54.773Z
 
 ## Project Links
 
@@ -75,7 +75,7 @@ The [post-submission update](post-submission-update.md) records why the current 
 
 The npm package is publicly available as `oss-signal@0.9.8` with `latest` pointing at `0.9.8` after the release workflow completes.
 
-The npm downloads API returned 3605 downloads for the last-month window from 2026-05-16 to 2026-06-14 when checked on 2026-06-15. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
+The npm downloads API returned 3676 downloads for the last-month window from 2026-05-18 to 2026-06-16 when checked on 2026-06-18. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
 Clean-directory package execution returned:
 
@@ -106,7 +106,7 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Historical self-owned workflow demo: passing
 
-The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-12 release updates the expected latest version to `0.9.8`. The 2026-06-15 download check returned 3605 downloads for the last-month window.
+The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-12 release updates the expected latest version to `0.9.8`. The 2026-06-18 download check returned 3676 downloads for the last-month window.
 
 ## Separate Public Workflow Evidence
 
@@ -145,7 +145,7 @@ Additional focused external contribution:
 - `ded-furby/oss-signal`: https://github.com/ded-furby/oss-signal is a public fork created on 2026-06-05 and used for the inbound external contributor path. This is contributor workflow evidence, not independent maintainer adoption.
 - `SalmonPlays/oss-signal`: https://github.com/SalmonPlays/oss-signal/pull/14 was opened by external contributor `ded-furby` and merged on 2026-06-12. It adds a compact JSON score example and closes issue #7. This is inbound contributor evidence, not independent maintainer adoption.
 
-The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-15 JST. The targeted `icoretech/codex-action` follow-up request was posted on 2026-06-14 and remained pending at the 2026-06-15 check. The `ded-furby/oss-signal` public fork was confirmed on 2026-06-15T05:26:38.101Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and remained open at the issue/PR check. Open PRs, issues, pending requests, and forks are not claimed as accepted adoption unless a maintainer merges, replies, runs the workflow, files feedback, or otherwise endorses them.
+The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-18 JST. The targeted `icoretech/codex-action` follow-up request was posted on 2026-06-14 and remained pending at the 2026-06-18 check. The `ded-furby/oss-signal` public fork was confirmed on 2026-06-18T02:43:54.773Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and remained open at the issue/PR check. Open PRs, issues, pending requests, and forks are not claimed as accepted adoption unless a maintainer merges, replies, runs the workflow, files feedback, or otherwise endorses them.
 
 ## Contributor Intake
 

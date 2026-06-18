@@ -1,6 +1,6 @@
 # Codex for Open Source Form Answers
 
-Snapshot: 2026-06-15T05:26:38.101Z
+Snapshot: 2026-06-18T02:43:54.773Z
 
 This page prepares concise answers for the official Codex for Open Source application form: https://openai.com/form/codex-for-oss/
 
@@ -81,7 +81,7 @@ Use Codex/API credits to run repeatable public repository audits, draft focused 
 ## Anything Else
 
 ```text
-The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.8 latest, 3605 npm last-month downloads reported on 2026-06-15, a published v0.9.8 release, reusable GitHub Action with inventory/workflow/adoption-pack output, no-fail trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible PRs, one outside-maintainer-accepted PR, and one inbound external contributor PR.
+The project is early, so I am not overstating adoption. Current evidence includes npm 0.9.8 latest, 3676 npm last-month downloads reported on 2026-06-18, a published v0.9.8 release, reusable GitHub Action with inventory/workflow/adoption-pack output, no-fail trial and feedback paths, public CI/Repository health/Evidence verification/CodeQL/Release, five visible field-audit issues, four visible PRs, one outside-maintainer-accepted PR, and one inbound external contributor PR.
 ```
 
 ## Evidence Links
@@ -93,7 +93,7 @@ The project is early, so I am not overstating adoption. Current evidence include
 - Historical self-owned workflow run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
 - Adoption evidence: https://github.com/SalmonPlays/oss-signal/blob/main/docs/adoption-evidence.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
-- Evidence refresh, 2026-06-15: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-refresh-2026-06-15.md
+- Evidence refresh, 2026-06-18: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-refresh-2026-06-18.md
 - Codex for OSS fit/gap review: https://github.com/SalmonPlays/oss-signal/blob/main/docs/codex-for-oss-fit-gap.md
 - Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-13.md
 - Independent workflow run request: https://github.com/SalmonPlays/oss-signal/blob/main/docs/independent-workflow-run-request.md
