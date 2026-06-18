@@ -1,6 +1,6 @@
 # Community Engagement
 
-Last verified: 2026-06-18T02:43:54.773Z
+Last verified: 2026-06-18T03:37:58Z
 
 This page records real public interactions around `oss-signal` and the
 boundaries for recognizing them. It is intentionally conservative: stars,
@@ -16,6 +16,25 @@ follows, reciprocal stars, and social posts are not counted as adoption.
 | Maintainer merge comment | https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 | Public maintainer response confirming the accepted fix. |
 | One-time independent-run request | https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548 | Pending request only; not adoption unless the maintainer runs, replies, or files feedback. |
 | Public interest signals | 2 stars, 1 fork | Low interest signals only; not proof of quality, popularity, or adoption. |
+
+## Public Interest Follow-Up
+
+The public stargazers page was checked on 2026-06-18 and showed one outside
+stargazer, `sa00441113`, plus the repository owner. The public forks page
+showed `ded-furby/oss-signal`.
+
+No reciprocal star, follow, or promotional request is made from these signals.
+The only useful next step for someone who arrived through a star, fork, or
+profile visit is optional maintainer evidence:
+
+- open trial feedback with a repository or workflow link
+- run the no-fail workflow in a maintainer-owned public repository
+- reply with a concrete reason the report is not useful
+- open a focused PR only when there is a real repository-specific fix
+
+Do not tag stargazers or fork owners just to create activity. If a fork or star
+turns into a public run, maintainer reply, focused PR, or trial-feedback issue,
+then link that new public artifact here and in the evidence ledger.
 
 ## Recognition Policy
 

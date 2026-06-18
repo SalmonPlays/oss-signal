@@ -9,6 +9,15 @@ Use this when a maintainer wants to evaluate the tool without adopting it yet,
 or when a reviewer wants to see what evidence would close the current
 independent-usage gap.
 
+## If You Arrived From A Star Or Fork
+
+Thank you for taking a look. No star, follow, endorsement, or reciprocal PR is
+needed. The most useful optional help is a public, maintainer-owned no-fail run
+or a concrete "not useful because..." note.
+
+Use the workflow below only in a repository you maintain or where maintainers
+explicitly want the report. Do not post it broadly across unrelated projects.
+
 ## Copy-Paste Request
 
 Use this only when the repository already has visible maintainer-readiness work
