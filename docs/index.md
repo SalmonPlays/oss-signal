@@ -66,6 +66,7 @@ Run as a GitHub Action:
 - [Maintainer trial](maintainer-trial.md)
 - [Maintainer feedback](maintainer-feedback.md)
 - [Social launch kit](social-launch.md)
+- [Organic discovery playbook](discovery-playbook.md)
 - [Configuration](configuration.md)
 - [Summary output](summary-output.md)
 - [Maintainer playbook](maintainer-playbook.md)

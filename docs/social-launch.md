@@ -2,6 +2,8 @@
 
 Use these posts to share `oss-signal` without overstating adoption or asking for vanity stars.
 
+For the broader no-spam distribution sequence, repository-topic checklist, and measurement plan, see [discovery-playbook.md](discovery-playbook.md).
+
 ## Positioning
 
 `oss-signal` is an OSS maintainer-readiness CLI and GitHub Action. It turns visible repository signals into Markdown, JSON, SARIF, issue-ready reports, inventory reports, PR-sized maintainer plans, adoption packs, and no-fail workflow trials.

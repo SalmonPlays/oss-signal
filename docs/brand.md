@@ -25,13 +25,20 @@ Recommended repository topics:
 
 ```text
 open-source
+oss
 maintainer-tools
+maintainer-readiness
 github-action
 cli
 repository-health
+repository-audit
 sarif
+code-scanning
+ci
 triage
-oss
+dependabot
+open-source-maintenance
+developer-tools
 ```
 
 ## Manual UI Settings

@@ -20,6 +20,22 @@
 
 It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
 
+## Why Maintainers Bookmark It
+
+| Job | What `oss-signal` gives you |
+| --- | --- |
+| Prepare a release | A repeatable maintainer-readiness report before release day. |
+| Review an unfamiliar repository | A quick map of contributor, security, CI, and release signals. |
+| Open a focused cleanup PR | Issue-ready notes and PR-sized plans instead of broad audit noise. |
+| Add a low-risk CI check | A no-fail trial workflow that uploads Markdown and adoption-pack artifacts. |
+| Audit many repositories | Inventory mode for newline-delimited repository target lists. |
+
+Fastest public demo:
+
+```bash
+npx oss-signal SalmonPlays/oss-signal --format summary
+```
+
 ## 30-Second Quick Start
 
 Add a report-only workflow to the current repository:
@@ -78,6 +94,7 @@ If you are evaluating the project itself, the public verification path remains a
 | Public acknowledgements | [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) |
 | Adoption gap closure plan | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
 | Independent maintainer trial request | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
+| Organic discovery playbook | [docs/discovery-playbook.md](docs/discovery-playbook.md) |
 
 Current public evidence includes `oss-signal@0.9.9` on npm, `SalmonPlays/oss-signal@v0.9.9` as a GitHub Action, pinned v0.9.9 workflow examples, a Marketplace listing, public CI/CodeQL/OpenSSF Scorecard/evidence workflows, PASS 16 / SKIP 0 / FAIL 0 evidence verification, one outside-maintainer-accepted PR, and one inbound external contributor PR from a public external fork. The project does not claim broad independent adoption yet.
 
@@ -90,7 +107,7 @@ Current public evidence includes `oss-signal@0.9.9` on npm, `SalmonPlays/oss-sig
 
 ## Maintainer Evidence Snapshot
 
-The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/community-engagement.md](docs/community-engagement.md), [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md), [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md), [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/community-engagement.md](docs/community-engagement.md), [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md), [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md), [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/discovery-playbook.md](docs/discovery-playbook.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.9.9`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.9.9`.
@@ -111,6 +128,7 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Maintainer trial: [docs/maintainer-trial.md](docs/maintainer-trial.md)
 - Maintainer feedback: [docs/maintainer-feedback.md](docs/maintainer-feedback.md)
 - Social launch kit: [docs/social-launch.md](docs/social-launch.md)
+- Organic discovery playbook: [docs/discovery-playbook.md](docs/discovery-playbook.md)
 - Architecture: [docs/architecture.md](docs/architecture.md)
 - Security model: [docs/security-model.md](docs/security-model.md)
 - JSON output contract and schemas: [docs/json-output.md](docs/json-output.md), [single-repository schema](docs/schema/json-output.schema.json), [inventory schema](docs/schema/inventory-output.schema.json), and [rule catalog schema](docs/schema/rules-catalog.schema.json)
