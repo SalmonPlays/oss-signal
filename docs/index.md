@@ -4,6 +4,12 @@
 
 ## Quick Start
 
+Add a report-only workflow to the current checkout:
+
+```bash
+npx oss-signal --init
+```
+
 Run against a public GitHub repository without cloning it:
 
 ```bash
@@ -13,7 +19,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.8
+- uses: SalmonPlays/oss-signal@v0.9.9
   id: oss-signal
   with:
     path: "."
@@ -83,6 +89,6 @@ Run as a GitHub Action:
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.8
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

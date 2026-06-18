@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.9.8";
+export const VERSION = "0.9.9";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -622,8 +622,7 @@ export function renderAdoption(report) {
     "",
     "- Do not present this pack as adoption until a maintainer runs, merges, replies, or otherwise endorses it.",
     "- Do not ask for stars, follows, reciprocal issues, or reciprocal pull requests.",
-    "- Keep any follow-up PR small and tied to one specific missing maintainer-readiness signal.",
-    ""
+    "- Keep any follow-up PR small and tied to one specific missing maintainer-readiness signal."
   );
 
   return `${lines.join("\n")}\n`;

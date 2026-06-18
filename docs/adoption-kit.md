@@ -7,12 +7,24 @@ For a first CLI run, start with [quickstart.md](quickstart.md). For a first CI t
 For a maintainer-owned public workflow run that can be shared as concrete
 evidence, use [independent-workflow-run-request.md](independent-workflow-run-request.md).
 
+## Add A No-Fail Workflow
+
+From a local checkout:
+
+```bash
+npx oss-signal --init
+```
+
+This creates `.github/workflows/oss-signal-trial.yml` without adding a score
+gate. Existing workflow files are protected unless `--force` is explicitly
+used.
+
 ## Try The CLI
 
 Run against a public repository without cloning:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.8 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
+npm exec --yes --package=oss-signal@0.9.9 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
 ```
 
 Run against the current checkout:
@@ -27,10 +39,10 @@ Generate a human-reviewed issue body:
 npx oss-signal owner/repo --format issue --output maintainer-follow-up.md
 ```
 
-Generate a no-fail trial workflow:
+Generate the workflow at a custom path:
 
 ```bash
-npx oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
+npx oss-signal . --format workflow --output .github/workflows/oss-signal-trial.yml
 ```
 
 Generate a single-file adoption pack for a maintainer to review before trying the Action:
@@ -64,7 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.8
+      - uses: SalmonPlays/oss-signal@v0.9.9
         id: oss-signal
         with:
           fail-under: "80"
@@ -88,7 +100,7 @@ env:
 
 steps:
   - uses: actions/checkout@v6
-  - uses: SalmonPlays/oss-signal@v0.9.8
+  - uses: SalmonPlays/oss-signal@v0.9.9
     with:
       format: sarif
       output: oss-signal.sarif
@@ -104,7 +116,7 @@ Full walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
 
 Useful adoption evidence is concrete and public:
 
-- A workflow run that uses `SalmonPlays/oss-signal@v0.9.8`.
+- A workflow run that uses `SalmonPlays/oss-signal@v0.9.9`.
 - A Markdown report attached as a workflow artifact.
 - A SARIF upload that appears in Code Scanning.
 - A focused issue or pull request created from an audit finding.

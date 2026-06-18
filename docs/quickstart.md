@@ -2,7 +2,22 @@
 
 Use this path when you want to evaluate `oss-signal` without committing it to CI first.
 
-## 1. Run A Report
+## 1. Add A Report-Only Workflow
+
+From a local repository checkout:
+
+```bash
+npx oss-signal --init
+```
+
+This creates `.github/workflows/oss-signal-trial.yml` and any missing parent
+directories. The workflow runs manually or on pull requests, uploads a Markdown
+report and adoption pack, and does not fail the build.
+
+The command refuses to replace an existing workflow. Review the current file
+before using `npx oss-signal --init --force`.
+
+## 2. Run A Report
 
 Against a public GitHub repository:
 
@@ -30,7 +45,7 @@ Inspect the rule weights before opening an issue or PR:
 npx oss-signal --list-rules
 ```
 
-## 2. Decide The Follow-Up
+## 3. Decide The Follow-Up
 
 Use the generated report to choose one narrow maintainer task:
 
@@ -41,7 +56,7 @@ Use the generated report to choose one narrow maintainer task:
 
 Do not treat the score as a code-quality verdict. It measures visible workflow signals that reduce maintainer load.
 
-## 3. Generate Reviewable Output
+## 4. Generate Reviewable Output
 
 Create an issue body that a maintainer can edit before posting:
 
@@ -67,7 +82,7 @@ Create a one-file adoption pack before asking a maintainer to try the workflow:
 npx oss-signal owner/repo --format adoption --output adoption-pack.md
 ```
 
-## 4. Add A Report-Only Action
+## 5. Review The Generated Action
 
 For a first CI trial, avoid blocking merges:
 
@@ -89,11 +104,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.8
+      - uses: SalmonPlays/oss-signal@v0.9.9
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@v0.9.8
+      - uses: SalmonPlays/oss-signal@v0.9.9
         if: always()
         with:
           format: adoption
@@ -110,7 +125,7 @@ jobs:
 
 Add `fail-under` only after the maintainer agrees the signal should gate CI.
 
-## 5. Share Useful Feedback
+## 6. Share Useful Feedback
 
 Useful feedback is specific:
 

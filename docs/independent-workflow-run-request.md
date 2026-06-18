@@ -26,7 +26,7 @@ where a report could help. Do not mass-post it.
 ```text
 Would you be open to a no-fail oss-signal trial run in this repository?
 
-It reads repository files only, uses SalmonPlays/oss-signal@v0.9.8, does not
+It reads repository files only, uses SalmonPlays/oss-signal@v0.9.9, does not
 gate CI, and uploads two artifacts: oss-signal-report.md and
 oss-signal-adoption-pack.md.
 
@@ -58,7 +58,7 @@ Minimum useful evidence:
 ```text
 Repository: <owner/repo>
 Run: <public workflow run URL>
-Action or package version: SalmonPlays/oss-signal@v0.9.8 or oss-signal@0.9.8
+Action or package version: SalmonPlays/oss-signal@v0.9.9 or oss-signal@0.9.9
 Maintainer read: useful / not useful / out of scope / needs rule changes
 ```
 
@@ -71,6 +71,15 @@ independent adoption evidence.
 ````
 
 ## Three-Minute Maintainer-Owned Run
+
+From a local checkout, the shortest setup is:
+
+```bash
+npx oss-signal --init
+```
+
+Review the generated file before committing it. The command refuses to replace
+an existing trial workflow unless `--force` is explicitly provided.
 
 Add this workflow to a public repository as
 `.github/workflows/oss-signal-trial.yml`:
@@ -92,12 +101,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.8
+      - uses: SalmonPlays/oss-signal@v0.9.9
         id: report
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@v0.9.8
+      - uses: SalmonPlays/oss-signal@v0.9.9
         if: always()
         id: adoption
         with:
@@ -127,7 +136,7 @@ The report helped with <specific maintainer task>, or it was not useful because 
 
 Any of these are useful:
 
-- a public workflow run using `SalmonPlays/oss-signal@v0.9.8`
+- a public workflow run using `SalmonPlays/oss-signal@v0.9.9`
 - a report artifact from that workflow run
 - a maintainer reply explaining whether the report was useful, noisy, or out of scope
 - a merged issue-template, security-policy, support-policy, CI, or documentation PR informed by the report
@@ -146,7 +155,7 @@ The smallest evidence that materially improves the reviewer case is:
 ```text
 Repository: <owner/repo>
 Run: <public workflow run URL>
-Action or package version: SalmonPlays/oss-signal@v0.9.8 or oss-signal@0.9.8
+Action or package version: SalmonPlays/oss-signal@v0.9.9 or oss-signal@0.9.9
 Maintainer read: useful / not useful / out of scope / needs rule changes
 ```
 

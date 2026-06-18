@@ -2,7 +2,7 @@
 
 Repository: `https://github.com/platformatic/massimo`
 Source: GitHub (platformatic/massimo@main)
-Generated: 2026-06-13T01:35:00.804Z
+Generated: 2026-06-18T08:34:56.457Z
 
 Current score: **62/100** (D)
 
@@ -13,7 +13,7 @@ This pack is meant for a maintainer or contributor who wants a low-risk trial be
 Run the public npm package without installing it permanently:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.8 -- oss-signal platformatic/massimo --format summary
+npm exec --yes --package=oss-signal@0.9.9 -- oss-signal platformatic/massimo --format summary
 ```
 
 ## No-Fail GitHub Actions Trial
@@ -38,12 +38,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.8
+      - uses: SalmonPlays/oss-signal@v0.9.9
         id: oss-signal
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@v0.9.8
+      - uses: SalmonPlays/oss-signal@v0.9.9
         if: always()
         id: oss-signal-adoption
         with:
@@ -106,8 +106,8 @@ One concrete outcome: <what changed or what was decided>
 
 ## Verification Links
 
-- npm package: https://www.npmjs.com/package/oss-signal/v/0.9.8
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.8
+- npm package: https://www.npmjs.com/package/oss-signal/v/0.9.9
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
 - Rule catalog: `oss-signal --list-rules --format json`
 
 ## Boundaries

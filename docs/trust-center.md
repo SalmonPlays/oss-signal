@@ -11,7 +11,7 @@ This page collects the strongest public signals for reviewers, maintainers, and 
 What it does have is a complete, public maintainer workflow:
 
 - Public npm package: https://www.npmjs.com/package/oss-signal
-- Public GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.8
+- Public GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
 - Public GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Public GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - Public no-fail maintainer trial workflow: [maintainer-trial.md](maintainer-trial.md)
@@ -31,7 +31,7 @@ What it does have is a complete, public maintainer workflow:
 
 | Signal | Public evidence | Why it matters |
 | --- | --- | --- |
-| Installable CLI | `npm exec --yes --package=oss-signal@0.9.8 -- oss-signal --version` | Reviewers can run the package without cloning this repository. |
+| Installable CLI | `npm exec --yes --package=oss-signal@0.9.9 -- oss-signal --version` | Reviewers can run the package without cloning this repository. |
 | Marketplace Action | https://github.com/marketplace/actions/oss-signal | Users can discover and copy the Action through GitHub Marketplace. |
 | Maintainer trial | [maintainer-trial](maintainer-trial.md) | External maintainers can try the Action without failing CI first. |
 | Independent run request | [independent-workflow-run-request](independent-workflow-run-request.md) | Maintainers get a copyable no-fail workflow and a minimal evidence format for public trial runs. |
@@ -59,7 +59,7 @@ What it does have is a complete, public maintainer workflow:
 The GitHub Marketplace listing is a discovery page for the Action. It lets users find `oss-signal`, inspect the Action metadata and README, and copy a workflow snippet using:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.8
+- uses: SalmonPlays/oss-signal@v0.9.9
 ```
 
 The listing is not a paid product. It is a free Action listing. Running GitHub Actions has separate GitHub Actions billing rules, but standard GitHub-hosted runners are free for public repositories.

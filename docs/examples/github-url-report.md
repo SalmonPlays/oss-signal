@@ -2,7 +2,7 @@
 
 Repository: `https://github.com/SalmonPlays/oss-signal`
 Source: GitHub (SalmonPlays/oss-signal@main)
-Generated: 2026-06-13T01:37:17.358Z
+Generated: 2026-06-18T08:35:05.166Z
 
 Score: **100/100** (A)
 
@@ -12,7 +12,7 @@ Score: **100/100** (A)
 - Failed: 0
 - Total checks: 16
 - Default branch: main
-- GitHub stars: 0
+- GitHub stars: 2
 - GitHub community health: 100
 
 ## Checks

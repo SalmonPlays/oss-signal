@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.9.9
+
+- Added `--init` for one-command installation of a report-only GitHub Actions workflow.
+- Protected existing workflow files unless maintainers explicitly pass `--force`.
+- Made CLI output paths create missing parent directories automatically.
+- Moved the README first-run path ahead of reviewer-specific verification links.
+
 ## 0.9.8
 
 - Updated generated no-fail trial workflows to upload both the Markdown report and adoption pack artifacts.
