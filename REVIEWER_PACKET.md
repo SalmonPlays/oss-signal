@@ -61,6 +61,8 @@ git clone https://github.com/SalmonPlays/oss-signal.git
 cd oss-signal
 npm ci
 npm run check
+npm run package:check
+npm run review:ready:full
 npm run evidence:verify
 ```
 
@@ -69,6 +71,8 @@ Expected results:
 - npm latest is `0.9.9`.
 - clean package execution prints `0.9.9`.
 - `npm run check` passes lint, tests, and self-audit.
+- `npm run package:check` verifies a compact npm tarball with required runtime, schema, and evidence files.
+- `npm run review:ready:full` confirms package metadata, reviewer docs, workflow pins, release notes, evidence snapshots, and JSON fixtures all point at the current version.
 - `npm run evidence:verify` reports PASS lines for npm, release, repository metadata, the public `ded-furby/oss-signal` fork, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
 
 ## Boundary

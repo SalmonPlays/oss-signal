@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+- Added a reviewer-readiness check that keeps package metadata, reviewer docs,
+  workflow pins, release notes, evidence snapshots, and JSON fixtures aligned
+  with the current version before release or review.
+- Added full evidence verification mode so the public evidence workflow fails
+  instead of uploading a SKIP snapshot when reviewer evidence must be complete.
+- Pinned third-party workflow actions to immutable commits, added Node.js 24 to
+  the CI matrix, added npm package dry-run coverage, and bounded workflow jobs
+  with explicit timeouts.
+- Pinned the repository's own released Action in dogfood workflows through a
+  release manifest, while allowing release preparation to keep using the last
+  published immutable commit until full evidence is refreshed.
+- Added an automated immutable-action-ref check and disabled persisted checkout
+  credentials in workflows that do not need Git-backed writes.
+- Added package-content verification with size and file-count budgets, and
+  excluded site-only PNG assets plus outreach drafts from the npm tarball.
+
 ## 0.9.9
 
 - Added `--init` for one-command installation of a report-only GitHub Actions workflow.
