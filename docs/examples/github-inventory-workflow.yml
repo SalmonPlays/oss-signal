@@ -14,9 +14,12 @@ env:
 jobs:
   inventory:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         id: oss-signal
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -24,7 +27,12 @@ jobs:
           inventory: docs/examples/inventory-targets.txt
           output: inventory-report.md
           summary: "true"
-      - uses: actions/upload-artifact@v7
+      - name: Write artifact checksum manifest
+        run: sha256sum inventory-report.md > inventory-artifact-sha256.txt
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: oss-signal-inventory-report
-          path: inventory-report.md
+          retention-days: 14
+          path: |
+            inventory-report.md
+            inventory-artifact-sha256.txt

@@ -37,27 +37,41 @@ env:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         id: oss-signal
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         if: always()
         id: oss-signal-adoption
         with:
           format: adoption
           output: oss-signal-adoption-pack.md
           summary: "false"
-      - uses: actions/upload-artifact@v7
+      - name: Write artifact checksum manifest
+        if: always()
+        run: |
+          : > oss-signal-artifact-sha256.txt
+          for file in oss-signal-report.md oss-signal-adoption-pack.md; do
+            if [ -f "$file" ]; then
+              sha256sum "$file" >> oss-signal-artifact-sha256.txt
+            fi
+          done
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         if: always()
         with:
           name: oss-signal-report
+          retention-days: 14
           path: |
             oss-signal-report.md
             oss-signal-adoption-pack.md
+            oss-signal-artifact-sha256.txt
 ```
 
 This workflow:
@@ -67,7 +81,7 @@ This workflow:
 - does not require secrets
 - does not upload SARIF or write issues
 - does not fail the build unless the maintainer later adds `fail-under`
-- uploads `oss-signal-report.md` and `oss-signal-adoption-pack.md` as workflow artifacts
+- uploads `oss-signal-report.md`, `oss-signal-adoption-pack.md`, and a SHA256 manifest as workflow artifacts
 
 The same workflow is available as [examples/maintainer-trial-workflow.yml](examples/maintainer-trial-workflow.yml).
 
@@ -109,7 +123,7 @@ The adoption pack is useful when you want one reviewable artifact with the local
 
 Useful public evidence is concrete:
 
-- a workflow run that uses `SalmonPlays/oss-signal@v0.9.9`
+- a workflow run that uses `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` (`v0.9.9`)
 - a linked `oss-signal-report.md` artifact
 - a maintainer reply saying the report was useful, not useful, or intentionally out of scope
 - a merged issue-template, security-policy, CI, or documentation PR informed by the report

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 import { access, readFile, readdir } from "node:fs/promises";
+import { RELEASE_COMMIT, renderWorkflow } from "../src/index.js";
 
 const packageJson = JSON.parse(await read("package.json"));
 const packageLock = JSON.parse(await read("package-lock.json"));
 const releaseManifest = JSON.parse(await read("docs/release-manifest.json"));
 const version = packageJson.version;
 const tag = `v${version}`;
-const actionRef = `SalmonPlays/oss-signal@${tag}`;
 const pinnedActionRef = `SalmonPlays/oss-signal@${releaseManifest.commit}`;
 const errors = [];
 const requireEvidence = process.argv.includes("--require-evidence");
@@ -21,6 +21,7 @@ for (const arg of process.argv.slice(2)) {
 check(packageLock.version === version, `package-lock.json version is ${packageLock.version}`);
 check(packageLock.packages?.[""]?.version === version, `package-lock root version is ${packageLock.packages?.[""]?.version}`);
 check(/^[0-9a-f]{40}$/.test(releaseManifest.commit), `docs/release-manifest.json commit is ${releaseManifest.commit}`);
+check(RELEASE_COMMIT === releaseManifest.commit, `src/index.js release commit is ${RELEASE_COMMIT}`);
 
 await expectContains("src/index.js", `export const VERSION = "${version}";`);
 await expectContains("CITATION.cff", `version: "${version}"`);
@@ -53,7 +54,8 @@ for (const filePath of [
   "docs/examples/github-inventory-workflow.yml",
   "docs/examples/maintainer-trial-workflow.yml"
 ]) {
-  await expectContains(filePath, actionRef);
+  await expectContains(filePath, pinnedActionRef);
+  await checkWorkflowPins(filePath, await read(filePath));
 }
 
 for (const filePath of [
@@ -68,12 +70,16 @@ const workflowFiles = (await readdir(".github/workflows"))
 
 for (const fileName of workflowFiles) {
   const filePath = `.github/workflows/${fileName}`;
-  const body = await read(filePath);
-  for (const match of body.matchAll(/uses:\s+([^\s@]+)@([^\s#]+)/g)) {
-    const [, action, ref] = match;
-    check(/^[0-9a-f]{40}$/.test(ref), `${filePath} uses mutable action ref ${action}@${ref}`);
+  await checkWorkflowPins(filePath, await read(filePath));
+}
+
+for (const filePath of ["README.md", ...(await collectFiles("docs", [".md", ".html"]))]) {
+  if (!filePath.startsWith("docs/release-notes/")) {
+    await checkWorkflowPins(filePath, await read(filePath));
   }
 }
+
+await checkWorkflowPins("generated --init workflow", renderWorkflow());
 
 await expectJsonVersion("docs/examples/github-url-report.json");
 await expectJsonVersion("docs/examples/inventory-report.json");
@@ -128,6 +134,29 @@ async function expectSarifVersion(filePath) {
   const parsed = JSON.parse(await read(filePath));
   const semanticVersion = parsed.runs?.[0]?.tool?.driver?.semanticVersion;
   check(semanticVersion === version, `${filePath} semanticVersion is ${semanticVersion}`);
+}
+
+async function collectFiles(dirPath, extensions) {
+  const entries = await readdir(dirPath, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    const filePath = `${dirPath}/${entry.name}`;
+    if (entry.isDirectory()) {
+      files.push(...(await collectFiles(filePath, extensions)));
+    } else if (extensions.some((extension) => filePath.endsWith(extension))) {
+      files.push(filePath);
+    }
+  }
+
+  return files;
+}
+
+async function checkWorkflowPins(label, body) {
+  for (const match of body.matchAll(/uses:\s+([^\s@]+)@([^\s#]+)/g)) {
+    const [, action, ref] = match;
+    check(/^[0-9a-f]{40}$/.test(ref), `${label} uses mutable action ref ${action}@${ref}`);
+  }
 }
 
 function check(condition, message) {

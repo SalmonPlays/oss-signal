@@ -74,18 +74,26 @@ env:
 jobs:
   oss-signal:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         id: oss-signal
         with:
           fail-under: "80"
           output: oss-signal-report.md
           summary: "true"
-      - uses: actions/upload-artifact@v7
+      - name: Write artifact checksum manifest
+        run: sha256sum oss-signal-report.md > oss-signal-artifact-sha256.txt
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: oss-signal-report
-          path: oss-signal-report.md
+          retention-days: 14
+          path: |
+            oss-signal-report.md
+            oss-signal-artifact-sha256.txt
 ```
 
 ## Add SARIF To Code Scanning
@@ -99,13 +107,15 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 steps:
-  - uses: actions/checkout@v6
-  - uses: SalmonPlays/oss-signal@v0.9.9
+  - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+    with:
+      persist-credentials: false
+  - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
     with:
       format: sarif
       output: oss-signal.sarif
       summary: "false"
-  - uses: github/codeql-action/upload-sarif@v4
+  - uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4
     with:
       sarif_file: oss-signal.sarif
 ```
@@ -116,7 +126,7 @@ Full walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
 
 Useful adoption evidence is concrete and public:
 
-- A workflow run that uses `SalmonPlays/oss-signal@v0.9.9`.
+- A workflow run that uses `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` (`v0.9.9`).
 - A Markdown report attached as a workflow artifact.
 - A SARIF upload that appears in Code Scanning.
 - A focused issue or pull request created from an audit finding.

@@ -17,6 +17,11 @@
   credentials in workflows that do not need Git-backed writes.
 - Added package-content verification with size and file-count budgets, and
   excluded site-only PNG assets plus outreach drafts from the npm tarball.
+- Hardened generated and copyable workflows with immutable action commits,
+  non-persisted checkout credentials, explicit timeouts, short artifact
+  retention, and SHA256 checksum manifests.
+- Replaced the ambiguous security-reporting email instruction with the direct
+  GitHub private vulnerability reporting route.
 
 ## 0.9.9
 

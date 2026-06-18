@@ -19,7 +19,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.9
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   id: oss-signal
   with:
     path: "."

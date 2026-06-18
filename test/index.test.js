@@ -22,6 +22,7 @@ import {
   renderSarif,
   renderSummary,
   renderWorkflow,
+  RELEASE_COMMIT,
   VERSION
 } from "../src/index.js";
 
@@ -177,7 +178,7 @@ test("renderAdoption creates a no-fail maintainer trial pack", async () => {
     assert.match(adoption, /Copyable evidence note/);
     assert.match(adoption, /Maintainer decision/);
     assert.match(adoption, new RegExp(`oss-signal@${VERSION.replaceAll(".", "\\.")}`));
-    assert.match(adoption, new RegExp(`SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
+    assert.match(adoption, new RegExp(`SalmonPlays/oss-signal@${RELEASE_COMMIT}`));
     assert.match(adoption, /Do not ask for stars/);
     assert.match(adoption, /Do not present this pack as adoption/);
     assert.doesNotMatch(adoption, /\n\n$/);
@@ -192,7 +193,14 @@ test("renderWorkflow creates a no-fail Action trial workflow", () => {
   assert.match(workflow, /name: oss-signal trial/);
   assert.match(workflow, /workflow_dispatch:/);
   assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-  assert.match(workflow, new RegExp(`uses: SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
+  assert.match(workflow, new RegExp(`uses: SalmonPlays/oss-signal@${RELEASE_COMMIT}`));
+  assert.match(workflow, /actions\/checkout@[0-9a-f]{40} # v6/);
+  assert.match(workflow, /actions\/upload-artifact@[0-9a-f]{40} # v7/);
+  assert.match(workflow, /persist-credentials: false/);
+  assert.match(workflow, /timeout-minutes: 10/);
+  assert.match(workflow, /oss-signal-artifact-sha256\.txt/);
+  assert.match(workflow, /retention-days: 14/);
+  assert.doesNotMatch(workflow, /uses:\s+[^\s@]+@v\d/);
   assert.match(workflow, /summary: "true"/);
   assert.match(workflow, /format: adoption/);
   assert.match(workflow, /summary: "false"/);
@@ -441,7 +449,7 @@ test("CLI writes workflow output", async () => {
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /oss-signal trial/);
     assert.match(body, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
-    assert.match(body, new RegExp(`SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
+    assert.match(body, new RegExp(`SalmonPlays/oss-signal@${RELEASE_COMMIT}`));
     assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -467,7 +475,7 @@ test("CLI --init creates a no-fail workflow and parent directories", async () =>
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /name: oss-signal trial/);
     assert.match(body, /workflow_dispatch:/);
-    assert.match(body, new RegExp(`SalmonPlays/oss-signal@v${VERSION.replaceAll(".", "\\.")}`));
+    assert.match(body, new RegExp(`SalmonPlays/oss-signal@${RELEASE_COMMIT}`));
     assert.doesNotMatch(body, /fail-under/);
   } finally {
     await rm(root, { recursive: true, force: true });

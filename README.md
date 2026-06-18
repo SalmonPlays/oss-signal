@@ -79,7 +79,7 @@ If you are evaluating the project itself, the public verification path remains a
 | Adoption gap closure plan | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
 | Independent maintainer trial request | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
 
-Current public evidence includes `oss-signal@0.9.9` on npm, `SalmonPlays/oss-signal@v0.9.9` as a GitHub Action, a Marketplace listing, public CI/CodeQL/OpenSSF Scorecard/evidence workflows, PASS 16 / SKIP 0 / FAIL 0 evidence verification, one outside-maintainer-accepted PR, and one inbound external contributor PR from a public external fork. The project does not claim broad independent adoption yet.
+Current public evidence includes `oss-signal@0.9.9` on npm, `SalmonPlays/oss-signal@v0.9.9` as a GitHub Action, pinned v0.9.9 workflow examples, a Marketplace listing, public CI/CodeQL/OpenSSF Scorecard/evidence workflows, PASS 16 / SKIP 0 / FAIL 0 evidence verification, one outside-maintainer-accepted PR, and one inbound external contributor PR from a public external fork. The project does not claim broad independent adoption yet.
 
 ## Who It Helps
 
@@ -309,7 +309,7 @@ Summary:
 
 See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-summary.txt](docs/examples/github-summary.txt) for compact summary output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, [docs/examples/github-plan.md](docs/examples/github-plan.md) for plan output, [docs/examples/maintainer-trial-workflow.yml](docs/examples/maintainer-trial-workflow.yml) for workflow output, [docs/examples/adoption-pack.md](docs/examples/adoption-pack.md) for adoption-pack output, [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output, and [docs/examples/rules-catalog.json](docs/examples/rules-catalog.json) for the machine-readable rule catalog.
 
-The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.9.9`, uploads the Markdown report and adoption pack as artifacts, includes a SHA256 checksum manifest, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
+The [Repository health workflow](.github/workflows/repository-health.yml) runs the pinned v0.9.9 release commit, uploads the Markdown report and adoption pack as artifacts, includes a SHA256 checksum manifest, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
 
 ## Field Audits
 
@@ -360,7 +360,7 @@ oss-signal . --fail-under 80
 Add `oss-signal` directly to a GitHub Actions workflow:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.9
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   id: oss-signal
   with:
     fail-under: "80"
@@ -376,7 +376,7 @@ The Action writes a concise GitHub Actions step summary by default, so reviewers
 Run an inventory from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.9
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -388,7 +388,7 @@ Run an inventory from CI:
 Generate an editable Issue body from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.9
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   with:
     format: issue
     output: maintainer-follow-up.md
@@ -411,18 +411,26 @@ env:
 jobs:
   oss-signal:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         id: oss-signal
         with:
           fail-under: "80"
           output: oss-signal-report.md
           summary: "true"
-      - uses: actions/upload-artifact@v7
+      - name: Write artifact checksum manifest
+        run: sha256sum oss-signal-report.md > oss-signal-artifact-sha256.txt
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: oss-signal-report
-          path: oss-signal-report.md
+          retention-days: 14
+          path: |
+            oss-signal-report.md
+            oss-signal-artifact-sha256.txt
 ```
 
 See [docs/examples/github-action-workflow.yml](docs/examples/github-action-workflow.yml) for a copyable workflow, [docs/examples/github-inventory-workflow.yml](docs/examples/github-inventory-workflow.yml) for an inventory workflow, and [docs/examples/github-code-scanning-workflow.yml](docs/examples/github-code-scanning-workflow.yml) for a workflow that uploads SARIF to GitHub Code Scanning.
@@ -435,18 +443,20 @@ permissions:
   security-events: write
 
 steps:
-  - uses: actions/checkout@v6
-  - uses: SalmonPlays/oss-signal@v0.9.9
+  - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+    with:
+      persist-credentials: false
+  - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
     with:
       format: sarif
       output: oss-signal.sarif
       summary: "true"
-  - uses: github/codeql-action/upload-sarif@v4
+  - uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4
     with:
       sarif_file: oss-signal.sarif
 ```
 
-This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.9.9` against the repository, uploads Markdown and adoption-pack artifacts with a SHA256 manifest, and publishes SARIF to Code Scanning on non-PR runs.
+This repository dogfoods the public v0.9.9 release commit in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` against the repository, uploads Markdown and adoption-pack artifacts with a SHA256 manifest, and publishes SARIF to Code Scanning on non-PR runs.
 
 You can also run the CLI directly in CI:
 

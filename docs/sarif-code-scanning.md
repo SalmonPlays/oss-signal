@@ -24,14 +24,17 @@ env:
 jobs:
   oss-signal:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         with:
           format: sarif
           output: oss-signal.sarif
           summary: "false"
-      - uses: github/codeql-action/upload-sarif@v4
+      - uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4
         if: github.event_name != 'pull_request'
         with:
           sarif_file: oss-signal.sarif

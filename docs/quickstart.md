@@ -102,25 +102,39 @@ env:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         if: always()
         with:
           format: adoption
           output: oss-signal-adoption-pack.md
           summary: "false"
-      - uses: actions/upload-artifact@v7
+      - name: Write artifact checksum manifest
+        if: always()
+        run: |
+          : > oss-signal-artifact-sha256.txt
+          for file in oss-signal-report.md oss-signal-adoption-pack.md; do
+            if [ -f "$file" ]; then
+              sha256sum "$file" >> oss-signal-artifact-sha256.txt
+            fi
+          done
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         if: always()
         with:
           name: oss-signal-report
+          retention-days: 14
           path: |
             oss-signal-report.md
             oss-signal-adoption-pack.md
+            oss-signal-artifact-sha256.txt
 ```
 
 Add `fail-under` only after the maintainer agrees the signal should gate CI.

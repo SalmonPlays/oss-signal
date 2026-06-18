@@ -26,7 +26,8 @@ where a report could help. Do not mass-post it.
 ```text
 Would you be open to a no-fail oss-signal trial run in this repository?
 
-It reads repository files only, uses SalmonPlays/oss-signal@v0.9.9, does not
+It reads repository files only, uses the pinned SalmonPlays/oss-signal v0.9.9
+release commit, does not
 gate CI, and uploads two artifacts: oss-signal-report.md and
 oss-signal-adoption-pack.md.
 
@@ -99,27 +100,41 @@ env:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         id: report
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@v0.9.9
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         if: always()
         id: adoption
         with:
           format: adoption
           output: oss-signal-adoption-pack.md
           summary: "false"
-      - uses: actions/upload-artifact@v7
+      - name: Write artifact checksum manifest
+        if: always()
+        run: |
+          : > oss-signal-artifact-sha256.txt
+          for file in oss-signal-report.md oss-signal-adoption-pack.md; do
+            if [ -f "$file" ]; then
+              sha256sum "$file" >> oss-signal-artifact-sha256.txt
+            fi
+          done
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         if: always()
         with:
           name: oss-signal-trial
+          retention-days: 14
           path: |
             oss-signal-report.md
             oss-signal-adoption-pack.md
+            oss-signal-artifact-sha256.txt
 ```
 
 Then run it manually from the repository Actions tab. The workflow needs no
@@ -136,7 +151,7 @@ The report helped with <specific maintainer task>, or it was not useful because 
 
 Any of these are useful:
 
-- a public workflow run using `SalmonPlays/oss-signal@v0.9.9`
+- a public workflow run using `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` (`v0.9.9`)
 - a report artifact from that workflow run
 - a maintainer reply explaining whether the report was useful, noisy, or out of scope
 - a merged issue-template, security-policy, support-policy, CI, or documentation PR informed by the report

@@ -59,7 +59,7 @@ What it does have is a complete, public maintainer workflow:
 The GitHub Marketplace listing is a discovery page for the Action. It lets users find `oss-signal`, inspect the Action metadata and README, and copy a workflow snippet using:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.9
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
 ```
 
 The listing is not a paid product. It is a free Action listing. Running GitHub Actions has separate GitHub Actions billing rules, but standard GitHub-hosted runners are free for public repositories.

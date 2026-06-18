@@ -66,8 +66,8 @@ The repository currently has:
 - SARIF output for GitHub Code Scanning integration.
 - A v0.9.9 GitHub Action tag with step summary, SARIF support, inventory support, Issue-ready output, maintainer plan output, and adoption-pack output.
 - A workflow output mode that renders a no-fail GitHub Actions trial workflow for external maintainers.
-- A public dogfood workflow that runs `SalmonPlays/oss-signal@v0.9.9` against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
-- A public dogfood inventory workflow that runs `SalmonPlays/oss-signal@v0.9.9` against a repository target list and uploads an inventory artifact.
+- A public dogfood workflow that runs the pinned v0.9.9 release commit against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
+- A public dogfood inventory workflow that runs the pinned v0.9.9 release commit against a repository target list and uploads an inventory artifact.
 - A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, public fork evidence, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
 - A historical self-owned public workflow demo that ran `SalmonPlays/oss-signal@v0.8.4` from another repository and uploaded Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It is retained as supporting workflow evidence, while current `v0.9.9` workflow evidence comes from the main repository health workflow.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
