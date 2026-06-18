@@ -4338,3 +4338,131 @@ body.is-soul-shock .word-b {
     display: none;
   }
 }
+
+body.is-ultra-lite::before {
+  opacity: 0.08;
+}
+
+body.is-ultra-lite .hero-media {
+  filter: saturate(0.78) brightness(0.64);
+  opacity: 0.34;
+  transform: none;
+}
+
+body.is-ultra-lite .hero-veil {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(2, 6, 9, 0.16), transparent 24rem),
+    linear-gradient(90deg, rgba(1, 5, 7, 0.94), rgba(1, 5, 7, 0.76) 48%, rgba(1, 5, 7, 0.56)),
+    linear-gradient(0deg, rgba(2, 6, 8, 0.84), rgba(2, 6, 8, 0.34) 44%, rgba(2, 6, 8, 0.62));
+}
+
+body.is-ultra-lite .hero-runes {
+  opacity: 0.08;
+}
+
+body.is-ultra-lite .hero-content,
+body.is-ultra-lite .night-panel {
+  z-index: 8;
+}
+
+body.is-ultra-lite .button.ghost {
+  background: rgba(7, 20, 19, 0.74);
+  border-color: rgba(244, 251, 247, 0.36);
+}
+
+body.is-ultra-lite .cosmos-canvas,
+body.is-ultra-lite .star-canvas,
+body.is-ultra-lite .cursor-light,
+body.is-ultra-lite .rift-layer,
+body.is-ultra-lite .portal-field {
+  display: none;
+}
+
+body.is-ultra-lite .rift-layer span,
+body.is-ultra-lite .portal-field * {
+  animation: none !important;
+}
+
+body.is-ultra-lite:not(.is-beast-pass):not(.is-ticket-nova):not(.is-soul-shock) .beast-layer,
+body.is-ultra-lite:not(.is-alien-surge) .alien-layer {
+  display: none;
+}
+
+body.is-ultra-lite .beast-layer,
+body.is-ultra-lite .alien-layer {
+  contain: strict;
+}
+
+body.is-ultra-lite .beast-layer > *,
+body.is-ultra-lite .alien-layer > * {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+body.is-ultra-lite .alien-layer::before,
+body.is-ultra-lite .alien-layer::after {
+  mix-blend-mode: normal;
+}
+
+body.is-ultra-lite .brand-mark,
+body.is-ultra-lite .hero-media,
+body.is-ultra-lite .portal-ring,
+body.is-ultra-lite .portal-core,
+body.is-ultra-lite .hero-runes,
+body.is-ultra-lite .night-panel,
+body.is-ultra-lite .signal-icon,
+body.is-ultra-lite .signal-alien,
+body.is-ultra-lite .signal-beacon span,
+body.is-ultra-lite .realm-image,
+body.is-ultra-lite .gallery-band img,
+body.is-ultra-lite .timeline-item,
+body.is-ultra-lite .apex-lattice span,
+body.is-ultra-lite .apex-lattice i,
+body.is-ultra-lite .sky-ascender span,
+body.is-ultra-lite .celestial-crown,
+body.is-ultra-lite .celestial-crown span,
+body.is-ultra-lite .celestial-crown i,
+body.is-ultra-lite .gate-card::after,
+body.is-ultra-lite .gate-orbit::before,
+body.is-ultra-lite .ascension-status::after,
+body.is-ultra-lite .apex-console div::after,
+body.is-ultra-lite .planner-media::before,
+body.is-ultra-lite .gate-orbit span,
+body.is-ultra-lite .gate-orbit i,
+body.is-ultra-lite .button::after {
+  animation: none !important;
+}
+
+body.is-ultra-lite:not(.is-alien-surge) .celestial-alien,
+body.is-ultra-lite:not(.is-beast-pass):not(.is-ticket-nova):not(.is-soul-shock) .celestial-beast,
+body.is-ultra-lite:not(.is-beast-pass):not(.is-ticket-nova):not(.is-soul-shock) .beast-echo,
+body.is-ultra-lite:not(.is-soul-shock) .soul-beast {
+  animation: none !important;
+}
+
+body.is-ultra-lite .signal-icon,
+body.is-ultra-lite .signal-alien,
+body.is-ultra-lite .celestial-alien,
+body.is-ultra-lite .celestial-beast,
+body.is-ultra-lite .beast-echo,
+body.is-ultra-lite .soul-beast {
+  filter: none;
+}
+
+body.is-ultra-lite .signal-alien,
+body.is-ultra-lite .celestial-alien,
+body.is-ultra-lite .celestial-beast,
+body.is-ultra-lite .beast-echo,
+body.is-ultra-lite .soul-beast,
+body.is-ultra-lite .signal-beacon,
+body.is-ultra-lite .apex-lattice,
+body.is-ultra-lite .sky-ascender,
+body.is-ultra-lite .celestial-crown {
+  mix-blend-mode: normal;
+}
+
+body.is-ultra-lite [data-reveal] {
+  filter: none !important;
+  opacity: 1;
+  transform: none;
+}

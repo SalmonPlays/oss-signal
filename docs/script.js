@@ -31,6 +31,20 @@ const tickets = {
   solstice: { name: "Issue / PR", channel: "feedback", vector: "Contribute" }
 };
 
+const iconPaths = {
+  "badge-check": '<path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /><path d="m9 12 2 2 4-4" />',
+  "circle-dot": '<circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="1" />',
+  "git-fork": '<circle cx="12" cy="18" r="3" /><circle cx="6" cy="6" r="3" /><circle cx="18" cy="6" r="3" /><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9" /><path d="M12 12v3" />',
+  "git-pull-request": '<circle cx="18" cy="18" r="3" /><circle cx="6" cy="6" r="3" /><path d="M13 6h3a2 2 0 0 1 2 2v7" /><line x1="6" x2="6" y1="9" y2="21" />',
+  menu: '<path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" />',
+  "play-circle": '<path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z" /><circle cx="12" cy="12" r="10" />',
+  send: '<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" /><path d="m21.854 2.147-10.94 10.939" />',
+  "shield-check": '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" />',
+  "volume-2": '<path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><path d="M16 9a5 5 0 0 1 0 6" /><path d="M19.364 18.364a9 9 0 0 0 0-12.728" />',
+  "volume-x": '<path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><line x1="22" x2="16" y1="9" y2="15" /><line x1="16" x2="22" y1="9" y2="15" />',
+  workflow: '<rect width="8" height="8" x="3" y="3" rx="2" /><path d="M7 11v4a2 2 0 0 0 2 2h4" /><rect width="8" height="8" x="13" y="13" rx="2" />'
+};
+
 const state = {
   realm: "moon",
   ticket: "oracle",
@@ -71,6 +85,7 @@ const skySeal = document.querySelector("[data-sky-seal]");
 const skylineCurrent = document.querySelector("[data-skyline-current]");
 const plannerBand = document.querySelector(".planner-band");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const ultraLite = document.body.classList.contains("is-ultra-lite");
 
 let stars = [];
 let sparks = [];
@@ -88,6 +103,26 @@ let beastCooldown = false;
 let soundEnabled = false;
 let soundContext;
 let lastSoundTime = 0;
+let fxImagesReady = false;
+
+function iconSvg(name) {
+  const path = iconPaths[name] || iconPaths["circle-dot"];
+  return `<svg class="lucide lucide-${name}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${path}</svg>`;
+}
+
+function renderIcons(root = document) {
+  root.querySelectorAll("[data-lucide]").forEach((icon) => {
+    icon.outerHTML = iconSvg(icon.dataset.lucide);
+  });
+}
+
+function hydrateFxImages() {
+  if (fxImagesReady) return;
+  document.querySelectorAll("[data-fx-src]").forEach((image) => {
+    image.setAttribute("src", image.dataset.fxSrc);
+  });
+  fxImagesReady = true;
+}
 
 function getSoundContext() {
   if (!soundContext) {
@@ -106,10 +141,7 @@ function setSoundEnabled(enabled) {
   if (!soundToggle) return;
   soundToggle.classList.toggle("is-on", soundEnabled);
   soundToggle.setAttribute("aria-label", soundEnabled ? "効果音をオフにする" : "効果音をオンにする");
-  soundToggle.innerHTML = `<i data-lucide="${soundEnabled ? "volume-2" : "volume-x"}"></i>`;
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
+  soundToggle.innerHTML = iconSvg(soundEnabled ? "volume-2" : "volume-x");
 }
 
 function playTone(ctx, { start = 0, frequency = 440, endFrequency = frequency, duration = 0.16, type = "sine", gain = 0.05 }) {
@@ -357,6 +389,10 @@ function setupReveals() {
 
 function setupMotionBudget() {
   const motionTargets = document.querySelectorAll(".hero, .night-panel, .signal-section, .realm-stage, .gallery-band, .timeline, .planner-media, .planner-content");
+  if (ultraLite) {
+    motionTargets.forEach((target) => target.classList.add("is-motion-active"));
+    return;
+  }
   if (reduceMotion || !("IntersectionObserver" in window)) {
     motionTargets.forEach((target) => target.classList.add("is-motion-active"));
     return;
@@ -444,6 +480,7 @@ function setBeastRoute() {
 function triggerBeastPass({ force = false, nova = false, soul = false } = {}) {
   if (reduceMotion || (beastCooldown && !force)) return;
   const soulShock = soul || nova;
+  hydrateFxImages();
   beastCooldown = true;
   window.clearTimeout(beastRemoveTimer);
   window.clearTimeout(beastCooldownTimer);
@@ -580,11 +617,11 @@ ticketButtons.forEach((button) => {
 
 beastTriggers.forEach((trigger) => {
   trigger.addEventListener("pointerenter", () => {
-    triggerBeastPass();
+    if (!ultraLite) triggerBeastPass();
     playSfx("hover");
   });
   trigger.addEventListener("focus", () => {
-    triggerBeastPass();
+    if (!ultraLite) triggerBeastPass();
     playSfx("hover");
   });
   trigger.addEventListener("click", () => {
@@ -644,33 +681,35 @@ nav.addEventListener("click", (event) => {
   }
 });
 
-window.addEventListener("pointermove", (event) => {
-  pointer = {
-    x: event.clientX / window.innerWidth,
-    y: event.clientY / window.innerHeight
-  };
-  if (!pointerFrame) {
-    pointerFrame = requestAnimationFrame(() => {
-      pointerFrame = null;
-      cursorLight.style.setProperty("--x", `${pointer.x * window.innerWidth}px`);
-      cursorLight.style.setProperty("--y", `${pointer.y * window.innerHeight}px`);
-      document.documentElement.style.setProperty("--portal-x", pointer.x);
-      document.documentElement.style.setProperty("--portal-y", pointer.y);
-      alienLayer?.style.setProperty("--alien-shift-x", `${((pointer.x - 0.5) * 18).toFixed(1)}px`);
-      alienLayer?.style.setProperty("--alien-shift-y", `${((pointer.y - 0.4) * 14).toFixed(1)}px`);
-      alienLayer?.style.setProperty("--alien-shift-wide-x", `${((pointer.x - 0.5) * 22).toFixed(1)}px`);
-      alienLayer?.style.setProperty("--alien-shift-wide-y", `${((pointer.y - 0.4) * 18).toFixed(1)}px`);
-    });
-  }
-  if (event.timeStamp - lastSparkTime > 46) {
-    spawnBurst(event.clientX, event.clientY, 2);
-    lastSparkTime = event.timeStamp;
-  }
-});
+if (!ultraLite) {
+  window.addEventListener("pointermove", (event) => {
+    pointer = {
+      x: event.clientX / window.innerWidth,
+      y: event.clientY / window.innerHeight
+    };
+    if (!pointerFrame) {
+      pointerFrame = requestAnimationFrame(() => {
+        pointerFrame = null;
+        cursorLight.style.setProperty("--x", `${pointer.x * window.innerWidth}px`);
+        cursorLight.style.setProperty("--y", `${pointer.y * window.innerHeight}px`);
+        document.documentElement.style.setProperty("--portal-x", pointer.x);
+        document.documentElement.style.setProperty("--portal-y", pointer.y);
+        alienLayer?.style.setProperty("--alien-shift-x", `${((pointer.x - 0.5) * 18).toFixed(1)}px`);
+        alienLayer?.style.setProperty("--alien-shift-y", `${((pointer.y - 0.4) * 14).toFixed(1)}px`);
+        alienLayer?.style.setProperty("--alien-shift-wide-x", `${((pointer.x - 0.5) * 22).toFixed(1)}px`);
+        alienLayer?.style.setProperty("--alien-shift-wide-y", `${((pointer.y - 0.4) * 18).toFixed(1)}px`);
+      });
+    }
+    if (event.timeStamp - lastSparkTime > 46) {
+      spawnBurst(event.clientX, event.clientY, 2);
+      lastSparkTime = event.timeStamp;
+    }
+  });
 
-window.addEventListener("pointerdown", (event) => {
-  spawnBurst(event.clientX, event.clientY, 34);
-});
+  window.addEventListener("pointerdown", (event) => {
+    spawnBurst(event.clientX, event.clientY, 34);
+  });
+}
 
 window.addEventListener("scroll", updateScrollState, { passive: true });
 if (ambientCanvasEnabled) {
@@ -688,12 +727,10 @@ if (ambientCanvasEnabled) {
 updateSummary();
 
 window.addEventListener("load", () => {
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
+  renderIcons();
   requestAnimationFrame(settleHashAnchor);
   window.setTimeout(settleHashAnchor, 240);
-  if (!reduceMotion) {
+  if (!reduceMotion && !ultraLite) {
     window.setTimeout(() => triggerBeastPass({ force: true }), 980);
     beastInterval = window.setInterval(() => triggerBeastPass({ force: true }), 22000);
   }
