@@ -8,11 +8,12 @@ if (canvas && !reduceMotion) {
     alpha: true,
     antialias: false,
     canvas,
-    powerPreference: "high-performance"
+    powerPreference: "low-power"
   });
   renderer.setClearColor(0x000000, 0);
   const isCompact = window.innerWidth < 760;
-  const pixelRatio = Math.min(window.devicePixelRatio || 1, isCompact ? 0.95 : 1.15);
+  const lowCoreDevice = (navigator.hardwareConcurrency || 8) <= 4;
+  const pixelRatio = Math.min(window.devicePixelRatio || 1, isCompact || lowCoreDevice ? 0.72 : 0.95);
   renderer.setPixelRatio(pixelRatio);
 
   const scene = new THREE.Scene();
@@ -27,7 +28,7 @@ if (canvas && !reduceMotion) {
   scene.add(nebula);
 
   const colors = [0xf2c76f, 0x49bd88, 0xd8b6ff, 0xffffff];
-  const particleCount = isCompact ? 300 : 560;
+  const particleCount = isCompact || lowCoreDevice ? 160 : 320;
   const positions = new Float32Array(particleCount * 3);
   const particleColors = new Float32Array(particleCount * 3);
 
@@ -67,8 +68,8 @@ if (canvas && !reduceMotion) {
   const rings = new THREE.Group();
   scene.add(rings);
 
-  for (let i = 0; i < 5; i += 1) {
-    const geometry = new THREE.TorusGeometry(3.2 + i * 0.78, 0.01, 8, 96);
+  for (let i = 0; i < 3; i += 1) {
+    const geometry = new THREE.TorusGeometry(3.2 + i * 0.92, 0.01, 8, 64);
     const material = new THREE.MeshBasicMaterial({
       blending: THREE.AdditiveBlending,
       color: colors[i % colors.length],
@@ -82,7 +83,7 @@ if (canvas && !reduceMotion) {
     rings.add(ring);
   }
 
-  const gateGeometry = new THREE.IcosahedronGeometry(2.4, 2);
+  const gateGeometry = new THREE.IcosahedronGeometry(2.4, 1);
   const gateMaterial = new THREE.MeshBasicMaterial({
     blending: THREE.AdditiveBlending,
     color: 0xf2c76f,
@@ -97,7 +98,7 @@ if (canvas && !reduceMotion) {
   function resize() {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const nextRatio = Math.min(window.devicePixelRatio || 1, width < 760 ? 0.95 : 1.15);
+    const nextRatio = Math.min(window.devicePixelRatio || 1, width < 760 || lowCoreDevice ? 0.72 : 0.95);
     renderer.setPixelRatio(nextRatio);
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
@@ -113,7 +114,7 @@ if (canvas && !reduceMotion) {
 
   function animate(frameTime = 0) {
     requestAnimationFrame(animate);
-    if (document.hidden || frameTime - lastFrame < 26) return;
+    if (document.hidden || frameTime - lastFrame < 42) return;
     lastFrame = frameTime;
 
     const elapsed = clock.getElapsedTime();

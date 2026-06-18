@@ -64,7 +64,7 @@ body::before {
   height: 100%;
   inset: 0;
   mix-blend-mode: screen;
-  opacity: 0.45;
+  opacity: 0.32;
   pointer-events: none;
   position: fixed;
   width: 100%;
@@ -164,6 +164,7 @@ select {
   background: linear-gradient(180deg, rgba(7, 16, 15, 0.72), rgba(7, 16, 15, 0.36));
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   display: flex;
+  gap: 10px;
   justify-content: space-between;
   left: 0;
   min-height: 78px;
@@ -226,6 +227,7 @@ select {
   align-items: center;
   display: flex;
   gap: 8px;
+  margin-left: auto;
 }
 
 .site-nav a {
@@ -274,6 +276,17 @@ select {
   outline: none;
 }
 
+.sound-toggle {
+  flex: 0 0 auto;
+}
+
+.sound-toggle.is-on {
+  background: linear-gradient(135deg, rgba(231, 251, 255, 0.2), rgba(115, 217, 173, 0.18));
+  border-color: rgba(115, 217, 173, 0.72);
+  box-shadow: 0 0 24px rgba(115, 217, 173, 0.18);
+  color: var(--moss-bright);
+}
+
 .icon-button svg,
 .button svg,
 .ticket svg {
@@ -283,6 +296,7 @@ select {
 
 .nav-toggle {
   display: none;
+  margin-left: auto;
 }
 
 .hero {
@@ -1306,7 +1320,6 @@ body.is-soul-shock .word-b {
 }
 
 .hero h1 {
-  animation: title-surge 3.6s ease-in-out infinite;
   color: var(--white);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(4.2rem, 9vw, 8.4rem);
@@ -1396,7 +1409,6 @@ body.is-soul-shock .word-b {
 }
 
 .button.primary {
-  animation: low-hum 2.8s ease-in-out infinite;
   background: linear-gradient(135deg, var(--white), var(--gold) 48%, var(--moss-bright));
   color: var(--ink);
 }
@@ -3716,7 +3728,11 @@ body.is-soul-shock .word-b {
   .portal-field,
   .rift-layer,
   .beast-layer,
-  .alien-layer {
+  .alien-layer,
+  .celestial-alien,
+  .alien-orbit,
+  .alien-beam,
+  .contact-glyph {
     display: none;
   }
 
@@ -3790,6 +3806,7 @@ body.is-soul-shock .word-b {
     display: none;
     flex-direction: column;
     left: 0;
+    margin-left: 0;
     padding: 14px 20px 20px;
     position: absolute;
     right: 0;
@@ -4292,5 +4309,32 @@ body.is-soul-shock .word-b {
     align-items: start;
     flex-direction: column;
     gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alien-layer,
+  .beast-layer,
+  .celestial-alien,
+  .alien-orbit,
+  .alien-beam,
+  .contact-glyph,
+  .alien-signal,
+  .celestial-beast,
+  .beast-echo,
+  .soul-beast,
+  .beast-rift,
+  .beast-wake,
+  .sonic-rib,
+  .impact-ring,
+  .sky-split,
+  .thunder-strike,
+  .sound-glyph,
+  .heaven-breach,
+  .ticket-nova,
+  .soul-shard,
+  .soul-word {
+    animation: none;
+    display: none;
   }
 }

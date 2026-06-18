@@ -2,10 +2,10 @@ const realms = {
   moon: {
     kicker: "Public GitHub source",
     title: "Repo Page",
-    description: "まずGitHub repoを開き、README、release、issues、pull requests、security docs、workflow examplesへ流します。StarとWatchの導線もここで強く出します。",
+    description: "まずGitHub repoを開き、README、release、issues、pull requests、security docs、workflow examplesへ流します。Evidenceとtrialの導線をここで強く出します。",
     image: "url('./assets/terminal-report.svg')",
     alt: "oss-signal terminal report preview",
-    list: ["Repository source", "Issues and pull requests", "Star / watch / fork"]
+    list: ["Repository source", "Issues and pull requests", "Evidence / trial / feedback"]
   },
   mist: {
     kicker: "Marketplace workflow",
@@ -26,7 +26,7 @@ const realms = {
 };
 
 const tickets = {
-  wanderer: { name: "Star Route", channel: "support", vector: "Stargazers" },
+  wanderer: { name: "Evidence", channel: "review", vector: "Reviewer packet" },
   oracle: { name: "Action Run", channel: "workflow", vector: "Actions" },
   solstice: { name: "Issue / PR", channel: "feedback", vector: "Contribute" }
 };
@@ -44,6 +44,7 @@ const cursorLight = document.querySelector("[data-cursor-light]");
 const alienLayer = document.querySelector(".alien-layer");
 const nav = document.querySelector("[data-site-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
+const soundToggle = document.querySelector("[data-sound-toggle]");
 const beastTriggers = document.querySelectorAll("[data-beast-trigger]");
 const celestialBeast = document.querySelector(".celestial-beast");
 const realmTabs = document.querySelectorAll("[data-realm]");
@@ -84,6 +85,79 @@ let beastInterval;
 let beastRemoveTimer;
 let beastCooldownTimer;
 let beastCooldown = false;
+let soundEnabled = false;
+let soundContext;
+let lastSoundTime = 0;
+
+function getSoundContext() {
+  if (!soundContext) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return null;
+    soundContext = new AudioContext();
+  }
+  if (soundContext.state === "suspended") {
+    soundContext.resume();
+  }
+  return soundContext;
+}
+
+function setSoundEnabled(enabled) {
+  soundEnabled = enabled;
+  if (!soundToggle) return;
+  soundToggle.classList.toggle("is-on", soundEnabled);
+  soundToggle.setAttribute("aria-label", soundEnabled ? "効果音をオフにする" : "効果音をオンにする");
+  soundToggle.innerHTML = `<i data-lucide="${soundEnabled ? "volume-2" : "volume-x"}"></i>`;
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+function playTone(ctx, { start = 0, frequency = 440, endFrequency = frequency, duration = 0.16, type = "sine", gain = 0.05 }) {
+  const oscillator = ctx.createOscillator();
+  const volume = ctx.createGain();
+  const now = ctx.currentTime + start;
+  oscillator.type = type;
+  oscillator.frequency.setValueAtTime(frequency, now);
+  oscillator.frequency.exponentialRampToValueAtTime(Math.max(20, endFrequency), now + duration);
+  volume.gain.setValueAtTime(0.0001, now);
+  volume.gain.exponentialRampToValueAtTime(gain, now + 0.018);
+  volume.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+  oscillator.connect(volume);
+  volume.connect(ctx.destination);
+  oscillator.start(now);
+  oscillator.stop(now + duration + 0.025);
+}
+
+function playSfx(type = "tap") {
+  if (!soundEnabled || reduceMotion) return;
+  const now = performance.now();
+  if (type === "hover" && now - lastSoundTime < 140) return;
+  lastSoundTime = now;
+  const ctx = getSoundContext();
+  if (!ctx) return;
+  const sounds = {
+    hover: [
+      { frequency: 520, endFrequency: 780, duration: 0.09, type: "sine", gain: 0.018 }
+    ],
+    tab: [
+      { frequency: 392, endFrequency: 622, duration: 0.12, type: "triangle", gain: 0.032 },
+      { start: 0.055, frequency: 622, endFrequency: 830, duration: 0.1, type: "sine", gain: 0.022 }
+    ],
+    launch: [
+      { frequency: 130, endFrequency: 64, duration: 0.18, type: "sawtooth", gain: 0.036 },
+      { start: 0.045, frequency: 740, endFrequency: 1480, duration: 0.22, type: "triangle", gain: 0.035 },
+      { start: 0.12, frequency: 1040, endFrequency: 1760, duration: 0.16, type: "sine", gain: 0.022 }
+    ],
+    toggle: [
+      { frequency: 330, endFrequency: 660, duration: 0.11, type: "triangle", gain: 0.035 },
+      { start: 0.08, frequency: 660, endFrequency: 990, duration: 0.13, type: "sine", gain: 0.026 }
+    ],
+    tap: [
+      { frequency: 280, endFrequency: 420, duration: 0.08, type: "triangle", gain: 0.026 }
+    ]
+  };
+  (sounds[type] || sounds.tap).forEach((note) => playTone(ctx, note));
+}
 
 function resizeCanvas() {
   if (!ambientCanvasEnabled || !ctx) return;
@@ -428,7 +502,7 @@ function setRealm(nextRealm) {
 function updateSummary(confirmed = false) {
   const data = new FormData(plannerForm);
   const repoCount = Number(data.get("guests") || 1);
-  const route = data.get("time") || "Star on GitHub";
+  const route = data.get("time") || "Review evidence";
   const includeEvidence = data.get("guide") === "on";
   const ticket = tickets[state.ticket];
   const glow = `GitHub signal level ${state.glow}`;
@@ -439,12 +513,12 @@ function updateSummary(confirmed = false) {
     solstice: 1090
   };
   const vectors = {
-    wanderer: "Stargazers",
+    wanderer: "Reviewer packet",
     oracle: "Actions",
     solstice: "Contribute"
   };
   const skyline = {
-    wanderer: "Star",
+    wanderer: "Evidence",
     oracle: "Action",
     solstice: "Issue / PR"
   };
@@ -464,7 +538,7 @@ function updateSummary(confirmed = false) {
   if (ascensionTitle) ascensionTitle.textContent = `${ticket.name} / ${ticket.channel}`;
   if (ascensionCopy) {
     const routes = {
-      wanderer: "GitHub repoを開き、Star、Watch、Forkへ流す支援ルートです。",
+      wanderer: "GitHub repoを開き、reviewer evidence、release、Actionsへ流す検証ルートです。",
       oracle: "Marketplace ActionからActionsで試し、reportとartifactをGitHub上に残すルートです。",
       solstice: "IssuesやPull requestsで反応を返し、reviewer evidenceへつなげる貢献ルートです。"
     };
@@ -474,7 +548,7 @@ function updateSummary(confirmed = false) {
   summaryPanel.innerHTML = `
     <p class="eyebrow dark">${confirmed ? "GitHub launch generated" : "Launch plan"}</p>
     <h3>${ticket.name} / ${repoCount} repo${repoCount > 1 ? "s" : ""}</h3>
-    <p>${route}で開始。${includeEvidence ? "reviewer evidence導線つき。" : "GitHub導線のみ。"}${glow}。Star、Action、Issue、PRへ流すoss-signal launch planです。</p>
+    <p>${route}で開始。${includeEvidence ? "reviewer evidence導線つき。" : "GitHub導線のみ。"}${glow}。Evidence、Action、Issue、PRへ流すoss-signal launch planです。</p>
   `;
 
   if (confirmed) {
@@ -491,19 +565,32 @@ function setTicket(ticketName) {
 }
 
 realmTabs.forEach((tab) => {
-  tab.addEventListener("click", () => setRealm(tab.dataset.realm));
+  tab.addEventListener("click", () => {
+    setRealm(tab.dataset.realm);
+    playSfx("tab");
+  });
 });
 
 ticketButtons.forEach((button) => {
-  button.addEventListener("click", () => setTicket(button.dataset.ticket));
+  button.addEventListener("click", () => {
+    setTicket(button.dataset.ticket);
+    playSfx("tab");
+  });
 });
 
 beastTriggers.forEach((trigger) => {
-  trigger.addEventListener("pointerenter", () => triggerBeastPass());
-  trigger.addEventListener("focus", () => triggerBeastPass());
+  trigger.addEventListener("pointerenter", () => {
+    triggerBeastPass();
+    playSfx("hover");
+  });
+  trigger.addEventListener("focus", () => {
+    triggerBeastPass();
+    playSfx("hover");
+  });
   trigger.addEventListener("click", () => {
     const shock = isNovaTrigger(trigger);
     triggerBeastPass({ force: true, nova: shock, soul: shock });
+    playSfx(shock ? "launch" : "tap");
   });
 });
 
@@ -527,8 +614,20 @@ plannerForm.addEventListener("input", (event) => {
 plannerForm.addEventListener("submit", (event) => {
   event.preventDefault();
   updateSummary(true);
+  playSfx("launch");
   if (!document.body.classList.contains("is-ticket-nova")) {
     triggerBeastPass({ force: true, nova: true, soul: true });
+  }
+});
+
+soundToggle?.addEventListener("click", () => {
+  const next = !soundEnabled;
+  if (next) {
+    getSoundContext();
+  }
+  setSoundEnabled(next);
+  if (next) {
+    playSfx("toggle");
   }
 });
 
@@ -596,7 +695,7 @@ window.addEventListener("load", () => {
   window.setTimeout(settleHashAnchor, 240);
   if (!reduceMotion) {
     window.setTimeout(() => triggerBeastPass({ force: true }), 980);
-    beastInterval = window.setInterval(() => triggerBeastPass({ force: true }), 9600);
+    beastInterval = window.setInterval(() => triggerBeastPass({ force: true }), 22000);
   }
 });
 
