@@ -63,14 +63,14 @@ jobs:
   oss-signal:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: SalmonPlays/oss-signal@v0.9.8
         id: oss-signal
         with:
           fail-under: "80"
           output: oss-signal-report.md
           summary: "true"
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: oss-signal-report
           path: oss-signal-report.md
@@ -87,7 +87,7 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 steps:
-  - uses: actions/checkout@v5
+  - uses: actions/checkout@v6
   - uses: SalmonPlays/oss-signal@v0.9.8
     with:
       format: sarif

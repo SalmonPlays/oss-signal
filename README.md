@@ -28,7 +28,7 @@ If you are evaluating this project for maintainer support, start here:
 | --- | --- |
 | Shortest verification path | [REVIEWER_PACKET.md](REVIEWER_PACKET.md) |
 | Current post-submission status | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
-| Latest manual evidence refresh | [docs/evidence-refresh-2026-06-15.md](docs/evidence-refresh-2026-06-15.md) |
+| Latest manual evidence refresh | [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md) |
 | Evidence ledger and boundaries | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
 | Community engagement and reciprocity boundary | [docs/community-engagement.md](docs/community-engagement.md) |
 | Public acknowledgements | [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) |
@@ -82,7 +82,7 @@ For the full first-run path, see [docs/quickstart.md](docs/quickstart.md).
 
 ## Maintainer Evidence Snapshot
 
-The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/community-engagement.md](docs/community-engagement.md), [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md), [docs/evidence-refresh-2026-06-15.md](docs/evidence-refresh-2026-06-15.md), [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/community-engagement.md](docs/community-engagement.md), [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md), [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md), [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.9.8`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.9.8`.
@@ -95,7 +95,7 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Evidence ledger: [docs/evidence-ledger.md](docs/evidence-ledger.md)
 - Community engagement: [docs/community-engagement.md](docs/community-engagement.md)
 - Acknowledgements: [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md)
-- Latest manual evidence refresh: [docs/evidence-refresh-2026-06-15.md](docs/evidence-refresh-2026-06-15.md)
+- Latest manual evidence refresh: [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md)
 - Evidence verification snapshot: [docs/evidence-verification.md](docs/evidence-verification.md)
 - Codex for OSS fit/gap review: [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md)
 - Adoption gap closure plan: [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md)
@@ -402,14 +402,14 @@ jobs:
   oss-signal:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: SalmonPlays/oss-signal@v0.9.8
         id: oss-signal
         with:
           fail-under: "80"
           output: oss-signal-report.md
           summary: "true"
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: oss-signal-report
           path: oss-signal-report.md
@@ -425,7 +425,7 @@ permissions:
   security-events: write
 
 steps:
-  - uses: actions/checkout@v5
+  - uses: actions/checkout@v6
   - uses: SalmonPlays/oss-signal@v0.9.8
     with:
       format: sarif
