@@ -1,7 +1,7 @@
 {
   "tool": "oss-signal",
-  "version": "0.9.8",
-  "generatedAt": "2026-06-13T01:36:54.310Z",
+  "version": "0.9.9",
+  "generatedAt": "2026-06-18T12:58:47.406Z",
   "inventoryPath": "docs/examples/inventory-targets.txt",
   "count": 3,
   "averageScore": 72,
@@ -20,9 +20,9 @@
         "repo": "oss-signal",
         "ref": "main",
         "defaultBranch": "main",
-        "stars": 0,
+        "stars": 2,
         "forks": 1,
-        "openIssues": 3,
+        "openIssues": 2,
         "healthPercentage": 100
       },
       "sourceLabel": "GitHub (SalmonPlays/oss-signal@main)",
@@ -46,7 +46,7 @@
         "defaultBranch": "main",
         "stars": 201,
         "forks": 11,
-        "openIssues": 16,
+        "openIssues": 20,
         "healthPercentage": 62
       },
       "sourceLabel": "GitHub (platformatic/massimo@main)",

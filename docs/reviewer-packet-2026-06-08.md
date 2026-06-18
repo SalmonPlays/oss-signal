@@ -1,6 +1,6 @@
 # Reviewer Packet: 2026-06-08
 
-Last verified: 2026-06-18T02:43:54.773Z
+Last verified: 2026-06-18T12:59:14.685Z
 
 This packet gives reviewers one page of current, verifiable evidence for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless a maintainer merges, replies, or endorses them.
 
@@ -11,22 +11,22 @@ The workflow evidence below points at the release run plus public workflow pages
 | Signal | Current value |
 | --- | --- |
 | Repository | https://github.com/SalmonPlays/oss-signal |
-| Release commit | `4525a3a` |
+| Release commit | `3e086d4` |
 | Dogfood artifact commit | See Repository health workflow |
 | npm package | https://www.npmjs.com/package/oss-signal |
-| npm latest | `0.9.8` |
-| GitHub Action tag | https://github.com/SalmonPlays/oss-signal/tree/v0.9.8 |
-| GitHub Release | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8 |
+| npm latest | `0.9.9` |
+| GitHub Action tag | https://github.com/SalmonPlays/oss-signal/tree/v0.9.9 |
+| GitHub Release | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.9 |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | https://salmonplays.github.io/oss-signal/ |
 | Repository interest | 2 stars, 1 fork |
-| npm downloads | 3676 last-month downloads from 2026-05-18 to 2026-06-16 |
+| npm downloads | 3702 last-month downloads from 2026-05-19 to 2026-06-17 |
 
 ## Latest Public Workflow Evidence
 
 | Workflow | Status | Run |
 | --- | --- | --- |
-| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27454690478 |
+| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27747411428 |
 | CI | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml |
 | Repository health | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml |
 | Repository inventory | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml |
