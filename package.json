@@ -1,7 +1,7 @@
 {
   "name": "oss-signal",
-  "version": "0.9.8",
-  "description": "Maintainer-readiness CLI and GitHub Action for OSS triage, CI evidence, inventory reports, SARIF, issue-ready cleanup, workflow trials, adoption packs, transparent rule catalogs, and JSON schemas.",
+  "version": "0.9.9",
+  "description": "Maintainer-readiness CLI and GitHub Action with one-command workflow setup, OSS triage, CI evidence, SARIF, inventory reports, and adoption packs.",
   "type": "module",
   "bin": {
     "oss-signal": "src/cli.js"
@@ -17,7 +17,15 @@
   "files": [
     "src",
     "scripts",
-    "docs",
+    "docs/*.css",
+    "docs/*.html",
+    "docs/*.js",
+    "docs/*.md",
+    "docs/assets/*.svg",
+    "docs/examples",
+    "docs/release-manifest.json",
+    "docs/release-notes",
+    "docs/schema",
     "action.yml",
     "README.md",
     "REVIEWER_PACKET.md",
@@ -32,8 +40,12 @@
     "audit:github": "node src/cli.js SalmonPlays/oss-signal --format markdown --output docs/examples/github-url-report.md",
     "audit:check": "node src/cli.js . --format json --fail-under 100 > /dev/null",
     "evidence:verify": "node scripts/verify-evidence.js",
-    "check": "npm run lint && npm test && npm run audit:check",
-    "prepublishOnly": "npm run check"
+    "evidence:verify:full": "node scripts/verify-evidence.js --require-full",
+    "review:ready": "node scripts/verify-reviewer-ready.js",
+    "review:ready:full": "node scripts/verify-reviewer-ready.js --require-evidence",
+    "package:check": "node scripts/verify-package.js",
+    "check": "npm run lint && npm test && npm run audit:check && npm run review:ready",
+    "prepublishOnly": "npm run check && npm run package:check"
   },
   "keywords": [
     "open-source",

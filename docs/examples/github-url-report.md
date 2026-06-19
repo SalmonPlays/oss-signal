@@ -2,17 +2,18 @@
 
 Repository: `https://github.com/SalmonPlays/oss-signal`
 Source: GitHub (SalmonPlays/oss-signal@main)
-Generated: 2026-06-13T01:37:17.358Z
+Generated: 2026-06-19T07:10:05.737Z
 
-Score: **100/100** (A)
+Score: **97/100** (A)
 
 ## Summary
 
 - Passed: 16
-- Failed: 0
-- Total checks: 16
+- Failed: 1
+- Total checks: 17
+- Weighted points: 110/113
 - Default branch: main
-- GitHub stars: 0
+- GitHub stars: 2
 - GitHub community health: 100
 
 ## Checks
@@ -26,6 +27,7 @@ Score: **100/100** (A)
 | PASS | Code of conduct | `CODE_OF_CONDUCT.md` | Community norms reduce ambiguity during difficult interactions. |
 | PASS | Changelog | `CHANGELOG.md` | Users need a durable place to understand release impact. |
 | PASS | Support policy | `SUPPORT.md` | Support boundaries help maintainers avoid turning every request into unpaid consulting. |
+| FAIL | Funding metadata | Missing: Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose. | Funding metadata gives maintainers a visible route for sponsorship and sustainability support. |
 | PASS | Maintainer ownership | `MAINTAINERS.md` | Clear ownership and review routing make outside contributions easier to triage. |
 | PASS | Continuous integration | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/workflows/evidence-verify.yml`, `.github/workflows/release.yml`, `.github/workflows/repository-health.yml` | CI catches regressions before maintainers merge changes. |
 | PASS | Tests | `test/action.test.js`, `test/index.test.js` | Tests make review safer and lower the cost of outside contributions. |
@@ -38,5 +40,5 @@ Score: **100/100** (A)
 
 ## Recommended Next Steps
 
-No missing checks. Keep the report current as the repository evolves.
+- **Funding metadata** (3 pts): Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose.
 

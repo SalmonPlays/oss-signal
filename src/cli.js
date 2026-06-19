@@ -20,6 +20,8 @@ import {
   VERSION
 } from "./index.js";
 
+const DEFAULT_WORKFLOW_PATH = ".github/workflows/oss-signal-trial.yml";
+
 async function main(argv) {
   const options = parseArgs(argv);
 
@@ -31,6 +33,10 @@ async function main(argv) {
     process.stdout.write(`${VERSION}\n`);
     return;
   }
+  if (options.init) {
+    await initializeWorkflow(options);
+    return;
+  }
 
   const result = options.listRules
     ? runListRules(options)
@@ -39,8 +45,7 @@ async function main(argv) {
       : await runSingleAudit(options);
 
   if (options.output) {
-    await fs.mkdir(path.dirname(path.resolve(options.output)), { recursive: true });
-    await fs.writeFile(options.output, result.body, "utf8");
+    await writeOutput(options.output, result.body);
   } else {
     process.stdout.write(result.body);
   }
@@ -62,6 +67,9 @@ function parseArgs(argv) {
     configPath: undefined,
     inventory: undefined,
     listRules: false,
+    init: false,
+    force: false,
+    formatExplicit: false,
     help: false,
     version: false
   };
@@ -76,8 +84,10 @@ function parseArgs(argv) {
       options.version = true;
     } else if (arg === "--format") {
       options.format = requireValue(argv, ++index, "--format");
+      options.formatExplicit = true;
     } else if (arg.startsWith("--format=")) {
       options.format = arg.slice("--format=".length);
+      options.formatExplicit = true;
     } else if (arg === "--output" || arg === "-o") {
       options.output = requireValue(argv, ++index, arg);
     } else if (arg.startsWith("--output=")) {
@@ -104,6 +114,10 @@ function parseArgs(argv) {
       options.inventory = arg.slice("--inventory=".length);
     } else if (arg === "--list-rules") {
       options.listRules = true;
+    } else if (arg === "--init") {
+      options.init = true;
+    } else if (arg === "--force") {
+      options.force = true;
     } else if (arg.startsWith("-")) {
       throw new Error(`Unknown option: ${arg}`);
     } else {
@@ -128,6 +142,16 @@ function parseArgs(argv) {
       throw new Error("--list-rules supports --format markdown or --format json");
     }
   }
+  if (options.init) {
+    if (options.listRules || options.inventory) {
+      throw new Error("--init cannot be combined with --list-rules or --inventory");
+    }
+    if (options.formatExplicit || options.failUnder !== undefined) {
+      throw new Error("--init cannot be combined with --format or --fail-under");
+    }
+  } else if (options.force) {
+    throw new Error("--force can only be used with --init");
+  }
   if (options.inventory && positionals.length > 0) {
     throw new Error("--inventory cannot be combined with a positional repository path");
   }
@@ -135,6 +159,50 @@ function parseArgs(argv) {
     throw new Error("--format must be markdown, summary, json, sarif, issue, plan, workflow, or adoption");
   }
   return options;
+}
+
+async function initializeWorkflow(options) {
+  const root = path.resolve(options.path);
+  let stats;
+  try {
+    stats = await fs.stat(root);
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      throw new Error(`--init target does not exist: ${options.path}`);
+    }
+    throw error;
+  }
+  if (!stats.isDirectory()) {
+    throw new Error(`--init target is not a directory: ${options.path}`);
+  }
+
+  const outputPath = path.resolve(options.output ?? path.join(root, DEFAULT_WORKFLOW_PATH));
+  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+
+  try {
+    await fs.writeFile(outputPath, renderWorkflow(), {
+      encoding: "utf8",
+      flag: options.force ? "w" : "wx"
+    });
+  } catch (error) {
+    if (error.code === "EEXIST") {
+      throw new Error(`workflow already exists: ${displayPath(outputPath)}; use --force to replace it`);
+    }
+    throw error;
+  }
+
+  process.stdout.write(`${options.force ? "Wrote" : "Created"} ${displayPath(outputPath)}\n`);
+}
+
+async function writeOutput(outputPath, body) {
+  const absolutePath = path.resolve(outputPath);
+  await fs.mkdir(path.dirname(absolutePath), { recursive: true });
+  await fs.writeFile(absolutePath, body, "utf8");
+}
+
+function displayPath(filePath) {
+  const relativePath = path.relative(process.cwd(), filePath);
+  return relativePath && !relativePath.startsWith("..") ? relativePath : filePath;
 }
 
 async function runSingleAudit(options) {
@@ -258,11 +326,14 @@ function helpText() {
 
 Usage:
   oss-signal [path-or-github-url] [--format markdown|summary|json|sarif|issue|plan|workflow|adoption] [--output file] [--fail-under score]
+  oss-signal --init [local-repository-path] [--output workflow.yml] [--force]
   oss-signal --inventory repos.txt [--format markdown|json] [--output file] [--fail-under score]
   oss-signal --list-rules [--format markdown|json] [--output file]
 
 Examples:
   oss-signal .
+  oss-signal --init
+  oss-signal --init /path/to/repo
   oss-signal . --format summary
   oss-signal --list-rules --format json
   oss-signal https://github.com/SalmonPlays/oss-signal
@@ -274,6 +345,8 @@ Examples:
   oss-signal --inventory docs/examples/inventory-targets.txt --format markdown
 
 Options:
+  --init         Add a no-fail trial workflow to a local repository without running an audit.
+  --force        Replace an existing workflow created through --init.
   --format       Output format. Defaults to markdown.
   --output, -o   Write the report to a file instead of stdout.
   --fail-under   Exit with code 1 when the score, or any inventory target score, is below this 0-100 value.

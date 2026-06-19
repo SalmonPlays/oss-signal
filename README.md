@@ -20,26 +20,31 @@
 
 It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, support policy, funding metadata, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
 
-## Reviewer Fast Path
+## Why Maintainers Bookmark It
 
-If you are evaluating this project for maintainer support, start here:
-
-| Need | Link |
+| Job | What `oss-signal` gives you |
 | --- | --- |
-| Shortest verification path | [REVIEWER_PACKET.md](REVIEWER_PACKET.md) |
-| Current post-submission status | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
-| Latest manual evidence refresh | [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md) |
-| Evidence ledger and boundaries | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
-| Community engagement and reciprocity boundary | [docs/community-engagement.md](docs/community-engagement.md) |
-| Public acknowledgements | [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) |
-| Adoption gap closure plan | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
-| Independent maintainer trial request | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
+| Prepare a release | A repeatable maintainer-readiness report before release day. |
+| Review an unfamiliar repository | A quick map of contributor, security, CI, and release signals. |
+| Open a focused cleanup PR | Issue-ready notes and PR-sized plans instead of broad audit noise. |
+| Add a low-risk CI check | A no-fail trial workflow that uploads Markdown and adoption-pack artifacts. |
+| Audit many repositories | Inventory mode for newline-delimited repository target lists. |
 
-Current public evidence includes `oss-signal@0.9.8` on npm, `SalmonPlays/oss-signal@v0.9.8` as a GitHub Action, a Marketplace listing, public CI/CodeQL/OpenSSF Scorecard/evidence workflows, PASS 16 / SKIP 0 / FAIL 0 evidence verification, one outside-maintainer-accepted PR, and one inbound external contributor PR from a public external fork. The project does not claim broad independent adoption yet.
+Fastest public demo:
 
-![oss-signal example output](docs/assets/terminal-report.svg)
+```bash
+npx oss-signal SalmonPlays/oss-signal --format summary
+```
 
 ## 30-Second Quick Start
+
+Add a report-only workflow to the current repository:
+
+```bash
+npx oss-signal --init
+```
+
+This creates `.github/workflows/oss-signal-trial.yml`, including a manual trigger, pull-request trigger, Markdown report, adoption pack, and artifact upload. It does not add a failing score gate. Existing workflow files are protected unless you explicitly pass `--force`.
 
 Run a maintainer-readiness report against any public GitHub repository:
 
@@ -73,6 +78,26 @@ npx oss-signal --list-rules
 
 For the full first-run path, see [docs/quickstart.md](docs/quickstart.md).
 
+![oss-signal example output](docs/assets/terminal-report.svg)
+
+## Public Verification
+
+If you are evaluating the project itself, the public verification path remains available without interrupting the normal user flow:
+
+| Need | Link |
+| --- | --- |
+| Shortest verification path | [REVIEWER_PACKET.md](REVIEWER_PACKET.md) |
+| Current post-submission status | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
+| Latest manual evidence refresh | [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md) |
+| Evidence ledger and boundaries | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
+| Community engagement and reciprocity boundary | [docs/community-engagement.md](docs/community-engagement.md) |
+| Public acknowledgements | [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) |
+| Adoption gap closure plan | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
+| Independent maintainer trial request | [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md) |
+| Organic discovery playbook | [docs/discovery-playbook.md](docs/discovery-playbook.md) |
+
+Current public evidence includes `oss-signal@0.9.9` on npm, `SalmonPlays/oss-signal@v0.9.9` as a GitHub Action, pinned v0.9.9 workflow examples, a Marketplace listing, public CI/CodeQL/OpenSSF Scorecard/evidence workflows, PASS 16 / SKIP 0 / FAIL 0 evidence verification, one outside-maintainer-accepted PR, and one inbound external contributor PR from a public external fork. The project does not claim broad independent adoption yet.
+
 ## Who It Helps
 
 - Maintainers who want a quick view of missing workflow signals before a release.
@@ -82,11 +107,11 @@ For the full first-run path, see [docs/quickstart.md](docs/quickstart.md).
 
 ## Maintainer Evidence Snapshot
 
-The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/community-engagement.md](docs/community-engagement.md), [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md), [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md), [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/community-engagement.md](docs/community-engagement.md), [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md), [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md), [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/discovery-playbook.md](docs/discovery-playbook.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
-- Published package: [`oss-signal@0.9.8`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.9.8`.
-- Published GitHub Action: [`SalmonPlays/oss-signal@v0.9.8`](https://github.com/SalmonPlays/oss-signal/tree/v0.9.8).
+- Published package: [`oss-signal@0.9.9`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.9.9`.
+- Published GitHub Action: [`SalmonPlays/oss-signal@v0.9.9`](https://github.com/SalmonPlays/oss-signal/tree/v0.9.9).
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Trust center: [docs/trust-center.md](docs/trust-center.md)
 - Quickstart: [docs/quickstart.md](docs/quickstart.md)
@@ -103,6 +128,7 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Maintainer trial: [docs/maintainer-trial.md](docs/maintainer-trial.md)
 - Maintainer feedback: [docs/maintainer-feedback.md](docs/maintainer-feedback.md)
 - Social launch kit: [docs/social-launch.md](docs/social-launch.md)
+- Organic discovery playbook: [docs/discovery-playbook.md](docs/discovery-playbook.md)
 - Architecture: [docs/architecture.md](docs/architecture.md)
 - Security model: [docs/security-model.md](docs/security-model.md)
 - JSON output contract and schemas: [docs/json-output.md](docs/json-output.md), [single-repository schema](docs/schema/json-output.schema.json), [inventory schema](docs/schema/inventory-output.schema.json), and [rule catalog schema](docs/schema/rules-catalog.schema.json)
@@ -111,7 +137,7 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Maintainer plan output: [docs/plan-output.md](docs/plan-output.md)
 - SARIF Code Scanning walkthrough: [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md)
 - Roadmap: [docs/roadmap.md](docs/roadmap.md)
-- Post-submission version note: the application may reference earlier evidence; `0.9.8` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md) and [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md).
+- Post-submission version note: the application may reference earlier evidence; `0.9.9` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md) and [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md).
 - Public checks: CI, Repository health, Repository inventory, Evidence verification, and CodeQL are passing on `main`.
 - Security posture: OpenSSF Scorecard is scheduled, CodeQL is active, secret scanning push protection is enabled, Dependabot alerts/security updates/malware alerts are enabled, and private vulnerability reporting is enabled.
 - Branch posture: `main` has branch protection to prevent force pushes and deletions while keeping direct maintainer maintenance possible.
@@ -122,8 +148,10 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Merged external OSS contribution evidence: [icoretech/codex-action PR #24](https://github.com/icoretech/codex-action/pull/24) is a focused Codex Action documentation safety fix accepted by an outside maintainer, and [oss-signal PR #14](https://github.com/SalmonPlays/oss-signal/pull/14) is an inbound external contributor PR from the public [ded-furby/oss-signal](https://github.com/ded-furby/oss-signal) fork adding a compact JSON score example.
 - Contributor intake: [good first issues](https://github.com/SalmonPlays/oss-signal/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are labeled for small outside PRs.
 - Inventory mode: the CLI and Action can audit a newline-delimited list of repositories for organization-level triage.
-- Evidence verification: `npm run evidence:verify` checks npm latest, npm download API, GitHub release evidence, repository metadata, and current external issue/PR links; the workflow uploads a Markdown verification artifact and the current snapshot is in [docs/evidence-verification.md](docs/evidence-verification.md).
-- Historical self-owned workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) ran the public `v0.8.4` Action tag and uploaded Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. Current `v0.9.8` workflow evidence comes from this repository's Repository health workflow; the next stronger external signal is still one maintainer-owned public run through [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md).
+- Evidence verification: `npm run evidence:verify` checks npm latest, npm download API, GitHub release evidence, repository metadata, and current external issue/PR links; `npm run evidence:verify:full` fails if any check is skipped. The workflow uses full mode, uploads a Markdown verification artifact, and the current snapshot is in [docs/evidence-verification.md](docs/evidence-verification.md).
+- Reviewer readiness: `npm run review:ready` checks package metadata, reviewer docs, workflow pins, release notes, and JSON fixtures for current-version drift. `npm run review:ready:full` also requires the committed public evidence snapshot to be complete and current.
+- Package integrity: `npm run package:check` verifies the npm tarball stays within explicit size and file-count budgets, includes its runtime and schemas, and excludes site-only assets plus outreach drafts.
+- Historical self-owned workflow demo: [oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) ran the public `v0.8.4` Action tag and uploaded Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. Current `v0.9.9` workflow evidence comes from this repository's Repository health workflow; the next stronger external signal is still one maintainer-owned public run through [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md).
 
 ## Why
 
@@ -301,7 +329,7 @@ Summary:
 
 See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-summary.txt](docs/examples/github-summary.txt) for compact summary output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, [docs/examples/github-plan.md](docs/examples/github-plan.md) for plan output, [docs/examples/maintainer-trial-workflow.yml](docs/examples/maintainer-trial-workflow.yml) for workflow output, [docs/examples/adoption-pack.md](docs/examples/adoption-pack.md) for adoption-pack output, [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output, and [docs/examples/rules-catalog.json](docs/examples/rules-catalog.json) for the machine-readable rule catalog.
 
-The [Repository health workflow](.github/workflows/repository-health.yml) runs `SalmonPlays/oss-signal@v0.9.8`, uploads the Markdown report and adoption pack as artifacts, includes a SHA256 checksum manifest, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
+The [Repository health workflow](.github/workflows/repository-health.yml) runs the pinned v0.9.9 release commit, uploads the Markdown report and adoption pack as artifacts, includes a SHA256 checksum manifest, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
 
 ## Field Audits
 
@@ -323,7 +351,7 @@ Additional focused external contribution evidence: [icoretech/codex-action PR #2
 
 For a compact maintainer/adoption summary, see [docs/adoption-evidence.md](docs/adoption-evidence.md). For a reviewer-oriented verification path, see [docs/reviewer-evidence.md](docs/reviewer-evidence.md).
 
-Historical self-owned workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) ran `SalmonPlays/oss-signal@v0.8.4` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) with Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It is retained as historical public workflow evidence, not as current `v0.9.8` adoption evidence.
+Historical self-owned workflow evidence: [SalmonPlays/oss-signal-adoption-demo](https://github.com/SalmonPlays/oss-signal-adoption-demo) ran `SalmonPlays/oss-signal@v0.8.4` and produced a successful [workflow run](https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373) with Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It is retained as historical public workflow evidence, not as current `v0.9.9` adoption evidence.
 
 ## Example Recommendation Output
 
@@ -354,7 +382,7 @@ oss-signal . --fail-under 80
 Add `oss-signal` directly to a GitHub Actions workflow:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.8
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   id: oss-signal
   with:
     fail-under: "80"
@@ -370,7 +398,7 @@ The Action writes a concise GitHub Actions step summary by default, so reviewers
 Run an inventory from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.8
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -382,7 +410,7 @@ Run an inventory from CI:
 Generate an editable Issue body from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.8
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   with:
     format: issue
     output: maintainer-follow-up.md
@@ -405,18 +433,26 @@ env:
 jobs:
   oss-signal:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v0.9.8
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
         id: oss-signal
         with:
           fail-under: "80"
           output: oss-signal-report.md
           summary: "true"
-      - uses: actions/upload-artifact@v7
+      - name: Write artifact checksum manifest
+        run: sha256sum oss-signal-report.md > oss-signal-artifact-sha256.txt
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: oss-signal-report
-          path: oss-signal-report.md
+          retention-days: 14
+          path: |
+            oss-signal-report.md
+            oss-signal-artifact-sha256.txt
 ```
 
 See [docs/examples/github-action-workflow.yml](docs/examples/github-action-workflow.yml) for a copyable workflow, [docs/examples/github-inventory-workflow.yml](docs/examples/github-inventory-workflow.yml) for an inventory workflow, and [docs/examples/github-code-scanning-workflow.yml](docs/examples/github-code-scanning-workflow.yml) for a workflow that uploads SARIF to GitHub Code Scanning.
@@ -429,18 +465,20 @@ permissions:
   security-events: write
 
 steps:
-  - uses: actions/checkout@v6
-  - uses: SalmonPlays/oss-signal@v0.9.8
+  - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+    with:
+      persist-credentials: false
+  - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
     with:
       format: sarif
       output: oss-signal.sarif
       summary: "true"
-  - uses: github/codeql-action/upload-sarif@v4
+  - uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4
     with:
       sarif_file: oss-signal.sarif
 ```
 
-This repository dogfoods the public Action tag in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@v0.9.8` against the repository, uploads Markdown and adoption-pack artifacts with a SHA256 manifest, and publishes SARIF to Code Scanning on non-PR runs.
+This repository dogfoods the public v0.9.9 release commit in [Repository health](.github/workflows/repository-health.yml), which runs `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` against the repository, uploads Markdown and adoption-pack artifacts with a SHA256 manifest, and publishes SARIF to Code Scanning on non-PR runs.
 
 You can also run the CLI directly in CI:
 

@@ -1,9 +1,9 @@
 # Evidence Refresh: 2026-06-18
 
-Checked: 2026-06-18T02:43:54.773Z / 2026-06-18 11:43:54 JST
+Checked: 2026-06-18T12:59:14.685Z / 2026-06-18 21:59:14 JST
 
 This manual refresh records the reviewer-visible evidence checked after the
-`bed0978` bounded X reply guidance commit. It supplements the generated
+`v0.9.9` workflow-initializer release. It supplements the generated
 [evidence-verification.md](evidence-verification.md) snapshot and records the
 latest public CI, repository metadata, and external-link status checked on
 2026-06-18.
@@ -12,19 +12,21 @@ latest public CI, repository metadata, and external-link status checked on
 
 | Signal | Status |
 | --- | --- |
-| Checked commit | `bed09785b5c27f68c6793f989b3eb58ac82b7d96` |
-| Commit message | `Add bounded X reply guidance` |
-| Remote branch | `origin/main` pointed at `bed09785b5c27f68c6793f989b3eb58ac82b7d96` at check time |
+| Checked commit | `3e086d4b2cb938a9aa67b12585a80f28632d9e91` |
+| Commit message | `Release 0.9.9 workflow initializer` |
+| Release tag | `v0.9.9` pointed at `3e086d4b2cb938a9aa67b12585a80f28632d9e91` at check time |
 | Evidence verification | PASS 16, SKIP 0, FAIL 0 |
 
 ## Public Workflow Status
 
-All core public workflows for commit `bed09785b5c27f68c6793f989b3eb58ac82b7d96`
-completed successfully. Evidence verification also completed successfully again
-on the same commit after the 2026-06-18 refresh window moved.
+The public release workflow for `v0.9.9` completed successfully. The branch
+workflow links below are the latest public `main` workflow baseline recorded
+earlier on 2026-06-18; rerun them after the `main` branch fast-forwards to the
+release commit.
 
 | Workflow | Conclusion | Run |
 | --- | --- | --- |
+| Release `v0.9.9` | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27747411428 |
 | CI | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27526530821 |
 | Repository inventory | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27526530851 |
 | Evidence verification | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27676579347 |
@@ -37,15 +39,15 @@ on the same commit after the 2026-06-18 refresh window moved.
 
 | Signal | Latest checked value |
 | --- | --- |
-| npm downloads | 3676 downloads for 2026-05-18 to 2026-06-16 |
+| npm downloads | 3702 downloads for 2026-05-19 to 2026-06-17 |
 | GitHub stars | 2 |
 | GitHub forks | 1 |
 | GitHub API watchers_count | 2 |
 | GitHub subscribers_count | 0 |
-| Latest release | `v0.9.8`, published 2026-06-13T03:05:04Z |
+| Latest release | `v0.9.9`, published 2026-06-18T08:39:21Z |
 
 The npm download window advanced when checked on 2026-06-18 JST, and the
-committed evidence snapshot records the 3676-download last-month window.
+committed evidence snapshot records the 3702-download last-month window.
 The GitHub repository metadata check returned 2 stars, 1 fork, GitHub API
 `watchers_count` 2, and `subscribers_count` 0. The public fork is
 https://github.com/ded-furby/oss-signal.

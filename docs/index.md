@@ -4,6 +4,12 @@
 
 ## Quick Start
 
+Add a report-only workflow to the current checkout:
+
+```bash
+npx oss-signal --init
+```
+
 Run against a public GitHub repository without cloning it:
 
 ```bash
@@ -13,7 +19,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.8
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   id: oss-signal
   with:
     path: "."
@@ -33,7 +39,7 @@ Run as a GitHub Action:
 ## Reviewer Evidence
 
 - Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
-- Latest committed evidence verification: [PASS 16, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-18T02:43:54.773Z. The Evidence verification workflow runs with `GITHUB_TOKEN` and passed on `main`.
+- Latest committed evidence verification: [PASS 16, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-18T12:59:14.685Z. The Evidence verification workflow runs with `GITHUB_TOKEN` and passed on `main`.
 - Latest manual evidence refresh: [evidence-refresh-2026-06-18.md](evidence-refresh-2026-06-18.md), with all public workflows successful for the checked `bed0978` baseline on 2026-06-18.
 - Current post-submission update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md), with current package, workflow, field-audit, and external PR evidence.
 - Adoption gap closure plan: [adoption-gap-closure.md](adoption-gap-closure.md), with the current weak signals and the exact evidence that would close them.
@@ -60,6 +66,7 @@ Run as a GitHub Action:
 - [Maintainer trial](maintainer-trial.md)
 - [Maintainer feedback](maintainer-feedback.md)
 - [Social launch kit](social-launch.md)
+- [Organic discovery playbook](discovery-playbook.md)
 - [Configuration](configuration.md)
 - [Summary output](summary-output.md)
 - [Maintainer playbook](maintainer-playbook.md)
@@ -83,6 +90,6 @@ Run as a GitHub Action:
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.8
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

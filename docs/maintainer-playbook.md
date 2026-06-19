@@ -91,7 +91,7 @@ See [plan-output.md](plan-output.md) and [examples/github-plan.md](examples/gith
 Add the GitHub Action to keep the signal visible:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.8
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   id: oss-signal
   with:
     fail-under: "80"
@@ -104,7 +104,7 @@ The Action writes `score`, `grade`, `failed`, and `report-path` outputs, and wri
 For a repository inventory, commit a newline-delimited target list and pass it through the Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@v0.9.8
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -123,13 +123,15 @@ permissions:
   security-events: write
 
 steps:
-  - uses: actions/checkout@v6
-  - uses: SalmonPlays/oss-signal@v0.9.8
+  - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+    with:
+      persist-credentials: false
+  - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
     with:
       format: sarif
       output: oss-signal.sarif
       summary: "false"
-  - uses: github/codeql-action/upload-sarif@v4
+  - uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4
     with:
       sarif_file: oss-signal.sarif
 ```
@@ -142,7 +144,7 @@ See [docs/sarif-code-scanning.md](sarif-code-scanning.md) for the permissions, e
 
 Useful evidence for maintainers and reviewers:
 
-- A public workflow run that uses `SalmonPlays/oss-signal@v0.9.8`.
+- A public workflow run that uses `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` (`v0.9.9`).
 - A generated Markdown report attached as an artifact.
 - A generated adoption pack attached as an artifact before asking maintainers to try the Action.
 - A checksum manifest for the uploaded report, adoption pack, and SARIF files.

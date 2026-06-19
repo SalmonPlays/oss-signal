@@ -48,7 +48,11 @@ SARIF output reports maintainer-readiness findings at warning level. These findi
 ## Supply Chain
 
 - The npm package is published publicly as `oss-signal`.
-- The GitHub Action is pinned by release tag, for example `SalmonPlays/oss-signal@v0.9.8`.
+- Generated and repository-owned workflows pin third-party Actions and
+  `SalmonPlays/oss-signal` to immutable 40-character commits, with release
+  comments such as `# v0.9.9` for readability.
+- Generated trial workflows disable persisted checkout credentials, use an
+  explicit timeout, and include a SHA256 manifest for uploaded reports.
 - The release workflow checks the package version against the release tag before publishing.
 - The repository runs CI, CodeQL, OpenSSF Scorecard, repository health, and repository inventory workflows on `main`.
 
@@ -57,3 +61,7 @@ SARIF output reports maintainer-readiness findings at warning level. These findi
 Report suspected vulnerabilities through the repository security policy:
 
 https://github.com/SalmonPlays/oss-signal/security/policy
+
+Private reports can be opened directly at:
+
+https://github.com/SalmonPlays/oss-signal/security/advisories/new

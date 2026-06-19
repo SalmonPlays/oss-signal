@@ -1,8 +1,8 @@
 # OSS Signal Reviewer Packet
 
-Last reviewed: 2026-06-18T02:43:54.773Z
+Last reviewed: 2026-06-18T12:59:14.685Z
 
-Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-18T02:43:54.773Z.
+Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-18T12:59:14.685Z.
 
 Latest manual evidence refresh: [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md).
 
@@ -18,13 +18,13 @@ Next independent-usage path: [docs/independent-workflow-run-request.md](docs/ind
 
 | Signal | Current value | Verification |
 | --- | --- | --- |
-| npm package | `oss-signal@0.9.8` is `latest` | https://www.npmjs.com/package/oss-signal |
-| GitHub Action | `SalmonPlays/oss-signal@v0.9.8` | https://github.com/SalmonPlays/oss-signal/tree/v0.9.8 |
-| GitHub Release | `v0.9.8` published | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.8 |
+| npm package | `oss-signal@0.9.9` is `latest` | https://www.npmjs.com/package/oss-signal |
+| GitHub Action | `SalmonPlays/oss-signal@v0.9.9` | https://github.com/SalmonPlays/oss-signal/tree/v0.9.9 |
+| GitHub Release | `v0.9.9` published | https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.9 |
 | GitHub Marketplace | Free Action listing is published | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | Public docs landing page | https://salmonplays.github.io/oss-signal/ |
 | Evidence verification | PASS 16, SKIP 0, FAIL 0 in the committed local snapshot; the GitHub workflow runs with `GITHUB_TOKEN` | [docs/evidence-verification.md](docs/evidence-verification.md) |
-| Manual evidence refresh | Public workflows all completed successfully for the checked `bed0978` baseline on 2026-06-18 | [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md) |
+| Manual evidence refresh | `v0.9.9` release evidence and the latest public workflow baseline were checked on 2026-06-18 | [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md) |
 | Evidence workflow | Public workflow with Markdown artifact | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml |
 | Post-submission update | Current 2026-06-13 reviewer update | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
 | Adoption gap closure | Current weak signals and exact evidence needed to close them | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
@@ -36,11 +36,11 @@ Next independent-usage path: [docs/independent-workflow-run-request.md](docs/ind
 
 ## Latest Verified Workflow Runs
 
-The release run verified `v0.9.8` at release commit `4525a3a`. Branch workflow links below point to the public checks for `main`.
+The release run verified `v0.9.9` at release commit `3e086d4`. Branch workflow links below point to the public checks for `main`.
 
 | Workflow | Status | Run |
 | --- | --- | --- |
-| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27454690478 |
+| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27747411428 |
 | CI | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml |
 | Repository health | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml |
 | Repository inventory | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml |
@@ -56,19 +56,23 @@ The Repository health run uploads `oss-signal-report`. That artifact includes th
 
 ```bash
 npm view oss-signal version dist-tags --json
-npm exec --yes --package=oss-signal@0.9.8 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.9.9 -- oss-signal --version
 git clone https://github.com/SalmonPlays/oss-signal.git
 cd oss-signal
 npm ci
 npm run check
+npm run package:check
+npm run review:ready:full
 npm run evidence:verify
 ```
 
 Expected results:
 
-- npm latest is `0.9.8`.
-- clean package execution prints `0.9.8`.
+- npm latest is `0.9.9`.
+- clean package execution prints `0.9.9`.
 - `npm run check` passes lint, tests, and self-audit.
+- `npm run package:check` verifies a compact npm tarball with required runtime, schema, and evidence files.
+- `npm run review:ready:full` confirms package metadata, reviewer docs, workflow pins, release notes, evidence snapshots, and JSON fixtures all point at the current version.
 - `npm run evidence:verify` reports PASS lines for npm, release, repository metadata, the public `ded-furby/oss-signal` fork, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
 
 ## Boundary

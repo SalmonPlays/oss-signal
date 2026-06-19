@@ -7,7 +7,33 @@
 - Added focused tests for funding metadata detection.
 - Tightened CLI and GitHub Action validation for `fail-under` and `max-files` numeric inputs.
 - Exposed earned, available, total, and not-applicable weighted points in JSON, SARIF, Markdown, summary, inventory, and Action summaries.
-- Made CLI `--output` create missing parent directories before writing reports.
+- Added a reviewer-readiness check that keeps package metadata, reviewer docs,
+  workflow pins, release notes, evidence snapshots, and JSON fixtures aligned
+  with the current version before release or review.
+- Added full evidence verification mode so the public evidence workflow fails
+  instead of uploading a SKIP snapshot when reviewer evidence must be complete.
+- Pinned third-party workflow actions to immutable commits, added Node.js 24 to
+  the CI matrix, added npm package dry-run coverage, and bounded workflow jobs
+  with explicit timeouts.
+- Pinned the repository's own released Action in dogfood workflows through a
+  release manifest, while allowing release preparation to keep using the last
+  published immutable commit until full evidence is refreshed.
+- Added an automated immutable-action-ref check and disabled persisted checkout
+  credentials in workflows that do not need Git-backed writes.
+- Added package-content verification with size and file-count budgets, and
+  excluded site-only PNG assets plus outreach drafts from the npm tarball.
+- Hardened generated and copyable workflows with immutable action commits,
+  non-persisted checkout credentials, explicit timeouts, short artifact
+  retention, and SHA256 checksum manifests.
+- Replaced the ambiguous security-reporting email instruction with the direct
+  GitHub private vulnerability reporting route.
+
+## 0.9.9
+
+- Added `--init` for one-command installation of a report-only GitHub Actions workflow.
+- Protected existing workflow files unless maintainers explicitly pass `--force`.
+- Made CLI output paths create missing parent directories automatically.
+- Moved the README first-run path ahead of reviewer-specific verification links.
 
 ## 0.9.8
 

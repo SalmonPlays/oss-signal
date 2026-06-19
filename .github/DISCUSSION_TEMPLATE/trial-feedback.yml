@@ -1,0 +1,41 @@
+title: "[Trial feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share a concrete `oss-signal` trial note. Positive, negative, and "not useful here" feedback are all useful.
+  - type: input
+    id: repository
+    attributes:
+      label: Repository or workflow run
+      description: Link a public repository, workflow run, issue, pull request, or report artifact if available.
+      placeholder: "https://github.com/owner/repo/actions/runs/..."
+    validations:
+      required: false
+  - type: dropdown
+    id: usage
+    attributes:
+      label: How did you try it?
+      options:
+        - Ran the CLI
+        - Ran the no-fail GitHub Action trial
+        - Read a generated report
+        - Reviewed a follow-up issue or PR
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What happened?
+      description: What finding helped, what was noisy, or what should the tool explain better?
+      placeholder: "The security-policy finding was useful, but the Dependabot check was noisy because..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Boundaries
+      options:
+        - label: This is not a request for stars, follows, reciprocal promotion, or reciprocal PRs.
+          required: true

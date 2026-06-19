@@ -4,6 +4,7 @@ import { readFile, writeFile } from "node:fs/promises";
 
 const args = process.argv.slice(2);
 let outputPath = "";
+let requireFull = false;
 
 for (let index = 0; index < args.length; index += 1) {
   const arg = args[index];
@@ -12,6 +13,8 @@ for (let index = 0; index < args.length; index += 1) {
     index += 1;
   } else if (arg.startsWith("--output=")) {
     outputPath = arg.slice("--output=".length);
+  } else if (arg === "--require-full") {
+    requireFull = true;
   } else {
     throw new Error(`Unknown argument: ${arg}`);
   }
@@ -187,7 +190,11 @@ if (outputPath) {
 }
 
 const failures = results.filter((result) => !result.ok);
-if (failures.length > 0) {
+const skipped = results.filter((result) => result.skipped);
+if (failures.length > 0 || (requireFull && skipped.length > 0)) {
+  if (requireFull && skipped.length > 0) {
+    console.error(`FAIL full evidence verification required, but ${skipped.length} check(s) were skipped`);
+  }
   process.exitCode = 1;
 }
 

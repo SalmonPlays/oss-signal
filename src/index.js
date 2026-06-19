@@ -2,7 +2,11 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.9.8";
+export const VERSION = "0.9.9";
+export const RELEASE_COMMIT = "3e086d4b2cb938a9aa67b12585a80f28632d9e91";
+
+const CHECKOUT_ACTION_COMMIT = "df4cb1c069e1874edd31b4311f1884172cec0e10";
+const UPLOAD_ARTIFACT_ACTION_COMMIT = "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a";
 
 const SARIF_RULE_LOCATIONS = {
   readme: "README.md",
@@ -636,8 +640,7 @@ export function renderAdoption(report) {
     "",
     "- Do not present this pack as adoption until a maintainer runs, merges, replies, or otherwise endorses it.",
     "- Do not ask for stars, follows, reciprocal issues, or reciprocal pull requests.",
-    "- Keep any follow-up PR small and tied to one specific missing maintainer-readiness signal.",
-    ""
+    "- Keep any follow-up PR small and tied to one specific missing maintainer-readiness signal."
   );
 
   return `${lines.join("\n")}\n`;
@@ -659,27 +662,41 @@ env:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-      - uses: SalmonPlays/oss-signal@v${VERSION}
+      - uses: actions/checkout@${CHECKOUT_ACTION_COMMIT} # v6
+        with:
+          persist-credentials: false
+      - uses: SalmonPlays/oss-signal@${RELEASE_COMMIT} # v${VERSION}
         id: oss-signal
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@v${VERSION}
+      - uses: SalmonPlays/oss-signal@${RELEASE_COMMIT} # v${VERSION}
         if: always()
         id: oss-signal-adoption
         with:
           format: adoption
           output: oss-signal-adoption-pack.md
           summary: "false"
-      - uses: actions/upload-artifact@v7
+      - name: Write artifact checksum manifest
+        if: always()
+        run: |
+          : > oss-signal-artifact-sha256.txt
+          for file in oss-signal-report.md oss-signal-adoption-pack.md; do
+            if [ -f "$file" ]; then
+              sha256sum "$file" >> oss-signal-artifact-sha256.txt
+            fi
+          done
+      - uses: actions/upload-artifact@${UPLOAD_ARTIFACT_ACTION_COMMIT} # v7
         if: always()
         with:
           name: oss-signal-report
+          retention-days: 14
           path: |
             oss-signal-report.md
             oss-signal-adoption-pack.md
+            oss-signal-artifact-sha256.txt
 `;
 }
 
