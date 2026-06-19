@@ -99,7 +99,7 @@ Add the GitHub Action to keep the signal visible:
     summary: "true"
 ```
 
-The Action writes `score`, `grade`, `failed`, and `report-path` outputs, and writes a concise GitHub Actions step summary by default.
+The Action writes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, and `report-path` outputs, and writes a concise GitHub Actions step summary by default. Inventory mode reports the average score and totals for counts and weighted points.
 
 For a repository inventory, commit a newline-delimited target list and pass it through the Action:
 

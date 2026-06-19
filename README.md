@@ -390,10 +390,10 @@ Add `oss-signal` directly to a GitHub Actions workflow:
     fail-under: "80"
     output: oss-signal-report.md
     summary: "true"
-- run: echo "score ${{ steps.oss-signal.outputs.score }} (${{ steps.oss-signal.outputs.grade }})"
+- run: echo "score ${{ steps.oss-signal.outputs.score }} (${{ steps.oss-signal.outputs.earned-weight }}/${{ steps.oss-signal.outputs.available-weight }} weighted points)"
 ```
 
-The Action writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
+The Action exposes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, and `report-path` outputs. Inventory mode uses the average for `score` and totals for counts and weighted points. The Action also writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
 
 ![oss-signal GitHub Actions summary](docs/assets/github-step-summary.svg)
 

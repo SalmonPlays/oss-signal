@@ -42,8 +42,22 @@ outputs:
     description: Numeric maintainer-readiness score, or average score in inventory mode.
   grade:
     description: Letter grade for the maintainer-readiness score, or average grade in inventory mode.
+  passed:
+    description: Number of passed checks, or total passed checks in inventory mode.
   failed:
     description: Number of failed checks, or total failed checks in inventory mode.
+  not-applicable:
+    description: Number of checks marked not applicable, or the total across inventory targets.
+  total:
+    description: Total number of checks, or the total across inventory targets.
+  earned-weight:
+    description: Weighted points earned, or the total earned across inventory targets.
+  available-weight:
+    description: Weighted points available after exclusions, or the total available across inventory targets.
+  total-weight:
+    description: Weighted points before exclusions, or the total across inventory targets.
+  not-applicable-weight:
+    description: Weighted points excluded as not applicable, or the total excluded across inventory targets.
   report-path:
     description: Path to the generated report file, when output is enabled.
 runs:

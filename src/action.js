@@ -35,7 +35,14 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
   await writeGitHubOutput(env.GITHUB_OUTPUT, {
     score: result.score,
     grade: result.grade,
+    passed: result.passed,
     failed: result.failed,
+    "not-applicable": result.notApplicable,
+    total: result.total,
+    "earned-weight": result.earnedWeight,
+    "available-weight": result.availableWeight,
+    "total-weight": result.totalWeight,
+    "not-applicable-weight": result.notApplicableWeight,
     "report-path": options.output ?? ""
   });
 
@@ -94,7 +101,14 @@ async function runSingleAudit(options) {
     body,
     score: report.score,
     grade: report.grade,
+    passed: report.summary.passed,
     failed: report.summary.failed,
+    notApplicable: report.summary.notApplicable,
+    total: report.summary.total,
+    earnedWeight: report.summary.earnedWeight,
+    availableWeight: report.summary.availableWeight,
+    totalWeight: report.summary.totalWeight,
+    notApplicableWeight: report.summary.notApplicableWeight,
     failUnderMessage
   };
 }
@@ -134,7 +148,14 @@ async function runInventory(options) {
     body,
     score: inventory.averageScore,
     grade: inventory.averageGrade,
+    passed: inventory.repositories.reduce((sum, repository) => sum + repository.passed, 0),
     failed: inventory.failedTotal,
+    notApplicable: inventory.repositories.reduce((sum, repository) => sum + repository.notApplicable, 0),
+    total: inventory.repositories.reduce((sum, repository) => sum + repository.total, 0),
+    earnedWeight: inventory.earnedWeightTotal,
+    availableWeight: inventory.availableWeightTotal,
+    totalWeight: inventory.repositories.reduce((sum, repository) => sum + repository.totalWeight, 0),
+    notApplicableWeight: inventory.notApplicableWeightTotal,
     failUnderMessage
   };
 }

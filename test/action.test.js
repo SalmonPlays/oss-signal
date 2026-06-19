@@ -68,7 +68,12 @@ test("runAction writes a report and action outputs", async () => {
       "LICENSE": "MIT\n",
       "package.json": JSON.stringify({ scripts: { test: "node --test" } }),
       "package-lock.json": "{}\n",
-      "test/example.test.js": "import test from 'node:test';\n"
+      "test/example.test.js": "import test from 'node:test';\n",
+      ".oss-signal.json": JSON.stringify({
+        notApplicable: {
+          codeql: "Static analysis is handled outside this fixture."
+        }
+      })
     });
 
     const report = await runAction({
@@ -80,7 +85,16 @@ test("runAction writes a report and action outputs", async () => {
 
     assert.equal(report.source.type, "local");
     assert.match(await readFile(reportFile, "utf8"), /OSS Signal Report/);
-    assert.match(await readFile(githubOutput, "utf8"), /report-path<<oss_signal_output/);
+    const outputs = await readFile(githubOutput, "utf8");
+    assert.match(outputs, /passed<<oss_signal_output\n5\noss_signal_output/);
+    assert.match(outputs, /failed<<oss_signal_output\n11\noss_signal_output/);
+    assert.match(outputs, /not-applicable<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /total<<oss_signal_output\n17\noss_signal_output/);
+    assert.match(outputs, /earned-weight<<oss_signal_output\n41\noss_signal_output/);
+    assert.match(outputs, /available-weight<<oss_signal_output\n109\noss_signal_output/);
+    assert.match(outputs, /total-weight<<oss_signal_output\n113\noss_signal_output/);
+    assert.match(outputs, /not-applicable-weight<<oss_signal_output\n4\noss_signal_output/);
+    assert.match(outputs, /report-path<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /Score: \*\*\d+\/100 \([A-F]\)\*\*/);
     assert.match(await readFile(githubSummary, "utf8"), /Weighted points/);
   } finally {
@@ -265,7 +279,16 @@ test("runAction writes inventory output", async () => {
     assert.equal(inventory.tool, "oss-signal");
     assert.equal(inventory.count, 2);
     assert.match(await readFile(reportFile, "utf8"), /OSS Signal Inventory/);
-    assert.match(await readFile(githubOutput, "utf8"), /score<<oss_signal_output/);
+    const outputs = await readFile(githubOutput, "utf8");
+    assert.match(outputs, /score<<oss_signal_output/);
+    assert.match(outputs, /passed<<oss_signal_output\n3\noss_signal_output/);
+    assert.match(outputs, /failed<<oss_signal_output\n31\noss_signal_output/);
+    assert.match(outputs, /not-applicable<<oss_signal_output\n0\noss_signal_output/);
+    assert.match(outputs, /total<<oss_signal_output\n34\noss_signal_output/);
+    assert.match(outputs, /earned-weight<<oss_signal_output\n34\noss_signal_output/);
+    assert.match(outputs, /available-weight<<oss_signal_output\n226\noss_signal_output/);
+    assert.match(outputs, /total-weight<<oss_signal_output\n226\noss_signal_output/);
+    assert.match(outputs, /not-applicable-weight<<oss_signal_output\n0\noss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /oss-signal inventory/);
     assert.match(await readFile(githubSummary, "utf8"), /Weighted points/);
     assert.match(await readFile(githubSummary, "utf8"), /\[P1\] Continuous integration/);
