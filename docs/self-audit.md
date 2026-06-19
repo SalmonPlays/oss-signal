@@ -1,16 +1,16 @@
 # OSS Signal Report
 
-Repository: `/Users/amon/Documents/Codex/2026-06-01/openai-s/outputs/oss-signal`
+Repository: `/Users/amon/Documents/Codex/2026-06-19/salmonplays-oss-signal-codex-text-link/work/oss-signal`
 Source: local
-Generated: 2026-06-11T22:19:51.219Z
+Generated: 2026-06-19T00:26:35.556Z
 
 Score: **100/100** (A)
 
 ## Summary
 
-- Passed: 16
+- Passed: 17
 - Failed: 0
-- Total checks: 16
+- Total checks: 17
 
 ## Checks
 
@@ -23,6 +23,7 @@ Score: **100/100** (A)
 | PASS | Code of conduct | `CODE_OF_CONDUCT.md` | Community norms reduce ambiguity during difficult interactions. |
 | PASS | Changelog | `CHANGELOG.md` | Users need a durable place to understand release impact. |
 | PASS | Support policy | `SUPPORT.md` | Support boundaries help maintainers avoid turning every request into unpaid consulting. |
+| PASS | Funding metadata | `.github/FUNDING.yml` | Funding metadata gives maintainers a visible route for sponsorship and sustainability support. |
 | PASS | Maintainer ownership | `MAINTAINERS.md` | Clear ownership and review routing make outside contributions easier to triage. |
 | PASS | Continuous integration | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/workflows/evidence-verify.yml`, `.github/workflows/release.yml`, `.github/workflows/repository-health.yml` | CI catches regressions before maintainers merge changes. |
 | PASS | Tests | `test/action.test.js`, `test/index.test.js` | Tests make review safer and lower the cost of outside contributions. |

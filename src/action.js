@@ -69,8 +69,8 @@ export function parseActionInputs(env = process.env) {
     path: getInput(env, "path") || ".",
     format,
     output: emptyToUndefined(getInput(env, "output")) ?? "oss-signal-report.md",
-    failUnder: parseOptionalNumber(getInput(env, "fail-under"), "fail-under"),
-    maxFiles: parseOptionalNumber(getInput(env, "max-files"), "max-files") ?? 20000,
+    failUnder: parseOptionalScoreThreshold(getInput(env, "fail-under"), "fail-under"),
+    maxFiles: parseOptionalPositiveInteger(getInput(env, "max-files"), "max-files") ?? 20000,
     ref: emptyToUndefined(getInput(env, "ref")),
     configPath: emptyToUndefined(getInput(env, "config")),
     inventory,
@@ -242,6 +242,28 @@ function parseOptionalNumber(value, name) {
   const parsed = Number(normalized);
   if (!Number.isFinite(parsed)) {
     throw new Error(`${name} must be a number`);
+  }
+  return parsed;
+}
+
+function parseOptionalScoreThreshold(value, name) {
+  const parsed = parseOptionalNumber(value, name);
+  if (parsed === undefined) {
+    return undefined;
+  }
+  if (parsed < 0 || parsed > 100) {
+    throw new Error(`${name} must be between 0 and 100`);
+  }
+  return parsed;
+}
+
+function parseOptionalPositiveInteger(value, name) {
+  const parsed = parseOptionalNumber(value, name);
+  if (parsed === undefined) {
+    return undefined;
+  }
+  if (!Number.isInteger(parsed) || parsed < 1) {
+    throw new Error(`${name} must be a positive integer`);
   }
   return parsed;
 }

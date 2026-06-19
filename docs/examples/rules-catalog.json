@@ -1,8 +1,8 @@
 {
   "tool": "oss-signal",
   "version": "0.9.8",
-  "totalRules": 16,
-  "totalWeight": 110,
+  "totalRules": 17,
+  "totalWeight": 113,
   "scoring": {
     "description": "Score is the percentage of available weighted points that pass. Rules marked not applicable through config are removed from the denominator.",
     "grades": [
@@ -112,6 +112,17 @@
           ],
           "why": "Support boundaries help maintainers avoid turning every request into unpaid consulting.",
           "fix": "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times."
+        },
+        {
+          "id": "funding",
+          "label": "Funding metadata",
+          "weight": 3,
+          "signals": [
+            ".github/FUNDING.yml",
+            "FUNDING.yml"
+          ],
+          "why": "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
+          "fix": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
         },
         {
           "id": "maintainer-ownership",

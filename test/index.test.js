@@ -33,6 +33,7 @@ test("auditRepository scores common maintainer files", async () => {
     "SECURITY.md": "Email security@example.com.\n",
     "CHANGELOG.md": "# Changelog\n",
     "MAINTAINERS.md": "# Maintainers\n",
+    ".github/FUNDING.yml": "github: [example]\n",
     "package.json": JSON.stringify({ scripts: { test: "node --test" } }),
     "test/example.test.js": "import test from 'node:test';\n",
     ".github/workflows/ci.yml": "name: CI\n",
@@ -42,10 +43,11 @@ test("auditRepository scores common maintainer files", async () => {
 
   try {
     const report = await auditRepository(root);
-    assert.equal(report.summary.total, 16);
+    assert.equal(report.summary.total, 17);
     assert.ok(report.score >= 70, `expected useful score, got ${report.score}`);
     assert.equal(report.checks.find((check) => check.id === "readme").passed, true);
     assert.equal(report.checks.find((check) => check.id === "ci").passed, true);
+    assert.equal(report.checks.find((check) => check.id === "funding").passed, true);
     assert.equal(report.checks.find((check) => check.id === "support").passed, false);
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -108,7 +110,7 @@ test("auditRepository honors local not-applicable config", async () => {
 
     assert.equal(report.config.path, ".oss-signal.json");
     assert.equal(report.summary.notApplicable, 2);
-    assert.equal(report.summary.failed, 13);
+    assert.equal(report.summary.failed, 14);
     assert.equal(license.notApplicable, true);
     assert.equal(ci.notApplicable, true);
     assert.equal(report.recommendations.some((item) => item.id === "license"), false);
@@ -116,6 +118,28 @@ test("auditRepository honors local not-applicable config", async () => {
     assert.match(renderMarkdown(report), /Private proof-of-concept/);
   } finally {
     await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("auditRepository detects funding metadata in supported locations", async () => {
+  const githubFunding = await fixture({
+    ".github/FUNDING.yml": "github: [example]\n"
+  });
+  const rootFunding = await fixture({
+    "FUNDING.yml": "custom: ['https://example.com/fund']\n"
+  });
+
+  try {
+    const githubReport = await auditRepository(githubFunding);
+    const rootReport = await auditRepository(rootFunding);
+
+    assert.equal(githubReport.checks.find((check) => check.id === "funding").passed, true);
+    assert.deepEqual(githubReport.checks.find((check) => check.id === "funding").evidence, [".github/FUNDING.yml"]);
+    assert.equal(rootReport.checks.find((check) => check.id === "funding").passed, true);
+    assert.deepEqual(rootReport.checks.find((check) => check.id === "funding").evidence, ["FUNDING.yml"]);
+  } finally {
+    await rm(githubFunding, { recursive: true, force: true });
+    await rm(rootFunding, { recursive: true, force: true });
   }
 });
 
@@ -206,16 +230,17 @@ test("listRules exposes rule weights and signals", () => {
   const markdown = renderRulesMarkdown(catalog);
 
   assert.equal(json.tool, "oss-signal");
-  assert.equal(json.totalRules, 16);
-  assert.equal(json.totalWeight, 110);
+  assert.equal(json.totalRules, 17);
+  assert.equal(json.totalWeight, 113);
   assert.equal(json.categories.length, 3);
   assert.equal(json.categories[0].rules.find((rule) => rule.id === "readme").weight, 12);
+  assert.equal(json.categories[0].rules.find((rule) => rule.id === "funding").weight, 3);
   assert.deepEqual(
     json.categories.find((category) => category.id === "automation").rules.find((rule) => rule.id === "ci").signals,
     ["Any YAML workflow under .github/workflows/"]
   );
   assert.match(markdown, /OSS Signal Rules/);
-  assert.match(markdown, /Total weighted points: 110/);
+  assert.match(markdown, /Total weighted points: 113/);
   assert.match(markdown, /Maintainer ownership/);
   assert.match(markdown, /Use `oss-signal --list-rules --format json`/);
 });
@@ -245,7 +270,7 @@ test("published JSON schemas and fixtures are parseable", async () => {
   assert.equal(inventory.tool, "oss-signal");
   assert.equal(catalog.tool, "oss-signal");
   assert.equal(inventory.repositories.length, inventory.count);
-  assert.equal(catalog.totalRules, 16);
+  assert.equal(catalog.totalRules, 17);
 });
 
 test("renderSarif emits failed checks as SARIF results", async () => {
@@ -308,7 +333,7 @@ test("CLI writes rule catalog JSON", async () => {
 
     assert.equal(result.status, 0, result.stderr);
     const catalog = JSON.parse(await readFile(outputFile, "utf8"));
-    assert.equal(catalog.totalRules, 16);
+    assert.equal(catalog.totalRules, 17);
     assert.equal(catalog.categories[0].rules[0].id, "readme");
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -471,6 +496,27 @@ test("CLI writes SARIF output", async () => {
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+});
+
+test("CLI rejects invalid numeric options", async () => {
+  const { spawnSync } = await import("node:child_process");
+  const invalidFailUnder = spawnSync(process.execPath, [
+    path.resolve("src/cli.js"),
+    ".",
+    "--fail-under",
+    "101"
+  ], { encoding: "utf8" });
+  const invalidMaxFiles = spawnSync(process.execPath, [
+    path.resolve("src/cli.js"),
+    ".",
+    "--max-files",
+    "0"
+  ], { encoding: "utf8" });
+
+  assert.equal(invalidFailUnder.status, 1);
+  assert.match(invalidFailUnder.stderr, /--fail-under must be between 0 and 100/);
+  assert.equal(invalidMaxFiles.status, 1);
+  assert.match(invalidMaxFiles.stderr, /--max-files must be a positive integer/);
 });
 
 test("CLI supports explicit config path", async () => {

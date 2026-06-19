@@ -36,6 +36,12 @@ test("parseActionInputs enables step summary by default", () => {
   assert.equal(parseActionInputs({}).summary, true);
 });
 
+test("parseActionInputs validates numeric inputs", () => {
+  assert.throws(() => parseActionInputs({ INPUT_FAIL_UNDER: "101" }), /fail-under must be between 0 and 100/);
+  assert.throws(() => parseActionInputs({ INPUT_MAX_FILES: "0" }), /max-files must be a positive integer/);
+  assert.throws(() => parseActionInputs({ INPUT_MAX_FILES: "1.5" }), /max-files must be a positive integer/);
+});
+
 test("writeGitHubOutput writes action outputs", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-"));
   const outputFile = path.join(root, "github-output");

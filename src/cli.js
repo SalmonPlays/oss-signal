@@ -81,13 +81,13 @@ function parseArgs(argv) {
     } else if (arg.startsWith("--output=")) {
       options.output = arg.slice("--output=".length);
     } else if (arg === "--fail-under") {
-      options.failUnder = parseNumber(requireValue(argv, ++index, "--fail-under"), "--fail-under");
+      options.failUnder = parseScoreThreshold(requireValue(argv, ++index, "--fail-under"), "--fail-under");
     } else if (arg.startsWith("--fail-under=")) {
-      options.failUnder = parseNumber(arg.slice("--fail-under=".length), "--fail-under");
+      options.failUnder = parseScoreThreshold(arg.slice("--fail-under=".length), "--fail-under");
     } else if (arg === "--max-files") {
-      options.maxFiles = parseNumber(requireValue(argv, ++index, "--max-files"), "--max-files");
+      options.maxFiles = parsePositiveInteger(requireValue(argv, ++index, "--max-files"), "--max-files");
     } else if (arg.startsWith("--max-files=")) {
-      options.maxFiles = parseNumber(arg.slice("--max-files=".length), "--max-files");
+      options.maxFiles = parsePositiveInteger(arg.slice("--max-files=".length), "--max-files");
     } else if (arg === "--ref") {
       options.ref = requireValue(argv, ++index, "--ref");
     } else if (arg.startsWith("--ref=")) {
@@ -235,6 +235,22 @@ function parseNumber(value, optionName) {
   return parsed;
 }
 
+function parseScoreThreshold(value, optionName) {
+  const parsed = parseNumber(value, optionName);
+  if (parsed < 0 || parsed > 100) {
+    throw new Error(`${optionName} must be between 0 and 100`);
+  }
+  return parsed;
+}
+
+function parsePositiveInteger(value, optionName) {
+  const parsed = parseNumber(value, optionName);
+  if (!Number.isInteger(parsed) || parsed < 1) {
+    throw new Error(`${optionName} must be a positive integer`);
+  }
+  return parsed;
+}
+
 function helpText() {
   return `oss-signal audits open-source repository maintenance readiness.
 
@@ -258,8 +274,8 @@ Examples:
 Options:
   --format       Output format. Defaults to markdown.
   --output, -o   Write the report to a file instead of stdout.
-  --fail-under   Exit with code 1 when the score, or any inventory target score, is below this value.
-  --max-files    Maximum files to inspect. Defaults to 20000.
+  --fail-under   Exit with code 1 when the score, or any inventory target score, is below this 0-100 value.
+  --max-files    Positive integer maximum files to inspect. Defaults to 20000.
   --ref          Git ref for GitHub URL audits. Defaults to the repository default branch.
   --config       Path to an oss-signal JSON config. Local audits auto-detect .oss-signal.json.
   --inventory    Read repository targets from a newline-delimited file.

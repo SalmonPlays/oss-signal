@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Added a `funding` maintainer-readiness rule for `.github/FUNDING.yml` or `FUNDING.yml`.
+- Updated the transparent rule catalog to 17 rules and 113 weighted points.
+- Added focused tests for funding metadata detection.
+- Tightened CLI and GitHub Action validation for `fail-under` and `max-files` numeric inputs.
+
 ## 0.9.8
 
 - Updated generated no-fail trial workflows to upload both the Markdown report and adoption pack artifacts.

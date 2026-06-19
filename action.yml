@@ -25,10 +25,10 @@ inputs:
     required: false
     default: "true"
   fail-under:
-    description: Fail the action when the score, or any inventory target score, is below this number.
+    description: Fail the action when the score, or any inventory target score, is below this 0-100 number.
     required: false
   max-files:
-    description: Maximum files to inspect.
+    description: Positive integer maximum files to inspect.
     required: false
     default: "20000"
   ref:

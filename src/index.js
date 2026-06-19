@@ -12,6 +12,7 @@ const SARIF_RULE_LOCATIONS = {
   "code-of-conduct": "CODE_OF_CONDUCT.md",
   changelog: "CHANGELOG.md",
   support: "SUPPORT.md",
+  funding: ".github/FUNDING.yml",
   "maintainer-ownership": "MAINTAINERS.md",
   ci: ".github/workflows/ci.yml",
   tests: "test/example.test.js",
@@ -79,6 +80,14 @@ const COMMUNITY_FILES = [
     paths: ["SUPPORT.md", ".github/SUPPORT.md"],
     why: "Support boundaries help maintainers avoid turning every request into unpaid consulting.",
     fix: "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times."
+  },
+  {
+    id: "funding",
+    label: "Funding metadata",
+    weight: 3,
+    paths: [".github/FUNDING.yml", "FUNDING.yml"],
+    why: "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
+    fix: "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
   },
   {
     id: "maintainer-ownership",

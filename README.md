@@ -18,7 +18,7 @@
 
 `oss-signal` is a dependency-light maintainer-readiness CLI and GitHub Action for OSS projects that need repeatable triage, CI evidence, SARIF, inventory reports, issue-ready cleanup notes, adoption packs, a transparent rule catalog, and no-fail workflow trials.
 
-It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
+It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, support policy, funding metadata, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
 
 ## Reviewer Fast Path
 
@@ -339,11 +339,13 @@ See [docs/examples/minimal-repo-report.md](docs/examples/minimal-repo-report.md)
 
 By default, `oss-signal` exits with `0` after writing a report.
 
-When `--fail-under <score>` is provided, it exits with `1` if the score is below the threshold:
+When `--fail-under <score>` is provided, it exits with `1` if the score is below the 0-100 threshold:
 
 ```bash
 oss-signal . --fail-under 80
 ```
+
+`--max-files` must be a positive integer when provided.
 
 ## GitHub Action
 
