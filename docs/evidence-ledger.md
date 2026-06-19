@@ -1,6 +1,6 @@
 # Evidence Ledger
 
-Last verified: 2026-06-18T12:59:14.685Z
+Last verified: 2026-06-19T07:09:25.597Z
 
 This ledger keeps the strongest public `oss-signal` evidence in one reviewer-friendly place. It separates accepted evidence from supporting demos and open follow-up work.
 
@@ -15,9 +15,9 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Evidence refresh, 2026-06-18 | [evidence-refresh-2026-06-18.md](evidence-refresh-2026-06-18.md) | Published | Manual refresh showing public workflows all completed successfully for the checked `bed0978` baseline and external PR status remained unchanged. |
 | Community engagement | [community-engagement.md](community-engagement.md) | Published | Recognizes real public contributor and maintainer interactions while excluding star-for-star, reciprocal PRs, repeated bumps, and social posts from adoption evidence. |
 | Acknowledgements | [ACKNOWLEDGEMENTS.md](../ACKNOWLEDGEMENTS.md) | Published | Public thanks for concrete contributor and maintainer interactions, without listing stars or follows as adoption. |
-| Evidence verification snapshot | [evidence-verification.md](evidence-verification.md) | PASS 16, SKIP 0, FAIL 0 locally; workflow uses `GITHUB_TOKEN` | Committed Markdown snapshot of npm, GitHub release, repository metadata, public fork evidence, external issue/PR checks, the outside-maintainer-accepted PR, and the inbound external contributor PR. |
+| Evidence verification snapshot | [evidence-verification.md](evidence-verification.md) | PASS 16, SKIP 0, FAIL 0; workflow uses `GITHUB_TOKEN` | Committed Markdown snapshot of npm, GitHub release, repository metadata, public fork evidence, external issue/PR checks, the outside-maintainer-accepted PR, and the inbound external contributor PR. |
 | Installable CLI | https://www.npmjs.com/package/oss-signal | `0.9.9` is `latest` | Reviewers can run `npm exec --yes --package=oss-signal@0.9.9 -- oss-signal --version` from a clean temporary directory. |
-| npm download API | 3702 downloads for the last-month window, 2026-05-19 to 2026-06-17 | Checked 2026-06-18T12:59:14.685Z | Supporting distribution signal only; not claimed as broad adoption. |
+| npm download API | 3702 downloads for the last-month window, 2026-05-19 to 2026-06-17 | Checked 2026-06-19T07:09:25.597Z | Supporting distribution signal only; not claimed as broad adoption. |
 | GitHub Action release | https://github.com/SalmonPlays/oss-signal/tree/v0.9.9 | Published tag | Public Action tag used by repository workflows; current `v0.9.9` workflow evidence comes from Repository health. |
 | GitHub Marketplace | https://github.com/marketplace/actions/oss-signal | Published listing | Free Action listing under Code quality. |
 | Maintainer trial path | [maintainer-trial.md](maintainer-trial.md) | Published | External maintainers can try the Action without failing CI, then share a workflow run or adoption report. |
@@ -31,7 +31,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 | Inbound external contributor PR | https://github.com/SalmonPlays/oss-signal/pull/14 | Merged 2026-06-12 | External contributor `ded-furby` added a compact JSON score example from the public fork and closed issue #7. |
 | Maintainer merge comment | https://github.com/icoretech/codex-action/pull/24#issuecomment-4623923361 | Public maintainer response | Stronger than an open PR because the external maintainer accepted the change. |
 | Targeted independent-run request | https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548 | Posted 2026-06-14; pending | One-time no-fail workflow request to the outside maintainer who merged PR #24. This is not adoption unless the maintainer runs, replies, or files feedback. |
-| Current selection update | [selection-update-2026-06-13.md](selection-update-2026-06-13.md) | Published | Current compact post-submission status page for reviewers. |
+| Current selection update | [selection-update-2026-06-19.md](selection-update-2026-06-19.md) | Published | Current compact post-submission status page for reviewers. |
 | Independent workflow run request | [independent-workflow-run-request.md](independent-workflow-run-request.md) | Published | Copyable no-fail workflow and reporting path for maintainer-owned public repositories. |
 | Prior selection update | [selection-update-2026-06-08.md](selection-update-2026-06-08.md) | Historical | Earlier post-submission status page retained as history. |
 | Field-audit issues | [adoption evidence](adoption-evidence.md#public-field-audits-and-prs) | Five currently visible posted issues | These show the audit-to-maintainer-follow-up workflow, but are not counted as adoption unless maintainers reply, act, or endorse them. |
@@ -41,7 +41,7 @@ This ledger keeps the strongest public `oss-signal` evidence in one reviewer-fri
 
 ## External Issue, PR, And Fork Status
 
-Core issue and PR statuses were checked from GitHub on 2026-06-18 JST. The
+Core issue and PR statuses were checked from GitHub on 2026-06-19 JST. The
 targeted independent-run request comment remains pending after the 2026-06-14
 post. The committed Evidence verification snapshot returned PASS 16, SKIP 0,
 FAIL 0.
