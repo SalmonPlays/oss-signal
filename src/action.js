@@ -180,9 +180,8 @@ export async function writeGitHubStepSummary(summaryFile, report) {
     return;
   }
 
-  const failedChecks = report.checks.filter((check) => !check.passed);
-  const nextSteps = failedChecks.length > 0
-    ? failedChecks.map((check) => `- **${check.label}:** ${check.fix}`).join("\n")
+  const nextSteps = report.recommendations.length > 0
+    ? report.recommendations.map((recommendation) => `- **[${recommendation.priority}] ${recommendation.label}:** ${recommendation.fix}`).join("\n")
     : "- No missing maintainer-readiness checks found.";
 
   const body = [
@@ -211,15 +210,21 @@ export async function writeGitHubInventoryStepSummary(summaryFile, inventory) {
   }
 
   const rows = inventory.repositories
-    .map((repository) => `| ${repository.target} | ${repository.score}/100 (${repository.grade}) | ${repository.failed} |`)
+    .map((repository) => {
+      const topRecommendations = repository.topRecommendations ?? [];
+      const nextSteps = topRecommendations.length > 0
+        ? topRecommendations.map((recommendation) => `[${recommendation.priority}] ${recommendation.label}`).join(", ")
+        : "None";
+      return `| ${repository.target} | ${repository.score}/100 (${repository.grade}) | ${repository.failed} | ${nextSteps} |`;
+    })
     .join("\n");
   const body = [
     "# oss-signal inventory",
     "",
     `Average score: **${inventory.averageScore}/100 (${inventory.averageGrade})**`,
     "",
-    "| Repository | Score | Failed |",
-    "| --- | ---: | ---: |",
+    "| Repository | Score | Failed | Top next steps |",
+    "| --- | ---: | ---: | --- |",
     rows,
     ""
   ].join("\n");

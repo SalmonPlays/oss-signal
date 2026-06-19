@@ -48,6 +48,12 @@ test("auditRepository scores common maintainer files", async () => {
     assert.equal(report.checks.find((check) => check.id === "readme").passed, true);
     assert.equal(report.checks.find((check) => check.id === "ci").passed, true);
     assert.equal(report.checks.find((check) => check.id === "support").passed, false);
+    const supportRecommendation = report.recommendations.find((recommendation) => recommendation.id === "support");
+    assert.equal(supportRecommendation.priority, "P3");
+    assert.equal(supportRecommendation.impact, "low");
+    assert.equal(supportRecommendation.category, "community");
+    assert.equal(supportRecommendation.suggestedFile, "SUPPORT.md");
+    assert.equal(supportRecommendation.verifyCommand, "oss-signal . --format summary");
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -67,6 +73,8 @@ test("renderMarkdown includes score and recommendations", async () => {
     assert.match(markdown, /Missing: Add an OSI-approved license file/);
     assert.match(markdown, /Recommended Next Steps/);
     assert.match(markdown, /License/);
+    assert.match(markdown, /\[P1\] License/);
+    assert.match(markdown, /`LICENSE`/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -85,7 +93,7 @@ test("renderSummary creates a compact maintainer readout", async () => {
     assert.match(summary, /Score: \d+\/100 \([A-F]\)/);
     assert.match(summary, /Checks: \d+ passed, \d+ failed, \d+ total/);
     assert.match(summary, /Top next steps:/);
-    assert.match(summary, /License/);
+    assert.match(summary, /\[P1\] License \(10 pts, high\)/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -131,7 +139,8 @@ test("renderIssue creates a maintainer-friendly issue body", async () => {
 
     assert.match(issue, /# Maintainer Readiness Follow-Up/);
     assert.match(issue, /oss-signal scored this repository \*\*\d+\/100 \([A-F]\)\*\*/);
-    assert.match(issue, /- \[ \] \*\*License\*\*/);
+    assert.match(issue, /- \[ \] \*\*\[P1\] License\*\*/);
+    assert.match(issue, /suggested file: `LICENSE`/);
     assert.match(issue, /review before posting/);
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -149,7 +158,9 @@ test("renderPlan creates a maintainer PR sequence", async () => {
 
     assert.match(plan, /# OSS Signal Maintainer Plan/);
     assert.match(plan, /Recommended PR Sequence/);
+    assert.match(plan, /Priority: P1/);
     assert.match(plan, /Impact: high/);
+    assert.match(plan, /Verify with: `oss-signal \. --format summary`/);
     assert.match(plan, /Acceptance:/);
     assert.match(plan, /Do not ask for stars/);
   } finally {
@@ -177,6 +188,7 @@ test("renderAdoption creates a no-fail maintainer trial pack", async () => {
     assert.match(adoption, /trial_feedback\.yml/);
     assert.match(adoption, /Copyable evidence note/);
     assert.match(adoption, /Maintainer decision/);
+    assert.match(adoption, /\[P1\] License/);
     assert.match(adoption, new RegExp(`oss-signal@${VERSION.replaceAll(".", "\\.")}`));
     assert.match(adoption, new RegExp(`SalmonPlays/oss-signal@${RELEASE_COMMIT}`));
     assert.match(adoption, /Do not ask for stars/);
@@ -273,6 +285,8 @@ test("renderSarif emits failed checks as SARIF results", async () => {
     assert.ok(sarif.runs[0].results.length > 0);
     assert.equal(sarif.runs[0].results[0].level, "warning");
     assert.match(sarif.runs[0].results[0].ruleId, /^oss-signal\//);
+    assert.equal(sarif.runs[0].results[0].properties.priority, "P1");
+    assert.match(sarif.runs[0].results[0].properties.verifyCommand, /oss-signal \. --format summary/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -643,6 +657,9 @@ test("renderInventoryMarkdown summarizes multiple reports", async () => {
     assert.match(markdown, /sparse/);
     assert.equal(json.repositories.length, 2);
     assert.ok(json.averageScore > 0);
+    assert.equal(json.repositories[1].topRecommendations[0].id, "ci");
+    assert.equal(json.repositories[1].topRecommendations[0].priority, "P1");
+    assert.equal(json.repositories[1].topRecommendations[0].suggestedFile, ".github/workflows/ci.yml");
   } finally {
     await rm(healthy, { recursive: true, force: true });
     await rm(sparse, { recursive: true, force: true });

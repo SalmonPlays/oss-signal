@@ -32,7 +32,7 @@ Important fields:
 | `summary` | object | Total, passed, and failed check counts. |
 | `config` | object | Present when a config file marks rules not applicable or emits config warnings. |
 | `checks` | array | Full rule results with evidence, rationale, and fix text. |
-| `recommendations` | array | Failed checks sorted by weight. Empty when score is 100. |
+| `recommendations` | array | Failed checks sorted by weight with `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand`. Empty when score is 100. |
 
 ## Inventory JSON
 
@@ -46,7 +46,7 @@ Inventory JSON includes:
 
 - `count`, `averageScore`, `averageGrade`, `minScore`, `maxScore`, and `failedTotal`.
 - `repositories[]` with one summary per target.
-- `repositories[].topRecommendations[]` with the highest-impact missing checks for each target.
+- `repositories[].topRecommendations[]` with the highest-impact missing checks for each target, including priority and suggested-file metadata.
 
 Inventory schema and fixture:
 
@@ -87,7 +87,7 @@ Stable for `0.9.x`:
 - Optional top-level `config` when a repository uses an `oss-signal` config file.
 - Summary fields `total`, `passed`, `failed`, and `notApplicable`.
 - Check fields `id`, `label`, `weight`, `passed`, `evidence`, `why`, `fix`, and optional `notApplicable` / `configReason`.
-- Recommendation fields `id`, `label`, `weight`, `why`, and `fix`.
+- Recommendation fields `id`, `label`, `weight`, `priority`, `impact`, `category`, `categoryLabel`, `suggestedFile`, `verifyCommand`, `why`, and `fix`.
 - Rule catalog fields `totalRules`, `totalWeight`, `scoring`, `categories`, and `categories[].rules[]`.
 - Inventory fields `count`, `averageScore`, `averageGrade`, `minScore`, `maxScore`, `failedTotal`, and `repositories[]`.
 

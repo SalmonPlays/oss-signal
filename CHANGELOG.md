@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Added priority, impact, category, suggested-file, and verification-command
+  metadata to recommendations so reports can feed dashboards and cleanup queues
+  without prose parsing.
 - Added a reviewer-readiness check that keeps package metadata, reviewer docs,
   workflow pins, release notes, evidence snapshots, and JSON fixtures aligned
   with the current version before release or review.

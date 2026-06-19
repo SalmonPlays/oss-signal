@@ -21,4 +21,6 @@ Top next steps:
 - No missing maintainer-readiness checks found.
 ```
 
+When checks are missing, each next step is prefixed with `P1`, `P2`, or `P3` and includes an impact label so maintainers can choose the smallest useful follow-up without reading the full Markdown table first.
+
 The summary format is intentionally not a replacement for `--format markdown`. It is for fast terminal review before deciding whether to generate a full report, issue body, PR-sized plan, SARIF upload, or no-fail workflow trial.

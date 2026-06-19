@@ -224,7 +224,19 @@
     "recommendation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "label", "weight", "why", "fix"],
+      "required": [
+        "id",
+        "label",
+        "weight",
+        "priority",
+        "impact",
+        "category",
+        "categoryLabel",
+        "suggestedFile",
+        "verifyCommand",
+        "why",
+        "fix"
+      ],
       "properties": {
         "id": {
           "type": "string",
@@ -237,6 +249,30 @@
         "weight": {
           "type": "integer",
           "minimum": 0
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["P1", "P2", "P3"]
+        },
+        "impact": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        },
+        "category": {
+          "type": "string",
+          "enum": ["community", "automation", "package", "other"]
+        },
+        "categoryLabel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "suggestedFile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verifyCommand": {
+          "type": "string",
+          "minLength": 1
         },
         "why": {
           "type": "string",
