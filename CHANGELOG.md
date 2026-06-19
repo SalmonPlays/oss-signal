@@ -8,6 +8,7 @@
 - Tightened CLI and GitHub Action validation for `fail-under` and `max-files` numeric inputs.
 - Exposed earned, available, total, and not-applicable weighted points in JSON, SARIF, Markdown, summary, inventory, and Action summaries.
 - Added complete GitHub Action outputs for passed, failed, not-applicable, and total check counts plus earned, available, total, and not-applicable weighted points.
+- Added `--format env` for CI-friendly `OSS_SIGNAL_*` key-value output in single-repository and inventory reports.
 - Added priority, impact, category, suggested-file, and verification-command
   metadata to recommendations so reports can feed dashboards and cleanup queues
   without prose parsing.

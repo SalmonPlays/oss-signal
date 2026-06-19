@@ -34,6 +34,34 @@ Important fields:
 | `checks` | array | Full rule results with evidence, rationale, and fix text. |
 | `recommendations` | array | Failed checks sorted by weight with `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand`. Empty when score is 100. |
 
+## Env Output
+
+When a CI shell step only needs score metadata, use `--format env` instead of parsing JSON:
+
+```bash
+oss-signal . --format env --output oss-signal.env
+```
+
+The env format writes one `KEY=value` pair per line:
+
+```text
+OSS_SIGNAL_MODE=single
+OSS_SIGNAL_SCORE=100
+OSS_SIGNAL_GRADE=A
+OSS_SIGNAL_PASSED=17
+OSS_SIGNAL_FAILED=0
+OSS_SIGNAL_NOT_APPLICABLE=0
+OSS_SIGNAL_TOTAL=17
+OSS_SIGNAL_EARNED_WEIGHT=113
+OSS_SIGNAL_AVAILABLE_WEIGHT=113
+OSS_SIGNAL_TOTAL_WEIGHT=113
+OSS_SIGNAL_NOT_APPLICABLE_WEIGHT=0
+OSS_SIGNAL_RECOMMENDATIONS=0
+OSS_SIGNAL_TOP_RECOMMENDATION=
+```
+
+Inventory mode also supports `--format env`. It writes `OSS_SIGNAL_MODE=inventory`, `OSS_SIGNAL_COUNT`, average score and grade in `OSS_SIGNAL_SCORE` / `OSS_SIGNAL_GRADE`, score range, aggregate check counts, and aggregate weighted totals.
+
 ## Inventory JSON
 
 Inventory mode has a different top-level shape because it reports several repositories:

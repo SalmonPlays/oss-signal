@@ -6,7 +6,9 @@ import {
   createInventoryReport,
   listRules,
   parseInventoryTargets,
+  renderEnv,
   renderInventoryJson,
+  renderInventoryEnv,
   renderInventoryMarkdown,
   renderAdoption,
   renderIssue,
@@ -155,8 +157,8 @@ function parseArgs(argv) {
   if (options.inventory && positionals.length > 0) {
     throw new Error("--inventory cannot be combined with a positional repository path");
   }
-  if (!["markdown", "summary", "json", "sarif", "issue", "plan", "workflow", "adoption"].includes(options.format)) {
-    throw new Error("--format must be markdown, summary, json, sarif, issue, plan, workflow, or adoption");
+  if (!["markdown", "summary", "json", "env", "sarif", "issue", "plan", "workflow", "adoption"].includes(options.format)) {
+    throw new Error("--format must be markdown, summary, json, env, sarif, issue, plan, workflow, or adoption");
   }
   return options;
 }
@@ -220,8 +222,8 @@ async function runSingleAudit(options) {
 }
 
 async function runInventory(options) {
-  if (!["markdown", "json"].includes(options.format)) {
-    throw new Error("--inventory supports --format markdown or --format json");
+  if (!["markdown", "json", "env"].includes(options.format)) {
+    throw new Error("--inventory supports --format markdown, json, or env");
   }
 
   const inventoryText = await fs.readFile(options.inventory, "utf8");
@@ -245,7 +247,9 @@ async function runInventory(options) {
   });
   const body = options.format === "json"
     ? renderInventoryJson(inventory)
-    : renderInventoryMarkdown(inventory);
+    : options.format === "env"
+      ? renderInventoryEnv(inventory)
+      : renderInventoryMarkdown(inventory);
   const belowThreshold = typeof options.failUnder === "number"
     ? inventory.repositories.filter((repository) => repository.score < options.failUnder)
     : [];
@@ -267,6 +271,9 @@ function runListRules(options) {
 function renderReport(report, format) {
   if (format === "json") {
     return `${JSON.stringify(report, null, 2)}\n`;
+  }
+  if (format === "env") {
+    return renderEnv(report);
   }
   if (format === "sarif") {
     return renderSarif(report);
@@ -325,9 +332,9 @@ function helpText() {
   return `oss-signal audits open-source repository maintenance readiness.
 
 Usage:
-  oss-signal [path-or-github-url] [--format markdown|summary|json|sarif|issue|plan|workflow|adoption] [--output file] [--fail-under score]
+  oss-signal [path-or-github-url] [--format markdown|summary|json|env|sarif|issue|plan|workflow|adoption] [--output file] [--fail-under score]
   oss-signal --init [local-repository-path] [--output workflow.yml] [--force]
-  oss-signal --inventory repos.txt [--format markdown|json] [--output file] [--fail-under score]
+  oss-signal --inventory repos.txt [--format markdown|json|env] [--output file] [--fail-under score]
   oss-signal --list-rules [--format markdown|json] [--output file]
 
 Examples:
@@ -338,6 +345,7 @@ Examples:
   oss-signal --list-rules --format json
   oss-signal https://github.com/SalmonPlays/oss-signal
   oss-signal platformatic/massimo --format json
+  oss-signal . --format env
   oss-signal owner/repo --format issue --output maintainer-follow-up.md
   oss-signal owner/repo --format plan --output maintainer-plan.md
   oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
@@ -347,7 +355,7 @@ Examples:
 Options:
   --init         Add a no-fail trial workflow to a local repository without running an audit.
   --force        Replace an existing workflow created through --init.
-  --format       Output format. Defaults to markdown.
+  --format       Output format. Defaults to markdown. Use env for CI-friendly OSS_SIGNAL_* key-value output.
   --output, -o   Write the report to a file instead of stdout.
   --fail-under   Exit with code 1 when the score, or any inventory target score, is below this 0-100 value.
   --max-files    Positive integer maximum files to inspect. Defaults to 20000.

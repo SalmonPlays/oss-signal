@@ -5,8 +5,10 @@ import { fileURLToPath } from "node:url";
 import {
   auditTarget,
   createInventoryReport,
+  renderEnv,
   parseInventoryTargets,
   renderAdoption,
+  renderInventoryEnv,
   renderInventoryJson,
   renderInventoryMarkdown,
   renderIssue,
@@ -64,12 +66,12 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
 
 export function parseActionInputs(env = process.env) {
   const format = getInput(env, "format") || "markdown";
-  if (!["markdown", "summary", "json", "sarif", "issue", "plan", "workflow", "adoption"].includes(format)) {
-    throw new Error("format must be markdown, summary, json, sarif, issue, plan, workflow, or adoption");
+  if (!["markdown", "summary", "json", "env", "sarif", "issue", "plan", "workflow", "adoption"].includes(format)) {
+    throw new Error("format must be markdown, summary, json, env, sarif, issue, plan, workflow, or adoption");
   }
   const inventory = emptyToUndefined(getInput(env, "inventory"));
-  if (inventory && !["markdown", "json"].includes(format)) {
-    throw new Error("inventory supports format markdown or json");
+  if (inventory && !["markdown", "json", "env"].includes(format)) {
+    throw new Error("inventory supports format markdown, json, or env");
   }
 
   return {
@@ -135,7 +137,9 @@ async function runInventory(options) {
   });
   const body = options.format === "json"
     ? renderInventoryJson(inventory)
-    : renderInventoryMarkdown(inventory);
+    : options.format === "env"
+      ? renderInventoryEnv(inventory)
+      : renderInventoryMarkdown(inventory);
   const belowThreshold = typeof options.failUnder === "number"
     ? inventory.repositories.filter((repository) => repository.score < options.failUnder)
     : [];
@@ -163,6 +167,9 @@ async function runInventory(options) {
 function renderReport(report, format) {
   if (format === "json") {
     return `${JSON.stringify(report, null, 2)}\n`;
+  }
+  if (format === "env") {
+    return renderEnv(report);
   }
   if (format === "sarif") {
     return renderSarif(report);

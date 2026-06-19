@@ -33,7 +33,7 @@ Run as a GitHub Action:
 - CI, tests, CodeQL, Dependabot, issue templates, and PR templates
 - GitHub repository URL audits without cloning
 - Inventory reports across multiple repositories
-- Markdown, summary, JSON, SARIF, issue-ready, maintainer-plan, and workflow output formats
+- Markdown, summary, JSON, env, SARIF, issue-ready, maintainer-plan, and workflow output formats
 - Rule catalog output with scoring weights for pre-review transparency
 
 ## Reviewer Evidence

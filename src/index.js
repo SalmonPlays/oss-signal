@@ -467,6 +467,24 @@ export function renderSummary(report) {
   return `${lines.join("\n")}\n`;
 }
 
+export function renderEnv(report) {
+  return renderEnvValues({
+    OSS_SIGNAL_MODE: "single",
+    OSS_SIGNAL_SCORE: report.score,
+    OSS_SIGNAL_GRADE: report.grade,
+    OSS_SIGNAL_PASSED: report.summary.passed,
+    OSS_SIGNAL_FAILED: report.summary.failed,
+    OSS_SIGNAL_NOT_APPLICABLE: report.summary.notApplicable,
+    OSS_SIGNAL_TOTAL: report.summary.total,
+    OSS_SIGNAL_EARNED_WEIGHT: report.summary.earnedWeight,
+    OSS_SIGNAL_AVAILABLE_WEIGHT: report.summary.availableWeight,
+    OSS_SIGNAL_TOTAL_WEIGHT: report.summary.totalWeight,
+    OSS_SIGNAL_NOT_APPLICABLE_WEIGHT: report.summary.notApplicableWeight,
+    OSS_SIGNAL_RECOMMENDATIONS: report.recommendations.length,
+    OSS_SIGNAL_TOP_RECOMMENDATION: report.recommendations[0]?.id ?? ""
+  });
+}
+
 export function renderIssue(report) {
   const lines = [
     "# Maintainer Readiness Follow-Up",
@@ -929,6 +947,26 @@ export function renderInventoryJson(inventory) {
   return `${JSON.stringify(inventory, null, 2)}\n`;
 }
 
+export function renderInventoryEnv(inventory) {
+  return renderEnvValues({
+    OSS_SIGNAL_MODE: "inventory",
+    OSS_SIGNAL_COUNT: inventory.count,
+    OSS_SIGNAL_SCORE: inventory.averageScore,
+    OSS_SIGNAL_GRADE: inventory.averageGrade,
+    OSS_SIGNAL_MIN_SCORE: inventory.minScore,
+    OSS_SIGNAL_MAX_SCORE: inventory.maxScore,
+    OSS_SIGNAL_PASSED: inventory.repositories.reduce((sum, repository) => sum + repository.passed, 0),
+    OSS_SIGNAL_FAILED: inventory.failedTotal,
+    OSS_SIGNAL_NOT_APPLICABLE: inventory.repositories.reduce((sum, repository) => sum + repository.notApplicable, 0),
+    OSS_SIGNAL_TOTAL: inventory.repositories.reduce((sum, repository) => sum + repository.total, 0),
+    OSS_SIGNAL_EARNED_WEIGHT: inventory.earnedWeightTotal,
+    OSS_SIGNAL_AVAILABLE_WEIGHT: inventory.availableWeightTotal,
+    OSS_SIGNAL_TOTAL_WEIGHT: inventory.repositories.reduce((sum, repository) => sum + repository.totalWeight, 0),
+    OSS_SIGNAL_NOT_APPLICABLE_WEIGHT: inventory.notApplicableWeightTotal,
+    OSS_SIGNAL_RECOMMENDATIONS: inventory.failedTotal
+  });
+}
+
 export function renderInventoryMarkdown(inventory) {
   const lines = [
     "# OSS Signal Inventory",
@@ -959,6 +997,27 @@ export function renderInventoryMarkdown(inventory) {
 
   lines.push("");
   return `${lines.join("\n")}\n`;
+}
+
+function renderEnvValues(values) {
+  const lines = Object.entries(values).map(([key, value]) => `${key}=${formatEnvValue(value)}`);
+  return `${lines.join("\n")}\n`;
+}
+
+function formatEnvValue(value) {
+  if (typeof value === "number") {
+    return String(value);
+  }
+  if (typeof value === "boolean") {
+    return value ? "true" : "false";
+  }
+
+  const normalized = String(value);
+  if (/^[A-Za-z0-9_.:/@-]*$/.test(normalized)) {
+    return normalized;
+  }
+
+  return `'${normalized.replaceAll("'", "'\\''")}'`;
 }
 
 export function renderRulesJson(catalog = listRules()) {

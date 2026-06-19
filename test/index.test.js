@@ -12,6 +12,8 @@ import {
   parseGitHubTarget,
   parseInventoryTargets,
   renderAdoption,
+  renderEnv,
+  renderInventoryEnv,
   renderInventoryJson,
   renderInventoryMarkdown,
   renderIssue,
@@ -102,6 +104,38 @@ test("renderSummary creates a compact maintainer readout", async () => {
     assert.match(summary, /Checks: \d+ passed, \d+ failed, \d+ total/);
     assert.match(summary, /Top next steps:/);
     assert.match(summary, /\[P1\] License \(10 pts, high\)/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("renderEnv creates a CI-friendly key-value summary", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n",
+    ".oss-signal.json": JSON.stringify({
+      notApplicable: {
+        codeql: "Static analysis is handled by a separate platform."
+      }
+    })
+  });
+
+  try {
+    const report = await auditRepository(root);
+    const env = renderEnv(report);
+
+    assert.match(env, /^OSS_SIGNAL_MODE=single$/m);
+    assert.match(env, /^OSS_SIGNAL_SCORE=\d+$/m);
+    assert.match(env, /^OSS_SIGNAL_GRADE=[A-F]$/m);
+    assert.match(env, /^OSS_SIGNAL_PASSED=1$/m);
+    assert.match(env, /^OSS_SIGNAL_FAILED=15$/m);
+    assert.match(env, /^OSS_SIGNAL_NOT_APPLICABLE=1$/m);
+    assert.match(env, /^OSS_SIGNAL_TOTAL=17$/m);
+    assert.match(env, /^OSS_SIGNAL_EARNED_WEIGHT=12$/m);
+    assert.match(env, /^OSS_SIGNAL_AVAILABLE_WEIGHT=109$/m);
+    assert.match(env, /^OSS_SIGNAL_TOTAL_WEIGHT=113$/m);
+    assert.match(env, /^OSS_SIGNAL_NOT_APPLICABLE_WEIGHT=4$/m);
+    assert.match(env, /^OSS_SIGNAL_RECOMMENDATIONS=15$/m);
+    assert.match(env, /^OSS_SIGNAL_TOP_RECOMMENDATION=ci$/m);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -332,6 +366,29 @@ test("renderSarif emits failed checks as SARIF results", async () => {
   }
 });
 
+test("renderSarif omits rules marked not applicable", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n",
+    ".oss-signal.json": JSON.stringify({
+      notApplicable: {
+        license: "Internal-only fixture without redistribution."
+      }
+    })
+  });
+
+  try {
+    const report = await auditRepository(root);
+    const sarif = JSON.parse(renderSarif(report));
+    const ruleIds = sarif.runs[0].results.map((result) => result.ruleId);
+
+    assert.equal(report.checks.find((check) => check.id === "license").notApplicable, true);
+    assert.equal(ruleIds.includes("oss-signal/license"), false);
+    assert.ok(ruleIds.includes("oss-signal/ci"));
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("CLI writes rule catalog markdown", async () => {
   const root = await fixture({});
   const outputFile = path.join(root, "rules.md");
@@ -448,6 +505,35 @@ test("CLI writes summary output", async () => {
     const body = await readFile(outputFile, "utf8");
     assert.match(body, /OSS Signal Summary/);
     assert.match(body, /Top next steps:/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes env output", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+  const outputFile = path.join(root, "score.env");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      root,
+      "--format",
+      "env",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const body = await readFile(outputFile, "utf8");
+    assert.match(body, /^OSS_SIGNAL_MODE=single$/m);
+    assert.match(body, /^OSS_SIGNAL_SCORE=\d+$/m);
+    assert.match(body, /^OSS_SIGNAL_EARNED_WEIGHT=12$/m);
+    assert.match(body, /^OSS_SIGNAL_AVAILABLE_WEIGHT=113$/m);
+    assert.match(body, /^OSS_SIGNAL_TOP_RECOMMENDATION=ci$/m);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -733,6 +819,7 @@ test("renderInventoryMarkdown summarizes multiple reports", async () => {
       inventoryPath: "repos.txt"
     });
     const markdown = renderInventoryMarkdown(inventory);
+    const env = renderInventoryEnv(inventory);
     const json = JSON.parse(renderInventoryJson(inventory));
 
     assert.equal(inventory.count, 2);
@@ -749,6 +836,12 @@ test("renderInventoryMarkdown summarizes multiple reports", async () => {
     assert.equal(json.repositories[1].topRecommendations[0].id, "ci");
     assert.equal(json.repositories[1].topRecommendations[0].priority, "P1");
     assert.equal(json.repositories[1].topRecommendations[0].suggestedFile, ".github/workflows/ci.yml");
+    assert.match(env, /^OSS_SIGNAL_MODE=inventory$/m);
+    assert.match(env, /^OSS_SIGNAL_COUNT=2$/m);
+    assert.match(env, /^OSS_SIGNAL_SCORE=\d+$/m);
+    assert.match(env, /^OSS_SIGNAL_FAILED=\d+$/m);
+    assert.match(env, /^OSS_SIGNAL_EARNED_WEIGHT=\d+$/m);
+    assert.match(env, /^OSS_SIGNAL_AVAILABLE_WEIGHT=\d+$/m);
   } finally {
     await rm(healthy, { recursive: true, force: true });
     await rm(sparse, { recursive: true, force: true });
@@ -786,6 +879,45 @@ test("CLI writes inventory JSON output", async () => {
     assert.equal(inventory.tool, "oss-signal");
     assert.equal(inventory.count, 2);
     assert.equal(inventory.repositories.length, 2);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes inventory env output", async () => {
+  const root = await fixture({
+    "repo-a/README.md": "# A\n",
+    "repo-a/LICENSE": "MIT\n",
+    "repo-b/README.md": "# B\n"
+  });
+  const inventoryFile = path.join(root, "repos.txt");
+  const outputFile = path.join(root, "inventory.env");
+
+  try {
+    await writeFile(inventoryFile, [
+      path.join(root, "repo-a"),
+      path.join(root, "repo-b")
+    ].join("\n"), "utf8");
+
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      "--inventory",
+      inventoryFile,
+      "--format",
+      "env",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const env = await readFile(outputFile, "utf8");
+    assert.match(env, /^OSS_SIGNAL_MODE=inventory$/m);
+    assert.match(env, /^OSS_SIGNAL_COUNT=2$/m);
+    assert.match(env, /^OSS_SIGNAL_PASSED=3$/m);
+    assert.match(env, /^OSS_SIGNAL_FAILED=31$/m);
+    assert.match(env, /^OSS_SIGNAL_TOTAL=34$/m);
+    assert.match(env, /^OSS_SIGNAL_AVAILABLE_WEIGHT=226$/m);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

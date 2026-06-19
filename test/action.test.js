@@ -151,6 +151,33 @@ test("runAction writes summary output", async () => {
   }
 });
 
+test("runAction writes env output", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-env-"));
+  const reportFile = path.join(root, "score.env");
+
+  try {
+    await writeFixture(root, {
+      "README.md": "# Action fixture\n"
+    });
+
+    await runAction({
+      INPUT_PATH: root,
+      INPUT_FORMAT: "env",
+      INPUT_OUTPUT: reportFile,
+      INPUT_SUMMARY: "false"
+    });
+
+    const body = await readFile(reportFile, "utf8");
+    assert.match(body, /^OSS_SIGNAL_MODE=single$/m);
+    assert.match(body, /^OSS_SIGNAL_SCORE=\d+$/m);
+    assert.match(body, /^OSS_SIGNAL_EARNED_WEIGHT=12$/m);
+    assert.match(body, /^OSS_SIGNAL_AVAILABLE_WEIGHT=113$/m);
+    assert.match(body, /^OSS_SIGNAL_TOP_RECOMMENDATION=ci$/m);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("runAction writes issue output", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-issue-"));
   const reportFile = path.join(root, "maintainer-follow-up.md");

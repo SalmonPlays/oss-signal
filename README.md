@@ -18,7 +18,7 @@
 
 `oss-signal` is a dependency-light maintainer-readiness CLI and GitHub Action for OSS projects that need repeatable triage, CI evidence, SARIF, inventory reports, issue-ready cleanup notes, adoption packs, a transparent rule catalog, and no-fail workflow trials.
 
-It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, support policy, funding metadata, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
+It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, support policy, funding metadata, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, summary, JSON, env, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
 
 ## Why Maintainers Bookmark It
 
@@ -234,7 +234,15 @@ oss-signal . --format json --fail-under 80
 
 JSON recommendations include `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand` fields so dashboards and cleanup bots can route the next maintainer action without parsing prose.
 
-Print a compact shell-friendly score summary (`jq` optional):
+Write CI-friendly key-value output when a shell step only needs the score contract:
+
+```bash
+oss-signal . --format env --output oss-signal.env
+```
+
+The env format writes stable `OSS_SIGNAL_*` keys such as `OSS_SIGNAL_SCORE`, `OSS_SIGNAL_GRADE`, `OSS_SIGNAL_EARNED_WEIGHT`, and `OSS_SIGNAL_AVAILABLE_WEIGHT`. Inventory mode supports the same format with average score plus aggregate counts and weighted totals.
+
+Print a compact shell-friendly score summary from JSON (`jq` optional):
 
 ```bash
 oss-signal . --format json | jq -r '"score=\(.score) grade=\(.grade) points=\(.summary.earnedWeight)/\(.summary.availableWeight)"'
