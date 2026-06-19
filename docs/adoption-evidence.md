@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Last verified: 2026-06-18T12:59:14.685Z
+Last verified: 2026-06-19T07:09:25.597Z
 
 ## Project Links
 
@@ -48,7 +48,7 @@ Last verified: 2026-06-18T12:59:14.685Z
 - Roadmap: [docs/roadmap.md](roadmap.md)
 - Reviewer evidence quickstart: [docs/reviewer-evidence.md](reviewer-evidence.md)
 - Evidence ledger: [docs/evidence-ledger.md](evidence-ledger.md)
-- Selection update: [docs/selection-update-2026-06-13.md](selection-update-2026-06-13.md)
+- Selection update: [selection-update-2026-06-19.md](selection-update-2026-06-19.md)
 - Post-submission update: [docs/post-submission-update.md](post-submission-update.md)
 - Release process: [docs/release-process.md](release-process.md)
 - Codex for Open Source application brief: [docs/codex-for-oss-application.md](codex-for-oss-application.md)
@@ -75,7 +75,7 @@ The [post-submission update](post-submission-update.md) records why the current 
 
 The npm package is publicly available as `oss-signal@0.9.9` with `latest` pointing at `0.9.9` after the release workflow completes.
 
-The npm downloads API returned 3702 downloads for the last-month window from 2026-05-19 to 2026-06-17 when checked on 2026-06-18. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
+The npm downloads API returned 3702 downloads for the last-month window from 2026-05-19 to 2026-06-17 when checked on 2026-06-19. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
 Clean-directory package execution returned:
 
@@ -106,7 +106,7 @@ Current public workflow status:
 - Maintainer workflow Discussion: published
 - Historical self-owned workflow demo: passing
 
-The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-18 release updates the expected latest version to `0.9.9`. The 2026-06-18 download check returned 3702 downloads for the last-month window.
+The npm registry previously returned `0.8.4` for both the package version and `latest` dist-tag on 2026-06-05T16:02:53Z. The 2026-06-18 release updates the expected latest version to `0.9.9`. The 2026-06-19 download check returned 3702 downloads for the last-month window.
 
 ## Separate Public Workflow Evidence
 
@@ -145,7 +145,7 @@ Additional focused external contribution:
 - `ded-furby/oss-signal`: https://github.com/ded-furby/oss-signal is a public fork created on 2026-06-05 and used for the inbound external contributor path. This is contributor workflow evidence, not independent maintainer adoption.
 - `SalmonPlays/oss-signal`: https://github.com/SalmonPlays/oss-signal/pull/14 was opened by external contributor `ded-furby` and merged on 2026-06-12. It adds a compact JSON score example and closes issue #7. This is inbound contributor evidence, not independent maintainer adoption.
 
-The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-18 JST. The targeted `icoretech/codex-action` follow-up request was posted on 2026-06-14 and remained pending at the 2026-06-18 check. The `ded-furby/oss-signal` public fork was confirmed on 2026-06-18T12:59:14.685Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and remained open at the issue/PR check. Open PRs, issues, pending requests, and forks are not claimed as accepted adoption unless a maintainer merges, replies, runs the workflow, files feedback, or otherwise endorses them.
+The four currently visible field-audit follow-up PRs were still open when checked from GitHub on 2026-06-19 JST. The targeted `icoretech/codex-action` follow-up request was posted on 2026-06-14 and remained pending at the 2026-06-19 check. The `ded-furby/oss-signal` public fork was confirmed on 2026-06-19T07:09:25.597Z. The Divyesh issue was posted on 2026-06-05T04:18:46Z and remained open at the issue/PR check. Open PRs, issues, pending requests, and forks are not claimed as accepted adoption unless a maintainer merges, replies, runs the workflow, files feedback, or otherwise endorses them.
 
 ## Contributor Intake
 

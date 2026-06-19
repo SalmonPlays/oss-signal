@@ -45,6 +45,10 @@ git tag v$(node src/cli.js --version)
 git push origin main --tags
 ```
 
+The release workflow verifies that the tagged commit is reachable from
+`origin/main`. A tag pushed before its release commit reaches `main` is rejected
+before the GitHub Release or npm package is published.
+
 ## GitHub Release
 
 Create a GitHub Release for the tag and use the release notes in `docs/release-notes/` when available.
@@ -61,7 +65,7 @@ npm publish --access public
 
 Automation path:
 
-The tag-triggered [release workflow](../.github/workflows/release.yml) runs the same checks, verifies the package with `npm publish --dry-run`, creates a GitHub Release, and publishes to npm with Trusted Publishing provenance.
+The tag-triggered [release workflow](../.github/workflows/release.yml) verifies that the tagged commit is on `main`, runs the same checks, verifies the package with `npm publish --dry-run`, creates a GitHub Release, and publishes to npm with Trusted Publishing provenance.
 
 Trusted Publishing must be configured on npm for:
 

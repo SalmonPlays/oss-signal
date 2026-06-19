@@ -1,6 +1,6 @@
 # Codex for Open Source Application Brief
 
-Snapshot: 2026-06-18T12:59:14.685Z
+Snapshot: 2026-06-19T07:09:25.597Z
 
 This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open Source program. The official program page says open-source maintainers can apply, with emphasis on core maintainers, widely used public projects, and projects that play an important ecosystem role: https://developers.openai.com/community/codex-for-oss
 
@@ -21,7 +21,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Codex for OSS fit/gap review: [codex-for-oss-fit-gap.md](codex-for-oss-fit-gap.md)
-- Selection update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md)
+- Selection update: [selection-update-2026-06-19.md](selection-update-2026-06-19.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)
 - Maintainer feedback: [maintainer-feedback.md](maintainer-feedback.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
@@ -58,7 +58,7 @@ The repository currently has:
 
 - A published npm package with `0.9.9` as the latest release.
 - A post-submission update page explaining why the current npm package and Action tag may be newer than the originally submitted evidence.
-- npm download API evidence showing 3702 last-month downloads for 2026-05-19 to 2026-06-17 when checked on 2026-06-18.
+- npm download API evidence showing 3702 last-month downloads for 2026-05-19 to 2026-06-17 when checked on 2026-06-19.
 - A published GitHub Release for v0.9.9 with adoption-pack output, maintainer plan output, CI usage guidance, and release notes.
 - A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
 - A repository inventory mode for organization-level maintainer-readiness triage, available in both CLI and GitHub Action form.
