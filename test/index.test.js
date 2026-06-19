@@ -44,7 +44,11 @@ test("auditRepository scores common maintainer files", async () => {
   try {
     const report = await auditRepository(root);
     assert.equal(report.summary.total, 17);
-    assert.ok(report.score >= 70, `expected useful score, got ${report.score}`);
+    assert.equal(report.score, 80);
+    assert.equal(report.summary.earnedWeight, 90);
+    assert.equal(report.summary.availableWeight, 113);
+    assert.equal(report.summary.totalWeight, 113);
+    assert.equal(report.summary.notApplicableWeight, 0);
     assert.equal(report.checks.find((check) => check.id === "readme").passed, true);
     assert.equal(report.checks.find((check) => check.id === "ci").passed, true);
     assert.equal(report.checks.find((check) => check.id === "funding").passed, true);
@@ -63,6 +67,7 @@ test("renderMarkdown includes score and recommendations", async () => {
     const report = await auditRepository(root);
     const markdown = renderMarkdown(report);
     assert.match(markdown, /Score: \*\*\d+\/100\*\*/);
+    assert.match(markdown, /Weighted points: 12\/113/);
     assert.match(markdown, /Evidence \/ next step/);
     assert.match(markdown, /`README\.md`/);
     assert.match(markdown, /Missing: Add an OSI-approved license file/);
@@ -84,6 +89,7 @@ test("renderSummary creates a compact maintainer readout", async () => {
 
     assert.match(summary, /OSS Signal Summary/);
     assert.match(summary, /Score: \d+\/100 \([A-F]\)/);
+    assert.match(summary, /Weighted points: 12\/113/);
     assert.match(summary, /Checks: \d+ passed, \d+ failed, \d+ total/);
     assert.match(summary, /Top next steps:/);
     assert.match(summary, /License/);
@@ -111,6 +117,11 @@ test("auditRepository honors local not-applicable config", async () => {
     assert.equal(report.config.path, ".oss-signal.json");
     assert.equal(report.summary.notApplicable, 2);
     assert.equal(report.summary.failed, 14);
+    assert.equal(report.summary.earnedWeight, 12);
+    assert.equal(report.summary.availableWeight, 91);
+    assert.equal(report.summary.totalWeight, 113);
+    assert.equal(report.summary.notApplicableWeight, 22);
+    assert.equal(report.score, 13);
     assert.equal(license.notApplicable, true);
     assert.equal(ci.notApplicable, true);
     assert.equal(report.recommendations.some((item) => item.id === "license"), false);
@@ -262,6 +273,8 @@ test("published JSON schemas and fixtures are parseable", async () => {
     assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
     assert.match(schema.$id, /^https:\/\/salmonplays\.github\.io\/oss-signal\/schema\//);
   }
+  const inventorySchema = JSON.parse(await readFile(path.resolve("docs/schema/inventory-output.schema.json"), "utf8"));
+  assert.equal(inventorySchema.$defs.repository.properties.topRecommendations.items.$ref, "#/$defs/inventoryRecommendation");
 
   const [report, inventory, catalog] = await Promise.all(
     fixturePaths.map(async (fixturePath) => JSON.parse(await readFile(path.resolve(fixturePath), "utf8")))
@@ -285,6 +298,8 @@ test("renderSarif emits failed checks as SARIF results", async () => {
     assert.equal(sarif.version, "2.1.0");
     assert.equal(sarif.runs[0].tool.driver.name, "oss-signal");
     assert.equal(sarif.runs[0].properties.score, report.score);
+    assert.equal(sarif.runs[0].properties.earnedWeight, 12);
+    assert.equal(sarif.runs[0].properties.availableWeight, 113);
     assert.equal(sarif.runs[0].tool.driver.rules.length, report.checks.length);
     assert.ok(sarif.runs[0].results.length > 0);
     assert.equal(sarif.runs[0].results[0].level, "warning");
@@ -335,6 +350,29 @@ test("CLI writes rule catalog JSON", async () => {
     const catalog = JSON.parse(await readFile(outputFile, "utf8"));
     assert.equal(catalog.totalRules, 17);
     assert.equal(catalog.categories[0].rules[0].id, "readme");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("CLI creates output parent directories", async () => {
+  const root = await fixture({
+    "README.md": "# Tiny project\n"
+  });
+  const outputFile = path.join(root, "reports", "nightly", "oss-signal.md");
+
+  try {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      root,
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const body = await readFile(outputFile, "utf8");
+    assert.match(body, /# OSS Signal Report/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -604,10 +642,15 @@ test("renderInventoryMarkdown summarizes multiple reports", async () => {
     const json = JSON.parse(renderInventoryJson(inventory));
 
     assert.equal(inventory.count, 2);
+    assert.ok(inventory.earnedWeightTotal > 0);
+    assert.ok(inventory.availableWeightTotal > 0);
     assert.match(markdown, /# OSS Signal Inventory/);
+    assert.match(markdown, /Weighted points: \*\*\d+\/\d+\*\*/);
     assert.match(markdown, /healthy/);
     assert.match(markdown, /sparse/);
     assert.equal(json.repositories.length, 2);
+    assert.ok(json.repositories[0].earnedWeight > 0);
+    assert.ok(json.repositories[0].availableWeight > 0);
     assert.ok(json.averageScore > 0);
   } finally {
     await rm(healthy, { recursive: true, force: true });

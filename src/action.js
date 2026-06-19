@@ -194,6 +194,7 @@ export async function writeGitHubStepSummary(summaryFile, report) {
     "| --- | ---: |",
     `| Passed | ${report.summary.passed} |`,
     `| Failed | ${report.summary.failed} |`,
+    ...weightedSummaryRows(report.summary),
     `| Total checks | ${report.summary.total} |`,
     "",
     "## Recommended next steps",
@@ -217,6 +218,7 @@ export async function writeGitHubInventoryStepSummary(summaryFile, inventory) {
     "# oss-signal inventory",
     "",
     `Average score: **${inventory.averageScore}/100 (${inventory.averageGrade})**`,
+    ...weightedInventoryLines(inventory),
     "",
     "| Repository | Score | Failed |",
     "| --- | ---: | ---: |",
@@ -225,6 +227,26 @@ export async function writeGitHubInventoryStepSummary(summaryFile, inventory) {
   ].join("\n");
 
   await fs.appendFile(summaryFile, body, "utf8");
+}
+
+function weightedSummaryRows(summary) {
+  if (typeof summary?.earnedWeight !== "number" || typeof summary?.availableWeight !== "number") {
+    return [];
+  }
+
+  return [
+    `| Weighted points | ${summary.earnedWeight}/${summary.availableWeight} |`
+  ];
+}
+
+function weightedInventoryLines(inventory) {
+  if (typeof inventory?.earnedWeightTotal !== "number" || typeof inventory?.availableWeightTotal !== "number") {
+    return [];
+  }
+
+  return [
+    `Weighted points: **${inventory.earnedWeightTotal}/${inventory.availableWeightTotal}**`
+  ];
 }
 
 function getInput(env, name) {

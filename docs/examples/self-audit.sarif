@@ -450,7 +450,11 @@
         "score": 100,
         "grade": "A",
         "source": "local",
-        "generatedAt": "2026-06-19T00:33:32.924Z"
+        "generatedAt": "2026-06-19T00:40:25.811Z",
+        "earnedWeight": 113,
+        "availableWeight": 113,
+        "totalWeight": 113,
+        "notApplicableWeight": 0
       }
     }
   ]

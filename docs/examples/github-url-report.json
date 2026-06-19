@@ -9,19 +9,23 @@
     "repo": "oss-signal",
     "ref": "main",
     "defaultBranch": "main",
-    "stars": 0,
+    "stars": 2,
     "forks": 1,
     "openIssues": 3,
     "healthPercentage": 100
   },
-  "generatedAt": "2026-06-13T01:37:20.044Z",
-  "score": 100,
+  "generatedAt": "2026-06-19T07:06:13.975Z",
+  "score": 97,
   "grade": "A",
   "summary": {
-    "total": 16,
+    "total": 17,
     "passed": 16,
-    "failed": 0,
-    "notApplicable": 0
+    "failed": 1,
+    "notApplicable": 0,
+    "earnedWeight": 110,
+    "availableWeight": 113,
+    "totalWeight": 113,
+    "notApplicableWeight": 0
   },
   "checks": [
     {
@@ -100,6 +104,15 @@
       ],
       "why": "Support boundaries help maintainers avoid turning every request into unpaid consulting.",
       "fix": "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times."
+    },
+    {
+      "id": "funding",
+      "label": "Funding metadata",
+      "weight": 3,
+      "passed": false,
+      "evidence": [],
+      "why": "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
+      "fix": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
     },
     {
       "id": "maintainer-ownership",
@@ -214,5 +227,13 @@
       "fix": "Commit the lockfile for application-style projects, or document why this library intentionally omits one."
     }
   ],
-  "recommendations": []
+  "recommendations": [
+    {
+      "id": "funding",
+      "label": "Funding metadata",
+      "weight": 3,
+      "why": "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
+      "fix": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
+    }
+  ]
 }

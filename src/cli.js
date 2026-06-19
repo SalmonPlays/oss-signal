@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { promises as fs } from "node:fs";
+import path from "node:path";
 import {
   auditTarget,
   createInventoryReport,
@@ -38,6 +39,7 @@ async function main(argv) {
       : await runSingleAudit(options);
 
   if (options.output) {
+    await fs.mkdir(path.dirname(path.resolve(options.output)), { recursive: true });
     await fs.writeFile(options.output, result.body, "utf8");
   } else {
     process.stdout.write(result.body);

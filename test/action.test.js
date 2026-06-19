@@ -82,6 +82,7 @@ test("runAction writes a report and action outputs", async () => {
     assert.match(await readFile(reportFile, "utf8"), /OSS Signal Report/);
     assert.match(await readFile(githubOutput, "utf8"), /report-path<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /Score: \*\*\d+\/100 \([A-F]\)\*\*/);
+    assert.match(await readFile(githubSummary, "utf8"), /Weighted points/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -265,6 +266,7 @@ test("runAction writes inventory output", async () => {
     assert.match(await readFile(reportFile, "utf8"), /OSS Signal Inventory/);
     assert.match(await readFile(githubOutput, "utf8"), /score<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /oss-signal inventory/);
+    assert.match(await readFile(githubSummary, "utf8"), /Weighted points/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -278,7 +280,7 @@ test("writeGitHubStepSummary writes actionable next steps", async () => {
     await writeGitHubStepSummary(summaryFile, {
       score: 88,
       grade: "B",
-      summary: { passed: 2, failed: 1, total: 3 },
+      summary: { passed: 2, failed: 1, total: 3, earnedWeight: 22, availableWeight: 25 },
       checks: [
         { label: "README", passed: true, fix: "Add README.md." },
         { label: "Security policy", passed: false, fix: "Add SECURITY.md." }
@@ -288,6 +290,7 @@ test("writeGitHubStepSummary writes actionable next steps", async () => {
     const body = await readFile(summaryFile, "utf8");
     assert.match(body, /# oss-signal/);
     assert.match(body, /Score: \*\*88\/100 \(B\)\*\*/);
+    assert.match(body, /Weighted points \| 22\/25/);
     assert.match(body, /Security policy/);
     assert.doesNotMatch(body, /Add README\.md/);
   } finally {
@@ -303,6 +306,8 @@ test("writeGitHubInventoryStepSummary writes repository rows", async () => {
     await writeGitHubInventoryStepSummary(summaryFile, {
       averageScore: 72,
       averageGrade: "C",
+      earnedWeightTotal: 144,
+      availableWeightTotal: 200,
       repositories: [
         { target: "owner/a", score: 90, grade: "A", failed: 1 },
         { target: "owner/b", score: 44, grade: "F", failed: 7 }
@@ -311,6 +316,7 @@ test("writeGitHubInventoryStepSummary writes repository rows", async () => {
 
     const body = await readFile(summaryFile, "utf8");
     assert.match(body, /# oss-signal inventory/);
+    assert.match(body, /Weighted points: \*\*144\/200\*\*/);
     assert.match(body, /owner\/a/);
     assert.match(body, /owner\/b/);
   } finally {

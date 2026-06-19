@@ -2,7 +2,7 @@
 
 Repository: `/Users/amon/Documents/Codex/2026-06-19/salmonplays-oss-signal-codex-text-link/work/oss-signal`
 Source: local
-Generated: 2026-06-19T00:26:35.556Z
+Generated: 2026-06-19T00:40:25.794Z
 
 Score: **100/100** (A)
 
@@ -11,6 +11,7 @@ Score: **100/100** (A)
 - Passed: 17
 - Failed: 0
 - Total checks: 17
+- Weighted points: 113/113
 
 ## Checks
 

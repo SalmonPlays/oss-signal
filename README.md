@@ -196,6 +196,8 @@ Write a Markdown report:
 oss-signal /path/to/repo --format markdown --output oss-signal-report.md
 ```
 
+`--output` creates parent directories when needed, so paths such as `reports/nightly/oss-signal.md` work without pre-creating `reports/nightly`.
+
 Use JSON in automation:
 
 ```bash
@@ -205,7 +207,7 @@ oss-signal . --format json --fail-under 80
 Print a compact shell-friendly score summary (`jq` optional):
 
 ```bash
-oss-signal . --format json | jq -r '"score=\(.score) grade=\(.grade) source=\(.source)"'
+oss-signal . --format json | jq -r '"score=\(.score) grade=\(.grade) points=\(.summary.earnedWeight)/\(.summary.availableWeight)"'
 ```
 
 See [docs/json-output.md](docs/json-output.md) for the JSON schema and fixture.

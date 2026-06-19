@@ -126,6 +126,22 @@
         "notApplicable": {
           "type": "integer",
           "minimum": 0
+        },
+        "earnedWeight": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "availableWeight": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalWeight": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notApplicableWeight": {
+          "type": "integer",
+          "minimum": 0
         }
       }
     },

@@ -6,6 +6,8 @@
 - Updated the transparent rule catalog to 17 rules and 113 weighted points.
 - Added focused tests for funding metadata detection.
 - Tightened CLI and GitHub Action validation for `fail-under` and `max-files` numeric inputs.
+- Exposed earned, available, total, and not-applicable weighted points in JSON, SARIF, Markdown, summary, inventory, and Action summaries.
+- Made CLI `--output` create missing parent directories before writing reports.
 
 ## 0.9.8
 

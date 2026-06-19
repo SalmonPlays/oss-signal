@@ -333,10 +333,10 @@ function createReportFromTree(tree, metadata) {
   checks = applyCommunityProfileEvidence(checks, metadata.communityProfile);
   checks = applyConfigEvidence(checks, config);
 
-  const scoredChecks = checks.filter((check) => !check.notApplicable);
-  const totalWeight = scoredChecks.reduce((sum, check) => sum + check.weight, 0);
-  const earnedWeight = scoredChecks.filter((check) => check.passed).reduce((sum, check) => sum + check.weight, 0);
-  const score = totalWeight === 0 ? 0 : Math.round((earnedWeight / totalWeight) * 100);
+  const summary = summarizeChecks(checks);
+  const score = summary.availableWeight === 0
+    ? 0
+    : Math.round((summary.earnedWeight / summary.availableWeight) * 100);
   const configReport = renderConfigSummary(config);
 
   return {
@@ -347,7 +347,7 @@ function createReportFromTree(tree, metadata) {
     generatedAt: new Date().toISOString(),
     score,
     grade: gradeForScore(score),
-    summary: summarizeChecks(checks),
+    summary,
     ...(configReport ? { config: configReport } : {}),
     checks,
     recommendations: checks
@@ -371,10 +371,14 @@ export function renderMarkdown(report) {
     "",
     `- Passed: ${report.summary.passed}`,
     `- Failed: ${report.summary.failed}`,
-    `- Total checks: ${report.summary.total}`
+    `- Total checks: ${report.summary.total}`,
+    `- Weighted points: ${report.summary.earnedWeight}/${report.summary.availableWeight}`
   ];
   if (report.summary.notApplicable) {
     lines.push(`- Not applicable: ${report.summary.notApplicable}`);
+  }
+  if (report.summary.notApplicableWeight) {
+    lines.push(`- Excluded weight: ${report.summary.notApplicableWeight}`);
   }
   if (report.config?.path) {
     lines.push(`- Config: ${report.config.path}`);
@@ -426,6 +430,7 @@ export function renderSummary(report) {
     `Repository: ${report.root}`,
     `Source: ${sourceSummary(report.source)}`,
     `Score: ${report.score}/100 (${report.grade})`,
+    `Weighted points: ${report.summary.earnedWeight}/${report.summary.availableWeight}`,
     `Checks: ${report.summary.passed} passed, ${report.summary.failed} failed, ${report.summary.total} total`
   ];
   if (report.summary.notApplicable) {
@@ -757,6 +762,10 @@ export function renderSarif(report) {
           grade: report.grade,
           source: sourceSummary(report.source),
           generatedAt: report.generatedAt,
+          earnedWeight: report.summary.earnedWeight,
+          availableWeight: report.summary.availableWeight,
+          totalWeight: report.summary.totalWeight,
+          notApplicableWeight: report.summary.notApplicableWeight,
           config: report.config
         }
       }
@@ -799,6 +808,10 @@ export function createInventoryReport(reports, metadata = {}) {
     passed: report.summary.passed,
     failed: report.summary.failed,
     total: report.summary.total,
+    earnedWeight: report.summary.earnedWeight,
+    availableWeight: report.summary.availableWeight,
+    totalWeight: report.summary.totalWeight,
+    notApplicableWeight: report.summary.notApplicableWeight,
     topRecommendations: report.recommendations.slice(0, 3).map((recommendation) => ({
       id: recommendation.id,
       label: recommendation.label,
@@ -812,6 +825,9 @@ export function createInventoryReport(reports, metadata = {}) {
     ? 0
     : Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
   const failedTotal = repositories.reduce((sum, repository) => sum + repository.failed, 0);
+  const earnedWeightTotal = repositories.reduce((sum, repository) => sum + repository.earnedWeight, 0);
+  const availableWeightTotal = repositories.reduce((sum, repository) => sum + repository.availableWeight, 0);
+  const notApplicableWeightTotal = repositories.reduce((sum, repository) => sum + repository.notApplicableWeight, 0);
 
   return {
     tool: "oss-signal",
@@ -824,6 +840,9 @@ export function createInventoryReport(reports, metadata = {}) {
     minScore: scores.length === 0 ? 0 : Math.min(...scores),
     maxScore: scores.length === 0 ? 0 : Math.max(...scores),
     failedTotal,
+    earnedWeightTotal,
+    availableWeightTotal,
+    notApplicableWeightTotal,
     repositories
   };
 }
@@ -841,6 +860,7 @@ export function renderInventoryMarkdown(inventory) {
     `Average score: **${inventory.averageScore}/100** (${inventory.averageGrade})`,
     `Score range: ${inventory.minScore}-${inventory.maxScore}`,
     `Failed checks: ${inventory.failedTotal}`,
+    `Weighted points: **${inventory.earnedWeightTotal}/${inventory.availableWeightTotal}**`,
     "",
     "| Repository | Source | Score | Failed | Top next steps |",
     "| --- | --- | ---: | ---: | --- |"
@@ -1283,14 +1303,24 @@ function findEvidence(id, tree) {
 }
 
 function summarizeChecks(checks) {
-  const notApplicable = checks.filter((check) => check.notApplicable).length;
-  const passed = checks.filter((check) => check.passed && !check.notApplicable).length;
-  const failed = checks.filter((check) => !check.passed && !check.notApplicable).length;
+  const applicableChecks = checks.filter((check) => !check.notApplicable);
+  const notApplicableChecks = checks.filter((check) => check.notApplicable);
+  const passedChecks = applicableChecks.filter((check) => check.passed);
+  const failedChecks = applicableChecks.filter((check) => !check.passed);
+  const totalWeight = checks.reduce((sum, check) => sum + check.weight, 0);
+  const availableWeight = applicableChecks.reduce((sum, check) => sum + check.weight, 0);
+  const earnedWeight = passedChecks.reduce((sum, check) => sum + check.weight, 0);
+  const notApplicableWeight = notApplicableChecks.reduce((sum, check) => sum + check.weight, 0);
+
   return {
     total: checks.length,
-    passed,
-    failed,
-    notApplicable
+    passed: passedChecks.length,
+    failed: failedChecks.length,
+    notApplicable: notApplicableChecks.length,
+    earnedWeight,
+    availableWeight,
+    totalWeight,
+    notApplicableWeight
   };
 }
 
