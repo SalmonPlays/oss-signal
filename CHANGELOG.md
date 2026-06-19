@@ -7,6 +7,9 @@
 - Added focused tests for funding metadata detection.
 - Tightened CLI and GitHub Action validation for `fail-under` and `max-files` numeric inputs.
 - Exposed earned, available, total, and not-applicable weighted points in JSON, SARIF, Markdown, summary, inventory, and Action summaries.
+- Added priority, impact, category, suggested-file, and verification-command
+  metadata to recommendations so reports can feed dashboards and cleanup queues
+  without prose parsing.
 - Added a reviewer-readiness check that keeps package metadata, reviewer docs,
   workflow pins, release notes, evidence snapshots, and JSON fixtures aligned
   with the current version before release or review.

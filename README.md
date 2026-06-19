@@ -232,6 +232,8 @@ Use JSON in automation:
 oss-signal . --format json --fail-under 80
 ```
 
+JSON recommendations include `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand` fields so dashboards and cleanup bots can route the next maintainer action without parsing prose.
+
 Print a compact shell-friendly score summary (`jq` optional):
 
 ```bash

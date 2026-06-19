@@ -2,7 +2,7 @@
 
 Repository: `https://github.com/SalmonPlays/oss-signal`
 Source: GitHub (SalmonPlays/oss-signal@main)
-Generated: 2026-06-19T07:10:05.737Z
+Generated: 2026-06-19T07:13:58.422Z
 
 Score: **97/100** (A)
 
@@ -40,5 +40,5 @@ Score: **97/100** (A)
 
 ## Recommended Next Steps
 
-- **Funding metadata** (3 pts): Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose.
+- **[P3] Funding metadata** (3 pts, low impact, `.github/FUNDING.yml`): Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose.
 

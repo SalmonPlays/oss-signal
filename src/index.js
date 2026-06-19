@@ -212,6 +212,16 @@ const RULE_CATEGORIES = [
   { id: "package", label: "Package hygiene", rules: PACKAGE_FILES }
 ];
 
+const RULE_CATEGORY_BY_ID = new Map(
+  RULE_CATEGORIES.flatMap((category) => category.rules.map((rule) => [
+    rule.id,
+    {
+      id: category.id,
+      label: category.label
+    }
+  ]))
+);
+
 const DEFAULT_IGNORE_DIRS = new Set([
   ".git",
   "node_modules",
@@ -357,7 +367,7 @@ function createReportFromTree(tree, metadata) {
     recommendations: checks
       .filter((check) => !check.passed && !check.notApplicable)
       .sort((a, b) => b.weight - a.weight)
-      .map(({ id, label, weight, why, fix }) => ({ id, label, weight, why, fix }))
+      .map((check) => createRecommendation(check, metadata.source))
   };
 }
 
@@ -420,7 +430,7 @@ export function renderMarkdown(report) {
     lines.push("No missing checks. Keep the report current as the repository evolves.");
   } else {
     for (const recommendation of report.recommendations) {
-      lines.push(`- **${recommendation.label}** (${recommendation.weight} pts): ${recommendation.fix}`);
+      lines.push(`- **[${recommendation.priority}] ${recommendation.label}** (${recommendation.weight} pts, ${recommendation.impact} impact, \`${recommendation.suggestedFile}\`): ${recommendation.fix}`);
     }
   }
 
@@ -449,7 +459,7 @@ export function renderSummary(report) {
     lines.push("- No missing maintainer-readiness checks found.");
   } else {
     for (const recommendation of report.recommendations.slice(0, 5)) {
-      lines.push(`- ${recommendation.label} (${recommendation.weight} pts): ${recommendation.fix}`);
+      lines.push(`- [${recommendation.priority}] ${recommendation.label} (${recommendation.weight} pts, ${recommendation.impact}): ${recommendation.fix}`);
     }
   }
 
@@ -478,7 +488,7 @@ export function renderIssue(report) {
     lines.push("No missing maintainer-readiness checks were found. Keep the report current as the repository evolves.");
   } else {
     for (const recommendation of report.recommendations) {
-      lines.push(`- [ ] **${recommendation.label}** (${recommendation.weight} pts): ${recommendation.fix}`);
+      lines.push(`- [ ] **[${recommendation.priority}] ${recommendation.label}** (${recommendation.weight} pts, ${recommendation.impact} impact, suggested file: \`${recommendation.suggestedFile}\`): ${recommendation.fix}`);
     }
 
     lines.push("", "## Why These Checks Matter", "");
@@ -518,14 +528,15 @@ export function renderPlan(report) {
     lines.push("No missing maintainer-readiness checks were found. Keep this plan as a release-readiness record.");
   } else {
     report.recommendations.forEach((recommendation, index) => {
-      const suggestedFile = SARIF_RULE_LOCATIONS[recommendation.id] ?? ".";
       lines.push(
         `### ${index + 1}. ${recommendation.label}`,
         "",
-        `- Impact: ${impactLabel(recommendation.weight)} (${recommendation.weight} pts)`,
-        `- Suggested file: \`${suggestedFile}\``,
+        `- Priority: ${recommendation.priority}`,
+        `- Impact: ${recommendation.impact} (${recommendation.weight} pts)`,
+        `- Suggested file: \`${recommendation.suggestedFile}\``,
         `- Why: ${recommendation.why}`,
         `- Change: ${recommendation.fix}`,
+        `- Verify with: \`${recommendation.verifyCommand}\``,
         "",
         "Acceptance:",
         "",
@@ -624,7 +635,7 @@ export function renderAdoption(report) {
   } else {
     lines.push("");
     for (const recommendation of topRecommendations) {
-      lines.push(`- **${recommendation.label}** (${recommendation.weight} pts): ${recommendation.fix}`);
+      lines.push(`- **[${recommendation.priority}] ${recommendation.label}** (${recommendation.weight} pts, ${recommendation.impact}): ${recommendation.fix}`);
     }
   }
 
@@ -726,31 +737,40 @@ export function renderSarif(report) {
 
   const results = report.checks
     .filter((check) => !check.passed)
-    .map((check) => ({
-      ruleId: `oss-signal/${check.id}`,
-      level: "warning",
-      message: {
-        text: `${check.label}: ${check.fix}`
-      },
-      locations: [
-        {
-          physicalLocation: {
-            artifactLocation: {
-              uri: SARIF_RULE_LOCATIONS[check.id] ?? "."
-            },
-            region: {
-              startLine: 1,
-              startColumn: 1
+    .map((check) => {
+      const recommendation = createRecommendation(check, report.source);
+      return {
+        ruleId: `oss-signal/${check.id}`,
+        level: "warning",
+        message: {
+          text: `${check.label}: ${check.fix}`
+        },
+        locations: [
+          {
+            physicalLocation: {
+              artifactLocation: {
+                uri: recommendation.suggestedFile
+              },
+              region: {
+                startLine: 1,
+                startColumn: 1
+              }
             }
           }
+        ],
+        properties: {
+          why: check.why,
+          fix: check.fix,
+          weight: check.weight,
+          priority: recommendation.priority,
+          impact: recommendation.impact,
+          category: recommendation.category,
+          categoryLabel: recommendation.categoryLabel,
+          suggestedFile: recommendation.suggestedFile,
+          verifyCommand: recommendation.verifyCommand
         }
-      ],
-      properties: {
-        why: check.why,
-        fix: check.fix,
-        weight: check.weight
-      }
-    }));
+      };
+    });
 
   return `${JSON.stringify({
     version: "2.1.0",
@@ -800,9 +820,43 @@ function impactLabel(weight) {
   return "low";
 }
 
+function priorityLabel(weight) {
+  if (weight >= 9) {
+    return "P1";
+  }
+  if (weight >= 5) {
+    return "P2";
+  }
+  return "P3";
+}
+
+function createRecommendation(check, source) {
+  const category = RULE_CATEGORY_BY_ID.get(check.id);
+  return {
+    id: check.id,
+    label: check.label,
+    weight: check.weight,
+    priority: priorityLabel(check.weight),
+    impact: impactLabel(check.weight),
+    category: category?.id ?? "other",
+    categoryLabel: category?.label ?? "Other",
+    suggestedFile: SARIF_RULE_LOCATIONS[check.id] ?? ".",
+    verifyCommand: `oss-signal ${commandTargetFromSource(source)} --format summary`,
+    why: check.why,
+    fix: check.fix
+  };
+}
+
 function commandTarget(report) {
   if (report.source?.type === "github" && report.source.owner && report.source.repo) {
     return `${report.source.owner}/${report.source.repo}`;
+  }
+  return ".";
+}
+
+function commandTargetFromSource(source) {
+  if (source?.type === "github" && source.owner && source.repo) {
+    return `${source.owner}/${source.repo}`;
   }
   return ".";
 }
@@ -833,6 +887,13 @@ export function createInventoryReport(reports, metadata = {}) {
       id: recommendation.id,
       label: recommendation.label,
       weight: recommendation.weight,
+      priority: recommendation.priority,
+      impact: recommendation.impact,
+      category: recommendation.category,
+      categoryLabel: recommendation.categoryLabel,
+      suggestedFile: recommendation.suggestedFile,
+      verifyCommand: recommendation.verifyCommand,
+      why: recommendation.why,
       fix: recommendation.fix
     })),
     notApplicable: report.summary.notApplicable ?? 0
@@ -886,7 +947,7 @@ export function renderInventoryMarkdown(inventory) {
   for (const repository of inventory.repositories) {
     const topNextSteps = repository.topRecommendations.length === 0
       ? "None"
-      : repository.topRecommendations.map((recommendation) => recommendation.label).join(", ");
+      : repository.topRecommendations.map((recommendation) => `[${recommendation.priority}] ${recommendation.label}`).join(", ");
     lines.push([
       escapeTable(repository.target),
       escapeTable(repository.sourceLabel),

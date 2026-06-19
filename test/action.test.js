@@ -155,7 +155,7 @@ test("runAction writes issue output", async () => {
 
     const body = await readFile(reportFile, "utf8");
     assert.match(body, /Maintainer Readiness Follow-Up/);
-    assert.match(body, /- \[ \] \*\*License\*\*/);
+    assert.match(body, /- \[ \] \*\*\[P1\] License\*\*/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -180,6 +180,7 @@ test("runAction writes plan output", async () => {
     const body = await readFile(reportFile, "utf8");
     assert.match(body, /OSS Signal Maintainer Plan/);
     assert.match(body, /Recommended PR Sequence/);
+    assert.match(body, /Priority: P1/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -267,6 +268,7 @@ test("runAction writes inventory output", async () => {
     assert.match(await readFile(githubOutput, "utf8"), /score<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /oss-signal inventory/);
     assert.match(await readFile(githubSummary, "utf8"), /Weighted points/);
+    assert.match(await readFile(githubSummary, "utf8"), /\[P1\] Continuous integration/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -281,9 +283,8 @@ test("writeGitHubStepSummary writes actionable next steps", async () => {
       score: 88,
       grade: "B",
       summary: { passed: 2, failed: 1, total: 3, earnedWeight: 22, availableWeight: 25 },
-      checks: [
-        { label: "README", passed: true, fix: "Add README.md." },
-        { label: "Security policy", passed: false, fix: "Add SECURITY.md." }
+      recommendations: [
+        { priority: "P1", label: "Security policy", fix: "Add SECURITY.md." }
       ]
     });
 
@@ -291,7 +292,7 @@ test("writeGitHubStepSummary writes actionable next steps", async () => {
     assert.match(body, /# oss-signal/);
     assert.match(body, /Score: \*\*88\/100 \(B\)\*\*/);
     assert.match(body, /Weighted points \| 22\/25/);
-    assert.match(body, /Security policy/);
+    assert.match(body, /\[P1\] Security policy/);
     assert.doesNotMatch(body, /Add README\.md/);
   } finally {
     await rm(root, { recursive: true, force: true });

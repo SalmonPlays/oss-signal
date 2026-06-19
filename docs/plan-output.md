@@ -18,6 +18,7 @@ Current example:
 
 - Current score and source metadata.
 - A recommended PR sequence sorted by rule weight.
+- Priority labels, impact bands, and a verification command for each missing signal.
 - Suggested file paths for each missing signal.
 - Acceptance criteria for each item.
 - Notes that discourage stars, follows, reciprocal engagement, and broad cleanup PRs.

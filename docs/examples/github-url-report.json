@@ -11,10 +11,10 @@
     "defaultBranch": "main",
     "stars": 2,
     "forks": 1,
-    "openIssues": 3,
+    "openIssues": 4,
     "healthPercentage": 100
   },
-  "generatedAt": "2026-06-19T07:10:05.976Z",
+  "generatedAt": "2026-06-19T07:13:56.542Z",
   "score": 97,
   "grade": "A",
   "summary": {
@@ -232,6 +232,12 @@
       "id": "funding",
       "label": "Funding metadata",
       "weight": 3,
+      "priority": "P3",
+      "impact": "low",
+      "category": "community",
+      "categoryLabel": "Community files",
+      "suggestedFile": ".github/FUNDING.yml",
+      "verifyCommand": "oss-signal SalmonPlays/oss-signal --format summary",
       "why": "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
       "fix": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
     }
