@@ -1,5 +1,5 @@
 name: oss-signal
-description: Audit OSS maintainer readiness and produce CI evidence, SARIF, inventory reports, issue-ready cleanup notes, workflow trials, and adoption packs.
+description: Audit OSS maintainer readiness, guard known-good baselines, and produce CI evidence, SARIF, inventory reports, workflow trials, and adoption packs.
 author: SalmonPlays
 branding:
   icon: shield
@@ -37,6 +37,13 @@ inputs:
   config:
     description: Path to an oss-signal JSON config file. Local audits auto-detect .oss-signal.json.
     required: false
+  baseline:
+    description: Path to a previous oss-signal JSON report to compare with this audit.
+    required: false
+  fail-on-regression:
+    description: Fail when a check that passed in the baseline now fails. Requires baseline.
+    required: false
+    default: "false"
 outputs:
   score:
     description: Numeric maintainer-readiness score, or average score in inventory mode.
@@ -58,6 +65,10 @@ outputs:
     description: Weighted points before exclusions, or the total across inventory targets.
   not-applicable-weight:
     description: Weighted points excluded as not applicable, or the total excluded across inventory targets.
+  regressions:
+    description: Number of checks that passed in the baseline and fail in the current report.
+  score-delta:
+    description: Current score minus baseline score when baseline comparison is enabled.
   report-path:
     description: Path to the generated report file, when output is enabled.
 runs:

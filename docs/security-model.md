@@ -53,7 +53,9 @@ SARIF output reports maintainer-readiness findings at warning level. These findi
   comments such as `# v0.9.9` for readability.
 - Generated trial workflows disable persisted checkout credentials, use an
   explicit timeout, and include a SHA256 manifest for uploaded reports.
-- The release workflow checks the package version against the release tag before publishing.
+- The release workflow checks that the tagged commit is already contained in
+  `main` and that the package version matches the release tag before
+  publishing.
 - The repository runs CI, CodeQL, OpenSSF Scorecard, repository health, and repository inventory workflows on `main`.
 
 ## Security Reporting

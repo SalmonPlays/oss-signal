@@ -11,6 +11,10 @@ const tag = `v${version}`;
 const pinnedActionRef = `SalmonPlays/oss-signal@${releaseManifest.commit}`;
 const errors = [];
 const requireEvidence = process.argv.includes("--require-evidence");
+const currentSelectionUpdate = await latestDatedDoc(
+  "docs",
+  /^selection-update-\d{4}-\d{2}-\d{2}\.md$/,
+);
 
 for (const arg of process.argv.slice(2)) {
   if (arg !== "--require-evidence") {
@@ -32,7 +36,7 @@ const currentDocs = [
   "README.md",
   "REVIEWER_PACKET.md",
   "docs/reviewer-evidence.md",
-  "docs/selection-update-2026-06-13.md",
+  currentSelectionUpdate,
   "docs/post-submission-update.md",
   "docs/adoption-gap-closure.md",
   "docs/adoption-evidence.md",
@@ -46,6 +50,22 @@ const currentDocs = [
 for (const filePath of currentDocs) {
   await expectContains(filePath, version);
   await expectContains(filePath, tag);
+}
+
+const currentSelectionUpdateName = currentSelectionUpdate.slice("docs/".length);
+for (const filePath of [
+  "README.md",
+  "REVIEWER_PACKET.md",
+  "docs/adoption-gap-closure.md",
+  "docs/adoption-evidence.md",
+  "docs/codex-for-oss-application.md",
+  "docs/codex-for-oss-form-answers.md",
+  "docs/evidence-ledger.md",
+  "docs/index.md",
+  "docs/post-submission-update.md",
+  "docs/reviewer-evidence.md",
+]) {
+  await expectContains(filePath, currentSelectionUpdateName);
 }
 
 for (const filePath of [
@@ -72,6 +92,24 @@ for (const fileName of workflowFiles) {
   const filePath = `.github/workflows/${fileName}`;
   await checkWorkflowPins(filePath, await read(filePath));
 }
+
+const releaseWorkflow = await read(".github/workflows/release.yml");
+check(
+  releaseWorkflow.includes("fetch-depth: 0"),
+  ".github/workflows/release.yml does not fetch enough history to verify the tagged commit",
+);
+check(
+  releaseWorkflow.includes(
+    "git fetch origin +main:refs/remotes/origin/main --no-tags",
+  ),
+  ".github/workflows/release.yml does not fetch the protected main ref",
+);
+check(
+  releaseWorkflow.includes(
+    'git merge-base --is-ancestor "$tagged_commit" origin/main',
+  ),
+  ".github/workflows/release.yml does not reject tags outside main",
+);
 
 for (const filePath of ["README.md", ...(await collectFiles("docs", [".md", ".html"]))]) {
   if (!filePath.startsWith("docs/release-notes/")) {
@@ -150,6 +188,17 @@ async function collectFiles(dirPath, extensions) {
   }
 
   return files;
+}
+
+async function latestDatedDoc(dirPath, pattern) {
+  const matches = (await readdir(dirPath))
+    .filter((fileName) => pattern.test(fileName))
+    .sort();
+  const latest = matches.at(-1);
+  if (!latest) {
+    throw new Error(`${dirPath} does not contain a dated reviewer update`);
+  }
+  return `${dirPath}/${latest}`;
 }
 
 async function checkWorkflowPins(label, body) {

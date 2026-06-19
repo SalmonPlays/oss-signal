@@ -22,6 +22,12 @@ Use JSON when another tool needs to consume the score:
 oss-signal owner/repo --format json
 ```
 
+Compare the current repository with a saved known-good report:
+
+```bash
+oss-signal . --format json --baseline .github/oss-signal-baseline.json --fail-on-regression
+```
+
 See [docs/json-output.md](json-output.md) for the JSON schema and example fixture.
 
 Audit several repositories from one inventory file:
@@ -99,7 +105,22 @@ Add the GitHub Action to keep the signal visible:
     summary: "true"
 ```
 
-The Action writes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, and `report-path` outputs, and writes a concise GitHub Actions step summary by default. Inventory mode reports the average score and totals for counts and weighted points.
+The Action writes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, `regressions`, `score-delta`, and `report-path` outputs, and writes a concise GitHub Actions step summary by default. Inventory mode reports the average score and totals for counts and weighted points.
+
+For an incremental gate, commit a reviewed JSON report such as `.github/oss-signal-baseline.json`, then fail only when a previously passing rule regresses:
+
+```yaml
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+  id: oss-signal
+  with:
+    format: json
+    baseline: .github/oss-signal-baseline.json
+    fail-on-regression: "true"
+    output: oss-signal-report.json
+    summary: "true"
+```
+
+Review baseline updates like policy changes: regenerate them after an intentional improvement or documented exception, and inspect the comparison before replacing the committed file. New rules are surfaced without breaking the gate.
 
 For a repository inventory, commit a newline-delimited target list and pass it through the Action:
 

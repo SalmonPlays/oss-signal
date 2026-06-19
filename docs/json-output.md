@@ -31,6 +31,7 @@ Important fields:
 | `grade` | string | `A`, `B`, `C`, `D`, or `F`. |
 | `summary` | object | Check counts plus weighted scoring totals. |
 | `config` | object | Present when a config file marks rules not applicable or emits config warnings. |
+| `comparison` | object | Present with `--baseline`; includes score movement, regressions, improvements, new checks, and removed checks. |
 | `checks` | array | Full rule results with evidence, rationale, and fix text. |
 | `recommendations` | array | Failed checks sorted by weight with `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand`. Empty when score is 100. |
 
@@ -61,6 +62,24 @@ OSS_SIGNAL_TOP_RECOMMENDATION=
 ```
 
 Inventory mode also supports `--format env`. It writes `OSS_SIGNAL_MODE=inventory`, `OSS_SIGNAL_COUNT`, average score and grade in `OSS_SIGNAL_SCORE` / `OSS_SIGNAL_GRADE`, score range, aggregate check counts, and aggregate weighted totals.
+
+## Baseline Comparison
+
+Generate a known-good JSON report, then compare a later audit with it:
+
+```bash
+oss-signal . --format json --output oss-signal-baseline.json
+oss-signal . --format json --baseline oss-signal-baseline.json --output oss-signal-current.json
+```
+
+Add `--fail-on-regression` when CI should exit nonzero if any rule changed from `passed` to `failed`. New rules and not-applicable transitions remain visible but do not count as regressions.
+
+The optional `comparison` object includes:
+
+- `baseline` and `current` report metadata.
+- `scoreDelta`, calculated as current score minus baseline score.
+- `summary` counts for `regressions`, `improvements`, `newChecks`, and `removedChecks`.
+- Detailed arrays for each change, using the same priority and remediation metadata as recommendations.
 
 ## Inventory JSON
 
@@ -115,6 +134,7 @@ Stable for `0.9.x`:
 
 - Top-level `tool`, `version`, `root`, `source`, `generatedAt`, `score`, `grade`, `summary`, `checks`, and `recommendations`.
 - Optional top-level `config` when a repository uses an `oss-signal` config file.
+- Optional top-level `comparison` when `--baseline` is supplied.
 - Summary fields `total`, `passed`, `failed`, `notApplicable`, `earnedWeight`, `availableWeight`, `totalWeight`, and `notApplicableWeight`.
 - Check fields `id`, `label`, `weight`, `passed`, `evidence`, `why`, `fix`, and optional `notApplicable` / `configReason`.
 - Recommendation fields `id`, `label`, `weight`, `priority`, `impact`, `category`, `categoryLabel`, `suggestedFile`, `verifyCommand`, `why`, and `fix`.

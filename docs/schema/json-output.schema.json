@@ -180,6 +180,9 @@
         }
       }
     },
+    "comparison": {
+      "$ref": "#/$defs/comparison"
+    },
     "checks": {
       "type": "array",
       "items": {
@@ -299,6 +302,111 @@
           "minLength": 1
         }
       }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline",
+        "current",
+        "scoreDelta",
+        "summary",
+        "regressions",
+        "improvements",
+        "newChecks",
+        "removedChecks"
+      ],
+      "properties": {
+        "baseline": {
+          "$ref": "#/$defs/comparisonReport"
+        },
+        "current": {
+          "$ref": "#/$defs/comparisonReport"
+        },
+        "scoreDelta": {
+          "type": "integer",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["regressions", "improvements", "newChecks", "removedChecks"],
+          "properties": {
+            "regressions": { "type": "integer", "minimum": 0 },
+            "improvements": { "type": "integer", "minimum": 0 },
+            "newChecks": { "type": "integer", "minimum": 0 },
+            "removedChecks": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "regressions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/comparisonItem" }
+        },
+        "improvements": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/comparisonItem" }
+        },
+        "newChecks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/comparisonItem" }
+        },
+        "removedChecks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/comparisonItem" }
+        }
+      }
+    },
+    "comparisonReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "generatedAt", "score", "grade", "version"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "root": { "type": "string", "minLength": 1 },
+        "generatedAt": { "type": "string", "format": "date-time" },
+        "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "grade": { "type": "string", "enum": ["A", "B", "C", "D", "F"] },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "comparisonItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "weight",
+        "previousStatus",
+        "currentStatus",
+        "priority",
+        "impact",
+        "category",
+        "categoryLabel",
+        "suggestedFile",
+        "verifyCommand",
+        "why",
+        "fix"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "weight": { "type": "integer", "minimum": 0 },
+        "previousStatus": { "$ref": "#/$defs/comparisonStatus" },
+        "currentStatus": { "$ref": "#/$defs/comparisonStatus" },
+        "priority": { "type": "string", "enum": ["P1", "P2", "P3"] },
+        "impact": { "type": "string", "enum": ["high", "medium", "low"] },
+        "category": { "type": "string", "enum": ["community", "automation", "package", "other"] },
+        "categoryLabel": { "type": "string", "minLength": 1 },
+        "suggestedFile": { "type": "string", "minLength": 1 },
+        "verifyCommand": { "type": "string", "minLength": 1 },
+        "why": { "type": "string", "minLength": 1 },
+        "fix": { "type": "string", "minLength": 1 }
+      }
+    },
+    "comparisonStatus": {
+      "type": "string",
+      "enum": ["missing", "passed", "failed", "not_applicable", "removed"]
     }
   }
 }

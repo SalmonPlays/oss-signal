@@ -16,7 +16,7 @@
 [![Maintainer evidence](https://img.shields.io/badge/maintainer_evidence-public-blue.svg)](docs/reviewer-evidence.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-`oss-signal` is a dependency-light maintainer-readiness CLI and GitHub Action for OSS projects that need repeatable triage, CI evidence, SARIF, inventory reports, issue-ready cleanup notes, adoption packs, a transparent rule catalog, and no-fail workflow trials.
+`oss-signal` is a dependency-light maintainer-readiness CLI and GitHub Action for OSS projects that need repeatable triage, regression gates, CI evidence, SARIF, inventory reports, issue-ready cleanup notes, adoption packs, a transparent rule catalog, and no-fail workflow trials.
 
 It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, support policy, funding metadata, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, summary, JSON, env, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
 
@@ -87,7 +87,7 @@ If you are evaluating the project itself, the public verification path remains a
 | Need | Link |
 | --- | --- |
 | Shortest verification path | [REVIEWER_PACKET.md](REVIEWER_PACKET.md) |
-| Current post-submission status | [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md) |
+| Current post-submission status | [docs/selection-update-2026-06-19.md](docs/selection-update-2026-06-19.md) |
 | Latest manual evidence refresh | [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md) |
 | Evidence ledger and boundaries | [docs/evidence-ledger.md](docs/evidence-ledger.md) |
 | Community engagement and reciprocity boundary | [docs/community-engagement.md](docs/community-engagement.md) |
@@ -107,7 +107,7 @@ Current public evidence includes `oss-signal@0.9.9` on npm, `SalmonPlays/oss-sig
 
 ## Maintainer Evidence Snapshot
 
-The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/community-engagement.md](docs/community-engagement.md), [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md), [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md), [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/discovery-playbook.md](docs/discovery-playbook.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
+The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public evidence for the maintainer workflow is also collected in [docs/index.md](docs/index.md), [docs/quickstart.md](docs/quickstart.md), [docs/evidence-ledger.md](docs/evidence-ledger.md), [docs/community-engagement.md](docs/community-engagement.md), [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md), [docs/trust-center.md](docs/trust-center.md), [docs/reviewer-evidence.md](docs/reviewer-evidence.md), [docs/adoption-evidence.md](docs/adoption-evidence.md), [docs/codex-for-oss-fit-gap.md](docs/codex-for-oss-fit-gap.md), [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md), [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md), [docs/selection-update-2026-06-19.md](docs/selection-update-2026-06-19.md), [docs/independent-workflow-run-request.md](docs/independent-workflow-run-request.md), [docs/adoption-kit.md](docs/adoption-kit.md), [docs/maintainer-trial.md](docs/maintainer-trial.md), [docs/maintainer-feedback.md](docs/maintainer-feedback.md), [docs/social-launch.md](docs/social-launch.md), [docs/discovery-playbook.md](docs/discovery-playbook.md), [docs/architecture.md](docs/architecture.md), [docs/security-model.md](docs/security-model.md), [docs/json-output.md](docs/json-output.md), [docs/plan-output.md](docs/plan-output.md), [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md), [docs/roadmap.md](docs/roadmap.md), [docs/post-submission-update.md](docs/post-submission-update.md), and [docs/brand.md](docs/brand.md).
 
 - Landing page: https://salmonplays.github.io/oss-signal/
 - Published package: [`oss-signal@0.9.9`](https://www.npmjs.com/package/oss-signal), with `latest` pointing at `0.9.9`.
@@ -137,7 +137,7 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Maintainer plan output: [docs/plan-output.md](docs/plan-output.md)
 - SARIF Code Scanning walkthrough: [docs/sarif-code-scanning.md](docs/sarif-code-scanning.md)
 - Roadmap: [docs/roadmap.md](docs/roadmap.md)
-- Post-submission version note: the application may reference earlier evidence; `0.9.9` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md) and [docs/selection-update-2026-06-13.md](docs/selection-update-2026-06-13.md).
+- Post-submission version note: the application may reference earlier evidence; `0.9.9` is the current maintained release and is documented in [docs/post-submission-update.md](docs/post-submission-update.md) and [docs/selection-update-2026-06-19.md](docs/selection-update-2026-06-19.md).
 - Public checks: CI, Repository health, Repository inventory, Evidence verification, and CodeQL are passing on `main`.
 - Security posture: OpenSSF Scorecard is scheduled, CodeQL is active, secret scanning push protection is enabled, Dependabot alerts/security updates/malware alerts are enabled, and private vulnerability reporting is enabled.
 - Branch posture: `main` has branch protection to prevent force pushes and deletions while keeping direct maintainer maintenance possible.
@@ -162,6 +162,7 @@ Open-source projects often fail quietly because the maintainer workflow is undoc
 - Maintainers can run it before publishing a new project.
 - Contributors can attach a report to a cleanup issue or pull request.
 - Teams can gate release readiness with `--fail-under`.
+- Teams can compare a saved JSON baseline and fail only when a previously passing check regresses.
 - Foundations and working groups can compare repository hygiene across many projects.
 - CI maintainers can add it as a GitHub Action, show the score in the workflow summary, and publish the report as an artifact.
 
@@ -231,6 +232,15 @@ Use JSON in automation:
 ```bash
 oss-signal . --format json --fail-under 80
 ```
+
+Save a known-good report, then protect it from maintainer-readiness regressions:
+
+```bash
+oss-signal . --format json --output oss-signal-baseline.json
+oss-signal . --format json --baseline oss-signal-baseline.json --fail-on-regression
+```
+
+New rules are reported as `newChecks` and do not fail the regression gate. A regression means the same rule passed in the baseline and fails now.
 
 JSON recommendations include `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand` fields so dashboards and cleanup bots can route the next maintainer action without parsing prose.
 
@@ -387,6 +397,14 @@ oss-signal . --fail-under 80
 
 `--max-files` must be a positive integer when provided.
 
+When `--fail-on-regression` is used with `--baseline <report.json>`, it exits with `1` if a check that passed in the baseline now fails:
+
+```bash
+oss-signal . --baseline oss-signal-baseline.json --fail-on-regression
+```
+
+The report is still written before either gate exits nonzero, so CI can publish it as evidence.
+
 ## GitHub Action
 
 Add `oss-signal` directly to a GitHub Actions workflow:
@@ -401,7 +419,22 @@ Add `oss-signal` directly to a GitHub Actions workflow:
 - run: echo "score ${{ steps.oss-signal.outputs.score }} (${{ steps.oss-signal.outputs.earned-weight }}/${{ steps.oss-signal.outputs.available-weight }} weighted points)"
 ```
 
-The Action exposes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, and `report-path` outputs. Inventory mode uses the average for `score` and totals for counts and weighted points. The Action also writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
+The Action exposes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, `regressions`, `score-delta`, and `report-path` outputs. Inventory mode uses the average for `score` and totals for counts and weighted points. The Action also writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
+
+Protect a committed known-good baseline without forcing every repository to reach an arbitrary score first:
+
+```yaml
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+  id: oss-signal
+  with:
+    format: json
+    baseline: .github/oss-signal-baseline.json
+    fail-on-regression: "true"
+    output: oss-signal-report.json
+- run: echo "${{ steps.oss-signal.outputs.regressions }} regressions, score delta ${{ steps.oss-signal.outputs.score-delta }}"
+```
+
+The Action exposes `score`, `grade`, `failed`, `regressions`, `score-delta`, and `report-path` outputs. Baseline comparison also appears in the step summary.
 
 ![oss-signal GitHub Actions summary](docs/assets/github-step-summary.svg)
 
@@ -507,6 +540,7 @@ You can also run the CLI directly in CI:
 - Ecosystem-specific profiles for Python, Rust, Go, and JavaScript packages
 - Release automation and provenance metadata checks
 - Maintainer score trends over time
+- Historical trend dashboards across retained baseline reports
 - Organization-level repository inventory dashboards
 
 ## Release Process

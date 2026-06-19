@@ -1,6 +1,6 @@
 # Trust Center
 
-Last verified: 2026-06-18T02:43:54.773Z
+Last verified: 2026-06-19T07:09:25.597Z
 
 This page collects the strongest public signals for reviewers, maintainers, and users evaluating `oss-signal`.
 
@@ -48,7 +48,7 @@ What it does have is a complete, public maintainer workflow:
 | Inbound external contributor PR | https://github.com/SalmonPlays/oss-signal/pull/14 | An outside contributor added a compact JSON score example from the public fork that was merged into this repository. |
 | Community engagement | [community-engagement](community-engagement.md) | The project recognizes real public contributions while rejecting star-for-star, reciprocal PRs, and repeated bumps as evidence. |
 | Acknowledgements | [ACKNOWLEDGEMENTS](../ACKNOWLEDGEMENTS.md) | Public thanks for contributors and maintainers with concrete public interactions. |
-| Selection update | [selection-update-2026-06-13](selection-update-2026-06-13.md) | Reviewers get the current post-submission status page with current package, workflow, field-audit, and external PR evidence. |
+| Selection update | [selection-update-2026-06-19](selection-update-2026-06-19.md) | Reviewers get the current post-submission status page with current package, workflow, field-audit, and external PR evidence. |
 | Evidence ledger | [evidence-ledger](evidence-ledger.md) | Reviewers get one compact page separating accepted evidence, supporting demos, open PRs, and boundaries. |
 | Adoption gap closure | [adoption-gap-closure](adoption-gap-closure.md) | Reviewers can see how low stars, no independent maintainer-owned run, and open field-audit PRs are handled honestly. |
 | External workflow evidence | [adoption evidence](adoption-evidence.md) | Field audits show the intended maintainer workflow on public repositories. |

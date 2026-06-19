@@ -3,6 +3,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import {
   auditTarget,
+  compareReports,
   createInventoryReport,
   listRules,
   parseInventoryTargets,
@@ -19,6 +20,7 @@ import {
   renderSarif,
   renderSummary,
   renderWorkflow,
+  readBaselineReport,
   VERSION
 } from "./index.js";
 
@@ -67,6 +69,8 @@ function parseArgs(argv) {
     maxFiles: 20000,
     ref: undefined,
     configPath: undefined,
+    baselinePath: undefined,
+    failOnRegression: false,
     inventory: undefined,
     listRules: false,
     init: false,
@@ -110,6 +114,12 @@ function parseArgs(argv) {
       options.configPath = requireValue(argv, ++index, "--config");
     } else if (arg.startsWith("--config=")) {
       options.configPath = arg.slice("--config=".length);
+    } else if (arg === "--baseline") {
+      options.baselinePath = requireValue(argv, ++index, "--baseline");
+    } else if (arg.startsWith("--baseline=")) {
+      options.baselinePath = arg.slice("--baseline=".length);
+    } else if (arg === "--fail-on-regression") {
+      options.failOnRegression = true;
     } else if (arg === "--inventory") {
       options.inventory = requireValue(argv, ++index, "--inventory");
     } else if (arg.startsWith("--inventory=")) {
@@ -140,6 +150,9 @@ function parseArgs(argv) {
     if (options.inventory) {
       throw new Error("--list-rules cannot be combined with --inventory");
     }
+    if (options.baselinePath || options.failOnRegression) {
+      throw new Error("--list-rules cannot be combined with --baseline or --fail-on-regression");
+    }
     if (!["markdown", "json"].includes(options.format)) {
       throw new Error("--list-rules supports --format markdown or --format json");
     }
@@ -148,14 +161,20 @@ function parseArgs(argv) {
     if (options.listRules || options.inventory) {
       throw new Error("--init cannot be combined with --list-rules or --inventory");
     }
-    if (options.formatExplicit || options.failUnder !== undefined) {
-      throw new Error("--init cannot be combined with --format or --fail-under");
+    if (options.formatExplicit || options.failUnder !== undefined || options.baselinePath || options.failOnRegression) {
+      throw new Error("--init cannot be combined with --format, --fail-under, --baseline, or --fail-on-regression");
     }
   } else if (options.force) {
     throw new Error("--force can only be used with --init");
   }
   if (options.inventory && positionals.length > 0) {
     throw new Error("--inventory cannot be combined with a positional repository path");
+  }
+  if (options.inventory && (options.baselinePath || options.failOnRegression)) {
+    throw new Error("--inventory cannot be combined with --baseline or --fail-on-regression");
+  }
+  if (options.failOnRegression && !options.baselinePath) {
+    throw new Error("--fail-on-regression requires --baseline");
   }
   if (!["markdown", "summary", "json", "env", "sarif", "issue", "plan", "workflow", "adoption"].includes(options.format)) {
     throw new Error("--format must be markdown, summary, json, env, sarif, issue, plan, workflow, or adoption");
@@ -213,9 +232,22 @@ async function runSingleAudit(options) {
     ref: options.ref,
     configPath: options.configPath
   });
+  if (options.baselinePath) {
+    const baselineReport = await readBaselineReport(options.baselinePath);
+    report.comparison = compareReports(report, baselineReport, {
+      baselinePath: options.baselinePath
+    });
+  }
   const body = renderReport(report, options.format);
-  const failUnderMessage = typeof options.failUnder === "number" && report.score < options.failUnder
-    ? `oss-signal: score ${report.score} is below --fail-under ${options.failUnder}\n`
+  const failureMessages = [];
+  if (typeof options.failUnder === "number" && report.score < options.failUnder) {
+    failureMessages.push(`oss-signal: score ${report.score} is below --fail-under ${options.failUnder}`);
+  }
+  if (options.failOnRegression && report.comparison.summary.regressions > 0) {
+    failureMessages.push(`oss-signal: ${report.comparison.summary.regressions} regression(s) detected against --baseline ${options.baselinePath}`);
+  }
+  const failUnderMessage = failureMessages.length > 0
+    ? `${failureMessages.join("\n")}\n`
     : undefined;
 
   return { body, failUnderMessage };
@@ -333,6 +365,7 @@ function helpText() {
 
 Usage:
   oss-signal [path-or-github-url] [--format markdown|summary|json|env|sarif|issue|plan|workflow|adoption] [--output file] [--fail-under score]
+             [--baseline report.json] [--fail-on-regression]
   oss-signal --init [local-repository-path] [--output workflow.yml] [--force]
   oss-signal --inventory repos.txt [--format markdown|json|env] [--output file] [--fail-under score]
   oss-signal --list-rules [--format markdown|json] [--output file]
@@ -350,6 +383,7 @@ Examples:
   oss-signal owner/repo --format plan --output maintainer-plan.md
   oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
   oss-signal owner/repo --format adoption --output adoption-pack.md
+  oss-signal . --baseline previous-report.json --fail-on-regression
   oss-signal --inventory docs/examples/inventory-targets.txt --format markdown
 
 Options:
@@ -361,6 +395,9 @@ Options:
   --max-files    Positive integer maximum files to inspect. Defaults to 20000.
   --ref          Git ref for GitHub URL audits. Defaults to the repository default branch.
   --config       Path to an oss-signal JSON config. Local audits auto-detect .oss-signal.json.
+  --baseline     Compare this audit with a previous oss-signal JSON report.
+  --fail-on-regression
+                 Exit with code 1 when a previously passing check now fails. Requires --baseline.
   --inventory    Read repository targets from a newline-delimited file.
   --list-rules   Print the rule catalog and scoring weights without auditing a repository.
   --version, -v  Show the CLI version.

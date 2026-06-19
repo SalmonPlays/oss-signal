@@ -2,7 +2,7 @@
 
 Application submitted: 2026-06-03
 
-Latest verification: 2026-06-18T12:59:14.685Z
+Latest verification: 2026-06-19T07:09:25.597Z
 
 This page explains why the version referenced during the Codex for Open Source application review may be older than the current npm package and GitHub Action tag.
 
@@ -55,7 +55,7 @@ The older submission evidence remains valid. The current `latest` npm version si
 - No-fail maintainer trial: [maintainer-trial.md](maintainer-trial.md) gives external maintainers a copyable workflow that publishes a report without gating CI.
 - Public field-audit evidence: five currently visible posted field-audit issues, four currently visible follow-up PRs, one outside-maintainer-accepted documentation PR, one public external contributor fork, one inbound external contributor PR, and one pending one-time independent-run request are tracked in [evidence-ledger.md](evidence-ledger.md). Historical audit links that disappeared are kept as local examples but are not counted as public adoption evidence.
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
-- Current selection update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md)
+- Current selection update: [selection-update-2026-06-19.md](selection-update-2026-06-19.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 - Maintainer plan output: [plan-output.md](plan-output.md)
 

@@ -1,6 +1,6 @@
 # Reviewer Evidence Quickstart
 
-Last verified: 2026-06-18T12:59:14.685Z
+Last verified: 2026-06-19T07:09:25.597Z
 
 This page gives reviewers a short path to verify that `oss-signal` is a real OSS maintainer workflow tool, not only a demo repository.
 
@@ -66,7 +66,7 @@ Expected result with API access: score `100`, grade `A`, source `github`.
 - SARIF Code Scanning walkthrough: https://github.com/SalmonPlays/oss-signal/blob/main/docs/sarif-code-scanning.md
 - Roadmap: https://github.com/SalmonPlays/oss-signal/blob/main/docs/roadmap.md
 - Marketplace checklist: https://github.com/SalmonPlays/oss-signal/blob/main/docs/marketplace.md
-- Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-13.md
+- Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-19.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
 
 4. Run an inventory report from the repository target list:
@@ -152,7 +152,7 @@ This project does not claim broad independent adoption yet. The historical self-
 - Trust center: [trust-center.md](trust-center.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 - Codex for OSS fit/gap review: [codex-for-oss-fit-gap.md](codex-for-oss-fit-gap.md)
-- Selection update: [selection-update-2026-06-13.md](selection-update-2026-06-13.md)
+- Selection update: [selection-update-2026-06-19.md](selection-update-2026-06-19.md)
 - Adoption kit: [adoption-kit.md](adoption-kit.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)
 - Maintainer feedback: [maintainer-feedback.md](maintainer-feedback.md)

@@ -1,6 +1,6 @@
 # OSS Signal Evidence Verification
 
-Generated: 2026-06-18T12:59:14.685Z
+Generated: 2026-06-19T07:09:25.597Z
 
 This report verifies public reviewer evidence used by `oss-signal`. It is intentionally factual: open issues and pull requests are not counted as adoption unless maintainers merge, reply, or otherwise endorse them.
 
