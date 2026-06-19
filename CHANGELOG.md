@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Added JSON baseline comparison with regression, improvement, new-rule, removed-rule,
+  and score-delta metadata across CLI, Markdown, summary, SARIF, and Action output.
+- Added `--fail-on-regression` plus GitHub Action `baseline` and
+  `fail-on-regression` inputs so CI can reject newly broken checks without
+  imposing an arbitrary score threshold.
 - Added priority, impact, category, suggested-file, and verification-command
   metadata to recommendations so reports can feed dashboards and cleanup queues
   without prose parsing.

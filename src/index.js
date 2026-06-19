@@ -362,6 +362,93 @@ function createReportFromTree(tree, metadata) {
   };
 }
 
+export function compareReports(currentReport, baselineReport, options = {}) {
+  const currentChecks = checksById(currentReport, "current");
+  const baselineChecks = checksById(baselineReport, "baseline");
+  const regressions = [];
+  const improvements = [];
+  const newChecks = [];
+  const removedChecks = [];
+
+  for (const [id, currentCheck] of currentChecks) {
+    const baselineCheck = baselineChecks.get(id);
+    const currentStatus = comparisonStatus(currentCheck);
+    if (!baselineCheck) {
+      newChecks.push(comparisonItem(currentCheck, currentReport.source, "missing", currentStatus));
+      continue;
+    }
+
+    const baselineStatus = comparisonStatus(baselineCheck);
+    if (baselineStatus === "passed" && currentStatus === "failed") {
+      regressions.push(comparisonItem(currentCheck, currentReport.source, baselineStatus, currentStatus));
+    } else if (baselineStatus === "failed" && currentStatus === "passed") {
+      improvements.push(comparisonItem(currentCheck, currentReport.source, baselineStatus, currentStatus));
+    }
+  }
+
+  for (const [id, baselineCheck] of baselineChecks) {
+    if (!currentChecks.has(id)) {
+      removedChecks.push(comparisonItem(baselineCheck, currentReport.source, comparisonStatus(baselineCheck), "removed"));
+    }
+  }
+
+  sortComparisonItems(regressions);
+  sortComparisonItems(improvements);
+  sortComparisonItems(newChecks);
+  sortComparisonItems(removedChecks);
+
+  const baseline = comparisonReportMetadata(baselineReport);
+  const current = comparisonReportMetadata(currentReport);
+  if (options.baselinePath) {
+    baseline.path = options.baselinePath;
+  }
+
+  return {
+    baseline,
+    current,
+    scoreDelta: current.score - baseline.score,
+    summary: {
+      regressions: regressions.length,
+      improvements: improvements.length,
+      newChecks: newChecks.length,
+      removedChecks: removedChecks.length
+    },
+    regressions,
+    improvements,
+    newChecks,
+    removedChecks
+  };
+}
+
+export async function readBaselineReport(filePath) {
+  let source;
+  try {
+    source = await fs.readFile(filePath, "utf8");
+  } catch (error) {
+    throw new Error(`Could not read baseline report at ${filePath}: ${error.message}`);
+  }
+
+  let report;
+  try {
+    report = JSON.parse(source);
+  } catch (error) {
+    throw new Error(`Invalid baseline report JSON at ${filePath}: ${error.message}`);
+  }
+
+  if (!report || typeof report !== "object" || Array.isArray(report)) {
+    throw new Error(`Baseline report at ${filePath} must be a JSON object`);
+  }
+  if (!Array.isArray(report.checks)) {
+    throw new Error(`Baseline report at ${filePath} must include a checks array`);
+  }
+  const score = Number(report.score);
+  if (!Number.isFinite(score) || score < 0 || score > 100) {
+    throw new Error(`Baseline report at ${filePath} must include a score from 0 to 100`);
+  }
+
+  return report;
+}
+
 export function renderMarkdown(report) {
   const lines = [
     "# OSS Signal Report",
@@ -392,6 +479,8 @@ export function renderMarkdown(report) {
       `- GitHub community health: ${report.source.healthPercentage ?? "unknown"}`
     );
   }
+
+  appendComparisonMarkdown(lines, report.comparison);
 
   lines.push(
     "",
@@ -438,6 +527,9 @@ export function renderSummary(report) {
   }
   if (report.config?.path) {
     lines.push(`Config: ${report.config.path}`);
+  }
+  if (report.comparison) {
+    lines.push(`Baseline: ${formatScoreDelta(report.comparison.scoreDelta)} points (${report.comparison.baseline.score}/100 -> ${report.comparison.current.score}/100), ${report.comparison.summary.regressions} regression(s), ${report.comparison.summary.improvements} improvement(s).`);
   }
 
   lines.push("", "Top next steps:");
@@ -785,11 +877,114 @@ export function renderSarif(report) {
           grade: report.grade,
           source: sourceSummary(report.source),
           generatedAt: report.generatedAt,
-          config: report.config
+          config: report.config,
+          comparison: report.comparison
         }
       }
     ]
   }, null, 2)}\n`;
+}
+
+function checksById(report, label) {
+  if (!report || typeof report !== "object" || !Array.isArray(report.checks)) {
+    throw new Error(`${label} report must include a checks array`);
+  }
+
+  const checks = new Map();
+  for (const check of report.checks) {
+    if (!check || typeof check !== "object" || typeof check.id !== "string" || check.id.length === 0) {
+      throw new Error(`${label} report checks must include non-empty string IDs`);
+    }
+    if (checks.has(check.id)) {
+      throw new Error(`${label} report contains duplicate check ID: ${check.id}`);
+    }
+    if (typeof check.passed !== "boolean") {
+      throw new Error(`${label} report check ${check.id} must include a boolean passed value`);
+    }
+    checks.set(check.id, check);
+  }
+  return checks;
+}
+
+function comparisonStatus(check) {
+  if (check.notApplicable) {
+    return "not_applicable";
+  }
+  return check.passed ? "passed" : "failed";
+}
+
+function comparisonItem(check, source, previousStatus, currentStatus) {
+  const id = String(check.id ?? "unknown");
+  const weight = Number.isFinite(Number(check.weight)) ? Number(check.weight) : 0;
+  const category = RULE_CATEGORY_BY_ID.get(id);
+  return {
+    id,
+    label: String(check.label ?? id),
+    weight,
+    previousStatus,
+    currentStatus,
+    priority: priorityLabel(weight),
+    impact: impactLabel(weight),
+    category: category?.id ?? "other",
+    categoryLabel: category?.label ?? "Other",
+    suggestedFile: SARIF_RULE_LOCATIONS[id] ?? ".",
+    verifyCommand: `oss-signal ${commandTargetFromSource(source)} --format summary`,
+    why: String(check.why ?? "Maintainer-readiness signal changed."),
+    fix: String(check.fix ?? "Review this maintainer-readiness signal.")
+  };
+}
+
+function comparisonReportMetadata(report) {
+  const score = Number.isFinite(Number(report?.score)) ? Number(report.score) : 0;
+  return {
+    root: String(report?.root ?? "unknown"),
+    generatedAt: String(report?.generatedAt ?? new Date(0).toISOString()),
+    score,
+    grade: String(report?.grade ?? gradeForScore(score)),
+    version: String(report?.version ?? "unknown")
+  };
+}
+
+function sortComparisonItems(items) {
+  items.sort((a, b) => b.weight - a.weight || a.label.localeCompare(b.label));
+}
+
+function appendComparisonMarkdown(lines, comparison) {
+  if (!comparison) {
+    return;
+  }
+
+  lines.push(
+    "",
+    "## Baseline Comparison",
+    "",
+    `- Baseline score: ${comparison.baseline.score}/100 (${comparison.baseline.grade})`,
+    `- Current score: ${comparison.current.score}/100 (${comparison.current.grade})`,
+    `- Score delta: ${formatScoreDelta(comparison.scoreDelta)} points`,
+    `- Regressions: ${comparison.summary.regressions}`,
+    `- Improvements: ${comparison.summary.improvements}`,
+    `- New checks: ${comparison.summary.newChecks}`,
+    `- Removed checks: ${comparison.summary.removedChecks}`
+  );
+
+  if (comparison.regressions.length > 0) {
+    lines.push("", "Regressions to review:", "");
+    for (const item of comparison.regressions.slice(0, 5)) {
+      lines.push(`- **[${item.priority}] ${item.label}** (${item.weight} pts): ${item.fix}`);
+    }
+  }
+
+  if (comparison.improvements.length > 0) {
+    lines.push("", "Recent improvements:", "");
+    for (const item of comparison.improvements.slice(0, 5)) {
+      lines.push(`- **[${item.priority}] ${item.label}** (${item.weight} pts)`);
+    }
+  }
+}
+
+function formatScoreDelta(delta) {
+  const value = Number.isFinite(Number(delta)) ? Number(delta) : 0;
+  return value > 0 ? `+${value}` : String(value);
 }
 
 function impactLabel(weight) {

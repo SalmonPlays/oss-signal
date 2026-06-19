@@ -16,7 +16,7 @@
 [![Maintainer evidence](https://img.shields.io/badge/maintainer_evidence-public-blue.svg)](docs/reviewer-evidence.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-`oss-signal` is a dependency-light maintainer-readiness CLI and GitHub Action for OSS projects that need repeatable triage, CI evidence, SARIF, inventory reports, issue-ready cleanup notes, adoption packs, a transparent rule catalog, and no-fail workflow trials.
+`oss-signal` is a dependency-light maintainer-readiness CLI and GitHub Action for OSS projects that need repeatable triage, regression gates, CI evidence, SARIF, inventory reports, issue-ready cleanup notes, adoption packs, a transparent rule catalog, and no-fail workflow trials.
 
 It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
 
@@ -162,6 +162,7 @@ Open-source projects often fail quietly because the maintainer workflow is undoc
 - Maintainers can run it before publishing a new project.
 - Contributors can attach a report to a cleanup issue or pull request.
 - Teams can gate release readiness with `--fail-under`.
+- Teams can compare a saved JSON baseline and fail only when a previously passing check regresses.
 - Foundations and working groups can compare repository hygiene across many projects.
 - CI maintainers can add it as a GitHub Action, show the score in the workflow summary, and publish the report as an artifact.
 
@@ -229,6 +230,15 @@ Use JSON in automation:
 ```bash
 oss-signal . --format json --fail-under 80
 ```
+
+Save a known-good report, then protect it from maintainer-readiness regressions:
+
+```bash
+oss-signal . --format json --output oss-signal-baseline.json
+oss-signal . --format json --baseline oss-signal-baseline.json --fail-on-regression
+```
+
+New rules are reported as `newChecks` and do not fail the regression gate. A regression means the same rule passed in the baseline and fails now.
 
 JSON recommendations include `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand` fields so dashboards and cleanup bots can route the next maintainer action without parsing prose.
 
@@ -375,6 +385,14 @@ When `--fail-under <score>` is provided, it exits with `1` if the score is below
 oss-signal . --fail-under 80
 ```
 
+When `--fail-on-regression` is used with `--baseline <report.json>`, it exits with `1` if a check that passed in the baseline now fails:
+
+```bash
+oss-signal . --baseline oss-signal-baseline.json --fail-on-regression
+```
+
+The report is still written before either gate exits nonzero, so CI can publish it as evidence.
+
 ## GitHub Action
 
 Add `oss-signal` directly to a GitHub Actions workflow:
@@ -390,6 +408,21 @@ Add `oss-signal` directly to a GitHub Actions workflow:
 ```
 
 The Action writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
+
+Protect a committed known-good baseline without forcing every repository to reach an arbitrary score first:
+
+```yaml
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+  id: oss-signal
+  with:
+    format: json
+    baseline: .github/oss-signal-baseline.json
+    fail-on-regression: "true"
+    output: oss-signal-report.json
+- run: echo "${{ steps.oss-signal.outputs.regressions }} regressions, score delta ${{ steps.oss-signal.outputs.score-delta }}"
+```
+
+The Action exposes `score`, `grade`, `failed`, `regressions`, `score-delta`, and `report-path` outputs. Baseline comparison also appears in the step summary.
 
 ![oss-signal GitHub Actions summary](docs/assets/github-step-summary.svg)
 
@@ -495,6 +528,7 @@ You can also run the CLI directly in CI:
 - Ecosystem-specific profiles for Python, Rust, Go, and JavaScript packages
 - Release automation and provenance metadata checks
 - Maintainer score trends over time
+- Historical trend dashboards across retained baseline reports
 - Organization-level repository inventory dashboards
 
 ## Release Process

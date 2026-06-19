@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   auditTarget,
+  compareReports,
   createInventoryReport,
   parseInventoryTargets,
   renderAdoption,
@@ -14,7 +15,8 @@ import {
   renderPlan,
   renderSarif,
   renderSummary,
-  renderWorkflow
+  renderWorkflow,
+  readBaselineReport
 } from "./index.js";
 
 const OUTPUT_DELIMITER = "oss_signal_output";
@@ -36,6 +38,8 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
     score: result.score,
     grade: result.grade,
     failed: result.failed,
+    regressions: result.regressions ?? 0,
+    "score-delta": result.scoreDelta ?? "",
     "report-path": options.output ?? ""
   });
 
@@ -64,6 +68,14 @@ export function parseActionInputs(env = process.env) {
   if (inventory && !["markdown", "json"].includes(format)) {
     throw new Error("inventory supports format markdown or json");
   }
+  const baselinePath = emptyToUndefined(getInput(env, "baseline"));
+  const failOnRegression = parseOptionalBoolean(getInput(env, "fail-on-regression"), "fail-on-regression") ?? false;
+  if (inventory && (baselinePath || failOnRegression)) {
+    throw new Error("inventory cannot be combined with baseline or fail-on-regression");
+  }
+  if (failOnRegression && !baselinePath) {
+    throw new Error("fail-on-regression requires baseline");
+  }
 
   return {
     path: getInput(env, "path") || ".",
@@ -73,6 +85,8 @@ export function parseActionInputs(env = process.env) {
     maxFiles: parseOptionalNumber(getInput(env, "max-files"), "max-files") ?? 20000,
     ref: emptyToUndefined(getInput(env, "ref")),
     configPath: emptyToUndefined(getInput(env, "config")),
+    baselinePath,
+    failOnRegression,
     inventory,
     summary: parseOptionalBoolean(getInput(env, "summary"), "summary") ?? true
   };
@@ -84,9 +98,22 @@ async function runSingleAudit(options) {
     ref: options.ref,
     configPath: options.configPath
   });
+  if (options.baselinePath) {
+    const baselineReport = await readBaselineReport(options.baselinePath);
+    report.comparison = compareReports(report, baselineReport, {
+      baselinePath: options.baselinePath
+    });
+  }
   const body = renderReport(report, options.format);
-  const failUnderMessage = typeof options.failUnder === "number" && report.score < options.failUnder
-    ? `oss-signal: score ${report.score} is below fail-under ${options.failUnder}\n`
+  const failureMessages = [];
+  if (typeof options.failUnder === "number" && report.score < options.failUnder) {
+    failureMessages.push(`oss-signal: score ${report.score} is below fail-under ${options.failUnder}`);
+  }
+  if (options.failOnRegression && report.comparison.summary.regressions > 0) {
+    failureMessages.push(`oss-signal: ${report.comparison.summary.regressions} regression(s) detected against baseline ${options.baselinePath}`);
+  }
+  const failUnderMessage = failureMessages.length > 0
+    ? `${failureMessages.join("\n")}\n`
     : undefined;
 
   return {
@@ -95,6 +122,8 @@ async function runSingleAudit(options) {
     score: report.score,
     grade: report.grade,
     failed: report.summary.failed,
+    regressions: report.comparison?.summary.regressions ?? 0,
+    scoreDelta: report.comparison?.scoreDelta,
     failUnderMessage
   };
 }
@@ -183,6 +212,21 @@ export async function writeGitHubStepSummary(summaryFile, report) {
   const nextSteps = report.recommendations.length > 0
     ? report.recommendations.map((recommendation) => `- **[${recommendation.priority}] ${recommendation.label}:** ${recommendation.fix}`).join("\n")
     : "- No missing maintainer-readiness checks found.";
+  const comparison = report.comparison
+    ? [
+        "## Baseline comparison",
+        "",
+        `Score delta: **${formatScoreDelta(report.comparison.scoreDelta)} points**`,
+        "",
+        "| Change | Count |",
+        "| --- | ---: |",
+        `| Regressions | ${report.comparison.summary.regressions} |`,
+        `| Improvements | ${report.comparison.summary.improvements} |`,
+        `| New checks | ${report.comparison.summary.newChecks} |`,
+        `| Removed checks | ${report.comparison.summary.removedChecks} |`,
+        ""
+      ]
+    : [];
 
   const body = [
     "# oss-signal",
@@ -195,6 +239,7 @@ export async function writeGitHubStepSummary(summaryFile, report) {
     `| Failed | ${report.summary.failed} |`,
     `| Total checks | ${report.summary.total} |`,
     "",
+    ...comparison,
     "## Recommended next steps",
     "",
     nextSteps,
@@ -202,6 +247,11 @@ export async function writeGitHubStepSummary(summaryFile, report) {
   ].join("\n");
 
   await fs.appendFile(summaryFile, body, "utf8");
+}
+
+function formatScoreDelta(delta) {
+  const value = Number.isFinite(Number(delta)) ? Number(delta) : 0;
+  return value > 0 ? `+${value}` : String(value);
 }
 
 export async function writeGitHubInventoryStepSummary(summaryFile, inventory) {

@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { parseActionInputs, runAction, writeGitHubInventoryStepSummary, writeGitHubOutput, writeGitHubStepSummary } from "../src/action.js";
-import { RELEASE_COMMIT } from "../src/index.js";
+import { auditRepository, RELEASE_COMMIT } from "../src/index.js";
 
 test("parseActionInputs reads GitHub Action inputs", () => {
   const options = parseActionInputs({
@@ -28,8 +28,20 @@ test("parseActionInputs reads GitHub Action inputs", () => {
     maxFiles: 500,
     ref: "main",
     configPath: ".oss-signal.json",
+    baselinePath: undefined,
+    failOnRegression: false,
     summary: false
   });
+});
+
+test("parseActionInputs reads baseline regression inputs", () => {
+  const options = parseActionInputs({
+    INPUT_BASELINE: "previous.json",
+    INPUT_FAIL_ON_REGRESSION: "true"
+  });
+
+  assert.equal(options.baselinePath, "previous.json");
+  assert.equal(options.failOnRegression, true);
 });
 
 test("parseActionInputs enables step summary by default", () => {
@@ -77,6 +89,55 @@ test("runAction writes a report and action outputs", async () => {
     assert.match(await readFile(githubOutput, "utf8"), /report-path<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /Score: \*\*\d+\/100 \([A-F]\)\*\*/);
   } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("runAction exposes baseline regressions and score delta", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-baseline-"));
+  const baselineRoot = path.join(root, "baseline");
+  const currentRoot = path.join(root, "current");
+  const baselineFile = path.join(root, "baseline.json");
+  const reportFile = path.join(root, "current.json");
+  const githubOutput = path.join(root, "github-output");
+  const githubSummary = path.join(root, "github-summary");
+  const originalExitCode = process.exitCode;
+  let failureMessage = "";
+
+  try {
+    await writeFixture(baselineRoot, {
+      "README.md": "# Baseline\n",
+      "LICENSE": "MIT\n"
+    });
+    await writeFixture(currentRoot, {
+      "README.md": "# Current\n",
+      ".github/workflows/ci.yml": "name: CI\n"
+    });
+    await writeFile(baselineFile, JSON.stringify(await auditRepository(baselineRoot)), "utf8");
+
+    const report = await runAction(
+      {
+        INPUT_PATH: currentRoot,
+        INPUT_FORMAT: "json",
+        INPUT_OUTPUT: reportFile,
+        INPUT_BASELINE: baselineFile,
+        INPUT_FAIL_ON_REGRESSION: "true",
+        GITHUB_OUTPUT: githubOutput,
+        GITHUB_STEP_SUMMARY: githubSummary
+      },
+      { write() {} },
+      { write(value) { failureMessage += value; } }
+    );
+
+    assert.equal(process.exitCode, 1);
+    assert.match(failureMessage, /1 regression\(s\) detected against baseline/);
+    assert.equal(report.comparison.summary.regressions, 1);
+    assert.equal(report.comparison.summary.improvements, 1);
+    assert.match(await readFile(githubOutput, "utf8"), /regressions<<oss_signal_output\n1/);
+    assert.match(await readFile(githubOutput, "utf8"), /score-delta<<oss_signal_output/);
+    assert.match(await readFile(githubSummary, "utf8"), /Baseline comparison/);
+  } finally {
+    process.exitCode = originalExitCode;
     await rm(root, { recursive: true, force: true });
   }
 });
@@ -277,13 +338,19 @@ test("writeGitHubStepSummary writes actionable next steps", async () => {
       summary: { passed: 2, failed: 1, total: 3 },
       recommendations: [
         { priority: "P1", label: "Security policy", fix: "Add SECURITY.md." }
-      ]
+      ],
+      comparison: {
+        scoreDelta: 4,
+        summary: { regressions: 0, improvements: 1, newChecks: 0, removedChecks: 0 }
+      }
     });
 
     const body = await readFile(summaryFile, "utf8");
     assert.match(body, /# oss-signal/);
     assert.match(body, /Score: \*\*88\/100 \(B\)\*\*/);
     assert.match(body, /\[P1\] Security policy/);
+    assert.match(body, /Score delta: \*\*\+4 points\*\*/);
+    assert.match(body, /\| Improvements \| 1 \|/);
     assert.doesNotMatch(body, /Add README\.md/);
   } finally {
     await rm(root, { recursive: true, force: true });

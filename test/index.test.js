@@ -7,6 +7,7 @@ import {
   auditGitHubRepository,
   auditRepository,
   auditTarget,
+  compareReports,
   createInventoryReport,
   listRules,
   parseGitHubTarget,
@@ -97,6 +98,76 @@ test("renderSummary creates a compact maintainer readout", async () => {
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+});
+
+test("compareReports identifies regressions, improvements, and score movement", async () => {
+  const baselineRoot = await fixture({
+    "README.md": "# Baseline\n",
+    "LICENSE": "MIT\n"
+  });
+  const currentRoot = await fixture({
+    "README.md": "# Current\n",
+    ".github/workflows/ci.yml": "name: CI\n"
+  });
+
+  try {
+    const baseline = await auditRepository(baselineRoot);
+    const current = await auditRepository(currentRoot);
+    current.comparison = compareReports(current, baseline, { baselinePath: "previous.json" });
+
+    assert.equal(current.comparison.summary.regressions, 1);
+    assert.equal(current.comparison.summary.improvements, 1);
+    assert.equal(current.comparison.regressions[0].id, "license");
+    assert.equal(current.comparison.improvements[0].id, "ci");
+    assert.equal(current.comparison.baseline.path, "previous.json");
+    assert.equal(current.comparison.scoreDelta, current.score - baseline.score);
+    assert.match(renderMarkdown(current), /Baseline Comparison/);
+    assert.match(renderMarkdown(current), /Regressions to review/);
+    assert.match(renderSummary(current), /1 regression\(s\), 1 improvement\(s\)/);
+  } finally {
+    await rm(baselineRoot, { recursive: true, force: true });
+    await rm(currentRoot, { recursive: true, force: true });
+  }
+});
+
+test("compareReports keeps new, removed, and not-applicable rules out of regressions", () => {
+  const metadata = {
+    root: "/tmp/example",
+    source: { type: "local", location: "/tmp/example" },
+    generatedAt: "2026-06-20T00:00:00.000Z",
+    score: 50,
+    grade: "F",
+    version: VERSION
+  };
+  const check = (id, passed, notApplicable = false) => ({
+    id,
+    label: id,
+    weight: 5,
+    passed,
+    notApplicable,
+    why: `${id} rationale`,
+    fix: `${id} fix`
+  });
+  const baseline = {
+    ...metadata,
+    checks: [check("stable", true), check("retired", true)]
+  };
+  const current = {
+    ...metadata,
+    checks: [check("stable", false, true), check("future", false)]
+  };
+
+  const comparison = compareReports(current, baseline);
+
+  assert.equal(comparison.summary.regressions, 0);
+  assert.equal(comparison.summary.newChecks, 1);
+  assert.equal(comparison.summary.removedChecks, 1);
+  assert.equal(comparison.newChecks[0].id, "future");
+  assert.equal(comparison.removedChecks[0].id, "retired");
+  assert.throws(
+    () => compareReports(current, { ...baseline, checks: [check("stable", true), check("stable", false)] }),
+    /baseline report contains duplicate check ID: stable/
+  );
 });
 
 test("auditRepository honors local not-applicable config", async () => {
@@ -603,6 +674,56 @@ test("CLI supports explicit config path", async () => {
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+});
+
+test("CLI compares a baseline report and fails only on regressions", async () => {
+  const baselineRoot = await fixture({
+    "README.md": "# Baseline\n",
+    "LICENSE": "MIT\n"
+  });
+  const currentRoot = await fixture({
+    "README.md": "# Current\n",
+    ".github/workflows/ci.yml": "name: CI\n"
+  });
+  const baselineFile = path.join(baselineRoot, "baseline.json");
+  const outputFile = path.join(currentRoot, "current.json");
+
+  try {
+    await writeFile(baselineFile, JSON.stringify(await auditRepository(baselineRoot)), "utf8");
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      currentRoot,
+      "--format",
+      "json",
+      "--baseline",
+      baselineFile,
+      "--fail-on-regression",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /1 regression\(s\) detected against --baseline/);
+    const report = JSON.parse(await readFile(outputFile, "utf8"));
+    assert.equal(report.comparison.summary.regressions, 1);
+    assert.equal(report.comparison.summary.improvements, 1);
+    assert.equal(report.comparison.regressions[0].id, "license");
+  } finally {
+    await rm(baselineRoot, { recursive: true, force: true });
+    await rm(currentRoot, { recursive: true, force: true });
+  }
+});
+
+test("CLI requires a baseline for regression gating", async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(process.execPath, [
+    path.resolve("src/cli.js"),
+    "--fail-on-regression"
+  ], { encoding: "utf8" });
+
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /--fail-on-regression requires --baseline/);
 });
 
 test("parseInventoryTargets ignores comments and blank lines", () => {
