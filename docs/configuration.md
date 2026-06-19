@@ -66,6 +66,7 @@ Current rule IDs:
 - `code-of-conduct`
 - `changelog`
 - `support`
+- `funding`
 - `ci`
 - `tests`
 - `issue-templates`

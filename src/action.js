@@ -6,8 +6,10 @@ import {
   auditTarget,
   compareReports,
   createInventoryReport,
+  renderEnv,
   parseInventoryTargets,
   renderAdoption,
+  renderInventoryEnv,
   renderInventoryJson,
   renderInventoryMarkdown,
   renderIssue,
@@ -37,7 +39,14 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
   await writeGitHubOutput(env.GITHUB_OUTPUT, {
     score: result.score,
     grade: result.grade,
+    passed: result.passed,
     failed: result.failed,
+    "not-applicable": result.notApplicable,
+    total: result.total,
+    "earned-weight": result.earnedWeight,
+    "available-weight": result.availableWeight,
+    "total-weight": result.totalWeight,
+    "not-applicable-weight": result.notApplicableWeight,
     regressions: result.regressions ?? 0,
     "score-delta": result.scoreDelta ?? "",
     "report-path": options.output ?? ""
@@ -61,12 +70,12 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
 
 export function parseActionInputs(env = process.env) {
   const format = getInput(env, "format") || "markdown";
-  if (!["markdown", "summary", "json", "sarif", "issue", "plan", "workflow", "adoption"].includes(format)) {
-    throw new Error("format must be markdown, summary, json, sarif, issue, plan, workflow, or adoption");
+  if (!["markdown", "summary", "json", "env", "sarif", "issue", "plan", "workflow", "adoption"].includes(format)) {
+    throw new Error("format must be markdown, summary, json, env, sarif, issue, plan, workflow, or adoption");
   }
   const inventory = emptyToUndefined(getInput(env, "inventory"));
-  if (inventory && !["markdown", "json"].includes(format)) {
-    throw new Error("inventory supports format markdown or json");
+  if (inventory && !["markdown", "json", "env"].includes(format)) {
+    throw new Error("inventory supports format markdown, json, or env");
   }
   const baselinePath = emptyToUndefined(getInput(env, "baseline"));
   const failOnRegression = parseOptionalBoolean(getInput(env, "fail-on-regression"), "fail-on-regression") ?? false;
@@ -81,8 +90,8 @@ export function parseActionInputs(env = process.env) {
     path: getInput(env, "path") || ".",
     format,
     output: emptyToUndefined(getInput(env, "output")) ?? "oss-signal-report.md",
-    failUnder: parseOptionalNumber(getInput(env, "fail-under"), "fail-under"),
-    maxFiles: parseOptionalNumber(getInput(env, "max-files"), "max-files") ?? 20000,
+    failUnder: parseOptionalScoreThreshold(getInput(env, "fail-under"), "fail-under"),
+    maxFiles: parseOptionalPositiveInteger(getInput(env, "max-files"), "max-files") ?? 20000,
     ref: emptyToUndefined(getInput(env, "ref")),
     configPath: emptyToUndefined(getInput(env, "config")),
     baselinePath,
@@ -121,7 +130,14 @@ async function runSingleAudit(options) {
     body,
     score: report.score,
     grade: report.grade,
+    passed: report.summary.passed,
     failed: report.summary.failed,
+    notApplicable: report.summary.notApplicable,
+    total: report.summary.total,
+    earnedWeight: report.summary.earnedWeight,
+    availableWeight: report.summary.availableWeight,
+    totalWeight: report.summary.totalWeight,
+    notApplicableWeight: report.summary.notApplicableWeight,
     regressions: report.comparison?.summary.regressions ?? 0,
     scoreDelta: report.comparison?.scoreDelta,
     failUnderMessage
@@ -150,7 +166,9 @@ async function runInventory(options) {
   });
   const body = options.format === "json"
     ? renderInventoryJson(inventory)
-    : renderInventoryMarkdown(inventory);
+    : options.format === "env"
+      ? renderInventoryEnv(inventory)
+      : renderInventoryMarkdown(inventory);
   const belowThreshold = typeof options.failUnder === "number"
     ? inventory.repositories.filter((repository) => repository.score < options.failUnder)
     : [];
@@ -163,7 +181,14 @@ async function runInventory(options) {
     body,
     score: inventory.averageScore,
     grade: inventory.averageGrade,
+    passed: inventory.repositories.reduce((sum, repository) => sum + repository.passed, 0),
     failed: inventory.failedTotal,
+    notApplicable: inventory.repositories.reduce((sum, repository) => sum + repository.notApplicable, 0),
+    total: inventory.repositories.reduce((sum, repository) => sum + repository.total, 0),
+    earnedWeight: inventory.earnedWeightTotal,
+    availableWeight: inventory.availableWeightTotal,
+    totalWeight: inventory.repositories.reduce((sum, repository) => sum + repository.totalWeight, 0),
+    notApplicableWeight: inventory.notApplicableWeightTotal,
     failUnderMessage
   };
 }
@@ -171,6 +196,9 @@ async function runInventory(options) {
 function renderReport(report, format) {
   if (format === "json") {
     return `${JSON.stringify(report, null, 2)}\n`;
+  }
+  if (format === "env") {
+    return renderEnv(report);
   }
   if (format === "sarif") {
     return renderSarif(report);
@@ -237,6 +265,7 @@ export async function writeGitHubStepSummary(summaryFile, report) {
     "| --- | ---: |",
     `| Passed | ${report.summary.passed} |`,
     `| Failed | ${report.summary.failed} |`,
+    ...weightedSummaryRows(report.summary),
     `| Total checks | ${report.summary.total} |`,
     "",
     ...comparison,
@@ -272,6 +301,7 @@ export async function writeGitHubInventoryStepSummary(summaryFile, inventory) {
     "# oss-signal inventory",
     "",
     `Average score: **${inventory.averageScore}/100 (${inventory.averageGrade})**`,
+    ...weightedInventoryLines(inventory),
     "",
     "| Repository | Score | Failed | Top next steps |",
     "| --- | ---: | ---: | --- |",
@@ -280,6 +310,26 @@ export async function writeGitHubInventoryStepSummary(summaryFile, inventory) {
   ].join("\n");
 
   await fs.appendFile(summaryFile, body, "utf8");
+}
+
+function weightedSummaryRows(summary) {
+  if (typeof summary?.earnedWeight !== "number" || typeof summary?.availableWeight !== "number") {
+    return [];
+  }
+
+  return [
+    `| Weighted points | ${summary.earnedWeight}/${summary.availableWeight} |`
+  ];
+}
+
+function weightedInventoryLines(inventory) {
+  if (typeof inventory?.earnedWeightTotal !== "number" || typeof inventory?.availableWeightTotal !== "number") {
+    return [];
+  }
+
+  return [
+    `Weighted points: **${inventory.earnedWeightTotal}/${inventory.availableWeightTotal}**`
+  ];
 }
 
 function getInput(env, name) {
@@ -297,6 +347,28 @@ function parseOptionalNumber(value, name) {
   const parsed = Number(normalized);
   if (!Number.isFinite(parsed)) {
     throw new Error(`${name} must be a number`);
+  }
+  return parsed;
+}
+
+function parseOptionalScoreThreshold(value, name) {
+  const parsed = parseOptionalNumber(value, name);
+  if (parsed === undefined) {
+    return undefined;
+  }
+  if (parsed < 0 || parsed > 100) {
+    throw new Error(`${name} must be between 0 and 100`);
+  }
+  return parsed;
+}
+
+function parseOptionalPositiveInteger(value, name) {
+  const parsed = parseOptionalNumber(value, name);
+  if (parsed === undefined) {
+    return undefined;
+  }
+  if (!Number.isInteger(parsed) || parsed < 1) {
+    throw new Error(`${name} must be a positive integer`);
   }
   return parsed;
 }

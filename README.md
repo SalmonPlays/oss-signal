@@ -18,7 +18,7 @@
 
 `oss-signal` is a dependency-light maintainer-readiness CLI and GitHub Action for OSS projects that need repeatable triage, regression gates, CI evidence, SARIF, inventory reports, issue-ready cleanup notes, adoption packs, a transparent rule catalog, and no-fail workflow trials.
 
-It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, JSON, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
+It checks the files and automation that reduce maintainer load: README, license, contributing guide, security policy, support policy, funding metadata, maintainer ownership, CI, tests, issue templates, pull request templates, Dependabot, and release notes. The output is a score plus concrete next steps in Markdown, summary, JSON, env, SARIF, inventory, GitHub Issue-ready Markdown, PR-sized maintainer plan, no-fail workflow, adoption-pack, or rule-catalog formats.
 
 ## Why Maintainers Bookmark It
 
@@ -225,6 +225,8 @@ Write a Markdown report:
 oss-signal /path/to/repo --format markdown --output oss-signal-report.md
 ```
 
+`--output` creates parent directories when needed, so paths such as `reports/nightly/oss-signal.md` work without pre-creating `reports/nightly`.
+
 Use JSON in automation:
 
 ```bash
@@ -242,10 +244,18 @@ New rules are reported as `newChecks` and do not fail the regression gate. A reg
 
 JSON recommendations include `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand` fields so dashboards and cleanup bots can route the next maintainer action without parsing prose.
 
-Print a compact shell-friendly score summary (`jq` optional):
+Write CI-friendly key-value output when a shell step only needs the score contract:
 
 ```bash
-oss-signal . --format json | jq -r '"score=\(.score) grade=\(.grade) source=\(.source)"'
+oss-signal . --format env --output oss-signal.env
+```
+
+The env format writes stable `OSS_SIGNAL_*` keys such as `OSS_SIGNAL_SCORE`, `OSS_SIGNAL_GRADE`, `OSS_SIGNAL_EARNED_WEIGHT`, and `OSS_SIGNAL_AVAILABLE_WEIGHT`. Inventory mode supports the same format with average score plus aggregate counts and weighted totals.
+
+Print a compact shell-friendly score summary from JSON (`jq` optional):
+
+```bash
+oss-signal . --format json | jq -r '"score=\(.score) grade=\(.grade) points=\(.summary.earnedWeight)/\(.summary.availableWeight)"'
 ```
 
 See [docs/json-output.md](docs/json-output.md) for the JSON schema and fixture.
@@ -379,11 +389,13 @@ See [docs/examples/minimal-repo-report.md](docs/examples/minimal-repo-report.md)
 
 By default, `oss-signal` exits with `0` after writing a report.
 
-When `--fail-under <score>` is provided, it exits with `1` if the score is below the threshold:
+When `--fail-under <score>` is provided, it exits with `1` if the score is below the 0-100 threshold:
 
 ```bash
 oss-signal . --fail-under 80
 ```
+
+`--max-files` must be a positive integer when provided.
 
 When `--fail-on-regression` is used with `--baseline <report.json>`, it exits with `1` if a check that passed in the baseline now fails:
 
@@ -404,10 +416,10 @@ Add `oss-signal` directly to a GitHub Actions workflow:
     fail-under: "80"
     output: oss-signal-report.md
     summary: "true"
-- run: echo "score ${{ steps.oss-signal.outputs.score }} (${{ steps.oss-signal.outputs.grade }})"
+- run: echo "score ${{ steps.oss-signal.outputs.score }} (${{ steps.oss-signal.outputs.earned-weight }}/${{ steps.oss-signal.outputs.available-weight }} weighted points)"
 ```
 
-The Action writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
+The Action exposes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, `regressions`, `score-delta`, and `report-path` outputs. Inventory mode uses the average for `score` and totals for counts and weighted points. Baseline outputs are zero or empty when comparison is disabled. The Action also writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
 
 Protect a committed known-good baseline without forcing every repository to reach an arbitrary score first:
 
@@ -422,7 +434,7 @@ Protect a committed known-good baseline without forcing every repository to reac
 - run: echo "${{ steps.oss-signal.outputs.regressions }} regressions, score delta ${{ steps.oss-signal.outputs.score-delta }}"
 ```
 
-The Action exposes `score`, `grade`, `failed`, `regressions`, `score-delta`, and `report-path` outputs. Baseline comparison also appears in the step summary.
+Baseline comparison also appears in the step summary.
 
 ![oss-signal GitHub Actions summary](docs/assets/github-step-summary.svg)
 

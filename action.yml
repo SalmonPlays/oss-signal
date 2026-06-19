@@ -13,7 +13,7 @@ inputs:
     description: Newline-delimited file of local paths, GitHub URLs, or owner/repo shorthands to audit as an inventory.
     required: false
   format:
-    description: Output format, either markdown, summary, json, sarif, issue, plan, workflow, or adoption. Inventory mode supports markdown or json.
+    description: Output format, either markdown, summary, json, env, sarif, issue, plan, workflow, or adoption. Inventory mode supports markdown, json, or env.
     required: false
     default: markdown
   output:
@@ -25,10 +25,10 @@ inputs:
     required: false
     default: "true"
   fail-under:
-    description: Fail the action when the score, or any inventory target score, is below this number.
+    description: Fail the action when the score, or any inventory target score, is below this 0-100 number.
     required: false
   max-files:
-    description: Maximum files to inspect.
+    description: Positive integer maximum files to inspect.
     required: false
     default: "20000"
   ref:
@@ -49,8 +49,22 @@ outputs:
     description: Numeric maintainer-readiness score, or average score in inventory mode.
   grade:
     description: Letter grade for the maintainer-readiness score, or average grade in inventory mode.
+  passed:
+    description: Number of passed checks, or total passed checks in inventory mode.
   failed:
     description: Number of failed checks, or total failed checks in inventory mode.
+  not-applicable:
+    description: Number of checks marked not applicable, or the total across inventory targets.
+  total:
+    description: Total number of checks, or the total across inventory targets.
+  earned-weight:
+    description: Weighted points earned, or the total earned across inventory targets.
+  available-weight:
+    description: Weighted points available after exclusions, or the total available across inventory targets.
+  total-weight:
+    description: Weighted points before exclusions, or the total across inventory targets.
+  not-applicable-weight:
+    description: Weighted points excluded as not applicable, or the total excluded across inventory targets.
   regressions:
     description: Number of checks that passed in the baseline and fail in the current report.
   score-delta:

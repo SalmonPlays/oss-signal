@@ -60,7 +60,7 @@ The repository currently has:
 - A post-submission update page explaining why the current npm package and Action tag may be newer than the originally submitted evidence.
 - npm download API evidence showing 3702 last-month downloads for 2026-05-19 to 2026-06-17 when checked on 2026-06-19.
 - A published GitHub Release for v0.9.9 with adoption-pack output, maintainer plan output, CI usage guidance, and release notes.
-- A reusable GitHub Action with `score`, `grade`, `failed`, and `report-path` outputs.
+- A reusable GitHub Action with score, grade, check-count, weighted-point, and report-path outputs.
 - A repository inventory mode for organization-level maintainer-readiness triage, available in both CLI and GitHub Action form.
 - A clean npm smoke test of `oss-signal@0.9.9` returning version `0.9.9`.
 - SARIF output for GitHub Code Scanning integration.

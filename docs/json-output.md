@@ -29,11 +29,41 @@ Important fields:
 | `generatedAt` | string | ISO timestamp for the report. |
 | `score` | integer | Maintainer-readiness score from 0 to 100. |
 | `grade` | string | `A`, `B`, `C`, `D`, or `F`. |
-| `summary` | object | Total, passed, and failed check counts. |
+| `summary` | object | Check counts plus weighted scoring totals. |
 | `config` | object | Present when a config file marks rules not applicable or emits config warnings. |
 | `comparison` | object | Present with `--baseline`; includes score movement, regressions, improvements, new checks, and removed checks. |
 | `checks` | array | Full rule results with evidence, rationale, and fix text. |
 | `recommendations` | array | Failed checks sorted by weight with `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand`. Empty when score is 100. |
+
+## Env Output
+
+When a CI shell step only needs score metadata, use `--format env` instead of parsing JSON:
+
+```bash
+oss-signal . --format env --output oss-signal.env
+```
+
+The env format writes one `KEY=value` pair per line:
+
+```text
+OSS_SIGNAL_MODE=single
+OSS_SIGNAL_SCORE=100
+OSS_SIGNAL_GRADE=A
+OSS_SIGNAL_PASSED=17
+OSS_SIGNAL_FAILED=0
+OSS_SIGNAL_NOT_APPLICABLE=0
+OSS_SIGNAL_TOTAL=17
+OSS_SIGNAL_EARNED_WEIGHT=113
+OSS_SIGNAL_AVAILABLE_WEIGHT=113
+OSS_SIGNAL_TOTAL_WEIGHT=113
+OSS_SIGNAL_NOT_APPLICABLE_WEIGHT=0
+OSS_SIGNAL_REGRESSIONS=0
+OSS_SIGNAL_SCORE_DELTA=
+OSS_SIGNAL_RECOMMENDATIONS=0
+OSS_SIGNAL_TOP_RECOMMENDATION=
+```
+
+When `--baseline` is supplied, `OSS_SIGNAL_REGRESSIONS` and `OSS_SIGNAL_SCORE_DELTA` reflect the comparison. Inventory mode also supports `--format env`; those comparison fields are `0` and empty because inventory mode does not accept a baseline.
 
 ## Baseline Comparison
 
@@ -64,7 +94,9 @@ oss-signal --inventory docs/examples/inventory-targets.txt --format json --outpu
 Inventory JSON includes:
 
 - `count`, `averageScore`, `averageGrade`, `minScore`, `maxScore`, and `failedTotal`.
+- `earnedWeightTotal`, `availableWeightTotal`, and `notApplicableWeightTotal` across all targets.
 - `repositories[]` with one summary per target.
+- `repositories[].earnedWeight`, `availableWeight`, `totalWeight`, and `notApplicableWeight`.
 - `repositories[].topRecommendations[]` with the highest-impact missing checks for each target, including priority and suggested-file metadata.
 
 Inventory schema and fixture:
@@ -104,12 +136,12 @@ Stable for `0.9.x`:
 
 - Top-level `tool`, `version`, `root`, `source`, `generatedAt`, `score`, `grade`, `summary`, `checks`, and `recommendations`.
 - Optional top-level `config` when a repository uses an `oss-signal` config file.
+- Summary fields `total`, `passed`, `failed`, `notApplicable`, `earnedWeight`, `availableWeight`, `totalWeight`, and `notApplicableWeight`.
 - Optional top-level `comparison` when `--baseline` is supplied.
-- Summary fields `total`, `passed`, `failed`, and `notApplicable`.
 - Check fields `id`, `label`, `weight`, `passed`, `evidence`, `why`, `fix`, and optional `notApplicable` / `configReason`.
 - Recommendation fields `id`, `label`, `weight`, `priority`, `impact`, `category`, `categoryLabel`, `suggestedFile`, `verifyCommand`, `why`, and `fix`.
 - Rule catalog fields `totalRules`, `totalWeight`, `scoring`, `categories`, and `categories[].rules[]`.
-- Inventory fields `count`, `averageScore`, `averageGrade`, `minScore`, `maxScore`, `failedTotal`, and `repositories[]`.
+- Inventory fields `count`, `averageScore`, `averageGrade`, `minScore`, `maxScore`, `failedTotal`, weighted totals, and `repositories[]`.
 
 Not stable:
 

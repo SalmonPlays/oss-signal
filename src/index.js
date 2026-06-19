@@ -16,6 +16,7 @@ const SARIF_RULE_LOCATIONS = {
   "code-of-conduct": "CODE_OF_CONDUCT.md",
   changelog: "CHANGELOG.md",
   support: "SUPPORT.md",
+  funding: ".github/FUNDING.yml",
   "maintainer-ownership": "MAINTAINERS.md",
   ci: ".github/workflows/ci.yml",
   tests: "test/example.test.js",
@@ -83,6 +84,14 @@ const COMMUNITY_FILES = [
     paths: ["SUPPORT.md", ".github/SUPPORT.md"],
     why: "Support boundaries help maintainers avoid turning every request into unpaid consulting.",
     fix: "Add SUPPORT.md describing where to ask questions, what is in scope, and expected response times."
+  },
+  {
+    id: "funding",
+    label: "Funding metadata",
+    weight: 3,
+    paths: [".github/FUNDING.yml", "FUNDING.yml"],
+    why: "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
+    fix: "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
   },
   {
     id: "maintainer-ownership",
@@ -338,10 +347,10 @@ function createReportFromTree(tree, metadata) {
   checks = applyCommunityProfileEvidence(checks, metadata.communityProfile);
   checks = applyConfigEvidence(checks, config);
 
-  const scoredChecks = checks.filter((check) => !check.notApplicable);
-  const totalWeight = scoredChecks.reduce((sum, check) => sum + check.weight, 0);
-  const earnedWeight = scoredChecks.filter((check) => check.passed).reduce((sum, check) => sum + check.weight, 0);
-  const score = totalWeight === 0 ? 0 : Math.round((earnedWeight / totalWeight) * 100);
+  const summary = summarizeChecks(checks);
+  const score = summary.availableWeight === 0
+    ? 0
+    : Math.round((summary.earnedWeight / summary.availableWeight) * 100);
   const configReport = renderConfigSummary(config);
 
   return {
@@ -352,7 +361,7 @@ function createReportFromTree(tree, metadata) {
     generatedAt: new Date().toISOString(),
     score,
     grade: gradeForScore(score),
-    summary: summarizeChecks(checks),
+    summary,
     ...(configReport ? { config: configReport } : {}),
     checks,
     recommendations: checks
@@ -463,10 +472,14 @@ export function renderMarkdown(report) {
     "",
     `- Passed: ${report.summary.passed}`,
     `- Failed: ${report.summary.failed}`,
-    `- Total checks: ${report.summary.total}`
+    `- Total checks: ${report.summary.total}`,
+    `- Weighted points: ${report.summary.earnedWeight}/${report.summary.availableWeight}`
   ];
   if (report.summary.notApplicable) {
     lines.push(`- Not applicable: ${report.summary.notApplicable}`);
+  }
+  if (report.summary.notApplicableWeight) {
+    lines.push(`- Excluded weight: ${report.summary.notApplicableWeight}`);
   }
   if (report.config?.path) {
     lines.push(`- Config: ${report.config.path}`);
@@ -520,6 +533,7 @@ export function renderSummary(report) {
     `Repository: ${report.root}`,
     `Source: ${sourceSummary(report.source)}`,
     `Score: ${report.score}/100 (${report.grade})`,
+    `Weighted points: ${report.summary.earnedWeight}/${report.summary.availableWeight}`,
     `Checks: ${report.summary.passed} passed, ${report.summary.failed} failed, ${report.summary.total} total`
   ];
   if (report.summary.notApplicable) {
@@ -543,6 +557,26 @@ export function renderSummary(report) {
 
   lines.push("");
   return `${lines.join("\n")}\n`;
+}
+
+export function renderEnv(report) {
+  return renderEnvValues({
+    OSS_SIGNAL_MODE: "single",
+    OSS_SIGNAL_SCORE: report.score,
+    OSS_SIGNAL_GRADE: report.grade,
+    OSS_SIGNAL_PASSED: report.summary.passed,
+    OSS_SIGNAL_FAILED: report.summary.failed,
+    OSS_SIGNAL_NOT_APPLICABLE: report.summary.notApplicable,
+    OSS_SIGNAL_TOTAL: report.summary.total,
+    OSS_SIGNAL_EARNED_WEIGHT: report.summary.earnedWeight,
+    OSS_SIGNAL_AVAILABLE_WEIGHT: report.summary.availableWeight,
+    OSS_SIGNAL_TOTAL_WEIGHT: report.summary.totalWeight,
+    OSS_SIGNAL_NOT_APPLICABLE_WEIGHT: report.summary.notApplicableWeight,
+    OSS_SIGNAL_REGRESSIONS: report.comparison?.summary.regressions ?? 0,
+    OSS_SIGNAL_SCORE_DELTA: report.comparison?.scoreDelta ?? "",
+    OSS_SIGNAL_RECOMMENDATIONS: report.recommendations.length,
+    OSS_SIGNAL_TOP_RECOMMENDATION: report.recommendations[0]?.id ?? ""
+  });
 }
 
 export function renderIssue(report) {
@@ -814,7 +848,7 @@ export function renderSarif(report) {
   }));
 
   const results = report.checks
-    .filter((check) => !check.passed)
+    .filter((check) => !check.passed && !check.notApplicable)
     .map((check) => {
       const recommendation = createRecommendation(check, report.source);
       return {
@@ -877,6 +911,10 @@ export function renderSarif(report) {
           grade: report.grade,
           source: sourceSummary(report.source),
           generatedAt: report.generatedAt,
+          earnedWeight: report.summary.earnedWeight,
+          availableWeight: report.summary.availableWeight,
+          totalWeight: report.summary.totalWeight,
+          notApplicableWeight: report.summary.notApplicableWeight,
           config: report.config,
           comparison: report.comparison
         }
@@ -1056,6 +1094,10 @@ export function createInventoryReport(reports, metadata = {}) {
     passed: report.summary.passed,
     failed: report.summary.failed,
     total: report.summary.total,
+    earnedWeight: report.summary.earnedWeight,
+    availableWeight: report.summary.availableWeight,
+    totalWeight: report.summary.totalWeight,
+    notApplicableWeight: report.summary.notApplicableWeight,
     topRecommendations: report.recommendations.slice(0, 3).map((recommendation) => ({
       id: recommendation.id,
       label: recommendation.label,
@@ -1076,6 +1118,9 @@ export function createInventoryReport(reports, metadata = {}) {
     ? 0
     : Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
   const failedTotal = repositories.reduce((sum, repository) => sum + repository.failed, 0);
+  const earnedWeightTotal = repositories.reduce((sum, repository) => sum + repository.earnedWeight, 0);
+  const availableWeightTotal = repositories.reduce((sum, repository) => sum + repository.availableWeight, 0);
+  const notApplicableWeightTotal = repositories.reduce((sum, repository) => sum + repository.notApplicableWeight, 0);
 
   return {
     tool: "oss-signal",
@@ -1088,12 +1133,37 @@ export function createInventoryReport(reports, metadata = {}) {
     minScore: scores.length === 0 ? 0 : Math.min(...scores),
     maxScore: scores.length === 0 ? 0 : Math.max(...scores),
     failedTotal,
+    earnedWeightTotal,
+    availableWeightTotal,
+    notApplicableWeightTotal,
     repositories
   };
 }
 
 export function renderInventoryJson(inventory) {
   return `${JSON.stringify(inventory, null, 2)}\n`;
+}
+
+export function renderInventoryEnv(inventory) {
+  return renderEnvValues({
+    OSS_SIGNAL_MODE: "inventory",
+    OSS_SIGNAL_COUNT: inventory.count,
+    OSS_SIGNAL_SCORE: inventory.averageScore,
+    OSS_SIGNAL_GRADE: inventory.averageGrade,
+    OSS_SIGNAL_MIN_SCORE: inventory.minScore,
+    OSS_SIGNAL_MAX_SCORE: inventory.maxScore,
+    OSS_SIGNAL_PASSED: inventory.repositories.reduce((sum, repository) => sum + repository.passed, 0),
+    OSS_SIGNAL_FAILED: inventory.failedTotal,
+    OSS_SIGNAL_NOT_APPLICABLE: inventory.repositories.reduce((sum, repository) => sum + repository.notApplicable, 0),
+    OSS_SIGNAL_TOTAL: inventory.repositories.reduce((sum, repository) => sum + repository.total, 0),
+    OSS_SIGNAL_EARNED_WEIGHT: inventory.earnedWeightTotal,
+    OSS_SIGNAL_AVAILABLE_WEIGHT: inventory.availableWeightTotal,
+    OSS_SIGNAL_TOTAL_WEIGHT: inventory.repositories.reduce((sum, repository) => sum + repository.totalWeight, 0),
+    OSS_SIGNAL_NOT_APPLICABLE_WEIGHT: inventory.notApplicableWeightTotal,
+    OSS_SIGNAL_REGRESSIONS: 0,
+    OSS_SIGNAL_SCORE_DELTA: "",
+    OSS_SIGNAL_RECOMMENDATIONS: inventory.failedTotal
+  });
 }
 
 export function renderInventoryMarkdown(inventory) {
@@ -1105,6 +1175,7 @@ export function renderInventoryMarkdown(inventory) {
     `Average score: **${inventory.averageScore}/100** (${inventory.averageGrade})`,
     `Score range: ${inventory.minScore}-${inventory.maxScore}`,
     `Failed checks: ${inventory.failedTotal}`,
+    `Weighted points: **${inventory.earnedWeightTotal}/${inventory.availableWeightTotal}**`,
     "",
     "| Repository | Source | Score | Failed | Top next steps |",
     "| --- | --- | ---: | ---: | --- |"
@@ -1125,6 +1196,27 @@ export function renderInventoryMarkdown(inventory) {
 
   lines.push("");
   return `${lines.join("\n")}\n`;
+}
+
+function renderEnvValues(values) {
+  const lines = Object.entries(values).map(([key, value]) => `${key}=${formatEnvValue(value)}`);
+  return `${lines.join("\n")}\n`;
+}
+
+function formatEnvValue(value) {
+  if (typeof value === "number") {
+    return String(value);
+  }
+  if (typeof value === "boolean") {
+    return value ? "true" : "false";
+  }
+
+  const normalized = String(value);
+  if (/^[A-Za-z0-9_.:/@-]*$/.test(normalized)) {
+    return normalized;
+  }
+
+  return `'${normalized.replaceAll("'", "'\\''")}'`;
 }
 
 export function renderRulesJson(catalog = listRules()) {
@@ -1547,14 +1639,24 @@ function findEvidence(id, tree) {
 }
 
 function summarizeChecks(checks) {
-  const notApplicable = checks.filter((check) => check.notApplicable).length;
-  const passed = checks.filter((check) => check.passed && !check.notApplicable).length;
-  const failed = checks.filter((check) => !check.passed && !check.notApplicable).length;
+  const applicableChecks = checks.filter((check) => !check.notApplicable);
+  const notApplicableChecks = checks.filter((check) => check.notApplicable);
+  const passedChecks = applicableChecks.filter((check) => check.passed);
+  const failedChecks = applicableChecks.filter((check) => !check.passed);
+  const totalWeight = checks.reduce((sum, check) => sum + check.weight, 0);
+  const availableWeight = applicableChecks.reduce((sum, check) => sum + check.weight, 0);
+  const earnedWeight = passedChecks.reduce((sum, check) => sum + check.weight, 0);
+  const notApplicableWeight = notApplicableChecks.reduce((sum, check) => sum + check.weight, 0);
+
   return {
     total: checks.length,
-    passed,
-    failed,
-    notApplicable
+    passed: passedChecks.length,
+    failed: failedChecks.length,
+    notApplicable: notApplicableChecks.length,
+    earnedWeight,
+    availableWeight,
+    totalWeight,
+    notApplicableWeight
   };
 }
 

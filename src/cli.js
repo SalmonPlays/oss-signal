@@ -7,7 +7,9 @@ import {
   createInventoryReport,
   listRules,
   parseInventoryTargets,
+  renderEnv,
   renderInventoryJson,
+  renderInventoryEnv,
   renderInventoryMarkdown,
   renderAdoption,
   renderIssue,
@@ -97,13 +99,13 @@ function parseArgs(argv) {
     } else if (arg.startsWith("--output=")) {
       options.output = arg.slice("--output=".length);
     } else if (arg === "--fail-under") {
-      options.failUnder = parseNumber(requireValue(argv, ++index, "--fail-under"), "--fail-under");
+      options.failUnder = parseScoreThreshold(requireValue(argv, ++index, "--fail-under"), "--fail-under");
     } else if (arg.startsWith("--fail-under=")) {
-      options.failUnder = parseNumber(arg.slice("--fail-under=".length), "--fail-under");
+      options.failUnder = parseScoreThreshold(arg.slice("--fail-under=".length), "--fail-under");
     } else if (arg === "--max-files") {
-      options.maxFiles = parseNumber(requireValue(argv, ++index, "--max-files"), "--max-files");
+      options.maxFiles = parsePositiveInteger(requireValue(argv, ++index, "--max-files"), "--max-files");
     } else if (arg.startsWith("--max-files=")) {
-      options.maxFiles = parseNumber(arg.slice("--max-files=".length), "--max-files");
+      options.maxFiles = parsePositiveInteger(arg.slice("--max-files=".length), "--max-files");
     } else if (arg === "--ref") {
       options.ref = requireValue(argv, ++index, "--ref");
     } else if (arg.startsWith("--ref=")) {
@@ -174,8 +176,8 @@ function parseArgs(argv) {
   if (options.failOnRegression && !options.baselinePath) {
     throw new Error("--fail-on-regression requires --baseline");
   }
-  if (!["markdown", "summary", "json", "sarif", "issue", "plan", "workflow", "adoption"].includes(options.format)) {
-    throw new Error("--format must be markdown, summary, json, sarif, issue, plan, workflow, or adoption");
+  if (!["markdown", "summary", "json", "env", "sarif", "issue", "plan", "workflow", "adoption"].includes(options.format)) {
+    throw new Error("--format must be markdown, summary, json, env, sarif, issue, plan, workflow, or adoption");
   }
   return options;
 }
@@ -252,8 +254,8 @@ async function runSingleAudit(options) {
 }
 
 async function runInventory(options) {
-  if (!["markdown", "json"].includes(options.format)) {
-    throw new Error("--inventory supports --format markdown or --format json");
+  if (!["markdown", "json", "env"].includes(options.format)) {
+    throw new Error("--inventory supports --format markdown, json, or env");
   }
 
   const inventoryText = await fs.readFile(options.inventory, "utf8");
@@ -277,7 +279,9 @@ async function runInventory(options) {
   });
   const body = options.format === "json"
     ? renderInventoryJson(inventory)
-    : renderInventoryMarkdown(inventory);
+    : options.format === "env"
+      ? renderInventoryEnv(inventory)
+      : renderInventoryMarkdown(inventory);
   const belowThreshold = typeof options.failUnder === "number"
     ? inventory.repositories.filter((repository) => repository.score < options.failUnder)
     : [];
@@ -299,6 +303,9 @@ function runListRules(options) {
 function renderReport(report, format) {
   if (format === "json") {
     return `${JSON.stringify(report, null, 2)}\n`;
+  }
+  if (format === "env") {
+    return renderEnv(report);
   }
   if (format === "sarif") {
     return renderSarif(report);
@@ -337,14 +344,30 @@ function parseNumber(value, optionName) {
   return parsed;
 }
 
+function parseScoreThreshold(value, optionName) {
+  const parsed = parseNumber(value, optionName);
+  if (parsed < 0 || parsed > 100) {
+    throw new Error(`${optionName} must be between 0 and 100`);
+  }
+  return parsed;
+}
+
+function parsePositiveInteger(value, optionName) {
+  const parsed = parseNumber(value, optionName);
+  if (!Number.isInteger(parsed) || parsed < 1) {
+    throw new Error(`${optionName} must be a positive integer`);
+  }
+  return parsed;
+}
+
 function helpText() {
   return `oss-signal audits open-source repository maintenance readiness.
 
 Usage:
-  oss-signal [path-or-github-url] [--format markdown|summary|json|sarif|issue|plan|workflow|adoption] [--output file] [--fail-under score]
+  oss-signal [path-or-github-url] [--format markdown|summary|json|env|sarif|issue|plan|workflow|adoption] [--output file] [--fail-under score]
              [--baseline report.json] [--fail-on-regression]
   oss-signal --init [local-repository-path] [--output workflow.yml] [--force]
-  oss-signal --inventory repos.txt [--format markdown|json] [--output file] [--fail-under score]
+  oss-signal --inventory repos.txt [--format markdown|json|env] [--output file] [--fail-under score]
   oss-signal --list-rules [--format markdown|json] [--output file]
 
 Examples:
@@ -355,6 +378,7 @@ Examples:
   oss-signal --list-rules --format json
   oss-signal https://github.com/SalmonPlays/oss-signal
   oss-signal platformatic/massimo --format json
+  oss-signal . --format env
   oss-signal owner/repo --format issue --output maintainer-follow-up.md
   oss-signal owner/repo --format plan --output maintainer-plan.md
   oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
@@ -365,10 +389,10 @@ Examples:
 Options:
   --init         Add a no-fail trial workflow to a local repository without running an audit.
   --force        Replace an existing workflow created through --init.
-  --format       Output format. Defaults to markdown.
+  --format       Output format. Defaults to markdown. Use env for CI-friendly OSS_SIGNAL_* key-value output.
   --output, -o   Write the report to a file instead of stdout.
-  --fail-under   Exit with code 1 when the score, or any inventory target score, is below this value.
-  --max-files    Maximum files to inspect. Defaults to 20000.
+  --fail-under   Exit with code 1 when the score, or any inventory target score, is below this 0-100 value.
+  --max-files    Positive integer maximum files to inspect. Defaults to 20000.
   --ref          Git ref for GitHub URL audits. Defaults to the repository default branch.
   --config       Path to an oss-signal JSON config. Local audits auto-detect .oss-signal.json.
   --baseline     Compare this audit with a previous oss-signal JSON report.

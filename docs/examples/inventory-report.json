@@ -1,14 +1,17 @@
 {
   "tool": "oss-signal",
   "version": "0.9.9",
-  "generatedAt": "2026-06-18T12:58:47.406Z",
+  "generatedAt": "2026-06-19T07:13:59.461Z",
   "inventoryPath": "docs/examples/inventory-targets.txt",
   "count": 3,
-  "averageScore": 72,
-  "averageGrade": "C",
-  "minScore": 53,
-  "maxScore": 100,
-  "failedTotal": 17,
+  "averageScore": 69,
+  "averageGrade": "D",
+  "minScore": 51,
+  "maxScore": 97,
+  "failedTotal": 20,
+  "earnedWeightTotal": 236,
+  "availableWeightTotal": 339,
+  "notApplicableWeightTotal": 0,
   "repositories": [
     {
       "target": "SalmonPlays/oss-signal",
@@ -22,16 +25,34 @@
         "defaultBranch": "main",
         "stars": 2,
         "forks": 1,
-        "openIssues": 2,
+        "openIssues": 4,
         "healthPercentage": 100
       },
       "sourceLabel": "GitHub (SalmonPlays/oss-signal@main)",
-      "score": 100,
+      "score": 97,
       "grade": "A",
       "passed": 16,
-      "failed": 0,
-      "total": 16,
-      "topRecommendations": [],
+      "failed": 1,
+      "total": 17,
+      "earnedWeight": 110,
+      "availableWeight": 113,
+      "totalWeight": 113,
+      "notApplicableWeight": 0,
+      "topRecommendations": [
+        {
+          "id": "funding",
+          "label": "Funding metadata",
+          "weight": 3,
+          "priority": "P3",
+          "impact": "low",
+          "category": "community",
+          "categoryLabel": "Community files",
+          "suggestedFile": ".github/FUNDING.yml",
+          "verifyCommand": "oss-signal SalmonPlays/oss-signal --format summary",
+          "why": "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
+          "fix": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
+        }
+      ],
       "notApplicable": 0
     },
     {
@@ -50,11 +71,15 @@
         "healthPercentage": 62
       },
       "sourceLabel": "GitHub (platformatic/massimo@main)",
-      "score": 62,
+      "score": 60,
       "grade": "D",
       "passed": 8,
-      "failed": 8,
-      "total": 16,
+      "failed": 9,
+      "total": 17,
+      "earnedWeight": 68,
+      "availableWeight": 113,
+      "totalWeight": 113,
+      "notApplicableWeight": 0,
       "topRecommendations": [
         {
           "id": "security",
@@ -114,11 +139,15 @@
         "healthPercentage": 37
       },
       "sourceLabel": "GitHub (flox/install-flox-action@main)",
-      "score": 53,
+      "score": 51,
       "grade": "F",
       "passed": 7,
-      "failed": 9,
-      "total": 16,
+      "failed": 10,
+      "total": 17,
+      "earnedWeight": 58,
+      "availableWeight": 113,
+      "totalWeight": 113,
+      "notApplicableWeight": 0,
       "topRecommendations": [
         {
           "id": "contributing",

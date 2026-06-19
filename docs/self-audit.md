@@ -1,8 +1,8 @@
 # OSS Signal Report
 
-Repository: `/Users/amon/Documents/Codex/2026-06-01/openai-s/outputs/oss-signal`
+Repository: `/Users/amon/Documents/Codex/2026-06-19/salmonplays-oss-signal-https-github-com-2/repo`
 Source: local
-Generated: 2026-06-18T08:34:54.465Z
+Generated: 2026-06-19T23:07:22.702Z
 
 Score: **100/100** (A)
 
@@ -10,7 +10,11 @@ Score: **100/100** (A)
 
 - Passed: 16
 - Failed: 0
-- Total checks: 16
+- Total checks: 17
+- Weighted points: 110/110
+- Not applicable: 1
+- Excluded weight: 3
+- Config: .oss-signal.json
 
 ## Checks
 
@@ -23,6 +27,7 @@ Score: **100/100** (A)
 | PASS | Code of conduct | `CODE_OF_CONDUCT.md` | Community norms reduce ambiguity during difficult interactions. |
 | PASS | Changelog | `CHANGELOG.md` | Users need a durable place to understand release impact. |
 | PASS | Support policy | `SUPPORT.md` | Support boundaries help maintainers avoid turning every request into unpaid consulting. |
+| N/A | Funding metadata | Not applicable: No public sponsorship or funding destination is currently active for this project. | Funding metadata gives maintainers a visible route for sponsorship and sustainability support. |
 | PASS | Maintainer ownership | `MAINTAINERS.md` | Clear ownership and review routing make outside contributions easier to triage. |
 | PASS | Continuous integration | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/workflows/evidence-verify.yml`, `.github/workflows/release.yml`, `.github/workflows/repository-health.yml` | CI catches regressions before maintainers merge changes. |
 | PASS | Tests | `test/action.test.js`, `test/index.test.js` | Tests make review safer and lower the cost of outside contributions. |

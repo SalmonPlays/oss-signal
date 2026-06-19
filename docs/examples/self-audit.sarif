@@ -185,6 +185,31 @@
               }
             },
             {
+              "id": "oss-signal/funding",
+              "name": "Funding metadata",
+              "shortDescription": {
+                "text": "Funding metadata"
+              },
+              "fullDescription": {
+                "text": "Funding metadata gives maintainers a visible route for sponsorship and sustainability support."
+              },
+              "help": {
+                "text": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose.",
+                "markdown": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "oss-signal",
+                  "maintainer-readiness"
+                ],
+                "precision": "high",
+                "weight": 3
+              }
+            },
+            {
               "id": "oss-signal/maintainer-ownership",
               "name": "Maintainer ownership",
               "shortDescription": {
@@ -425,7 +450,21 @@
         "score": 100,
         "grade": "A",
         "source": "local",
-        "generatedAt": "2026-06-18T08:34:54.554Z"
+        "generatedAt": "2026-06-19T23:07:22.774Z",
+        "earnedWeight": 110,
+        "availableWeight": 110,
+        "totalWeight": 113,
+        "notApplicableWeight": 3,
+        "config": {
+          "path": ".oss-signal.json",
+          "notApplicable": [
+            {
+              "id": "funding",
+              "reason": "No public sponsorship or funding destination is currently active for this project."
+            }
+          ],
+          "warnings": []
+        }
       }
     }
   ]

@@ -48,6 +48,12 @@ test("parseActionInputs enables step summary by default", () => {
   assert.equal(parseActionInputs({}).summary, true);
 });
 
+test("parseActionInputs validates numeric inputs", () => {
+  assert.throws(() => parseActionInputs({ INPUT_FAIL_UNDER: "101" }), /fail-under must be between 0 and 100/);
+  assert.throws(() => parseActionInputs({ INPUT_MAX_FILES: "0" }), /max-files must be a positive integer/);
+  assert.throws(() => parseActionInputs({ INPUT_MAX_FILES: "1.5" }), /max-files must be a positive integer/);
+});
+
 test("writeGitHubOutput writes action outputs", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-"));
   const outputFile = path.join(root, "github-output");
@@ -74,7 +80,12 @@ test("runAction writes a report and action outputs", async () => {
       "LICENSE": "MIT\n",
       "package.json": JSON.stringify({ scripts: { test: "node --test" } }),
       "package-lock.json": "{}\n",
-      "test/example.test.js": "import test from 'node:test';\n"
+      "test/example.test.js": "import test from 'node:test';\n",
+      ".oss-signal.json": JSON.stringify({
+        notApplicable: {
+          codeql: "Static analysis is handled outside this fixture."
+        }
+      })
     });
 
     const report = await runAction({
@@ -86,8 +97,18 @@ test("runAction writes a report and action outputs", async () => {
 
     assert.equal(report.source.type, "local");
     assert.match(await readFile(reportFile, "utf8"), /OSS Signal Report/);
-    assert.match(await readFile(githubOutput, "utf8"), /report-path<<oss_signal_output/);
+    const outputs = await readFile(githubOutput, "utf8");
+    assert.match(outputs, /passed<<oss_signal_output\n5\noss_signal_output/);
+    assert.match(outputs, /failed<<oss_signal_output\n11\noss_signal_output/);
+    assert.match(outputs, /not-applicable<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /total<<oss_signal_output\n17\noss_signal_output/);
+    assert.match(outputs, /earned-weight<<oss_signal_output\n41\noss_signal_output/);
+    assert.match(outputs, /available-weight<<oss_signal_output\n109\noss_signal_output/);
+    assert.match(outputs, /total-weight<<oss_signal_output\n113\noss_signal_output/);
+    assert.match(outputs, /not-applicable-weight<<oss_signal_output\n4\noss_signal_output/);
+    assert.match(outputs, /report-path<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /Score: \*\*\d+\/100 \([A-F]\)\*\*/);
+    assert.match(await readFile(githubSummary, "utf8"), /Weighted points/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -186,6 +207,33 @@ test("runAction writes summary output", async () => {
     const body = await readFile(reportFile, "utf8");
     assert.match(body, /OSS Signal Summary/);
     assert.match(body, /Top next steps:/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("runAction writes env output", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-env-"));
+  const reportFile = path.join(root, "score.env");
+
+  try {
+    await writeFixture(root, {
+      "README.md": "# Action fixture\n"
+    });
+
+    await runAction({
+      INPUT_PATH: root,
+      INPUT_FORMAT: "env",
+      INPUT_OUTPUT: reportFile,
+      INPUT_SUMMARY: "false"
+    });
+
+    const body = await readFile(reportFile, "utf8");
+    assert.match(body, /^OSS_SIGNAL_MODE=single$/m);
+    assert.match(body, /^OSS_SIGNAL_SCORE=\d+$/m);
+    assert.match(body, /^OSS_SIGNAL_EARNED_WEIGHT=12$/m);
+    assert.match(body, /^OSS_SIGNAL_AVAILABLE_WEIGHT=113$/m);
+    assert.match(body, /^OSS_SIGNAL_TOP_RECOMMENDATION=ci$/m);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -319,8 +367,18 @@ test("runAction writes inventory output", async () => {
     assert.equal(inventory.tool, "oss-signal");
     assert.equal(inventory.count, 2);
     assert.match(await readFile(reportFile, "utf8"), /OSS Signal Inventory/);
-    assert.match(await readFile(githubOutput, "utf8"), /score<<oss_signal_output/);
+    const outputs = await readFile(githubOutput, "utf8");
+    assert.match(outputs, /score<<oss_signal_output/);
+    assert.match(outputs, /passed<<oss_signal_output\n3\noss_signal_output/);
+    assert.match(outputs, /failed<<oss_signal_output\n31\noss_signal_output/);
+    assert.match(outputs, /not-applicable<<oss_signal_output\n0\noss_signal_output/);
+    assert.match(outputs, /total<<oss_signal_output\n34\noss_signal_output/);
+    assert.match(outputs, /earned-weight<<oss_signal_output\n34\noss_signal_output/);
+    assert.match(outputs, /available-weight<<oss_signal_output\n226\noss_signal_output/);
+    assert.match(outputs, /total-weight<<oss_signal_output\n226\noss_signal_output/);
+    assert.match(outputs, /not-applicable-weight<<oss_signal_output\n0\noss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /oss-signal inventory/);
+    assert.match(await readFile(githubSummary, "utf8"), /Weighted points/);
     assert.match(await readFile(githubSummary, "utf8"), /\[P1\] Continuous integration/);
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -335,7 +393,7 @@ test("writeGitHubStepSummary writes actionable next steps", async () => {
     await writeGitHubStepSummary(summaryFile, {
       score: 88,
       grade: "B",
-      summary: { passed: 2, failed: 1, total: 3 },
+      summary: { passed: 2, failed: 1, total: 3, earnedWeight: 22, availableWeight: 25 },
       recommendations: [
         { priority: "P1", label: "Security policy", fix: "Add SECURITY.md." }
       ],
@@ -348,6 +406,7 @@ test("writeGitHubStepSummary writes actionable next steps", async () => {
     const body = await readFile(summaryFile, "utf8");
     assert.match(body, /# oss-signal/);
     assert.match(body, /Score: \*\*88\/100 \(B\)\*\*/);
+    assert.match(body, /Weighted points \| 22\/25/);
     assert.match(body, /\[P1\] Security policy/);
     assert.match(body, /Score delta: \*\*\+4 points\*\*/);
     assert.match(body, /\| Improvements \| 1 \|/);
@@ -365,6 +424,8 @@ test("writeGitHubInventoryStepSummary writes repository rows", async () => {
     await writeGitHubInventoryStepSummary(summaryFile, {
       averageScore: 72,
       averageGrade: "C",
+      earnedWeightTotal: 144,
+      availableWeightTotal: 200,
       repositories: [
         { target: "owner/a", score: 90, grade: "A", failed: 1 },
         { target: "owner/b", score: 44, grade: "F", failed: 7 }
@@ -373,6 +434,7 @@ test("writeGitHubInventoryStepSummary writes repository rows", async () => {
 
     const body = await readFile(summaryFile, "utf8");
     assert.match(body, /# oss-signal inventory/);
+    assert.match(body, /Weighted points: \*\*144\/200\*\*/);
     assert.match(body, /owner\/a/);
     assert.match(body, /owner\/b/);
   } finally {
