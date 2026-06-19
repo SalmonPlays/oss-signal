@@ -109,7 +109,16 @@
     "summary": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["total", "passed", "failed"],
+      "required": [
+        "total",
+        "passed",
+        "failed",
+        "notApplicable",
+        "earnedWeight",
+        "availableWeight",
+        "totalWeight",
+        "notApplicableWeight"
+      ],
       "properties": {
         "total": {
           "type": "integer",

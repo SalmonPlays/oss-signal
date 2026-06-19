@@ -450,11 +450,21 @@
         "score": 100,
         "grade": "A",
         "source": "local",
-        "generatedAt": "2026-06-19T07:13:54.733Z",
-        "earnedWeight": 113,
-        "availableWeight": 113,
+        "generatedAt": "2026-06-19T23:07:22.774Z",
+        "earnedWeight": 110,
+        "availableWeight": 110,
         "totalWeight": 113,
-        "notApplicableWeight": 0
+        "notApplicableWeight": 3,
+        "config": {
+          "path": ".oss-signal.json",
+          "notApplicable": [
+            {
+              "id": "funding",
+              "reason": "No public sponsorship or funding destination is currently active for this project."
+            }
+          ],
+          "warnings": []
+        }
       }
     }
   ]

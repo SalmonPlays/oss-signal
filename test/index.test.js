@@ -403,6 +403,24 @@ test("published JSON schemas and fixtures are parseable", async () => {
   }
   const inventorySchema = JSON.parse(await readFile(path.resolve("docs/schema/inventory-output.schema.json"), "utf8"));
   assert.equal(inventorySchema.$defs.repository.properties.topRecommendations.items.$ref, "#/$defs/inventoryRecommendation");
+  assert.deepEqual(
+    new Set(inventorySchema.required),
+    new Set([
+      "tool",
+      "version",
+      "generatedAt",
+      "count",
+      "averageScore",
+      "averageGrade",
+      "minScore",
+      "maxScore",
+      "failedTotal",
+      "earnedWeightTotal",
+      "availableWeightTotal",
+      "notApplicableWeightTotal",
+      "repositories"
+    ])
+  );
 
   const [report, inventory, catalog] = await Promise.all(
     fixturePaths.map(async (fixturePath) => JSON.parse(await readFile(path.resolve(fixturePath), "utf8")))
@@ -412,6 +430,18 @@ test("published JSON schemas and fixtures are parseable", async () => {
   assert.equal(catalog.tool, "oss-signal");
   assert.equal(inventory.repositories.length, inventory.count);
   assert.equal(catalog.totalRules, 17);
+  const recommendationSchema = inventorySchema.$defs.inventoryRecommendation;
+  for (const repository of inventory.repositories) {
+    for (const recommendation of repository.topRecommendations) {
+      assert.deepEqual(
+        new Set(Object.keys(recommendation)),
+        new Set(recommendationSchema.required)
+      );
+      for (const property of Object.keys(recommendation)) {
+        assert.ok(recommendationSchema.properties[property], `inventory schema is missing ${property}`);
+      }
+    }
+  }
 });
 
 test("renderSarif emits failed checks as SARIF results", async () => {
@@ -1041,6 +1071,8 @@ test("CLI writes inventory env output", async () => {
     assert.match(env, /^OSS_SIGNAL_FAILED=31$/m);
     assert.match(env, /^OSS_SIGNAL_TOTAL=34$/m);
     assert.match(env, /^OSS_SIGNAL_AVAILABLE_WEIGHT=226$/m);
+    assert.match(env, /^OSS_SIGNAL_REGRESSIONS=0$/m);
+    assert.match(env, /^OSS_SIGNAL_SCORE_DELTA=$/m);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

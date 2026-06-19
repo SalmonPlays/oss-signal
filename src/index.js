@@ -848,7 +848,7 @@ export function renderSarif(report) {
   }));
 
   const results = report.checks
-    .filter((check) => !check.passed)
+    .filter((check) => !check.passed && !check.notApplicable)
     .map((check) => {
       const recommendation = createRecommendation(check, report.source);
       return {

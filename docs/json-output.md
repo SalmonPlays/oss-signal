@@ -57,11 +57,13 @@ OSS_SIGNAL_EARNED_WEIGHT=113
 OSS_SIGNAL_AVAILABLE_WEIGHT=113
 OSS_SIGNAL_TOTAL_WEIGHT=113
 OSS_SIGNAL_NOT_APPLICABLE_WEIGHT=0
+OSS_SIGNAL_REGRESSIONS=0
+OSS_SIGNAL_SCORE_DELTA=
 OSS_SIGNAL_RECOMMENDATIONS=0
 OSS_SIGNAL_TOP_RECOMMENDATION=
 ```
 
-Inventory mode also supports `--format env`. It writes `OSS_SIGNAL_MODE=inventory`, `OSS_SIGNAL_COUNT`, average score and grade in `OSS_SIGNAL_SCORE` / `OSS_SIGNAL_GRADE`, score range, aggregate check counts, and aggregate weighted totals.
+When `--baseline` is supplied, `OSS_SIGNAL_REGRESSIONS` and `OSS_SIGNAL_SCORE_DELTA` reflect the comparison. Inventory mode also supports `--format env`; those comparison fields are `0` and empty because inventory mode does not accept a baseline.
 
 ## Baseline Comparison
 
@@ -134,8 +136,8 @@ Stable for `0.9.x`:
 
 - Top-level `tool`, `version`, `root`, `source`, `generatedAt`, `score`, `grade`, `summary`, `checks`, and `recommendations`.
 - Optional top-level `config` when a repository uses an `oss-signal` config file.
-- Optional top-level `comparison` when `--baseline` is supplied.
 - Summary fields `total`, `passed`, `failed`, `notApplicable`, `earnedWeight`, `availableWeight`, `totalWeight`, and `notApplicableWeight`.
+- Optional top-level `comparison` when `--baseline` is supplied.
 - Check fields `id`, `label`, `weight`, `passed`, `evidence`, `why`, `fix`, and optional `notApplicable` / `configReason`.
 - Recommendation fields `id`, `label`, `weight`, `priority`, `impact`, `category`, `categoryLabel`, `suggestedFile`, `verifyCommand`, `why`, and `fix`.
 - Rule catalog fields `totalRules`, `totalWeight`, `scoring`, `categories`, and `categories[].rules[]`.

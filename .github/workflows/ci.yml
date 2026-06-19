@@ -46,15 +46,18 @@ jobs:
       - name: Verify Action outputs
         env:
           OSS_SIGNAL_SCORE: ${{ steps.oss-signal.outputs.score }}
+          OSS_SIGNAL_NOT_APPLICABLE: ${{ steps.oss-signal.outputs.not-applicable }}
           OSS_SIGNAL_EARNED_WEIGHT: ${{ steps.oss-signal.outputs.earned-weight }}
           OSS_SIGNAL_AVAILABLE_WEIGHT: ${{ steps.oss-signal.outputs.available-weight }}
           OSS_SIGNAL_TOTAL_WEIGHT: ${{ steps.oss-signal.outputs.total-weight }}
           OSS_SIGNAL_NOT_APPLICABLE_WEIGHT: ${{ steps.oss-signal.outputs.not-applicable-weight }}
         run: |
           test "$OSS_SIGNAL_SCORE" = "100"
+          test "$OSS_SIGNAL_NOT_APPLICABLE" = "1"
           test "$OSS_SIGNAL_EARNED_WEIGHT" = "$OSS_SIGNAL_AVAILABLE_WEIGHT"
-          test "$OSS_SIGNAL_AVAILABLE_WEIGHT" = "$OSS_SIGNAL_TOTAL_WEIGHT"
-          test "$OSS_SIGNAL_NOT_APPLICABLE_WEIGHT" = "0"
+          test "$OSS_SIGNAL_AVAILABLE_WEIGHT" = "110"
+          test "$OSS_SIGNAL_TOTAL_WEIGHT" = "113"
+          test "$OSS_SIGNAL_NOT_APPLICABLE_WEIGHT" = "3"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: oss-signal-action-report

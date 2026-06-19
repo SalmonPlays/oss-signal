@@ -18,7 +18,7 @@ This roadmap focuses on the next maintainer workflows that would make `oss-signa
 | Regression safety | Compare a reviewed JSON baseline and fail CI only when a previously passing maintainer-readiness check regresses. | Implemented through `--baseline`, `--fail-on-regression`, Action inputs and outputs, step summaries, and the published [single-repository schema](schema/json-output.schema.json). |
 | Code Scanning | Add a complete screenshot-backed SARIF walkthrough. | Completed in [Issue #10](https://github.com/SalmonPlays/oss-signal/issues/10), [sarif-code-scanning.md](sarif-code-scanning.md), and [output example](assets/code-scanning-results.svg). |
 | Outreach | Convert audit findings into PR-sized maintainer plans before posting externally. | Implemented in `--format plan`, [plan-output.md](plan-output.md), and [examples/github-plan.md](examples/github-plan.md). |
-| Rules | Add optional checks for funding metadata, typed package exports, and release provenance where relevant. | Focused issues and tests. |
+| Rules | Add optional checks for typed package exports and release provenance where relevant. | Funding metadata is implemented; continue with focused issues and tests for the remaining signals. |
 | Inventory | Add richer organization-level examples with grouped top findings. | Inventory report fixture and Action example. |
 
 ## What Will Not Be Optimized
