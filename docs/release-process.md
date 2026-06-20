@@ -37,7 +37,19 @@ npm publish --dry-run
 
 ## Tag
 
-The package version and tag must match:
+Release preparation and publication are intentionally separate so generated
+workflows never label an older immutable commit as the new Action release.
+
+1. Update the package version, changelog, release notes, citation, and generated
+   fixtures. Keep `docs/release-manifest.json`, `RELEASE_VERSION`, and
+   `RELEASE_COMMIT` on the latest published Action while this change is reviewed.
+2. Merge the release-preparation change to `main`.
+3. Update the release manifest to the new version and the merged preparation
+   commit, then update `RELEASE_VERSION`, `RELEASE_COMMIT`, workflow pins, and
+   current public evidence docs.
+4. Merge that publication change, tag the resulting commit, and push the tag.
+
+The package version and final tag must match:
 
 ```bash
 node src/cli.js --version
