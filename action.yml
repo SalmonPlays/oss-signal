@@ -67,6 +67,12 @@ outputs:
     description: Weighted points excluded as not applicable, or the total excluded across inventory targets.
   regressions:
     description: Number of checks that passed in the baseline and fail in the current report.
+  improvements:
+    description: Number of checks that failed in the baseline and pass in the current report.
+  new-checks:
+    description: Number of current checks that were absent from the baseline report.
+  removed-checks:
+    description: Number of baseline checks that are absent from the current report.
   score-delta:
     description: Current score minus baseline score when baseline comparison is enabled.
   report-path:

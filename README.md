@@ -419,7 +419,7 @@ Add `oss-signal` directly to a GitHub Actions workflow:
 - run: echo "score ${{ steps.oss-signal.outputs.score }} (${{ steps.oss-signal.outputs.earned-weight }}/${{ steps.oss-signal.outputs.available-weight }} weighted points)"
 ```
 
-The Action exposes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, `regressions`, `score-delta`, and `report-path` outputs. Inventory mode uses the average for `score` and totals for counts and weighted points. Baseline outputs are zero or empty when comparison is disabled. The Action also writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
+The Action exposes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, `regressions`, `improvements`, `new-checks`, `removed-checks`, `score-delta`, and `report-path` outputs. Inventory mode uses the average for `score` and totals for counts and weighted points. Baseline outputs are zero or empty when comparison is disabled. The Action also writes a concise GitHub Actions step summary by default, so reviewers can see the score and recommended next steps without downloading an artifact. Set `summary: "false"` to disable it.
 
 Protect a committed known-good baseline without forcing every repository to reach an arbitrary score first:
 
@@ -431,7 +431,7 @@ Protect a committed known-good baseline without forcing every repository to reac
     baseline: .github/oss-signal-baseline.json
     fail-on-regression: "true"
     output: oss-signal-report.json
-- run: echo "${{ steps.oss-signal.outputs.regressions }} regressions, score delta ${{ steps.oss-signal.outputs.score-delta }}"
+- run: echo "${{ steps.oss-signal.outputs.regressions }} regressions, ${{ steps.oss-signal.outputs.improvements }} improvements, score delta ${{ steps.oss-signal.outputs.score-delta }}"
 ```
 
 Baseline comparison also appears in the step summary.

@@ -51,6 +51,11 @@ jobs:
           OSS_SIGNAL_AVAILABLE_WEIGHT: ${{ steps.oss-signal.outputs.available-weight }}
           OSS_SIGNAL_TOTAL_WEIGHT: ${{ steps.oss-signal.outputs.total-weight }}
           OSS_SIGNAL_NOT_APPLICABLE_WEIGHT: ${{ steps.oss-signal.outputs.not-applicable-weight }}
+          OSS_SIGNAL_REGRESSIONS: ${{ steps.oss-signal.outputs.regressions }}
+          OSS_SIGNAL_IMPROVEMENTS: ${{ steps.oss-signal.outputs.improvements }}
+          OSS_SIGNAL_NEW_CHECKS: ${{ steps.oss-signal.outputs.new-checks }}
+          OSS_SIGNAL_REMOVED_CHECKS: ${{ steps.oss-signal.outputs.removed-checks }}
+          OSS_SIGNAL_SCORE_DELTA: ${{ steps.oss-signal.outputs.score-delta }}
         run: |
           test "$OSS_SIGNAL_SCORE" = "100"
           test "$OSS_SIGNAL_NOT_APPLICABLE" = "1"
@@ -58,6 +63,11 @@ jobs:
           test "$OSS_SIGNAL_AVAILABLE_WEIGHT" = "110"
           test "$OSS_SIGNAL_TOTAL_WEIGHT" = "113"
           test "$OSS_SIGNAL_NOT_APPLICABLE_WEIGHT" = "3"
+          test "$OSS_SIGNAL_REGRESSIONS" = "0"
+          test "$OSS_SIGNAL_IMPROVEMENTS" = "0"
+          test "$OSS_SIGNAL_NEW_CHECKS" = "0"
+          test "$OSS_SIGNAL_REMOVED_CHECKS" = "0"
+          test -z "$OSS_SIGNAL_SCORE_DELTA"
       - uses: ./
         with:
           format: env
@@ -80,6 +90,9 @@ jobs:
           test "$OSS_SIGNAL_TOTAL_WEIGHT" = "113"
           test "$OSS_SIGNAL_NOT_APPLICABLE_WEIGHT" = "3"
           test "$OSS_SIGNAL_REGRESSIONS" = "0"
+          test "$OSS_SIGNAL_IMPROVEMENTS" = "0"
+          test "$OSS_SIGNAL_NEW_CHECKS" = "0"
+          test "$OSS_SIGNAL_REMOVED_CHECKS" = "0"
           test -z "$OSS_SIGNAL_SCORE_DELTA"
           test "$OSS_SIGNAL_RECOMMENDATIONS" = "0"
           test -z "$OSS_SIGNAL_TOP_RECOMMENDATION"

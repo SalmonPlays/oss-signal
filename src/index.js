@@ -582,6 +582,9 @@ export function renderEnv(report) {
     OSS_SIGNAL_TOTAL_WEIGHT: report.summary.totalWeight,
     OSS_SIGNAL_NOT_APPLICABLE_WEIGHT: report.summary.notApplicableWeight,
     OSS_SIGNAL_REGRESSIONS: report.comparison?.summary.regressions ?? 0,
+    OSS_SIGNAL_IMPROVEMENTS: report.comparison?.summary.improvements ?? 0,
+    OSS_SIGNAL_NEW_CHECKS: report.comparison?.summary.newChecks ?? 0,
+    OSS_SIGNAL_REMOVED_CHECKS: report.comparison?.summary.removedChecks ?? 0,
     OSS_SIGNAL_SCORE_DELTA: report.comparison?.scoreDelta ?? "",
     OSS_SIGNAL_RECOMMENDATIONS: report.recommendations.length,
     OSS_SIGNAL_TOP_RECOMMENDATION: report.recommendations[0]?.id ?? ""
@@ -1170,6 +1173,9 @@ export function renderInventoryEnv(inventory) {
     OSS_SIGNAL_TOTAL_WEIGHT: inventory.repositories.reduce((sum, repository) => sum + repository.totalWeight, 0),
     OSS_SIGNAL_NOT_APPLICABLE_WEIGHT: inventory.notApplicableWeightTotal,
     OSS_SIGNAL_REGRESSIONS: 0,
+    OSS_SIGNAL_IMPROVEMENTS: 0,
+    OSS_SIGNAL_NEW_CHECKS: 0,
+    OSS_SIGNAL_REMOVED_CHECKS: 0,
     OSS_SIGNAL_SCORE_DELTA: "",
     OSS_SIGNAL_RECOMMENDATIONS: inventory.failedTotal
   });

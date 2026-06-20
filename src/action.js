@@ -48,6 +48,9 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
     "total-weight": result.totalWeight,
     "not-applicable-weight": result.notApplicableWeight,
     regressions: result.regressions ?? 0,
+    improvements: result.improvements ?? 0,
+    "new-checks": result.newChecks ?? 0,
+    "removed-checks": result.removedChecks ?? 0,
     "score-delta": result.scoreDelta ?? "",
     "report-path": options.output ?? ""
   });
@@ -139,6 +142,9 @@ async function runSingleAudit(options) {
     totalWeight: report.summary.totalWeight,
     notApplicableWeight: report.summary.notApplicableWeight,
     regressions: report.comparison?.summary.regressions ?? 0,
+    improvements: report.comparison?.summary.improvements ?? 0,
+    newChecks: report.comparison?.summary.newChecks ?? 0,
+    removedChecks: report.comparison?.summary.removedChecks ?? 0,
     scoreDelta: report.comparison?.scoreDelta,
     failUnderMessage
   };

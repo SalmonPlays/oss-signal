@@ -106,6 +106,10 @@ test("runAction writes a report and action outputs", async () => {
     assert.match(outputs, /available-weight<<oss_signal_output\n109\noss_signal_output/);
     assert.match(outputs, /total-weight<<oss_signal_output\n113\noss_signal_output/);
     assert.match(outputs, /not-applicable-weight<<oss_signal_output\n4\noss_signal_output/);
+    assert.match(outputs, /regressions<<oss_signal_output\n0\noss_signal_output/);
+    assert.match(outputs, /improvements<<oss_signal_output\n0\noss_signal_output/);
+    assert.match(outputs, /new-checks<<oss_signal_output\n0\noss_signal_output/);
+    assert.match(outputs, /removed-checks<<oss_signal_output\n0\noss_signal_output/);
     assert.match(outputs, /report-path<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /Score: \*\*\d+\/100 \([A-F]\)\*\*/);
     assert.match(await readFile(githubSummary, "utf8"), /Weighted points/);
@@ -114,7 +118,7 @@ test("runAction writes a report and action outputs", async () => {
   }
 });
 
-test("runAction exposes baseline regressions and score delta", async () => {
+test("runAction exposes the complete baseline comparison summary", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-baseline-"));
   const baselineRoot = path.join(root, "baseline");
   const currentRoot = path.join(root, "current");
@@ -134,7 +138,13 @@ test("runAction exposes baseline regressions and score delta", async () => {
       "README.md": "# Current\n",
       ".github/workflows/ci.yml": "name: CI\n"
     });
-    await writeFile(baselineFile, JSON.stringify(await auditRepository(baselineRoot)), "utf8");
+    const baselineReport = await auditRepository(baselineRoot);
+    const retiredCheck = baselineReport.checks.find((check) => check.id === "support");
+    baselineReport.checks = [
+      ...baselineReport.checks.filter((check) => check.id !== "funding"),
+      { ...retiredCheck, id: "retired-check", label: "Retired check" }
+    ];
+    await writeFile(baselineFile, JSON.stringify(baselineReport), "utf8");
 
     const report = await runAction(
       {
@@ -154,8 +164,14 @@ test("runAction exposes baseline regressions and score delta", async () => {
     assert.match(failureMessage, /1 regression\(s\) detected against baseline/);
     assert.equal(report.comparison.summary.regressions, 1);
     assert.equal(report.comparison.summary.improvements, 1);
-    assert.match(await readFile(githubOutput, "utf8"), /regressions<<oss_signal_output\n1/);
-    assert.match(await readFile(githubOutput, "utf8"), /score-delta<<oss_signal_output/);
+    assert.equal(report.comparison.summary.newChecks, 1);
+    assert.equal(report.comparison.summary.removedChecks, 1);
+    const outputs = await readFile(githubOutput, "utf8");
+    assert.match(outputs, /regressions<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /improvements<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /new-checks<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /removed-checks<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /score-delta<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /Baseline comparison/);
   } finally {
     process.exitCode = originalExitCode;

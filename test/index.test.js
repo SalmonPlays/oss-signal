@@ -137,6 +137,9 @@ test("renderEnv creates a CI-friendly key-value summary", async () => {
     assert.match(env, /^OSS_SIGNAL_TOTAL_WEIGHT=113$/m);
     assert.match(env, /^OSS_SIGNAL_NOT_APPLICABLE_WEIGHT=4$/m);
     assert.match(env, /^OSS_SIGNAL_REGRESSIONS=0$/m);
+    assert.match(env, /^OSS_SIGNAL_IMPROVEMENTS=0$/m);
+    assert.match(env, /^OSS_SIGNAL_NEW_CHECKS=0$/m);
+    assert.match(env, /^OSS_SIGNAL_REMOVED_CHECKS=0$/m);
     assert.match(env, /^OSS_SIGNAL_SCORE_DELTA=$/m);
     assert.match(env, /^OSS_SIGNAL_RECOMMENDATIONS=15$/m);
     assert.match(env, /^OSS_SIGNAL_TOP_RECOMMENDATION=ci$/m);
@@ -171,6 +174,9 @@ test("compareReports identifies regressions, improvements, and score movement", 
     assert.match(renderSummary(current), /1 regression\(s\), 1 improvement\(s\)/);
     const env = renderEnv(current);
     assert.match(env, /^OSS_SIGNAL_REGRESSIONS=1$/m);
+    assert.match(env, /^OSS_SIGNAL_IMPROVEMENTS=1$/m);
+    assert.match(env, /^OSS_SIGNAL_NEW_CHECKS=0$/m);
+    assert.match(env, /^OSS_SIGNAL_REMOVED_CHECKS=0$/m);
     assert.ok(env.includes(`OSS_SIGNAL_SCORE_DELTA=${current.comparison.scoreDelta}\n`));
   } finally {
     await rm(baselineRoot, { recursive: true, force: true });
@@ -932,6 +938,9 @@ test("CLI compares a baseline report and fails only on regressions", async () =>
     assert.equal(envResult.status, 0, envResult.stderr);
     const env = await readFile(envOutputFile, "utf8");
     assert.match(env, /^OSS_SIGNAL_REGRESSIONS=1$/m);
+    assert.match(env, /^OSS_SIGNAL_IMPROVEMENTS=1$/m);
+    assert.match(env, /^OSS_SIGNAL_NEW_CHECKS=0$/m);
+    assert.match(env, /^OSS_SIGNAL_REMOVED_CHECKS=0$/m);
     assert.ok(env.includes(`OSS_SIGNAL_SCORE_DELTA=${report.comparison.scoreDelta}\n`));
     assert.equal(report.comparison.regressions[0].id, "license");
   } finally {
@@ -1095,6 +1104,9 @@ test("CLI writes inventory env output", async () => {
     assert.match(env, /^OSS_SIGNAL_TOTAL=34$/m);
     assert.match(env, /^OSS_SIGNAL_AVAILABLE_WEIGHT=226$/m);
     assert.match(env, /^OSS_SIGNAL_REGRESSIONS=0$/m);
+    assert.match(env, /^OSS_SIGNAL_IMPROVEMENTS=0$/m);
+    assert.match(env, /^OSS_SIGNAL_NEW_CHECKS=0$/m);
+    assert.match(env, /^OSS_SIGNAL_REMOVED_CHECKS=0$/m);
     assert.match(env, /^OSS_SIGNAL_SCORE_DELTA=$/m);
   } finally {
     await rm(root, { recursive: true, force: true });

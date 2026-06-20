@@ -58,12 +58,15 @@ OSS_SIGNAL_AVAILABLE_WEIGHT=113
 OSS_SIGNAL_TOTAL_WEIGHT=113
 OSS_SIGNAL_NOT_APPLICABLE_WEIGHT=0
 OSS_SIGNAL_REGRESSIONS=0
+OSS_SIGNAL_IMPROVEMENTS=0
+OSS_SIGNAL_NEW_CHECKS=0
+OSS_SIGNAL_REMOVED_CHECKS=0
 OSS_SIGNAL_SCORE_DELTA=
 OSS_SIGNAL_RECOMMENDATIONS=0
 OSS_SIGNAL_TOP_RECOMMENDATION=
 ```
 
-When `--baseline` is supplied, `OSS_SIGNAL_REGRESSIONS` and `OSS_SIGNAL_SCORE_DELTA` reflect the comparison. Inventory mode also supports `--format env`; those comparison fields are `0` and empty because inventory mode does not accept a baseline.
+When `--baseline` is supplied, `OSS_SIGNAL_REGRESSIONS`, `OSS_SIGNAL_IMPROVEMENTS`, `OSS_SIGNAL_NEW_CHECKS`, `OSS_SIGNAL_REMOVED_CHECKS`, and `OSS_SIGNAL_SCORE_DELTA` reflect the complete comparison summary. Inventory mode also supports `--format env`; those comparison fields are zero or empty because inventory mode does not accept a baseline.
 
 The generated file is sourceable by a shell, so later CI commands can consume the contract without a JSON parser:
 
