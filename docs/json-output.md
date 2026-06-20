@@ -106,6 +106,28 @@ Inventory schema and fixture:
 
 Inventory JSON intentionally summarizes each repository instead of embedding every full check result. Use single-repository JSON when a consumer needs rule-level detail.
 
+## Trend JSON
+
+Trend mode summarizes retained single-repository JSON reports:
+
+```bash
+oss-signal --trend docs/examples/trend-reports.txt --format json --output trend-report.json
+```
+
+The manifest is a newline-delimited list of `oss-signal --format json` report paths. Blank lines and `#` comments are ignored. Reports are ordered by their `generatedAt` timestamps before score deltas and adjacent comparisons are calculated.
+
+Trend JSON includes:
+
+- `summary` with first/latest scores, score delta, average score, best/worst score, and total regressions or improvements across the retained history.
+- `reports[]` with one timeline point per retained JSON report.
+- `comparisons[]` with adjacent score deltas and detailed regression/improvement items.
+- `volatileChecks[]` listing rules whose status changed across the retained reports.
+
+Trend schema and fixture:
+
+- [schema/trend-output.schema.json](schema/trend-output.schema.json)
+- [examples/trend-report.json](examples/trend-report.json)
+
 ## Rule Catalog JSON
 
 The rule catalog can be generated without auditing a repository:
@@ -142,6 +164,7 @@ Stable for `0.9.x`:
 - Recommendation fields `id`, `label`, `weight`, `priority`, `impact`, `category`, `categoryLabel`, `suggestedFile`, `verifyCommand`, `why`, and `fix`.
 - Rule catalog fields `totalRules`, `totalWeight`, `scoring`, `categories`, and `categories[].rules[]`.
 - Inventory fields `count`, `averageScore`, `averageGrade`, `minScore`, `maxScore`, `failedTotal`, weighted totals, and `repositories[]`.
+- Trend fields `count`, `summary`, `reports[]`, `comparisons[]`, and `volatileChecks[]`.
 
 Not stable:
 

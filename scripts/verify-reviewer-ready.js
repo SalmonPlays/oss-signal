@@ -75,6 +75,7 @@ for (const filePath of [
   "docs/examples/github-action-workflow.yml",
   "docs/examples/github-code-scanning-workflow.yml",
   "docs/examples/github-inventory-workflow.yml",
+  "docs/examples/github-trend-workflow.yml",
   "docs/examples/maintainer-trial-workflow.yml"
 ]) {
   await expectContains(filePath, pinnedActionRef);
@@ -124,6 +125,9 @@ await checkWorkflowPins("generated --init workflow", renderWorkflow());
 
 await expectJsonVersion("docs/examples/github-url-report.json");
 await expectJsonVersion("docs/examples/inventory-report.json");
+await expectJsonVersion("docs/examples/trend-baseline.json");
+await expectJsonVersion("docs/examples/trend-current.json");
+await expectJsonVersion("docs/examples/trend-report.json");
 await expectJsonVersion("docs/examples/rules-catalog.json");
 await expectSarifVersion("docs/examples/self-audit.sarif");
 

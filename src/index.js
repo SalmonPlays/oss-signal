@@ -439,32 +439,198 @@ export function compareReports(currentReport, baselineReport, options = {}) {
 }
 
 export async function readBaselineReport(filePath) {
+  return readReportFile(filePath, { label: "baseline report" });
+}
+
+export async function readReportFile(filePath, options = {}) {
+  const label = options.label ?? "report";
   let source;
   try {
     source = await fs.readFile(filePath, "utf8");
   } catch (error) {
-    throw new Error(`Could not read baseline report at ${filePath}: ${error.message}`);
+    throw new Error(`Could not read ${label} at ${filePath}: ${error.message}`);
   }
 
   let report;
   try {
     report = JSON.parse(source);
   } catch (error) {
-    throw new Error(`Invalid baseline report JSON at ${filePath}: ${error.message}`);
+    throw new Error(`Invalid ${label} JSON at ${filePath}: ${error.message}`);
   }
 
   if (!report || typeof report !== "object" || Array.isArray(report)) {
-    throw new Error(`Baseline report at ${filePath} must be a JSON object`);
+    throw new Error(`${capitalize(label)} at ${filePath} must be a JSON object`);
   }
   if (!Array.isArray(report.checks)) {
-    throw new Error(`Baseline report at ${filePath} must include a checks array`);
+    throw new Error(`${capitalize(label)} at ${filePath} must include a checks array`);
   }
   const score = Number(report.score);
   if (!Number.isFinite(score) || score < 0 || score > 100) {
-    throw new Error(`Baseline report at ${filePath} must include a score from 0 to 100`);
+    throw new Error(`${capitalize(label)} at ${filePath} must include a score from 0 to 100`);
   }
 
   return report;
+}
+
+export function createTrendReport(reports, metadata = {}) {
+  if (!Array.isArray(reports) || reports.length === 0) {
+    throw new Error("trend report requires at least one oss-signal JSON report");
+  }
+
+  const entries = reports
+    .map((report, index) => {
+      const reportPath = metadata.reportPaths?.[index];
+      const label = reportPath ? `trend report ${reportPath}` : `trend report ${index + 1}`;
+      validateTrendReport(report, label);
+      return {
+        report,
+        path: reportPath,
+        index,
+        generatedAt: String(report.generatedAt)
+      };
+    })
+    .sort((left, right) => compareGeneratedAt(left, right));
+
+  const comparisons = [];
+  const points = entries.map((entry, index) => {
+    const point = trendPoint(entry.report, entry.path);
+    if (index === 0) {
+      return {
+        ...point,
+        scoreDelta: 0,
+        regressions: 0,
+        improvements: 0,
+        newChecks: 0,
+        removedChecks: 0
+      };
+    }
+
+    const previous = entries[index - 1];
+    const comparison = compareReports(entry.report, previous.report);
+    const comparisonPoint = {
+      from: reportPointer(previous.report, previous.path),
+      to: reportPointer(entry.report, entry.path),
+      scoreDelta: comparison.scoreDelta,
+      summary: comparison.summary,
+      regressions: comparison.regressions,
+      improvements: comparison.improvements
+    };
+    comparisons.push(comparisonPoint);
+
+    return {
+      ...point,
+      scoreDelta: comparison.scoreDelta,
+      regressions: comparison.summary.regressions,
+      improvements: comparison.summary.improvements,
+      newChecks: comparison.summary.newChecks,
+      removedChecks: comparison.summary.removedChecks
+    };
+  });
+
+  const scores = points.map((point) => point.score);
+  const first = points[0];
+  const latest = points[points.length - 1];
+  const averageScore = Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
+  const summary = {
+    firstScore: first.score,
+    latestScore: latest.score,
+    latestGrade: latest.grade,
+    scoreDelta: latest.score - first.score,
+    averageScore,
+    averageGrade: gradeForScore(averageScore),
+    bestScore: Math.max(...scores),
+    worstScore: Math.min(...scores),
+    regressions: comparisons.reduce((sum, comparison) => sum + comparison.summary.regressions, 0),
+    improvements: comparisons.reduce((sum, comparison) => sum + comparison.summary.improvements, 0),
+    newChecks: comparisons.reduce((sum, comparison) => sum + comparison.summary.newChecks, 0),
+    removedChecks: comparisons.reduce((sum, comparison) => sum + comparison.summary.removedChecks, 0)
+  };
+
+  return {
+    tool: "oss-signal",
+    version: VERSION,
+    generatedAt: new Date().toISOString(),
+    ...(metadata.trendPath ? { trendPath: metadata.trendPath } : {}),
+    count: points.length,
+    summary,
+    reports: points,
+    comparisons,
+    volatileChecks: trendVolatileChecks(entries)
+  };
+}
+
+export function renderTrendJson(trend) {
+  return `${JSON.stringify(trend, null, 2)}\n`;
+}
+
+export function renderTrendMarkdown(trend) {
+  const lines = [
+    "# OSS Signal Trend",
+    "",
+    `Generated: ${trend.generatedAt}`,
+    `Reports: ${trend.count}`,
+    `Score movement: **${trend.summary.firstScore}/100 -> ${trend.summary.latestScore}/100 (${formatScoreDelta(trend.summary.scoreDelta)} points)**`,
+    `Latest grade: **${trend.summary.latestGrade}**`,
+    `Average score: ${trend.summary.averageScore}/100 (${trend.summary.averageGrade})`,
+    `Score range: ${trend.summary.worstScore}-${trend.summary.bestScore}`,
+    `Regressions across history: ${trend.summary.regressions}`,
+    `Improvements across history: ${trend.summary.improvements}`
+  ];
+
+  if (trend.trendPath) {
+    lines.push(`Manifest: \`${trend.trendPath}\``);
+  }
+
+  lines.push(
+    "",
+    "## Timeline",
+    "",
+    "| Report | Generated | Score | Delta | Regressions | Improvements |",
+    "| --- | --- | ---: | ---: | ---: | ---: |"
+  );
+
+  for (const report of trend.reports) {
+    lines.push([
+      escapeTable(report.path ?? report.root),
+      escapeTable(report.generatedAt),
+      `${report.score}/100 (${report.grade})`,
+      formatScoreDelta(report.scoreDelta),
+      String(report.regressions),
+      String(report.improvements)
+    ].join(" | ").replace(/^/, "| ").replace(/$/, " |"));
+  }
+
+  const latestComparison = trend.comparisons.at(-1);
+  if (latestComparison) {
+    lines.push(
+      "",
+      "## Latest Comparison",
+      "",
+      `Score delta: ${formatScoreDelta(latestComparison.scoreDelta)} points`,
+      `Regressions: ${latestComparison.summary.regressions}`,
+      `Improvements: ${latestComparison.summary.improvements}`
+    );
+
+    if (latestComparison.regressions.length > 0) {
+      lines.push("", "Regressions to review:", "");
+      for (const item of latestComparison.regressions.slice(0, 5)) {
+        lines.push(`- **[${item.priority}] ${item.label}** (${item.weight} pts): ${item.fix}`);
+      }
+    }
+  }
+
+  lines.push("", "## Most Volatile Checks", "");
+  if (trend.volatileChecks.length === 0) {
+    lines.push("No rule status changes were found across the retained reports.");
+  } else {
+    lines.push("| Check | Changes | Latest status |", "| --- | ---: | --- |");
+    for (const check of trend.volatileChecks.slice(0, 8)) {
+      lines.push(`| ${escapeTable(check.label)} | ${check.changes} | ${escapeTable(check.latestStatus)} |`);
+    }
+  }
+
+  lines.push("");
+  return `${lines.join("\n")}\n`;
 }
 
 export function renderMarkdown(report) {
@@ -992,6 +1158,102 @@ function comparisonReportMetadata(report) {
   };
 }
 
+function compareGeneratedAt(left, right) {
+  const leftTime = Date.parse(left.generatedAt);
+  const rightTime = Date.parse(right.generatedAt);
+  const normalizedLeft = Number.isFinite(leftTime) ? leftTime : 0;
+  const normalizedRight = Number.isFinite(rightTime) ? rightTime : 0;
+  return normalizedLeft - normalizedRight || left.index - right.index;
+}
+
+function validateTrendReport(report, label) {
+  checksById(report, label);
+
+  const score = Number(report?.score);
+  if (!Number.isFinite(score) || score < 0 || score > 100) {
+    throw new Error(`${capitalize(label)} must include a score from 0 to 100`);
+  }
+
+  const generatedAt = String(report?.generatedAt ?? "");
+  if (!generatedAt || !Number.isFinite(Date.parse(generatedAt))) {
+    throw new Error(`${capitalize(label)} must include a valid generatedAt timestamp`);
+  }
+}
+
+function trendPoint(report, reportPath) {
+  return {
+    ...(reportPath ? { path: reportPath } : {}),
+    root: String(report.root ?? "unknown"),
+    source: report.source,
+    sourceLabel: sourceSummary(report.source),
+    generatedAt: String(report.generatedAt ?? new Date(0).toISOString()),
+    score: Number(report.score),
+    grade: String(report.grade ?? gradeForScore(Number(report.score))),
+    passed: Number(report.summary?.passed ?? 0),
+    failed: Number(report.summary?.failed ?? 0),
+    total: Number(report.summary?.total ?? 0),
+    notApplicable: Number(report.summary?.notApplicable ?? 0),
+    ...trendWeightFields(report.summary)
+  };
+}
+
+function trendWeightFields(summary) {
+  const fields = {};
+  for (const name of ["earnedWeight", "availableWeight", "totalWeight", "notApplicableWeight"]) {
+    if (Number.isFinite(Number(summary?.[name]))) {
+      fields[name] = Number(summary[name]);
+    }
+  }
+  return fields;
+}
+
+function reportPointer(report, reportPath) {
+  return {
+    ...(reportPath ? { path: reportPath } : {}),
+    root: String(report.root ?? "unknown"),
+    generatedAt: String(report.generatedAt ?? new Date(0).toISOString()),
+    score: Number(report.score),
+    grade: String(report.grade ?? gradeForScore(Number(report.score)))
+  };
+}
+
+function trendVolatileChecks(entries) {
+  const checkMaps = entries.map((entry) => checksById(entry.report, entry.path ? `trend report ${entry.path}` : "trend report"));
+  const ids = new Set(checkMaps.flatMap((checks) => [...checks.keys()]));
+
+  return [...ids]
+    .map((id) => {
+      let previousStatus;
+      let changes = 0;
+      let latestCheck;
+
+      for (const checks of checkMaps) {
+        const check = checks.get(id);
+        const status = check ? comparisonStatus(check) : "missing";
+        if (previousStatus !== undefined && status !== previousStatus) {
+          changes += 1;
+        }
+        if (check) {
+          latestCheck = check;
+        }
+        previousStatus = status;
+      }
+
+      const category = RULE_CATEGORY_BY_ID.get(id);
+      return {
+        id,
+        label: String(latestCheck?.label ?? id),
+        weight: Number(latestCheck?.weight ?? 0),
+        category: category?.id ?? "other",
+        categoryLabel: category?.label ?? "Other",
+        changes,
+        latestStatus: previousStatus ?? "missing"
+      };
+    })
+    .filter((check) => check.changes > 0)
+    .sort((left, right) => right.changes - left.changes || right.weight - left.weight || left.label.localeCompare(right.label));
+}
+
 function sortComparisonItems(items) {
   items.sort((a, b) => b.weight - a.weight || a.label.localeCompare(b.label));
 }
@@ -1032,6 +1294,11 @@ function appendComparisonMarkdown(lines, comparison) {
 function formatScoreDelta(delta) {
   const value = Number.isFinite(Number(delta)) ? Number(delta) : 0;
   return value > 0 ? `+${value}` : String(value);
+}
+
+function capitalize(value) {
+  const text = String(value);
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 function impactLabel(weight) {

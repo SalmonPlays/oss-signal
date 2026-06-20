@@ -131,7 +131,7 @@ The shortest reviewer path is [REVIEWER_PACKET.md](REVIEWER_PACKET.md). Public e
 - Organic discovery playbook: [docs/discovery-playbook.md](docs/discovery-playbook.md)
 - Architecture: [docs/architecture.md](docs/architecture.md)
 - Security model: [docs/security-model.md](docs/security-model.md)
-- JSON output contract and schemas: [docs/json-output.md](docs/json-output.md), [single-repository schema](docs/schema/json-output.schema.json), [inventory schema](docs/schema/inventory-output.schema.json), and [rule catalog schema](docs/schema/rules-catalog.schema.json)
+- JSON output contract and schemas: [docs/json-output.md](docs/json-output.md), [single-repository schema](docs/schema/json-output.schema.json), [inventory schema](docs/schema/inventory-output.schema.json), [trend schema](docs/schema/trend-output.schema.json), and [rule catalog schema](docs/schema/rules-catalog.schema.json)
 - Configuration: [docs/configuration.md](docs/configuration.md)
 - Rules and scoring weights: [docs/rules.md](docs/rules.md)
 - Maintainer plan output: [docs/plan-output.md](docs/plan-output.md)
@@ -163,6 +163,7 @@ Open-source projects often fail quietly because the maintainer workflow is undoc
 - Contributors can attach a report to a cleanup issue or pull request.
 - Teams can gate release readiness with `--fail-under`.
 - Teams can compare a saved JSON baseline and fail only when a previously passing check regresses.
+- Teams can retain JSON reports and publish a score trend without building their own dashboard first.
 - Foundations and working groups can compare repository hygiene across many projects.
 - CI maintainers can add it as a GitHub Action, show the score in the workflow summary, and publish the report as an artifact.
 
@@ -241,6 +242,15 @@ oss-signal . --format json --baseline oss-signal-baseline.json --fail-on-regress
 ```
 
 New rules are reported as `newChecks` and do not fail the regression gate. A regression means the same rule passed in the baseline and fails now.
+
+Summarize retained JSON reports as a score trend:
+
+```bash
+oss-signal --trend docs/examples/trend-reports.txt --format markdown --output trend-report.md
+oss-signal --trend docs/examples/trend-reports.txt --format json --output trend-report.json
+```
+
+Trend reports sort retained reports by `generatedAt`, show first-to-latest score movement, and list adjacent regressions, improvements, and volatile checks.
 
 JSON recommendations include `priority`, `impact`, `category`, `suggestedFile`, and `verifyCommand` fields so dashboards and cleanup bots can route the next maintainer action without parsing prose.
 
@@ -347,7 +357,7 @@ Summary:
 - Total checks: 16
 ```
 
-See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-summary.txt](docs/examples/github-summary.txt) for compact summary output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, [docs/examples/github-plan.md](docs/examples/github-plan.md) for plan output, [docs/examples/maintainer-trial-workflow.yml](docs/examples/maintainer-trial-workflow.yml) for workflow output, [docs/examples/adoption-pack.md](docs/examples/adoption-pack.md) for adoption-pack output, [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output, and [docs/examples/rules-catalog.json](docs/examples/rules-catalog.json) for the machine-readable rule catalog.
+See [docs/self-audit.md](docs/self-audit.md) for the full local self-audit report, [docs/examples/github-url-report.md](docs/examples/github-url-report.md) for the GitHub URL audit output, [docs/examples/github-summary.txt](docs/examples/github-summary.txt) for compact summary output, [docs/examples/github-issue-body.md](docs/examples/github-issue-body.md) for issue output, [docs/examples/github-plan.md](docs/examples/github-plan.md) for plan output, [docs/examples/maintainer-trial-workflow.yml](docs/examples/maintainer-trial-workflow.yml) for workflow output, [docs/examples/adoption-pack.md](docs/examples/adoption-pack.md) for adoption-pack output, [docs/examples/self-audit.sarif](docs/examples/self-audit.sarif) for SARIF output, [docs/examples/trend-report.json](docs/examples/trend-report.json) for trend output, and [docs/examples/rules-catalog.json](docs/examples/rules-catalog.json) for the machine-readable rule catalog.
 
 The [Repository health workflow](.github/workflows/repository-health.yml) runs the pinned v0.10.0 release commit, uploads the Markdown report and adoption pack as artifacts, includes a SHA256 checksum manifest, and uploads SARIF to GitHub Code Scanning on non-PR runs. The [Repository inventory workflow](.github/workflows/repository-inventory.yml) runs the inventory mode from CI and uploads a multi-repository report artifact.
 
@@ -450,6 +460,17 @@ Run an inventory from CI:
     summary: "true"
 ```
 
+Publish a retained-report trend from CI:
+
+```yaml
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+  with:
+    trend: docs/examples/trend-reports.txt
+    format: markdown
+    output: oss-signal-trend.md
+    summary: "true"
+```
+
 Generate an editable Issue body from CI:
 
 ```yaml
@@ -498,7 +519,7 @@ jobs:
             oss-signal-artifact-sha256.txt
 ```
 
-See [docs/examples/github-action-workflow.yml](docs/examples/github-action-workflow.yml) for a copyable workflow, [docs/examples/github-inventory-workflow.yml](docs/examples/github-inventory-workflow.yml) for an inventory workflow, and [docs/examples/github-code-scanning-workflow.yml](docs/examples/github-code-scanning-workflow.yml) for a workflow that uploads SARIF to GitHub Code Scanning.
+See [docs/examples/github-action-workflow.yml](docs/examples/github-action-workflow.yml) for a copyable workflow, [docs/examples/github-inventory-workflow.yml](docs/examples/github-inventory-workflow.yml) for an inventory workflow, [docs/examples/github-trend-workflow.yml](docs/examples/github-trend-workflow.yml) for a retained-report trend workflow, and [docs/examples/github-code-scanning-workflow.yml](docs/examples/github-code-scanning-workflow.yml) for a workflow that uploads SARIF to GitHub Code Scanning.
 
 Upload SARIF to GitHub Code Scanning:
 
@@ -539,8 +560,7 @@ You can also run the CLI directly in CI:
 
 - Ecosystem-specific profiles for Python, Rust, Go, and JavaScript packages
 - Release automation and provenance metadata checks
-- Maintainer score trends over time
-- Historical trend dashboards across retained baseline reports
+- Richer maintainer score visualizations over retained reports
 - Organization-level repository inventory dashboards
 
 ## Release Process

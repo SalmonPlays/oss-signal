@@ -36,6 +36,12 @@ Audit several repositories from one inventory file:
 oss-signal --inventory docs/examples/inventory-targets.txt --format markdown --output inventory-report.md
 ```
 
+Summarize retained JSON reports into a score trend:
+
+```bash
+oss-signal --trend docs/examples/trend-reports.txt --format markdown --output trend-report.md
+```
+
 Use SARIF when the findings should appear in Code Scanning:
 
 ```bash
@@ -131,6 +137,17 @@ For a repository inventory, commit a newline-delimited target list and pass it t
   with:
     inventory: docs/examples/inventory-targets.txt
     output: inventory-report.md
+    summary: "true"
+```
+
+For score history, keep retained JSON report paths in a newline-delimited manifest and pass it through the Action:
+
+```yaml
+- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+  with:
+    trend: docs/examples/trend-reports.txt
+    format: markdown
+    output: oss-signal-trend.md
     summary: "true"
 ```
 

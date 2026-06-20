@@ -1,0 +1,50 @@
+{
+  "tool": "oss-signal",
+  "version": "0.10.0",
+  "root": "https://github.com/example/project",
+  "source": {
+    "type": "github",
+    "location": "https://github.com/example/project",
+    "owner": "example",
+    "repo": "project",
+    "ref": "main"
+  },
+  "generatedAt": "2026-06-18T00:00:00.000Z",
+  "score": 72,
+  "grade": "C",
+  "summary": {
+    "passed": 10,
+    "failed": 6,
+    "total": 16
+  },
+  "checks": [
+    {
+      "id": "readme",
+      "label": "README",
+      "weight": 12,
+      "passed": true,
+      "evidence": "README.md",
+      "why": "A clear README is the front door for users and contributors.",
+      "fix": "Add setup, usage, contribution, support, and project status sections to README.md."
+    },
+    {
+      "id": "license",
+      "label": "License",
+      "weight": 10,
+      "passed": false,
+      "evidence": "Missing: Add an OSI-approved license file such as MIT, Apache-2.0, BSD-3-Clause, or MPL-2.0.",
+      "why": "A license tells downstream users what they may legally do with the code.",
+      "fix": "Add an OSI-approved license file such as MIT, Apache-2.0, BSD-3-Clause, or MPL-2.0."
+    },
+    {
+      "id": "ci",
+      "label": "Continuous integration",
+      "weight": 12,
+      "passed": true,
+      "evidence": ".github/workflows/ci.yml",
+      "why": "CI catches regressions before maintainers merge changes.",
+      "fix": "Add a GitHub Actions workflow that runs linting and tests on pushes and pull requests."
+    }
+  ],
+  "recommendations": []
+}

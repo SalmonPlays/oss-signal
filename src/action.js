@@ -6,9 +6,10 @@ import {
   auditTarget,
   compareReports,
   createInventoryReport,
-  renderEnv,
+  createTrendReport,
   parseInventoryTargets,
   renderAdoption,
+  renderEnv,
   renderInventoryEnv,
   renderInventoryJson,
   renderInventoryMarkdown,
@@ -17,8 +18,11 @@ import {
   renderPlan,
   renderSarif,
   renderSummary,
+  renderTrendJson,
+  renderTrendMarkdown,
   renderWorkflow,
-  readBaselineReport
+  readBaselineReport,
+  readReportFile
 } from "./index.js";
 
 const OUTPUT_DELIMITER = "oss_signal_output";
@@ -27,6 +31,8 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
   const options = parseActionInputs(env);
   const result = options.inventory
     ? await runInventory(options)
+    : options.trend
+      ? await runTrend(options)
     : await runSingleAudit(options);
 
   if (options.output) {
@@ -55,6 +61,8 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
   if (options.summary) {
     if (result.inventory) {
       await writeGitHubInventoryStepSummary(env.GITHUB_STEP_SUMMARY, result.inventory);
+    } else if (result.trend) {
+      await writeGitHubTrendStepSummary(env.GITHUB_STEP_SUMMARY, result.trend);
     } else {
       await writeGitHubStepSummary(env.GITHUB_STEP_SUMMARY, result.report);
     }
@@ -65,7 +73,7 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
     process.exitCode = 1;
   }
 
-  return result.inventory ?? result.report;
+  return result.inventory ?? result.trend ?? result.report;
 }
 
 export function parseActionInputs(env = process.env) {
@@ -77,10 +85,20 @@ export function parseActionInputs(env = process.env) {
   if (inventory && !["markdown", "json", "env"].includes(format)) {
     throw new Error("inventory supports format markdown, json, or env");
   }
+  const trend = emptyToUndefined(getInput(env, "trend"));
+  if (trend && !["markdown", "json"].includes(format)) {
+    throw new Error("trend supports format markdown or json");
+  }
   const baselinePath = emptyToUndefined(getInput(env, "baseline"));
   const failOnRegression = parseOptionalBoolean(getInput(env, "fail-on-regression"), "fail-on-regression") ?? false;
+  if (inventory && trend) {
+    throw new Error("inventory cannot be combined with trend");
+  }
   if (inventory && (baselinePath || failOnRegression)) {
     throw new Error("inventory cannot be combined with baseline or fail-on-regression");
+  }
+  if (trend && (baselinePath || failOnRegression)) {
+    throw new Error("trend cannot be combined with baseline or fail-on-regression");
   }
   if (failOnRegression && !baselinePath) {
     throw new Error("fail-on-regression requires baseline");
@@ -97,6 +115,7 @@ export function parseActionInputs(env = process.env) {
     baselinePath,
     failOnRegression,
     inventory,
+    trend,
     summary: parseOptionalBoolean(getInput(env, "summary"), "summary") ?? true
   };
 }
@@ -189,6 +208,48 @@ async function runInventory(options) {
     availableWeight: inventory.availableWeightTotal,
     totalWeight: inventory.repositories.reduce((sum, repository) => sum + repository.totalWeight, 0),
     notApplicableWeight: inventory.notApplicableWeightTotal,
+    failUnderMessage
+  };
+}
+
+async function runTrend(options) {
+  const trendText = await fs.readFile(options.trend, "utf8");
+  const reportPaths = parseInventoryTargets(trendText);
+  if (reportPaths.length === 0) {
+    throw new Error("trend file does not contain any report paths");
+  }
+
+  const reports = [];
+  for (const reportPath of reportPaths) {
+    reports.push(await readReportFile(reportPath, { label: "trend report" }));
+  }
+
+  const trend = createTrendReport(reports, {
+    trendPath: options.trend,
+    reportPaths
+  });
+  const body = options.format === "json"
+    ? renderTrendJson(trend)
+    : renderTrendMarkdown(trend);
+  const failUnderMessage = typeof options.failUnder === "number" && trend.summary.latestScore < options.failUnder
+    ? `oss-signal: latest trend score ${trend.summary.latestScore} is below fail-under ${options.failUnder}\n`
+    : undefined;
+
+  return {
+    trend,
+    body,
+    score: trend.summary.latestScore,
+    grade: trend.summary.latestGrade,
+    passed: trend.reports.at(-1)?.passed ?? 0,
+    failed: trend.reports.at(-1)?.failed ?? 0,
+    notApplicable: trend.reports.at(-1)?.notApplicable ?? 0,
+    total: trend.reports.at(-1)?.total ?? 0,
+    earnedWeight: trend.reports.at(-1)?.earnedWeight ?? "",
+    availableWeight: trend.reports.at(-1)?.availableWeight ?? "",
+    totalWeight: trend.reports.at(-1)?.totalWeight ?? "",
+    notApplicableWeight: trend.reports.at(-1)?.notApplicableWeight ?? "",
+    regressions: trend.summary.regressions,
+    scoreDelta: trend.summary.scoreDelta,
     failUnderMessage
   };
 }
@@ -330,6 +391,30 @@ function weightedInventoryLines(inventory) {
   return [
     `Weighted points: **${inventory.earnedWeightTotal}/${inventory.availableWeightTotal}**`
   ];
+}
+
+export async function writeGitHubTrendStepSummary(summaryFile, trend) {
+  if (!summaryFile) {
+    return;
+  }
+
+  const rows = trend.reports
+    .map((report) => `| ${report.path ?? report.root} | ${report.score}/100 (${report.grade}) | ${formatScoreDelta(report.scoreDelta)} | ${report.regressions} | ${report.improvements} |`)
+    .join("\n");
+  const body = [
+    "# oss-signal trend",
+    "",
+    `Latest score: **${trend.summary.latestScore}/100 (${trend.summary.latestGrade})**`,
+    `Score movement: **${formatScoreDelta(trend.summary.scoreDelta)} points**`,
+    `Reports: ${trend.count}`,
+    "",
+    "| Report | Score | Delta | Regressions | Improvements |",
+    "| --- | ---: | ---: | ---: | ---: |",
+    rows,
+    ""
+  ].join("\n");
+
+  await fs.appendFile(summaryFile, body, "utf8");
 }
 
 function getInput(env, name) {
