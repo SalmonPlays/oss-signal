@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           persist-credentials: false
-      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+      - uses: SalmonPlays/oss-signal@5f98a7c560b90dbd1ba87dd0222bae331e0993c9 # trend feature snapshot
         id: oss-signal
         with:
           trend: docs/examples/trend-reports.txt

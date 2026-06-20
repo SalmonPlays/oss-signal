@@ -463,7 +463,7 @@ Run an inventory from CI:
 Publish a retained-report trend from CI:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@5f98a7c560b90dbd1ba87dd0222bae331e0993c9 # trend feature snapshot
   with:
     trend: docs/examples/trend-reports.txt
     format: markdown

@@ -11,6 +11,7 @@ const tag = `v${version}`;
 const publishedVersion = releaseManifest.version;
 const publishedTag = `v${publishedVersion}`;
 const pinnedActionRef = `SalmonPlays/oss-signal@${releaseManifest.commit}`;
+const trendActionRef = "SalmonPlays/oss-signal@5f98a7c560b90dbd1ba87dd0222bae331e0993c9";
 const errors = [];
 const requireEvidence = process.argv.includes("--require-evidence");
 const currentSelectionUpdate = await latestDatedDoc(
@@ -75,12 +76,14 @@ for (const filePath of [
   "docs/examples/github-action-workflow.yml",
   "docs/examples/github-code-scanning-workflow.yml",
   "docs/examples/github-inventory-workflow.yml",
-  "docs/examples/github-trend-workflow.yml",
   "docs/examples/maintainer-trial-workflow.yml"
 ]) {
   await expectContains(filePath, pinnedActionRef);
   await checkWorkflowPins(filePath, await read(filePath));
 }
+
+await expectContains("docs/examples/github-trend-workflow.yml", trendActionRef);
+await checkWorkflowPins("docs/examples/github-trend-workflow.yml", await read("docs/examples/github-trend-workflow.yml"));
 
 for (const filePath of [
   ".github/workflows/repository-health.yml",
