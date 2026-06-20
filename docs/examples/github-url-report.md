@@ -2,16 +2,19 @@
 
 Repository: `https://github.com/SalmonPlays/oss-signal`
 Source: GitHub (SalmonPlays/oss-signal@main)
-Generated: 2026-06-19T07:13:58.422Z
+Generated: 2026-06-20T12:00:40.637Z
 
-Score: **97/100** (A)
+Score: **100/100** (A)
 
 ## Summary
 
 - Passed: 16
-- Failed: 1
+- Failed: 0
 - Total checks: 17
-- Weighted points: 110/113
+- Weighted points: 110/110
+- Not applicable: 1
+- Excluded weight: 3
+- Config: .oss-signal.json
 - Default branch: main
 - GitHub stars: 2
 - GitHub community health: 100
@@ -27,7 +30,7 @@ Score: **97/100** (A)
 | PASS | Code of conduct | `CODE_OF_CONDUCT.md` | Community norms reduce ambiguity during difficult interactions. |
 | PASS | Changelog | `CHANGELOG.md` | Users need a durable place to understand release impact. |
 | PASS | Support policy | `SUPPORT.md` | Support boundaries help maintainers avoid turning every request into unpaid consulting. |
-| FAIL | Funding metadata | Missing: Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose. | Funding metadata gives maintainers a visible route for sponsorship and sustainability support. |
+| N/A | Funding metadata | Not applicable: No public sponsorship or funding destination is currently active for this project. | Funding metadata gives maintainers a visible route for sponsorship and sustainability support. |
 | PASS | Maintainer ownership | `MAINTAINERS.md` | Clear ownership and review routing make outside contributions easier to triage. |
 | PASS | Continuous integration | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/workflows/evidence-verify.yml`, `.github/workflows/release.yml`, `.github/workflows/repository-health.yml` | CI catches regressions before maintainers merge changes. |
 | PASS | Tests | `test/action.test.js`, `test/index.test.js` | Tests make review safer and lower the cost of outside contributions. |
@@ -40,5 +43,5 @@ Score: **97/100** (A)
 
 ## Recommended Next Steps
 
-- **[P3] Funding metadata** (3 pts, low impact, `.github/FUNDING.yml`): Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose.
+No missing checks. Keep the report current as the repository evolves.
 

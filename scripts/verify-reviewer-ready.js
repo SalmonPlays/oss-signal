@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 
 import { access, readFile, readdir } from "node:fs/promises";
-import { RELEASE_COMMIT, renderWorkflow } from "../src/index.js";
+import { RELEASE_COMMIT, RELEASE_VERSION, renderWorkflow } from "../src/index.js";
 
 const packageJson = JSON.parse(await read("package.json"));
 const packageLock = JSON.parse(await read("package-lock.json"));
 const releaseManifest = JSON.parse(await read("docs/release-manifest.json"));
 const version = packageJson.version;
 const tag = `v${version}`;
+const publishedVersion = releaseManifest.version;
+const publishedTag = `v${publishedVersion}`;
 const pinnedActionRef = `SalmonPlays/oss-signal@${releaseManifest.commit}`;
 const errors = [];
 const requireEvidence = process.argv.includes("--require-evidence");
@@ -26,6 +28,7 @@ check(packageLock.version === version, `package-lock.json version is ${packageLo
 check(packageLock.packages?.[""]?.version === version, `package-lock root version is ${packageLock.packages?.[""]?.version}`);
 check(/^[0-9a-f]{40}$/.test(releaseManifest.commit), `docs/release-manifest.json commit is ${releaseManifest.commit}`);
 check(RELEASE_COMMIT === releaseManifest.commit, `src/index.js release commit is ${RELEASE_COMMIT}`);
+check(RELEASE_VERSION === publishedVersion, `src/index.js release version is ${RELEASE_VERSION}`);
 
 await expectContains("src/index.js", `export const VERSION = "${version}";`);
 await expectContains("CITATION.cff", `version: "${version}"`);
@@ -48,8 +51,8 @@ const currentDocs = [
 ];
 
 for (const filePath of currentDocs) {
-  await expectContains(filePath, version);
-  await expectContains(filePath, tag);
+  await expectContains(filePath, publishedVersion);
+  await expectContains(filePath, publishedTag);
 }
 
 const currentSelectionUpdateName = currentSelectionUpdate.slice("docs/".length);
@@ -143,7 +146,10 @@ if (errors.length > 0) {
   }
   process.exitCode = 1;
 } else {
-  console.log(`PASS reviewer readiness checks for ${version}${requireEvidence ? " with public evidence" : ""}`);
+  const releaseState = version === publishedVersion
+    ? version
+    : `${version} release candidate (published ${publishedVersion})`;
+  console.log(`PASS reviewer readiness checks for ${releaseState}${requireEvidence ? " with public evidence" : ""}`);
 }
 
 async function read(filePath) {
