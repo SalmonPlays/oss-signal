@@ -58,10 +58,37 @@ jobs:
           test "$OSS_SIGNAL_AVAILABLE_WEIGHT" = "110"
           test "$OSS_SIGNAL_TOTAL_WEIGHT" = "113"
           test "$OSS_SIGNAL_NOT_APPLICABLE_WEIGHT" = "3"
+      - uses: ./
+        with:
+          format: env
+          fail-under: "100"
+          output: oss-signal-action-report.env
+          summary: "false"
+      - name: Verify sourceable env report
+        shell: bash
+        run: |
+          set -o allexport
+          source oss-signal-action-report.env
+          set +o allexport
+          test "$OSS_SIGNAL_MODE" = "single"
+          test "$OSS_SIGNAL_SCORE" = "100"
+          test "$OSS_SIGNAL_PASSED" = "16"
+          test "$OSS_SIGNAL_FAILED" = "0"
+          test "$OSS_SIGNAL_NOT_APPLICABLE" = "1"
+          test "$OSS_SIGNAL_EARNED_WEIGHT" = "$OSS_SIGNAL_AVAILABLE_WEIGHT"
+          test "$OSS_SIGNAL_AVAILABLE_WEIGHT" = "110"
+          test "$OSS_SIGNAL_TOTAL_WEIGHT" = "113"
+          test "$OSS_SIGNAL_NOT_APPLICABLE_WEIGHT" = "3"
+          test "$OSS_SIGNAL_REGRESSIONS" = "0"
+          test -z "$OSS_SIGNAL_SCORE_DELTA"
+          test "$OSS_SIGNAL_RECOMMENDATIONS" = "0"
+          test -z "$OSS_SIGNAL_TOP_RECOMMENDATION"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: oss-signal-action-report
-          path: oss-signal-action-report.md
+          path: |
+            oss-signal-action-report.md
+            oss-signal-action-report.env
 
   package:
     runs-on: ubuntu-latest

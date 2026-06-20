@@ -9,6 +9,7 @@
 - Exposed earned, available, total, and not-applicable weighted points in JSON, SARIF, Markdown, summary, inventory, and Action summaries.
 - Added complete GitHub Action outputs for passed, failed, not-applicable, and total check counts plus earned, available, total, and not-applicable weighted points.
 - Added `--format env` for CI-friendly `OSS_SIGNAL_*` key-value output in single-repository and inventory reports.
+- Added baseline-aware env contract coverage and CI dogfooding that sources and verifies the generated report.
 - Added JSON baseline comparison with regression, improvement, new-rule, removed-rule,
   and score-delta metadata across CLI, Markdown, summary, SARIF, and Action output.
 - Added `--fail-on-regression` plus GitHub Action `baseline` and

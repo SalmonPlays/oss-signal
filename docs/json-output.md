@@ -65,6 +65,14 @@ OSS_SIGNAL_TOP_RECOMMENDATION=
 
 When `--baseline` is supplied, `OSS_SIGNAL_REGRESSIONS` and `OSS_SIGNAL_SCORE_DELTA` reflect the comparison. Inventory mode also supports `--format env`; those comparison fields are `0` and empty because inventory mode does not accept a baseline.
 
+The generated file is sourceable by a shell, so later CI commands can consume the contract without a JSON parser:
+
+```bash
+. ./oss-signal.env
+test "$OSS_SIGNAL_SCORE" -ge 80
+test "$OSS_SIGNAL_REGRESSIONS" -eq 0
+```
+
 ## Baseline Comparison
 
 Generate a known-good JSON report, then compare a later audit with it:
