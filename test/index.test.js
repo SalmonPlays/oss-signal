@@ -26,6 +26,7 @@ import {
   renderSummary,
   renderWorkflow,
   RELEASE_COMMIT,
+  RELEASE_VERSION,
   VERSION
 } from "../src/index.js";
 
@@ -336,6 +337,7 @@ test("renderAdoption creates a no-fail maintainer trial pack", async () => {
     assert.match(adoption, /\[P1\] License/);
     assert.match(adoption, new RegExp(`oss-signal@${VERSION.replaceAll(".", "\\.")}`));
     assert.match(adoption, new RegExp(`SalmonPlays/oss-signal@${RELEASE_COMMIT}`));
+    assert.match(adoption, new RegExp(`tree/v${RELEASE_VERSION.replaceAll(".", "\\.")}`));
     assert.match(adoption, /Do not ask for stars/);
     assert.match(adoption, /Do not present this pack as adoption/);
     assert.doesNotMatch(adoption, /\n\n$/);
@@ -351,6 +353,7 @@ test("renderWorkflow creates a no-fail Action trial workflow", () => {
   assert.match(workflow, /workflow_dispatch:/);
   assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"/);
   assert.match(workflow, new RegExp(`uses: SalmonPlays/oss-signal@${RELEASE_COMMIT}`));
+  assert.match(workflow, new RegExp(`# v${RELEASE_VERSION.replaceAll(".", "\\.")}`));
   assert.match(workflow, /actions\/checkout@[0-9a-f]{40} # v6/);
   assert.match(workflow, /actions\/upload-artifact@[0-9a-f]{40} # v7/);
   assert.match(workflow, /persist-credentials: false/);
@@ -1177,7 +1180,8 @@ test("auditGitHubRepository scores remote repository trees", async () => {
           { type: "blob", path: "package.json" },
           { type: "blob", path: "package-lock.json" },
           { type: "blob", path: "test/index.test.js" },
-          { type: "blob", path: ".github/workflows/ci.yml" }
+          { type: "blob", path: ".github/workflows/ci.yml" },
+          { type: "blob", path: ".oss-signal.json" }
         ]
       });
     }
@@ -1191,13 +1195,30 @@ test("auditGitHubRepository scores remote repository trees", async () => {
         }
       });
     }
+    if (url === "https://api.github.com/repos/example/project/contents/.oss-signal.json?ref=main") {
+      const content = JSON.stringify({
+        notApplicable: {
+          funding: "No public funding destination is active."
+        }
+      });
+      return jsonResponse({
+        encoding: "base64",
+        size: Buffer.byteLength(content),
+        content: Buffer.from(content).toString("base64")
+      });
+    }
     throw new Error(`Unexpected URL: ${url}`);
   };
 
-  const report = await auditGitHubRepository("example/project", { fetchImpl });
+  const report = await auditGitHubRepository("example/project", {
+    fetchImpl,
+    maxFiles: 3
+  });
   assert.equal(report.source.type, "github");
   assert.equal(report.source.stars, 42);
   assert.equal(report.checks.find((check) => check.id === "code-of-conduct").passed, true);
+  assert.equal(report.checks.find((check) => check.id === "funding").notApplicable, true);
+  assert.equal(report.config.path, ".oss-signal.json");
   assert.match(renderMarkdown(report), /Source: GitHub \(example\/project@main\)/);
 });
 

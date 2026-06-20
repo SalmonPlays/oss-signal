@@ -1,6 +1,6 @@
 {
   "tool": "oss-signal",
-  "version": "0.9.9",
+  "version": "0.10.0",
   "root": "https://github.com/SalmonPlays/oss-signal",
   "source": {
     "type": "github",
@@ -11,21 +11,31 @@
     "defaultBranch": "main",
     "stars": 2,
     "forks": 1,
-    "openIssues": 4,
+    "openIssues": 1,
     "healthPercentage": 100
   },
-  "generatedAt": "2026-06-19T07:13:56.542Z",
-  "score": 97,
+  "generatedAt": "2026-06-20T12:00:40.638Z",
+  "score": 100,
   "grade": "A",
   "summary": {
     "total": 17,
     "passed": 16,
-    "failed": 1,
-    "notApplicable": 0,
+    "failed": 0,
+    "notApplicable": 1,
     "earnedWeight": 110,
-    "availableWeight": 113,
+    "availableWeight": 110,
     "totalWeight": 113,
-    "notApplicableWeight": 0
+    "notApplicableWeight": 3
+  },
+  "config": {
+    "path": ".oss-signal.json",
+    "notApplicable": [
+      {
+        "id": "funding",
+        "reason": "No public sponsorship or funding destination is currently active for this project."
+      }
+    ],
+    "warnings": []
   },
   "checks": [
     {
@@ -109,10 +119,14 @@
       "id": "funding",
       "label": "Funding metadata",
       "weight": 3,
-      "passed": false,
-      "evidence": [],
+      "passed": true,
+      "evidence": [
+        "Configured not applicable: No public sponsorship or funding destination is currently active for this project."
+      ],
       "why": "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
-      "fix": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
+      "fix": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose.",
+      "notApplicable": true,
+      "configReason": "No public sponsorship or funding destination is currently active for this project."
     },
     {
       "id": "maintainer-ownership",
@@ -227,19 +241,5 @@
       "fix": "Commit the lockfile for application-style projects, or document why this library intentionally omits one."
     }
   ],
-  "recommendations": [
-    {
-      "id": "funding",
-      "label": "Funding metadata",
-      "weight": 3,
-      "priority": "P3",
-      "impact": "low",
-      "category": "community",
-      "categoryLabel": "Community files",
-      "suggestedFile": ".github/FUNDING.yml",
-      "verifyCommand": "oss-signal SalmonPlays/oss-signal --format summary",
-      "why": "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
-      "fix": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
-    }
-  ]
+  "recommendations": []
 }

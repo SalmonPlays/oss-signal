@@ -2,7 +2,8 @@ import { promises as fs } from "node:fs";
 import https from "node:https";
 import path from "node:path";
 
-export const VERSION = "0.9.9";
+export const VERSION = "0.10.0";
+export const RELEASE_VERSION = "0.9.9";
 export const RELEASE_COMMIT = "3e086d4b2cb938a9aa67b12585a80f28632d9e91";
 
 const CHECKOUT_ACTION_COMMIT = "df4cb1c069e1874edd31b4311f1884172cec0e10";
@@ -316,6 +317,14 @@ export async function auditGitHubRepository(target, options = {}) {
   const ref = options.ref ?? repo.default_branch;
   const tree = await listGitHubRepositoryFiles(fetchImpl, parsed.owner, parsed.repo, ref, headers, options);
   const communityProfile = await fetchCommunityProfile(fetchImpl, parsed.owner, parsed.repo, headers);
+  const config = options.config ?? await loadGitHubConfig(
+    fetchImpl,
+    parsed.owner,
+    parsed.repo,
+    ref,
+    headers,
+    tree
+  );
 
   return createReportFromTree(tree, {
     root: repo.html_url,
@@ -332,7 +341,7 @@ export async function auditGitHubRepository(target, options = {}) {
       healthPercentage: communityProfile?.health_percentage
     },
     communityProfile,
-    config: options.config
+    config
   });
 }
 
@@ -756,7 +765,7 @@ export function renderAdoption(report) {
     "## Verification Links",
     "",
     `- npm package: https://www.npmjs.com/package/oss-signal/v/${VERSION}`,
-    `- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v${VERSION}`,
+    `- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v${RELEASE_VERSION}`,
     "- Rule catalog: `oss-signal --list-rules --format json`",
     "",
     "## Boundaries",
@@ -790,12 +799,12 @@ jobs:
       - uses: actions/checkout@${CHECKOUT_ACTION_COMMIT} # v6
         with:
           persist-credentials: false
-      - uses: SalmonPlays/oss-signal@${RELEASE_COMMIT} # v${VERSION}
+      - uses: SalmonPlays/oss-signal@${RELEASE_COMMIT} # v${RELEASE_VERSION}
         id: oss-signal
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@${RELEASE_COMMIT} # v${VERSION}
+      - uses: SalmonPlays/oss-signal@${RELEASE_COMMIT} # v${RELEASE_VERSION}
         if: always()
         id: oss-signal-adoption
         with:
@@ -1395,10 +1404,16 @@ async function listGitHubRepositoryFiles(fetchImpl, owner, repo, ref, headers, o
   const maxFiles = options.maxFiles ?? 20000;
   const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${encodeURIComponent(ref)}?recursive=1`;
   const data = await fetchJson(fetchImpl, treeUrl, headers);
-  return (data.tree ?? [])
+  const files = (data.tree ?? [])
     .filter((entry) => entry.type === "blob" && typeof entry.path === "string")
-    .map((entry) => entry.path)
-    .slice(0, maxFiles);
+    .map((entry) => entry.path);
+  const configPaths = AUTO_CONFIG_PATHS.filter((candidate) => files.includes(candidate));
+  const configPathSet = new Set(configPaths);
+
+  return [
+    ...configPaths,
+    ...files.filter((file) => !configPathSet.has(file))
+  ].slice(0, maxFiles);
 }
 
 async function fetchCommunityProfile(fetchImpl, owner, repo, headers) {
@@ -1410,6 +1425,37 @@ async function fetchCommunityProfile(fetchImpl, owner, repo, headers) {
       return undefined;
     }
     throw error;
+  }
+}
+
+async function loadGitHubConfig(fetchImpl, owner, repo, ref, headers, tree) {
+  const candidate = AUTO_CONFIG_PATHS.find((configPath) => tree.includes(configPath));
+  if (!candidate) {
+    return undefined;
+  }
+
+  const encodedPath = candidate.split("/").map(encodeURIComponent).join("/");
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}?ref=${encodeURIComponent(ref)}`;
+  const data = await fetchJson(fetchImpl, url, headers);
+  if (data.encoding !== "base64" || typeof data.content !== "string") {
+    throw new Error(`GitHub config ${candidate} did not contain base64 file content`);
+  }
+  if (typeof data.size === "number" && data.size > 65_536) {
+    throw new Error(`GitHub config ${candidate} exceeds the 65536 byte limit`);
+  }
+
+  const bodyBuffer = Buffer.from(data.content.replace(/\s/g, ""), "base64");
+  if (bodyBuffer.byteLength > 65_536) {
+    throw new Error(`GitHub config ${candidate} exceeds the 65536 byte limit`);
+  }
+  const body = bodyBuffer.toString("utf8");
+  try {
+    return {
+      ...JSON.parse(body),
+      __path: candidate
+    };
+  } catch (error) {
+    throw new Error(`Invalid oss-signal config JSON at ${candidate}: ${error.message}`);
   }
 }
 

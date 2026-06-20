@@ -6,7 +6,8 @@ This is useful for real maintainer workflows because not every repository should
 
 ## Auto-Detected Config Files
 
-Local audits automatically read the first matching file at the repository root:
+Local and public GitHub audits automatically read the first matching file at
+the repository root:
 
 - `.oss-signal.json`
 - `.oss-signalrc.json`
@@ -17,6 +18,11 @@ You can also pass a config explicitly:
 ```bash
 oss-signal . --config .oss-signal.json
 ```
+
+For a GitHub URL or `owner/repo` target, automatic detection reads the config
+from the audited ref through the GitHub Contents API. An explicit `--config`
+continues to read the named local file, which is useful for testing a proposed
+configuration before committing it.
 
 The GitHub Action supports the same path:
 
@@ -67,6 +73,7 @@ Current rule IDs:
 - `changelog`
 - `support`
 - `funding`
+- `maintainer-ownership`
 - `ci`
 - `tests`
 - `issue-templates`

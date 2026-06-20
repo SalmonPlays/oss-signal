@@ -1,17 +1,17 @@
 {
   "tool": "oss-signal",
-  "version": "0.9.9",
-  "generatedAt": "2026-06-19T07:13:59.461Z",
+  "version": "0.10.0",
+  "generatedAt": "2026-06-20T12:00:41.858Z",
   "inventoryPath": "docs/examples/inventory-targets.txt",
   "count": 3,
-  "averageScore": 69,
-  "averageGrade": "D",
+  "averageScore": 70,
+  "averageGrade": "C",
   "minScore": 51,
-  "maxScore": 97,
-  "failedTotal": 20,
+  "maxScore": 100,
+  "failedTotal": 19,
   "earnedWeightTotal": 236,
-  "availableWeightTotal": 339,
-  "notApplicableWeightTotal": 0,
+  "availableWeightTotal": 336,
+  "notApplicableWeightTotal": 3,
   "repositories": [
     {
       "target": "SalmonPlays/oss-signal",
@@ -25,35 +25,21 @@
         "defaultBranch": "main",
         "stars": 2,
         "forks": 1,
-        "openIssues": 4,
+        "openIssues": 1,
         "healthPercentage": 100
       },
       "sourceLabel": "GitHub (SalmonPlays/oss-signal@main)",
-      "score": 97,
+      "score": 100,
       "grade": "A",
       "passed": 16,
-      "failed": 1,
+      "failed": 0,
       "total": 17,
       "earnedWeight": 110,
-      "availableWeight": 113,
+      "availableWeight": 110,
       "totalWeight": 113,
-      "notApplicableWeight": 0,
-      "topRecommendations": [
-        {
-          "id": "funding",
-          "label": "Funding metadata",
-          "weight": 3,
-          "priority": "P3",
-          "impact": "low",
-          "category": "community",
-          "categoryLabel": "Community files",
-          "suggestedFile": ".github/FUNDING.yml",
-          "verifyCommand": "oss-signal SalmonPlays/oss-signal --format summary",
-          "why": "Funding metadata gives maintainers a visible route for sponsorship and sustainability support.",
-          "fix": "Add .github/FUNDING.yml or FUNDING.yml with the sponsorship platforms or custom funding links the maintainers want to expose."
-        }
-      ],
-      "notApplicable": 0
+      "notApplicableWeight": 3,
+      "topRecommendations": [],
+      "notApplicable": 1
     },
     {
       "target": "platformatic/massimo",
@@ -67,7 +53,7 @@
         "defaultBranch": "main",
         "stars": 201,
         "forks": 11,
-        "openIssues": 20,
+        "openIssues": 21,
         "healthPercentage": 62
       },
       "sourceLabel": "GitHub (platformatic/massimo@main)",

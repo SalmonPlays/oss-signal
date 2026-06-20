@@ -2,9 +2,9 @@
 
 Repository: `https://github.com/platformatic/massimo`
 Source: GitHub (platformatic/massimo@main)
-Generated: 2026-06-18T08:34:56.457Z
+Generated: 2026-06-20T12:00:40.461Z
 
-Current score: **62/100** (D)
+Current score: **60/100** (D)
 
 This pack is meant for a maintainer or contributor who wants a low-risk trial before adding any required CI gate.
 
@@ -13,7 +13,7 @@ This pack is meant for a maintainer or contributor who wants a low-risk trial be
 Run the public npm package without installing it permanently:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.9 -- oss-signal platformatic/massimo --format summary
+npm exec --yes --package=oss-signal@0.10.0 -- oss-signal platformatic/massimo --format summary
 ```
 
 ## No-Fail GitHub Actions Trial
@@ -80,7 +80,7 @@ Hi maintainers. I ran `oss-signal` as a maintainer-readiness check and prepared 
 
 This is not a quality verdict and it does not ask for stars or reciprocal work. The goal is to make contribution, security, and CI signals easier to verify.
 
-Current audit result: 62/100 (D).
+Current audit result: 60/100 (D).
 
 If this is useful, the smallest next step is to run the no-fail workflow once and review the generated report artifact.
 ```
@@ -112,15 +112,15 @@ One concrete outcome: <what changed or what was decided>
 
 ## Current Findings
 
-- **Security policy** (9 pts): Add SECURITY.md with supported versions, reporting instructions, and response expectations.
-- **Changelog** (6 pts): Keep CHANGELOG.md with dated release entries and migration notes.
-- **Issue templates** (5 pts): Add bug report and feature request templates under .github/ISSUE_TEMPLATE/.
-- **Pull request template** (5 pts): Add .github/PULL_REQUEST_TEMPLATE.md with a short checklist.
-- **Dependency update automation** (5 pts): Add .github/dependabot.yml for the package ecosystems used in the repository.
+- **[P1] Security policy** (9 pts, high): Add SECURITY.md with supported versions, reporting instructions, and response expectations.
+- **[P2] Changelog** (6 pts, medium): Keep CHANGELOG.md with dated release entries and migration notes.
+- **[P2] Issue templates** (5 pts, medium): Add bug report and feature request templates under .github/ISSUE_TEMPLATE/.
+- **[P2] Pull request template** (5 pts, medium): Add .github/PULL_REQUEST_TEMPLATE.md with a short checklist.
+- **[P2] Dependency update automation** (5 pts, medium): Add .github/dependabot.yml for the package ecosystems used in the repository.
 
 ## Verification Links
 
-- npm package: https://www.npmjs.com/package/oss-signal/v/0.9.9
+- npm package: https://www.npmjs.com/package/oss-signal/v/0.10.0
 - GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
 - Rule catalog: `oss-signal --list-rules --format json`
 
