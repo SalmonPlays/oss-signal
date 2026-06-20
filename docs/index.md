@@ -19,7 +19,7 @@ npx oss-signal SalmonPlays/oss-signal
 Run as a GitHub Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
   id: oss-signal
   with:
     path: "."
@@ -41,7 +41,7 @@ Run as a GitHub Action:
 - Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
 - Latest committed evidence verification: [PASS 16, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-19T07:09:25.597Z. The Evidence verification workflow runs with `GITHUB_TOKEN` on `main`.
 - Latest manual evidence refresh: [evidence-refresh-2026-06-18.md](evidence-refresh-2026-06-18.md), with all public workflows successful for the checked `bed0978` baseline on 2026-06-18.
-- Current post-submission update: [selection-update-2026-06-19.md](selection-update-2026-06-19.md), with current package, workflow, field-audit, and external PR evidence.
+- Current post-submission update: [selection-update-2026-06-21.md](selection-update-2026-06-21.md), with current package, workflow, field-audit, and external PR evidence.
 - Adoption gap closure plan: [adoption-gap-closure.md](adoption-gap-closure.md), with the current weak signals and the exact evidence that would close them.
 - Independent run request: [independent-workflow-run-request.md](independent-workflow-run-request.md), with a copyable no-fail workflow for maintainer-owned public repositories.
 - Latest reviewer packet: [reviewer-packet-2026-06-08.md](reviewer-packet-2026-06-08.md), with public workflow run links and current package evidence.
@@ -59,7 +59,7 @@ Run as a GitHub Action:
 - [Adoption evidence](adoption-evidence.md)
 - [Codex for OSS fit/gap review](codex-for-oss-fit-gap.md)
 - [Adoption gap closure plan](adoption-gap-closure.md)
-- [Selection update, 2026-06-19](selection-update-2026-06-19.md)
+- [Selection update, 2026-06-19](selection-update-2026-06-21.md)
 - [Independent workflow run request](independent-workflow-run-request.md)
 - [Selection update, 2026-06-08](selection-update-2026-06-08.md)
 - [Adoption kit](adoption-kit.md)
@@ -90,6 +90,6 @@ Run as a GitHub Action:
 
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.10.0
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Maintainer workflow discussion: https://github.com/SalmonPlays/oss-signal/discussions/5

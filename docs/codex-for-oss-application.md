@@ -9,8 +9,8 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Display name: OSS Maintainer Signal
 - Repository: https://github.com/SalmonPlays/oss-signal
 - npm package: https://www.npmjs.com/package/oss-signal
-- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.9
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
+- GitHub Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.10.0
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.10.0
 - CI workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml
 - Repository health workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml
 - Repository inventory workflow: https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml
@@ -21,7 +21,7 @@ This document summarizes why `oss-signal` is a fit for OpenAI's Codex for Open S
 - Evidence ledger: [evidence-ledger.md](evidence-ledger.md)
 - Reviewer evidence quickstart: [reviewer-evidence.md](reviewer-evidence.md)
 - Codex for OSS fit/gap review: [codex-for-oss-fit-gap.md](codex-for-oss-fit-gap.md)
-- Selection update: [selection-update-2026-06-19.md](selection-update-2026-06-19.md)
+- Selection update: [selection-update-2026-06-21.md](selection-update-2026-06-21.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)
 - Maintainer feedback: [maintainer-feedback.md](maintainer-feedback.md)
 - Post-submission update: [post-submission-update.md](post-submission-update.md)
@@ -56,27 +56,27 @@ This project is designed around repeatable maintainer workflows where Codex is u
 
 The repository currently has:
 
-- A published npm package with `0.9.9` as the latest release.
+- A published npm package with `0.10.0` as the latest release.
 - A post-submission update page explaining why the current npm package and Action tag may be newer than the originally submitted evidence.
 - npm download API evidence showing 3702 last-month downloads for 2026-05-19 to 2026-06-17 when checked on 2026-06-19.
-- A published GitHub Release for v0.9.9 with adoption-pack output, maintainer plan output, CI usage guidance, and release notes.
+- A published GitHub Release for v0.10.0 with adoption-pack output, maintainer plan output, CI usage guidance, and release notes.
 - A reusable GitHub Action with score, grade, check-count, weighted-point, and report-path outputs.
 - A repository inventory mode for organization-level maintainer-readiness triage, available in both CLI and GitHub Action form.
-- A clean npm smoke test of `oss-signal@0.9.9` returning version `0.9.9`.
+- A clean npm smoke test of `oss-signal@0.10.0` returning version `0.10.0`.
 - SARIF output for GitHub Code Scanning integration.
-- A v0.9.9 GitHub Action tag with step summary, SARIF support, inventory support, Issue-ready output, maintainer plan output, and adoption-pack output.
+- A v0.10.0 GitHub Action tag with step summary, SARIF support, inventory support, Issue-ready output, maintainer plan output, and adoption-pack output.
 - A workflow output mode that renders a no-fail GitHub Actions trial workflow for external maintainers.
-- A public dogfood workflow that runs the pinned v0.9.9 release commit against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
-- A public dogfood inventory workflow that runs the pinned v0.9.9 release commit against a repository target list and uploads an inventory artifact.
+- A public dogfood workflow that runs the pinned v0.10.0 release commit against the repository, uploads the Markdown report artifact, and uploads SARIF to GitHub Code Scanning on non-PR runs.
+- A public dogfood inventory workflow that runs the pinned v0.10.0 release commit against a repository target list and uploads an inventory artifact.
 - A public evidence verification workflow that checks npm latest, npm download API, release metadata, repository metadata, public fork evidence, visible field-audit links, the outside-maintainer-accepted PR, and the inbound external contributor PR.
-- A historical self-owned public workflow demo that ran `SalmonPlays/oss-signal@v0.8.4` from another repository and uploaded Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It is retained as supporting workflow evidence, while current `v0.9.9` workflow evidence comes from the main repository health workflow.
+- A historical self-owned public workflow demo that ran `SalmonPlays/oss-signal@v0.8.4` from another repository and uploaded Markdown, SARIF, Issue-ready, and no-fail workflow artifacts. It is retained as supporting workflow evidence, while current `v0.10.0` workflow evidence comes from the main repository health workflow.
 - A no-fail maintainer trial workflow that external maintainers can copy before enabling CI gates.
 - A trial feedback path for neutral or negative maintainer responses, so third-party feedback does not have to be overstated as adoption.
 - A maintainer playbook that documents audit, triage, issue, PR, CI, and SARIF workflows.
 - A release process and tag-triggered release workflow that verify package contents and publish to npm through Trusted Publishing.
 - CI, Repository health, CodeQL, and Release workflows passing publicly.
 - A local self-audit score of 100/100.
-- A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.9.9 -- oss-signal --version`, returning `0.9.9`.
+- A clean-directory smoke test of `npm exec --yes --package=oss-signal@0.10.0 -- oss-signal --version`, returning `0.10.0`.
 - Public reports, issues, and PRs created from real repository audits, including five currently visible posted field-audit issues and four currently visible follow-up PRs.
 - External contribution evidence recorded in [evidence-ledger.md](evidence-ledger.md): one documentation PR accepted by an outside maintainer with a public merge comment, plus one inbound PR from an outside contributor.
 
@@ -117,5 +117,5 @@ Prepared official form answers are in [codex-for-oss-form-answers.md](codex-for-
 ## Next Evidence To Collect
 
 - More merged external PRs or maintainer replies on field-audit PRs.
-- A public workflow run in an independent maintainer-owned repository using `SalmonPlays/oss-signal@v0.9.9`, ideally with SARIF or inventory upload enabled.
+- A public workflow run in an independent maintainer-owned repository using `SalmonPlays/oss-signal@v0.10.0`, ideally with SARIF or inventory upload enabled.
 - npm download data once the registry starts reporting weekly/monthly counts.

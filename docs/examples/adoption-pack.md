@@ -2,7 +2,7 @@
 
 Repository: `https://github.com/platformatic/massimo`
 Source: GitHub (platformatic/massimo@main)
-Generated: 2026-06-20T12:00:40.461Z
+Generated: 2026-06-20T22:40:53.308Z
 
 Current score: **60/100** (D)
 
@@ -41,12 +41,12 @@ jobs:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           persist-credentials: false
-      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+      - uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
         id: oss-signal
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+      - uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
         if: always()
         id: oss-signal-adoption
         with:
@@ -121,7 +121,7 @@ One concrete outcome: <what changed or what was decided>
 ## Verification Links
 
 - npm package: https://www.npmjs.com/package/oss-signal/v/0.10.0
-- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
+- GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.10.0
 - Rule catalog: `oss-signal --list-rules --format json`
 
 ## Boundaries

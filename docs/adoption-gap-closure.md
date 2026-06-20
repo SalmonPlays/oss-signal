@@ -10,7 +10,7 @@ activity.
 
 For the root reviewer path, see [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md).
 For the current post-submission status, see
-[selection-update-2026-06-19.md](selection-update-2026-06-19.md). For the
+[selection-update-2026-06-21.md](selection-update-2026-06-21.md). For the
 copyable outside-maintainer trial workflow, see
 [independent-workflow-run-request.md](independent-workflow-run-request.md).
 
@@ -19,7 +19,7 @@ copyable outside-maintainer trial workflow, see
 | Reviewer concern | Current status | What is not claimed | Stronger next move | Evidence that would close the gap |
 | --- | --- | --- | --- | --- |
 | GitHub stars are low | GitHub API returned 2 stars and 1 fork at the latest committed evidence check. The fork is `ded-furby/oss-signal`, tied to the merged inbound contributor PR. | No popularity, social proof, or broad adoption claim. | Do not ask for stars. Keep the package, Action, Marketplace listing, evidence workflow, and reviewer docs verifiable, then prioritize one maintainer-owned run. | A third-party maintainer run, maintainer reply, accepted PR, or trial-feedback issue is stronger than vanity stars. |
-| No independent maintainer-owned workflow run yet | The historical public demo workflow is useful but owned by `SalmonPlays` and remains on an older Action tag. The main repository dogfoods `v0.9.9`. A one-time follow-up request is pending at https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548. | The demo and pending request are not described as current `v0.9.9` third-party adoption. | Wait for a maintainer response or public run. Do not bump the request without a maintainer reply or requested change. | A public workflow run in a repository not owned by `SalmonPlays`, using `SalmonPlays/oss-signal@v0.9.9` or `oss-signal@0.9.9`, plus a linked run URL or adoption report. |
+| No independent maintainer-owned workflow run yet | The historical public demo workflow is useful but owned by `SalmonPlays` and remains on an older Action tag. The main repository dogfoods `v0.10.0`. A one-time follow-up request is pending at https://github.com/icoretech/codex-action/pull/24#issuecomment-4701491548. | The demo and pending request are not described as current `v0.10.0` third-party adoption. | Wait for a maintainer response or public run. Do not bump the request without a maintainer reply or requested change. | A public workflow run in a repository not owned by `SalmonPlays`, using `SalmonPlays/oss-signal@v0.10.0` or `oss-signal@0.10.0`, plus a linked run URL or adoption report. |
 | Field-audit PRs are mostly open | Four currently visible follow-up PRs and five field-audit issues remained open when checked on 2026-06-19. | Open PRs are not counted as accepted adoption. | Wait for maintainer review, respond only to concrete feedback, and avoid repeated nudges. | A maintainer merges, replies, requests changes, closes with a reason, or endorses/declines the workflow publicly. |
 | Downloads do not prove broad usage | npm reported 3702 downloads for the 2026-05-19 to 2026-06-17 last-month window. | Downloads are supporting distribution evidence, not proof of adoption. | Keep npm evidence current and pair it with maintainer-run evidence. | A public user or maintainer action that can be independently inspected. |
 
@@ -27,8 +27,8 @@ copyable outside-maintainer trial workflow, see
 
 | Evidence | Status | Why it matters |
 | --- | --- | --- |
-| Installable npm package | `oss-signal@0.9.9` is the current `latest` package. | Reviewers can run the tool without cloning the repository. |
-| Public GitHub Action | `SalmonPlays/oss-signal@v0.9.9` is published. | Maintainers can copy the Action into CI. |
+| Installable npm package | `oss-signal@0.10.0` is the current `latest` package. | Reviewers can run the tool without cloning the repository. |
+| Public GitHub Action | `SalmonPlays/oss-signal@v0.10.0` is published. | Maintainers can copy the Action into CI. |
 | GitHub Marketplace listing | Published under GitHub Marketplace. | The Action is discoverable through GitHub's normal Action flow. |
 | Evidence verification | PASS 16, SKIP 0, FAIL 0 in the committed snapshot; the workflow runs with `GITHUB_TOKEN`. | The repository checks package, release, metadata, public fork evidence, and external-link evidence. |
 | Main repository dogfood | Repository health runs the public Action tag and uploads report, SARIF, adoption-pack, and checksum artifacts. | The project uses its own released Action in public CI. |
@@ -52,8 +52,8 @@ The most useful next evidence is one public run with these properties:
 
 1. The repository is owned by an independent maintainer or organization, not by
    `SalmonPlays`.
-2. The workflow uses `SalmonPlays/oss-signal@v0.9.9`, or a clean npm command
-   using `oss-signal@0.9.9`.
+2. The workflow uses `SalmonPlays/oss-signal@v0.10.0`, or a clean npm command
+   using `oss-signal@0.10.0`.
 3. The run is no-fail first: it uploads a Markdown report and adoption pack
    without blocking the maintainer's normal CI.
 4. The public evidence includes a workflow run URL, artifact name, maintainer
