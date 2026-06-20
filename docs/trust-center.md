@@ -11,7 +11,7 @@ This page collects the strongest public signals for reviewers, maintainers, and 
 What it does have is a complete, public maintainer workflow:
 
 - Public npm package: https://www.npmjs.com/package/oss-signal
-- Public GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
+- Public GitHub Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.10.0
 - Public GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal
 - Public GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - Public no-fail maintainer trial workflow: [maintainer-trial.md](maintainer-trial.md)
@@ -31,7 +31,7 @@ What it does have is a complete, public maintainer workflow:
 
 | Signal | Public evidence | Why it matters |
 | --- | --- | --- |
-| Installable CLI | `npm exec --yes --package=oss-signal@0.9.9 -- oss-signal --version` | Reviewers can run the package without cloning this repository. |
+| Installable CLI | `npm exec --yes --package=oss-signal@0.10.0 -- oss-signal --version` | Reviewers can run the package without cloning this repository. |
 | Marketplace Action | https://github.com/marketplace/actions/oss-signal | Users can discover and copy the Action through GitHub Marketplace. |
 | Maintainer trial | [maintainer-trial](maintainer-trial.md) | External maintainers can try the Action without failing CI first. |
 | Independent run request | [independent-workflow-run-request](independent-workflow-run-request.md) | Maintainers get a copyable no-fail workflow and a minimal evidence format for public trial runs. |
@@ -48,7 +48,7 @@ What it does have is a complete, public maintainer workflow:
 | Inbound external contributor PR | https://github.com/SalmonPlays/oss-signal/pull/14 | An outside contributor added a compact JSON score example from the public fork that was merged into this repository. |
 | Community engagement | [community-engagement](community-engagement.md) | The project recognizes real public contributions while rejecting star-for-star, reciprocal PRs, and repeated bumps as evidence. |
 | Acknowledgements | [ACKNOWLEDGEMENTS](../ACKNOWLEDGEMENTS.md) | Public thanks for contributors and maintainers with concrete public interactions. |
-| Selection update | [selection-update-2026-06-19](selection-update-2026-06-19.md) | Reviewers get the current post-submission status page with current package, workflow, field-audit, and external PR evidence. |
+| Selection update | [selection-update-2026-06-21](selection-update-2026-06-21.md) | Reviewers get the current post-submission status page with current package, workflow, field-audit, and external PR evidence. |
 | Evidence ledger | [evidence-ledger](evidence-ledger.md) | Reviewers get one compact page separating accepted evidence, supporting demos, open PRs, and boundaries. |
 | Adoption gap closure | [adoption-gap-closure](adoption-gap-closure.md) | Reviewers can see how low stars, no independent maintainer-owned run, and open field-audit PRs are handled honestly. |
 | External workflow evidence | [adoption evidence](adoption-evidence.md) | Field audits show the intended maintainer workflow on public repositories. |
@@ -59,7 +59,7 @@ What it does have is a complete, public maintainer workflow:
 The GitHub Marketplace listing is a discovery page for the Action. It lets users find `oss-signal`, inspect the Action metadata and README, and copy a workflow snippet using:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
 ```
 
 The listing is not a paid product. It is a free Action listing. Running GitHub Actions has separate GitHub Actions billing rules, but standard GitHub-hosted runners are free for public repositories.

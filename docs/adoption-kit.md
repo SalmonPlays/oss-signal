@@ -24,7 +24,7 @@ used.
 Run against a public repository without cloning:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.9 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
+npm exec --yes --package=oss-signal@0.10.0 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
 ```
 
 Run against the current checkout:
@@ -79,7 +79,7 @@ jobs:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           persist-credentials: false
-      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+      - uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
         id: oss-signal
         with:
           fail-under: "80"
@@ -110,7 +110,7 @@ steps:
   - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
     with:
       persist-credentials: false
-  - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+  - uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
     with:
       format: sarif
       output: oss-signal.sarif
@@ -126,7 +126,7 @@ Full walkthrough: [sarif-code-scanning.md](sarif-code-scanning.md)
 
 Useful adoption evidence is concrete and public:
 
-- A workflow run that uses `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` (`v0.9.9`).
+- A workflow run that uses `SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1` (`v0.10.0`).
 - A Markdown report attached as a workflow artifact.
 - A SARIF upload that appears in Code Scanning.
 - A focused issue or pull request created from an audit finding.

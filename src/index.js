@@ -3,8 +3,8 @@ import https from "node:https";
 import path from "node:path";
 
 export const VERSION = "0.10.0";
-export const RELEASE_VERSION = "0.9.9";
-export const RELEASE_COMMIT = "3e086d4b2cb938a9aa67b12585a80f28632d9e91";
+export const RELEASE_VERSION = "0.10.0";
+export const RELEASE_COMMIT = "1bb4418e14be225b5f5b628986ea464241caf7f1";
 
 const CHECKOUT_ACTION_COMMIT = "df4cb1c069e1874edd31b4311f1884172cec0e10";
 const UPLOAD_ARTIFACT_ACTION_COMMIT = "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a";

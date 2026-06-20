@@ -6,7 +6,7 @@ This page gives reviewers a short path to verify that `oss-signal` is a real OSS
 
 ## Application Version Note
 
-The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.9.9` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
+The Codex for Open Source application was submitted on 2026-06-03. The npm package and Action tag continued to move after submission as normal OSS maintenance. If any submitted field references older evidence, treat `0.10.0` as the current maintained release and see [post-submission-update.md](post-submission-update.md).
 
 ## Five-Minute Verification
 
@@ -16,20 +16,20 @@ The Codex for Open Source application was submitted on 2026-06-03. The npm packa
 npm view oss-signal version dist-tags --json
 ```
 
-Expected result: `version` is `0.9.9`, and `dist-tags.latest` is `0.9.9`.
+Expected result: `version` is `0.10.0`, and `dist-tags.latest` is `0.10.0`.
 
 2. Run the published package from a clean temporary directory or another directory outside this repository:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.9 -- oss-signal --version
+npm exec --yes --package=oss-signal@0.10.0 -- oss-signal --version
 ```
 
-Expected result: `0.9.9`.
+Expected result: `0.10.0`.
 
 To audit the public GitHub repository from a local shell, set `GITHUB_TOKEN` if unauthenticated API rate limits are exhausted:
 
 ```bash
-GITHUB_TOKEN=<token> npm exec --yes --package=oss-signal@0.9.9 -- oss-signal SalmonPlays/oss-signal --format json
+GITHUB_TOKEN=<token> npm exec --yes --package=oss-signal@0.10.0 -- oss-signal SalmonPlays/oss-signal --format json
 ```
 
 Expected result with API access: score `100`, grade `A`, source `github`.
@@ -66,7 +66,7 @@ Expected result with API access: score `100`, grade `A`, source `github`.
 - SARIF Code Scanning walkthrough: https://github.com/SalmonPlays/oss-signal/blob/main/docs/sarif-code-scanning.md
 - Roadmap: https://github.com/SalmonPlays/oss-signal/blob/main/docs/roadmap.md
 - Marketplace checklist: https://github.com/SalmonPlays/oss-signal/blob/main/docs/marketplace.md
-- Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-19.md
+- Selection update: https://github.com/SalmonPlays/oss-signal/blob/main/docs/selection-update-2026-06-21.md
 - Evidence ledger: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-ledger.md
 
 4. Run an inventory report from the repository target list:
@@ -91,8 +91,8 @@ The latest committed snapshot is [evidence-verification.md](evidence-verificatio
 
 5. Inspect the public Action tag:
 
-- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.9.9
-- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.9.9
+- Action tag: https://github.com/SalmonPlays/oss-signal/tree/v0.10.0
+- Release: https://github.com/SalmonPlays/oss-signal/releases/tag/v0.10.0
 - Action metadata: [../action.yml](../action.yml)
 
 6. Inspect field-audit evidence:
@@ -152,7 +152,7 @@ This project does not claim broad independent adoption yet. The historical self-
 - Trust center: [trust-center.md](trust-center.md)
 - Adoption evidence: [adoption-evidence.md](adoption-evidence.md)
 - Codex for OSS fit/gap review: [codex-for-oss-fit-gap.md](codex-for-oss-fit-gap.md)
-- Selection update: [selection-update-2026-06-19.md](selection-update-2026-06-19.md)
+- Selection update: [selection-update-2026-06-21.md](selection-update-2026-06-21.md)
 - Adoption kit: [adoption-kit.md](adoption-kit.md)
 - Maintainer trial: [maintainer-trial.md](maintainer-trial.md)
 - Maintainer feedback: [maintainer-feedback.md](maintainer-feedback.md)

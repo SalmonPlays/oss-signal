@@ -27,7 +27,7 @@ configuration before committing it.
 The GitHub Action supports the same path:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
   with:
     config: .oss-signal.json
     output: oss-signal-report.md

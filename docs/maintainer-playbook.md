@@ -97,7 +97,7 @@ See [plan-output.md](plan-output.md) and [examples/github-plan.md](examples/gith
 Add the GitHub Action to keep the signal visible:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
   id: oss-signal
   with:
     fail-under: "80"
@@ -110,7 +110,7 @@ The Action writes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total
 For an incremental gate, commit a reviewed JSON report such as `.github/oss-signal-baseline.json`, then fail only when a previously passing rule regresses:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
   id: oss-signal
   with:
     format: json
@@ -125,7 +125,7 @@ Review baseline updates like policy changes: regenerate them after an intentiona
 For a repository inventory, commit a newline-delimited target list and pass it through the Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
@@ -147,7 +147,7 @@ steps:
   - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
     with:
       persist-credentials: false
-  - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+  - uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
     with:
       format: sarif
       output: oss-signal.sarif
@@ -165,7 +165,7 @@ See [docs/sarif-code-scanning.md](sarif-code-scanning.md) for the permissions, e
 
 Useful evidence for maintainers and reviewers:
 
-- A public workflow run that uses `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` (`v0.9.9`).
+- A public workflow run that uses `SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1` (`v0.10.0`).
 - A generated Markdown report attached as an artifact.
 - A generated adoption pack attached as an artifact before asking maintainers to try the Action.
 - A checksum manifest for the uploaded report, adoption pack, and SARIF files.
