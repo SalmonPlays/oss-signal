@@ -34,6 +34,8 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
     : options.trend
       ? await runTrend(options)
     : await runSingleAudit(options);
+  const report = result.inventory ?? result.trend ?? result.report;
+  const mode = result.inventory ? "inventory" : result.trend ? "trend" : "single";
 
   if (options.output) {
     await fs.mkdir(path.dirname(path.resolve(options.output)), { recursive: true });
@@ -43,6 +45,10 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
   }
 
   await writeGitHubOutput(env.GITHUB_OUTPUT, {
+    tool: report.tool,
+    version: report.version,
+    mode,
+    "baseline-enabled": Boolean(result.report?.comparison),
     score: result.score,
     grade: result.grade,
     passed: result.passed,
@@ -54,6 +60,9 @@ export async function runAction(env = process.env, stdout = process.stdout, stde
     "total-weight": result.totalWeight,
     "not-applicable-weight": result.notApplicableWeight,
     regressions: result.regressions ?? 0,
+    improvements: result.improvements ?? 0,
+    "new-checks": result.newChecks ?? 0,
+    "removed-checks": result.removedChecks ?? 0,
     "score-delta": result.scoreDelta ?? "",
     "report-path": options.output ?? ""
   });
@@ -158,6 +167,9 @@ async function runSingleAudit(options) {
     totalWeight: report.summary.totalWeight,
     notApplicableWeight: report.summary.notApplicableWeight,
     regressions: report.comparison?.summary.regressions ?? 0,
+    improvements: report.comparison?.summary.improvements ?? 0,
+    newChecks: report.comparison?.summary.newChecks ?? 0,
+    removedChecks: report.comparison?.summary.removedChecks ?? 0,
     scoreDelta: report.comparison?.scoreDelta,
     failUnderMessage
   };
@@ -249,6 +261,7 @@ async function runTrend(options) {
     totalWeight: trend.reports.at(-1)?.totalWeight ?? "",
     notApplicableWeight: trend.reports.at(-1)?.notApplicableWeight ?? "",
     regressions: trend.summary.regressions,
+    improvements: trend.summary.improvements,
     scoreDelta: trend.summary.scoreDelta,
     failUnderMessage
   };

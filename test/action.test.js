@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { parseActionInputs, runAction, writeGitHubInventoryStepSummary, writeGitHubOutput, writeGitHubStepSummary, writeGitHubTrendStepSummary } from "../src/action.js";
-import { auditRepository, RELEASE_COMMIT } from "../src/index.js";
+import { auditRepository, RELEASE_COMMIT, VERSION } from "../src/index.js";
 
 test("parseActionInputs reads GitHub Action inputs", () => {
   const options = parseActionInputs({
@@ -109,6 +109,10 @@ test("runAction writes a report and action outputs", async () => {
     assert.equal(report.source.type, "local");
     assert.match(await readFile(reportFile, "utf8"), /OSS Signal Report/);
     const outputs = await readFile(githubOutput, "utf8");
+    assert.match(outputs, /tool<<oss_signal_output\noss-signal\noss_signal_output/);
+    assert.match(outputs, new RegExp(`version<<oss_signal_output\\n${VERSION.replaceAll(".", "\\.")}\\noss_signal_output`));
+    assert.match(outputs, /mode<<oss_signal_output\nsingle\noss_signal_output/);
+    assert.match(outputs, /baseline-enabled<<oss_signal_output\nfalse\noss_signal_output/);
     assert.match(outputs, /passed<<oss_signal_output\n5\noss_signal_output/);
     assert.match(outputs, /failed<<oss_signal_output\n11\noss_signal_output/);
     assert.match(outputs, /not-applicable<<oss_signal_output\n1\noss_signal_output/);
@@ -117,6 +121,10 @@ test("runAction writes a report and action outputs", async () => {
     assert.match(outputs, /available-weight<<oss_signal_output\n109\noss_signal_output/);
     assert.match(outputs, /total-weight<<oss_signal_output\n113\noss_signal_output/);
     assert.match(outputs, /not-applicable-weight<<oss_signal_output\n4\noss_signal_output/);
+    assert.match(outputs, /regressions<<oss_signal_output\n0\noss_signal_output/);
+    assert.match(outputs, /improvements<<oss_signal_output\n0\noss_signal_output/);
+    assert.match(outputs, /new-checks<<oss_signal_output\n0\noss_signal_output/);
+    assert.match(outputs, /removed-checks<<oss_signal_output\n0\noss_signal_output/);
     assert.match(outputs, /report-path<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /Score: \*\*\d+\/100 \([A-F]\)\*\*/);
     assert.match(await readFile(githubSummary, "utf8"), /Weighted points/);
@@ -125,7 +133,7 @@ test("runAction writes a report and action outputs", async () => {
   }
 });
 
-test("runAction exposes baseline regressions and score delta", async () => {
+test("runAction exposes the complete baseline comparison summary", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "oss-signal-action-baseline-"));
   const baselineRoot = path.join(root, "baseline");
   const currentRoot = path.join(root, "current");
@@ -145,7 +153,13 @@ test("runAction exposes baseline regressions and score delta", async () => {
       "README.md": "# Current\n",
       ".github/workflows/ci.yml": "name: CI\n"
     });
-    await writeFile(baselineFile, JSON.stringify(await auditRepository(baselineRoot)), "utf8");
+    const baselineReport = await auditRepository(baselineRoot);
+    const retiredCheck = baselineReport.checks.find((check) => check.id === "support");
+    baselineReport.checks = [
+      ...baselineReport.checks.filter((check) => check.id !== "funding"),
+      { ...retiredCheck, id: "retired-check", label: "Retired check" }
+    ];
+    await writeFile(baselineFile, JSON.stringify(baselineReport), "utf8");
 
     const report = await runAction(
       {
@@ -165,8 +179,16 @@ test("runAction exposes baseline regressions and score delta", async () => {
     assert.match(failureMessage, /1 regression\(s\) detected against baseline/);
     assert.equal(report.comparison.summary.regressions, 1);
     assert.equal(report.comparison.summary.improvements, 1);
-    assert.match(await readFile(githubOutput, "utf8"), /regressions<<oss_signal_output\n1/);
-    assert.match(await readFile(githubOutput, "utf8"), /score-delta<<oss_signal_output/);
+    assert.equal(report.comparison.summary.newChecks, 1);
+    assert.equal(report.comparison.summary.removedChecks, 1);
+    const outputs = await readFile(githubOutput, "utf8");
+    assert.match(outputs, /mode<<oss_signal_output\nsingle\noss_signal_output/);
+    assert.match(outputs, /baseline-enabled<<oss_signal_output\ntrue\noss_signal_output/);
+    assert.match(outputs, /regressions<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /improvements<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /new-checks<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /removed-checks<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /score-delta<<oss_signal_output/);
     assert.match(await readFile(githubSummary, "utf8"), /Baseline comparison/);
   } finally {
     process.exitCode = originalExitCode;
@@ -379,6 +401,8 @@ test("runAction writes inventory output", async () => {
     assert.equal(inventory.count, 2);
     assert.match(await readFile(reportFile, "utf8"), /OSS Signal Inventory/);
     const outputs = await readFile(githubOutput, "utf8");
+    assert.match(outputs, /mode<<oss_signal_output\ninventory\noss_signal_output/);
+    assert.match(outputs, /baseline-enabled<<oss_signal_output\nfalse\noss_signal_output/);
     assert.match(outputs, /score<<oss_signal_output/);
     assert.match(outputs, /passed<<oss_signal_output\n3\noss_signal_output/);
     assert.match(outputs, /failed<<oss_signal_output\n31\noss_signal_output/);
@@ -436,8 +460,12 @@ test("runAction writes trend output", async () => {
     assert.equal(trend.count, 2);
     assert.equal(trend.summary.improvements, 1);
     assert.match(await readFile(reportFile, "utf8"), /"reports"/);
-    assert.match(await readFile(githubOutput, "utf8"), /score-delta<<oss_signal_output/);
-    assert.match(await readFile(githubOutput, "utf8"), /earned-weight<<oss_signal_output\n\d+/);
+    const outputs = await readFile(githubOutput, "utf8");
+    assert.match(outputs, /mode<<oss_signal_output\ntrend\noss_signal_output/);
+    assert.match(outputs, /baseline-enabled<<oss_signal_output\nfalse\noss_signal_output/);
+    assert.match(outputs, /improvements<<oss_signal_output\n1\noss_signal_output/);
+    assert.match(outputs, /score-delta<<oss_signal_output/);
+    assert.match(outputs, /earned-weight<<oss_signal_output\n\d+/);
     assert.match(await readFile(githubSummary, "utf8"), /# oss-signal trend/);
   } finally {
     await rm(root, { recursive: true, force: true });

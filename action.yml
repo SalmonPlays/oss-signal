@@ -48,6 +48,12 @@ inputs:
     required: false
     default: "false"
 outputs:
+  tool:
+    description: Tool identifier. Always oss-signal.
+  version:
+    description: oss-signal version that generated the report.
+  mode:
+    description: Execution mode. One of single, inventory, or trend.
   score:
     description: Numeric maintainer-readiness score, average score in inventory mode, or latest score in trend mode.
   grade:
@@ -68,8 +74,16 @@ outputs:
     description: Weighted points before exclusions, the inventory total, or the latest trend value when available.
   not-applicable-weight:
     description: Weighted points excluded as not applicable, the inventory total, or the latest trend value when available.
+  baseline-enabled:
+    description: Whether a single-repository report was compared with a baseline.
   regressions:
     description: Number of checks that passed in the baseline and fail in the current report, or total trend regressions.
+  improvements:
+    description: Number of checks that failed in the baseline and pass in the current report, or total trend improvements.
+  new-checks:
+    description: Number of current checks that were absent from the baseline report.
+  removed-checks:
+    description: Number of baseline checks that are absent from the current report.
   score-delta:
     description: Current score minus baseline score, or latest trend score minus first trend score.
   report-path:

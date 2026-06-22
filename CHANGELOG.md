@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Exposed producer version, execution mode, baseline state, and complete comparison counts through env reports and GitHub Action outputs, with sourceable CI contract coverage.
+- Corrected the Action trend output so `improvements` reports the retained-history total.
+
 ## 0.10.0
 
 - Added a `funding` maintainer-readiness rule for `.github/FUNDING.yml` or `FUNDING.yml`.

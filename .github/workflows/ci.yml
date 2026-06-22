@@ -45,23 +45,76 @@ jobs:
           output: oss-signal-action-report.md
       - name: Verify Action outputs
         env:
+          OSS_SIGNAL_TOOL: ${{ steps.oss-signal.outputs.tool }}
+          OSS_SIGNAL_VERSION: ${{ steps.oss-signal.outputs.version }}
+          OSS_SIGNAL_MODE: ${{ steps.oss-signal.outputs.mode }}
+          OSS_SIGNAL_BASELINE_ENABLED: ${{ steps.oss-signal.outputs.baseline-enabled }}
           OSS_SIGNAL_SCORE: ${{ steps.oss-signal.outputs.score }}
           OSS_SIGNAL_NOT_APPLICABLE: ${{ steps.oss-signal.outputs.not-applicable }}
           OSS_SIGNAL_EARNED_WEIGHT: ${{ steps.oss-signal.outputs.earned-weight }}
           OSS_SIGNAL_AVAILABLE_WEIGHT: ${{ steps.oss-signal.outputs.available-weight }}
           OSS_SIGNAL_TOTAL_WEIGHT: ${{ steps.oss-signal.outputs.total-weight }}
           OSS_SIGNAL_NOT_APPLICABLE_WEIGHT: ${{ steps.oss-signal.outputs.not-applicable-weight }}
+          OSS_SIGNAL_REGRESSIONS: ${{ steps.oss-signal.outputs.regressions }}
+          OSS_SIGNAL_IMPROVEMENTS: ${{ steps.oss-signal.outputs.improvements }}
+          OSS_SIGNAL_NEW_CHECKS: ${{ steps.oss-signal.outputs.new-checks }}
+          OSS_SIGNAL_REMOVED_CHECKS: ${{ steps.oss-signal.outputs.removed-checks }}
+          OSS_SIGNAL_SCORE_DELTA: ${{ steps.oss-signal.outputs.score-delta }}
         run: |
+          EXPECTED_VERSION="$(node -p 'require("./package.json").version')"
+          test "$OSS_SIGNAL_TOOL" = "oss-signal"
+          test "$OSS_SIGNAL_VERSION" = "$EXPECTED_VERSION"
+          test "$OSS_SIGNAL_MODE" = "single"
+          test "$OSS_SIGNAL_BASELINE_ENABLED" = "false"
           test "$OSS_SIGNAL_SCORE" = "100"
           test "$OSS_SIGNAL_NOT_APPLICABLE" = "1"
           test "$OSS_SIGNAL_EARNED_WEIGHT" = "$OSS_SIGNAL_AVAILABLE_WEIGHT"
           test "$OSS_SIGNAL_AVAILABLE_WEIGHT" = "110"
           test "$OSS_SIGNAL_TOTAL_WEIGHT" = "113"
           test "$OSS_SIGNAL_NOT_APPLICABLE_WEIGHT" = "3"
+          test "$OSS_SIGNAL_REGRESSIONS" = "0"
+          test "$OSS_SIGNAL_IMPROVEMENTS" = "0"
+          test "$OSS_SIGNAL_NEW_CHECKS" = "0"
+          test "$OSS_SIGNAL_REMOVED_CHECKS" = "0"
+          test -z "$OSS_SIGNAL_SCORE_DELTA"
+      - uses: ./
+        with:
+          format: env
+          fail-under: "100"
+          output: oss-signal-action-report.env
+          summary: "false"
+      - name: Verify sourceable env report
+        shell: bash
+        run: |
+          set -o allexport
+          source oss-signal-action-report.env
+          set +o allexport
+          EXPECTED_VERSION="$(node -p 'require("./package.json").version')"
+          test "$OSS_SIGNAL_TOOL" = "oss-signal"
+          test "$OSS_SIGNAL_VERSION" = "$EXPECTED_VERSION"
+          test "$OSS_SIGNAL_MODE" = "single"
+          test "$OSS_SIGNAL_BASELINE_ENABLED" = "false"
+          test "$OSS_SIGNAL_SCORE" = "100"
+          test "$OSS_SIGNAL_PASSED" = "16"
+          test "$OSS_SIGNAL_FAILED" = "0"
+          test "$OSS_SIGNAL_NOT_APPLICABLE" = "1"
+          test "$OSS_SIGNAL_EARNED_WEIGHT" = "$OSS_SIGNAL_AVAILABLE_WEIGHT"
+          test "$OSS_SIGNAL_AVAILABLE_WEIGHT" = "110"
+          test "$OSS_SIGNAL_TOTAL_WEIGHT" = "113"
+          test "$OSS_SIGNAL_NOT_APPLICABLE_WEIGHT" = "3"
+          test "$OSS_SIGNAL_REGRESSIONS" = "0"
+          test "$OSS_SIGNAL_IMPROVEMENTS" = "0"
+          test "$OSS_SIGNAL_NEW_CHECKS" = "0"
+          test "$OSS_SIGNAL_REMOVED_CHECKS" = "0"
+          test -z "$OSS_SIGNAL_SCORE_DELTA"
+          test "$OSS_SIGNAL_RECOMMENDATIONS" = "0"
+          test -z "$OSS_SIGNAL_TOP_RECOMMENDATION"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: oss-signal-action-report
-          path: oss-signal-action-report.md
+          path: |
+            oss-signal-action-report.md
+            oss-signal-action-report.env
 
   package:
     runs-on: ubuntu-latest
