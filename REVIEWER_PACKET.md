@@ -1,10 +1,10 @@
 # OSS Signal Reviewer Packet
 
-Last reviewed: 2026-06-19T07:09:25.597Z
+Last reviewed: 2026-06-22T08:04:46.463Z
 
-Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-19T07:09:25.597Z.
+Latest evidence snapshot: [docs/evidence-verification.md](docs/evidence-verification.md), generated 2026-06-22T08:04:46.463Z.
 
-Latest manual evidence refresh: [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md).
+Latest manual evidence refresh: [docs/evidence-refresh-2026-06-21.md](docs/evidence-refresh-2026-06-21.md).
 
 This is the shortest public verification path for `oss-signal`. It is intentionally conservative: open external issues and pull requests are shown as workflow evidence, not as adoption, unless maintainers merge, reply, or endorse them.
 
@@ -24,7 +24,7 @@ Next independent-usage path: [docs/independent-workflow-run-request.md](docs/ind
 | GitHub Marketplace | Free Action listing is published | https://github.com/marketplace/actions/oss-signal |
 | GitHub Pages | Public docs landing page | https://salmonplays.github.io/oss-signal/ |
 | Evidence verification | PASS 16, SKIP 0, FAIL 0 in the committed snapshot; the GitHub workflow runs with `GITHUB_TOKEN` | [docs/evidence-verification.md](docs/evidence-verification.md) |
-| Manual evidence refresh | Historical `v0.9.9` release evidence and its public workflow baseline were checked on 2026-06-18 | [docs/evidence-refresh-2026-06-18.md](docs/evidence-refresh-2026-06-18.md) |
+| Manual evidence refresh | `v0.10.0` publication, clean npm execution, and public evidence were checked on 2026-06-21 | [docs/evidence-refresh-2026-06-21.md](docs/evidence-refresh-2026-06-21.md) |
 | Evidence workflow | Public workflow with Markdown artifact | https://github.com/SalmonPlays/oss-signal/actions/workflows/evidence-verify.yml |
 | Post-submission update | Current 2026-06-21 reviewer update | [docs/selection-update-2026-06-21.md](docs/selection-update-2026-06-21.md) |
 | Adoption gap closure | Current weak signals and exact evidence needed to close them | [docs/adoption-gap-closure.md](docs/adoption-gap-closure.md) |
@@ -36,11 +36,11 @@ Next independent-usage path: [docs/independent-workflow-run-request.md](docs/ind
 
 ## Latest Verified Workflow Runs
 
-The last committed release-run snapshot verified `v0.9.9` at release commit `3e086d4`. The current v0.10.0 publication target is tracked in [docs/selection-update-2026-06-21.md](docs/selection-update-2026-06-21.md); branch workflow links below point to public checks for `main`.
+The v0.10.0 release run verified tagged commit `d41a238`, created the GitHub Release, and published npm through Trusted Publishing. Branch workflow links below point to public checks for `main`.
 
 | Workflow | Status | Run |
 | --- | --- | --- |
-| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27747411428 |
+| Release | success | https://github.com/SalmonPlays/oss-signal/actions/runs/27897224148 |
 | CI | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/ci.yml |
 | Repository health | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-health.yml |
 | Repository inventory | public checks | https://github.com/SalmonPlays/oss-signal/actions/workflows/repository-inventory.yml |

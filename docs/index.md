@@ -39,8 +39,8 @@ Run as a GitHub Action:
 ## Reviewer Evidence
 
 - Root reviewer packet: [../REVIEWER_PACKET.md](../REVIEWER_PACKET.md)
-- Latest committed evidence verification: [PASS 16, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-19T07:09:25.597Z. The Evidence verification workflow runs with `GITHUB_TOKEN` on `main`.
-- Latest manual evidence refresh: [evidence-refresh-2026-06-18.md](evidence-refresh-2026-06-18.md), with all public workflows successful for the checked `bed0978` baseline on 2026-06-18.
+- Latest committed evidence verification: [PASS 16, SKIP 0, FAIL 0](evidence-verification.md), generated 2026-06-22T08:04:46.463Z. The Evidence verification workflow runs with `GITHUB_TOKEN` on `main`.
+- Latest manual evidence refresh: [evidence-refresh-2026-06-21.md](evidence-refresh-2026-06-21.md), covering the v0.10.0 tag, release workflow, npm publication, clean execution, package contents, and external evidence.
 - Current post-submission update: [selection-update-2026-06-21.md](selection-update-2026-06-21.md), with current package, workflow, field-audit, and external PR evidence.
 - Adoption gap closure plan: [adoption-gap-closure.md](adoption-gap-closure.md), with the current weak signals and the exact evidence that would close them.
 - Independent run request: [independent-workflow-run-request.md](independent-workflow-run-request.md), with a copyable no-fail workflow for maintainer-owned public repositories.
@@ -51,7 +51,7 @@ Run as a GitHub Action:
 - [Reviewer evidence quickstart](reviewer-evidence.md)
 - [Reviewer packet, 2026-06-08](reviewer-packet-2026-06-08.md)
 - [Evidence verification snapshot](evidence-verification.md)
-- [Evidence refresh, 2026-06-18](evidence-refresh-2026-06-18.md)
+- [Evidence refresh, 2026-06-21](evidence-refresh-2026-06-21.md)
 - [Evidence ledger](evidence-ledger.md)
 - [Community engagement](community-engagement.md)
 - [Acknowledgements](../ACKNOWLEDGEMENTS.md)
@@ -59,7 +59,7 @@ Run as a GitHub Action:
 - [Adoption evidence](adoption-evidence.md)
 - [Codex for OSS fit/gap review](codex-for-oss-fit-gap.md)
 - [Adoption gap closure plan](adoption-gap-closure.md)
-- [Selection update, 2026-06-19](selection-update-2026-06-21.md)
+- [Selection update, 2026-06-21](selection-update-2026-06-21.md)
 - [Independent workflow run request](independent-workflow-run-request.md)
 - [Selection update, 2026-06-08](selection-update-2026-06-08.md)
 - [Adoption kit](adoption-kit.md)

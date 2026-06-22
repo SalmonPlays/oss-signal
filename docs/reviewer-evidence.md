@@ -44,7 +44,7 @@ Expected result with API access: score `100`, grade `A`, source `github`.
 - OpenSSF Scorecard: https://github.com/SalmonPlays/oss-signal/actions/workflows/scorecard.yml
 - Maintainer workflow Discussion: https://github.com/SalmonPlays/oss-signal/discussions/5
 - Historical self-owned workflow demo run: https://github.com/SalmonPlays/oss-signal-adoption-demo/actions/runs/27025632373
-- Evidence refresh, 2026-06-18: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-refresh-2026-06-18.md
+- Evidence refresh, 2026-06-21: https://github.com/SalmonPlays/oss-signal/blob/main/docs/evidence-refresh-2026-06-21.md
 - GitHub Pages source: https://github.com/SalmonPlays/oss-signal/blob/main/docs/index.md
 - GitHub Pages landing page: https://salmonplays.github.io/oss-signal/
 - GitHub Marketplace listing: https://github.com/marketplace/actions/oss-signal

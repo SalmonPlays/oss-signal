@@ -2,7 +2,7 @@
 
 This page collects the public evidence that `oss-signal` is built for real open-source maintainer workflows.
 
-Latest release preparation: 2026-06-21
+Last verified: 2026-06-22T08:04:46.463Z
 
 ## Project Links
 
@@ -75,7 +75,7 @@ The [post-submission update](post-submission-update.md) records why the current 
 
 The npm package is publicly available as `oss-signal@0.10.0` with `latest` pointing at `0.10.0` after the release workflow completes.
 
-The npm downloads API returned 3702 downloads for the last-month window from 2026-05-19 to 2026-06-17 when checked on 2026-06-19. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
+The npm downloads API returned 4014 downloads for the last-month window from 2026-05-23 to 2026-06-21 when checked on 2026-06-22. Download counts can lag publication, so this is treated as supporting evidence rather than proof of broad adoption.
 
 Clean-directory package execution returned:
 
