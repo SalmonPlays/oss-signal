@@ -11,6 +11,7 @@ const tag = `v${version}`;
 const publishedVersion = releaseManifest.version;
 const publishedTag = `v${publishedVersion}`;
 const pinnedActionRef = `SalmonPlays/oss-signal@${releaseManifest.commit}`;
+const trendActionRef = "SalmonPlays/oss-signal@5f98a7c560b90dbd1ba87dd0222bae331e0993c9";
 const errors = [];
 const requireEvidence = process.argv.includes("--require-evidence");
 const currentSelectionUpdate = await latestDatedDoc(
@@ -81,6 +82,9 @@ for (const filePath of [
   await checkWorkflowPins(filePath, await read(filePath));
 }
 
+await expectContains("docs/examples/github-trend-workflow.yml", trendActionRef);
+await checkWorkflowPins("docs/examples/github-trend-workflow.yml", await read("docs/examples/github-trend-workflow.yml"));
+
 for (const filePath of [
   ".github/workflows/repository-health.yml",
   ".github/workflows/repository-inventory.yml"
@@ -124,6 +128,9 @@ await checkWorkflowPins("generated --init workflow", renderWorkflow());
 
 await expectJsonVersion("docs/examples/github-url-report.json");
 await expectJsonVersion("docs/examples/inventory-report.json");
+await expectJsonVersion("docs/examples/trend-baseline.json");
+await expectJsonVersion("docs/examples/trend-current.json");
+await expectJsonVersion("docs/examples/trend-report.json");
 await expectJsonVersion("docs/examples/rules-catalog.json");
 await expectSarifVersion("docs/examples/self-audit.sarif");
 

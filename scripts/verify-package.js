@@ -38,6 +38,7 @@ for (const required of [
   "docs/schema/inventory-output.schema.json",
   "docs/schema/json-output.schema.json",
   "docs/schema/rules-catalog.schema.json",
+  "docs/schema/trend-output.schema.json",
   "scripts/verify-evidence.js",
   "scripts/verify-package.js",
   "scripts/verify-reviewer-ready.js",

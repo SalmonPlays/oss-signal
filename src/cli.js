@@ -5,6 +5,7 @@ import {
   auditTarget,
   compareReports,
   createInventoryReport,
+  createTrendReport,
   listRules,
   parseInventoryTargets,
   renderEnv,
@@ -19,8 +20,11 @@ import {
   renderRulesMarkdown,
   renderSarif,
   renderSummary,
+  renderTrendJson,
+  renderTrendMarkdown,
   renderWorkflow,
   readBaselineReport,
+  readReportFile,
   VERSION
 } from "./index.js";
 
@@ -46,7 +50,9 @@ async function main(argv) {
     ? runListRules(options)
     : options.inventory
       ? await runInventory(options)
-      : await runSingleAudit(options);
+      : options.trend
+        ? await runTrend(options)
+        : await runSingleAudit(options);
 
   if (options.output) {
     await writeOutput(options.output, result.body);
@@ -72,6 +78,7 @@ function parseArgs(argv) {
     baselinePath: undefined,
     failOnRegression: false,
     inventory: undefined,
+    trend: undefined,
     listRules: false,
     init: false,
     force: false,
@@ -124,6 +131,10 @@ function parseArgs(argv) {
       options.inventory = requireValue(argv, ++index, "--inventory");
     } else if (arg.startsWith("--inventory=")) {
       options.inventory = arg.slice("--inventory=".length);
+    } else if (arg === "--trend") {
+      options.trend = requireValue(argv, ++index, "--trend");
+    } else if (arg.startsWith("--trend=")) {
+      options.trend = arg.slice("--trend=".length);
     } else if (arg === "--list-rules") {
       options.listRules = true;
     } else if (arg === "--init") {
@@ -150,6 +161,9 @@ function parseArgs(argv) {
     if (options.inventory) {
       throw new Error("--list-rules cannot be combined with --inventory");
     }
+    if (options.trend) {
+      throw new Error("--list-rules cannot be combined with --trend");
+    }
     if (options.baselinePath || options.failOnRegression) {
       throw new Error("--list-rules cannot be combined with --baseline or --fail-on-regression");
     }
@@ -158,8 +172,8 @@ function parseArgs(argv) {
     }
   }
   if (options.init) {
-    if (options.listRules || options.inventory) {
-      throw new Error("--init cannot be combined with --list-rules or --inventory");
+    if (options.listRules || options.inventory || options.trend) {
+      throw new Error("--init cannot be combined with --list-rules, --inventory, or --trend");
     }
     if (options.formatExplicit || options.failUnder !== undefined || options.baselinePath || options.failOnRegression) {
       throw new Error("--init cannot be combined with --format, --fail-under, --baseline, or --fail-on-regression");
@@ -170,8 +184,20 @@ function parseArgs(argv) {
   if (options.inventory && positionals.length > 0) {
     throw new Error("--inventory cannot be combined with a positional repository path");
   }
+  if (options.trend && positionals.length > 0) {
+    throw new Error("--trend cannot be combined with a positional repository path");
+  }
+  if (options.trend && options.inventory) {
+    throw new Error("--trend cannot be combined with --inventory");
+  }
   if (options.inventory && (options.baselinePath || options.failOnRegression)) {
     throw new Error("--inventory cannot be combined with --baseline or --fail-on-regression");
+  }
+  if (options.trend && (options.baselinePath || options.failOnRegression)) {
+    throw new Error("--trend cannot be combined with --baseline or --fail-on-regression");
+  }
+  if (options.trend && !["markdown", "json"].includes(options.format)) {
+    throw new Error("--trend supports --format markdown or --format json");
   }
   if (options.failOnRegression && !options.baselinePath) {
     throw new Error("--fail-on-regression requires --baseline");
@@ -292,6 +318,32 @@ async function runInventory(options) {
   return { body, failUnderMessage };
 }
 
+async function runTrend(options) {
+  const trendText = await fs.readFile(options.trend, "utf8");
+  const reportPaths = parseInventoryTargets(trendText);
+  if (reportPaths.length === 0) {
+    throw new Error("--trend file does not contain any report paths");
+  }
+
+  const reports = [];
+  for (const reportPath of reportPaths) {
+    reports.push(await readReportFile(reportPath, { label: "trend report" }));
+  }
+
+  const trend = createTrendReport(reports, {
+    trendPath: options.trend,
+    reportPaths
+  });
+  const body = options.format === "json"
+    ? renderTrendJson(trend)
+    : renderTrendMarkdown(trend);
+  const failUnderMessage = typeof options.failUnder === "number" && trend.summary.latestScore < options.failUnder
+    ? `oss-signal: latest trend score ${trend.summary.latestScore} is below --fail-under ${options.failUnder}\n`
+    : undefined;
+
+  return { body, failUnderMessage };
+}
+
 function runListRules(options) {
   const catalog = listRules();
   const body = options.format === "json"
@@ -368,6 +420,7 @@ Usage:
              [--baseline report.json] [--fail-on-regression]
   oss-signal --init [local-repository-path] [--output workflow.yml] [--force]
   oss-signal --inventory repos.txt [--format markdown|json|env] [--output file] [--fail-under score]
+  oss-signal --trend reports.txt [--format markdown|json] [--output file] [--fail-under score]
   oss-signal --list-rules [--format markdown|json] [--output file]
 
 Examples:
@@ -385,6 +438,7 @@ Examples:
   oss-signal owner/repo --format adoption --output adoption-pack.md
   oss-signal . --baseline previous-report.json --fail-on-regression
   oss-signal --inventory docs/examples/inventory-targets.txt --format markdown
+  oss-signal --trend docs/examples/trend-reports.txt --format markdown
 
 Options:
   --init         Add a no-fail trial workflow to a local repository without running an audit.
@@ -399,6 +453,7 @@ Options:
   --fail-on-regression
                  Exit with code 1 when a previously passing check now fails. Requires --baseline.
   --inventory    Read repository targets from a newline-delimited file.
+  --trend        Read retained oss-signal JSON report paths from a newline-delimited file.
   --list-rules   Print the rule catalog and scoring weights without auditing a repository.
   --version, -v  Show the CLI version.
   --help, -h     Show this help message.

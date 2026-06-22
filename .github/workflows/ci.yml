@@ -45,6 +45,10 @@ jobs:
           output: oss-signal-action-report.md
       - name: Verify Action outputs
         env:
+          OSS_SIGNAL_TOOL: ${{ steps.oss-signal.outputs.tool }}
+          OSS_SIGNAL_VERSION: ${{ steps.oss-signal.outputs.version }}
+          OSS_SIGNAL_MODE: ${{ steps.oss-signal.outputs.mode }}
+          OSS_SIGNAL_BASELINE_ENABLED: ${{ steps.oss-signal.outputs.baseline-enabled }}
           OSS_SIGNAL_SCORE: ${{ steps.oss-signal.outputs.score }}
           OSS_SIGNAL_NOT_APPLICABLE: ${{ steps.oss-signal.outputs.not-applicable }}
           OSS_SIGNAL_EARNED_WEIGHT: ${{ steps.oss-signal.outputs.earned-weight }}
@@ -57,6 +61,11 @@ jobs:
           OSS_SIGNAL_REMOVED_CHECKS: ${{ steps.oss-signal.outputs.removed-checks }}
           OSS_SIGNAL_SCORE_DELTA: ${{ steps.oss-signal.outputs.score-delta }}
         run: |
+          EXPECTED_VERSION="$(node -p 'require("./package.json").version')"
+          test "$OSS_SIGNAL_TOOL" = "oss-signal"
+          test "$OSS_SIGNAL_VERSION" = "$EXPECTED_VERSION"
+          test "$OSS_SIGNAL_MODE" = "single"
+          test "$OSS_SIGNAL_BASELINE_ENABLED" = "false"
           test "$OSS_SIGNAL_SCORE" = "100"
           test "$OSS_SIGNAL_NOT_APPLICABLE" = "1"
           test "$OSS_SIGNAL_EARNED_WEIGHT" = "$OSS_SIGNAL_AVAILABLE_WEIGHT"
@@ -80,7 +89,11 @@ jobs:
           set -o allexport
           source oss-signal-action-report.env
           set +o allexport
+          EXPECTED_VERSION="$(node -p 'require("./package.json").version')"
+          test "$OSS_SIGNAL_TOOL" = "oss-signal"
+          test "$OSS_SIGNAL_VERSION" = "$EXPECTED_VERSION"
           test "$OSS_SIGNAL_MODE" = "single"
+          test "$OSS_SIGNAL_BASELINE_ENABLED" = "false"
           test "$OSS_SIGNAL_SCORE" = "100"
           test "$OSS_SIGNAL_PASSED" = "16"
           test "$OSS_SIGNAL_FAILED" = "0"

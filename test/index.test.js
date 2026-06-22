@@ -9,6 +9,7 @@ import {
   auditTarget,
   compareReports,
   createInventoryReport,
+  createTrendReport,
   listRules,
   parseGitHubTarget,
   parseInventoryTargets,
@@ -24,6 +25,8 @@ import {
   renderRulesMarkdown,
   renderSarif,
   renderSummary,
+  renderTrendJson,
+  renderTrendMarkdown,
   renderWorkflow,
   RELEASE_COMMIT,
   RELEASE_VERSION,
@@ -125,7 +128,10 @@ test("renderEnv creates a CI-friendly key-value summary", async () => {
     const report = await auditRepository(root);
     const env = renderEnv(report);
 
+    assert.match(env, /^OSS_SIGNAL_TOOL=oss-signal$/m);
+    assert.match(env, new RegExp(`^OSS_SIGNAL_VERSION=${VERSION}$`, "m"));
     assert.match(env, /^OSS_SIGNAL_MODE=single$/m);
+    assert.match(env, /^OSS_SIGNAL_BASELINE_ENABLED=false$/m);
     assert.match(env, /^OSS_SIGNAL_SCORE=\d+$/m);
     assert.match(env, /^OSS_SIGNAL_GRADE=[A-F]$/m);
     assert.match(env, /^OSS_SIGNAL_PASSED=1$/m);
@@ -173,6 +179,7 @@ test("compareReports identifies regressions, improvements, and score movement", 
     assert.match(renderMarkdown(current), /Regressions to review/);
     assert.match(renderSummary(current), /1 regression\(s\), 1 improvement\(s\)/);
     const env = renderEnv(current);
+    assert.match(env, /^OSS_SIGNAL_BASELINE_ENABLED=true$/m);
     assert.match(env, /^OSS_SIGNAL_REGRESSIONS=1$/m);
     assert.match(env, /^OSS_SIGNAL_IMPROVEMENTS=1$/m);
     assert.match(env, /^OSS_SIGNAL_NEW_CHECKS=0$/m);
@@ -221,6 +228,67 @@ test("compareReports keeps new, removed, and not-applicable rules out of regress
   assert.throws(
     () => compareReports(current, { ...baseline, checks: [check("stable", true), check("stable", false)] }),
     /baseline report contains duplicate check ID: stable/
+  );
+});
+
+test("createTrendReport summarizes retained JSON reports", () => {
+  const first = trendFixtureReport({
+    generatedAt: "2026-06-18T00:00:00.000Z",
+    score: 70,
+    checks: [
+      trendCheck("readme", true, 12),
+      trendCheck("license", false, 10),
+      trendCheck("ci", false, 12)
+    ]
+  });
+  const second = trendFixtureReport({
+    generatedAt: "2026-06-19T00:00:00.000Z",
+    score: 82,
+    checks: [
+      trendCheck("readme", true, 12),
+      trendCheck("license", true, 10),
+      trendCheck("ci", false, 12)
+    ]
+  });
+  const third = trendFixtureReport({
+    generatedAt: "2026-06-20T00:00:00.000Z",
+    score: 76,
+    checks: [
+      trendCheck("readme", true, 12),
+      trendCheck("license", false, 10),
+      trendCheck("ci", true, 12)
+    ]
+  });
+
+  const trend = createTrendReport([third, first, second], {
+    trendPath: "reports.txt",
+    reportPaths: ["third.json", "first.json", "second.json"]
+  });
+  const markdown = renderTrendMarkdown(trend);
+  const json = JSON.parse(renderTrendJson(trend));
+
+  assert.equal(trend.count, 3);
+  assert.equal(trend.summary.firstScore, 70);
+  assert.equal(trend.summary.latestScore, 76);
+  assert.equal(trend.summary.scoreDelta, 6);
+  assert.equal(trend.summary.regressions, 1);
+  assert.equal(trend.summary.improvements, 2);
+  assert.equal(trend.reports[0].path, "first.json");
+  assert.equal(trend.reports[2].path, "third.json");
+  assert.equal(trend.comparisons.at(-1).regressions[0].id, "license");
+  assert.equal(trend.volatileChecks[0].id, "license");
+  assert.match(markdown, /OSS Signal Trend/);
+  assert.match(markdown, /Score movement: \*\*70\/100 -> 76\/100 \(\+6 points\)\*\*/);
+  assert.match(markdown, /Most Volatile Checks/);
+  assert.equal(json.tool, "oss-signal");
+  assert.equal(json.summary.improvements, 2);
+  assert.throws(
+    () => createTrendReport([{ ...first, generatedAt: "not-a-date" }]),
+    /valid generatedAt timestamp/
+  );
+  assert.throws(
+    () => createTrendReport([{ ...first, score: 101 }]),
+    /score from 0 to 100/
   );
 });
 
@@ -400,11 +468,13 @@ test("published JSON schemas and fixtures are parseable", async () => {
   const schemaPaths = [
     "docs/schema/json-output.schema.json",
     "docs/schema/inventory-output.schema.json",
+    "docs/schema/trend-output.schema.json",
     "docs/schema/rules-catalog.schema.json"
   ];
   const fixturePaths = [
     "docs/examples/github-url-report.json",
     "docs/examples/inventory-report.json",
+    "docs/examples/trend-report.json",
     "docs/examples/rules-catalog.json"
   ];
 
@@ -434,13 +504,15 @@ test("published JSON schemas and fixtures are parseable", async () => {
     ])
   );
 
-  const [report, inventory, catalog] = await Promise.all(
+  const [report, inventory, trend, catalog] = await Promise.all(
     fixturePaths.map(async (fixturePath) => JSON.parse(await readFile(path.resolve(fixturePath), "utf8")))
   );
   assert.equal(report.tool, "oss-signal");
   assert.equal(inventory.tool, "oss-signal");
+  assert.equal(trend.tool, "oss-signal");
   assert.equal(catalog.tool, "oss-signal");
   assert.equal(inventory.repositories.length, inventory.count);
+  assert.equal(trend.reports.length, trend.count);
   assert.equal(catalog.totalRules, 17);
   const recommendationSchema = inventorySchema.$defs.inventoryRecommendation;
   for (const repository of inventory.repositories) {
@@ -937,6 +1009,7 @@ test("CLI compares a baseline report and fails only on regressions", async () =>
 
     assert.equal(envResult.status, 0, envResult.stderr);
     const env = await readFile(envOutputFile, "utf8");
+    assert.match(env, /^OSS_SIGNAL_BASELINE_ENABLED=true$/m);
     assert.match(env, /^OSS_SIGNAL_REGRESSIONS=1$/m);
     assert.match(env, /^OSS_SIGNAL_IMPROVEMENTS=1$/m);
     assert.match(env, /^OSS_SIGNAL_NEW_CHECKS=0$/m);
@@ -946,6 +1019,48 @@ test("CLI compares a baseline report and fails only on regressions", async () =>
   } finally {
     await rm(baselineRoot, { recursive: true, force: true });
     await rm(currentRoot, { recursive: true, force: true });
+  }
+});
+
+test("CLI writes trend output from retained JSON reports", async () => {
+  const root = await fixture({});
+  const firstFile = path.join(root, "first.json");
+  const secondFile = path.join(root, "second.json");
+  const trendFile = path.join(root, "trend-reports.txt");
+  const outputFile = path.join(root, "trend.json");
+
+  try {
+    await writeFile(firstFile, JSON.stringify(trendFixtureReport({
+      generatedAt: "2026-06-18T00:00:00.000Z",
+      score: 50,
+      checks: [trendCheck("readme", true, 12), trendCheck("license", false, 10)]
+    })), "utf8");
+    await writeFile(secondFile, JSON.stringify(trendFixtureReport({
+      generatedAt: "2026-06-19T00:00:00.000Z",
+      score: 68,
+      checks: [trendCheck("readme", true, 12), trendCheck("license", true, 10)]
+    })), "utf8");
+    await writeFile(trendFile, `${firstFile}\n${secondFile}\n`, "utf8");
+
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(process.execPath, [
+      path.resolve("src/cli.js"),
+      "--trend",
+      trendFile,
+      "--format",
+      "json",
+      "--output",
+      outputFile
+    ], { encoding: "utf8" });
+
+    assert.equal(result.status, 0, result.stderr);
+    const trend = JSON.parse(await readFile(outputFile, "utf8"));
+    assert.equal(trend.count, 2);
+    assert.equal(trend.summary.scoreDelta, 18);
+    assert.equal(trend.summary.improvements, 1);
+    assert.equal(trend.reports[1].path, secondFile);
+  } finally {
+    await rm(root, { recursive: true, force: true });
   }
 });
 
@@ -1097,7 +1212,10 @@ test("CLI writes inventory env output", async () => {
 
     assert.equal(result.status, 0, result.stderr);
     const env = await readFile(outputFile, "utf8");
+    assert.match(env, /^OSS_SIGNAL_TOOL=oss-signal$/m);
+    assert.match(env, new RegExp(`^OSS_SIGNAL_VERSION=${VERSION}$`, "m"));
     assert.match(env, /^OSS_SIGNAL_MODE=inventory$/m);
+    assert.match(env, /^OSS_SIGNAL_BASELINE_ENABLED=false$/m);
     assert.match(env, /^OSS_SIGNAL_COUNT=2$/m);
     assert.match(env, /^OSS_SIGNAL_PASSED=3$/m);
     assert.match(env, /^OSS_SIGNAL_FAILED=31$/m);
@@ -1242,6 +1360,49 @@ async function fixture(files) {
     await writeFile(target, files[file], "utf8");
   }));
   return root;
+}
+
+function trendFixtureReport({ generatedAt, score, checks }) {
+  const passed = checks.filter((check) => check.passed).length;
+  const failed = checks.filter((check) => !check.passed).length;
+  return {
+    tool: "oss-signal",
+    version: VERSION,
+    root: "/tmp/example",
+    source: { type: "local", location: "/tmp/example" },
+    generatedAt,
+    score,
+    grade: score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : score >= 60 ? "D" : "F",
+    summary: { passed, failed, total: checks.length },
+    checks,
+    recommendations: checks
+      .filter((check) => !check.passed)
+      .map((check) => ({
+        id: check.id,
+        label: check.label,
+        weight: check.weight,
+        priority: check.weight >= 9 ? "P1" : "P2",
+        impact: check.weight >= 9 ? "high" : "medium",
+        category: "community",
+        categoryLabel: "Community files",
+        suggestedFile: check.id === "license" ? "LICENSE" : "README.md",
+        verifyCommand: "oss-signal . --format summary",
+        why: check.why,
+        fix: check.fix
+      }))
+  };
+}
+
+function trendCheck(id, passed, weight) {
+  return {
+    id,
+    label: id === "ci" ? "Continuous integration" : id.charAt(0).toUpperCase() + id.slice(1),
+    weight,
+    passed,
+    evidence: passed ? `${id} present` : `Missing: ${id}`,
+    why: `${id} matters`,
+    fix: `Add ${id}`
+  };
 }
 
 function jsonResponse(body) {

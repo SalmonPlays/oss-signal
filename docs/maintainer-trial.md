@@ -42,12 +42,12 @@ jobs:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           persist-credentials: false
-      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+      - uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
         id: oss-signal
         with:
           output: oss-signal-report.md
           summary: "true"
-      - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+      - uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
         if: always()
         id: oss-signal-adoption
         with:
@@ -90,31 +90,31 @@ The same workflow is available as [examples/maintainer-trial-workflow.yml](examp
 Run against a public repository without cloning:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.9 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
+npm exec --yes --package=oss-signal@0.10.0 -- oss-signal owner/repo --format markdown --output oss-signal-report.md
 ```
 
 Generate an issue-ready draft for human review:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.9 -- oss-signal owner/repo --format issue --output maintainer-follow-up.md
+npm exec --yes --package=oss-signal@0.10.0 -- oss-signal owner/repo --format issue --output maintainer-follow-up.md
 ```
 
 Generate a PR-sized plan before opening a pull request:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.9 -- oss-signal owner/repo --format plan --output maintainer-plan.md
+npm exec --yes --package=oss-signal@0.10.0 -- oss-signal owner/repo --format plan --output maintainer-plan.md
 ```
 
 Generate the no-fail trial workflow:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.9 -- oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
+npm exec --yes --package=oss-signal@0.10.0 -- oss-signal owner/repo --format workflow --output .github/workflows/oss-signal-trial.yml
 ```
 
 Generate a one-file adoption pack before asking a maintainer to try the workflow:
 
 ```bash
-npm exec --yes --package=oss-signal@0.9.9 -- oss-signal owner/repo --format adoption --output adoption-pack.md
+npm exec --yes --package=oss-signal@0.10.0 -- oss-signal owner/repo --format adoption --output adoption-pack.md
 ```
 
 The adoption pack is useful when you want one reviewable artifact with the local command, no-fail workflow, suggested message, findings, verification links, and boundaries.
@@ -123,7 +123,7 @@ The adoption pack is useful when you want one reviewable artifact with the local
 
 Useful public evidence is concrete:
 
-- a workflow run that uses `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` (`v0.9.9`)
+- a workflow run that uses `SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1` (`v0.10.0`)
 - a linked `oss-signal-report.md` artifact
 - a maintainer reply saying the report was useful, not useful, or intentionally out of scope
 - a merged issue-template, security-policy, CI, or documentation PR informed by the report

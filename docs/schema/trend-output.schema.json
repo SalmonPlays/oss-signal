@@ -1,0 +1,366 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://salmonplays.github.io/oss-signal/schema/trend-output.schema.json",
+  "title": "oss-signal trend output",
+  "type": "object",
+  "required": [
+    "tool",
+    "version",
+    "generatedAt",
+    "count",
+    "summary",
+    "reports",
+    "comparisons",
+    "volatileChecks"
+  ],
+  "properties": {
+    "tool": {
+      "const": "oss-signal"
+    },
+    "version": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "trendPath": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "summary": {
+      "$ref": "#/$defs/summary"
+    },
+    "reports": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/reportPoint"
+      }
+    },
+    "comparisons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/comparisonPoint"
+      }
+    },
+    "volatileChecks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/volatileCheck"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "summary": {
+      "type": "object",
+      "required": [
+        "firstScore",
+        "latestScore",
+        "latestGrade",
+        "scoreDelta",
+        "averageScore",
+        "averageGrade",
+        "bestScore",
+        "worstScore",
+        "regressions",
+        "improvements",
+        "newChecks",
+        "removedChecks"
+      ],
+      "properties": {
+        "firstScore": {
+          "$ref": "#/$defs/score"
+        },
+        "latestScore": {
+          "$ref": "#/$defs/score"
+        },
+        "latestGrade": {
+          "$ref": "#/$defs/grade"
+        },
+        "scoreDelta": {
+          "type": "integer"
+        },
+        "averageScore": {
+          "$ref": "#/$defs/score"
+        },
+        "averageGrade": {
+          "$ref": "#/$defs/grade"
+        },
+        "bestScore": {
+          "$ref": "#/$defs/score"
+        },
+        "worstScore": {
+          "$ref": "#/$defs/score"
+        },
+        "regressions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "improvements": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "newChecks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "removedChecks": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "reportPoint": {
+      "type": "object",
+      "required": [
+        "root",
+        "sourceLabel",
+        "generatedAt",
+        "score",
+        "grade",
+        "passed",
+        "failed",
+        "total",
+        "notApplicable",
+        "scoreDelta",
+        "regressions",
+        "improvements",
+        "newChecks",
+        "removedChecks"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "root": {
+          "type": "string"
+        },
+        "source": {
+          "type": "object"
+        },
+        "sourceLabel": {
+          "type": "string"
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "score": {
+          "$ref": "#/$defs/score"
+        },
+        "grade": {
+          "$ref": "#/$defs/grade"
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notApplicable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "earnedWeight": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "availableWeight": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalWeight": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notApplicableWeight": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scoreDelta": {
+          "type": "integer"
+        },
+        "regressions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "improvements": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "newChecks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "removedChecks": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "comparisonPoint": {
+      "type": "object",
+      "required": [
+        "from",
+        "to",
+        "scoreDelta",
+        "summary",
+        "regressions",
+        "improvements"
+      ],
+      "properties": {
+        "from": {
+          "$ref": "#/$defs/reportPointer"
+        },
+        "to": {
+          "$ref": "#/$defs/reportPointer"
+        },
+        "scoreDelta": {
+          "type": "integer"
+        },
+        "summary": {
+          "$ref": "#/$defs/comparisonSummary"
+        },
+        "regressions": {
+          "type": "array",
+          "items": {
+            "$ref": "json-output.schema.json#/$defs/comparisonItem"
+          }
+        },
+        "improvements": {
+          "type": "array",
+          "items": {
+            "$ref": "json-output.schema.json#/$defs/comparisonItem"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "reportPointer": {
+      "type": "object",
+      "required": [
+        "root",
+        "generatedAt",
+        "score",
+        "grade"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "root": {
+          "type": "string"
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "score": {
+          "$ref": "#/$defs/score"
+        },
+        "grade": {
+          "$ref": "#/$defs/grade"
+        }
+      },
+      "additionalProperties": false
+    },
+    "comparisonSummary": {
+      "type": "object",
+      "required": [
+        "regressions",
+        "improvements",
+        "newChecks",
+        "removedChecks"
+      ],
+      "properties": {
+        "regressions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "improvements": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "newChecks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "removedChecks": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "volatileCheck": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "weight",
+        "category",
+        "categoryLabel",
+        "changes",
+        "latestStatus"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "category": {
+          "type": "string"
+        },
+        "categoryLabel": {
+          "type": "string"
+        },
+        "changes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latestStatus": {
+          "enum": [
+            "passed",
+            "failed",
+            "not_applicable",
+            "missing"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "grade": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "F"
+      ]
+    }
+  }
+}

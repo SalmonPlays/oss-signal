@@ -36,6 +36,12 @@ Audit several repositories from one inventory file:
 oss-signal --inventory docs/examples/inventory-targets.txt --format markdown --output inventory-report.md
 ```
 
+Summarize retained JSON reports into a score trend:
+
+```bash
+oss-signal --trend docs/examples/trend-reports.txt --format markdown --output trend-report.md
+```
+
 Use SARIF when the findings should appear in Code Scanning:
 
 ```bash
@@ -97,7 +103,7 @@ See [plan-output.md](plan-output.md) and [examples/github-plan.md](examples/gith
 Add the GitHub Action to keep the signal visible:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
   id: oss-signal
   with:
     fail-under: "80"
@@ -105,12 +111,12 @@ Add the GitHub Action to keep the signal visible:
     summary: "true"
 ```
 
-The Action writes `score`, `grade`, `passed`, `failed`, `not-applicable`, `total`, `earned-weight`, `available-weight`, `total-weight`, `not-applicable-weight`, `regressions`, `score-delta`, and `report-path` outputs, and writes a concise GitHub Actions step summary by default. Inventory mode reports the average score and totals for counts and weighted points.
+The Action writes producer metadata (`tool`, `version`, `mode`), `baseline-enabled`, complete score and weighted-point totals, all baseline comparison counts, `score-delta`, and `report-path`, and writes a concise GitHub Actions step summary by default. Inventory mode reports the average score and totals for counts and weighted points; trend mode reports the latest values and retained-history movement.
 
 For an incremental gate, commit a reviewed JSON report such as `.github/oss-signal-baseline.json`, then fail only when a previously passing rule regresses:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
   id: oss-signal
   with:
     format: json
@@ -125,12 +131,23 @@ Review baseline updates like policy changes: regenerate them after an intentiona
 For a repository inventory, commit a newline-delimited target list and pass it through the Action:
 
 ```yaml
-- uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+- uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
   env:
     GITHUB_TOKEN: ${{ github.token }}
   with:
     inventory: docs/examples/inventory-targets.txt
     output: inventory-report.md
+    summary: "true"
+```
+
+For score history, keep retained JSON report paths in a newline-delimited manifest and pass it through the Action:
+
+```yaml
+- uses: SalmonPlays/oss-signal@5f98a7c560b90dbd1ba87dd0222bae331e0993c9 # trend feature snapshot
+  with:
+    trend: docs/examples/trend-reports.txt
+    format: markdown
+    output: oss-signal-trend.md
     summary: "true"
 ```
 
@@ -147,7 +164,7 @@ steps:
   - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
     with:
       persist-credentials: false
-  - uses: SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91 # v0.9.9
+  - uses: SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1 # v0.10.0
     with:
       format: sarif
       output: oss-signal.sarif
@@ -165,7 +182,7 @@ See [docs/sarif-code-scanning.md](sarif-code-scanning.md) for the permissions, e
 
 Useful evidence for maintainers and reviewers:
 
-- A public workflow run that uses `SalmonPlays/oss-signal@3e086d4b2cb938a9aa67b12585a80f28632d9e91` (`v0.9.9`).
+- A public workflow run that uses `SalmonPlays/oss-signal@1bb4418e14be225b5f5b628986ea464241caf7f1` (`v0.10.0`).
 - A generated Markdown report attached as an artifact.
 - A generated adoption pack attached as an artifact before asking maintainers to try the Action.
 - A checksum manifest for the uploaded report, adoption pack, and SARIF files.

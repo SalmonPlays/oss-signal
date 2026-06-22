@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Exposed complete baseline comparison counts through env reports and GitHub Action outputs, with sourceable CI contract coverage.
+- Exposed producer version, execution mode, baseline state, and complete comparison counts through env reports and GitHub Action outputs, with sourceable CI contract coverage.
+- Corrected the Action trend output so `improvements` reports the retained-history total.
 
 ## 0.10.0
 
@@ -20,6 +21,8 @@
 - Added `--fail-on-regression` plus GitHub Action `baseline` and
   `fail-on-regression` inputs so CI can reject newly broken checks without
   imposing an arbitrary score threshold.
+- Added retained-report trend summaries with `--trend`, a GitHub Action `trend`
+  input, Markdown/JSON output, a published trend schema, and example fixtures.
 - Added priority, impact, category, suggested-file, and verification-command
   metadata to recommendations so reports can feed dashboards and cleanup queues
   without prose parsing.

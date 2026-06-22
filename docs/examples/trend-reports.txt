@@ -1,0 +1,3 @@
+# Retained oss-signal JSON reports, oldest or newest order both work.
+docs/examples/trend-baseline.json
+docs/examples/trend-current.json

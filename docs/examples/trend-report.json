@@ -1,0 +1,125 @@
+{
+  "tool": "oss-signal",
+  "version": "0.10.0",
+  "generatedAt": "2026-06-20T00:00:00.000Z",
+  "trendPath": "docs/examples/trend-reports.txt",
+  "count": 2,
+  "summary": {
+    "firstScore": 72,
+    "latestScore": 81,
+    "latestGrade": "B",
+    "scoreDelta": 9,
+    "averageScore": 77,
+    "averageGrade": "C",
+    "bestScore": 81,
+    "worstScore": 72,
+    "regressions": 0,
+    "improvements": 1,
+    "newChecks": 0,
+    "removedChecks": 0
+  },
+  "reports": [
+    {
+      "path": "docs/examples/trend-baseline.json",
+      "root": "https://github.com/example/project",
+      "source": {
+        "type": "github",
+        "location": "https://github.com/example/project",
+        "owner": "example",
+        "repo": "project",
+        "ref": "main"
+      },
+      "sourceLabel": "GitHub (example/project@main)",
+      "generatedAt": "2026-06-18T00:00:00.000Z",
+      "score": 72,
+      "grade": "C",
+      "passed": 10,
+      "failed": 6,
+      "total": 16,
+      "notApplicable": 0,
+      "scoreDelta": 0,
+      "regressions": 0,
+      "improvements": 0,
+      "newChecks": 0,
+      "removedChecks": 0
+    },
+    {
+      "path": "docs/examples/trend-current.json",
+      "root": "https://github.com/example/project",
+      "source": {
+        "type": "github",
+        "location": "https://github.com/example/project",
+        "owner": "example",
+        "repo": "project",
+        "ref": "main"
+      },
+      "sourceLabel": "GitHub (example/project@main)",
+      "generatedAt": "2026-06-19T00:00:00.000Z",
+      "score": 81,
+      "grade": "B",
+      "passed": 11,
+      "failed": 5,
+      "total": 16,
+      "notApplicable": 0,
+      "scoreDelta": 9,
+      "regressions": 0,
+      "improvements": 1,
+      "newChecks": 0,
+      "removedChecks": 0
+    }
+  ],
+  "comparisons": [
+    {
+      "from": {
+        "path": "docs/examples/trend-baseline.json",
+        "root": "https://github.com/example/project",
+        "generatedAt": "2026-06-18T00:00:00.000Z",
+        "score": 72,
+        "grade": "C"
+      },
+      "to": {
+        "path": "docs/examples/trend-current.json",
+        "root": "https://github.com/example/project",
+        "generatedAt": "2026-06-19T00:00:00.000Z",
+        "score": 81,
+        "grade": "B"
+      },
+      "scoreDelta": 9,
+      "summary": {
+        "regressions": 0,
+        "improvements": 1,
+        "newChecks": 0,
+        "removedChecks": 0
+      },
+      "regressions": [],
+      "improvements": [
+        {
+          "id": "license",
+          "label": "License",
+          "weight": 10,
+          "previousStatus": "failed",
+          "currentStatus": "passed",
+          "priority": "P1",
+          "impact": "high",
+          "category": "community",
+          "categoryLabel": "Community files",
+          "suggestedFile": "LICENSE",
+          "verifyCommand": "oss-signal example/project --format summary",
+          "why": "A license tells downstream users what they may legally do with the code.",
+          "fix": "Add an OSI-approved license file such as MIT, Apache-2.0, BSD-3-Clause, or MPL-2.0."
+        }
+      ]
+    }
+  ],
+  "volatileChecks": [
+    {
+      "id": "license",
+      "label": "License",
+      "weight": 10,
+      "category": "community",
+      "categoryLabel": "Community files",
+      "changes": 1,
+      "latestStatus": "passed"
+    }
+  ]
+}

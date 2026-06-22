@@ -46,7 +46,10 @@ oss-signal . --format env --output oss-signal.env
 The env format writes one `KEY=value` pair per line:
 
 ```text
+OSS_SIGNAL_TOOL=oss-signal
+OSS_SIGNAL_VERSION=0.10.0
 OSS_SIGNAL_MODE=single
+OSS_SIGNAL_BASELINE_ENABLED=false
 OSS_SIGNAL_SCORE=100
 OSS_SIGNAL_GRADE=A
 OSS_SIGNAL_PASSED=17
@@ -66,7 +69,7 @@ OSS_SIGNAL_RECOMMENDATIONS=0
 OSS_SIGNAL_TOP_RECOMMENDATION=
 ```
 
-When `--baseline` is supplied, `OSS_SIGNAL_REGRESSIONS`, `OSS_SIGNAL_IMPROVEMENTS`, `OSS_SIGNAL_NEW_CHECKS`, `OSS_SIGNAL_REMOVED_CHECKS`, and `OSS_SIGNAL_SCORE_DELTA` reflect the complete comparison summary. Inventory mode also supports `--format env`; those comparison fields are zero or empty because inventory mode does not accept a baseline.
+`OSS_SIGNAL_TOOL`, `OSS_SIGNAL_VERSION`, and `OSS_SIGNAL_MODE` let consumers identify the producer and distinguish single-repository output from inventory output. When `--baseline` is supplied, `OSS_SIGNAL_BASELINE_ENABLED` becomes `true`, and the comparison count and score-delta fields reflect the complete comparison summary. Inventory mode also supports `--format env`; baseline fields are false, zero, or empty because inventory mode does not accept a baseline.
 
 The generated file is sourceable by a shell, so later CI commands can consume the contract without a JSON parser:
 
@@ -117,6 +120,28 @@ Inventory schema and fixture:
 
 Inventory JSON intentionally summarizes each repository instead of embedding every full check result. Use single-repository JSON when a consumer needs rule-level detail.
 
+## Trend JSON
+
+Trend mode summarizes retained single-repository JSON reports:
+
+```bash
+oss-signal --trend docs/examples/trend-reports.txt --format json --output trend-report.json
+```
+
+The manifest is a newline-delimited list of `oss-signal --format json` report paths. Blank lines and `#` comments are ignored. Reports are ordered by their `generatedAt` timestamps before score deltas and adjacent comparisons are calculated.
+
+Trend JSON includes:
+
+- `summary` with first/latest scores, score delta, average score, best/worst score, and total regressions or improvements across the retained history.
+- `reports[]` with one timeline point per retained JSON report.
+- `comparisons[]` with adjacent score deltas and detailed regression/improvement items.
+- `volatileChecks[]` listing rules whose status changed across the retained reports.
+
+Trend schema and fixture:
+
+- [schema/trend-output.schema.json](schema/trend-output.schema.json)
+- [examples/trend-report.json](examples/trend-report.json)
+
 ## Rule Catalog JSON
 
 The rule catalog can be generated without auditing a repository:
@@ -153,6 +178,7 @@ Stable for `0.9.x`:
 - Recommendation fields `id`, `label`, `weight`, `priority`, `impact`, `category`, `categoryLabel`, `suggestedFile`, `verifyCommand`, `why`, and `fix`.
 - Rule catalog fields `totalRules`, `totalWeight`, `scoring`, `categories`, and `categories[].rules[]`.
 - Inventory fields `count`, `averageScore`, `averageGrade`, `minScore`, `maxScore`, `failedTotal`, weighted totals, and `repositories[]`.
+- Trend fields `count`, `summary`, `reports[]`, `comparisons[]`, and `volatileChecks[]`.
 
 Not stable:
 
